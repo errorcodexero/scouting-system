@@ -1,0 +1,14 @@
+CREATE TABLE `team_match` (
+  `match_id` int(11) NOT NULL,
+    `team_id` int(11) NOT NULL,
+      `team_match_id` int(11) NOT NULL AUTO_INCREMENT,
+        `position` int(11) NOT NULL,
+	  `alliance` varchar(4) NOT NULL,
+	    `driver_comments` varchar(256) DEFAULT NULL,
+	      PRIMARY KEY (`team_match_id`),
+	        KEY `match_id_idx` (`match_id`),
+		  KEY `team_id_idx` (`team_id`),
+		    CONSTRAINT `match_id` FOREIGN KEY (`match_id`) REFERENCES `match` (`match_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+		      CONSTRAINT `team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+		      ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+		      

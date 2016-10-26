@@ -1,0 +1,5 @@
+CREATE TABLE `team` (
+  `team_id` int(11) NOT NULL,
+    PRIMARY KEY (`team_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    

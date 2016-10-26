@@ -1,0 +1,10 @@
+CREATE TABLE `match` (
+  `event_id` varchar(6) NOT NULL,
+    `match_id` int(11) NOT NULL AUTO_INCREMENT,
+      `blue_score` int(11) NOT NULL,
+        `red_score` int(11) NOT NULL,
+	  PRIMARY KEY (`match_id`),
+	    KEY `event_id` (`event_id`),
+	      CONSTRAINT `event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	      ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+	      

@@ -1,0 +1,13 @@
+CREATE TABLE `action` (
+  `team_id` int(11) NOT NULL,
+    `match_id` int(11) NOT NULL,
+      `action_type_id` int(10) unsigned NOT NULL,
+        `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  KEY `action_type_id_idx` (`action_type_id`),
+	    KEY `fk_team_id_idx` (`team_id`),
+	      KEY `fk_match_id_idx` (`match_id`),
+	        CONSTRAINT `action_type_id` FOREIGN KEY (`action_type_id`) REFERENCES `action_type` (`action_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+		  CONSTRAINT `fk_match_id` FOREIGN KEY (`match_id`) REFERENCES `match` (`match_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+		    CONSTRAINT `fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+		    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+		    
