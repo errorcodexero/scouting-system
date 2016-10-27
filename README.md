@@ -1,4 +1,4 @@
-# scouting-system
+# XeroScouter
 
 Our scouting system, to be iterated on for future years.
 

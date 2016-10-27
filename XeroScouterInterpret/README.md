@@ -1,6 +1,6 @@
 # XeroScouterInterpret
 
-Our web based data interpreter, utilizing a Django backend with AngularJS Fronted.
+Our web based data interpreter, utilizing a Django backend with AngularJS Frontend.
 
 # Installation
 
