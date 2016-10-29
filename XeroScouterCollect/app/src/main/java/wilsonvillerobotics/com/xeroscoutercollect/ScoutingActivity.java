@@ -20,9 +20,9 @@ public class ScoutingActivity extends TabActivity {
         TabHost.TabSpec teleopTab = tabHost.newTabSpec("tab2");
         TabHost.TabSpec finalizeTab = tabHost.newTabSpec("tab3");
 
-        autonomousTab.setIndicator("Autonomous Tab").setContent(new Intent(this, AutonomousTab.class));
-        teleopTab.setIndicator("Teleop Tab").setContent(new Intent(this, TeleopTab.class));
-        finalizeTab.setIndicator("Finalize Tab").setContent(new Intent(this, FinalizeTab.class));
+        autonomousTab.setIndicator("Autonomous Tab").setContent(R.id.Autonomous);
+        teleopTab.setIndicator("Teleop Tab").setContent(R.id.Teleop);
+        finalizeTab.setIndicator("Finalize Tab").setContent(R.id.Finalize);
 
         tabHost.addTab(autonomousTab);
         tabHost.addTab(teleopTab);
@@ -30,4 +30,5 @@ public class ScoutingActivity extends TabActivity {
 
 
     }
+
 }

@@ -11,4 +11,8 @@
     <string name="auto_bunnies_picked_up">Auto Bunnies Picked-Up</string>
     <string name="auto_bunnies_scored">Auto Bunnies Scored</string>
     <string name="auto_lines_crossed">Auto Lines Crossed</string>
+    <string name="bunnies_deposited">Bunnies Deposited</string>
+    <string name="lines_crossed">Lines Crossed</string>
+    <string name="shots_missed">Shots Missed</string>
+    <string name="shots_hit">Shots Hit</string>
 </resources>
