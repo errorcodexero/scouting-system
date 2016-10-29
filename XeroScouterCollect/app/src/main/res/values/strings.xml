@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">XeroScouter Collect</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="defensive">Defensive?</string>
+    <string name="increment">+</string>
+    <string name="decrement">-</string>
+    <string name="default_text_0">0</string>
+    <string name="bunnies_picked_up">Bunnies Picked-up</string>
+    <string name="bunnies_stolen">Bunnies Stolen</string>
+    <string name="auto_bunnies_picked_up">Auto Bunnies Picked-Up</string>
+    <string name="auto_bunnies_scored">Auto Bunnies Scored</string>
+    <string name="auto_lines_crossed">Auto Lines Crossed</string>
 </resources>
