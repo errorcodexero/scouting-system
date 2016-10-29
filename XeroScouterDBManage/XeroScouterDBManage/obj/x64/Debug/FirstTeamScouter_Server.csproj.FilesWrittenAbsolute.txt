@@ -1,0 +1,8 @@
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/.NETFramework,Version=v4.0,Profile=Client.AssemblyAttribute.cs
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.AddMatchForm.resources
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.CompetitionSelectForm.resources
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.MatchListForm.resources
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.ExportDataForm.resources
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.ImportDataForm.resources
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.Properties.Resources.resources
+/home/nick/Git Repos/FtsServer/FirstTeamScouter_Server/obj/x64/Debug/FirstTeamScouter_Server.SeasonSelectForm.resources
