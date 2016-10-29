@@ -18,6 +18,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SyncActivity" />
         <activity android:name=".ExportActivity" />
+        <activity android:name=".AutonomousTab" />
+        <activity android:name=".TeleopTab" />
+        <activity android:name=".FinalizeTab" />
         <activity android:name=".ManagementActivity"></activity>
     </application>
 

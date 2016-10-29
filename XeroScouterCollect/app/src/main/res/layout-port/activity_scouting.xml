@@ -12,7 +12,7 @@
     <TabHost
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/tabHost"
+        android:id="@android:id/tabhost"
         android:layout_gravity="center_horizontal|top">
 
         <LinearLayout
