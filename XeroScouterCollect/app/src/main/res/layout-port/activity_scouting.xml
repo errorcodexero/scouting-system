@@ -35,369 +35,6 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/Teleop"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:weightSum="1"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="left|right"
-                        android:layout_weight=".10">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Lines Crossed"
-                            android:id="@+id/text_lines_crossed" />
-
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.78" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Bunnies Deposited"
-                            android:id="@+id/text_bunnies_deposited"
-                            android:layout_weight="0.21"
-                            android:gravity="right" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.15"
-                        android:weightSum="1"
-                        android:baselineAligned="false">
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4">
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/decrement"
-                                android:id="@+id/btn_decrement_lines_crossed" />
-
-                            <EditText
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:ems="10"
-                                android:id="@+id/editText2"
-                                android:layout_weight="0.50"
-                                android:gravity="center_horizontal"
-                                android:text="@string/default_text_0"
-                                android:focusable="false" />
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/increment"
-                                android:id="@+id/btn_increment_lines_crossed" />
-
-                        </LinearLayout>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".2" />
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4">
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/decrement"
-                                android:id="@+id/btn_decrement_bunnies_deposited" />
-
-                            <EditText
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:ems="10"
-                                android:id="@+id/editText"
-                                android:layout_weight="1"
-                                android:text="@string/default_text_0"
-                                android:gravity="center_horizontal"
-                                android:focusable="false" />
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/increment"
-                                android:id="@+id/btn_increment_bunnies_deposited" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:weightSum="1"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="left|right"
-                        android:layout_weight=".10">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Bunnies Picked-up"
-                            android:id="@+id/text_bunnies_picked_up" />
-
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.78" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Bunnies Stolen"
-                            android:id="@+id/text_bunnies_stolen"
-                            android:layout_weight="0.21"
-                            android:gravity="right" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.15"
-                        android:weightSum="1"
-                        android:layout_gravity="center_horizontal"
-                        android:baselineAligned="false">
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4">
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/decrement"
-                                android:id="@+id/btn_decrement_bunnies_picked_up" />
-
-                            <EditText
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:ems="10"
-                                android:id="@+id/editText4"
-                                android:layout_weight="0.50"
-                                android:text="@string/default_text_0"
-                                android:gravity="center_horizontal"
-                                android:focusable="false" />
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/increment"
-                                android:id="@+id/btn_increment_bunnies_picked_up" />
-
-                        </LinearLayout>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".2" />
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4" >
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/decrement"
-                                android:id="@+id/btn_decrement_bunnies_stolen" />
-
-                            <EditText
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:ems="10"
-                                android:id="@+id/editText3"
-                                android:layout_weight="1"
-                                android:text="@string/default_text_0"
-                                android:gravity="center_horizontal"
-                                android:focusable="false" />
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/increment"
-                                android:id="@+id/btn_increment_bunnies_stolen" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:weightSum="1"
-                        android:gravity="left|right"
-                        android:layout_weight=".10">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Shots Hit"
-                            android:id="@+id/text_shots_hit"
-                            android:layout_weight=".5" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Shots Missed"
-                            android:id="@+id/text_shots_missed"
-                            android:layout_weight=".5"
-                            android:gravity="right" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.15"
-                        android:weightSum="1"
-                        android:baselineAligned="false">
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4">
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/decrement"
-                                android:id="@+id/btn_decrement_shots_hit" />
-
-                            <EditText
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:ems="10"
-                                android:id="@+id/editText5"
-                                android:layout_weight="0.50"
-                                android:text="@string/default_text_0"
-                                android:gravity="center_horizontal"
-                                android:focusable="false" />
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/increment"
-                                android:id="@+id/btn_increment_shots_hit" />
-                        </LinearLayout>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight=".2" />
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4" >
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/decrement"
-                                android:id="@+id/btn_decrement_shots_missed" />
-
-                            <EditText
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:ems="10"
-                                android:id="@+id/editText6"
-                                android:layout_weight="1"
-                                android:text="@string/default_text_0"
-                                android:gravity="center_horizontal"
-                                android:focusable="true" />
-
-                            <Button
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/increment"
-                                android:id="@+id/btn_increment_shots_missed" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:text="Defensive?"
-                        android:id="@+id/chkbx_defensive_flag"
-                        android:layout_gravity="center_horizontal"
-                        android:checked="false"
-                        android:layout_weight=".05" />
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight=".15">
-
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Back"
-                            android:id="@+id/btn_teleop_back"
-                            android:layout_weight=".25"
-                            android:layout_gravity="center_vertical" />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5" />
-
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Next"
-                            android:id="@+id/btn_teleop_next"
-                            android:layout_gravity="center_vertical|right"
-                            android:layout_weight=".25" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/Autonomous"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -408,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Auto Lines Crossed"
+                        android:text="@string/action_1"
                         android:id="@+id/text_auto_lines_crossed"
                         android:layout_gravity="center_horizontal" />
 
@@ -423,7 +60,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="@string/decrement"
-                            android:id="@+id/btn_decrement_auto_cross"
+                            android:id="@+id/btn_decrement_action_1"
                             android:layout_weight=".2" />
 
                         <EditText
@@ -431,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="number"
                             android:ems="10"
-                            android:id="@+id/entry_auto_lines_crossed"
+                            android:id="@+id/entry_action_1"
                             android:layout_weight=".6"
                             android:text="@string/default_text_0"
                             android:gravity="center_horizontal"
@@ -441,7 +78,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="@string/increment"
-                            android:id="@+id/btn_increment_auto_cross"
+                            android:id="@+id/btn_increment_action_1"
                             android:layout_weight=".2" />
                     </LinearLayout>
 
@@ -455,7 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Auto Bunnies Picked-Up"
+                        android:text="@string/action_2"
                         android:id="@+id/text_auto_bunnies_picked_up"
                         android:layout_gravity="center_horizontal" />
 
@@ -469,7 +106,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="@string/decrement"
-                            android:id="@+id/btn_decrement_auto_bunnies_picked_up"
+                            android:id="@+id/btn_decrement_action_2"
                             android:layout_weight=".2" />
 
                         <EditText
@@ -477,7 +114,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="number"
                             android:ems="10"
-                            android:id="@+id/entry_auto_bunnies_picked_up"
+                            android:id="@+id/entry_action_2"
                             android:layout_weight=".6"
                             android:text="@string/default_text_0"
                             android:gravity="center_horizontal"
@@ -487,7 +124,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="@string/increment"
-                            android:id="@+id/btn_increment_auto_bunnies_picked_up"
+                            android:id="@+id/btn_increment_action_2"
                             android:layout_weight=".2" />
                     </LinearLayout>
 
@@ -500,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Auto Bunnies Scored"
+                        android:text="@string/action_3"
                         android:id="@+id/text_auto_bunnies_scored"
                         android:layout_gravity="center_horizontal" />
 
@@ -515,7 +152,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="@string/decrement"
-                            android:id="@+id/btn_decrement_auto_bunnies_scored"
+                            android:id="@+id/btn_decrement_action_3"
                             android:layout_weight=".2" />
 
                         <EditText
@@ -523,18 +160,19 @@
                             android:layout_height="wrap_content"
                             android:inputType="number"
                             android:ems="10"
-                            android:id="@+id/entry_auto_bunnies_scored"
+                            android:id="@+id/entry_action_3"
                             android:layout_weight=".6"
                             android:text="@string/default_text_0"
                             android:gravity="center_horizontal"
-                            android:focusable="true" />
+                            android:focusable="false" />
 
                         <Button
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="@string/increment"
-                            android:id="@+id/btn_increment_auto_bunnies_scored"
-                            android:layout_weight=".2" />
+                            android:id="@+id/btn_increment_action_3"
+                            android:layout_weight=".2"
+                            android:focusable="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -564,6 +202,375 @@
                             android:id="@+id/btn_auto_next"
                             android:layout_weight=".25" />
                     </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Teleop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:weightSum="1"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|right"
+                        android:layout_weight=".10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/action_4"
+                            android:id="@+id/text_action_4" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.78" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/action_5"
+                            android:id="@+id/text_action_5"
+                            android:layout_weight="0.21"
+                            android:gravity="right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.15"
+                        android:weightSum="1"
+                        android:baselineAligned="false">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4">
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/decrement"
+                                android:id="@+id/btn_decrement_action_5" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/entry_action_4"
+                                android:layout_weight="0.50"
+                                android:gravity="center_horizontal"
+                                android:text="@string/default_text_0"
+                                android:focusable="false" />
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increment"
+                                android:id="@+id/btn_increment_action_4" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4">
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/decrement"
+                                android:id="@+id/btn_decrement_action_5" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/entry_action_5"
+                                android:layout_weight="1"
+                                android:text="@string/default_text_0"
+                                android:gravity="center_horizontal"
+                                android:focusable="false" />
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increment"
+                                android:id="@+id/btn_increment_action_5" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:weightSum="1"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|right"
+                        android:layout_weight=".10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/action_5"
+                            android:id="@+id/text_action_5" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.78" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/action_6"
+                            android:id="@+id/text_action_6"
+                            android:layout_weight="0.21"
+                            android:gravity="right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.15"
+                        android:weightSum="1"
+                        android:layout_gravity="center_horizontal"
+                        android:baselineAligned="false">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4">
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/decrement"
+                                android:id="@+id/btn_decrement_action_6" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/entry_action_6"
+                                android:layout_weight="0.50"
+                                android:text="@string/default_text_0"
+                                android:gravity="center_horizontal"
+                                android:focusable="false" />
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increment"
+                                android:id="@+id/btn_increment_action_6" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4" >
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/decrement"
+                                android:id="@+id/btn_decrement_action_7" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/entry_action_7"
+                                android:layout_weight="1"
+                                android:text="@string/default_text_0"
+                                android:gravity="center_horizontal"
+                                android:focusable="false" />
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increment"
+                                android:id="@+id/btn_increment_action_7" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:weightSum="1"
+                        android:gravity="left|right"
+                        android:layout_weight=".10">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/action_7"
+                            android:id="@+id/text_action_7"
+                            android:layout_weight=".5" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/action_8"
+                            android:id="@+id/text_action_8"
+                            android:layout_weight=".5"
+                            android:gravity="right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.15"
+                        android:weightSum="1"
+                        android:baselineAligned="false">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4">
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/decrement"
+                                android:id="@+id/btn_decrement_action_8" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/entry_action_8"
+                                android:layout_weight="0.50"
+                                android:text="@string/default_text_0"
+                                android:gravity="center_horizontal"
+                                android:focusable="false" />
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increment"
+                                android:id="@+id/btn_increment_action_8" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight=".2" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4" >
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/decrement"
+                                android:id="@+id/btn_decrement_action_9" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/entry_action_9"
+                                android:layout_weight="1"
+                                android:text="@string/default_text_0"
+                                android:gravity="center_horizontal"
+                                android:focusable="false" />
+
+                            <Button
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increment"
+                                android:id="@+id/btn_increment_action_9" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Defensive?"
+                            android:id="@+id/chkbx_defensive_flag"
+                            android:checked="false"
+                            android:layout_weight=".05" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".15">
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Back"
+                            android:id="@+id/btn_teleop_back"
+                            android:layout_weight=".25"
+                            android:layout_gravity="center_vertical" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5" />
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Next"
+                            android:id="@+id/btn_teleop_next"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_weight=".25" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
