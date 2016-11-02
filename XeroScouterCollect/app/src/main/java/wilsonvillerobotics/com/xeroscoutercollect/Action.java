@@ -7,8 +7,8 @@ import android.app.Activity;
  */
 public class Action {
 
-    protected String name;
-    protected int id;
+    protected final String name;
+    protected final int id;
 
     public Action(int newID, String newName) {
         name = newName;

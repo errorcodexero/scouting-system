@@ -9,14 +9,14 @@ import java.util.HashMap;
 /**
  * Created by nick on 10/29/16.
  */
-public class ActionList extends Activity {
+public class ActionList {
 
     /*static void updateActionList() {
 
     }*/
 
 
-    static HashMap<Integer, Action> actionList = new HashMap<Integer, Action>() {
+    public static HashMap<Integer, Action> actionList = new HashMap<Integer, Action>() {
         {
             put(1, new Action(1, Resources.getSystem().getString(R.string.action_1)));
             put(2, new Action(2, Resources.getSystem().getString(R.string.action_2)));

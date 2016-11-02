@@ -4,10 +4,9 @@
     <string name="action_2">Auto Bunnies Picked-Up</string>
     <string name="action_3">Auto Bunnies Scored</string>
     <string name="action_4">Lines Crossed</string>
-    <string name="action_5">Bunnies Deposited</string>\
+    <string name="action_5">Bunnies Deposited</string>
     <string name="action_6">Bunnies Picked-Up</string>
     <string name="action_7">Bunnies Stolen</string>
     <string name="action_8">Shots Hit</string>
     <string name="action_9">Shots Missed</string>
-
 </resources>

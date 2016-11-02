@@ -80,14 +80,15 @@
                                 android:orientation="horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight=".40" >
+                                android:layout_weight=".40"
+                                android:id="@+id/action_group_3">
 
                                 <Button
                                     android:layout_width="65dp"
                                     android:layout_height="wrap_content"
                                     android:text="@string/decrement"
-                                    android:id="@+id/btn_decrement_action_3"
-                                    android:focusableInTouchMode="true" />
+                                    android:id="@+id/btn_decrement_action_4"
+                                    android:focusableInTouchMode="false" />
 
                                 <EditText
                                     android:layout_width="0dp"
@@ -116,7 +117,8 @@
                                 android:orientation="horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight=".40" >
+                                android:layout_weight=".40"
+                                android:id="@+id/action_group_4">
 
                                 <Button
                                     android:layout_width="65dp"
@@ -183,7 +185,8 @@
                                 android:orientation="horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight=".40" >
+                                android:layout_weight=".40"
+                                android:id="@+id/action_group_5">
 
                                 <Button
                                     android:layout_width="65dp"
@@ -218,7 +221,8 @@
                                 android:orientation="horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight=".4" >
+                                android:layout_weight=".4"
+                                android:id="@+id/action_group_6">
 
                                 <Button
                                     android:layout_width="65dp"
@@ -284,7 +288,8 @@
                                 android:orientation="horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight=".4" >
+                                android:layout_weight=".4"
+                                android:id="@+id/action_group_8">
 
                                 <Button
                                     android:layout_width="65dp"
@@ -320,7 +325,8 @@
                                 android:orientation="horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight=".4" >
+                                android:layout_weight=".4"
+                                android:id="@+id/action_group_9">
 
                                 <Button
                                     android:layout_width="65dp"
@@ -404,7 +410,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_weight=".15" >
+                            android:layout_weight=".15"
+                            android:id="@+id/action_group_1">
 
                             <Button
                                 android:layout_width="0dp"
@@ -444,7 +451,8 @@
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.15" >
+                            android:layout_weight="0.15"
+                            android:id="@+id/action_group_2">
 
                             <Button
                                 android:layout_width="0dp"
@@ -485,7 +493,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_weight="0.15" >
+                            android:layout_weight="0.15"
+                            android:id="@+id/action_group_3">
 
                             <Button
                                 android:layout_width="0dp"
