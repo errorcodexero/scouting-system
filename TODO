@@ -1,0 +1,11 @@
+Collection:
+
+	Set limits on Increment/Decrement
+
+Interpreter:
+
+	Add python interpreter
+
+Manager:
+
+	Modify to fit our generic database model
