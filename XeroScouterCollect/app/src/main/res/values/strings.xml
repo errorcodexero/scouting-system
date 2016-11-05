@@ -15,4 +15,5 @@
     <string name="lines_crossed">Lines Crossed</string>
     <string name="shots_missed">Shots Missed</string>
     <string name="shots_hit">Shots Hit</string>
+    <string name="finish">Finish</string>
 </resources>
