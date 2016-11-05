@@ -47,7 +47,8 @@
             android:text="@string/btn_start_stand_scouting"
             android:id="@+id/btn_Start_Stand_Scouting"
             android:layout_weight=".3"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:onClick="onClick" />
 
         <Space
             android:layout_width="wrap_content"

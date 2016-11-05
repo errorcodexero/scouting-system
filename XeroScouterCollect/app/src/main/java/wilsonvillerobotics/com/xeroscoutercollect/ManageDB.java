@@ -11,7 +11,7 @@ public class ManageDB {
 
     protected String dbName;
 
-    private SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
+    //private SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
 
     protected ArrayList<ActionObject> teamMatchData = new ArrayList<>();
 

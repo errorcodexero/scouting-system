@@ -110,7 +110,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     public void onClick(View view) {
         int index = 0;
         boolean decrement = false;
-        Intent mainScreen = new Intent(this, MainActivity.class);
+        Intent mainScreen = new Intent(this, LandingActivity.class);
         switch (view.getId()) {
 
             // Doing that young fallthough
