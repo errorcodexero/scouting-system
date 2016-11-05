@@ -20,4 +20,16 @@
     <string name="lbl_welcome_message">Welcome</string>
     <string name="btn_start_stand_scouting">Stand Scouting</string>
     <string name="btn_start_pit_scouting">Pit Scouting</string>
+    <string name="lbl_tablet_id_match_confirmation">Tablet ID:</string>
+
+    <string name="match_prompt">Choose a match</string>
+    <string name="team_1">Team 1</string>
+    <string name="team_2">Team 2</string>
+    <string name="team_3">Team 3</string>
+    <string name="team_4">Team 4</string>
+    <string name="team_5">Team 5</string>
+    <string name="team_6">Team 6</string>
+    <string name="confirmation">Confirmation</string>
+
+
 </resources>
