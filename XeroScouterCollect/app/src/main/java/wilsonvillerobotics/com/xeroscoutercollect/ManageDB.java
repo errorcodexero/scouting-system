@@ -1,5 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import java.util.ArrayList;
 
 /**
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 public class ManageDB {
 
     protected String dbName;
+
+    private SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
 
     protected ArrayList<ActionObject> teamMatchData = new ArrayList<>();
 

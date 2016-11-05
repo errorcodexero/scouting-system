@@ -82,15 +82,15 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
                 finalizeDataList.clear();
 
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_1), String.valueOf(actionObjectArrayList.get(0).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_2), String.valueOf(actionObjectArrayList.get(1).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_3), String.valueOf(actionObjectArrayList.get(2).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_4), String.valueOf(actionObjectArrayList.get(3).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_5), String.valueOf(actionObjectArrayList.get(4).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_6), String.valueOf(actionObjectArrayList.get(5).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_7), String.valueOf(actionObjectArrayList.get(6).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_8), String.valueOf(actionObjectArrayList.get(7).getActionCount())));
-                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_9), String.valueOf(actionObjectArrayList.get(8).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_1), String.valueOf(actionObjectArrayList.get(0).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_2), String.valueOf(actionObjectArrayList.get(1).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_3), String.valueOf(actionObjectArrayList.get(2).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_4), String.valueOf(actionObjectArrayList.get(3).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_5), String.valueOf(actionObjectArrayList.get(4).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_6), String.valueOf(actionObjectArrayList.get(5).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_7), String.valueOf(actionObjectArrayList.get(6).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_8), String.valueOf(actionObjectArrayList.get(7).getActionCount())));
+                finalizeDataList.add(new Pair<>(getString(R.string.action_9), String.valueOf(actionObjectArrayList.get(8).getActionCount())));
 
 
                 finalizeDataView.setAdapter(finalizeTabAdapter);

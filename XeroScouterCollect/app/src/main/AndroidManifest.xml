@@ -9,20 +9,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LandingActivity">
+        <activity android:name=".LandingActivity" android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScoutingActivity" />
-        <activity android:name=".SyncActivity" />
-        <activity android:name=".ExportActivity" />
-        <activity android:name=".AutonomousTab" />
-        <activity android:name=".TeleopTab" />
-        <activity android:name=".FinalizeTab" />
-        <activity android:name=".ManagementActivity"></activity>
+        <activity android:name=".ScoutingActivity" android:configChanges="orientation|screenSize" />
+        <activity android:name=".SyncActivity" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".ExportActivity" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".AutonomousTab" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".TeleopTab" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".FinalizeTab" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".ManagementActivity" android:configChanges="orientation|screenSize"></activity>
     </application>
 
 </manifest>
