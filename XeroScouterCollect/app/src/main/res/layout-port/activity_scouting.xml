@@ -455,8 +455,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="@string/action_7"
-                            android:id="@+id/text_action_7"
+                            android:text="@string/action_8"
+                            android:id="@+id/text_action_8"
                             android:layout_weight=".5" />
 
                         <TextView
@@ -605,7 +605,7 @@
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="0dp"
                         android:baselineAligned="false"
                         android:layout_weight=".8">
 

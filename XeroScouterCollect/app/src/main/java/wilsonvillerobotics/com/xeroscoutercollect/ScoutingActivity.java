@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect;
 import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     protected ArrayAdapter<String> finalizeConstantAdapter;
     protected ArrayAdapter<String> finalizeTabAdapter;
+
+    //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
 
     protected TeamMatch currentMatch = new TeamMatch();
 
@@ -72,8 +75,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         matchMap.put(R.id.btn_decrement_action_8, currentMatch.actionCount.get(7));
         matchMap.put(R.id.btn_decrement_action_9, currentMatch.actionCount.get(8));*/
 
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_2, R.id.entry_action_2, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_1, R.id.entry_action_1, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_2, R.id.entry_action_1, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_1, R.id.entry_action_2, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_3, R.id.btn_increment_action_3, R.id.entry_action_3, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_4, R.id.btn_increment_action_4, R.id.entry_action_4, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_5, R.id.btn_increment_action_5, R.id.entry_action_5, 0));
@@ -82,7 +85,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_8, R.id.btn_increment_action_8, R.id.entry_action_8, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, 0));
 
-        finalizeConstantAdapter.add(getString(R.string.action_1));
+        /*finalizeConstantAdapter.add(getString(R.string.action_1));
         finalizeConstantAdapter.add(getString(R.string.action_2));
         finalizeConstantAdapter.add(getString(R.string.action_3));
         finalizeConstantAdapter.add(getString(R.string.action_4));
@@ -90,7 +93,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         finalizeConstantAdapter.add(getString(R.string.action_6));
         finalizeConstantAdapter.add(getString(R.string.action_7));
         finalizeConstantAdapter.add(getString(R.string.action_8));
-        finalizeConstantAdapter.add(getString(R.string.action_9));
+        finalizeConstantAdapter.add(getString(R.string.action_9));*/
+
+        //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
 
         /*tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -102,6 +107,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 finalizeConstantsView.setAdapter(finalizeConstantAdapter);
 
                 if (s.compareTo("tab3") == 0) {
+
+c
 
                 }
             }
@@ -226,7 +233,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
 
             case R.id.btn_finalize_finish:
-                // Moves back to main screen
+                // Moves back to main screen, Starts a Toast, and Adds enties
+
+
+
                 startActivity(mainScreen);
                 break;
 
