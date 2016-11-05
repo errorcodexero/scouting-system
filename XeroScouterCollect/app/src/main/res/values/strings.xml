@@ -16,4 +16,8 @@
     <string name="shots_missed">Shots Missed</string>
     <string name="shots_hit">Shots Hit</string>
     <string name="finish">Finish</string>
+    <string name="lbl_tablet_id">Tablet ID:</string>
+    <string name="lbl_welcome_message">Welcome</string>
+    <string name="btn_start_stand_scouting">Stand Scouting</string>
+    <string name="btn_start_pit_scouting">Pit Scouting</string>
 </resources>
