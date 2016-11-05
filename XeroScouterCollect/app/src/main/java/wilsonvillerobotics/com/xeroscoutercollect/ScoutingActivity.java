@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -24,11 +25,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected HashMap<Integer, Integer> matchMap = new HashMap<>();
 
     protected ArrayList<ActionObject> actionObjectArrayList = new ArrayList<>();
-    protected ArrayList<String> finalizeRowNames = new ArrayList<>();
-    protected ArrayList<String> finalizeDataList = new ArrayList<>();
 
-    protected ArrayAdapter<String> finalizeConstantAdapter;
-    protected ArrayAdapter<String> finalizeTabAdapter;
+    protected ArrayList<Pair<String, String>> finalizeDataList = new ArrayList<>();
+
+    protected TwoColumnAdapter finalizeTabAdapter;
 
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
 
@@ -60,20 +60,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
 
         // b -> a; [] key -> b; b key -> textview
-
-        //finalizeConstantAdapter = new ArrayAdapter<String>(this, R.layout.activity_scouting, finalizeRowNames);
-        //finalizeTabAdapter = new ArrayAdapter<String>(this, R.layout.activity_scouting, finalizeDataList);
-
-
-        /*matchMap.put(R.id.btn_decrement_action_1, currentMatch.actionCount.get(0));
-        matchMap.put(R.id.btn_decrement_action_2, currentMatch.actionCount.get(1));
-        matchMap.put(R.id.btn_decrement_action_3, currentMatch.actionCount.get(2));
-        matchMap.put(R.id.btn_decrement_action_4, currentMatch.actionCount.get(3));
-        matchMap.put(R.id.btn_decrement_action_5, currentMatch.actionCount.get(4));
-        matchMap.put(R.id.btn_decrement_action_6, currentMatch.actionCount.get(5));
-        matchMap.put(R.id.btn_decrement_action_7, currentMatch.actionCount.get(6));
-        matchMap.put(R.id.btn_decrement_action_8, currentMatch.actionCount.get(7));
-        matchMap.put(R.id.btn_decrement_action_9, currentMatch.actionCount.get(8));*/
+        finalizeTabAdapter = new TwoColumnAdapter(this, finalizeDataList);
 
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_2, R.id.entry_action_1, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_1, R.id.entry_action_2, 0));
@@ -85,34 +72,36 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_8, R.id.btn_increment_action_8, R.id.entry_action_8, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, 0));
 
-        /*finalizeConstantAdapter.add(getString(R.string.action_1));
-        finalizeConstantAdapter.add(getString(R.string.action_2));
-        finalizeConstantAdapter.add(getString(R.string.action_3));
-        finalizeConstantAdapter.add(getString(R.string.action_4));
-        finalizeConstantAdapter.add(getString(R.string.action_5));
-        finalizeConstantAdapter.add(getString(R.string.action_6));
-        finalizeConstantAdapter.add(getString(R.string.action_7));
-        finalizeConstantAdapter.add(getString(R.string.action_8));
-        finalizeConstantAdapter.add(getString(R.string.action_9));*/
-
         //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
 
-        /*tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String s) {
                 // If string is identical
-                ListView finalizeConstantsView = (ListView) findViewById(R.id.finalizeColumnNames);
                 ListView finalizeDataView = (ListView) findViewById(R.id.finalizeDataView);
 
-                finalizeConstantsView.setAdapter(finalizeConstantAdapter);
+                finalizeDataList.clear();
+
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_1), String.valueOf(actionObjectArrayList.get(0).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_2), String.valueOf(actionObjectArrayList.get(1).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_3), String.valueOf(actionObjectArrayList.get(2).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_4), String.valueOf(actionObjectArrayList.get(3).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_5), String.valueOf(actionObjectArrayList.get(4).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_6), String.valueOf(actionObjectArrayList.get(5).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_7), String.valueOf(actionObjectArrayList.get(6).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_8), String.valueOf(actionObjectArrayList.get(7).getActionCount())));
+                finalizeDataList.add(new Pair<String, String>(getString(R.string.action_9), String.valueOf(actionObjectArrayList.get(8).getActionCount())));
+
+
+                finalizeDataView.setAdapter(finalizeTabAdapter);
 
                 if (s.compareTo("tab3") == 0) {
 
-c
+
 
                 }
             }
-        });*/
+        });
 
     }
 
