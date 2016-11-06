@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public final class matchDBHolder extends SQLiteOpenHelper {
     private static String[] ACTIONS;
 
     private Context context;
+
+    //
 
     public matchDBHolder(Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
@@ -104,20 +107,54 @@ public final class matchDBHolder extends SQLiteOpenHelper {
         return dummyMatch;
     }
 
-    //public ArrayList<Match> getAllMatches
-    /*public int getMatchCount() {
+    public ArrayList<Match> getAllMatches() {
+        ArrayList<Match> matchList = new ArrayList<>();
+
+        String query = "SELECT * FROM " + TABLE_MATCH;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        HashMap<String, String> resultsHashMap = new HashMap<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                resultsHashMap.clear();
+                for ( int i = 1; i <= cursor.getColumnCount(); i++) {
+                    resultsHashMap.put(ACTIONS[i], cursor.getString(i+1));
+                }
+
+                matchList.add(new Match(resultsHashMap, cursor.getString(1)));
+
+            } while (cursor.moveToNext());
+        }
+        return matchList;
+    }
+    public int getMatchCount() {
+
+        String query = "SELECT * FROM " + TABLE_MATCH;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.close();
+
+        return cursor.getCount();
 
     }
 
-    public void updateMatch() {
+    public void updateMatch(Match match) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        for (String i : ACTIONS) {
+            values.put(i, match.getActionPoints().get(i));
+        }
+
+        db.update(TABLE_MATCH, values, KEY_ID + " =?", null);
 
     }
 
-    public void deleteMatch() {
-
-    }
-
-    public Pair<String, String> getAllMatches() {
+    /*public void deleteMatch() {
 
     }*/
 }

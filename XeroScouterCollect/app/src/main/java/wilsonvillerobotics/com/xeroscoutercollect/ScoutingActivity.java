@@ -109,7 +109,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     public void onClick(View view) {
         int index = 0;
         boolean decrement = false;
-        Intent mainScreen = new Intent(this, LandingActivity.class);
+        Intent mainScreen = new Intent(this, MatchConfirmationActivity.class);
         switch (view.getId()) {
 
             // Doing that young fallthough
@@ -196,7 +196,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
 
             case R.id.btn_auto_back:
-                // Moves back to main screen -- TODO: Add main screen
+                // Moves back to main screen
                 startActivity(mainScreen);
                 break;
 
@@ -211,7 +211,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
 
             case R.id.btn_teleop_next:
-                // Moves to finalize -- TODO: Make finalize tab actually work...
+                // Moves to finalize
                 getTabHost().setCurrentTabByTag("tab3");
                 break;
 

@@ -16,6 +16,7 @@ public class Match {
     protected ArrayList<Integer> redAlliance;
 
     protected String team_id;
+    protected int id;
 
     protected int redRankingPoints;
 
