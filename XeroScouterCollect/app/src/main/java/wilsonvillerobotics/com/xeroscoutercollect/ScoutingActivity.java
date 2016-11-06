@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -223,7 +224,21 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             case R.id.btn_finalize_finish:
                 // Moves back to main screen, Starts a Toast, and Adds enties
 
+                Log.d("Insert", "Inserting Match");
+                matchDBHolder db = new matchDBHolder(this);
 
+                HashMap<String, String> tempMap = new HashMap<>();
+
+                for (Pair<String, String> i : finalizeDataList) {
+                    tempMap.put(i.first, i.second);
+                }
+                db.addMatch(new Match(tempMap, "1425"));
+
+
+
+                for(Match m : db.getAllMatches() ) {
+                    Log.d("Team id", m.team_id);
+                }
 
                 startActivity(mainScreen);
                 break;

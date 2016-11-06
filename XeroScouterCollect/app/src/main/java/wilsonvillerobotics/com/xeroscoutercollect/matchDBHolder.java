@@ -6,9 +6,12 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.util.Pair;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -27,11 +30,11 @@ public final class matchDBHolder extends SQLiteOpenHelper {
     private static final String KEY_ID = "local_match_id";
     private static final String TEAM_ID = "team_id";
 
-    private static String[] ACTIONS;
+    private static ArrayList<String> ACTIONS;
 
     private Context context;
 
-    //
+    private int id;
 
     public matchDBHolder(Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
@@ -47,19 +50,19 @@ public final class matchDBHolder extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         Resources res = context.getResources();
-        ACTIONS = res.getStringArray(R.array.action_array);
+        ACTIONS = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.action_array)));
 
+        String CREATE_MATCH_TABLE = "CREATE TABLE " + TABLE_MATCH + " (" +
+                KEY_ID  + " INTEGER PRIMARY KEY, " + TEAM_ID + " TEXT";
+        int i = 1;
 
-
-        String CREATE_MATCH_TABLE = "CREATE TABLE " + TABLE_MATCH +
-                KEY_ID  + "INTEGER PRIMARY KEY, " + TEAM_ID + " TEXT,";
         for ( String j : ACTIONS) {
-            int i = 1;
             CREATE_MATCH_TABLE += ", action_" + i + " TEXT";
-
+            i++;
         }
         CREATE_MATCH_TABLE += ")";
 
+        Log.d("DEBUG", CREATE_MATCH_TABLE);
         sqLiteDatabase.execSQL(CREATE_MATCH_TABLE);
     }
 
@@ -76,7 +79,8 @@ public final class matchDBHolder extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         for (String i : ACTIONS) {
-            values.put(i, matchData.getActionPoints().get(i));
+            Log.d("DEBUG", i);
+            values.put(i, matchData.getActionPoints().get(ACTIONS.get(i)));
         }
 
         db.insert(TABLE_MATCH, null, values);
@@ -101,7 +105,7 @@ public final class matchDBHolder extends SQLiteOpenHelper {
         }
         //Match match = new Match();
         for ( int i = 1; i <= cursor.getColumnCount(); i++) {
-            resultsHashMap.put(ACTIONS[i], cursor.getString(i+1));
+            resultsHashMap.put(ACTIONS.get(i), cursor.getString(i+1));
         }
         dummyMatch = new Match(resultsHashMap, cursor.getString(1));
         return dummyMatch;
@@ -122,7 +126,7 @@ public final class matchDBHolder extends SQLiteOpenHelper {
             do {
                 resultsHashMap.clear();
                 for ( int i = 1; i <= cursor.getColumnCount(); i++) {
-                    resultsHashMap.put(ACTIONS[i], cursor.getString(i+1));
+                    resultsHashMap.put(ACTIONS.get(i), cursor.getString(i+1));
                 }
 
                 matchList.add(new Match(resultsHashMap, cursor.getString(1)));
@@ -142,7 +146,7 @@ public final class matchDBHolder extends SQLiteOpenHelper {
 
     }
 
-    public void updateMatch(Match match) {
+    public void updateMatch(Match match, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -150,11 +154,15 @@ public final class matchDBHolder extends SQLiteOpenHelper {
             values.put(i, match.getActionPoints().get(i));
         }
 
-        db.update(TABLE_MATCH, values, KEY_ID + " =?", null);
+        db.update(TABLE_MATCH, values, KEY_ID + " =?", new String[] {String.valueOf(id)});
 
     }
 
-    /*public void deleteMatch() {
+    public void deleteMatch(int id) {
 
-    }*/
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_MATCH, KEY_ID + " =?", new String[] { String.valueOf(id)});
+        db.close();
+
+    }
 }
