@@ -8,11 +8,13 @@ public class ActionObject {
     private int decrementButtonId;
     private int incrementButtonId;
     private int textFieldId;
+    private int textFieldValueId;
     private Integer actionCount;
 
-    public ActionObject(int decrementButtonId, int incrementButtonId, int textFieldId, Integer actionCount) {
+    public ActionObject(int decrementButtonId, int incrementButtonId, int textFieldId, int textFieldValueId, Integer actionCount) {
         this.decrementButtonId = decrementButtonId;
         this.incrementButtonId = incrementButtonId;
+        this.textFieldValueId = textFieldValueId;
         this.textFieldId = textFieldId;
         this.actionCount = actionCount;
     }
@@ -26,6 +28,13 @@ public class ActionObject {
         this.actionCount = actionCount;
     }
 
+    public int getTextFieldValueId() {
+        return textFieldValueId;
+    }
+
+    public void setTextFieldValueId(int textFieldValueId) {
+        this.textFieldValueId = textFieldValueId;
+    }
 
     public int getTextFieldId() {
         return textFieldId;

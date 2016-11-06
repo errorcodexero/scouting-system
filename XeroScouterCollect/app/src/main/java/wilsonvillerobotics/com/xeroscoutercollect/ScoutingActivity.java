@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect;
 import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,15 +63,19 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         // b -> a; [] key -> b; b key -> textview
         finalizeTabAdapter = new TwoColumnAdapter(this, finalizeDataList);
 
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_2, R.id.entry_action_1, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_1, R.id.entry_action_2, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_3, R.id.btn_increment_action_3, R.id.entry_action_3, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_4, R.id.btn_increment_action_4, R.id.entry_action_4, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_5, R.id.btn_increment_action_5, R.id.entry_action_5, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_6, R.id.btn_increment_action_6, R.id.entry_action_6, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_7, R.id.btn_increment_action_7, R.id.entry_action_7, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_8, R.id.btn_increment_action_8, R.id.entry_action_8, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, 0));
+        Resources res = getResources();
+
+        String[] actionArray = res.getStringArray(R.array.action_array);
+
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_1, R.id.entry_action_1, R.string.action_1, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_2, R.id.entry_action_2, R.string.action_2, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_3, R.id.btn_increment_action_3, R.id.entry_action_3, R.string.action_3, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_4, R.id.btn_increment_action_4, R.id.entry_action_4, R.string.action_4, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_5, R.id.btn_increment_action_5, R.id.entry_action_5, R.string.action_5, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_6, R.id.btn_increment_action_6, R.id.entry_action_6, R.string.action_6, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_7, R.id.btn_increment_action_7, R.id.entry_action_7, R.string.action_7, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_8, R.id.btn_increment_action_8, R.id.entry_action_8, R.string.action_8, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, R.string.action_9, 0));
 
         //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
 
@@ -82,15 +87,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
                 finalizeDataList.clear();
 
-                finalizeDataList.add(new Pair<>(getString(R.string.action_1), String.valueOf(actionObjectArrayList.get(0).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_2), String.valueOf(actionObjectArrayList.get(1).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_3), String.valueOf(actionObjectArrayList.get(2).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_4), String.valueOf(actionObjectArrayList.get(3).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_5), String.valueOf(actionObjectArrayList.get(4).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_6), String.valueOf(actionObjectArrayList.get(5).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_7), String.valueOf(actionObjectArrayList.get(6).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_8), String.valueOf(actionObjectArrayList.get(7).getActionCount())));
-                finalizeDataList.add(new Pair<>(getString(R.string.action_9), String.valueOf(actionObjectArrayList.get(8).getActionCount())));
+                for ( ActionObject i : actionObjectArrayList) {
+                    finalizeDataList.add(new Pair<>(getString(i.getTextFieldValueId()), String.valueOf(i.getActionCount())));
+                }
 
 
                 finalizeDataView.setAdapter(finalizeTabAdapter);

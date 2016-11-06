@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="action_1">Auto Lines Crossed</string>
     <string name="action_2">Auto Bunnies Picked-Up</string>
     <string name="action_3">Auto Bunnies Scored</string>
@@ -9,4 +10,15 @@
     <string name="action_7">Bunnies Stolen</string>
     <string name="action_8">Shots Hit</string>
     <string name="action_9">Shots Missed</string>
+    <string-array name="action_array">
+        <item name="action_1">Auto Lines Crossed</item>
+        <item name="action_2">Auto Bunnies Picked-Up</item>
+        <item name="action_3">Auto Bunnies Scored</item>
+        <item name="action_4">Lines Crossed</item>
+        <item name="action_5">Bunnies Deposited</item>
+        <item name="action_6">Bunnies Picked-Up</item>
+        <item name="action_7">Bunnies Stolen</item>
+        <item name="action_8">Shots Hit</item>
+        <item name="action_9">Shots Missed</item>
+    </string-array>
 </resources>
