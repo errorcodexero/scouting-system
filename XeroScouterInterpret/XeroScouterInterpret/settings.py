@@ -37,7 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # All of our 3rd party Apps
     'pipeline',
+    'rest_framework',
+    'webpack_loader',
+    # Local Apps
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,6 +108,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_ROOT = BASE_DIR
+
 STATIC_URL = '/assets/'
-STATIC_ROOT = normpath(join(STIE_ROOT, 'assets'))
-STATICFILES_DIR = ()
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets'), os.path.join(BASE_DIR, 'node_modules')]
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+    'BUNDLE_DIR_NAME': 'bundles/',
+    'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+    }
+}

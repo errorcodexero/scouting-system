@@ -8,3 +8,5 @@ bower_modules/*
 
 ./assets/**/*.css
 ./assets/**/*.min.css
+
+./templates/*.html

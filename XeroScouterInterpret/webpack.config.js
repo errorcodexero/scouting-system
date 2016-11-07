@@ -9,7 +9,7 @@ module.exports = {
     entry: './src/tsx/index.tsx',
 
     output: {
-        path: path.resolve('./assets/js/'),
+        path: path.resolve('./assets/bundles/'),
 
         filename: '[name].js',
         },

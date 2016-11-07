@@ -1,2 +1,3 @@
-./assets/
-./staging/
+./assets/*
+./staging/*
+./templates/*
