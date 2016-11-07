@@ -18,7 +18,7 @@ Installation is rather simple.
 In a terminal, run:
 
 ```bash
-    pip install -r requirements;
+pip install -r requirements;
 npm install
 
 
@@ -59,7 +59,9 @@ homebrew install node
 
 #### Installing Nodejs (Windows)
 
-On Windows, go to the <a name="nodejs.org>nodejs.org</a>, and select v7.0.0 Current. After it finishes downloading, follow the instructions to install
+On Windows, go to the <a name="nodejs.org>nodejs.org</a>, and select v7.0.0 Current. After it finishes downloading, follow the instructions to install  
+
+
 
 #### Notes
 <a name="footnote1"><sup>1</sup></a> We recommend using RVM for managing Ruby versions, a link is provided <a name="https://rvm.io/rvm/install">here.</a>
