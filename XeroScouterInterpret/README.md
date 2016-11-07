@@ -59,7 +59,7 @@ homebrew install node
 
 #### Installing Nodejs (Windows)
 
-On Windows, go to the <a name="nodejs.org>nodejs.org</a>, and select v7.0.0 Current. After it finishes downloading, follow the instructions to install  
+On Windows, go to the <a name="nodejs.org">nodejs.org</a>, and select v7.0.0 Current. After it finishes downloading, follow the instructions to install  
 
 
 
