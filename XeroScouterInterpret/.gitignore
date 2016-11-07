@@ -1,0 +1,10 @@
+node_modules/*
+bower_modules/*
+
+**/*.pyc
+./assets/**/*.js
+./assets/**/*.js.map
+./assets/**/*.min.js
+
+./assets/**/*.css
+./assets/**/*.min.css

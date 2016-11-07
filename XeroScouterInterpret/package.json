@@ -1,0 +1,51 @@
+{
+  "name": "xeroscouterinterpret",
+  "version": "0.0.1",
+  "description": "Our scouting data interpreter",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "sudo npm install -g webpack typescript; sudo npm link typescript",
+    "preinstall-windows": "npm isntall -g webpack typescript; npm link typescript"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/errorcodexero/scouting-system"
+  },
+  "author": "Wilsonville Robotics Team 1425 -- Error Code Xero",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@types/react": "^0.14.44",
+    "@types/react-dom": "^0.14.18",
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "bootstrap": "^3.3.7",
+    "bower": "^1.7.9",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ts": "^6.0.0-beta.3",
+    "grunt-webpack": "^1.0.18",
+    "jquery": "^3.1.1",
+    "matchdep": "^1.0.1",
+    "plotly": "^1.0.6",
+    "pug": "^2.0.0-beta6",
+    "react": "^15.3.2",
+    "react-cookie": "^0.4.8",
+    "react-dom": "^15.3.2",
+    "redux": "^3.6.0",
+    "ts-loader": "^1.0.0",
+    "webpack-bundle-tracker": "0.0.93"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.0.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
