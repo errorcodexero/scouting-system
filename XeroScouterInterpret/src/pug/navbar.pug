@@ -1,0 +1,26 @@
+nav.navbar.navbar-warning
+    .container_fluid
+        .navbar-header
+            button.navbar-toggle.collapsed.btn.btn-raised(type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+                span.sr-only
+                    | Toggle Navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href="#")
+                | Brand
+        #navbar.collapse.navbar-collapse.navbar-warning-collapse
+            ul.nav.navbar-nav
+                li.active(role="presentation")
+                    a(href="#")
+                        | Home
+                        span.sr-only
+                            | (current)
+                li(role="presentation")
+                    a(href="#")
+                        | Teams
+            form.navbar-form.navbar-right
+                .form-group
+                    input.form-control(type="text" placeholder="Search Teams")
+                //button.btn.btn-default.btn-raised(type="submit")
+                    | Submit

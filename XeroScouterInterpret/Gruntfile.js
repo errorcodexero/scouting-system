@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             staging: {
                 src: [
                      "staging/js/*.js",
-                     "staging/js/*.lsjs.map",
+                     "staging/js/*.js.map",
                      "staging/css/*.css"
                 ]
             },
@@ -47,13 +47,29 @@ module.exports = function(grunt) {
         pug: {
             compile: {
                 files: {
-                    "templates/index.html": "src/pug/index.pug"
+                    "templates/index.html": ["src/pug/index.pug"]//,
+                    //"templates/explore/index.html": ["src/pug/explore_index.pug"]
+                }
+            }
+        },
+        mkdir: {
+            all: {
+                options: {
+                    create: [
+                        'assets/js',
+                        'assets/css',
+                        'assets/bundles',
+                        'templates/explore',
+                        'templates/teams',
+                        'staging/css',
+                        'staging/js'
+                    ]
                 }
             }
         }
     });
 
-    grunt.registerTask("default", ["webpack:build", "pug", "clean-staging"]);
+    grunt.registerTask("default", ["mkdir:all", "webpack:build", "pug", "clean-staging"]);
 
     grunt.registerTask("templates", ["pug"]);
 
@@ -63,5 +79,4 @@ module.exports = function(grunt) {
 
     grunt.registerTask("clean-all", ["clean:all"]);
 
-
-}
+};

@@ -6,7 +6,10 @@ var BundleTracker = require('webpack-bundle-tracker')
 module.exports = {
     context: __dirname,
 
-    entry: './src/tsx/index.tsx',
+    entry: {
+        main: './src/tsx/index.tsx'//,
+        //explore: './src/ts/explore/explore.tsx'
+    },
 
     output: {
         path: path.resolve('./assets/bundles/'),
@@ -23,7 +26,8 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
-        })
+        }),
+        //new webpack.optimize.CommonChunkPlugin('main', './src/')
 
     ],
 
@@ -38,7 +42,9 @@ module.exports = {
                     }
                 },
                 {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'ts-loader'}
+                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'ts-loader'}//,
+                //{test: /(explore)?(\.tsx?$)/, exclude: /node_modules/, loader: 'ts-loader?tsconfig=src/ts/explore/tsconfig.json'}
+
             ]
         },
 
