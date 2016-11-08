@@ -1,2 +1,4 @@
 *.pyc
 **/node_modules/
+/XeroScouterCollect/.idea/.name
+/XeroScouterCollect/.idea/gradle.xml
