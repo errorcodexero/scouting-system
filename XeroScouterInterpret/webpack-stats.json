@@ -1,1 +1,1 @@
-{"status":"done","chunks":{"main":[{"name":"main.js","path":"/home/nick/Git Repos/scouting-system/XeroScouterInterpret/assets/bundles/main.js"},{"name":"main.js.map","path":"/home/nick/Git Repos/scouting-system/XeroScouterInterpret/assets/bundles/main.js.map"}]}}
+{"status":"error","error":"ModuleBuildError","message":"Module build failed: error TS5014: Failed to parse file '/home/nick/Git Repos/scouting-system/XeroScouterInterpret/tsconfig.json': Unexpected token y."}

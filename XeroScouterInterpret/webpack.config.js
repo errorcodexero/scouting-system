@@ -36,13 +36,19 @@ module.exports = {
                 {
                     test: /\.jsx$/,
 
-                    loader: 'babel-loader',
+                    loader: 'babel-loader'
+                },
+                {
+                    test: /\.js$/,
+
+                    loader: 'babel',
+
                     query: {
-                        presets: ['react']
+                        presets: ['es2015', 'stage-0']
                     }
                 },
-                {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'ts-loader'}//,
+                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'babel-loader!ts-loader'},
+                {test: /\.json$/, exclude: /node_modules/, loader: 'json-loader'}
                 //{test: /(explore)?(\.tsx?$)/, exclude: /node_modules/, loader: 'ts-loader?tsconfig=src/ts/explore/tsconfig.json'}
 
             ]

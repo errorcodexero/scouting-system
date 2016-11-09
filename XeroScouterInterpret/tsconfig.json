@@ -1,4 +1,4 @@
-{
+type{
     "compilerOptions": {
         "outDir": "./assets/js/",
         "sourceMap": true,
@@ -11,6 +11,7 @@
         "./node_modules/**/*"
     ],
     "files": [
-        "./src/tsx/index.tsx"
+        "./src/tsx/index.tsx",
+        "./typings/index.d.ts"
     ]
 }

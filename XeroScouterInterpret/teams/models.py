@@ -81,3 +81,8 @@ class team_match_action(models.Model):
     start_time = models.DateTimeField(blank=True)
     end_time = models.DateTimeField(blank=True)
     object_count = models.IntegerField(blank=True)
+
+class data_view_bunny_bots(models.Model):
+    team_match_id = team_match.team_match_id()
+    team_match_action_id = team_match_action.team_match_action_id()
+    team_match_action_id = team_match_action.quantity()

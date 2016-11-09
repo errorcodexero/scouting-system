@@ -62,10 +62,14 @@ module.exports = function(grunt) {
                         'templates/explore',
                         'templates/teams',
                         'staging/css',
-                        'staging/js'
+                        'staging/js',
+                        'templates/'
                     ]
                 }
             }
+        },
+        typings: {
+            install: {}
         }
     });
 

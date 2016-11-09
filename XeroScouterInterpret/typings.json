@@ -1,0 +1,7 @@
+{
+  "name": "xeroscouterinterpret",
+  "dependencies": {},
+  "globalDependencies": {
+    "chart": "github:DefinitelyTyped/DefinitelyTyped/chartjs/chart.d.ts#191bc9e02d72d02c6c95bbb6cf5ebd1474a49a51"
+  }
+}
