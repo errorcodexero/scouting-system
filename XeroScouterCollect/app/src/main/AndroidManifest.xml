@@ -23,7 +23,6 @@
         <activity android:name=".AutonomousTab" android:configChanges="orientation|screenSize"/>
         <activity android:name=".TeleopTab" android:configChanges="orientation|screenSize"/>
         <activity android:name=".FinalizeTab" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".ManagementActivity" android:configChanges="orientation|screenSize"></activity>
     </application>
 
 </manifest>

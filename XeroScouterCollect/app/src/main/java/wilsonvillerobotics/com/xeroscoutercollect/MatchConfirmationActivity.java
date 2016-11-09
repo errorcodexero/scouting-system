@@ -1,12 +1,12 @@
 package wilsonvillerobotics.com.xeroscoutercollect;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,10 @@ import java.util.List;
 /**
  * Created by Luke on 11/5/2016.
  */
-public class MatchConfirmationActivity extends Activity  {
+public class MatchConfirmationActivity extends Activity implements View.OnClickListener{
     private Spinner spinner_match_list;
     private Button btn_submit;
+    private Intent sanityCheckActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MatchConfirmationActivity extends Activity  {
 
         addItemsOnSpinner();
         addListenerOnButton();
+        sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
     }
 
     // add items into spinner dynamically
@@ -50,17 +52,13 @@ public class MatchConfirmationActivity extends Activity  {
     public void addListenerOnButton() {
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
         btn_submit = (Button) findViewById(R.id.btn_submit);
+    }
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(MatchConfirmationActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner 1 : " + String.valueOf(spinner_match_list.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        if (view == findViewById(R.id.btn_submit)) {
+            startActivity(sanityCheckActivity);
+        }
     }
 }

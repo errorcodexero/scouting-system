@@ -10,7 +10,7 @@ import android.view.View;
  */
 public class LandingActivity extends Activity implements View.OnClickListener{
 
-    private Intent scoutingIntent;
+    private Intent matchConfirmationActivity;
 
     //Intent pitScoutingIntent = new Intent(this, PitScouting.class);
 
@@ -18,14 +18,14 @@ public class LandingActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        scoutingIntent = new Intent(this, ScoutingActivity.class);
+        matchConfirmationActivity = new Intent(this, MatchConfirmationActivity.class);
 
     }
 
     @Override
     public void onClick(View view) {
-        if (view == findViewById(R.id.btn_Start_Stand_Scouting)) {
-            startActivity(scoutingIntent);
+        if (view == findViewById(R.id.btn_start_stand_scouting)) {
+            startActivity(matchConfirmationActivity);
         }
     }
 }

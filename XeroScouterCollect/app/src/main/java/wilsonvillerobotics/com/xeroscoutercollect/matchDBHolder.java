@@ -80,7 +80,7 @@ public final class matchDBHolder extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         for (String i : ACTIONS) {
             Log.d("DEBUG", i);
-            values.put(i, matchData.getActionPoints().get(ACTIONS.get(i)));
+            values.put(i, matchData.getActionPoints().get(ACTIONS.get(Integer.parseInt(i))));
         }
 
         db.insert(TABLE_MATCH, null, values);

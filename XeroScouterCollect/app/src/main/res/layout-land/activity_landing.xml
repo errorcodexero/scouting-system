@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/lbl_tablet_id"
-        android:id="@+id/lbl_Tablet_ID"
+        android:id="@+id/lbl_tablet_id"
         android:layout_gravity="left|center_horizontal" />
 
     <Space
@@ -45,7 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:text="@string/btn_start_stand_scouting"
-            android:id="@+id/btn_Start_Stand_Scouting"
+            android:id="@+id/btn_start_stand_scouting"
             android:layout_weight=".3"
             android:textSize="40sp"
             android:onClick="onClick" />

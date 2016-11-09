@@ -3,4 +3,34 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lbl_tablet_id"
+        android:id="@+id/lbl_tablet_id" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lbl_welcome_message"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textSize="100sp" />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:text="@string/btn_start_stand_scouting"
+        android:id="@+id/btn_start_stand_scouting"
+        android:textSize="40sp"
+        android:onClick="onClick" />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:text="@string/btn_start_pit_scouting"
+        android:id="@+id/button2"
+        android:textSize="40sp" />
 </LinearLayout>
