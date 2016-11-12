@@ -78,14 +78,14 @@ module.exports = function(grunt) {
         pug: {
             dist: {
                 files: {
-                    "templates/index.html": ["src/pug/head_dist.pug", "src/pug/index.pug"]//,
-                    //"templates/explore/index.html": ["src/pug/explore_index.pug"]
+                    "templates/index.html": ["src/pug/head_dist.pug", "src/pug/index.pug"],
+                    "templates/explore/index.html": ["src/pug/head_dist.pug", "src/pug/explore_index.pug"]
                 }
             },
             dev: {
                 files: {
-                    "templates/index.html": ["src/pug/head.pug", "src/pug/index.pug"]//,
-                    //"templates/explore/index.html": ["src/pug/explore_index.pug"]
+                    "templates/index.html": ["src/pug/head.pug", "src/pug/index.pug"],
+                    "templates/explore/index.html": ["src/pug/head.pug", "src/pug/explore_index.pug"]
                 }
             }
         },
@@ -109,12 +109,16 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'assets/bundles/main.js': ['staging/bundles/main.js']
+                    'assets/bundles/main.js': ['staging/bundles/main.js'],
+                    'assets/bundles/explore.js': ['staging/bundles/explore.js']
+
                 }
             },
             dist: {
                 files: {
-                        'assets/bundles/main.js': ['staging/bundles/main.js']
+                        'assets/bundles/main.js': ['staging/bundles/main.js'],
+                        'assets/bundles/explore.js': ['staging/bundles/explore.js']
+
                 }
             }
         },
