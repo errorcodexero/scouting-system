@@ -1,10 +1,10 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.models;
 
-import android.app.Activity;
 import android.content.res.Resources;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 /**
  * Created by nick on 10/29/16.

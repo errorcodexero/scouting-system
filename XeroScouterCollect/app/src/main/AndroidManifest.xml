@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManageDBActivity">
+        <activity android:name=".activities.ManageDBActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,31 +16,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScoutingActivity"
+            android:name=".activities.ScoutingActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".MatchConfirmationActivity"
+            android:name=".activities.MatchConfirmationActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".SanityCheckActivity"
+            android:name=".activities.SanityCheckActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".SyncActivity"
+            android:name=".activities.SyncActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".ExportActivity"
+            android:name=".activities.ExportActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".AutonomousTab"
+            android:name=".activities.AutonomousTabActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".TeleopTab"
+            android:name=".activities.TeleopTabActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-        android:name=".FinalizeTab"
-        android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".LandingActivity"
+            android:name=".activities.FinalizeTabActivity"
             android:configChanges="orientation|screenSize" />
 
     </application>

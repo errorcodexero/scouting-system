@@ -1,4 +1,4 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 /**
  * Created by Luke on 11/5/2016.

@@ -1,26 +1,26 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.TabActivity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.StringTokenizer;
+
+import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
+import wilsonvillerobotics.com.xeroscoutercollect.database.Match;
+import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
+import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
+import wilsonvillerobotics.com.xeroscoutercollect.database.matchDBHolder;
 
 public class ScoutingActivity extends TabActivity implements View.OnClickListener {
 

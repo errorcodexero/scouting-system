@@ -1,4 +1,4 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.models;
 
 /**
  * Created by nick on 11/1/16.

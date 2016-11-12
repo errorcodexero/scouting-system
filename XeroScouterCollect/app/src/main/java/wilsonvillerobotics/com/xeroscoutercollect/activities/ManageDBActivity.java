@@ -1,7 +1,9 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 public class ManageDBActivity extends AppCompatActivity {
 

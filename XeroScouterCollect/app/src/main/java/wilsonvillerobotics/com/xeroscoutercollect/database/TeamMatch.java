@@ -1,4 +1,4 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.database;
 
 import java.util.ArrayList;
 

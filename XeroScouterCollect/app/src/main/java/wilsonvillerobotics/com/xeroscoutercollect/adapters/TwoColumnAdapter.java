@@ -1,4 +1,4 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.adapters;
 
 import android.content.Context;
 import android.util.Pair;
@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 /**
  * Created by nick on 11/5/16.

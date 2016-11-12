@@ -1,9 +1,11 @@
-package wilsonvillerobotics.com.xeroscoutercollect;
+package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 /**
  * Created by Luke on 11/8/2016.
