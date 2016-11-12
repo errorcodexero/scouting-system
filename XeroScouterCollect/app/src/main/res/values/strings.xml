@@ -31,6 +31,9 @@
     <string name="team_6">Team 6</string>
     <string name="confirmation">Confirmation</string>
     <string name="match_list">Match List</string>
+    <string name="import_to_tablet">Import to Tablet</string>
+    <string name="export_from_tablet">Export from Tablet</string>
+    <string name="reset_local_test_data">Reset Local Test Data</string>
 
 
 </resources>

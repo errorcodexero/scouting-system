@@ -1,0 +1,651 @@
+
+{
+  "1" : {
+    "match_list" : 1,
+    "red_1" : 1,
+    "red_2" : 2,
+    "red_3" : 3,
+    "blue_1" : 4,
+    "blue_2" : 5,
+    "blue_3" : 6
+  },
+  "2" : {
+    "match_list" : 2,
+    "red_1" : 7,
+    "red_2" : 8,
+    "red_3" : 9,
+    "blue_1" : 10,
+    "blue_2" : 11,
+    "blue_3" : 12
+  },
+  "3" : {
+    "match_list" : 3,
+    "red_1" : 13,
+    "red_2" : 14,
+    "red_3" : 15,
+    "blue_1" : 16,
+    "blue_2" : 17,
+    "blue_3" : 18
+  },
+  "4" : {
+    "match_list" : 4,
+    "red_1" : 19,
+    "red_2" : 20,
+    "red_3" : 21,
+    "blue_1" : 22,
+    "blue_2" : 23,
+    "blue_3" : 24
+  },
+  "5" : {
+    "match_list" : 5,
+    "red_1" : 25,
+    "red_2" : 26,
+    "red_3" : 27,
+    "blue_1" : 28,
+    "blue_2" : 29,
+    "blue_3" : 30
+  },
+  "6" : {
+    "match_list" : 6,
+    "red_1" : 31,
+    "red_2" : 32,
+    "red_3" : 33,
+    "blue_1" : 34,
+    "blue_2" : 35,
+    "blue_3" : 36
+  },
+  "7" : {
+    "match_list" : 7,
+    "red_1" : 1,
+    "red_2" : 7,
+    "red_3" : 13,
+    "blue_1" : 19,
+    "blue_2" : 25,
+    "blue_3" : 31
+  },
+  "8" : {
+    "match_list" : 8,
+    "red_1" : 2,
+    "red_2" : 8,
+    "red_3" : 14,
+    "blue_1" : 20,
+    "blue_2" : 26,
+    "blue_3" : 32
+  },
+  "9" : {
+    "match_list" : 9,
+    "red_1" : 3,
+    "red_2" : 9,
+    "red_3" : 15,
+    "blue_1" : 21,
+    "blue_2" : 27,
+    "blue_3" : 33
+  },
+  "10" : {
+    "match_list" : 10,
+    "red_1" : 4,
+    "red_2" : 10,
+    "red_3" : 16,
+    "blue_1" : 22,
+    "blue_2" : 28,
+    "blue_3" : 34
+  },
+  "11" : {
+    "match_list" : 11,
+    "red_1" : 5,
+    "red_2" : 11,
+    "red_3" : 17,
+    "blue_1" : 23,
+    "blue_2" : 29,
+    "blue_3" : 35
+  },
+  "12" : {
+    "match_list" : 12,
+    "red_1" : 6,
+    "red_2" : 12,
+    "red_3" : 18,
+    "blue_1" : 24,
+    "blue_2" : 30,
+    "blue_3" : 36
+  },
+  "13" : {
+    "match_list" : 13,
+    "red_1" : 1,
+    "red_2" : 12,
+    "red_3" : 18,
+    "blue_1" : 34,
+    "blue_2" : 28,
+    "blue_3" : 36
+  },
+  "14" : {
+    "match_list" : 14,
+    "red_1" : 7,
+    "red_2" : 2,
+    "red_3" : 13,
+    "blue_1" : 19,
+    "blue_2" : 35,
+    "blue_3" : 29
+  },
+  "15" : {
+    "match_list" : 15,
+    "red_1" : 24,
+    "red_2" : 8,
+    "red_3" : 3,
+    "blue_1" : 14,
+    "blue_2" : 20,
+    "blue_3" : 30
+  },
+  "16" : {
+    "match_list" : 16,
+    "red_1" : 31,
+    "red_2" : 25,
+    "red_3" : 9,
+    "blue_1" : 4,
+    "blue_2" : 15,
+    "blue_3" : 21
+  },
+  "17" : {
+    "match_list" : 17,
+    "red_1" : 22,
+    "red_2" : 32,
+    "red_3" : 26,
+    "blue_1" : 10,
+    "blue_2" : 5,
+    "blue_3" : 16
+  },
+  "18" : {
+    "match_list" : 18,
+    "red_1" : 17,
+    "red_2" : 23,
+    "red_3" : 33,
+    "blue_1" : 27,
+    "blue_2" : 11,
+    "blue_3" : 6
+  },
+  "19" : {
+    "match_list" : 19,
+    "red_1" : 1,
+    "red_2" : 19,
+    "red_3" : 2,
+    "blue_1" : 20,
+    "blue_2" : 25,
+    "blue_3" : 30
+  },
+  "20" : {
+    "match_list" : 20,
+    "red_1" : 13,
+    "red_2" : 7,
+    "red_3" : 14,
+    "blue_1" : 8,
+    "blue_2" : 31,
+    "blue_3" : 29
+  },
+  "21" : {
+    "match_list" : 21,
+    "red_1" : 32,
+    "red_2" : 26,
+    "red_3" : 3,
+    "blue_1" : 21,
+    "blue_2" : 4,
+    "blue_3" : 22
+  },
+  "22" : {
+    "match_list" : 22,
+    "red_1" : 33,
+    "red_2" : 36,
+    "red_3" : 15,
+    "blue_1" : 9,
+    "blue_2" : 16,
+    "blue_3" : 10
+  },
+  "23" : {
+    "match_list" : 23,
+    "red_1" : 6,
+    "red_2" : 24,
+    "red_3" : 27,
+    "blue_1" : 35,
+    "blue_2" : 5,
+    "blue_3" : 23
+  },
+  "24" : {
+    "match_list" : 24,
+    "red_1" : 18,
+    "red_2" : 12,
+    "red_3" : 34,
+    "blue_1" : 28,
+    "blue_2" : 17,
+    "blue_3" : 11
+  },
+  "25" : {
+    "match_list" : 25,
+    "red_1" : 1,
+    "red_2" : 5,
+    "red_3" : 13,
+    "blue_1" : 20,
+    "blue_2" : 12,
+    "blue_3" : 4
+  },
+  "26" : {
+    "match_list" : 26,
+    "red_1" : 6,
+    "red_2" : 21,
+    "red_3" : 25,
+    "blue_1" : 30,
+    "blue_2" : 24,
+    "blue_3" : 11
+  },
+  "27" : {
+    "match_list" : 27,
+    "red_1" : 14,
+    "red_2" : 26,
+    "red_3" : 31,
+    "blue_1" : 34,
+    "blue_2" : 29,
+    "blue_3" : 19
+  },
+  "28" : {
+    "match_list" : 28,
+    "red_1" : 15,
+    "red_2" : 27,
+    "red_3" : 35,
+    "blue_1" : 36,
+    "blue_2" : 28,
+    "blue_3" : 18
+  },
+  "29" : {
+    "match_list" : 29,
+    "red_1" : 7,
+    "red_2" : 22,
+    "red_3" : 32,
+    "blue_1" : 33,
+    "blue_2" : 23,
+    "blue_3" : 10
+  },
+  "30" : {
+    "match_list" : 30,
+    "red_1" : 2,
+    "red_2" : 8,
+    "red_3" : 16,
+    "blue_1" : 17,
+    "blue_2" : 9,
+    "blue_3" : 3
+  },
+  "31" : {
+    "match_list" : 31,
+    "red_1" : 1,
+    "red_2" : 24,
+    "red_3" : 15,
+    "blue_1" : 14,
+    "blue_2" : 5,
+    "blue_3" : 35
+  },
+  "32" : {
+    "match_list" : 32,
+    "red_1" : 26,
+    "red_2" : 9,
+    "red_3" : 23,
+    "blue_1" : 27,
+    "blue_2" : 10,
+    "blue_3" : 11
+  },
+  "33" : {
+    "match_list" : 33,
+    "red_1" : 17,
+    "red_2" : 16,
+    "red_3" : 33,
+    "blue_1" : 34,
+    "blue_2" : 30,
+    "blue_3" : 22
+  },
+  "34" : {
+    "match_list" : 34,
+    "red_1" : 6,
+    "red_2" : 31,
+    "red_3" : 2,
+    "blue_1" : 13,
+    "blue_2" : 29,
+    "blue_3" : 4
+  },
+  "35" : {
+    "match_list" : 35,
+    "red_1" : 7,
+    "red_2" : 36,
+    "red_3" : 25,
+    "blue_1" : 28,
+    "blue_2" : 20,
+    "blue_3" : 21
+  },
+  "36" : {
+    "match_list" : 36,
+    "red_1" : 18,
+    "red_2" : 8,
+    "red_3" : 32,
+    "blue_1" : 19,
+    "blue_2" : 3,
+    "blue_3" : 12
+  },
+  "37" : {
+    "match_list" : 37,
+    "red_1" : 7,
+    "red_2" : 25,
+    "red_3" : 20,
+    "blue_1" : 34,
+    "blue_2" : 19,
+    "blue_3" : 3
+  },
+  "38" : {
+    "match_list" : 38,
+    "red_1" : 14,
+    "red_2" : 8,
+    "red_3" : 24,
+    "blue_1" : 36,
+    "blue_2" : 26,
+    "blue_3" : 11
+  },
+  "39" : {
+    "match_list" : 39,
+    "red_1" : 13,
+    "red_2" : 31,
+    "red_3" : 1,
+    "blue_1" : 12,
+    "blue_2" : 33,
+    "blue_3" : 2
+  },
+  "40" : {
+    "match_list" : 40,
+    "red_1" : 6,
+    "red_2" : 30,
+    "red_3" : 29,
+    "blue_1" : 35,
+    "blue_2" : 18,
+    "blue_3" : 28
+  },
+  "41" : {
+    "match_list" : 41,
+    "red_1" : 23,
+    "red_2" : 22,
+    "red_3" : 32,
+    "blue_1" : 4,
+    "blue_2" : 17,
+    "blue_3" : 27
+  },
+  "42" : {
+    "match_list" : 42,
+    "red_1" : 15,
+    "red_2" : 9,
+    "red_3" : 21,
+    "blue_1" : 5,
+    "blue_2" : 16,
+    "blue_3" : 10
+  },
+  "43" : {
+    "match_list" : 43,
+    "red_1" : 33,
+    "red_2" : 7,
+    "red_3" : 13,
+    "blue_1" : 22,
+    "blue_2" : 23,
+    "blue_3" : 3
+  },
+  "44" : {
+    "match_list" : 44,
+    "red_1" : 32,
+    "red_2" : 6,
+    "red_3" : 18,
+    "blue_1" : 29,
+    "blue_2" : 31,
+    "blue_3" : 12
+  },
+  "45" : {
+    "match_list" : 45,
+    "red_1" : 19,
+    "red_2" : 9,
+    "red_3" : 35,
+    "blue_1" : 10,
+    "blue_2" : 24,
+    "blue_3" : 11
+  },
+  "46" : {
+    "match_list" : 46,
+    "red_1" : 8,
+    "red_2" : 36,
+    "red_3" : 27,
+    "blue_1" : 2,
+    "blue_2" : 26,
+    "blue_3" : 30
+  },
+  "47" : {
+    "match_list" : 47,
+    "red_1" : 34,
+    "red_2" : 21,
+    "red_3" : 1,
+    "blue_1" : 28,
+    "blue_2" : 25,
+    "blue_3" : 15
+  },
+  "48" : {
+    "match_list" : 48,
+    "red_1" : 20,
+    "red_2" : 5,
+    "red_3" : 17,
+    "blue_1" : 14,
+    "blue_2" : 4,
+    "blue_3" : 16
+  },
+  "49" : {
+    "match_list" : 49,
+    "red_1" : 15,
+    "red_2" : 12,
+    "red_3" : 13,
+    "blue_1" : 20,
+    "blue_2" : 29,
+    "blue_3" : 3
+  },
+  "50" : {
+    "match_list" : 50,
+    "red_1" : 23,
+    "red_2" : 14,
+    "red_3" : 4,
+    "blue_1" : 2,
+    "blue_2" : 22,
+    "blue_3" : 19
+  },
+  "51" : {
+    "match_list" : 51,
+    "red_1" : 24,
+    "red_2" : 33,
+    "red_3" : 28,
+    "blue_1" : 21,
+    "blue_2" : 34,
+    "blue_3" : 30
+  },
+  "52" : {
+    "match_list" : 52,
+    "red_1" : 16,
+    "red_2" : 35,
+    "red_3" : 32,
+    "blue_1" : 6,
+    "blue_2" : 7,
+    "blue_3" : 5
+  },
+  "53" : {
+    "match_list" : 53,
+    "red_1" : 9,
+    "red_2" : 25,
+    "red_3" : 26,
+    "blue_1" : 36,
+    "blue_2" : 8,
+    "blue_3" : 31
+  },
+  "54" : {
+    "match_list" : 54,
+    "red_1" : 10,
+    "red_2" : 1,
+    "red_3" : 11,
+    "blue_1" : 27,
+    "blue_2" : 17,
+    "blue_3" : 18
+  },
+  "55" : {
+    "match_list" : 55,
+    "red_1" : 7,
+    "red_2" : 14,
+    "red_3" : 25,
+    "blue_1" : 8,
+    "blue_2" : 27,
+    "blue_3" : 18
+  },
+  "56" : {
+    "match_list" : 56,
+    "red_1" : 36,
+    "red_2" : 13,
+    "red_3" : 24,
+    "blue_1" : 26,
+    "blue_2" : 17,
+    "blue_3" : 28
+  },
+  "57" : {
+    "match_list" : 57,
+    "red_1" : 20,
+    "red_2" : 4,
+    "red_3" : 23,
+    "blue_1" : 9,
+    "blue_2" : 19,
+    "blue_3" : 1
+  },
+  "58" : {
+    "match_list" : 58,
+    "red_1" : 33,
+    "red_2" : 35,
+    "red_3" : 15,
+    "blue_1" : 11,
+    "blue_2" : 30,
+    "blue_3" : 10
+  },
+  "59" : {
+    "match_list" : 59,
+    "red_1" : 21,
+    "red_2" : 3,
+    "red_3" : 34,
+    "blue_1" : 32,
+    "blue_2" : 16,
+    "blue_3" : 2
+  },
+  "60" : {
+    "match_list" : 60,
+    "red_1" : 6,
+    "red_2" : 5,
+    "red_3" : 22,
+    "blue_1" : 12,
+    "blue_2" : 31,
+    "blue_3" : 29
+  },
+  "61" : {
+    "match_list" : 61,
+    "red_1" : 25,
+    "red_2" : 14,
+    "red_3" : 4,
+    "blue_1" : 23,
+    "blue_2" : 9,
+    "blue_3" : 18
+  },
+  "62" : {
+    "match_list" : 62,
+    "red_1" : 3,
+    "red_2" : 33,
+    "red_3" : 31,
+    "blue_1" : 22,
+    "blue_2" : 8,
+    "blue_3" : 17
+  },
+  "63" : {
+    "match_list" : 63,
+    "red_1" : 7,
+    "red_2" : 24,
+    "red_3" : 21,
+    "blue_1" : 15,
+    "blue_2" : 2,
+    "blue_3" : 36
+  },
+  "64" : {
+    "match_list" : 64,
+    "red_1" : 6,
+    "red_2" : 32,
+    "red_3" : 5,
+    "blue_1" : 29,
+    "blue_2" : 35,
+    "blue_3" : 30
+  },
+  "65" : {
+    "match_list" : 65,
+    "red_1" : 13,
+    "red_2" : 26,
+    "red_3" : 20,
+    "blue_1" : 28,
+    "blue_2" : 16,
+    "blue_3" : 10
+  },
+  "66" : {
+    "match_list" : 66,
+    "red_1" : 12,
+    "red_2" : 11,
+    "red_3" : 34,
+    "blue_1" : 27,
+    "blue_2" : 19,
+    "blue_3" : 1
+  },
+  "67" : {
+    "match_list" : 67,
+    "red_1" : 27,
+    "red_2" : 25,
+    "red_3" : 34,
+    "blue_1" : 28,
+    "blue_2" : 24,
+    "blue_3" : 33
+  },
+  "68" : {
+    "match_list" : 68,
+    "red_1" : 9,
+    "red_2" : 3,
+    "red_3" : 10,
+    "blue_1" : 16,
+    "blue_2" : 4,
+    "blue_3" : 23
+  },
+  "69" : {
+    "match_list" : 69,
+    "red_1" : 8,
+    "red_2" : 2,
+    "red_3" : 17,
+    "blue_1" : 21,
+    "blue_2" : 11,
+    "blue_3" : 5
+  },
+  "70" : {
+    "match_list" : 70,
+    "red_1" : 18,
+    "red_2" : 26,
+    "red_3" : 36,
+    "blue_1" : 29,
+    "blue_2" : 32,
+    "blue_3" : 22
+  },
+  "71" : {
+    "match_list" : 71,
+    "red_1" : 19,
+    "red_2" : 15,
+    "red_3" : 35,
+    "blue_1" : 1,
+    "blue_2" : 12,
+    "blue_3" : 30
+  },
+  "72" : {
+    "match_list" : 72,
+    "red_1" : 7,
+    "red_2" : 14,
+    "red_3" : 20,
+    "blue_1" : 13,
+    "blue_2" : 31,
+    "blue_3" : 6
+  }
+}
