@@ -25,7 +25,9 @@ def main():
             sql_insert = "INSERT INTO `event` (event_id, year_id) VALUES (%s, %d)"%('\"' + event_code + '\"', int(year))
             #print("INSERT INTO `event` (event_id, year_id) VALUES (%s, %d)"%(event_code, int(year)))
 
-            cursor.execute(sql_insert)
+            #cursor.execute(sql_insert)
+
+
         '''for k in range(0,14):
             response = requests.get('https://thebluealliance.com/api/v2/teams/%d'%(k))
             print(response.text)

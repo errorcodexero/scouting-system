@@ -2,11 +2,13 @@ module.exports = function(grunt) {
     require("matchdep").filterAll("grunt-*").forEach(grunt.loadNpmTasks);
     var webpack = require("webpack");
     var webpackConfig = require("./webpack.config.js");
+    var webpackConfigDev = require("./webpack.dev.config.js");
 
     grunt.initConfig({
         // Needs to be done first
         webpack: {
-            options: webpackConfig,
+            dist: webpackConfig,
+            dev: webpackConfigDev,
             build: {
                 //plugins:
             }
@@ -19,35 +21,70 @@ module.exports = function(grunt) {
                 src: [
                      "staging/js/*.js",
                      "staging/js/*.js.map",
-                     "staging/css/*.css"
+                     "staging/css/*.css",
+                     "staging/css/*.css.map",
+                     "staging/css/*.min.css"
                 ]
             },
             build: {
                 src: [
                      "assets/css/*.css",
+                     "assets/css/*.css.map",
+                     "assets/css/*.min.css",
                      "assets/js/*.js",
                      "assets/js/*.js.map",
                      "assets/bundles/*.js",
                      "assets/bundles/*.js.map"
                  ]
             },
+            templates: {
+                src: [
+                    "templates/**/*.html"
+                    ]
+            },
             all: {
                 src: [
                     "staging/css/*.css",
-                    "assets/css/*.css",
+                    "staging/css/*.css.map",
+                    "assets/css/*.min.css",
+                    "staging/css/*.css",
+                    "assets/css/*.min.css",
                     "staging/js/*.js",
                     "assets/js/*.js",
                     "staging/js/*.js.map",
                     "assets/js/*.js.map",
                     "assets/bundles/*.js",
-                    "assets/bundles/*.js.map"
+                    "assets/bundles/*.js.map",
+                    "templates/**/*.html"
                 ]
             }
         },
+        sass: {
+                options: {
+                    sourceMap: true
+                },
+                dist: {
+                    files: {
+                        'staging/css/chart.css': 'src/sass/charts.scss'
+                    }
+
+                },
+                dev: {
+                    files: {
+                        'assets/css/chart.css': 'src/sass/charts.scss'
+                    }
+                }
+        },
         pug: {
-            compile: {
+            dist: {
                 files: {
-                    "templates/index.html": ["src/pug/index.pug"]//,
+                    "templates/index.html": ["src/pug/head_dist.pug", "src/pug/index.pug"]//,
+                    //"templates/explore/index.html": ["src/pug/explore_index.pug"]
+                }
+            },
+            dev: {
+                files: {
+                    "templates/index.html": ["src/pug/head.pug", "src/pug/index.pug"]//,
                     //"templates/explore/index.html": ["src/pug/explore_index.pug"]
                 }
             }
@@ -63,24 +100,68 @@ module.exports = function(grunt) {
                         'templates/teams',
                         'staging/css',
                         'staging/js',
+                        'staging/bundles',
                         'templates/'
                     ]
                 }
             }
         },
-        typings: {
-            install: {}
+        uglify: {
+            dev: {
+                files: {
+                    'assets/bundles/main.js': ['staging/bundles/main.js']
+                }
+            },
+            dist: {
+                files: {
+                        'assets/bundles/main.js': ['staging/bundles/main.js']
+                }
+            }
+        },
+        copy: {
+            devjs: {},
+            devcss: {},
+            distjs: {
+                expand: true,
+                cwd: 'staging/',
+                src: ['bundles/*.map'],
+                dest: 'assets/bundles/',
+                flatten: true,
+                filter: 'isFile'
+            },
+            distcss: {
+                expand: true,
+                cwd: 'staging/',
+                src: ['css/*.map'],
+                dest: 'assets/css/',
+                flatten: true,
+                filter: 'isFile'
+            }
+        },
+        cssmin: {
+            dev: {},
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'staging/css/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'assets/css/',
+                    ext: '.min.css'
+                }]
+            }
         }
     });
 
-    grunt.registerTask("default", ["mkdir:all", "webpack:build", "pug", "clean-staging"]);
+    grunt.registerTask("default", ["mkdir:all", "clean:all", "webpack:dev", "sass:dev", "pug:dev", "clean-staging"]);
+    grunt.registerTask("dist", ["mkdir:all", "clean:all", "webpack:dist", "sass:dist", "copy:distjs", "copy:distcss", "uglify:dist", "pug:dist", "cssmin:dist", "clean-staging"])
+
+    //grunt.registerTask("lint", ["jslint", "tslint"])
 
     grunt.registerTask("templates", ["pug"]);
 
     grunt.registerTask("clean-staging", ["clean:staging"]);
-
     grunt.registerTask("clean-build", ["clean:build"]);
-
+    grunt.registerTask("clean-templates", ["clean:templates"]);
     grunt.registerTask("clean-all", ["clean:all"]);
 
 };

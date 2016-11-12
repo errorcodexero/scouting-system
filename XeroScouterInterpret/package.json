@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "python3 manage.py runserver",
-    "prepare": "sudo npm install -g webpack typescript; sudo npm link typescript",
-    "prepare-windows": "npm isntall -g webpack typescript; npm link typescript"
+    "prepare": "sudo npm install -g webpack gyp node-sass grunt",
+    "prepare-windows": "npm install -g webpack gyp node-sass grunt"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,6 @@
   "author": "Wilsonville Robotics Team 1425 -- Error Code Xero",
   "license": "GPL-3.0",
   "dependencies": {
-    "@types/react": "^0.14.44",
-    "@types/react-dom": "^0.14.18",
     "babel": "^6.5.2",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
@@ -25,33 +23,38 @@
     "babel-preset-stage-0": "^6.16.0",
     "bootstrap": "^3.3.7",
     "bootstrap-material-design": "^0.5.10",
-    "bower": "^1.7.9",
+    "chart.js": "^2.3.0",
+    "cssmin": "^0.4.3",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.2",
-    "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-pug": "^1.0.0",
-    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-mkdir": "^1.0.0",
-    "grunt-ts": "^6.0.0-beta.3",
+    "grunt-sass": "^1.2.1",
     "grunt-webpack": "^1.0.18",
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "matchdep": "^1.0.1",
+    "persistent-redux": "^1.0.2",
     "react": "^15.3.2",
     "react-chartjs": "^0.8.0",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.2",
     "redux": "^3.6.0",
-    "ts-loader": "^1.0.0",
+    "uglify": "^0.1.5",
     "webpack-bundle-tracker": "0.0.93"
   },
   "devDependencies": {
     "source-map-loader": "^0.1.5",
-    "ts-loader": "^1.0.0",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "gyp": "^0.5.0",
+    "jslint": "^0.10.3",
+    "jsonlint": "^1.6.2",
+    "grunt-jslint": "^1.1.14",
+    "grunt-jsonlint": "^1.1.0"
   }
 }

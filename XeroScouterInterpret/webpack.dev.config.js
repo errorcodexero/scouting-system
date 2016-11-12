@@ -8,11 +8,11 @@ module.exports = {
 
     entry: {
         main: './src/jsx/index.jsx'//,
-        //explore: './src/ts/explore/explore.tsx'
+        //explore: './src/jsx/explore.jsx'
     },
 
     output: {
-        path: path.resolve('./staging/bundles/'),
+        path: path.resolve('./assets/bundles/'),
 
         filename: '[name].js',
         },
@@ -49,9 +49,11 @@ module.exports = {
                         presets: ['stage-0', 'react']
                     }
                 },
-                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'babel-loader!ts-loader'},
-                {test: /\.json$/, exclude: /node_modules/, loader: 'json-loader'}
-                //{test: /(explore)?(\.tsx?$)/, exclude: /node_modules/, loader: 'ts-loader?tsconfig=src/ts/explore/tsconfig.json'}
+                {
+                    test: /\.json$/,
+                    exclude: /node_modules/,
+                    loader: 'json-loader'
+                }
 
             ]
         },
