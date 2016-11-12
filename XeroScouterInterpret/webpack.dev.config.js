@@ -7,8 +7,8 @@ module.exports = {
     context: __dirname,
 
     entry: {
-        main: './src/jsx/index.jsx'//,
-        //explore: './src/jsx/explore.jsx'
+        main: './src/jsx/index.jsx',
+        explore: './src/jsx/explore.jsx'
     },
 
     output: {

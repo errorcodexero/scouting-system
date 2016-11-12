@@ -108,11 +108,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = BASE_DIR
+STATIC_ROOT = ''
 
 STATIC_URL = '/assets/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets'), os.path.join(BASE_DIR, 'node_modules')]
+PROJECT_DIR = os.path.dirname(__file__)
+
+
+STATICFILES_DIRS = [os.path.join((BASE_DIR), 'assets/'), os.path.join(BASE_DIR, 'node_modules'),]
 
 
 WEBPACK_LOADER = {

@@ -1,9 +1,7 @@
 | {% load render_bundle from webpack_loader %}
 doctype html
-include head
-html
-    +head_with_title('Welcome')
-    body
-        include navbar
-        #container
-        | {% render_bundle 'explore' %}
+body
+    include navbar
+    .canvas-holder(max-height="100px" max-width="100px")
+        canvas.chart-area#myChart(height="640px" width="400px" style="width: 640px; height: 400px;")
+    | {% render_bundle 'explore' %}
