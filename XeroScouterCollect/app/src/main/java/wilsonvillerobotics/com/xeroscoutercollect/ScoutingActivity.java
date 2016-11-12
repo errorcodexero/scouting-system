@@ -108,7 +108,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        int index = 0;
+        int index = -1;
         boolean decrement = false;
         Intent mainScreen = new Intent(this, MatchConfirmationActivity.class);
         switch (view.getId()) {
@@ -243,15 +243,17 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
 
         }
-        ActionObject tempObject = actionObjectArrayList.get(index);
-        tempObject.changeValue(decrement);
+        if (index != -1) {
+            ActionObject tempObject = actionObjectArrayList.get(index);
+            tempObject.changeValue(decrement);
 
-        EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
-        if (tempTextView != null) {
-            tempTextView.setText(String.valueOf(tempObject.getActionCount()));
-            Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
+            EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
+            if (tempTextView != null) {
+                tempTextView.setText(String.valueOf(tempObject.getActionCount()));
+                Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
