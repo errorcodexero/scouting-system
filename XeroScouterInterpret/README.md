@@ -13,7 +13,7 @@ Installation is rather simple.
 1.  Python 3.4 at least
 2.  NodeJS
 3.  Atom Text Editor (For tweaking)  
-4.  Ruby (For compiling SASS CSS)
+4.  ~~Ruby (For compiling SASS CSS)~~
 
 In a terminal, run:
 

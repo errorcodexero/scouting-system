@@ -157,7 +157,8 @@ module.exports = function(grunt) {
 
     //grunt.registerTask("lint", ["jslint", "tslint"])
 
-    grunt.registerTask("templates", ["pug"]);
+    grunt.registerTask("templates-dev", ["pug:dev"]);
+    grunt.registerTask("templates-dist", ["pug:dist"]);
 
     grunt.registerTask("clean-staging", ["clean:staging"]);
     grunt.registerTask("clean-build", ["clean:build"]);

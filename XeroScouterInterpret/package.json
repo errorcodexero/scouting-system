@@ -6,7 +6,9 @@
   "scripts": {
     "start": "python3 manage.py runserver",
     "prepare": "sudo npm install -g webpack gyp node-sass grunt",
-    "prepare-windows": "npm install -g webpack gyp node-sass grunt"
+    "prepare-windows": "npm install -g webpack gyp node-sass grunt",
+    "build-dev": "grunt",
+    "build-dist": "grunt dist"
   },
   "repository": {
     "type": "git",
