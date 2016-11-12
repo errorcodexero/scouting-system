@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<team_match id= "0">
+    <action id="1" quantity="0"/>
+    <action id="2" quantity="0"/>
+    <action id="3" quantity="0"/>
+    <action id="4" quantity="0"/>
+    <action id="5" quantity="0"/>
+    <action id="6" quantity="0"/>
+    <action id="7" quantity="0"/>
+    <action id="8" quantity="0"/>
+    <action id="9" quantity="0"/>
+</team_match>
+
+for action in actions_done:
+    xml_file.getcol(team_match).add(actions.done.get(action))
+
+<match_list>
+    <match id="0">
+        <red_alliance>
+            <team id="0">TEAM NUMBER</team>
+            <team id="1">TEAM NUMBER</team>
+            <team id="2">TEAM NUMBER</team>
+        </red_alliance>
+        <blue_alliance>
+            <team id="0">TEAM NUMBER</team>
+            <team id="1">TEAM NUMBER</team>
+            <team id="2">TEAM NUMBER</team>
+        </blue_alliance>
+    </match>
+</match_list>
