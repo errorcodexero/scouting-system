@@ -34,6 +34,7 @@
     <string name="import_to_tablet">Import to Tablet</string>
     <string name="export_from_tablet">Export from Tablet</string>
     <string name="reset_local_test_data">Reset Local Test Data</string>
+    <string name="user_status">Status: Disconnected</string>
 
 
 </resources>
