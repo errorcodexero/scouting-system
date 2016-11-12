@@ -9,5 +9,6 @@
         android:layout_height="wrap_content"
         android:text="Sanity Check Completed"
         android:id="@+id/btn_sanity_check_completed"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClick" />
 </LinearLayout>

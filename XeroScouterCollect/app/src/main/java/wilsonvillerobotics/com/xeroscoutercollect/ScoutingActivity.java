@@ -235,8 +235,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 db.addMatch(new Match(tempMap, "1425"));
 
 
-
-                for(Match m : db.getAllMatches() ) {
+                for (Match m : db.getAllMatches()) {
                     Log.d("Team id", m.team_id);
                 }
 
@@ -250,6 +249,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
         if (tempTextView != null) {
             tempTextView.setText(String.valueOf(tempObject.getActionCount()));
+            Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
         }

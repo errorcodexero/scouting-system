@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".ScoutingActivity" android:configChanges="orientation|screenSize" />
         <activity android:name=".MatchConfirmationActivity" android:configChanges="orientation|screenSize" />
+        <activity android:name=".SanityCheckActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".SyncActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".ExportActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".AutonomousTab" android:configChanges="orientation|screenSize"/>
