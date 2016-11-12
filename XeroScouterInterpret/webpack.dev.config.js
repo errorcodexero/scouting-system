@@ -8,7 +8,7 @@ module.exports = {
 
     entry: {
         main: './src/jsx/index.jsx',
-        explore: './src/jsx/explore.jsx'
+        explore: './src/jsx/explore/explore.jsx'
     },
 
     output: {
