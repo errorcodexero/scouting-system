@@ -12,18 +12,18 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
  */
 public class SanityCheckActivity extends Activity implements View.OnClickListener{
 
-    private Intent scoutingActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sanity_check);
-        scoutingActivity = new Intent(this,ScoutingActivity.class);
     }
 
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_sanity_check_completed)) {
+            Intent scoutingActivity = new Intent(this,ScoutingActivity.class);
             startActivity(scoutingActivity);
         }
     }

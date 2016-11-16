@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lbl_tablet_id"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lbl_tablet_id"
+        android:id="@+id/lbl_tablet_id"
+        android:layout_gravity="left|center_horizontal" />
+
+    "fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:text="Check All"
+            android:layout_marginRight="7dip"
+            android:id="@+id/btn_check_all"
+            android:layout_height="wrap_content"
+            android:onClick="onClick">
+        </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:text="Clear All"
+            android:id="@+id/btn_clear_all"
+            android:layout_height="wrap_content"
+            android:onClick="onClick">
+        </Button>
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:id="@+id/lvCheckBox"
+        android:fadingEdge="none"
+        android:cacheColorHint="@null"
+        android:layout_height="164dp"
+        android:layout_weight="0.69">
+    </ListView>
+
+    <Button
+        android:text="Find Checked Buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_checked_boxes"
+        android:onClick="onClick" />
+
+
+</LinearLayout>

@@ -235,9 +235,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 db.addMatch(new Match(tempMap, "1425"));
 
 
-                for (Match m : db.getAllMatches()) {
+                /*for (Match m : db.getAllMatches()) {
                     Log.d("Team id", m.team_id);
-                }
+                }*/
 
                 startActivity(mainScreen);
                 break;
