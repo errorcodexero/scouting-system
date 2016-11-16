@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
-using XeroScouterDBManage.Utilities;
+using XeroScouterDBManage;
+using XeroScouterDBManage_Server.Utilities;
 
 namespace XeroScouterDBManage_Server
 {
@@ -16,7 +14,7 @@ namespace XeroScouterDBManage_Server
     {
         private long compID;
         private string importPath;
-        private MySQL_ErrorCodes mySQLErrors;
+        private Utilities.MySQL_ErrorCodes mySQLErrors;
 
         private static string[] tabletSpecificTables = {
                                                            "notes_data",
