@@ -77,11 +77,17 @@ CREATE TABLE `match` (
   `set_number` varchar(45) DEFAULT NULL,
   `match_number` varchar(45) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL COMMENT 'Status of match. Not started, complete, cancelled, delayed, etc.\n',
+  `red_1_team_id` int(11) DEFAULT NULL,
+  `red_2_team_id` int(11) DEFAULT NULL,
+  `red_3_team_id` int(11) DEFAULT NULL,
   `red_auto_score` int(11) DEFAULT NULL,
   `red_teleop_score` int(11) DEFAULT NULL,
   `red_total_score` int(11) DEFAULT NULL,
   `red_qp` int(11) DEFAULT NULL,
   `red_foul_points` int(11) DEFAULT NULL,
+  `blue_1_team_id` int(11) DEFAULT NULL,
+  `blue_2_team_id` int(11) DEFAULT NULL,
+  `blue_3_team_id` int(11) DEFAULT NULL,
   `blue_auto_score` int(11) DEFAULT NULL,
   `blue_teleop_score` int(11) DEFAULT NULL,
   `blue_total_score` int(11) DEFAULT NULL,
@@ -118,11 +124,45 @@ CREATE TABLE `team` (
   `robot_drive_type` varchar(45) DEFAULT NULL,
   `robot_wheel_count` int(11) DEFAULT NULL,
   `robot_drive_motor_count` int(11) DEFAULT NULL,
+  `robot_software_language` varchar(45) DEFAULT NULL,
   `robot_description` varchar(2000) DEFAULT NULL,
   `pit_scout_comments` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`team_id`),
   KEY `idx_tba_team_key` (`tba_team_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table contains FRC team data for a competition year. It includes information about their robot.';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `team_event`
+--
+
+DROP TABLE IF EXISTS `team_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `team_event` (
+  `team_event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `team_id` int(11) DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `opr` float DEFAULT NULL,
+  `dpr` float DEFAULT NULL,
+  `fpr` float DEFAULT NULL,
+  `ccwm` float DEFAULT NULL,
+  `alliance_captain_flag` varchar(2) DEFAULT NULL,
+  `rank` int(11) DEFAULT NULL,
+  `alliance_pick` int(11) DEFAULT NULL,
+  `alliance_captain_team_id` int(11) DEFAULT NULL,
+  `playoff_status` varchar(45) DEFAULT NULL,
+  `dq_count` int(11) DEFAULT NULL,
+  `win_count` int(11) DEFAULT NULL,
+  `loss_count` int(11) DEFAULT NULL,
+  `tie_count` int(11) DEFAULT NULL,
+  PRIMARY KEY (`team_event_id`),
+  UNIQUE KEY `team_event_id_UNIQUE` (`team_event_id`),
+  KEY `team_event_team_id_idx` (`team_id`),
+  KEY `team_event_event_id_idx` (`event_id`),
+  CONSTRAINT `team_event_event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `team_event_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +178,6 @@ CREATE TABLE `team_match` (
   `match_id` int(11) NOT NULL,
   `alliance` varchar(45) DEFAULT NULL,
   `position` int(11) DEFAULT NULL,
-  `team_matchcol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`team_match_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -175,4 +214,4 @@ CREATE TABLE `team_match_action` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-28 11:43:34
+-- Dump completed on 2016-11-22 12:07:53
