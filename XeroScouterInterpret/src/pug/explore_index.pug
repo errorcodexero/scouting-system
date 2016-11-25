@@ -1,7 +1,14 @@
 | {% load render_bundle from webpack_loader %}
 doctype html
 body
+    script
+        | let OPR = parseFloat("{{OPR}}");
+        | let DPR = parseFloat("{{DPR}}");
+        | let team_list = []
+        | let current_team = "{{ current_team }}";
+        | let team_url = "{% url 'index' %}"
+        | team_list = {{ team_list|safe }};
     include navbar
-    .canvas-holder(max-height="100px" max-width="100px")
-        canvas.chart-area#myChart(height="640px" width="400px" style="width: 640px; height: 400px;")
+    #chartDiv(style="width: 640px; height: 400px;")
+    #testing-div
     | {% render_bundle 'explore' %}

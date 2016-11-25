@@ -62,10 +62,11 @@ module.exports = {
     resolve: {
         modulesDirectories: ['node_modules'],
 
-        extensions: ['', '.js', '.jsx', '.webpack/js', '.web.js']
+        extensions: ['', '.js', '.jsx', '.webpack.js', '.web.js']
     },
     externals: {
         "react": "React",
-        "react-dom": "ReactDOM"
+        "react-dom": "ReactDOM",
+        "amcharts": "var AmCharts"
     }
 }
