@@ -17,6 +17,8 @@
   "author": "Wilsonville Robotics Team 1425 -- Error Code Xero",
   "license": "GPL-3.0",
   "dependencies": {
+    "animate.css": "^3.5.2",
+    "animate.scss": "0.0.6",
     "babel": "^6.5.2",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
@@ -47,6 +49,7 @@
     "react": "^15.3.2",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.2",
+    "react-highcharts": "^11.0.0",
     "redux": "^3.6.0",
     "uglify": "^0.1.5",
     "webpack-bundle-tracker": "0.0.93"

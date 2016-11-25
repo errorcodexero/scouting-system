@@ -65,16 +65,18 @@ module.exports = function(grunt) {
                 },
                 dist: {
                     files: {
-                        'staging/css/chart.css': 'src/sass/charts.scss'
+                        'staging/css/chart.css': 'src/sass/charts.scss',
+                        'staging/css/index.css': 'src/sass/index.scss'
                     }
 
                 },
                 dev: {
                     files: {
-                        'assets/css/chart.css': 'src/sass/charts.scss'
-                    }
+                        'assets/css/chart.css': 'src/sass/charts.scss',
+                        'assets/css/index.css': 'src/sass/index.scss'
                 }
-        },
+        }
+    },
         pug: {
             dist: {
                 files: {

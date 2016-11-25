@@ -2,6 +2,11 @@
 doctype html
 body
     include navbar
-    .canvas-holder(max-height="100px" max-width="100px")
-        canvas.chart-area#myChart(height="640px" width="400px" style="width: 640px; height: 400px;")
+    .container
+        .jumbotron
+            h1#titleBar.animated.fadeIn
+                |<i>XeroScouter Interpret</i>
+            h5
+                |The <i>best</i> data interpreter
+
     | {% render_bundle 'main' %}

@@ -42,17 +42,21 @@ class ExplorerView(View):
     opr = get_opr(team_matrix, results_matrix)
     dpr = get_dpr(team_matrix, results_matrix)
 
-    stddev = np.std(opr)
+    stddev = np.array([8.4])
 
     plot_spacing = np.linspace(stats.norm.ppf(0.01), stats.norm.ppf(0.99), 100)
 
     opr_norm = stats.norm(loc=np.average(opr[0]), scale=stddev)
 
+    opr_team_dict = {}
+
     opr_pdf_data = []
 
-    for i in range(0, len(opr[0])):
-        opr_pdf_data.append(opr_norm.pdf(opr[0][i])[0])
+    temp_list = range(0, 40)
 
+    for i in range(0, 40):
+        #multiply by 100 to be easier to graph
+        opr_pdf_data.append((opr_norm.pdf(i)[0] * 100))
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super(ExplorerView, self).dispatch(request, *args, **kwargs)
@@ -61,16 +65,29 @@ class ExplorerView(View):
         if request.method == 'GET':
             if len(self.team_list) == 0:
                 for i in range(1, int(len(results_matrix)/2) + 1):
+
                     self.team_list.append("Team " + str(i))
                     self.team_name_dict["Team " + str(i)] = (i - 1)
 
-            print(self.opr_pdf_data)
-            plt.plot(self.opr_pdf_data, self.opr)
-            plt.show()
-            print(self.opr[0])
-            #print(self.opr)
+                for i in range(0, int(len(results_matrix)/2)):
+                    self.opr_team_dict[self.opr[0][i]] = "Team " + str(i + 1)
+
+            temp_opr = []
+            for i in range(0, len(self.opr_pdf_data)):
+                temp_opr.append(self.opr_pdf_data[i])
+
+            sorted_opr = np.sort(self.opr[0])
+            formatted_sorted_opr = []
+            for i in range(0, len(sorted_opr)):
+                formatted_sorted_opr.append(sorted_opr[i])
+
             t = loader.get_template('explore/index.html')
-            context = {'OPR': self.opr[0][0], 'DPR': self.dpr[0][0][0], 'team_list': self.team_list, 'current_team': self.team_list[0], 'team_dictionary' : self.team_name_dict}
+            context = {'OPR': self.opr[0][0], 'DPR': self.dpr[0][0][0],
+            'team_list': self.team_list, 'current_team': self.team_list[0],
+            'team_dictionary' : self.team_name_dict, 'opr_x': self.temp_list,
+            'opr_y': temp_opr, 'opr_team_dict': self.opr_team_dict,
+            'sorted_opr': formatted_sorted_opr}
+
             return HttpResponse(t.render(context, request), content_type='text/html')
 
     def post(self, request, *args, **kwargs):
