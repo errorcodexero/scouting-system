@@ -50,6 +50,13 @@
                 android:prompt="@string/match_prompt"
                 android:layout_gravity="center_horizontal" />
 
+            <Button
+                android:text="Update Teams"
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_get_teams"
+                android:onClick="onClick" />
+
         </LinearLayout>
 
         <LinearLayout

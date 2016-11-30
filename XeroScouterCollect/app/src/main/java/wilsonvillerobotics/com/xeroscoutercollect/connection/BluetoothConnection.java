@@ -72,7 +72,8 @@ public class BluetoothConnection extends ConnectionType{
 
     public boolean sendDataFile() {
         super.sendDataFile();
-        String path = Environment.getExternalStorageDirectory() + "/test.xml";
+        //String path = Environment.getExternalStorageDirectory() + "/test.xml";
+        String path = Environment.getExternalStorageDirectory() + "/xmlData.xml";
 
         File file = new File(path);
         try {
@@ -91,6 +92,8 @@ public class BluetoothConnection extends ConnectionType{
                 "com.android.bluetooth.opp.BluetoothOppLauncherActivity"));
         intent.setType("text/xml");
         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+
+
         activity.startActivity(intent);
         return true;
     }
