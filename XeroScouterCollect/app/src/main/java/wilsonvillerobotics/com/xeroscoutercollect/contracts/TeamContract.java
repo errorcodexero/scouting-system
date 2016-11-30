@@ -1,4 +1,4 @@
-package wilsonvillerobotics.com.xeroscoutercollect.database;
+package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
 import android.provider.BaseColumns;
 
