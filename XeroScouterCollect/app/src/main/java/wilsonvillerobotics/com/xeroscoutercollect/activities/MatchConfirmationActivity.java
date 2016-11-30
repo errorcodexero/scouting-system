@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private Intent sanityCheckActivity;
     private List<String> match_list;
     private ArrayList<Integer> team_list;
+    private int currentSelectedMatch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,11 +65,27 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         btn_next = (Button) findViewById(R.id.btn_next);
     }
 
+    //Updates the team field according to the selected match
+    private void updateTeams() {
+        String tempText = spinner_match_list.getSelectedItem().toString();
+        Toast.makeText(this,tempText,Toast.LENGTH_SHORT).show();
+        currentSelectedMatch = Integer.valueOf(tempText);
+
+
+
+
+    }
+
 
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_next)) {
             startActivity(sanityCheckActivity);
         }
+        if(view == findViewById(R.id.btn_get_teams)){
+            updateTeams();
+        }
     }
+
+
 }
