@@ -64,13 +64,14 @@ class ExplorerView(View):
     def get(self, request, *args, **kwargs):
         if request.method == 'GET':
             if len(self.team_list) == 0:
-                for i in range(1, int(len(results_matrix)/2) + 1):
+                self.team_list = []
+                for i in range(1, int((len(results_matrix)/2) + 1)):
 
                     self.team_list.append("Team " + str(i))
                     self.team_name_dict["Team " + str(i)] = (i - 1)
 
-                for i in range(0, int(len(results_matrix)/2)):
-                    self.opr_team_dict[self.opr[0][i]] = "Team " + str(i + 1)
+                #for i in range(0,  (len(self.team_list)/2) - 1):
+                    self.opr_team_dict[self.opr[0][((i - 1)/2)]] = "Team " + str(math.floor((i + 1) / 2))
 
             temp_opr = []
             for i in range(0, len(self.opr_pdf_data)):

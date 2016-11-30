@@ -19,10 +19,13 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.http.response import HttpResponseRedirect
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^explore/', include(explore.site.urls)),
     url(r'^explore/', include('explore.urls')),
-    url(r'^$', TemplateView.as_view(template_name='index.html'))
+    url(r'^$', lambda r: HttpResponseRedirect('home/')),
+    url(r'^home/', include('home.urls')),
+    url(r'^teams/', include('teams.urls'))
 ] + staticfiles_urlpatterns()

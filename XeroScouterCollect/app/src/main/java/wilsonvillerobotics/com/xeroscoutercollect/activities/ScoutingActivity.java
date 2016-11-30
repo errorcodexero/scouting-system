@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -15,12 +16,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.database.matchDBHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.database.Match;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
-import wilsonvillerobotics.com.xeroscoutercollect.database.matchDBHolder;
 
 public class ScoutingActivity extends TabActivity implements View.OnClickListener {
 
@@ -57,6 +58,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(autonomousTab);
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
+
+        matchDBHelper tempDB = new matchDBHelper(this);
 
         // Begin mapping text entries to variables
 
@@ -224,20 +227,22 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             case R.id.btn_finalize_finish:
                 // Moves back to main screen, Starts a Toast, and Adds enties
 
-                Log.d("Insert", "Inserting Match");
-                matchDBHolder db = new matchDBHolder(this);
+                /*Log.d("Insert", "Inserting Match");
+                matchDBHelper matchDBHelper = new matchDBHelper(this, );
+
+                SQLiteDatabase db = matchDBHelper.getWritableDatabase();
 
                 HashMap<String, String> tempMap = new HashMap<>();
 
                 for (Pair<String, String> i : finalizeDataList) {
                     tempMap.put(i.first, i.second);
                 }
-                db.addMatch(new Match(tempMap, "1425"));
+                matchDBHelper.addMatch(new Match(tempMap, "1425"));
+
+                */
 
 
-                /*for (Match m : db.getAllMatches()) {
-                    Log.d("Team id", m.team_id);
-                }*/
+
 
                 startActivity(mainScreen);
                 break;

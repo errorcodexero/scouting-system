@@ -80,14 +80,18 @@ module.exports = function(grunt) {
         pug: {
             dist: {
                 files: {
-                    "templates/index.html": ["src/pug/head_dist.pug", "src/pug/index.pug"],
-                    "templates/explore/index.html": ["src/pug/head_dist.pug", "src/pug/explore_index.pug"]
+                    "templates/home/index.html": ["src/pug/head_dist.pug", "src/pug/home/index.pug"],
+                    "templates/explore/index.html": ["src/pug/head_dist.pug", "src/pug/explore/index.pug"],
+                    "templates/teams/index.html": ["src/pug/head_dist.pug", "src/pug/teams/index.pug"]
+
                 }
             },
             dev: {
                 files: {
-                    "templates/index.html": ["src/pug/head.pug", "src/pug/index.pug"],
-                    "templates/explore/index.html": ["src/pug/head.pug", "src/pug/explore_index.pug"]
+                    "templates/home/index.html": ["src/pug/head.pug", "src/pug/home/index.pug"],
+                    "templates/explore/index.html": ["src/pug/head.pug", "src/pug/explore/index.pug"],
+                    "templates/teams/index.html": ["src/pug/head.pug", "src/pug/teams/index.pug"]
+
                 }
             }
         },
@@ -111,15 +115,19 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'assets/bundles/main.js': ['staging/bundles/main.js'],
-                    'assets/bundles/explore.js': ['staging/bundles/explore.js']
+                    'assets/bundles/home.js': ['staging/bundles/home.js'],
+                    'assets/bundles/explore.js': ['staging/bundles/explore.js'],
+                    'assets/bundles/teams.js': ['staging/bundles/teams.js']
+
 
                 }
             },
             dist: {
                 files: {
-                        'assets/bundles/main.js': ['staging/bundles/main.js'],
-                        'assets/bundles/explore.js': ['staging/bundles/explore.js']
+                        'assets/bundles/home.js': ['staging/bundles/home.js'],
+                        'assets/bundles/explore.js': ['staging/bundles/explore.js'],
+                        'assets/bundles/teams.js': ['staging/bundles/teams.js']
+
 
                 }
             }
@@ -162,6 +170,7 @@ module.exports = function(grunt) {
     grunt.registerTask("dist", ["mkdir:all", "clean:all", "webpack:dist", "sass:dist", "copy:distjs", "copy:distcss", "uglify:dist", "pug:dist", "cssmin:dist", "clean-staging"])
 
     //grunt.registerTask("lint", ["jslint", "tslint"])
+
 
     grunt.registerTask("templates-dev", ["pug:dev"]);
     grunt.registerTask("templates-dist", ["pug:dist"]);

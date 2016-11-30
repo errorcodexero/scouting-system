@@ -20,8 +20,8 @@ for(let i = 0; i< graph_range.length; i++) {
 }
 
 
-let DropdownTest = React.createClass ({
-    render: function () {
+class DropdownTest extends React.Component {
+    render() {
         let elementsList = [];
 
         for (let i = 0; i < (team_list.length); i++) {
@@ -31,12 +31,12 @@ let DropdownTest = React.createClass ({
         return(
             <div className="dropdown">
                 <div className="btn-group">
-                    <a className="btn btn-raised btn-info dropdown-toggle">
+                    <a className="btn btn-raised btn-default dropdown-toggle">
                         <span id="current-team-span">
                             {current_team}
                         </span>
                     </a>
-                    <a className="btn btn-raised btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <a href="/explore/" className="btn btn-raised btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-target="#" aria-expanded="false">
                         <span className="caret"></span>
                         <div className="ripple-container"></div>
                     </a>
@@ -47,7 +47,7 @@ let DropdownTest = React.createClass ({
             </div>
             );
     }
-});
+};
 
 let chartData = {
     tooltip: {

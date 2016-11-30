@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".activities.LandingActivity"> -->
-        <activity android:name=".activities.DataConnectionActivity">
+        <activity android:name=".activities.ScoutingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ScoutingActivity"
+            android:name=".activities.DataConnectionActivity"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".activities.MatchConfirmationActivity"

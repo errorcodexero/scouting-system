@@ -7,15 +7,15 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.core import serializers
 
-class TeamsView(View):
+class HomeView(View):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
-        return super(TeamsView, self).dispatch(request, *args, **kwargs)
+        return super(HomeView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         if request.method == 'GET':
-            t = loader.get_template('teams/index.html')
+            t = loader.get_template('home/index.html')
             context = {}
 
             return HttpResponse(t.render(context, request), content_type='text/html')

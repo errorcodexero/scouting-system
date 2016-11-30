@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -17,9 +18,9 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 /**
  * Created by nick on 11/5/16.
  */
-public final class matchDBHolder extends SQLiteOpenHelper {
+public final class matchDBHelper extends SQLiteOpenHelper {
 
-    //private matchDBHolder() {}
+    //private matchDBHelper() {}
 
     private static final int DATABASE_VERSION = 1;
 
@@ -32,15 +33,27 @@ public final class matchDBHolder extends SQLiteOpenHelper {
 
     private static ArrayList<String> ACTIONS;
 
+    private String dbCreateString;
+
     private Context context;
 
     private int id;
 
-    public matchDBHolder(Context context) {
+    public matchDBHelper(Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
         this.context = context;
 
 
+    }
+
+    public matchDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+        this.context = context;
+    }
+
+    public matchDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
+        super(context, name, factory, version, errorHandler);
+        this.context = context;
     }
     /*public String makeSQLColumnNameFromText(String text) {
 
@@ -62,6 +75,8 @@ public final class matchDBHolder extends SQLiteOpenHelper {
         }
         CREATE_MATCH_TABLE += ")";
 
+        this.dbCreateString = CREATE_MATCH_TABLE;
+
         Log.d("DEBUG", CREATE_MATCH_TABLE);
         sqLiteDatabase.execSQL(CREATE_MATCH_TABLE);
     }
@@ -78,6 +93,7 @@ public final class matchDBHolder extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        //Log.d(ACTIONS);
         for (String i : ACTIONS) {
             Log.d("DEBUG", i);
             values.put(i, matchData.getActionPoints().get(ACTIONS.get(Integer.parseInt(i))));
