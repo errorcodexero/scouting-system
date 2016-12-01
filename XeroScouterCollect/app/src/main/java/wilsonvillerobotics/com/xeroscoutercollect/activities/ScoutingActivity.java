@@ -16,9 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import wilsonvillerobotics.com.xeroscoutercollect.database.matchDBHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
-import wilsonvillerobotics.com.xeroscoutercollect.database.Match;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
@@ -59,7 +58,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
 
-        matchDBHelper tempDB = new matchDBHelper(this);
+        DatabaseHelper tempDB = new DatabaseHelper(this);
 
         // Begin mapping text entries to variables
 

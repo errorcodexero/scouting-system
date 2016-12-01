@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -13,6 +14,8 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 public class LandingActivity extends Activity implements View.OnClickListener{
 
     private Intent matchConfirmationActivity;
+
+    DatabaseHelper db;
 
     //Intent pitScoutingIntent = new Intent(this, PitScouting.class);
 
@@ -22,7 +25,11 @@ public class LandingActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_landing);
         matchConfirmationActivity = new Intent(this, MatchConfirmationActivity.class);
 
+        // TODO - is there a danger in creating the database object inside if an Activity? Think about the life cycle.
+        db = new DatabaseHelper(getApplicationContext());
     }
+
+
 
     @Override
     public void onClick(View view) {
