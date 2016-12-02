@@ -5,13 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".activities.ScoutingActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="horizontal" android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/lbl_tablet_id"
-        android:id="@+id/lbl_tablet_id"
-        android:layout_gravity="left|center_horizontal" />
+        tools:context=".activities.ScoutingActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/lbl_tablet_id"
+            android:id="@+id/lbl_tablet_id"
+            android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/event_name"
+            android:id="@+id/lbl_event_name"
+            android:layout_gravity="center_vertical|right" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
@@ -60,7 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:text="@string/btn_start_pit_scouting"
-            android:id="@+id/btn_Start_Pit_Scouting"
+            android:id="@+id/btn_start_pit_scouting"
             android:layout_weight=".3"
             android:textSize="40sp" />
 
