@@ -58,7 +58,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
 
-        DatabaseHelper tempDB = new DatabaseHelper(this);
+        //DatabaseHelper tempDB = new DatabaseHelper(this);
 
         // Begin mapping text entries to variables
 

@@ -1,6 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,8 @@ public class LandingActivity extends Activity implements View.OnClickListener{
         matchConfirmationActivity = new Intent(this, MatchConfirmationActivity.class);
 
         // TODO - is there a danger in creating the database object inside if an Activity? Think about the life cycle.
-        db = new DatabaseHelper(getApplicationContext());
+        db = DatabaseHelper.getInstance(getApplicationContext());
+        // TODO - Let's replace the Singleton with a Loader. http://www.androiddesignpatterns.com/2012/07/understanding-loadermanager.html
     }
 
 

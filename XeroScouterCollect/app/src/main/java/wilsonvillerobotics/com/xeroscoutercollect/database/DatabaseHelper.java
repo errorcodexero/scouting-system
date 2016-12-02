@@ -19,6 +19,9 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract.EventE
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    // static Singleton object
+    private static DatabaseHelper sInstance;
+
     // Logcat tag
     private static final String LOG = "DatabaseHelper";
 
@@ -28,12 +31,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "ecxScoutingData";
 
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public static synchronized DatabaseHelper getInstance(Context context) {
+
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        // See this article for more information: http://bit.ly/6LRzfx
+        if (sInstance == null) {
+            sInstance = new DatabaseHelper(context.getApplicationContext());
+        }
+        return sInstance;
     }
 
-    public DatabaseHelper(Context context, DatabaseErrorHandler errorHandler) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION, errorHandler);
+    private DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
