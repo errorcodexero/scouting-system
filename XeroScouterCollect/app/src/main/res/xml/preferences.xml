@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/settings">
+
+        <EditTextPreference
+            android:key="edittext_event_name_preference"
+            android:title="@string/string_event_name"
+            android:summary=""
+            android:defaultValue="*"
+            android:dialogTitle="Select Event" />
+
+        <EditTextPreference
+            android:key="edittext_tablet_id_preference"
+            android:title="@string/string_tablet_id"
+            android:summary=""
+            android:defaultValue="*"
+            android:dialogTitle="@string/string_set_tablet_id" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

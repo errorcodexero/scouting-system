@@ -40,8 +40,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     protected String generateTransaction() {
 
-
-
+        return "";
     }
 
 
