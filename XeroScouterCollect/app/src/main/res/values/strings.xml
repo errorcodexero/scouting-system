@@ -37,6 +37,7 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="user_status">Status: Disconnected</string>
+    <string name="event_name">Event:</string>
 
 
 </resources>
