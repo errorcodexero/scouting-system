@@ -36,6 +36,15 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     protected TeamMatch currentMatch = new TeamMatch();
 
+    protected DatabaseHelper dbHelper;
+
+    protected String generateTransaction() {
+
+
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +90,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, R.string.action_9, 0));
 
         //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
+
+        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override

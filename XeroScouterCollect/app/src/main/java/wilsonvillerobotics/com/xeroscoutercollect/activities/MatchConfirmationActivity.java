@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -25,14 +26,20 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private ArrayList<Integer> team_list;
     private int currentSelectedMatch;
 
+    private DatabaseHelper dbHelper;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_confirmation);
 
+        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
+
         addItemsOnSpinner();
         addListenerOnButton();
         addItemsToTeamList();
+
+
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
         
     }
@@ -47,9 +54,9 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
         match_list = new ArrayList<String>();
-        match_list.add("1");
+        /*match_list.add("1");
         match_list.add("2");
-        match_list.add("3");
+        match_list.add("3");*/
 
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
