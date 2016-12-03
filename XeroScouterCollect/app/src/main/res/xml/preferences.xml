@@ -6,17 +6,17 @@
         android:title="@string/settings">
 
         <EditTextPreference
-            android:key="edittext_event_name_preference"
+            android:key="@string/event_name_pref"
             android:title="@string/string_event_name"
             android:summary=""
-            android:defaultValue="*"
+            android:defaultValue="@string/default_pref_value"
             android:dialogTitle="Select Event" />
 
         <EditTextPreference
-            android:key="edittext_tablet_id_preference"
+            android:key="@string/tablet_id_pref"
             android:title="@string/string_tablet_id"
             android:summary=""
-            android:defaultValue="*"
+            android:defaultValue="@string/default_pref_value"
             android:dialogTitle="@string/string_set_tablet_id" />
 
     </PreferenceCategory>

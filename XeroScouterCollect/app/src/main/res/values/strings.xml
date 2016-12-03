@@ -37,10 +37,11 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="user_status">Status: Disconnected</string>
-    <string name="event_name">Event:</string>
+    <string name="lbl_event_name">Event:</string>
     <string name="string_event_name">Event Name</string>
     <string name="string_tablet_id">Tablet ID:</string>
     <string name="string_set_tablet_id">Set Tablet ID</string>
+    <string name="default_pref_value">*</string>
 
 
 </resources>

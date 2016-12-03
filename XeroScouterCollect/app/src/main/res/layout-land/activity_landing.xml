@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/event_name"
+            android:text="@string/lbl_event_name"
             android:id="@+id/lbl_event_name"
             android:layout_gravity="center_vertical|right" />
 

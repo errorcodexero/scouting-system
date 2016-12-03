@@ -9,15 +9,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.TextView;
-
-import java.lang.reflect.Field;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-
-import static android.view.Window.FEATURE_ACTION_BAR;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -29,7 +24,6 @@ public class LandingActivity extends Activity implements View.OnClickListener{
 
     DatabaseHelper db;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +31,6 @@ public class LandingActivity extends Activity implements View.OnClickListener{
 
         // Load default values if needed for preferences
         PreferenceManager.setDefaultValues(getApplicationContext(), R.xml.preferences, false);
-
         updateLabels();
 
         // TODO - is there a danger in creating the database object inside if an Activity? Think about the life cycle.
@@ -53,19 +46,20 @@ public class LandingActivity extends Activity implements View.OnClickListener{
 
     private void updateLabels()
     {
+        String pref_default = getString(R.string.default_pref_value);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String strTabletID = sharedPreferences.getString("edittext_tablet_id_preference", "*");
-        String strEventName = sharedPreferences.getString("edittext_event_name_preference", "*");
+        tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
+        eventName = sharedPreferences.getString(getString(R.string.event_name_pref), pref_default);
 
         TextView lblTabletID = (TextView)findViewById(R.id.lbl_tablet_id);
         TextView lblEventName = (TextView)findViewById(R.id.lbl_event_name);
 
         if(lblTabletID != null) {
-            lblTabletID.setText("Tablet ID: " + strTabletID);
+            lblTabletID.setText(getString(R.string.lbl_tablet_id) + " " + tabletID);
         }
 
         if(lblEventName != null) {
-            lblEventName.setText("Event Name: " + strEventName);
+            lblEventName.setText(getString(R.string.lbl_event_name) + " " + eventName);
         }
     }
 
