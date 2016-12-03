@@ -21,6 +21,8 @@ module.exports = function(grunt) {
                 src: [
                      "staging/js/*.js",
                      "staging/js/*.js.map",
+                     "staging/bundles/*.js",
+                     "staging/bundles/*.js.map",
                      "staging/css/*.css",
                      "staging/css/*.css.map",
                      "staging/css/*.min.css"
@@ -53,7 +55,9 @@ module.exports = function(grunt) {
                     "assets/js/*.js",
                     "staging/js/*.js.map",
                     "assets/js/*.js.map",
+                    "staging/bundles/*.js",
                     "assets/bundles/*.js",
+                    "staging/bundles/*.js.map",
                     "assets/bundles/*.js.map",
                     "templates/**/*.html"
                 ]
@@ -82,7 +86,9 @@ module.exports = function(grunt) {
                 files: {
                     "templates/home/index.html": ["src/pug/head_dist.pug", "src/pug/home/index.pug"],
                     "templates/explore/index.html": ["src/pug/head_dist.pug", "src/pug/explore/index.pug"],
-                    "templates/teams/index.html": ["src/pug/head_dist.pug", "src/pug/teams/index.pug"]
+                    "templates/teams/index.html": ["src/pug/head_dist.pug", "src/pug/teams/index.pug"],
+                    "templates/strategy/index.html": ["src/pug/head_dist.pug", "src/pug/strategy/index.pug"]
+
 
                 }
             },
@@ -90,7 +96,9 @@ module.exports = function(grunt) {
                 files: {
                     "templates/home/index.html": ["src/pug/head.pug", "src/pug/home/index.pug"],
                     "templates/explore/index.html": ["src/pug/head.pug", "src/pug/explore/index.pug"],
-                    "templates/teams/index.html": ["src/pug/head.pug", "src/pug/teams/index.pug"]
+                    "templates/teams/index.html": ["src/pug/head.pug", "src/pug/teams/index.pug"],
+                    "templates/strategy/index.html": ["src/pug/head.pug", "src/pug/strategy/index.pug"]
+
 
                 }
             }

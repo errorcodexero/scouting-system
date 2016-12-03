@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^explore/', include('explore.urls')),
     url(r'^$', lambda r: HttpResponseRedirect('home/')),
     url(r'^home/', include('home.urls')),
-    url(r'^teams/', include('teams.urls'))
+    url(r'^teams/', include('teams.urls')),
+    url(r'^strategy/', include('strategy.urls'))
 ] + staticfiles_urlpatterns()

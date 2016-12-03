@@ -97,6 +97,6 @@ $(document).ready(function(){
     $('#fifthTeam').text("Fifth Place: " + opr_team_dict[sorted_opr[numTeams - 4]]);
 });
 
-ReactDOM.render(React.createElement(DropdownTest), document.getElementById('testing-div'));
+//ReactDOM.render(React.createElement(DropdownTest), document.getElementById('testing-div'));
 
 ReactDOM.render(<ReactHighcharts config = {chartData}></ReactHighcharts>, document.getElementById('chartDiv'), );
