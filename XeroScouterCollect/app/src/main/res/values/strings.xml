@@ -42,6 +42,7 @@
     <string name="string_tablet_id">Tablet ID:</string>
     <string name="string_set_tablet_id">Set Tablet ID</string>
     <string name="default_pref_value">*</string>
+    <string name="manage_db">Manage DB</string>
 
 
 </resources>

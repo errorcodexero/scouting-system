@@ -74,11 +74,15 @@ public class LandingActivity extends Activity implements View.OnClickListener{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.settings:
-                Intent intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.manage_db:
+                intent = new Intent(this, ManageDBActivity.class);
+                startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -54,6 +54,9 @@
         <activity
             android:name=".activities.SettingsActivity"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.ScoutingActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
