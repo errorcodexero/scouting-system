@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="tablet_id_pref">edittext_tablet_id_preference</string>
+    <string name="tablet_id_intent_key">tablet_id_key</string>
+    <string name="event_name_pref">edittext_event_name_preference</string>
+    <string name="event_name_intent_key">event_name_key</string>
+    <string name="show_finish_button_on_settings">show_finish_button_on_settings</string>
+</resources>
