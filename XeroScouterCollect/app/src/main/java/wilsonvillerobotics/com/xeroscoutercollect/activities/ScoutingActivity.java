@@ -39,8 +39,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected DatabaseHelper dbHelper;
 
     protected String generateTransaction() {
+        return null;
 
-        return "";
+
     }
 
 
