@@ -19,6 +19,10 @@
         </activity>
 
         <activity
+            android:name=".activities.ScoutingActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
             android:name=".activities.LandingActivity"
             android:configChanges="orientation|screenSize" />
         <activity

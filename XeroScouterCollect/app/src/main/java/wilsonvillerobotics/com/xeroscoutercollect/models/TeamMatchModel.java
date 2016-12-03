@@ -1,4 +1,4 @@
-package wilsonvillerobotics.com.xeroscoutercollect.utils;
+package wilsonvillerobotics.com.xeroscoutercollect.models;
 
 import junit.framework.Test;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Luke on 12/1/2016.
  */
 
-public class TestMatch {
+public class TeamMatchModel {
     private String matchNumber;
     private ArrayList<String> teamList;
     private String team1Number;
@@ -19,8 +19,8 @@ public class TestMatch {
     private String team6Number;
 
 
-    public TestMatch(String matchNumb, String team1, String team2, String team3,
-                     String team4, String team5, String team6){
+    public TeamMatchModel(String matchNumb, String team1, String team2, String team3,
+                          String team4, String team5, String team6){
         matchNumber = matchNumb;
         team1Number = team1;
         team2Number = team2;

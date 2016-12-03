@@ -42,11 +42,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             } else if(idEmpty) {
                 EditText txtName = (EditText)findViewById(R.id.txt_main_event_name);
                 if(txtName != null) {
-                    txtName.setVisibility(View.GONE);;
+                    txtName.setVisibility(View.GONE);
                 }
                 TextView lblName = (TextView)findViewById(R.id.lbl_main_event_name);
                 if(lblName != null) {
-                    lblName.setVisibility(View.GONE);;
+                    lblName.setVisibility(View.GONE);
                 }
                 Toast.makeText(this, "Tablet ID needs to be set!", Toast.LENGTH_LONG).show();
             } else if(nameEmpty) {
@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 TextView lblID = (TextView)findViewById(R.id.lbl_main_tablet_id);
                 if(lblID != null) {
-                    lblID.setVisibility(View.GONE);;
+                    lblID.setVisibility(View.GONE);
                 }
             }
         } else {

@@ -93,7 +93,7 @@ def main():
         j = json.loads(response.text)
 
         get_events(cursor, j)
-        #get_teams(cursor, j)
+        get_teams(cursor, j)
 
         cursor.close()
         db.commit()

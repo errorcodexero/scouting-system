@@ -2,6 +2,8 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,11 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.models.MatchModel;
+import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-import wilsonvillerobotics.com.xeroscoutercollect.utils.TestMatch;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -30,10 +36,10 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private final int numTeams = 6;
 
 
-    private ArrayList<TestMatch> matchObjList;
-    private TestMatch match1;
-    private TestMatch match2;
-    private TestMatch match3;
+    private ArrayList<TeamMatchModel> matchObjList;
+    private TeamMatchModel match1;
+    private TeamMatchModel match2;
+    private TeamMatchModel match3;
     private ArrayList<Integer> lbl_list;
     private TextView lbl_team_1;
     private TextView lbl_team_2;
@@ -41,6 +47,10 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private TextView lbl_team_4;
     private TextView lbl_team_5;
     private TextView lbl_team_6;
+
+    private String tabletId;
+    private String eventName;
+
     
     
 
@@ -52,17 +62,17 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_confirmation);
 
-        matchObjList = new ArrayList<TestMatch>();
+        matchObjList = new ArrayList<TeamMatchModel>();
         lbl_list = new ArrayList<Integer>();
 
+        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
 
+        populateMatchTable();
         generateTestMatches();
         populateLblList();
         addItemsOnSpinner();
         addListenerOnButton();
         //addItemsToTeamList();
-
-        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
 
         addItemsOnSpinner();
         addListenerOnButton();
@@ -85,11 +95,37 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         lbl_list.add(R.id.lbl_team_6);
 
     }
-    //Function to create test matches to use in testing mode
+
+    private void populateMatchTable() {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        //Cursor cursor = db.rawQuery(MatchModel.getAllMatchs(getIntent().getIntExtra("eventId", 0)));
+        Cursor cursor = db.rawQuery(MatchModel.getAllMatchs("0"), null);
+
+        try {
+            while(cursor.moveToNext()) {
+                matchObjList.add(new TeamMatchModel(
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_1))),
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_2))),
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_3))),
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_1))),
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_2))),
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3))))
+                );
+            }
+        } finally {
+            cursor.close();
+        }
+
+
+    }
+
     private void generateTestMatches() {
-        match1 = new TestMatch("1","1","7","13","19","25","31");
-        match2 = new TestMatch("2","2","8","14","20","26","32");
-        match3 = new TestMatch("3","3","9","15","21","27","33");
+        match1 = new TeamMatchModel("1","1","7","13","19","25","31");
+        match2 = new TeamMatchModel("2","2","8","14","20","26","32");
+        match3 = new TeamMatchModel("3","3","9","15","21","27","33");
         matchObjList.add(match1);
         matchObjList.add(match2);
         matchObjList.add(match3);
@@ -124,9 +160,13 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
 
         match_list = new ArrayList<String>();
-        match_list.add(match1.getMatchNumber());
+        /*match_list.add(match1.getMatchNumber());
         match_list.add(match2.getMatchNumber());
-        match_list.add(match3.getMatchNumber());
+        match_list.add(match3.getMatchNumber());*/
+
+        for (TeamMatchModel tempMatch : matchObjList) {
+            match_list.add(String.valueOf(Integer.valueOf(tempMatch.getMatchNumber()) + 1));
+        }
 
 
 

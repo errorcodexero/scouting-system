@@ -72,10 +72,4 @@ public class MatchContract implements SQLDataTypeDefines {
                         + ")";
     }
 
-    public static String getAllMatchs(String eventId) {
-
-        return ("SELECT * FROM `" + MatchEntry.TABLE_NAME + "` WHERE " + MatchEntry.COLUMN_NAME_EVENT_ID + " = \'" + eventId + "\';");
-
-    }
-
 }
