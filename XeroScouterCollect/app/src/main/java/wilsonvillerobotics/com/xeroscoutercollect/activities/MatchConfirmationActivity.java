@@ -10,15 +10,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
-import wilsonvillerobotics.com.xeroscoutercollect.utils.TestMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.utils.TestMatch;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -30,6 +27,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private List<String> match_list;
     private ArrayList<String> team_list;
     private int currentSelectedMatch;
+    private final int numTeams = 6;
 
 
     private ArrayList<TestMatch> matchObjList;
@@ -77,6 +75,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         
         
     }
+    //Adds textView label objects to array
     private void populateLblList(){
         lbl_list.add(R.id.lbl_team_1);
         lbl_list.add(R.id.lbl_team_2);
@@ -86,7 +85,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         lbl_list.add(R.id.lbl_team_6);
 
     }
-
+    //Function to create test matches to use in testing mode
     private void generateTestMatches() {
         match1 = new TestMatch("1","1","7","13","19","25","31");
         match2 = new TestMatch("2","2","8","14","20","26","32");
@@ -119,12 +118,12 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
     }*/
 
-    //add matches to spinner
+    //Add matches to spinner
     public void addItemsOnSpinner() {
 
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
-        match_list = new ArrayList<String>();
 
+        match_list = new ArrayList<String>();
         match_list.add(match1.getMatchNumber());
         match_list.add(match2.getMatchNumber());
         match_list.add(match3.getMatchNumber());
@@ -144,7 +143,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         btn_next = (Button) findViewById(R.id.btn_next);
     }
 
-    private final int numTeams = 6;
+
     //Updates the team field according to the selected match
     private void updateTeams() {
         String tempText = spinner_match_list.getSelectedItem().toString();
