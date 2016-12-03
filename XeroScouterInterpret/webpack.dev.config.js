@@ -9,7 +9,9 @@ module.exports = {
     entry: {
         home: './src/jsx/home/home.jsx',
         explore: './src/jsx/explore/explore.jsx',
-        teams: './src/jsx/teams/teams.jsx'
+        teams: './src/jsx/teams/teams.jsx',
+        strategy: './src/jsx/strategy/strategy.jsx'
+        
     },
 
     output: {
