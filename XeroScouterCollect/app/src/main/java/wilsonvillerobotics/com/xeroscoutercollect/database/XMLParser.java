@@ -109,47 +109,74 @@ public class XMLParser{
         protected String key;
         protected E value;
 
-        public TableColumn (String k, E v) {
+        public TableColumn (String k) {
             key = k;
+        }
+        public void setValue(E v){
             value = v;
         }
     }
 
     public class TableStringColumn extends TableColumn<String> {
-        public TableStringColumn(String k, String v){
-            super(k, v);
+        public TableStringColumn(String k){
+            super(k);
         }
     }
 
     public class TableIntegerColumn extends TableColumn<Integer> {
-        public TableIntegerColumn(String k, Integer v){
-            super(k, v);
+        public TableIntegerColumn(String k){
+            super(k);
         }
     }
 
-/*
+
     public ArrayList<TableColumn> makeMatchList(){
+        ArrayList<TableColumn> matchList = new ArrayList<TableColumn>();
+        matchList.add(new TableIntegerColumn("_id"));
+        matchList.add(new TableIntegerColumn("event_id"));
+        matchList.add(new TableIntegerColumn("tba_match_key"));
+        matchList.add(new TableIntegerColumn("comp_level"));
+        matchList.add(new TableIntegerColumn("set_number"));
+        matchList.add(new TableIntegerColumn("match_number"));
+        matchList.add(new TableIntegerColumn("status"));
+        matchList.add(new TableIntegerColumn("red_1_team_id"));
+        matchList.add(new TableIntegerColumn("red_2_team_id"));
+        matchList.add(new TableIntegerColumn("red_3_team_id"));
+        matchList.add(new TableIntegerColumn("red_auto_score"));
+        matchList.add(new TableIntegerColumn("red_teleop_score"));
+        matchList.add(new TableIntegerColumn("red_total_score"));
+        matchList.add(new TableIntegerColumn("red_qp"));
+        matchList.add(new TableIntegerColumn("red_foul_points"));
+        matchList.add(new TableIntegerColumn("blue_1_team_id"));
+        matchList.add(new TableIntegerColumn("blue_2_team_id"));
+        matchList.add(new TableIntegerColumn("blue_3_team_id"));
+        matchList.add(new TableIntegerColumn("blue_auto_score"));
+        matchList.add(new TableIntegerColumn("blue_teleop_score"));
+        matchList.add(new TableIntegerColumn("blue_total_score"));
+        matchList.add(new TableIntegerColumn("blue_qp"));
+        matchList.add(new TableIntegerColumn("blue_foul_points"));
+        matchList.add(new TableIntegerColumn("winner"));
+        matchList.add(new TableIntegerColumn("drive_team_comments"));
 
         return matchList;
     }
     public ArrayList<TableColumn> makeEventList(){
-
+        ArrayList<TableColumn> eventList = new ArrayList<TableColumn>();
         return eventList;
     }
     public ArrayList<TableColumn> makeActionTypeList(){
-
-        return ActionTypeList;
+        ArrayList<TableColumn> actionTypeList = new ArrayList<TableColumn>();
+        return actionTypeList;
     }
     public ArrayList<TableColumn> makeTeamMatchList(){
-
-        return TeamMatchList;
+        ArrayList<TableColumn> teamMatchList = new ArrayList<TableColumn>();
+        return teamMatchList;
     }
     public ArrayList<TableColumn> makeTeamList(){
-
+        ArrayList<TableColumn> teamList = new ArrayList<TableColumn>();
         return teamList;
     }
 
-*/
 }
 
 /*
