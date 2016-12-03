@@ -1,6 +1,5 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
-import android.graphics.Matrix;
 import android.provider.BaseColumns;
 
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
@@ -71,6 +70,12 @@ public class MatchContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_MATCH_WINNER + VC45 + COMMA_SEP
                         + COLUMN_NAME_DRIVE_TEAM_COMMENTS + VC2000
                         + ")";
+    }
+
+    public static String getAllMatchs(String eventId) {
+
+        return ("SELECT * FROM `" + MatchEntry.TABLE_NAME + "` WHERE " + MatchEntry.COLUMN_NAME_EVENT_ID + " = \'" + eventId + "\';");
+
     }
 
 }

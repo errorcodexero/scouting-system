@@ -18,6 +18,7 @@ import java.util.List;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.utils.TestMatch;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -29,6 +30,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private List<String> match_list;
     private ArrayList<String> team_list;
     private int currentSelectedMatch;
+
 
     private ArrayList<TestMatch> matchObjList;
     private TestMatch match1;
@@ -44,6 +46,9 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     
     
 
+    private DatabaseHelper dbHelper;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,13 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         addItemsOnSpinner();
         addListenerOnButton();
         //addItemsToTeamList();
+
+        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
+
+        addItemsOnSpinner();
+        addListenerOnButton();
+        //addItemsToTeamList();
+
 
 
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
@@ -112,9 +124,11 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
         match_list = new ArrayList<String>();
+
         match_list.add(match1.getMatchNumber());
         match_list.add(match2.getMatchNumber());
         match_list.add(match3.getMatchNumber());
+
 
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
