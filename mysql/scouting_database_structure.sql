@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `action_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `action_type` (
-  `action_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT 'No Name',
   `description` varchar(2000) DEFAULT 'No description',
   `match_phase` varchar(45) DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `action_type` (
   `foul_points` int(11) DEFAULT '0',
   `coop_flag` char(1) DEFAULT 'N',
   `category` varchar(255) DEFAULT 'Uncategorized',
-  PRIMARY KEY (`action_type_id`)
+  PRIMARY KEY (`_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
   `tba_event_key` varchar(45) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `short_name` varchar(255) DEFAULT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE `event` (
   `week` int(11) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
   `tba_event_code` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`event_id`),
+  PRIMARY KEY (`_id`),
   KEY `idx_tba_event_key` (`tba_event_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `match`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `match` (
-  `match_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
   `event_id` int(11) NOT NULL,
   `tba_match_key` varchar(255) DEFAULT NULL,
   `comp_level` varchar(45) DEFAULT NULL COMMENT 'This is a code that indicates whether this is a qualifier, quarter final, semi final, or final match.',
@@ -95,9 +95,9 @@ CREATE TABLE `match` (
   `blue_foul_points` int(11) DEFAULT NULL,
   `winner` varchar(45) DEFAULT NULL,
   `drive_team_comments` varchar(2000) DEFAULT NULL,
-  PRIMARY KEY (`match_id`),
+  PRIMARY KEY (`_id`),
   KEY `fk_match_event_idx` (`event_id`),
-  CONSTRAINT `fk_match_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_match_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS `team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team` (
-  `team_id` int(11) NOT NULL COMMENT 'The FRC team number. Example: 1425, 360, 4488',
+  `_id` int(11) NOT NULL COMMENT 'The FRC team number. Example: 1425, 360, 4488',
   `tba_team_key` varchar(45) DEFAULT NULL COMMENT 'This is the key used by The Blue Alliance website. This key is used when retreiving team data from the TBA API.',
   `long_name` varchar(255) DEFAULT NULL COMMENT 'Team name. Example: Error Code Xero, Flaming Chickens',
   `name` varchar(255) DEFAULT NULL,
@@ -127,7 +127,7 @@ CREATE TABLE `team` (
   `robot_software_language` varchar(45) DEFAULT NULL,
   `robot_description` varchar(2000) DEFAULT NULL,
   `pit_scout_comments` varchar(2000) DEFAULT NULL,
-  PRIMARY KEY (`team_id`),
+  PRIMARY KEY (`_id`),
   KEY `idx_tba_team_key` (`tba_team_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table contains FRC team data for a competition year. It includes information about their robot.';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -140,7 +140,7 @@ DROP TABLE IF EXISTS `team_event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team_event` (
-  `team_event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
   `team_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
   `opr` float DEFAULT NULL,
@@ -156,12 +156,12 @@ CREATE TABLE `team_event` (
   `win_count` int(11) DEFAULT NULL,
   `loss_count` int(11) DEFAULT NULL,
   `tie_count` int(11) DEFAULT NULL,
-  PRIMARY KEY (`team_event_id`),
-  UNIQUE KEY `team_event_id_UNIQUE` (`team_event_id`),
+  PRIMARY KEY (`_id`),
+  UNIQUE KEY `team_event_id_UNIQUE` (`_id`),
   KEY `team_event_team_id_idx` (`team_id`),
   KEY `team_event_event_id_idx` (`event_id`),
-  CONSTRAINT `team_event_event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `team_event_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `team_event_event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `team_event_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -173,12 +173,12 @@ DROP TABLE IF EXISTS `team_match`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team_match` (
-  `team_match_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
   `team_id` int(11) NOT NULL,
   `match_id` int(11) NOT NULL,
   `alliance` varchar(45) DEFAULT NULL,
   `position` int(11) DEFAULT NULL,
-  PRIMARY KEY (`team_match_id`)
+  PRIMARY KEY (`_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -190,18 +190,18 @@ DROP TABLE IF EXISTS `team_match_action`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team_match_action` (
-  `team_match_action_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL AUTO_INCREMENT,
   `team_match_id` int(11) NOT NULL,
   `action_type_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '1',
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `object_count` int(11) DEFAULT NULL,
-  PRIMARY KEY (`team_match_action_id`),
+  PRIMARY KEY (`_id`),
   KEY `fk_tma_team_match_idx` (`team_match_id`),
   KEY `fk_tma_action_type_idx` (`action_type_id`),
-  CONSTRAINT `fk_tma_action_type` FOREIGN KEY (`action_type_id`) REFERENCES `action_type` (`action_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tma_team_match` FOREIGN KEY (`team_match_id`) REFERENCES `team_match` (`team_match_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tma_action_type` FOREIGN KEY (`action_type_id`) REFERENCES `action_type` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tma_team_match` FOREIGN KEY (`team_match_id`) REFERENCES `team_match` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
