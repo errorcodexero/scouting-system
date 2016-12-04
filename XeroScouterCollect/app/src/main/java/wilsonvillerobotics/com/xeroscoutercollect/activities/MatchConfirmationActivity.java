@@ -165,7 +165,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         match_list.add(match3.getMatchNumber());*/
 
         for (TeamMatchModel tempMatch : matchObjList) {
-            match_list.add(String.valueOf(Integer.valueOf(tempMatch.getMatchNumber()) + 1));
+            match_list.add(String.valueOf(Integer.valueOf(tempMatch.getMatchNumber())));
         }
 
 

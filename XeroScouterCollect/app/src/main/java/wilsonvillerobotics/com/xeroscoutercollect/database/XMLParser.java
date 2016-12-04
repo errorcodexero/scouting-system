@@ -1,21 +1,15 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
 import android.content.Context;
-import android.content.res.XmlResourceParser;
+import android.util.Log;
 
-import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import android.os.Bundle;
-import android.util.Log;
-
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 import static android.content.ContentValues.TAG;
 
@@ -50,7 +44,7 @@ public class XMLParser{
 
 
     public void parseXML(){
-
+        parseMatchXml();
 
     }
     private String readText(XmlPullParser parser) throws IOException,
@@ -162,18 +156,61 @@ public class XMLParser{
     }
     public ArrayList<TableColumn> makeEventList(){
         ArrayList<TableColumn> eventList = new ArrayList<TableColumn>();
+        eventList.add(new TableIntegerColumn("_id"));
+        eventList.add(new TableIntegerColumn("name"));
+        eventList.add(new TableIntegerColumn("tba_match_key"));
+        eventList.add(new TableIntegerColumn("short_name"));
+        eventList.add(new TableIntegerColumn("event_district"));
+        eventList.add(new TableIntegerColumn("year"));
+        eventList.add(new TableIntegerColumn("week"));
+        eventList.add(new TableIntegerColumn("location"));
+        eventList.add(new TableIntegerColumn("tba_event_code"));
+
         return eventList;
     }
     public ArrayList<TableColumn> makeActionTypeList(){
         ArrayList<TableColumn> actionTypeList = new ArrayList<TableColumn>();
-        return actionTypeList;
+        actionTypeList.add(new TableIntegerColumn("_id"));
+        actionTypeList.add(new TableIntegerColumn("name"));
+        actionTypeList.add(new TableIntegerColumn("description"));
+        actionTypeList.add(new TableIntegerColumn("match_phase"));
+        actionTypeList.add(new TableIntegerColumn("points"));
+        actionTypeList.add(new TableIntegerColumn("opponent_points"));
+        actionTypeList.add(new TableIntegerColumn("qual_points"));
+        actionTypeList.add(new TableIntegerColumn("foul_points"));
+        actionTypeList.add(new TableIntegerColumn("coop_flag"));
+        actionTypeList.add(new TableIntegerColumn("category"));
+        return  actionTypeList;
     }
     public ArrayList<TableColumn> makeTeamMatchList(){
         ArrayList<TableColumn> teamMatchList = new ArrayList<TableColumn>();
+        teamMatchList.add(new TableIntegerColumn("_id"));
+        teamMatchList.add(new TableIntegerColumn("team_id"));
+        teamMatchList.add(new TableIntegerColumn("match_id"));
+        teamMatchList.add(new TableIntegerColumn("alliance"));
+        teamMatchList.add(new TableIntegerColumn("position"));
         return teamMatchList;
     }
     public ArrayList<TableColumn> makeTeamList(){
         ArrayList<TableColumn> teamList = new ArrayList<TableColumn>();
+        teamList.add(new TableIntegerColumn("_id"));
+        teamList.add(new TableIntegerColumn("tba_team_key"));
+        teamList.add(new TableIntegerColumn("long_name"));
+        teamList.add(new TableIntegerColumn("name"));
+        teamList.add(new TableIntegerColumn("logo_file_location"));
+        teamList.add(new TableIntegerColumn("city"));
+        teamList.add(new TableIntegerColumn("state_code"));
+        teamList.add(new TableIntegerColumn("country"));
+        teamList.add(new TableIntegerColumn("motto"));
+        teamList.add(new TableIntegerColumn("rookie_year"));
+        teamList.add(new TableIntegerColumn("robot_name"));
+        teamList.add(new TableIntegerColumn("robot_picture_file_location"));
+        teamList.add(new TableIntegerColumn("robot_drive_type"));
+        teamList.add(new TableIntegerColumn("robot_wheel_count"));
+        teamList.add(new TableIntegerColumn("robot_drive_motor_count"));
+        teamList.add(new TableIntegerColumn("robot_software_language"));
+        teamList.add(new TableIntegerColumn("robot_description"));
+        teamList.add(new TableIntegerColumn("pit_scout_comments"));
         return teamList;
     }
 
