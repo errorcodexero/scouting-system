@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using XeroScouterDBManage;
+using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
 {
@@ -49,14 +45,14 @@ namespace XeroScouterDBManage_Server
                     try
                     {
                         cmd = connection.CreateCommand();
-                        cmd.CommandText = "SELECT competition_name FROM competition_data WHERE _id=" + this.competitionID;
+                        cmd.CommandText = EventTable.SELECT_NAME_FROM_MATCHING_ID + this.competitionID;
                         MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                         DataSet ds = new DataSet();
                         adap.Fill(ds);
-                        compLabeltext = ds.Tables[0].Rows[0]["competition_name"].ToString();
+                        compLabeltext = ds.Tables[0].Rows[0][EventTable.COL_NAME].ToString();
                         //cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                        //cmbCompetitionName.ValueMember = "_id";
-                        //cmbCompetitionName.DisplayMember = "competition_name";
+                        //cmbCompetitionName.ValueMember = "event_id";
+                        //cmbCompetitionName.DisplayMember = "name";
                     }
                     catch (MySql.Data.MySqlClient.MySqlException)
                     {
@@ -133,6 +129,7 @@ namespace XeroScouterDBManage_Server
 
             if (connectionAvailable)
             {
+                /*
                 try
                 {
                     cmd = connection.CreateCommand();
@@ -175,6 +172,7 @@ namespace XeroScouterDBManage_Server
                         connection.Close();
                     }
                 }
+                */
             }
         }
 

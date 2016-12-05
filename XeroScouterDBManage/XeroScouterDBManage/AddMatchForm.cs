@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using XeroScouterDBManage;
+using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
 {
@@ -39,14 +36,14 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = "SELECT _id, competition_name, competition_location FROM competition_data";
+                    cmd.CommandText = EventTable.SELECT_ALL_ID_NAME_LOC; //"SELECT event_id, name, location FROM event";
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
                     cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                    cmbCompetitionName.ValueMember = "_id";
+                    cmbCompetitionName.ValueMember = EventTable.COL_ID; // "event_id";
                     cmbCompetitionName.SelectedValue = this.compID;
-                    cmbCompetitionName.DisplayMember = "competition_name";
+                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME; // "name";
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
