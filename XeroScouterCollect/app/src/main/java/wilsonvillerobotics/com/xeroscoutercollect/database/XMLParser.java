@@ -10,6 +10,12 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.MatchEntry;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;
 
@@ -44,10 +50,15 @@ public class XMLParser{
 
 
     public void parseXML(){
-        parseMatchXml();
-
+        parseTeamMatchXml();
     }
-    private String readText(XmlPullParser parser) throws IOException,
+
+    public void parseXML(String filePath) {
+        xmlFilePath = filePath;
+        parseXML();
+    }
+
+    private String readString(XmlPullParser parser) throws IOException,
             XmlPullParserException {
         String result = "";
         if (parser.next() == XmlPullParser.TEXT) {
@@ -56,46 +67,63 @@ public class XMLParser{
         }
         return result;
     }
-    public void parseXML(String filePath) {
-        xmlFilePath = filePath;
-        parseXML();
+
+    private Integer readInteger(XmlPullParser parser) throws IOException,
+            XmlPullParserException {
+        Integer result = 0;
+        if (parser.next() == XmlPullParser.TEXT) {
+            result = Integer.parseInt(parser.getText());
+            parser.nextTag();
+        }
+        return result;
     }
 
-    public void parseMatchXml(){
+    // TODO - Look at https://developer.android.com/training/basics/network-ops/xml.html#skip for better examples of XML Parsing. When we pass a parser to a function it keeps its current state, including 'position'
+    public void parseTeamMatchXml(){
         try {
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
             xmlFactoryObject = XmlPullParserFactory.newInstance();
             myParser = xmlFactoryObject.newPullParser();
             myParser.setInput(fileStream, null);
 
-            //int event = myParser.getEventType();
+            HashMap<String, TableColumn> map = makeTeamMatchMap();
+
             while (myParser.next() != XmlPullParser.END_TAG) {
                 if (myParser.getEventType() != XmlPullParser.START_TAG) {
                     continue;
                 }
-                String name = myParser.getName();
-                if (name.equals("Row")) {
+                String tagName = myParser.getName();
+                if (tagName.equals("ROW")) {
                     String id = null, date = null, pob = null;
                     while (myParser.next() != XmlPullParser.END_TAG) {
                         if (myParser.getEventType() != XmlPullParser.START_TAG) {
                             continue;
                         }
-                        name = myParser.getName();
-                        if (name.equals("id")) {
-                            id = readText(myParser);
-                        } else if (name.equals("date")) {
-                            date = readText(myParser);
-                        } else if (name.equals("placeOfBirth")) {
-                            pob = readText(myParser);
+                        tagName = myParser.getName();
+
+                        // Iterate through the map, setting the value of each element based on the tag name
+                        if(map.containsKey(tagName)) {
+                            TableColumn tc = map.get(tagName);
+                            if(tc.getClass() == TableIntegerColumn.class) {
+                                tc.setValue(readInteger(myParser));
+                                Log.d(TAG, "parseXML: " + String.valueOf(tc.getValue()));
+                            } else if(tc.getClass() == TableStringColumn.class) {
+                                tc.setValue(readString(myParser));
+                                Log.d(TAG, "parseXML: " + tc.getValue());
+                            }
+                        } else {
+                            // We didn't find this tag, log it
+                            Log.e(TAG, "Invalid tag: " + tagName);
                         }
                     }
                     //myDbHelper.insertData(id,date,pob);
-                    Log.d(TAG, "parseXML: " + id + date + pob);
                 }
             }
         }
         catch(Exception e) {e.printStackTrace();}
     }
+
+
 
 //key value type
 
@@ -109,6 +137,7 @@ public class XMLParser{
         public void setValue(E v){
             value = v;
         }
+        public E getValue() { return value; }
     }
 
     public class TableStringColumn extends TableColumn<String> {
@@ -124,6 +153,8 @@ public class XMLParser{
     }
 
 
+    // Match table
+    // 25 fields
     public ArrayList<TableColumn> makeMatchList(){
         ArrayList<TableColumn> matchList = new ArrayList<TableColumn>();
         matchList.add(new TableIntegerColumn("_id"));
@@ -154,6 +185,9 @@ public class XMLParser{
 
         return matchList;
     }
+
+    // Event table
+    // 9 fields
     public ArrayList<TableColumn> makeEventList(){
         ArrayList<TableColumn> eventList = new ArrayList<TableColumn>();
         eventList.add(new TableIntegerColumn("_id"));
@@ -168,6 +202,9 @@ public class XMLParser{
 
         return eventList;
     }
+
+    // Action table
+    // 10 fields
     public ArrayList<TableColumn> makeActionTypeList(){
         ArrayList<TableColumn> actionTypeList = new ArrayList<TableColumn>();
         actionTypeList.add(new TableIntegerColumn("_id"));
@@ -182,15 +219,21 @@ public class XMLParser{
         actionTypeList.add(new TableStringColumn("category"));
         return  actionTypeList;
     }
-    public ArrayList<TableColumn> makeTeamMatchList(){
-        ArrayList<TableColumn> teamMatchList = new ArrayList<TableColumn>();
-        teamMatchList.add(new TableIntegerColumn("_id"));
-        teamMatchList.add(new TableIntegerColumn("team_id"));
-        teamMatchList.add(new TableIntegerColumn("match_id"));
-        teamMatchList.add(new TableStringColumn("alliance"));
-        teamMatchList.add(new TableIntegerColumn("position"));
-        return teamMatchList;
+
+    // Team-Match table
+    // 5 fields
+    public HashMap<String, TableColumn> makeTeamMatchMap(){
+        HashMap<String, TableColumn> teamMatchMap = new HashMap<String, TableColumn>(5);
+        teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_ID, new TableIntegerColumn(TeamMatchEntry.COLUMN_NAME_ID));
+        teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_TEAM_ID, new TableIntegerColumn(TeamMatchEntry.COLUMN_NAME_TEAM_ID));
+        teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_MATCH_ID, new TableIntegerColumn(TeamMatchEntry.COLUMN_NAME_MATCH_ID));
+        teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_ALLIANCE, new TableStringColumn(TeamMatchEntry.COLUMN_NAME_ALLIANCE));
+        teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_POSITION, new TableIntegerColumn(TeamMatchEntry.COLUMN_NAME_POSITION));
+        return teamMatchMap;
     }
+
+    // Team table
+    // 18 fields
     public ArrayList<TableColumn> makeTeamList(){
         ArrayList<TableColumn> teamList = new ArrayList<TableColumn>();
         teamList.add(new TableIntegerColumn("_id"));
@@ -213,7 +256,6 @@ public class XMLParser{
         teamList.add(new TableStringColumn("pit_scout_comments"));
         return teamList;
     }
-
 }
 
 /*
