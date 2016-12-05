@@ -13,7 +13,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
     private XMLParser parser;
-    private String fileName = "xmlTestData.xml";
+    private String fileName = "match.xml";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         String string = "<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>1</_id>\n" +
+                "\t\t<_id>2</_id>\n" +
                 "\t\t<event_id>1</event_id>\n" +
                 "\t\t<tba_match_key>TBA1</tba_match_key>\n" +
                 "\t\t<comp_level>Q</comp_level>\n" +

@@ -1,5 +1,6 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.util.Log;
 
@@ -82,11 +83,26 @@ public class XMLParser{
     public void parseTeamMatchXml(){
         try {
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
+
+            //Creates a map, then depending on filename, creates the right map
+            HashMap<String, TableColumn> map = null;
+            if(xmlFilePath.contains("match.xml")){
+                map = mapMaker(makeMatchList());
+            }else if(xmlFilePath.contains("event.xml")){
+                map = mapMaker(makeEventList());
+            }else if(xmlFilePath.contains("action.xml")){
+                map = mapMaker(makeActionTypeList());
+            }else if(xmlFilePath.contains("teamMatch.xml")){
+                map = makeTeamMatchMap();
+            }else if(xmlFilePath.contains("team.xml")){
+                map = mapMaker(makeTeamList());
+            }
+
             xmlFactoryObject = XmlPullParserFactory.newInstance();
             myParser = xmlFactoryObject.newPullParser();
             myParser.setInput(fileStream, null);
 
-            HashMap<String, TableColumn> map = makeTeamMatchMap();
+
 
             while (myParser.next() != XmlPullParser.END_TAG) {
                 if (myParser.getEventType() != XmlPullParser.START_TAG) {
@@ -94,22 +110,21 @@ public class XMLParser{
                 }
                 String tagName = myParser.getName();
                 if (tagName.equals("ROW")) {
-                    String id = null, date = null, pob = null;
+                    //String id = null, date = null, pob = null;
                     while (myParser.next() != XmlPullParser.END_TAG) {
                         if (myParser.getEventType() != XmlPullParser.START_TAG) {
                             continue;
                         }
                         tagName = myParser.getName();
-
                         // Iterate through the map, setting the value of each element based on the tag name
-                        if(map.containsKey(tagName)) {
+                        if (map.containsKey(tagName)) {
                             TableColumn tc = map.get(tagName);
-                            if(tc.getClass() == TableIntegerColumn.class) {
+                            if (tc.getClass() == TableIntegerColumn.class) {
                                 tc.setValue(readInteger(myParser));
-                                Log.d(TAG, "parseXML: " + String.valueOf(tc.getValue()));
-                            } else if(tc.getClass() == TableStringColumn.class) {
+                                Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tc.getValue()));
+                            } else if (tc.getClass() == TableStringColumn.class) {
                                 tc.setValue(readString(myParser));
-                                Log.d(TAG, "parseXML: " + tc.getValue());
+                                Log.d(TAG, "parseXML: " + tagName + ": " + tc.getValue());
                             }
                         } else {
                             // We didn't find this tag, log it
@@ -138,6 +153,7 @@ public class XMLParser{
             value = v;
         }
         public E getValue() { return value; }
+        public E getKey() { return (E) key; }
     }
 
     public class TableStringColumn extends TableColumn<String> {
@@ -150,6 +166,15 @@ public class XMLParser{
         public TableIntegerColumn(String k){
             super(k);
         }
+    }
+
+    //Takes an Arraylist, and creates a hashmap for it
+    public HashMap<String, TableColumn> mapMaker(ArrayList<TableColumn> table){
+        HashMap<String, TableColumn> map = new HashMap<String,TableColumn>(table.size());
+        for(TableColumn id:table){
+            map.put((String) id.getKey(),id);
+        }
+        return map;
     }
 
 
@@ -297,3 +322,5 @@ public class XMLParser{
             }
 }
  */
+
+
