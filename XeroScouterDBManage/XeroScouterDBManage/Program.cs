@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using System.Data.Odbc;
-using System.Configuration;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
-using System.Data;
 
 
 namespace XeroScouterDBManage_Server
@@ -22,14 +15,14 @@ namespace XeroScouterDBManage_Server
             //"port=3306;" +
             //"uid=ftsscout;" +
             //"pwd=ftsscouter;" +
-            //"database=XeroScouterDBManage;";
+            //"database=scouting;";
 
         public static String conTestString = Properties.Settings.Default.FTS_TEST_ConnectionString;
             //"server=localhost;" +
             //"port=3306;" +
             //"uid=ftsscout;" +
             //"pwd=ftsscouter;" +
-            //"database=XeroScouterDBManage_test;";
+            //"database=scouting_test;";
 
         /// <summary>
         /// The main entry point for the application.
