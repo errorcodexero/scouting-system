@@ -1,7 +1,12 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
+import android.content.Context;
 import android.provider.BaseColumns;
 
+import java.util.HashMap;
+
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 /**
@@ -10,7 +15,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class EventContract implements SQLDataTypeDefines {
 
-    private EventContract(){}
+    public EventContract(){}
 
     public static class EventEntry implements BaseColumns {
         public static final String TABLE_NAME = "event";
@@ -37,5 +42,10 @@ public class EventContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_EVENT_LOCATION + VC255 + COMMA_SEP
                         + COLUMN_NAME_TBA_EVENT_CODE + VC45
                         + ")";
+        }
+    public void queryInsertEventData(HashMap<String, XMLParser.TableColumn> eventMap, Context c){
+        DatabaseHelper db = DatabaseHelper.getInstance(c);
+    }
 
-    }}
+
+    }

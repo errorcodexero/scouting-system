@@ -13,12 +13,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.MatchEntry;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.queryInsertActionsData;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.queryInsertMatchData;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract.queryInsertTeamData;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.queryInsertTeamMatchData;
 
 
 /**
@@ -50,14 +55,14 @@ public class XMLParser{
 
 
 
-    public void parseXML(){
-        parseTeamMatchXml();
+
+    public HashMap<String, TableColumn> parseXML(String filePath) {
+        xmlFilePath = filePath;
+        map = parseXml();
+        return map;
     }
 
-    public void parseXML(String filePath) {
-        xmlFilePath = filePath;
-        parseXML();
-    }
+
 
     private String readString(XmlPullParser parser) throws IOException,
             XmlPullParserException {
@@ -78,14 +83,14 @@ public class XMLParser{
         }
         return result;
     }
-
+    private HashMap<String, TableColumn> map = null;
     // TODO - Look at https://developer.android.com/training/basics/network-ops/xml.html#skip for better examples of XML Parsing. When we pass a parser to a function it keeps its current state, including 'position'
-    public void parseTeamMatchXml(){
+    public HashMap<String, TableColumn> parseXml(){
         try {
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
 
             //Creates a map, then depending on filename, creates the right map
-            HashMap<String, TableColumn> map = null;
+
             if(xmlFilePath.contains("match.xml")){
                 map = mapMaker(makeMatchList());
             }else if(xmlFilePath.contains("event.xml")){
@@ -136,6 +141,7 @@ public class XMLParser{
             }
         }
         catch(Exception e) {e.printStackTrace();}
+        return map;
     }
 
 
@@ -164,6 +170,11 @@ public class XMLParser{
 
     public class TableIntegerColumn extends TableColumn<Integer> {
         public TableIntegerColumn(String k){
+            super(k);
+        }
+    }
+    public class TableTableNameColumn extends TableColumn<ManageDBActivity.TABLE_NAME> {
+        public TableTableNameColumn(String k){
             super(k);
         }
     }

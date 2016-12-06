@@ -2,6 +2,9 @@ package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
 import android.provider.BaseColumns;
 
+import java.util.HashMap;
+
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 /**
@@ -37,6 +40,9 @@ public class ActionsContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ACTION_COOP_FLAG + CHAR1 + COMMA_SEP
                         + COLUMN_NAME_ACTION_CATEGORY + VC255
                         + ")";
+    }
+    public static void queryInsertActionsData(HashMap<String, XMLParser.TableColumn> actionMap) {
 
     }
+
 }

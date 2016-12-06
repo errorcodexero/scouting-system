@@ -7,19 +7,42 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
+
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.queryInsertActionsData;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.queryInsertMatchData;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract.queryInsertTeamData;
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.queryInsertTeamMatchData;
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
     private XMLParser parser;
     private String fileName = "match.xml";
+    public enum TABLE_NAME{
+        EVENT,
+        MATCH,
+        TEAM,
+        ACTIONTYPE,
+        TEAMMATCH,
+        UNKNOWN
+    };
+    DatabaseHelper db;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_db);
         parser = new XMLParser(getApplicationContext());
         File file = new File(this.getFilesDir(), fileName);
+        db = DatabaseHelper.getInstance(getApplicationContext());
+
+
         String string = "<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
@@ -85,11 +108,52 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     }
 
 
+    public void importDataFromXML(){
+        XMLParser myParser = new XMLParser("",this);
+        ArrayList<String> xmlFilePaths = new ArrayList<String>();
+        xmlFilePaths.add(getFilesDir() + "/" + "match.xml");
+        xmlFilePaths.add(getFilesDir() + "/" + "action_type.xml");
+        xmlFilePaths.add(getFilesDir() + "/" + "event.xml");
+        xmlFilePaths.add(getFilesDir() + "/" + "team_match.xml");
+        xmlFilePaths.add(getFilesDir() + "/" + "team.xml");
+
+        for(String path:xmlFilePaths){
+            HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);
+            TABLE_NAME tName = ((XMLParser.TableTableNameColumn)(map.get("table_name"))).getValue();
+            switch(tName){
+                case EVENT:
+                    EventContract ec = new EventContract();
+                    ec.queryInsertEventData(map,this);
+                    break;
+                case TEAM:
+                    queryInsertTeamData(map);
+                    break;
+                case TEAMMATCH:
+                    queryInsertTeamMatchData(map);
+                    break;
+                case ACTIONTYPE:
+                    queryInsertActionsData(map);
+                    break;
+                case MATCH:
+                    queryInsertMatchData(map);
+                    break;
+
+            }
+        }
+
+
+
+
+
+    }
+
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_import)) {
+            importDataFromXML();
             parser.parseXML(getFilesDir() + "/" + fileName);
             Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_LONG).show();
+
         }
     }
 }
