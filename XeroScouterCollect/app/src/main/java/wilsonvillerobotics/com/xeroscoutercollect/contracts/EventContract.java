@@ -1,11 +1,13 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
@@ -44,8 +46,22 @@ public class EventContract implements SQLDataTypeDefines {
                         + ")";
         }
     public void queryInsertEventData(HashMap<String, XMLParser.TableColumn> eventMap, Context c){
-        DatabaseHelper db = DatabaseHelper.getInstance(c);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String statement = "INSERT INTO " + "event" + " (";
+
+        for(Object key : eventMap.keySet()){
+            statement += key + ", ";
+        }
+        statement = statement.substring(0,statement.length()-2);
+        statement += ") Values (";
+        for(Object value : eventMap.values()){
+            statement += "'" + value.toString() + "', ";
+        }
+        statement = statement.substring(0,statement.length()-2);
+        statement += ")";
+        db.execSQL(statement);
     }
 
 
-    }
+}

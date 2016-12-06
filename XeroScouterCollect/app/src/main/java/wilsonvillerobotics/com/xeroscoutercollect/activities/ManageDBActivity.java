@@ -22,7 +22,7 @@ import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchCont
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
     private XMLParser parser;
-    private String fileName = "match.xml";
+    private String fileName = "event.xml";
     public enum TABLE_NAME{
         EVENT,
         MATCH,
@@ -43,34 +43,19 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         db = DatabaseHelper.getInstance(getApplicationContext());
 
 
-        String string = "<DATA>\n" +
+        String string ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>2</_id>\n" +
-                "\t\t<event_id>1</event_id>\n" +
-                "\t\t<tba_match_key>TBA1</tba_match_key>\n" +
-                "\t\t<comp_level>Q</comp_level>\n" +
-                "\t\t<set_number>Set 1</set_number>\n" +
-                "\t\t<match_number>Q1</match_number>\n" +
-                "\t\t<status>Scheduled</status>\n" +
-                "\t\t<red_1_team_id>14251</red_1_team_id>\n" +
-                "\t\t<red_2_team_id>14252</red_2_team_id>\n" +
-                "\t\t<red_3_team_id>24711</red_3_team_id>\n" +
-                "\t\t<red_auto_score>24712</red_auto_score>\n" +
-                "\t\t<red_teleop_score>37111</red_teleop_score>\n" +
-                "\t\t<red_total_score>37112</red_total_score>\n" +
-                "\t\t<red_qp>1</red_qp>\n" +
-                "\t\t<red_foul_points>1</red_foul_points>\n" +
-                "\t\t<blue_1_team_id>1</blue_1_team_id>\n" +
-                "\t\t<blue_2_team_id>1</blue_2_team_id>\n" +
-                "\t\t<blue_3_team_id>1</blue_3_team_id>\n" +
-                "\t\t<blue_auto_score>1</blue_auto_score>\n" +
-                "\t\t<blue_teleop_score>1</blue_teleop_score>\n" +
-                "\t\t<blue_total_score>1</blue_total_score>\n" +
-                "\t\t<blue_qp>1</blue_qp>\n" +
-                "\t\t<blue_foul_points>1</blue_foul_points>\n" +
-                "\t\t<winner>1</winner>\n" +
-                "\t\t<drive_team_comments>1</drive_team_comments>\n" +
+                "\t\t<_id>1</_id>\n" +
+                "\t\t<tba_event_key>TBA_1</tba_event_key>\n" +
+                "\t\t<name>BunnyBots2016</name>\n" +
+                "\t\t<short_name>BunnyBots2016</short_name>\n" +
+                "\t\t<event_type>Exhibition</event_type>\n" +
+                "\t\t<event_district>PNW</event_district>\n" +
+                "\t\t<year>2016</year>\n" +
+                "\t\t<week>50</week>\n" +
+                "\t\t<location>Catlin Gabel</location>\n" +
+                "\t\t<tba_event_code>A</tba_event_code>\n" +
                 "\t</ROW>\n" +
                 "</DATA>";
 
@@ -111,16 +96,16 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     public void importDataFromXML(){
         XMLParser myParser = new XMLParser("",this);
         ArrayList<String> xmlFilePaths = new ArrayList<String>();
+        xmlFilePaths.add(getFilesDir() + "/" + "event.xml");
         xmlFilePaths.add(getFilesDir() + "/" + "match.xml");
         xmlFilePaths.add(getFilesDir() + "/" + "action_type.xml");
-        xmlFilePaths.add(getFilesDir() + "/" + "event.xml");
         xmlFilePaths.add(getFilesDir() + "/" + "team_match.xml");
         xmlFilePaths.add(getFilesDir() + "/" + "team.xml");
 
         for(String path:xmlFilePaths){
             HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);
-            TABLE_NAME tName = ((XMLParser.TableTableNameColumn)(map.get("table_name"))).getValue();
-            switch(tName){
+            //TABLE_NAME tName = ((XMLParser.TableTableNameColumn)(map.get("table_name"))).getValue();
+            /*switch(tName){
                 case EVENT:
                     EventContract ec = new EventContract();
                     ec.queryInsertEventData(map,this);
@@ -138,7 +123,9 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     queryInsertMatchData(map);
                     break;
 
-            }
+            }*/
+            EventContract ec = new EventContract();
+            ec.queryInsertEventData(map,this);
         }
 
 
@@ -151,7 +138,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_import)) {
             importDataFromXML();
-            parser.parseXML(getFilesDir() + "/" + fileName);
+            //parser.parseXML(getFilesDir() + "/" + fileName);
             Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_LONG).show();
 
         }

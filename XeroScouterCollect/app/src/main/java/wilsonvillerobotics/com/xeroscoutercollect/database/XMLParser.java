@@ -159,7 +159,10 @@ public class XMLParser{
             value = v;
         }
         public E getValue() { return value; }
+        public String toString () { return String.valueOf(this.value); }
         public E getKey() { return (E) key; }
+
+
     }
 
     public class TableStringColumn extends TableColumn<String> {
@@ -228,8 +231,9 @@ public class XMLParser{
         ArrayList<TableColumn> eventList = new ArrayList<TableColumn>();
         eventList.add(new TableIntegerColumn("_id"));
         eventList.add(new TableStringColumn("name"));
-        eventList.add(new TableStringColumn("tba_match_key"));
+        eventList.add(new TableStringColumn("tba_event_key"));
         eventList.add(new TableStringColumn("short_name"));
+        eventList.add(new TableStringColumn("event_type"));
         eventList.add(new TableStringColumn("event_district"));
         eventList.add(new TableIntegerColumn("year"));
         eventList.add(new TableIntegerColumn("week"));

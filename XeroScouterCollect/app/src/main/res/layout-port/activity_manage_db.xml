@@ -41,7 +41,8 @@
             android:text="@string/import_to_tablet"
             android:id="@+id/btn_import"
             android:layout_marginLeft="10dp"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:onClick="onClick" />
 
         <Button
             android:layout_width="wrap_content"
