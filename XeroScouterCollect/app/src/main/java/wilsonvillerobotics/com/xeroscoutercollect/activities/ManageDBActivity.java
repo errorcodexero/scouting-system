@@ -1,12 +1,21 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
+import java.sql.Connection
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Struct;
+import java.util.ArrayList;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
@@ -81,6 +90,27 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
 
+
+    }
+
+
+    public String queryMySQLDb(String queryString) {
+
+        String results = "";
+
+        try {
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+            sharedPreferences.getString("dbUsername")
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection();
+
+            Statement st = con.createStatement();
+            ResultSet rs =st.executeQuery(queryString);
+
+        }
 
     }
 
