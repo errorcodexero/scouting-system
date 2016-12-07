@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.queryInsertActionsData;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.queryInsertMatchData;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract.queryInsertTeamData;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.queryInsertTeamMatchData;
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
     private XMLParser parser;
@@ -104,28 +104,36 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
         for(String path:xmlFilePaths){
             HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);
-            //TABLE_NAME tName = ((XMLParser.TableTableNameColumn)(map.get("table_name"))).getValue();
-            /*switch(tName){
-                case EVENT:
-                    EventContract ec = new EventContract();
-                    ec.queryInsertEventData(map,this);
-                    break;
-                case TEAM:
-                    queryInsertTeamData(map);
-                    break;
-                case TEAMMATCH:
-                    queryInsertTeamMatchData(map);
-                    break;
-                case ACTIONTYPE:
-                    queryInsertActionsData(map);
-                    break;
-                case MATCH:
-                    queryInsertMatchData(map);
-                    break;
+            boolean hasTN = map.containsKey("table_name");
+            if(hasTN) {
+                TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get("table_name"))).getValue();
+                switch (tName) {
+                    case EVENT:
+                        EventContract ec = new EventContract();
+                        ec.queryInsertEventData(map, this);
+                        break;
+                    case TEAM:
+                        TeamContract tc = new TeamContract();
+                        tc.queryInsertTeamData(map, this);
+                        break;
+                    case TEAMMATCH:
+                        TeamMatchContract tmc = new TeamMatchContract();
+                        tmc.queryInsertTeamMatchData(map, this);
+                        break;
+                    case ACTIONTYPE:
+                        ActionsContract ac = new ActionsContract();
+                        ac.queryInsertActionsData(map, this);
+                        break;
+                    case MATCH:
+                        MatchContract mc = new MatchContract();
+                        mc.queryInsertMatchData(map, this);
+                        break;
 
-            }*/
-            EventContract ec = new EventContract();
-            ec.queryInsertEventData(map,this);
+                }
+            }
+
+
+
         }
 
 

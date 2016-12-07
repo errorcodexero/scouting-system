@@ -1,6 +1,5 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.util.Log;
 
@@ -14,16 +13,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.MatchEntry;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.queryInsertActionsData;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.queryInsertMatchData;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract.queryInsertTeamData;
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.queryInsertTeamMatchData;
+
 
 
 /**
@@ -48,21 +41,11 @@ public class XMLParser{
         this("", c);
     }
 
-
-    //Create parser
-    //Parse data
-    //Return statement that has the data in the xml file ready to import into SQLlite db
-
-
-
-
     public HashMap<String, TableColumn> parseXML(String filePath) {
         xmlFilePath = filePath;
         map = parseXml();
         return map;
     }
-
-
 
     private String readString(XmlPullParser parser) throws IOException,
             XmlPullParserException {
@@ -90,17 +73,27 @@ public class XMLParser{
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
 
             //Creates a map, then depending on filename, creates the right map
-
+            TableTableNameColumn tc = new TableTableNameColumn("table_name");
             if(xmlFilePath.contains("match.xml")){
                 map = mapMaker(makeMatchList());
+                tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
+                map.put("table_name",tc);
             }else if(xmlFilePath.contains("event.xml")){
                 map = mapMaker(makeEventList());
+                tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
+                map.put("table_name",tc);
             }else if(xmlFilePath.contains("action.xml")){
                 map = mapMaker(makeActionTypeList());
+                tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
+                map.put("table_name",tc);
             }else if(xmlFilePath.contains("teamMatch.xml")){
                 map = makeTeamMatchMap();
+                tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
+                map.put("table_name",tc);
             }else if(xmlFilePath.contains("team.xml")){
                 map = mapMaker(makeTeamList());
+                tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
+                map.put("table_name",tc);
             }
 
             xmlFactoryObject = XmlPullParserFactory.newInstance();
@@ -123,13 +116,13 @@ public class XMLParser{
                         tagName = myParser.getName();
                         // Iterate through the map, setting the value of each element based on the tag name
                         if (map.containsKey(tagName)) {
-                            TableColumn tc = map.get(tagName);
-                            if (tc.getClass() == TableIntegerColumn.class) {
-                                tc.setValue(readInteger(myParser));
-                                Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tc.getValue()));
-                            } else if (tc.getClass() == TableStringColumn.class) {
-                                tc.setValue(readString(myParser));
-                                Log.d(TAG, "parseXML: " + tagName + ": " + tc.getValue());
+                            TableColumn tableCol = map.get(tagName);
+                            if (tableCol.getClass() == TableIntegerColumn.class) {
+                                tableCol.setValue(readInteger(myParser));
+                                Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tableCol.getValue()));
+                            } else if (tableCol.getClass() == TableStringColumn.class) {
+                                tableCol.setValue(readString(myParser));
+                                Log.d(TAG, "parseXML: " + tagName + ": " + tableCol.getValue());
                             }
                         } else {
                             // We didn't find this tag, log it
