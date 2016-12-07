@@ -21,13 +21,13 @@ public class MatchContract implements SQLDataTypeDefines {
 
     public static class MatchEntry implements BaseColumns {
         public static final String TABLE_NAME = "match";
-        public static final String COLUMN_NAME_ID = "id";
+        public static final String COLUMN_NAME_ID = "_id";
         public static final String COLUMN_NAME_EVENT_ID = "event_id";
         public static final String COLUMN_NAME_TBA_MATCH_KEY = "tba_match_key";
-        public static final String COLUMN_NAME_MATCH_COMP_LEVEL  = "match_comp_level";
-        public static final String COLUMN_NAME_MATCH_SET_NUMBER  = "match_set_number";
+        public static final String COLUMN_NAME_MATCH_COMP_LEVEL  = "comp_level";
+        public static final String COLUMN_NAME_MATCH_SET_NUMBER  = "set_number";
         public static final String COLUMN_NAME_MATCH_NUMBER  = "match_number";
-        public static final String COLUMN_NAME_MATCH_STATUS  = "match_status";
+        public static final String COLUMN_NAME_MATCH_STATUS  = "status";
 
         public static final String COLUMN_NAME_RED_1 = "red_1_team_id";
         public static final String COLUMN_NAME_RED_2 = "red_2_team_id";
@@ -47,7 +47,7 @@ public class MatchContract implements SQLDataTypeDefines {
         public static final String COLUMN_NAME_BLUE_QP = "blue_qp";
         public static final String COLUMN_NAME_BLUE_FOUL_POINTS = "blue_foul_points";
 
-        public static final String COLUMN_NAME_MATCH_WINNER = "match_winner";
+        public static final String COLUMN_NAME_MATCH_WINNER = "winner";
         public static final String COLUMN_NAME_DRIVE_TEAM_COMMENTS = "drive_team_comments";
 
         public static final String CREATE_TABLE_MATCH =

@@ -67,6 +67,7 @@ public class XMLParser{
         return result;
     }
     private HashMap<String, TableColumn> map = null;
+
     // TODO - Look at https://developer.android.com/training/basics/network-ops/xml.html#skip for better examples of XML Parsing. When we pass a parser to a function it keeps its current state, including 'position'
     public HashMap<String, TableColumn> parseXml(){
         try {
@@ -290,45 +291,5 @@ public class XMLParser{
         return teamList;
     }
 }
-
-/*
-//myDbHelper = DatabaseHelper.getInstance(context);
-            //myDbHelper.open();
-            while (myparser.next() != XmlPullParser.END_TAG) {
-                if (myparser.getEventType() != XmlPullParser.START_TAG) {
-                    continue;
-                }
-                String name = myparser.getName();
-                if (name.equals("Content")) {
-                    String id = null, date = null, pob = null;
-                    while (myparser.next() != XmlPullParser.END_TAG) {
-                        if (myparser.getEventType() != XmlPullParser.START_TAG) {
-                            continue;
-                        }
-                        name = myparser.getName();
-                        if (name.equals("id")) {
-                            id = readText(myparser);
-                        } else if (name.equals("date")) {
-                            date = readText(myparser);
-                        } else if (name.equals("placeOfBirth")) {
-                            pob = readText(myparser);
-                        }
-                    }
-                    //myDbHelper.insertData(id,date,pob);
-                    Log.d(TAG, "parseXML: " + id + date + pob);
-                }
-            }
-        } catch (XmlPullParserException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            /*if (myDbHelper != null) {
-                myDbHelper.close();
-            }
-}
- */
 
 

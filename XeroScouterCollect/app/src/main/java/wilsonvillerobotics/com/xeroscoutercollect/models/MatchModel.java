@@ -235,7 +235,7 @@ public class MatchModel {
 
     public static String getAllMatchs(String eventId) {
 
-        return ("SELECT * FROM `" + MatchContract.MatchEntry.TABLE_NAME + "` WHERE " + MatchContract.MatchEntry.COLUMN_NAME_EVENT_ID + " = \'" + eventId + "\' ORDER BY id;");
+        return ("SELECT * FROM `" + MatchContract.MatchEntry.TABLE_NAME + "` WHERE " + MatchContract.MatchEntry.COLUMN_NAME_EVENT_ID + " = \'" + eventId + "\' ORDER BY _id;");
 
     }
 }
