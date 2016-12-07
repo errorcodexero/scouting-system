@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -60,6 +61,7 @@ public class EventContract implements SQLDataTypeDefines {
         }
         statement = statement.substring(0,statement.length()-2);
         statement += ")";
+        //Log.d("Database:", dbHelper.getDatabaseName());
         db.execSQL(statement);
     }
 
