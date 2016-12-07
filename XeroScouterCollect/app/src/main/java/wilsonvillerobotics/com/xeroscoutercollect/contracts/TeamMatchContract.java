@@ -1,9 +1,13 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
@@ -13,7 +17,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class TeamMatchContract implements SQLDataTypeDefines {
 
-    private TeamMatchContract(){}
+    public TeamMatchContract(){}
 
     public static class TeamMatchEntry implements BaseColumns {
         public static final String TABLE_NAME = "team_match";
@@ -31,7 +35,26 @@ public class TeamMatchContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_POSITION   + INT11
                         + ")";
     }
-    public static void queryInsertTeamMatchData(HashMap<String, XMLParser.TableColumn> teamMatchMap) {
+    public void queryInsertTeamMatchData(HashMap<String, XMLParser.TableColumn> teamMatchMap, Context c){
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues content = new ContentValues();
+        if(teamMatchMap.containsKey(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID)){
+            teamMatchMap.remove(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID);
+        }
+        for(String key : teamMatchMap.keySet()){
+            if(teamMatchMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
+                content.put(key, ((XMLParser.TableStringColumn) teamMatchMap.get(key)).getValue());
+            } else if(teamMatchMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
+                content.put(key, ((XMLParser.TableIntegerColumn) teamMatchMap.get(key)).getValue());
+            }
+
+        }
+        try{
+            db.insert(TeamMatchContract.TeamMatchEntry.TABLE_NAME,null, content);
+        }
+        catch (Exception e) {e.printStackTrace();}
 
     }
 }

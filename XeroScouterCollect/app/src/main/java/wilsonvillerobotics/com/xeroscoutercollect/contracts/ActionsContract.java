@@ -1,9 +1,13 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
@@ -13,7 +17,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class ActionsContract implements SQLDataTypeDefines {
 
-    private ActionsContract(){}
+    public ActionsContract(){}
 
     public static class ActionsEntry implements BaseColumns {
         public static final String TABLE_NAME = "actions";
@@ -41,7 +45,26 @@ public class ActionsContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ACTION_CATEGORY + VC255
                         + ")";
     }
-    public static void queryInsertActionsData(HashMap<String, XMLParser.TableColumn> actionMap) {
+    public void queryInsertActionsData(HashMap<String, XMLParser.TableColumn> actionsMap, Context c){
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues content = new ContentValues();
+        if(actionsMap.containsKey(ActionsContract.ActionsEntry.COLUMN_NAME_ID)){
+            actionsMap.remove(ActionsContract.ActionsEntry.COLUMN_NAME_ID);
+        }
+        for(String key : actionsMap.keySet()){
+            if(actionsMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
+                content.put(key, ((XMLParser.TableStringColumn) actionsMap.get(key)).getValue());
+            } else if(actionsMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
+                content.put(key, ((XMLParser.TableIntegerColumn) actionsMap.get(key)).getValue());
+            }
+
+        }
+        try{
+            db.insert(ActionsContract.ActionsEntry.TABLE_NAME,null, content);
+        }
+        catch (Exception e) {e.printStackTrace();}
 
     }
 

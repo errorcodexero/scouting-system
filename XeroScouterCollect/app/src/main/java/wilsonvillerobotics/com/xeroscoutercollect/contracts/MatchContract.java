@@ -1,9 +1,13 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
@@ -13,7 +17,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class MatchContract implements SQLDataTypeDefines {
 
-    private MatchContract() {}
+    public MatchContract() {}
 
     public static class MatchEntry implements BaseColumns {
         public static final String TABLE_NAME = "match";
@@ -74,7 +78,26 @@ public class MatchContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_DRIVE_TEAM_COMMENTS + VC2000
                         + ")";
     }
-    public static void queryInsertMatchData(HashMap<String, XMLParser.TableColumn> matchMap) {
+    public void queryInsertMatchData(HashMap<String, XMLParser.TableColumn> matchMap, Context c){
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues content = new ContentValues();
+        if(matchMap.containsKey(MatchContract.MatchEntry.COLUMN_NAME_ID)){
+            matchMap.remove(MatchContract.MatchEntry.COLUMN_NAME_ID);
+        }
+        for(String key : matchMap.keySet()){
+            if(matchMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
+                content.put(key, ((XMLParser.TableStringColumn) matchMap.get(key)).getValue());
+            } else if(matchMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
+                content.put(key, ((XMLParser.TableIntegerColumn) matchMap.get(key)).getValue());
+            }
+
+        }
+        try{
+            db.insert(MatchContract.MatchEntry.TABLE_NAME,null, content);
+        }
+        catch (Exception e) {e.printStackTrace();}
 
     }
 }
