@@ -30,7 +30,7 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = EventTable.SELECT_ALL_ID_NAME_LOC; // "SELECT event_id, name, location FROM event";
+                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC; // "SELECT event_id, name, location FROM event";
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
