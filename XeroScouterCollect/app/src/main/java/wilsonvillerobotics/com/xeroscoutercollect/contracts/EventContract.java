@@ -1,7 +1,15 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.util.Log;
 
+import java.util.HashMap;
+
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 /**
@@ -10,7 +18,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class EventContract implements SQLDataTypeDefines {
 
-    private EventContract(){}
+    public EventContract(){}
 
     public static class EventEntry implements BaseColumns {
         public static final String TABLE_NAME = "event";
@@ -37,5 +45,25 @@ public class EventContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_EVENT_LOCATION + VC255 + COMMA_SEP
                         + COLUMN_NAME_TBA_EVENT_CODE + VC45
                         + ")";
+        }
+    public void queryInsertEventData(HashMap<String, XMLParser.TableColumn> eventMap, Context c){
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String statement = "INSERT INTO " + "event" + " (";
 
-    }}
+        for(Object key : eventMap.keySet()){
+            statement += key + ", ";
+        }
+        statement = statement.substring(0,statement.length()-2);
+        statement += ") Values (";
+        for(Object value : eventMap.values()){
+            statement += "'" + value.toString() + "', ";
+        }
+        statement = statement.substring(0,statement.length()-2);
+        statement += ")";
+        //Log.d("Database:", dbHelper.getDatabaseName());
+        db.execSQL(statement);
+    }
+
+
+}

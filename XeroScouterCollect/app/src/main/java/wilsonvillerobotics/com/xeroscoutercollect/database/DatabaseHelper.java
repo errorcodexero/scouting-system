@@ -100,4 +100,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super.onDowngrade(db, oldVersion, newVersion);
         // TODO - should we save data before downgrading the tables?
     }
+
+
 }

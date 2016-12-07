@@ -2,6 +2,9 @@ package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
 import android.provider.BaseColumns;
 
+import java.util.HashMap;
+
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 /**
@@ -71,5 +74,7 @@ public class MatchContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_DRIVE_TEAM_COMMENTS + VC2000
                         + ")";
     }
+    public static void queryInsertMatchData(HashMap<String, XMLParser.TableColumn> matchMap) {
 
+    }
 }
