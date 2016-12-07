@@ -1,9 +1,13 @@
 package wilsonvillerobotics.com.xeroscoutercollect.contracts;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
@@ -13,7 +17,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class TeamContract implements SQLDataTypeDefines {
 
-    private TeamContract(){}
+    public TeamContract(){}
 
     public static class TeamEntry implements BaseColumns{
         public static final String TABLE_NAME = "team";
@@ -58,7 +62,26 @@ public class TeamContract implements SQLDataTypeDefines {
                         + ")";
 
     }
-    public static void queryInsertTeamData(HashMap<String, XMLParser.TableColumn> teamMap) {
+    public void queryInsertTeamData(HashMap<String, XMLParser.TableColumn> teamMap, Context c){
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues content = new ContentValues();
+        if(teamMap.containsKey(TeamContract.TeamEntry.COLUMN_NAME_ID)){
+            teamMap.remove(TeamContract.TeamEntry.COLUMN_NAME_ID);
+        }
+        for(String key : teamMap.keySet()){
+            if(teamMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
+                content.put(key, ((XMLParser.TableStringColumn) teamMap.get(key)).getValue());
+            } else if(teamMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
+                content.put(key, ((XMLParser.TableIntegerColumn) teamMap.get(key)).getValue());
+            }
+
+        }
+        try{
+            db.insert(TeamContract.TeamEntry.TABLE_NAME,null, content);
+        }
+        catch (Exception e) {e.printStackTrace();}
 
     }
 }

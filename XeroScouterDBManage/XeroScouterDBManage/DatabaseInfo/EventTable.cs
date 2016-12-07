@@ -19,6 +19,6 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 
         public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
         public static String SELECT_NAME_FROM_MATCHING_ID = "SELECT " + COL_NAME + " FROM " + TABLE_NAME + " WHERE " + COL_ID + "=";
-        public static String SELECT_ALL_ID_NAME_LOC = "SELECT " + COL_ID + ", " + COL_NAME + ", " + COL_LOCATION + " FROM " + TABLE_NAME;
+        public static String SELECT_ID_NAME_LOC = "SELECT " + COL_ID + ", " + COL_NAME + ", " + COL_LOCATION + " FROM " + TABLE_NAME;
     }
 }
