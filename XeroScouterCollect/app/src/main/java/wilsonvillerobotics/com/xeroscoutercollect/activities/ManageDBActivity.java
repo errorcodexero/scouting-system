@@ -120,13 +120,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
 
         }
-
-
-
-
-
     }
-
 
     @Override
     public void onClick(View view) {
@@ -134,13 +128,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             importDataFromXML();
             //parser.parseXML(getFilesDir() + "/" + fileName);
             Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
-
         }
         if (view == findViewById(R.id.btn_create_test_data)) {
             GenerateTestData g = new GenerateTestData(this);
             g.generateAllData();
             Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
-
         }
     }
 }

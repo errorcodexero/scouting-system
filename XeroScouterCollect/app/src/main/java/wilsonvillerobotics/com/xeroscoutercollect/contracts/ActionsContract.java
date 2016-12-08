@@ -44,6 +44,22 @@ public class ActionsContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ACTION_COOP_FLAG + CHAR1 + COMMA_SEP
                         + COLUMN_NAME_ACTION_CATEGORY + VC255
                         + ")";
+
+        public static final String testData =
+                "<DATA>\n" +
+                "\t<ROW>\n" +
+                "\t\t<" + COLUMN_NAME_ID + ">1</" + COLUMN_NAME_ID + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_NAME + ">Crossing</" + COLUMN_NAME_ACTION_NAME + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_DESCRIPTION + ">crossing</" + COLUMN_NAME_ACTION_DESCRIPTION + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_MATCH_PHASE + ">teleop</" + COLUMN_NAME_ACTION_MATCH_PHASE + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_POINTS + ">1</" + COLUMN_NAME_ACTION_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_OPPONENT_POINTS + ">0</" + COLUMN_NAME_ACTION_OPPONENT_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_QUAL_POINTS + ">0</" + COLUMN_NAME_ACTION_QUAL_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_FOUL_POINTS + ">0</" + COLUMN_NAME_ACTION_FOUL_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_COOP_FLAG + ">N</" + COLUMN_NAME_ACTION_COOP_FLAG + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_CATEGORY + ">movement</" + COLUMN_NAME_ACTION_CATEGORY + ">\n" +
+                "\t</ROW>\n" +
+                "</DATA>";
     }
     public void queryInsertActionsData(HashMap<String, XMLParser.TableColumn> actionsMap, Context c){
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);

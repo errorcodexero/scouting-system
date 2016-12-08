@@ -5,6 +5,13 @@ import android.content.Context;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract.EventEntry;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.MatchEntry;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
+
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry;
+
 /**
  * Created by Luke Puppo on 12/6/2016.
  */
@@ -17,39 +24,42 @@ private Context c;
 
     public void generateActions(){
         String fileName = "action_type.xml";
+        /*
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>1</_id>\n" +
-                "\t\t<name>Crossing</name>\n" +
-                "\t\t<description>crossing</description>\n" +
-                "\t\t<match_phase>teleop</match_phase>\n" +
-                "\t\t<points>1</points>\n" +
-                "\t\t<opponent_points>0</opponent_points>\n" +
-                "\t\t<qual_points>0</qual_points>\n" +
-                "\t\t<foul_points>0</foul_points>\n" +
-                "\t\t<coop_flag>N</coop_flag>\n" +
-                "\t\t<category>movement</category>\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ID + ">1</" + ActionsEntry.COLUMN_NAME_ID + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_NAME + ">Crossing</" + ActionsEntry.COLUMN_NAME_ACTION_NAME + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_DESCRIPTION + ">crossing</" + ActionsEntry.COLUMN_NAME_ACTION_DESCRIPTION + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_MATCH_PHASE + ">teleop</" + ActionsEntry.COLUMN_NAME_ACTION_MATCH_PHASE + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_POINTS + ">1</" + ActionsEntry.COLUMN_NAME_ACTION_POINTS + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_OPPONENT_POINTS + ">0</" + ActionsEntry.COLUMN_NAME_ACTION_OPPONENT_POINTS + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_QUAL_POINTS + ">0</" + ActionsEntry.COLUMN_NAME_ACTION_QUAL_POINTS + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_FOUL_POINTS + ">0</" + ActionsEntry.COLUMN_NAME_ACTION_FOUL_POINTS + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_COOP_FLAG + ">N</" + ActionsEntry.COLUMN_NAME_ACTION_COOP_FLAG + ">\n" +
+                "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_CATEGORY + ">movement</" + ActionsEntry.COLUMN_NAME_ACTION_CATEGORY + ">\n" +
                 "\t</ROW>\n" +
                 "</DATA>";
+        */
 
-        generateFile(fileName,data);
+        //generateFile(fileName,data);
+        generateFile(fileName, ActionsEntry.testData);
     }
     public void generateEvent(){
         String fileName = "event.xml";
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>1</_id>\n" +
-                "\t\t<tba_event_key>TBA_1</tba_event_key>\n" +
-                "\t\t<name>BunnyBots2016</name>\n" +
-                "\t\t<short_name>BunnyBots2016</short_name>\n" +
-                "\t\t<event_type>Exhibition</event_type>\n" +
-                "\t\t<event_district>PNW</event_district>\n" +
-                "\t\t<year>2016</year>\n" +
-                "\t\t<week>50</week>\n" +
-                "\t\t<location>Catlin Gabel</location>\n" +
-                "\t\t<tba_event_code>A</tba_event_code>\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_ID + ">1</" + EventEntry.COLUMN_NAME_ID + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_TBA_EVENT_KEY + ">TBA_1</" + EventEntry.COLUMN_NAME_TBA_EVENT_KEY + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_NAME + ">BunnyBots2016</" + EventEntry.COLUMN_NAME_EVENT_NAME + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_SHORT_NAME + ">BunnyBots2016</" + EventEntry.COLUMN_NAME_EVENT_SHORT_NAME + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_TYPE + ">Exhibition</" + EventEntry.COLUMN_NAME_EVENT_TYPE + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_DISTRICT + ">PNW</" + EventEntry.COLUMN_NAME_EVENT_DISTRICT + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_YEAR + ">2016</" + EventEntry.COLUMN_NAME_EVENT_YEAR + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_WEEK + ">50</" + EventEntry.COLUMN_NAME_EVENT_WEEK + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_EVENT_LOCATION + ">Catlin Gabel</" + EventEntry.COLUMN_NAME_EVENT_LOCATION + ">\n" +
+                "\t\t<" + EventEntry.COLUMN_NAME_TBA_EVENT_CODE + ">A</" + EventEntry.COLUMN_NAME_TBA_EVENT_CODE + ">\n" +
                 "\t</ROW>\n" +
                 "</DATA>";
 
@@ -60,31 +70,31 @@ private Context c;
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>1</_id>\n" +
-                "\t\t<event_id>1</event_id>\n" +
-                "\t\t<tba_match_key>TBA1</tba_match_key>\n" +
-                "\t\t<comp_level>Q</comp_level>\n" +
-                "\t\t<set_number>Set 1</set_number>\n" +
-                "\t\t<match_number>Q1</match_number>\n" +
-                "\t\t<status>Scheduled</status>\n" +
-                "\t\t<red_1_team_id>14251</red_1_team_id>\n" +
-                "\t\t<red_2_team_id>14252</red_2_team_id>\n" +
-                "\t\t<red_3_team_id>24711</red_3_team_id>\n" +
-                "\t\t<red_auto_score>24712</red_auto_score>\n" +
-                "\t\t<red_teleop_score>37111</red_teleop_score>\n" +
-                "\t\t<red_total_score>37112</red_total_score>\n" +
-                "\t\t<red_qp>1</red_qp>\n" +
-                "\t\t<red_foul_points>1</red_foul_points>\n" +
-                "\t\t<blue_1_team_id>1</blue_1_team_id>\n" +
-                "\t\t<blue_2_team_id>1</blue_2_team_id>\n" +
-                "\t\t<blue_3_team_id>1</blue_3_team_id>\n" +
-                "\t\t<blue_auto_score>1</blue_auto_score>\n" +
-                "\t\t<blue_teleop_score>1</blue_teleop_score>\n" +
-                "\t\t<blue_total_score>1</blue_total_score>\n" +
-                "\t\t<blue_qp>1</blue_qp>\n" +
-                "\t\t<blue_foul_points>1</blue_foul_points>\n" +
-                "\t\t<winner>1</winner>\n" +
-                "\t\t<drive_team_comments>1</drive_team_comments>\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_ID + ">1</" + MatchEntry.COLUMN_NAME_ID + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_EVENT_ID + ">1</" + MatchEntry.COLUMN_NAME_EVENT_ID + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_TBA_MATCH_KEY + ">TBA1</" + MatchEntry.COLUMN_NAME_TBA_MATCH_KEY + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_COMP_LEVEL + ">Q</" + MatchEntry.COLUMN_NAME_MATCH_COMP_LEVEL + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_SET_NUMBER + ">Set 1</" + MatchEntry.COLUMN_NAME_MATCH_SET_NUMBER + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_NUMBER + ">Q1</" + MatchEntry.COLUMN_NAME_MATCH_NUMBER + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_STATUS + ">Scheduled</" + MatchEntry.COLUMN_NAME_MATCH_STATUS + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_1 + ">14251</" + MatchEntry.COLUMN_NAME_RED_1 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_2 + ">14252</" + MatchEntry.COLUMN_NAME_RED_2 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_3 + ">24711</" + MatchEntry.COLUMN_NAME_RED_3 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_AUTO_SCORE + ">24712</" + MatchEntry.COLUMN_NAME_RED_AUTO_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE + ">37111</" + MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE + ">37112</" + MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_QP + ">1</" + MatchEntry.COLUMN_NAME_RED_QP + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_FOUL_POINTS + ">1</" + MatchEntry.COLUMN_NAME_RED_FOUL_POINTS + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_1 + ">1</" + MatchEntry.COLUMN_NAME_BLUE_1 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_2 + ">1</" + MatchEntry.COLUMN_NAME_BLUE_2 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_3 + ">1</" + MatchEntry.COLUMN_NAME_BLUE_3 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE + ">1</" + MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE + ">1</" + MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE + ">1</" + MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_QP + ">1</" + MatchEntry.COLUMN_NAME_BLUE_QP + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_FOUL_POINTS + ">1</" + MatchEntry.COLUMN_NAME_BLUE_FOUL_POINTS + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_WINNER + ">1</" + MatchEntry.COLUMN_NAME_MATCH_WINNER + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_DRIVE_TEAM_COMMENTS + ">1</" + MatchEntry.COLUMN_NAME_DRIVE_TEAM_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "</DATA>";
 
@@ -150,8 +160,8 @@ private Context c;
                 "\t\t<robot_name>NULL</robot_name>\n" +
                 "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
                 "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>NULL</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>NULL</robot_drive_motor_count>\n" +
+                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
+                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
                 "\t\t<robot_software_language>NA</robot_software_language>\n" +
                 "\t\t<robot_description>NULL</robot_description>\n" +
                 "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
@@ -171,8 +181,8 @@ private Context c;
                 "\t\t<robot_name>NULL</robot_name>\n" +
                 "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
                 "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>NULL</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>NULL</robot_drive_motor_count>\n" +
+                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
+                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
                 "\t\t<robot_software_language>NA</robot_software_language>\n" +
                 "\t\t<robot_description>NULL</robot_description>\n" +
                 "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
@@ -192,8 +202,8 @@ private Context c;
                 "\t\t<robot_name>NULL</robot_name>\n" +
                 "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
                 "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>NULL</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>NULL</robot_drive_motor_count>\n" +
+                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
+                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
                 "\t\t<robot_software_language>NA</robot_software_language>\n" +
                 "\t\t<robot_description>NULL</robot_description>\n" +
                 "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
@@ -213,8 +223,8 @@ private Context c;
                 "\t\t<robot_name>NULL</robot_name>\n" +
                 "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
                 "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>NULL</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>NULL</robot_drive_motor_count>\n" +
+                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
+                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
                 "\t\t<robot_software_language>NA</robot_software_language>\n" +
                 "\t\t<robot_description>NULL</robot_description>\n" +
                 "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
@@ -228,7 +238,7 @@ private Context c;
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>1</_id>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<team_id>14251</team_id>\n" +
                 "\t\t<match_id>1</match_id>\n" +
                 "\t\t<alliance>Blue</alliance>\n" +
@@ -236,7 +246,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>2</_id>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">2</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<team_id>14252</team_id>\n" +
                 "\t\t<match_id>1</match_id>\n" +
                 "\t\t<alliance>Blue</alliance>\n" +
@@ -244,7 +254,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>3</_id>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">3</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<team_id>24711</team_id>\n" +
                 "\t\t<match_id>1</match_id>\n" +
                 "\t\t<alliance>Blue</alliance>\n" +
@@ -252,7 +262,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>4</_id>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">4</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<team_id>24712</team_id>\n" +
                 "\t\t<match_id>1</match_id>\n" +
                 "\t\t<alliance>Red</alliance>\n" +
@@ -260,7 +270,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>5</_id>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">5</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<team_id>37111</team_id>\n" +
                 "\t\t<match_id>1</match_id>\n" +
                 "\t\t<alliance>Red</alliance>\n" +
@@ -268,7 +278,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>6</_id>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">6</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<team_id>37112</team_id>\n" +
                 "\t\t<match_id>1</match_id>\n" +
                 "\t\t<alliance>Red</alliance>\n" +
