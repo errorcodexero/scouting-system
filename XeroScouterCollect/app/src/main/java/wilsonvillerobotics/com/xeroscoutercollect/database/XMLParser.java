@@ -79,22 +79,27 @@ public class XMLParser{
                 map = mapMaker(makeMatchList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
                 map.put("table_name",tc);
+                Log.d("Table Name", "match");
             }else if(xmlFilePath.contains("event.xml")){
                 map = mapMaker(makeEventList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
                 map.put("table_name",tc);
+                Log.d("Table Name", "event");
             }else if(xmlFilePath.contains("action.xml")){
                 map = mapMaker(makeActionTypeList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
                 map.put("table_name",tc);
+                Log.d("Table Name", "action");
             }else if(xmlFilePath.contains("teamMatch.xml")){
                 map = makeTeamMatchMap();
                 tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
                 map.put("table_name",tc);
+                Log.d("Table Name", "teamMatch");
             }else if(xmlFilePath.contains("team.xml")){
                 map = mapMaker(makeTeamList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
                 map.put("table_name",tc);
+                Log.d("Table Name", "team");
             }
 
             xmlFactoryObject = XmlPullParserFactory.newInstance();
