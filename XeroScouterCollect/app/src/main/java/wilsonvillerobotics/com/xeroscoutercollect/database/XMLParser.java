@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;
@@ -31,6 +33,8 @@ public class XMLParser{
     private XmlPullParserFactory xmlFactoryObject;
     private XmlPullParser myParser;
 
+    private static final String TNTAG = "Table Name";
+    private static final String XML_EXT = ".xml";
 
 
     public XMLParser(String filePath, Context c){
@@ -67,33 +71,42 @@ public class XMLParser{
         return result;
     }
     private HashMap<String, TableColumn> map = null;
+
     // TODO - Look at https://developer.android.com/training/basics/network-ops/xml.html#skip for better examples of XML Parsing. When we pass a parser to a function it keeps its current state, including 'position'
     public HashMap<String, TableColumn> parseXml(){
         try {
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
 
             //Creates a map, then depending on filename, creates the right map
-            TableTableNameColumn tc = new TableTableNameColumn("table_name");
-            if(xmlFilePath.contains("match.xml")){
+            final String TABLE_NAME_KEY = context.getString(R.string.table_name_key);
+            TableTableNameColumn tc = new TableTableNameColumn(TABLE_NAME_KEY);
+            // TODO - Hey Luke - look at me!!!
+            if(xmlFilePath.contains(MatchContract.MatchEntry.TABLE_NAME + XML_EXT)) { // match.xml
                 map = mapMaker(makeMatchList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
-                map.put("table_name",tc);
+                map.put(TABLE_NAME_KEY,tc);
+                Log.d(TNTAG, MatchContract.MatchEntry.TABLE_NAME);
+            // TODO - Hey Luke - look up above here!!!
             }else if(xmlFilePath.contains("event.xml")){
                 map = mapMaker(makeEventList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
                 map.put("table_name",tc);
+                Log.d("Table Name", "event");
             }else if(xmlFilePath.contains("action.xml")){
                 map = mapMaker(makeActionTypeList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
                 map.put("table_name",tc);
+                Log.d("Table Name", "action");
             }else if(xmlFilePath.contains("teamMatch.xml")){
                 map = makeTeamMatchMap();
                 tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
                 map.put("table_name",tc);
+                Log.d("Table Name", "teamMatch");
             }else if(xmlFilePath.contains("team.xml")){
                 map = mapMaker(makeTeamList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
                 map.put("table_name",tc);
+                Log.d("Table Name", "team");
             }
 
             xmlFactoryObject = XmlPullParserFactory.newInstance();
@@ -290,45 +303,5 @@ public class XMLParser{
         return teamList;
     }
 }
-
-/*
-//myDbHelper = DatabaseHelper.getInstance(context);
-            //myDbHelper.open();
-            while (myparser.next() != XmlPullParser.END_TAG) {
-                if (myparser.getEventType() != XmlPullParser.START_TAG) {
-                    continue;
-                }
-                String name = myparser.getName();
-                if (name.equals("Content")) {
-                    String id = null, date = null, pob = null;
-                    while (myparser.next() != XmlPullParser.END_TAG) {
-                        if (myparser.getEventType() != XmlPullParser.START_TAG) {
-                            continue;
-                        }
-                        name = myparser.getName();
-                        if (name.equals("id")) {
-                            id = readText(myparser);
-                        } else if (name.equals("date")) {
-                            date = readText(myparser);
-                        } else if (name.equals("placeOfBirth")) {
-                            pob = readText(myparser);
-                        }
-                    }
-                    //myDbHelper.insertData(id,date,pob);
-                    Log.d(TAG, "parseXML: " + id + date + pob);
-                }
-            }
-        } catch (XmlPullParserException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            /*if (myDbHelper != null) {
-                myDbHelper.close();
-            }
-}
- */
 
 

@@ -22,15 +22,15 @@ public class ActionsContract implements SQLDataTypeDefines {
     public static class ActionsEntry implements BaseColumns {
         public static final String TABLE_NAME = "actions";
         public static final String COLUMN_NAME_ID = "_id";
-        public static final String COLUMN_NAME_ACTION_NAME = "action_name";
-        public static final String COLUMN_NAME_ACTION_DESCRIPTION = "action_description";
-        public static final String COLUMN_NAME_ACTION_MATCH_PHASE = "action_match_phase";
-        public static final String COLUMN_NAME_ACTION_POINTS = "action_points";
-        public static final String COLUMN_NAME_ACTION_OPPONENT_POINTS = "action_opponent_points";
-        public static final String COLUMN_NAME_ACTION_QUAL_POINTS = "action_qual_points";
-        public static final String COLUMN_NAME_ACTION_FOUL_POINTS = "action_foul_points";
-        public static final String COLUMN_NAME_ACTION_COOP_FLAG = "action_coop_flag";
-        public static final String COLUMN_NAME_ACTION_CATEGORY = "action_category";
+        public static final String COLUMN_NAME_ACTION_NAME = "name";
+        public static final String COLUMN_NAME_ACTION_DESCRIPTION = "description";
+        public static final String COLUMN_NAME_ACTION_MATCH_PHASE = "match_phase";
+        public static final String COLUMN_NAME_ACTION_POINTS = "points";
+        public static final String COLUMN_NAME_ACTION_OPPONENT_POINTS = "opponent_points";
+        public static final String COLUMN_NAME_ACTION_QUAL_POINTS = "qual_points";
+        public static final String COLUMN_NAME_ACTION_FOUL_POINTS = "foul_points";
+        public static final String COLUMN_NAME_ACTION_COOP_FLAG = "coop_flag";
+        public static final String COLUMN_NAME_ACTION_CATEGORY = "category";
 
         public static final String CREATE_TABLE_ACTIONS =
                 "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_NAME_ID + INTPK + COMMA_SEP
@@ -44,6 +44,22 @@ public class ActionsContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ACTION_COOP_FLAG + CHAR1 + COMMA_SEP
                         + COLUMN_NAME_ACTION_CATEGORY + VC255
                         + ")";
+
+        public static final String testData =
+                "<DATA>\n" +
+                "\t<ROW>\n" +
+                "\t\t<" + COLUMN_NAME_ID + ">1</" + COLUMN_NAME_ID + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_NAME + ">Crossing</" + COLUMN_NAME_ACTION_NAME + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_DESCRIPTION + ">crossing</" + COLUMN_NAME_ACTION_DESCRIPTION + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_MATCH_PHASE + ">teleop</" + COLUMN_NAME_ACTION_MATCH_PHASE + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_POINTS + ">1</" + COLUMN_NAME_ACTION_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_OPPONENT_POINTS + ">0</" + COLUMN_NAME_ACTION_OPPONENT_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_QUAL_POINTS + ">0</" + COLUMN_NAME_ACTION_QUAL_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_FOUL_POINTS + ">0</" + COLUMN_NAME_ACTION_FOUL_POINTS + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_COOP_FLAG + ">N</" + COLUMN_NAME_ACTION_COOP_FLAG + ">\n" +
+                "\t\t<" + COLUMN_NAME_ACTION_CATEGORY + ">movement</" + COLUMN_NAME_ACTION_CATEGORY + ">\n" +
+                "\t</ROW>\n" +
+                "</DATA>";
     }
     public void queryInsertActionsData(HashMap<String, XMLParser.TableColumn> actionsMap, Context c){
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);

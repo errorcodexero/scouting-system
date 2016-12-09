@@ -18,6 +18,19 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
 public class TeamMatchActionModel implements SQLDataTypeDefines {
 
+    private Integer id;
+    private Integer tabletId;
+    private Integer teamMatchId;
+
+    private Integer actionTypeId;
+    private Integer actionQuantity;
+
+    private String actionStartTime;
+    private String actionEndTime;
+
+    private Integer actionObjectCount;
+
+
     public static String addAction(int tablet_id, int TeamMatchId, int ActionId, Boolean isDec) {
 
         int quant = isDec ? -1 : 1;

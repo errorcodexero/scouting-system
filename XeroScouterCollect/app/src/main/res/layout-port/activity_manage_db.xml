@@ -62,11 +62,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/reset_local_test_data"
-        android:id="@+id/btn_local_reset"
+        android:text="Create Test Data"
+        android:id="@+id/btn_create_test_data"
         android:layout_marginLeft="10dp"
         android:textSize="20sp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClick" />
 
     <Space
         android:layout_width="match_parent"
