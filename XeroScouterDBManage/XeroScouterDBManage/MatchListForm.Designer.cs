@@ -58,6 +58,7 @@
             this.gridMatchList.Name = "gridMatchList";
             this.gridMatchList.Size = new System.Drawing.Size(764, 278);
             this.gridMatchList.TabIndex = 10;
+            this.gridMatchList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMatchList_CellClick);
             // 
             // lblMatchList
             // 
@@ -153,7 +154,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCompetitionValue.AutoSize = true;
             this.lblCompetitionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompetitionValue.Location = new System.Drawing.Point(164, 55);
+            this.lblCompetitionValue.Location = new System.Drawing.Point(164, 18);
             this.lblCompetitionValue.Name = "lblCompetitionValue";
             this.lblCompetitionValue.Size = new System.Drawing.Size(0, 29);
             this.lblCompetitionValue.TabIndex = 18;
@@ -164,20 +165,22 @@
             this.lblSeasonValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSeasonValue.AutoSize = true;
+            this.lblSeasonValue.Enabled = false;
             this.lblSeasonValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeasonValue.Location = new System.Drawing.Point(164, 17);
+            this.lblSeasonValue.Location = new System.Drawing.Point(164, 62);
             this.lblSeasonValue.Name = "lblSeasonValue";
             this.lblSeasonValue.Size = new System.Drawing.Size(0, 29);
             this.lblSeasonValue.TabIndex = 20;
             this.lblSeasonValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSeasonValue.Visible = false;
             // 
             // btnSetCompetition
             // 
             this.btnSetCompetition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnSetCompetition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetCompetition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnSetCompetition.Location = new System.Drawing.Point(17, 54);
-            this.btnSetCompetition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetCompetition.Location = new System.Drawing.Point(17, 14);
+            this.btnSetCompetition.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetCompetition.Name = "btnSetCompetition";
             this.btnSetCompetition.Size = new System.Drawing.Size(137, 33);
             this.btnSetCompetition.TabIndex = 21;
@@ -188,17 +191,19 @@
             // 
             // btnSetSeason
             // 
+            this.btnSetSeason.Enabled = false;
             this.btnSetSeason.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnSetSeason.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnSetSeason.Location = new System.Drawing.Point(17, 15);
-            this.btnSetSeason.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetSeason.Location = new System.Drawing.Point(17, 58);
+            this.btnSetSeason.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetSeason.Name = "btnSetSeason";
             this.btnSetSeason.Size = new System.Drawing.Size(137, 33);
             this.btnSetSeason.TabIndex = 22;
             this.btnSetSeason.Text = "Season";
             this.btnSetSeason.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSetSeason.UseVisualStyleBackColor = true;
+            this.btnSetSeason.Visible = false;
             this.btnSetSeason.Click += new System.EventHandler(this.btnSetSeason_Click);
             // 
             // btnAddMatchData

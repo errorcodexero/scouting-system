@@ -14,12 +14,14 @@ namespace XeroScouterDBManage
     {
         public static String getConnectionString()
         {
-            string csKey = (Program.TEST_MODE) ? "XeroScouterDBManage.Properties.Settings.FTS_TEST_ConnectionString" : "XeroScouterDBManage.Properties.Settings.FTS_ConnectionString";
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[csKey];
-            string connectionString = settings.ConnectionString;
+            //string csKey = (Program.TEST_MODE) ? "XeroScouterDBManage.Properties.Settings.FTS_TEST_ConnectionString" : "XeroScouterDBManage.Properties.Settings.FTS_ConnectionString";
+            //ConnectionStringSettings csSettings = ConfigurationManager.ConnectionStrings[csKey];
+            //string connectionString = csSettings.ConnectionString;
 
             //String connectionString = (Program.TEST_MODE) ? Program.conTestString : Program.conString;
-            return connectionString;
+            //return connectionString;
+
+            return Program.connectionString;
         }
 
         public static bool openConnection(MySqlConnection connection, Label lblStatus)

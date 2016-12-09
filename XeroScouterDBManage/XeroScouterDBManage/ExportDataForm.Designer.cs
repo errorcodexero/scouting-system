@@ -46,11 +46,10 @@
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(375, 245);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(281, 185);
             this.btnClose.Name = "btnClose";
             this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnClose.Size = new System.Drawing.Size(139, 46);
+            this.btnClose.Size = new System.Drawing.Size(104, 37);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -59,32 +58,29 @@
             // cmbCompetitionName
             // 
             this.cmbCompetitionName.FormattingEnabled = true;
-            this.cmbCompetitionName.Location = new System.Drawing.Point(153, 84);
-            this.cmbCompetitionName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCompetitionName.Location = new System.Drawing.Point(115, 68);
             this.cmbCompetitionName.Name = "cmbCompetitionName";
-            this.cmbCompetitionName.Size = new System.Drawing.Size(160, 24);
+            this.cmbCompetitionName.Size = new System.Drawing.Size(121, 21);
             this.cmbCompetitionName.TabIndex = 19;
             // 
             // lblCompetitionName
             // 
             this.lblCompetitionName.AutoSize = true;
-            this.lblCompetitionName.Location = new System.Drawing.Point(21, 87);
-            this.lblCompetitionName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCompetitionName.Location = new System.Drawing.Point(16, 71);
             this.lblCompetitionName.Name = "lblCompetitionName";
-            this.lblCompetitionName.Size = new System.Drawing.Size(123, 17);
+            this.lblCompetitionName.Size = new System.Drawing.Size(93, 13);
             this.lblCompetitionName.TabIndex = 18;
             this.lblCompetitionName.Text = "Competition Name";
             // 
             // lblExportData
             // 
-            this.lblExportData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblExportData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExportData.AutoSize = true;
             this.lblExportData.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExportData.Location = new System.Drawing.Point(173, 11);
-            this.lblExportData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExportData.Location = new System.Drawing.Point(130, 9);
             this.lblExportData.Name = "lblExportData";
-            this.lblExportData.Size = new System.Drawing.Size(171, 36);
+            this.lblExportData.Size = new System.Drawing.Size(137, 29);
             this.lblExportData.TabIndex = 17;
             this.lblExportData.Text = "Export Data";
             this.lblExportData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,34 +90,31 @@
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
             this.lblStatus.Enabled = false;
-            this.lblStatus.Location = new System.Drawing.Point(16, 303);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatus.Location = new System.Drawing.Point(12, 267);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 20;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkTableList
             // 
-            this.chkTableList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkTableList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chkTableList.FormattingEnabled = true;
-            this.chkTableList.Location = new System.Drawing.Point(155, 138);
-            this.chkTableList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkTableList.Location = new System.Drawing.Point(116, 99);
             this.chkTableList.Name = "chkTableList";
-            this.chkTableList.Size = new System.Drawing.Size(159, 89);
+            this.chkTableList.Size = new System.Drawing.Size(120, 124);
             this.chkTableList.TabIndex = 21;
             this.chkTableList.ThreeDCheckBoxes = true;
             // 
             // btnExportSelected
             // 
             this.btnExportSelected.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnExportSelected.Location = new System.Drawing.Point(375, 164);
-            this.btnExportSelected.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportSelected.Location = new System.Drawing.Point(281, 126);
             this.btnExportSelected.Name = "btnExportSelected";
             this.btnExportSelected.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnExportSelected.Size = new System.Drawing.Size(139, 46);
+            this.btnExportSelected.Size = new System.Drawing.Size(104, 37);
             this.btnExportSelected.TabIndex = 13;
             this.btnExportSelected.Text = "Export &Selected";
             this.btnExportSelected.UseVisualStyleBackColor = true;
@@ -130,11 +123,10 @@
             // btnExportAll
             // 
             this.btnExportAll.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnExportAll.Location = new System.Drawing.Point(375, 84);
-            this.btnExportAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportAll.Location = new System.Drawing.Point(281, 68);
             this.btnExportAll.Name = "btnExportAll";
             this.btnExportAll.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnExportAll.Size = new System.Drawing.Size(139, 46);
+            this.btnExportAll.Size = new System.Drawing.Size(104, 37);
             this.btnExportAll.TabIndex = 13;
             this.btnExportAll.Text = "Export &All";
             this.btnExportAll.UseVisualStyleBackColor = true;
@@ -149,20 +141,18 @@
             // 
             this.lblPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(96, 260);
-            this.lblPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPath.Location = new System.Drawing.Point(86, 245);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(0, 17);
+            this.lblPath.Size = new System.Drawing.Size(0, 13);
             this.lblPath.TabIndex = 22;
             // 
             // btnSetPath
             // 
             this.btnSetPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSetPath.Location = new System.Drawing.Point(16, 245);
-            this.btnSetPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSetPath.Location = new System.Drawing.Point(12, 235);
             this.btnSetPath.Name = "btnSetPath";
             this.btnSetPath.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnSetPath.Size = new System.Drawing.Size(63, 46);
+            this.btnSetPath.Size = new System.Drawing.Size(57, 28);
             this.btnSetPath.TabIndex = 13;
             this.btnSetPath.Text = "Set Path";
             this.btnSetPath.UseVisualStyleBackColor = true;
@@ -170,10 +160,10 @@
             // 
             // ExportDataForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(527, 330);
+            this.ClientSize = new System.Drawing.Size(395, 268);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.chkTableList);
             this.Controls.Add(this.lblStatus);
@@ -185,7 +175,6 @@
             this.Controls.Add(this.btnSetPath);
             this.Controls.Add(this.btnClose);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ExportDataForm";
             this.Text = "frmExportData";
             this.ResumeLayout(false);

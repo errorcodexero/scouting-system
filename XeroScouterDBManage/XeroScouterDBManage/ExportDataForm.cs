@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
@@ -33,11 +28,11 @@ namespace XeroScouterDBManage_Server
         public void initTableList()
         {
             CheckedListBox.ObjectCollection items = chkTableList.Items;
-            items.Add("competition_data");
-            items.Add("match_data");
-            items.Add("robot_data");
-            items.Add("team_data");
-            items.Add("team_match");
+            items.Add(ActionTypeTable.TABLE_NAME);
+            items.Add(EventTable.TABLE_NAME);
+            items.Add(MatchTable.TABLE_NAME);
+            items.Add(TeamTable.TABLE_NAME);
+            items.Add(TeamMatchTable.TABLE_NAME);
 
             chkTableList.Refresh();
         }
@@ -58,13 +53,13 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC; // "SELECT event_id, name, location FROM event";
+                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
                     cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                    cmbCompetitionName.ValueMember = EventTable.COL_ID; // "event_id";
-                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME; // "name";
+                    cmbCompetitionName.ValueMember = EventTable.COL_ID;
+                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
                     cmbCompetitionName.SelectedValue = this.compID;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
@@ -105,7 +100,7 @@ namespace XeroScouterDBManage_Server
                     try
                     {
                         cmd = connection.CreateCommand();
-                        cmd.CommandText = "SELECT *" +
+                        cmd.CommandText = "SELECT *, '" + table + "' AS table_name" +
                             " FROM " + table;
                         MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
 

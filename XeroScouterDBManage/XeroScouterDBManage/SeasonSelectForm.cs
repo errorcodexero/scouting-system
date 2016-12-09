@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 using XeroScouterDBManage;
 
 namespace XeroScouterDBManage_Server
@@ -27,7 +29,6 @@ namespace XeroScouterDBManage_Server
 
         public void LoadSeasons()
         {
-            /*
             MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
             MySqlCommand cmd;
             bool connectionAvailable = Utils.openConnection(connection, sslblStatus);
@@ -64,7 +65,6 @@ namespace XeroScouterDBManage_Server
                     }
                 }
             }
-            */
         }
 
         private void cmbSeasonYear_SelectedValueChanged(object sender, EventArgs e)

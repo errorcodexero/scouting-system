@@ -63,21 +63,10 @@ namespace XeroScouterDBManage_Server.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=ftsscout;password=ftsscouter;persistsecurityinfo=True;da" +
-            "tabase=scouting")]
+            "tabase=")]
         public string FTS_ConnectionString {
             get {
                 return ((string)(this["FTS_ConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=ftsscout;password=ftsscouter;persistsecurityinfo=True;da" +
-            "tabase=scouting_test")]
-        public string FTS_TEST_ConnectionString {
-            get {
-                return ((string)(this["FTS_TEST_ConnectionString"]));
             }
         }
         
@@ -90,6 +79,88 @@ namespace XeroScouterDBManage_Server.Properties {
             }
             set {
                 this["CompetitionID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("scouting")]
+        public string DatabaseName {
+            get {
+                return ((string)(this["DatabaseName"]));
+            }
+            set {
+                this["DatabaseName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("scouting_test")]
+        public string TestDatabaseName {
+            get {
+                return ((string)(this["TestDatabaseName"]));
+            }
+            set {
+                this["TestDatabaseName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4}")]
+        public string DBConnectionTemplate {
+            get {
+                return ((string)(this["DBConnectionTemplate"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        public string dbHost {
+            get {
+                return ((string)(this["dbHost"]));
+            }
+            set {
+                this["dbHost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ftsscout")]
+        public string dbUser {
+            get {
+                return ((string)(this["dbUser"]));
+            }
+            set {
+                this["dbUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ftsscouter")]
+        public string dbPassword {
+            get {
+                return ((string)(this["dbPassword"]));
+            }
+            set {
+                this["dbPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public string dbPersistSecurity {
+            get {
+                return ((string)(this["dbPersistSecurity"]));
+            }
+            set {
+                this["dbPersistSecurity"] = value;
             }
         }
     }

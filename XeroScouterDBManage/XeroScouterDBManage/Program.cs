@@ -8,21 +8,23 @@ namespace XeroScouterDBManage_Server
     {
         // globals
 
-        public static Boolean TEST_MODE = false;
+        public static Boolean TEST_MODE = true;
+        public static String dbName = (TEST_MODE) ? Properties.Settings.Default.TestDatabaseName : Properties.Settings.Default.DatabaseName;
 
-        public static String conString = Properties.Settings.Default.FTS_ConnectionString;
-            //"server=localhost;" +
-            //"port=3306;" +
-            //"uid=ftsscout;" +
-            //"pwd=ftsscouter;" +
-            //"database=scouting;";
+        private static String[] sA = new String[5]{
+                Properties.Settings.Default.dbHost,
+                Properties.Settings.Default.dbUser,
+                Properties.Settings.Default.dbPassword,
+                Properties.Settings.Default.dbPersistSecurity,
+                dbName
+            };
 
-        public static String conTestString = Properties.Settings.Default.FTS_TEST_ConnectionString;
-            //"server=localhost;" +
-            //"port=3306;" +
-            //"uid=ftsscout;" +
-            //"pwd=ftsscouter;" +
-            //"database=scouting_test;";
+        public static String connectionString = String.Format(Properties.Settings.Default.DBConnectionTemplate, sA); 
+        //"server=localhost;" +
+        //"port=3306;" +
+        //"uid=ftsscout;" +
+        //"pwd=ftsscouter;" +
+        //"database=scouting_test;";
 
         /// <summary>
         /// The main entry point for the application.
@@ -35,10 +37,10 @@ namespace XeroScouterDBManage_Server
 
             try
             {
-                if (Properties.Settings.Default.SeasonID < 0)
+                if (Properties.Settings.Default.CompetitionID < 0)
                 {
-                    SeasonSelectForm ssForm = new SeasonSelectForm();
-                    ssForm.ShowDialog();
+                    CompetitionSelectForm csForm = new CompetitionSelectForm();
+                    csForm.ShowDialog();
 
                 }
 

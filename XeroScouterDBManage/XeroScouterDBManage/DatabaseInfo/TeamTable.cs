@@ -7,15 +7,16 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String TABLE_NAME = "team";
 
         public static String COL_ID = "_id";
+        public static String COL_TEAM_NUMBER = "team_number";
         public static String COL_TBA_TEAM_KEY = "tba_team_key";
-        public static String COL_TEAM_LONG_NAME = "team_long_name";
-        public static String COL_TEAM_NAME = "team_name";
+        public static String COL_TEAM_LONG_NAME = "long_name";
+        public static String COL_TEAM_NAME = "name";
         public static String COL_LOGO_FILE_LOCATION = "logo_file_location";
-        public static String COL_TEAM_CITY = "team_city";
-        public static String COL_TEAM_STATE_CODE = "team_state_code";
-        public static String COL_TEAM_COUNTRY = "team_country";
-        public static String COL_TEAM_MOTTO = "team_motto";
-        public static String COL_TEAM_ROOKIE_YEAR = "team_rookie_year";
+        public static String COL_TEAM_CITY = "city";
+        public static String COL_TEAM_STATE_CODE = "state_code";
+        public static String COL_TEAM_COUNTRY = "country";
+        public static String COL_TEAM_MOTTO = "motto";
+        public static String COL_TEAM_ROOKIE_YEAR = "rookie_year";
         public static String COL_ROBOT_NAME = "robot_name";
         public static String COL_ROBOT_PICTURE_FILE_LOCATION = "robot_picture_file_location";
         public static String COL_ROBOT_DRIVE_TYPE = "robot_drive_type";
@@ -27,6 +28,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 
         public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
         public static String SELECT_NAME_FROM_MATCHING_ID = "SELECT " + COL_TEAM_LONG_NAME + " FROM " + TABLE_NAME + " WHERE " + COL_ID + "=";
-        public static String SELECT_NUMBER_FROM_MATCHING_ID = "SELECT " + COL_TEAM_NAME + " FROM " + TABLE_NAME + " WHERE " + COL_ID + "=";
+        public static String SELECT_NUMBER_FROM_MATCHING_ID = "SELECT " + COL_TEAM_NUMBER + " FROM " + TABLE_NAME + " WHERE " + COL_ID + "=";
+        public static String SELECT_ID_AND_NUMBER = "SELECT " + COL_ID + ", " + COL_TEAM_NUMBER + " FROM " + TABLE_NAME;
     }
 }

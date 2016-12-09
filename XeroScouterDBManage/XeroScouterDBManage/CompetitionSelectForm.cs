@@ -30,13 +30,13 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC; // "SELECT event_id, name, location FROM event";
+                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
                     cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                    cmbCompetitionName.ValueMember = EventTable.COL_ID; // "event_id";
-                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME; // "name";
+                    cmbCompetitionName.ValueMember = EventTable.COL_ID;
+                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {

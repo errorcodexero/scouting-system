@@ -36,14 +36,15 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC; //"SELECT event_id, name, location FROM event";
+                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
                     cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                    cmbCompetitionName.ValueMember = EventTable.COL_ID; // "event_id";
+                    cmbCompetitionName.ValueMember = EventTable.COL_ID;
                     cmbCompetitionName.SelectedValue = this.compID;
-                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME; // "name";
+                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
+                    txtMatchLocation.Text = ds.Tables[0].Rows[0][EventTable.COL_LOCATION].ToString();
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
@@ -91,7 +92,7 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = "SELECT _id, team_number FROM team_data";
+                    cmd.CommandText = TeamTable.SELECT_ID_AND_NUMBER;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
@@ -100,8 +101,8 @@ namespace XeroScouterDBManage_Server
                     {
                         combo.BindingContext = new System.Windows.Forms.BindingContext();
                         combo.DataSource = ds.Tables[0].DefaultView;
-                        combo.ValueMember = "_id";
-                        combo.DisplayMember = "team_number";
+                        combo.ValueMember = TeamTable.COL_ID;
+                        combo.DisplayMember = TeamTable.COL_TEAM_NUMBER;
                         //cmbCompetitionName.SelectedValue = this.compID;
                     }
                 }
@@ -399,7 +400,7 @@ namespace XeroScouterDBManage_Server
                     txtMatchNumber.Text = "";
                     txtMatchTime.Text = "";
                     txtMatchType.Text = "Qualification";
-                    txtMatchLocation.Text = "Auburn";
+                    txtMatchLocation.Text = "";
                     cmbBlue1.Text = "";
                     cmbBlue2.Text = "";
                     cmbBlue3.Text = "";
@@ -416,6 +417,8 @@ namespace XeroScouterDBManage_Server
             if (this.initSentinal && val.GetType() != typeof(DataRowView))
             {
                 this.compID = Utils.getLongIDFromComboSelectedValue(cmbCompetitionName, lblStatus);
+                DataRowView drv = (DataRowView)cmbCompetitionName.SelectedItem;
+                txtMatchLocation.Text = drv.Row[EventTable.COL_LOCATION].ToString();
             }
         }
     }
