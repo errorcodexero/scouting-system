@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +14,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Struct;
 import java.util.ArrayList;
@@ -55,7 +58,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     }
 
 
-/*
+
     public String queryMySQLDb(String queryString) {
 
         String results = "";
@@ -64,17 +67,40 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-            sharedPreferences.getString("dbUsername")
+            String defaultString = "*";
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection();
+            String user = sharedPreferences.getString("dbUsername", "root");
+            String pass = sharedPreferences.getString("dbPassword", "D3@ThC0D3");
+            String ip   = sharedPreferences.getString("dbIp", "127.0.0.1");
+
+            String url = "jdbc://" + ip + ":3306/match";
+
+
+            //Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, pass);
 
             Statement st = con.createStatement();
-            ResultSet rs =st.executeQuery(queryString);
+            ResultSet rs = st.executeQuery(queryString);
+            ResultSetMetaData rsmd = rs.getMetaData();
 
+            String ColumnNames = "";
+
+            int i = 1;
+
+            while(rs.next()) {
+                ColumnNames += rsmd.getColumnName(i);
+                i++;
+            }
+
+            Toast.makeText(this, results, Toast.LENGTH_SHORT).show();
+
+        } catch (SQLException e) {
+            Log.d("Debug", "Failed to execute sql");
         }
-
-    }*/
+            finally {
+            return "yay";
+        }
+    }
 
 
 

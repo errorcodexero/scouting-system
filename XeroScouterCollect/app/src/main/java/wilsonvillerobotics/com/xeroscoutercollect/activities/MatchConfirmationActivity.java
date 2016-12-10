@@ -131,6 +131,8 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         matchObjList.add(match3);
     }
 
+
+
     /*private void addItemsToTeamList() {
         team_list = new ArrayList<String>();
         match_list.add(match1.getTeam1());
