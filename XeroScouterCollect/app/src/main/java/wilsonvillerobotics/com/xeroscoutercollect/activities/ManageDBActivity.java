@@ -1,25 +1,12 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
-import java.sql.Connection;
-
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Struct;
-import java.util.ArrayList;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
@@ -76,22 +63,23 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
     }*/
 
-
+    private final String XML_EXT = ".xml";
+    private String TN = "table_name";
 
     public void importDataFromXML(){
         XMLParser myParser = new XMLParser("",this);
         ArrayList<String> xmlFilePaths = new ArrayList<String>();
-        xmlFilePaths.add(getFilesDir() + "/" + "event.xml");
-        xmlFilePaths.add(getFilesDir() + "/" + "match.xml");
-        xmlFilePaths.add(getFilesDir() + "/" + "action_type.xml");
-        xmlFilePaths.add(getFilesDir() + "/" + "team_match.xml");
-        xmlFilePaths.add(getFilesDir() + "/" + "team.xml");
+        xmlFilePaths.add(getFilesDir() + "/" + EventContract.EventEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(getFilesDir() + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(getFilesDir() + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(getFilesDir() + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(getFilesDir() + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
 
         for(String path:xmlFilePaths){
             HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);
-            boolean hasTN = map.containsKey("table_name");
+            boolean hasTN = map.containsKey(TN);
             if(hasTN) {
-                TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get("table_name"))).getValue();
+                TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get(TN))).getValue();
                 switch (tName) {
                     case EVENT:
                         EventContract ec = new EventContract();
@@ -116,9 +104,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
                 }
             }
-
-
-
         }
     }
 

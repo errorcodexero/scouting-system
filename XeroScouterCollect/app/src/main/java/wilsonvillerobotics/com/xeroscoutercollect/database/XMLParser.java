@@ -1,6 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
 import android.content.Context;
+import android.util.EventLog;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -14,7 +15,11 @@ import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;
@@ -80,33 +85,31 @@ public class XMLParser{
             //Creates a map, then depending on filename, creates the right map
             final String TABLE_NAME_KEY = context.getString(R.string.table_name_key);
             TableTableNameColumn tc = new TableTableNameColumn(TABLE_NAME_KEY);
-            // TODO - Hey Luke - look at me!!!
             if(xmlFilePath.contains(MatchContract.MatchEntry.TABLE_NAME + XML_EXT)) { // match.xml
                 map = mapMaker(makeMatchList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
                 map.put(TABLE_NAME_KEY,tc);
                 Log.d(TNTAG, MatchContract.MatchEntry.TABLE_NAME);
-            // TODO - Hey Luke - look up above here!!!
-            }else if(xmlFilePath.contains("event.xml")){
+            }else if(xmlFilePath.contains(EventContract.EventEntry.TABLE_NAME + XML_EXT)){
                 map = mapMaker(makeEventList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
-                map.put("table_name",tc);
-                Log.d("Table Name", "event");
-            }else if(xmlFilePath.contains("action.xml")){
+                map.put(TABLE_NAME_KEY,tc);
+                Log.d(TNTAG, EventContract.EventEntry.TABLE_NAME);
+            }else if(xmlFilePath.contains(ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT)){
                 map = mapMaker(makeActionTypeList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
-                map.put("table_name",tc);
-                Log.d("Table Name", "action");
-            }else if(xmlFilePath.contains("teamMatch.xml")){
+                map.put(TABLE_NAME_KEY,tc);
+                Log.d(TNTAG, ActionsContract.ActionsEntry.TABLE_NAME);
+            }else if(xmlFilePath.contains(TeamMatchEntry.TABLE_NAME + XML_EXT)){
                 map = makeTeamMatchMap();
                 tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
-                map.put("table_name",tc);
-                Log.d("Table Name", "teamMatch");
-            }else if(xmlFilePath.contains("team.xml")){
+                map.put(TABLE_NAME_KEY,tc);
+                Log.d(TNTAG, TeamMatchEntry.TABLE_NAME);
+            }else if(xmlFilePath.contains(TeamContract.TeamEntry.TABLE_NAME + XML_EXT)){
                 map = mapMaker(makeTeamList());
                 tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
-                map.put("table_name",tc);
-                Log.d("Table Name", "team");
+                map.put(TABLE_NAME_KEY,tc);
+                Log.d(TNTAG, TeamContract.TeamEntry.TABLE_NAME);
             }
 
             xmlFactoryObject = XmlPullParserFactory.newInstance();
@@ -202,31 +205,31 @@ public class XMLParser{
     // 25 fields
     public ArrayList<TableColumn> makeMatchList(){
         ArrayList<TableColumn> matchList = new ArrayList<TableColumn>();
-        matchList.add(new TableIntegerColumn("_id"));
-        matchList.add(new TableIntegerColumn("event_id"));
-        matchList.add(new TableStringColumn("tba_match_key"));
-        matchList.add(new TableStringColumn("comp_level"));
-        matchList.add(new TableStringColumn("set_number"));
-        matchList.add(new TableStringColumn("match_number"));
-        matchList.add(new TableStringColumn("status"));
-        matchList.add(new TableIntegerColumn("red_1_team_id"));
-        matchList.add(new TableIntegerColumn("red_2_team_id"));
-        matchList.add(new TableIntegerColumn("red_3_team_id"));
-        matchList.add(new TableIntegerColumn("red_auto_score"));
-        matchList.add(new TableIntegerColumn("red_teleop_score"));
-        matchList.add(new TableIntegerColumn("red_total_score"));
-        matchList.add(new TableIntegerColumn("red_qp"));
-        matchList.add(new TableIntegerColumn("red_foul_points"));
-        matchList.add(new TableIntegerColumn("blue_1_team_id"));
-        matchList.add(new TableIntegerColumn("blue_2_team_id"));
-        matchList.add(new TableIntegerColumn("blue_3_team_id"));
-        matchList.add(new TableIntegerColumn("blue_auto_score"));
-        matchList.add(new TableIntegerColumn("blue_teleop_score"));
-        matchList.add(new TableIntegerColumn("blue_total_score"));
-        matchList.add(new TableIntegerColumn("blue_qp"));
-        matchList.add(new TableIntegerColumn("blue_foul_points"));
-        matchList.add(new TableStringColumn("winner"));
-        matchList.add(new TableStringColumn("drive_team_comments"));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_ID));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_EVENT_ID));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_TBA_MATCH_KEY));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_MATCH_COMP_LEVEL));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_MATCH_SET_NUMBER));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_MATCH_STATUS));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_1));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_2));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_3));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_AUTO_SCORE));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_QP));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_RED_FOUL_POINTS));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_1));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_2));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_QP));
+        matchList.add(new TableIntegerColumn(MatchContract.MatchEntry.COLUMN_NAME_BLUE_FOUL_POINTS));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_MATCH_WINNER));
+         matchList.add(new TableStringColumn(MatchContract.MatchEntry.COLUMN_NAME_DRIVE_TEAM_COMMENTS));
 
         return matchList;
     }
@@ -235,16 +238,16 @@ public class XMLParser{
     // 9 fields
     public ArrayList<TableColumn> makeEventList(){
         ArrayList<TableColumn> eventList = new ArrayList<TableColumn>();
-        eventList.add(new TableIntegerColumn("_id"));
-        eventList.add(new TableStringColumn("name"));
-        eventList.add(new TableStringColumn("tba_event_key"));
-        eventList.add(new TableStringColumn("short_name"));
-        eventList.add(new TableStringColumn("event_type"));
-        eventList.add(new TableStringColumn("event_district"));
-        eventList.add(new TableIntegerColumn("year"));
-        eventList.add(new TableIntegerColumn("week"));
-        eventList.add(new TableStringColumn("location"));
-        eventList.add(new TableStringColumn("tba_event_code"));
+        eventList.add(new TableIntegerColumn(EventContract.EventEntry.COLUMN_NAME_ID));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_TBA_EVENT_KEY));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_NAME));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_SHORT_NAME));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_TYPE));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_DISTRICT));
+        eventList.add(new TableIntegerColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_YEAR));
+        eventList.add(new TableIntegerColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_WEEK));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_EVENT_LOCATION));
+         eventList.add(new TableStringColumn(EventContract.EventEntry.COLUMN_NAME_TBA_EVENT_CODE));
 
         return eventList;
     }
@@ -253,16 +256,16 @@ public class XMLParser{
     // 10 fields
     public ArrayList<TableColumn> makeActionTypeList(){
         ArrayList<TableColumn> actionTypeList = new ArrayList<TableColumn>();
-        actionTypeList.add(new TableIntegerColumn("_id"));
-        actionTypeList.add(new TableStringColumn("name"));
-        actionTypeList.add(new TableStringColumn("description"));
-        actionTypeList.add(new TableStringColumn("match_phase"));
-        actionTypeList.add(new TableIntegerColumn("points"));
-        actionTypeList.add(new TableIntegerColumn("opponent_points"));
-        actionTypeList.add(new TableIntegerColumn("qual_points"));
-        actionTypeList.add(new TableIntegerColumn("foul_points"));
-        actionTypeList.add(new TableStringColumn("coop_flag"));
-        actionTypeList.add(new TableStringColumn("category"));
+        actionTypeList.add(new TableIntegerColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ID));
+         actionTypeList.add(new TableStringColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_NAME));
+         actionTypeList.add(new TableStringColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_DESCRIPTION));
+         actionTypeList.add(new TableStringColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_MATCH_PHASE));
+        actionTypeList.add(new TableIntegerColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_POINTS));
+        actionTypeList.add(new TableIntegerColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_OPPONENT_POINTS));
+        actionTypeList.add(new TableIntegerColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_QUAL_POINTS));
+        actionTypeList.add(new TableIntegerColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_FOUL_POINTS));
+         actionTypeList.add(new TableStringColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_COOP_FLAG));
+         actionTypeList.add(new TableStringColumn(ActionsContract.ActionsEntry.COLUMN_NAME_ACTION_CATEGORY));
         return  actionTypeList;
     }
 
@@ -282,24 +285,24 @@ public class XMLParser{
     // 18 fields
     public ArrayList<TableColumn> makeTeamList(){
         ArrayList<TableColumn> teamList = new ArrayList<TableColumn>();
-        teamList.add(new TableIntegerColumn("_id"));
-        teamList.add(new TableStringColumn("tba_team_key"));
-        teamList.add(new TableStringColumn("long_name"));
-        teamList.add(new TableStringColumn("name"));
-        teamList.add(new TableStringColumn("logo_file_location"));
-        teamList.add(new TableStringColumn("city"));
-        teamList.add(new TableStringColumn("state_code"));
-        teamList.add(new TableStringColumn("country"));
-        teamList.add(new TableStringColumn("motto"));
-        teamList.add(new TableIntegerColumn("rookie_year"));
-        teamList.add(new TableStringColumn("robot_name"));
-        teamList.add(new TableStringColumn("robot_picture_file_location"));
-        teamList.add(new TableStringColumn("robot_drive_type"));
-        teamList.add(new TableIntegerColumn("robot_wheel_count"));
-        teamList.add(new TableIntegerColumn("robot_drive_motor_count"));
-        teamList.add(new TableStringColumn("robot_software_language"));
-        teamList.add(new TableStringColumn("robot_description"));
-        teamList.add(new TableStringColumn("pit_scout_comments"));
+        teamList.add(new TableIntegerColumn(TeamContract.TeamEntry.COLUMN_NAME_ID));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO));
+        teamList.add(new TableIntegerColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE));
+        teamList.add(new TableIntegerColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT));
+        teamList.add(new TableIntegerColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION));
+         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS));
         return teamList;
     }
 }

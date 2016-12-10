@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract.EventEntry;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.MatchEntry;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry;
@@ -24,7 +25,6 @@ private Context c;
 
     public void generateActions(){
         String fileName = "action_type.xml";
-        /*
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
@@ -40,10 +40,9 @@ private Context c;
                 "\t\t<" + ActionsEntry.COLUMN_NAME_ACTION_CATEGORY + ">movement</" + ActionsEntry.COLUMN_NAME_ACTION_CATEGORY + ">\n" +
                 "\t</ROW>\n" +
                 "</DATA>";
-        */
 
-        //generateFile(fileName,data);
-        generateFile(fileName, ActionsEntry.testData);
+        generateFile(fileName,data);
+        //generateFile(fileName, ActionsEntry.testData);
     }
     public void generateEvent(){
         String fileName = "event.xml";
@@ -105,129 +104,129 @@ private Context c;
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>14251</_id>\n" +
-                "\t\t<tba_team_key>TBA1425A</tba_team_key>\n" +
-                "\t\t<long_name>NULL</long_name>\n" +
-                "\t\t<name>Error Code Xero</name>\n" +
-                "\t\t<logo_file_location>NULL</logo_file_location>\n" +
-                "\t\t<city>Wilsonvillle</city>\n" +
-                "\t\t<state_code>OR</state_code>\n" +
-                "\t\t<country>USA</country>\n" +
-                "\t\t<motto>&#39;Building Robots, Building People&#39;</motto>\n" +
-                "\t\t<rookie_year>2004</rookie_year>\n" +
-                "\t\t<robot_name>Dash</robot_name>\n" +
-                "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
-                "\t\t<robot_drive_type>Holononic</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>3</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>6</robot_drive_motor_count>\n" +
-                "\t\t<robot_software_language>C++</robot_software_language>\n" +
-                "\t\t<robot_description>NULL</robot_description>\n" +
-                "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14251</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">Wilsonvillle</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">OR</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">USA</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">&#39;Building Robots, Building People&#39;</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">2004</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">Dash</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">Holononic</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">3</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">6</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">C++</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>14252</_id>\n" +
-                "\t\t<tba_team_key>TBA1425B</tba_team_key>\n" +
-                "\t\t<long_name>NULL</long_name>\n" +
-                "\t\t<name>Error Code Xero</name>\n" +
-                "\t\t<logo_file_location>NULL</logo_file_location>\n" +
-                "\t\t<city>Wilsonville</city>\n" +
-                "\t\t<state_code>OR</state_code>\n" +
-                "\t\t<country>USA</country>\n" +
-                "\t\t<motto>&#39;Building Robots, Building People&#39;</motto>\n" +
-                "\t\t<rookie_year>2004</rookie_year>\n" +
-                "\t\t<robot_name>Hammy</robot_name>\n" +
-                "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
-                "\t\t<robot_drive_type>H-Drive</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>5</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>5</robot_drive_motor_count>\n" +
-                "\t\t<robot_software_language>C++</robot_software_language>\n" +
-                "\t\t<robot_description>NULL</robot_description>\n" +
-                "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14252</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">Wilsonvillle</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">OR</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">USA</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">&#39;Building Robots, Building People&#39;</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">2004</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">Dash</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">Holononic</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">3</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">6</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">C++</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>24711</_id>\n" +
-                "\t\t<tba_team_key>TBA2471A</tba_team_key>\n" +
-                "\t\t<long_name>NULL</long_name>\n" +
-                "\t\t<name>Team Mean Machine</name>\n" +
-                "\t\t<logo_file_location>NULL</logo_file_location>\n" +
-                "\t\t<city>Camas</city>\n" +
-                "\t\t<state_code>WA</state_code>\n" +
-                "\t\t<country>USA</country>\n" +
-                "\t\t<motto>&quot;24 hours a day, 7 days a week, 1 build season&quot;</motto>\n" +
-                "\t\t<rookie_year>2008</rookie_year>\n" +
-                "\t\t<robot_name>NULL</robot_name>\n" +
-                "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
-                "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
-                "\t\t<robot_software_language>NA</robot_software_language>\n" +
-                "\t\t<robot_description>NULL</robot_description>\n" +
-                "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14253</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">Wilsonvillle</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">OR</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">USA</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">&#39;Building Robots, Building People&#39;</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">2004</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">Dash</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">Holononic</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">3</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">6</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">C++</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>24712</_id>\n" +
-                "\t\t<tba_team_key>TBA2471B</tba_team_key>\n" +
-                "\t\t<long_name>NULL</long_name>\n" +
-                "\t\t<name>Team Mean Machine</name>\n" +
-                "\t\t<logo_file_location>NULL</logo_file_location>\n" +
-                "\t\t<city>Camas</city>\n" +
-                "\t\t<state_code>WA</state_code>\n" +
-                "\t\t<country>USA</country>\n" +
-                "\t\t<motto>&quot;24 hours a day, 7 days a week, 1 build season&quot;</motto>\n" +
-                "\t\t<rookie_year>2008</rookie_year>\n" +
-                "\t\t<robot_name>NULL</robot_name>\n" +
-                "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
-                "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
-                "\t\t<robot_software_language>NA</robot_software_language>\n" +
-                "\t\t<robot_description>NULL</robot_description>\n" +
-                "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14254</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">Wilsonvillle</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">OR</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">USA</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">&#39;Building Robots, Building People&#39;</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">2004</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">Dash</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">Holononic</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">3</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">6</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">C++</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>37111</_id>\n" +
-                "\t\t<tba_team_key>TBA3711A</tba_team_key>\n" +
-                "\t\t<long_name>NULL</long_name>\n" +
-                "\t\t<name>Iron Mustangs</name>\n" +
-                "\t\t<logo_file_location>NULL</logo_file_location>\n" +
-                "\t\t<city>Trout Lake</city>\n" +
-                "\t\t<state_code>WA</state_code>\n" +
-                "\t\t<country>USA</country>\n" +
-                "\t\t<motto>&quot;Do great things&quot;</motto>\n" +
-                "\t\t<rookie_year>2011</rookie_year>\n" +
-                "\t\t<robot_name>NULL</robot_name>\n" +
-                "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
-                "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
-                "\t\t<robot_software_language>NA</robot_software_language>\n" +
-                "\t\t<robot_description>NULL</robot_description>\n" +
-                "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14255</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">Wilsonvillle</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">OR</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">USA</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">&#39;Building Robots, Building People&#39;</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">2004</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">Dash</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">Holononic</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">3</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">6</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">C++</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<_id>37112</_id>\n" +
-                "\t\t<tba_team_key>TBA3711B</tba_team_key>\n" +
-                "\t\t<long_name>NULL</long_name>\n" +
-                "\t\t<name>Iron Mustangs</name>\n" +
-                "\t\t<logo_file_location>NULL</logo_file_location>\n" +
-                "\t\t<city>Trout Lake</city>\n" +
-                "\t\t<state_code>WA</state_code>\n" +
-                "\t\t<country>USA</country>\n" +
-                "\t\t<motto>&quot;Do great things&quot;</motto>\n" +
-                "\t\t<rookie_year>2011</rookie_year>\n" +
-                "\t\t<robot_name>NULL</robot_name>\n" +
-                "\t\t<robot_picture_file_location>NULL</robot_picture_file_location>\n" +
-                "\t\t<robot_drive_type>NA</robot_drive_type>\n" +
-                "\t\t<robot_wheel_count>-1</robot_wheel_count>\n" +
-                "\t\t<robot_drive_motor_count>-1</robot_drive_motor_count>\n" +
-                "\t\t<robot_software_language>NA</robot_software_language>\n" +
-                "\t\t<robot_description>NULL</robot_description>\n" +
-                "\t\t<pit_scout_comments>NULL</pit_scout_comments>\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14256</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_LOGO_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">Wilsonvillle</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_CITY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">OR</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_STATE_CODE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">USA</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_COUNTRY + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">&#39;Building Robots, Building People&#39;</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_MOTTO + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">2004</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_ROOKIE_YEAR + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">Dash</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_NAME + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_PICTURE_FILE_LOCATION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">Holononic</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">3</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_WHEEL_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">6</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">C++</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DESCRIPTION + ">\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_PIT_SCOUT_COMMENTS + ">\n" +
                 "\t</ROW>\n" +
                 "</DATA>";
 
@@ -239,50 +238,50 @@ private Context c;
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<team_id>14251</team_id>\n" +
-                "\t\t<match_id>1</match_id>\n" +
-                "\t\t<alliance>Blue</alliance>\n" +
-                "\t\t<position>1</position>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14251</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Blue</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">1</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">2</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<team_id>14252</team_id>\n" +
-                "\t\t<match_id>1</match_id>\n" +
-                "\t\t<alliance>Blue</alliance>\n" +
-                "\t\t<position>2</position>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14252</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Blue</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">2</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">3</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<team_id>24711</team_id>\n" +
-                "\t\t<match_id>1</match_id>\n" +
-                "\t\t<alliance>Blue</alliance>\n" +
-                "\t\t<position>3</position>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14253</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Blue</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">3</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">4</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<team_id>24712</team_id>\n" +
-                "\t\t<match_id>1</match_id>\n" +
-                "\t\t<alliance>Red</alliance>\n" +
-                "\t\t<position>1</position>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14254</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Red</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">1</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">5</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<team_id>37111</team_id>\n" +
-                "\t\t<match_id>1</match_id>\n" +
-                "\t\t<alliance>Red</alliance>\n" +
-                "\t\t<position>2</position>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14255</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Red</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">2</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">6</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<team_id>37112</team_id>\n" +
-                "\t\t<match_id>1</match_id>\n" +
-                "\t\t<alliance>Red</alliance>\n" +
-                "\t\t<position>3</position>\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14256</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Red</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">3</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>";
 
         generateFile(fileName,data);
