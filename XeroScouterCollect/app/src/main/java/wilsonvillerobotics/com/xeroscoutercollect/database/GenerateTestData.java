@@ -11,7 +11,6 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract.MatchE
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry;
 
 /**
  * Created by Luke Puppo on 12/6/2016.

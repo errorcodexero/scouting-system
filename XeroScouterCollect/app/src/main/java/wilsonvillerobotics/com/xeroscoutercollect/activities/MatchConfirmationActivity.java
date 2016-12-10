@@ -101,7 +101,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         //Cursor cursor = db.rawQuery(MatchModel.getAllMatchs(getIntent().getIntExtra("eventId", 0)));
-        Cursor cursor = db.rawQuery(MatchModel.getAllMatchs("0"), null);
+        Cursor cursor = db.rawQuery(MatchModel.getAllMatchs("1"), null);
 
         try {
             while(cursor.moveToNext()) {
