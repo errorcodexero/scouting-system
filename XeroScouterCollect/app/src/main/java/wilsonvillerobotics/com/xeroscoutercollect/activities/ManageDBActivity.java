@@ -16,10 +16,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Struct;
 import java.util.ArrayList;
+<<<<<<< Updated upstream
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
@@ -29,6 +32,8 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableTableNameColumn;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
 
@@ -54,7 +59,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
     }
 
-
 /*
     public String queryMySQLDb(String queryString) {
 
@@ -64,13 +68,15 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-            sharedPreferences.getString("dbUsername")
+            sharedPreferences.getString("dbUsername");
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection();
 
             Statement st = con.createStatement();
             ResultSet rs =st.executeQuery(queryString);
+
+        } finally {
 
         }
 
@@ -88,10 +94,10 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         xmlFilePaths.add(getFilesDir() + "/" + "team.xml");
 
         for(String path:xmlFilePaths){
-            HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);
+            HashMap<String, TableColumn> map = myParser.parseXML(path);
             boolean hasTN = map.containsKey("table_name");
             if(hasTN) {
-                TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get("table_name"))).getValue();
+                TABLE_NAME tName = ((TableTableNameColumn) (map.get("table_name"))).getValue();
                 switch (tName) {
                     case EVENT:
                         EventContract ec = new EventContract();

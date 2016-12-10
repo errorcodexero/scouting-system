@@ -154,7 +154,7 @@ public class XMLParser{
 
 //key value type
 
-    public class TableColumn<E> {
+    /*public class TableColumn<E> {
         protected String key;
         protected E value;
 
@@ -186,7 +186,7 @@ public class XMLParser{
         public TableTableNameColumn(String k){
             super(k);
         }
-    }
+    }*/
 
     //Takes an Arraylist, and creates a hashmap for it
     public HashMap<String, TableColumn> mapMaker(ArrayList<TableColumn> table){
@@ -200,6 +200,8 @@ public class XMLParser{
 
     // Match table
     // 25 fields
+
+    // TODO - Convert these to their coresponding model
     public ArrayList<TableColumn> makeMatchList(){
         ArrayList<TableColumn> matchList = new ArrayList<TableColumn>();
         matchList.add(new TableIntegerColumn("_id"));

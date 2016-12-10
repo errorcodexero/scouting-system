@@ -9,6 +9,9 @@ import android.util.Log;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableIntegerColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableStringColumn;
 import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
@@ -49,7 +52,7 @@ public class EventContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_TBA_EVENT_CODE + VC45
                         + ")";
         }
-    public void queryInsertEventData(HashMap<String, XMLParser.TableColumn> eventMap, Context c){
+    public void queryInsertEventData(HashMap<String, TableColumn> eventMap, Context c){
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -58,10 +61,10 @@ public class EventContract implements SQLDataTypeDefines {
             eventMap.remove(EventEntry.COLUMN_NAME_ID);
         }
         for(String key : eventMap.keySet()){
-            if(eventMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
-                content.put(key, ((XMLParser.TableStringColumn) eventMap.get(key)).getValue());
-            } else if(eventMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
-                content.put(key, ((XMLParser.TableIntegerColumn) eventMap.get(key)).getValue());
+            if(eventMap.get(key).getClass() == TableStringColumn.class) {
+                content.put(key, ((TableStringColumn) eventMap.get(key)).getValue());
+            } else if(eventMap.get(key).getClass() == TableIntegerColumn.class){
+                content.put(key, ((TableIntegerColumn) eventMap.get(key)).getValue());
             }
 
         }

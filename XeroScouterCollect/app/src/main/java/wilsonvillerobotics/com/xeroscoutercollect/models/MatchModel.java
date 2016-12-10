@@ -1,6 +1,11 @@
 package wilsonvillerobotics.com.xeroscoutercollect.models;
 
+import java.util.ArrayList;
+
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableIntegerColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableStringColumn;
 
 /**
  * Created by nick on 12/1/16.
@@ -202,36 +207,75 @@ public class MatchModel {
         this.driverComments = driverComments;
     }
 
-    private Integer eventId;
-    private String tbaMatchKey;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    private Integer eventId;
+    public Integer getId() {
+        return id;
+    }
+
+    private String tbaMatchKey;
     private String matchCompLevel;
     private String matchSetNumber;
+
     private String matchNumber;
     private String matchStatus;
-
     private Integer red1Score;
+
     private Integer red2Score;
     private Integer red3Score;
-
     private Integer redAutoScore;
     private Integer redFoulPoints;
     private Integer redTeleopScore;
+
     private Integer redTotalScore;
     private Integer redQp;
-
     private Integer blue1Score;
+
     private Integer blue2Score;
     private Integer blue3Score;
-
     private Integer blueAutoScore;
     private Integer blueFoulPoints;
     private Integer blueTeleopScore;
+
     private Integer blueTotalScore;
     private Integer blueQp;
 
     private String matchWinner;
+
     private String driverComments;
+
+    private ArrayList<TableColumn> matchColumns;
+
+    public MatchModel() {
+        matchColumns.add(new TableIntegerColumn("event_id", x -> setEventId(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("_id", x -> setId(Integer.valueOf(x))));
+        matchColumns.add(new TableStringColumn("tba_match_key", x -> setTbaMatchKey(String.valueOf(x))));
+        matchColumns.add(new TableStringColumn("comp_level", x -> setMatchCompLevel(String.valueOf(x))));
+        matchColumns.add(new TableStringColumn("set_number", x -> setMatchSetNumber(String.valueOf(x))));
+        matchColumns.add(new TableStringColumn("match_number", x -> setMatchNumber(String.valueOf(x))));
+        matchColumns.add(new TableStringColumn("status", x -> setMatchStatus(String.valueOf(x)));
+        matchColumns.add(new TableIntegerColumn("red_1_team_id", x -> setRed1Score(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_2_team_id", x -> setRed2Score(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_3_team_id", x -> setRed3Score(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_auto_score", x -> setRedAutoScore(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_teleop_score", x -> setRedTeleopScore(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_total_score", x -> setRedTotalScore(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_qp", x -> setRedQp(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("red_foul_points", x -> setRedFoulPoints(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_1_team_id", x -> setBlue1Score(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_2_team_id", x -> setBlue2Score(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_3_team_id", x -> setBlue3Score(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_auto_score", x -> setBlueAutoScore(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_teleop_score", x -> setBlueTeleopScore(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_total_score", x -> setBlueTotalScore(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_qp", x -> setBlueQp(Integer.valueOf(x))));
+        matchColumns.add(new TableIntegerColumn("blue_foul_points", x -> setBlueFoulPoints(Integer.valueOf(x))));
+        matchColumns.add(new TableStringColumn("winner", x -> setMatchWinner(String.valueOf(x))));
+        matchColumns.add(new TableStringColumn("drive_team_comments", x -> setDriverComments(String.valueOf(x))));
+    }
 
     public static String getAllMatchs(String eventId) {
 

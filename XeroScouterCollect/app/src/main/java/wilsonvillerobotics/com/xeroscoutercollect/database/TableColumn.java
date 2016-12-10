@@ -12,20 +12,23 @@ public class TableColumn<E> {
     protected String key;
     protected E value;
 
-    public TableColumn (String k, Function func) {
+    public TableColumn (String k, Function<E, void> func) {
         key = k;
         setter = func;
 
     }
 
+
     public TableColumn (String k) {
         key = k;
+        setter = null;
     }
 
     public void setValue(E v){
         value = v;
     }
     public E getValue() { return value; }
+    @Override
     public String toString () { return String.valueOf(this.value); }
     public E getKey() { return (E) key; }
     public Function setter;

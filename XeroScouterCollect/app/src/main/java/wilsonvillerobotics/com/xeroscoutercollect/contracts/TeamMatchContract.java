@@ -8,6 +8,9 @@ import android.provider.BaseColumns;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableIntegerColumn;
+import wilsonvillerobotics.com.xeroscoutercollect.database.TableStringColumn;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
 
@@ -35,7 +38,7 @@ public class TeamMatchContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_POSITION   + INT11
                         + ")";
     }
-    public void queryInsertTeamMatchData(HashMap<String, XMLParser.TableColumn> teamMatchMap, Context c){
+    public void queryInsertTeamMatchData(HashMap<String, TableColumn> teamMatchMap, Context c){
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -44,10 +47,10 @@ public class TeamMatchContract implements SQLDataTypeDefines {
             teamMatchMap.remove(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID);
         }
         for(String key : teamMatchMap.keySet()){
-            if(teamMatchMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
-                content.put(key, ((XMLParser.TableStringColumn) teamMatchMap.get(key)).getValue());
-            } else if(teamMatchMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
-                content.put(key, ((XMLParser.TableIntegerColumn) teamMatchMap.get(key)).getValue());
+            if(teamMatchMap.get(key).getClass() == TableStringColumn.class) {
+                content.put(key, ((TableStringColumn) teamMatchMap.get(key)).getValue());
+            } else if(teamMatchMap.get(key).getClass() == TableIntegerColumn.class){
+                content.put(key, ((TableIntegerColumn) teamMatchMap.get(key)).getValue());
             }
 
         }
