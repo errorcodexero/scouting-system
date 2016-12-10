@@ -141,6 +141,12 @@
       <DependentUpon>SeasonSelectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLInsertFactory.cs" />
+    <Compile Include="UpdateMatchDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateMatchDataForm.Designer.cs">
+      <DependentUpon>UpdateMatchDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\MySQL_ErrorCodes.cs" />
     <Compile Include="Utilities\Utils.cs" />
     <EmbeddedResource Include="AddMatchDataForm.resx">
@@ -173,6 +179,9 @@
     </Compile>
     <EmbeddedResource Include="SeasonSelectForm.resx">
       <DependentUpon>SeasonSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateMatchDataForm.resx">
+      <DependentUpon>UpdateMatchDataForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
