@@ -143,12 +143,18 @@ namespace XeroScouterDBManage_Server
                     
                     string query = MatchTable.SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX;
                     query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
                     query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
-                    query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
-                    query += MatchTable.SELECT_RED1_FOR_ID_PART;
-                    query += MatchTable.SELECT_RED2_FOR_ID_PART;
-                    query += MatchTable.SELECT_RED3_FOR_ID_PART;
-                    query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
+					query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
+					query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
+					query += MatchTable.SELECT_RED1_FOR_ID_PART;
+					query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
+					query += MatchTable.SELECT_RED2_FOR_ID_PART;
+					query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
+					query += MatchTable.SELECT_RED3_FOR_ID_PART;
+					query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
+					query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
                     query += this.competitionID;
 
                     cmd.CommandText = query;
@@ -275,13 +281,22 @@ namespace XeroScouterDBManage_Server
 			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
 			// if clicking a team number, update the team_match data
 			{
-				// TODO - implement UpdateTeamMatchDataForm
+				DataGridViewTextBoxCell idCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
+				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm();
+				entryForm.Show();
 			}
 		}
 
 		private void gridMatchList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
 		{
+			// Hide ID columns
 			gridMatchList.Columns[0].Visible = false;
+			gridMatchList.Columns[3].Visible = false;
+			gridMatchList.Columns[5].Visible = false;
+			gridMatchList.Columns[7].Visible = false;
+			gridMatchList.Columns[9].Visible = false;
+			gridMatchList.Columns[11].Visible = false;
+			gridMatchList.Columns[13].Visible = false;
 		}
 	}
 }

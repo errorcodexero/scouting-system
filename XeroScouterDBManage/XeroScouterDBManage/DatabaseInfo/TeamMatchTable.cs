@@ -13,6 +13,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String COL_POSITION = "position";
 
         // TODO - need to add to scouting database
+		// TODO - REMOVE event ID, not needed since baked in to Match ID
         public static String COL_EVENT_ID = "event_id";
 
         public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;

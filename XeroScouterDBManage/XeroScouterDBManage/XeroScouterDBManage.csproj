@@ -141,6 +141,12 @@
       <DependentUpon>SeasonSelectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLInsertFactory.cs" />
+    <Compile Include="TeamMatchActionEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeamMatchActionEntryForm.Designer.cs">
+      <DependentUpon>TeamMatchActionEntryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateMatchDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="SeasonSelectForm.resx">
       <DependentUpon>SeasonSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeamMatchActionEntryForm.resx">
+      <DependentUpon>TeamMatchActionEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateMatchDataForm.resx">
       <DependentUpon>UpdateMatchDataForm.cs</DependentUpon>
