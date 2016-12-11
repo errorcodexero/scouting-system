@@ -147,6 +147,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
     }
 
+
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_import)) {

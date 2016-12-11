@@ -1,6 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,7 +24,7 @@ private Context c;
     }
 
     public void generateActions(){
-        String fileName = "action_type.xml";
+        String fileName = "actions.xml";
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
@@ -41,6 +42,7 @@ private Context c;
                 "</DATA>";
 
         generateFile(fileName,data);
+        Log.d("genActions", data);
         //generateFile(fileName, ActionsEntry.testData);
     }
     public void generateEvent(){
@@ -62,6 +64,7 @@ private Context c;
                 "</DATA>";
 
         generateFile(fileName,data);
+        Log.d("genEvent", data);
     }
     public void generateMatch(){
         String fileName = "match.xml";
@@ -78,17 +81,17 @@ private Context c;
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_1 + ">14251</" + MatchEntry.COLUMN_NAME_RED_1 + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_2 + ">14252</" + MatchEntry.COLUMN_NAME_RED_2 + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_3 + ">24711</" + MatchEntry.COLUMN_NAME_RED_3 + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_RED_AUTO_SCORE + ">24712</" + MatchEntry.COLUMN_NAME_RED_AUTO_SCORE + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE + ">37111</" + MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE + ">37112</" + MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_AUTO_SCORE + ">4</" + MatchEntry.COLUMN_NAME_RED_AUTO_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE + ">6</" + MatchEntry.COLUMN_NAME_RED_TELEOP_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE + ">3</" + MatchEntry.COLUMN_NAME_RED_TOTAL_SCORE + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_QP + ">1</" + MatchEntry.COLUMN_NAME_RED_QP + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_FOUL_POINTS + ">1</" + MatchEntry.COLUMN_NAME_RED_FOUL_POINTS + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_1 + ">1</" + MatchEntry.COLUMN_NAME_BLUE_1 + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_2 + ">1</" + MatchEntry.COLUMN_NAME_BLUE_2 + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_3 + ">1</" + MatchEntry.COLUMN_NAME_BLUE_3 + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE + ">1</" + MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE + ">1</" + MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE + ">1</" + MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_1 + ">24712</" + MatchEntry.COLUMN_NAME_BLUE_1 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_2 + ">37111</" + MatchEntry.COLUMN_NAME_BLUE_2 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_3 + ">37112</" + MatchEntry.COLUMN_NAME_BLUE_3 + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE + ">7</" + MatchEntry.COLUMN_NAME_BLUE_AUTO_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE + ">12</" + MatchEntry.COLUMN_NAME_BLUE_TELEOP_SCORE + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE + ">119</" + MatchEntry.COLUMN_NAME_BLUE_TOTAL_SCORE + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_QP + ">1</" + MatchEntry.COLUMN_NAME_BLUE_QP + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_BLUE_FOUL_POINTS + ">1</" + MatchEntry.COLUMN_NAME_BLUE_FOUL_POINTS + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_WINNER + ">1</" + MatchEntry.COLUMN_NAME_MATCH_WINNER + ">\n" +
@@ -97,13 +100,15 @@ private Context c;
                 "</DATA>";
 
         generateFile(fileName,data);
+        Log.d("genMatch", data);
+
     }
     public void generateTeam(){
         String fileName = "team.xml";
         String data ="<DATA>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14251</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14251</" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
@@ -124,7 +129,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14252</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14252</" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
@@ -145,7 +150,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14253</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">24711</" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
@@ -166,7 +171,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14254</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">24712</" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
@@ -187,7 +192,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14255</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">37111</" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
@@ -208,7 +213,7 @@ private Context c;
                 "\t</ROW>\n" +
                 "\n" +
                 "\t<ROW>\n" +
-                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">14256</" + TeamContract.TeamEntry.COLUMN_NAME_ID + "\n" +
+                "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">37112</" + TeamContract.TeamEntry.COLUMN_NAME_ID + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">TBA1425A</" + TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">NULL</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME + ">\n" +
                 "\t\t<" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">Error Code Xero</" + TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME + ">\n" +
@@ -230,6 +235,8 @@ private Context c;
                 "</DATA>";
 
         generateFile(fileName,data);
+        Log.d("genTeam", data);
+
     }
     public void generateTeamMatch(){
         String fileName = "team_match.xml";
@@ -253,7 +260,7 @@ private Context c;
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">3</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14253</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">24711</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Blue</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">3</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
@@ -261,7 +268,7 @@ private Context c;
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">4</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14254</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">24712</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Red</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">1</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
@@ -269,7 +276,7 @@ private Context c;
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">5</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14255</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">37111</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Red</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">2</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
@@ -277,13 +284,15 @@ private Context c;
                 "\n" +
                 "\t<ROW>\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ID + ">6</" + TeamMatchEntry.COLUMN_NAME_ID + ">\n" +
-                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">14256</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
+                "\t\t<" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">37112</" + TeamMatchEntry.COLUMN_NAME_TEAM_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">1</" + TeamMatchEntry.COLUMN_NAME_MATCH_ID + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">Red</" + TeamMatchEntry.COLUMN_NAME_ALLIANCE + ">\n" +
                 "\t\t<" + TeamMatchEntry.COLUMN_NAME_POSITION + ">3</" + TeamMatchEntry.COLUMN_NAME_POSITION + ">\n" +
                 "\t</ROW>";
 
         generateFile(fileName,data);
+        Log.d("genTeamMatch", data);
+
     }
     public void generateAllData(){
         generateActions();

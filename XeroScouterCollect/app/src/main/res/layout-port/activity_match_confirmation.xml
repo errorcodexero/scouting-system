@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/lbl_tablet_id_match_confirmation"
-        android:id="@+id/lbl_tablet_id" />
+        android:id="@+id/lblTabletID" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_get_teams"
-                android:onClick="onClick" />
+                android:onClick="onClick"
+                android:visibility="gone" />
 
         </LinearLayout>
 

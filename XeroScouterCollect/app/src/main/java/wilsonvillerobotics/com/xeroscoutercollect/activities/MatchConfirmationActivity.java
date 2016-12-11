@@ -1,10 +1,15 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,30 +18,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.MatchModel;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
-import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
 /**
  * Created by Luke on 11/5/2016.
  */
 public class MatchConfirmationActivity extends Activity implements View.OnClickListener{
+    private final int numTeams = 6;
     private Spinner spinner_match_list;
     private Button btn_next;
     private Intent sanityCheckActivity;
     private List<String> match_list;
     private ArrayList<String> team_list;
-    private int currentSelectedMatch;
-    private final int numTeams = 6;
-
-
-    private ArrayList<TeamMatchModel> matchObjList;
+    public int currentSelectedMatch;
+    public ArrayList<TeamMatchModel> matchObjList;
     private TeamMatchModel match1;
     private TeamMatchModel match2;
     private TeamMatchModel match3;
@@ -48,8 +49,10 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private TextView lbl_team_5;
     private TextView lbl_team_6;
 
-    private String tabletId;
+    private String tabID;
     private String eventName;
+    private String tabletID;
+
 
     
     
@@ -66,25 +69,70 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         lbl_list = new ArrayList<Integer>();
 
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
-
-        populateMatchTable();
-        generateTestMatches();
-        populateLblList();
-        addItemsOnSpinner();
-        addListenerOnButton();
-        //addItemsToTeamList();
-
-        addItemsOnSpinner();
-        addListenerOnButton();
-        //addItemsToTeamList();
-
-
-
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
-        
-        
-        
+
+        populateLblList();
+        updateLabels();
+        populateMatchTable();
+        highlightTabletIdTeam();
+        addItemsOnSpinner();
+        addListenerOnButton();
+
+
     }
+    //Highlights the team to scout.
+    private void highlightTabletIdTeam() {
+        TextView tempView;
+        Boolean isRed = null;
+        String tempp = null;
+        switch (tabID){
+            case "1":
+                tempView = (TextView) findViewById(R.id.lbl_team_1);
+                tempView.setBackgroundColor(Color.YELLOW);
+                tempView.setTextColor(Color.BLACK);
+                isRed = true;
+                tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(0);
+                break;
+            case "2":
+                tempView = (TextView) findViewById(R.id.lbl_team_2);
+                tempView.setBackgroundColor(Color.YELLOW);
+                tempView.setTextColor(Color.BLACK);
+                isRed = true;
+                tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(1);
+             break;
+            case "3":
+                tempView = (TextView) findViewById(R.id.lbl_team_3);
+                tempView.setBackgroundColor(Color.YELLOW);
+                tempView.setTextColor(Color.BLACK);
+                isRed = true;
+                tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(2);
+                break;
+            case "4":
+                tempView = (TextView) findViewById(R.id.lbl_team_4);
+                tempView.setBackgroundColor(Color.YELLOW);
+                tempView.setTextColor(Color.BLACK);
+                isRed = false;
+                tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(3);
+                break;
+            case "5":
+                tempView = (TextView) findViewById(R.id.lbl_team_5);
+                tempView.setBackgroundColor(Color.YELLOW);
+                tempView.setTextColor(Color.BLACK);
+                isRed = false;
+                tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(4);
+                break;
+            case "6":
+                tempView = (TextView) findViewById(R.id.lbl_team_6);
+                tempView.setBackgroundColor(Color.YELLOW);
+                tempView.setTextColor(Color.BLACK);
+                isRed = false;
+                tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(5);
+                break;
+        }
+        sanityCheckActivity.putExtra("background",isRed);
+        sanityCheckActivity.putExtra("team_number",tempp);
+    }
+
     //Adds textView label objects to array
     private void populateLblList(){
         lbl_list.add(R.id.lbl_team_1);
@@ -93,6 +141,22 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         lbl_list.add(R.id.lbl_team_4);
         lbl_list.add(R.id.lbl_team_5);
         lbl_list.add(R.id.lbl_team_6);
+
+    }
+
+    private void updateLabels()
+    {
+        String pref_default = getString(R.string.default_pref_value);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
+
+        TextView lblTabletID = (TextView)findViewById(R.id.lbl_tablet_id);
+
+
+        if(lblTabletID != null) {
+            lblTabletID.setText(getString(R.string.lbl_tablet_id) + " " + tabletID);
+        }
+        tabID = tabletID;
 
     }
 
@@ -183,6 +247,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     public void addListenerOnButton() {
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
         btn_next = (Button) findViewById(R.id.btn_next);
+        updateTeams();
     }
 
 
@@ -190,16 +255,16 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private void updateTeams() {
         String tempText = spinner_match_list.getSelectedItem().toString();
         Toast.makeText(this,tempText,Toast.LENGTH_SHORT).show();
-        currentSelectedMatch = Integer.valueOf(tempText) - 1;
-        for(int i = 0; i < numTeams; i++){
-            String temp = matchObjList.get(currentSelectedMatch).getTeamNumber(i);
-            TextView tempView = (TextView) findViewById(lbl_list.get(i));
-            tempView.setText(temp);
-
-        }
-
+        currentSelectedMatch = Integer.valueOf(tempText);
+        if(numTeams != 0) {
+            for (int i = 0; i < numTeams; i++) {
+                String temp = matchObjList.get(currentSelectedMatch).getTeamNumber(i);
+                TextView tempView = (TextView) findViewById(lbl_list.get(i));
+                tempView.setText(temp);
+            }
+        }else{Log.d("updateTeams","No teams");}
+        highlightTabletIdTeam();
     }
-
 
     @Override
     public void onClick(View view) {
