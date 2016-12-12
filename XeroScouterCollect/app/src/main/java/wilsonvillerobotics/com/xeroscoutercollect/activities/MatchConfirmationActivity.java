@@ -82,55 +82,49 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     }
     //Highlights the team to scout.
     private void highlightTabletIdTeam() {
-        TextView tempView;
         Boolean isRed = null;
         String tempp = null;
         switch (tabID){
             case "1":
-                tempView = (TextView) findViewById(R.id.lbl_team_1);
-                tempView.setBackgroundColor(Color.YELLOW);
-                tempView.setTextColor(Color.BLACK);
+                FormatTabletTeamCell(R.id.lbl_team_1);
                 isRed = true;
                 tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(0);
                 break;
             case "2":
-                tempView = (TextView) findViewById(R.id.lbl_team_2);
-                tempView.setBackgroundColor(Color.YELLOW);
-                tempView.setTextColor(Color.BLACK);
+                FormatTabletTeamCell(R.id.lbl_team_2);
                 isRed = true;
                 tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(1);
              break;
             case "3":
-                tempView = (TextView) findViewById(R.id.lbl_team_3);
-                tempView.setBackgroundColor(Color.YELLOW);
-                tempView.setTextColor(Color.BLACK);
+                FormatTabletTeamCell(R.id.lbl_team_3);
                 isRed = true;
                 tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(2);
                 break;
             case "4":
-                tempView = (TextView) findViewById(R.id.lbl_team_4);
-                tempView.setBackgroundColor(Color.YELLOW);
-                tempView.setTextColor(Color.BLACK);
+                FormatTabletTeamCell(R.id.lbl_team_4);
                 isRed = false;
                 tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(3);
                 break;
             case "5":
-                tempView = (TextView) findViewById(R.id.lbl_team_5);
-                tempView.setBackgroundColor(Color.YELLOW);
-                tempView.setTextColor(Color.BLACK);
+                FormatTabletTeamCell(R.id.lbl_team_5);
                 isRed = false;
                 tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(4);
                 break;
             case "6":
-                tempView = (TextView) findViewById(R.id.lbl_team_6);
-                tempView.setBackgroundColor(Color.YELLOW);
-                tempView.setTextColor(Color.BLACK);
+                FormatTabletTeamCell(R.id.lbl_team_6);
                 isRed = false;
                 tempp = matchObjList.get(currentSelectedMatch).getTeamNumber(5);
                 break;
         }
         sanityCheckActivity.putExtra("background",isRed);
         sanityCheckActivity.putExtra("team_number",tempp);
+    }
+    //Sets the color of the cell.
+    private void FormatTabletTeamCell(int txtTeamID) {
+        TextView tempView;
+        tempView = (TextView) findViewById(txtTeamID);
+        tempView.setBackgroundColor(Color.YELLOW);
+        tempView.setTextColor(Color.BLACK);
     }
 
     //Adds textView label objects to array
