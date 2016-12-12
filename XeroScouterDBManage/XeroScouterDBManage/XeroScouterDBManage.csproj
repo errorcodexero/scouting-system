@@ -109,6 +109,7 @@
     <Compile Include="CompetitionSelectForm.Designer.cs">
       <DependentUpon>CompetitionSelectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseInfo\TeamMatchActionTable.cs" />
     <Compile Include="DatabaseInfo\TeamMatchTable.cs" />
     <Compile Include="DatabaseInfo\TeamTable.cs" />
     <Compile Include="DatabaseInfo\MatchTable.cs" />

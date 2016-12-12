@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using XeroScouterDBManage;
 using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
@@ -281,8 +280,9 @@ namespace XeroScouterDBManage_Server
 			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
 			// if clicking a team number, update the team_match data
 			{
-				DataGridViewTextBoxCell idCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
-				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm();
+				DataGridViewTextBoxCell mIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
+				DataGridViewTextBoxCell tIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[e.ColumnIndex + 1];
+				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm((Int32)mIDCell.Value, (Int32)tIDCell.Value);
 				entryForm.Show();
 			}
 		}

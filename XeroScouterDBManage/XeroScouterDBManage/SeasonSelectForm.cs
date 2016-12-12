@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using XeroScouterDBManage;
 
 namespace XeroScouterDBManage_Server
 {

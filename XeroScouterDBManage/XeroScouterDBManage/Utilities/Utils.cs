@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
-using System.Configuration;
-using XeroScouterDBManage_Server;
 
-namespace XeroScouterDBManage
+namespace XeroScouterDBManage_Server
 {
-    class Utils
+	class Utils
     {
         public static String getConnectionString()
         {
-            //string csKey = (Program.TEST_MODE) ? "XeroScouterDBManage.Properties.Settings.FTS_TEST_ConnectionString" : "XeroScouterDBManage.Properties.Settings.FTS_ConnectionString";
+            //string csKey = (Program.TEST_MODE) ? "XeroScouterDBManage_Server.Properties.Settings.FTS_TEST_ConnectionString" : "XeroScouterDBManage.Properties.Settings.FTS_ConnectionString";
             //ConnectionStringSettings csSettings = ConfigurationManager.ConnectionStrings[csKey];
             //string connectionString = csSettings.ConnectionString;
 
@@ -24,7 +19,31 @@ namespace XeroScouterDBManage
             return Program.connectionString;
         }
 
-        public static bool openConnection(MySqlConnection connection, Label lblStatus)
+		public static bool openConnection(MySqlConnection connection)
+		{
+			bool connectionAvailable = true;
+
+			try
+			{
+				connection.Open();
+			}
+			catch (MySqlException)
+			{
+				string message = "Unable to open MySQL connection - check if the database is installed and running!";
+				Console.Out.WriteLine(message);
+				connectionAvailable = false;
+			}
+			catch (Exception)
+			{
+				string message = "Unknown issue at open - check if the database is installed and running!";
+				Console.Out.WriteLine(message);
+				connectionAvailable = false;
+			}
+
+			return connectionAvailable;
+		}
+
+		public static bool openConnection(MySqlConnection connection, Label lblStatus)
         {
             bool connectionAvailable = true;
 
@@ -32,7 +51,7 @@ namespace XeroScouterDBManage
             {
                 connection.Open();
             }
-            catch (MySql.Data.MySqlClient.MySqlException)
+            catch (MySqlException)
             {
                 string message = "Unable to open MySQL connection - check if the database is installed and running!";
                 Console.Out.WriteLine(message);
@@ -58,7 +77,7 @@ namespace XeroScouterDBManage
             {
                 connection.Open();
             }
-            catch (MySql.Data.MySqlClient.MySqlException)
+            catch (MySqlException)
             {
                 string message = "Unable to open MySQL connection - check if the database is installed and running!";
                 Console.Out.WriteLine(message);

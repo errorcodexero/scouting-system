@@ -24,10 +24,16 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
             COL_TEAM_ID + ", @" + COL_MATCH_ID + ", @" + COL_EVENT_ID + ", @" +
             COL_POSITION + ", @" + COL_ALLIANCE + ")";
 
-        public static String getIdQuery(int teamID, int matchID)
+        public static String getIdQuery(Int32 teamID, Int32 matchID)
         {
             return "SELECT " + COL_ID + " FROM " + TABLE_NAME + " WHERE " + COL_TEAM_ID + "=" +
-                String.Format("%d", teamID) + " AND " + COL_MATCH_ID + "=" + String.Format("%d", matchID);
+                String.Format("{0}", teamID) + " AND " + COL_MATCH_ID + "=" + String.Format("{0}", matchID);
         }
-    }
+
+		public static String getRecordQuery(Int32 teamMatchID)
+		{
+			return "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_ID + "=" + String.Format("{0}",teamMatchID);
+		}
+
+	}
 }

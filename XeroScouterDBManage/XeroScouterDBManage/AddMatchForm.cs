@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using XeroScouterDBManage;
 using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
@@ -117,7 +116,6 @@ namespace XeroScouterDBManage_Server
                     string message = "Unknown error - check if the database is installed and running!";
                     Console.Out.WriteLine(message);
                     lblStatus.Text = message;
-                    //throw;
                 }
                 finally
                 {
