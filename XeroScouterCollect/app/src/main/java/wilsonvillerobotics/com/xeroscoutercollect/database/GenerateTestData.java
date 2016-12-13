@@ -76,7 +76,7 @@ private Context c;
                 "\t\t<" + MatchEntry.COLUMN_NAME_TBA_MATCH_KEY + ">TBA1</" + MatchEntry.COLUMN_NAME_TBA_MATCH_KEY + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_COMP_LEVEL + ">Q</" + MatchEntry.COLUMN_NAME_MATCH_COMP_LEVEL + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_SET_NUMBER + ">Set 1</" + MatchEntry.COLUMN_NAME_MATCH_SET_NUMBER + ">\n" +
-                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_NUMBER + ">Q1</" + MatchEntry.COLUMN_NAME_MATCH_NUMBER + ">\n" +
+                "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_NUMBER + ">0</" + MatchEntry.COLUMN_NAME_MATCH_NUMBER + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_MATCH_STATUS + ">Scheduled</" + MatchEntry.COLUMN_NAME_MATCH_STATUS + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_1 + ">14251</" + MatchEntry.COLUMN_NAME_RED_1 + ">\n" +
                 "\t\t<" + MatchEntry.COLUMN_NAME_RED_2 + ">14252</" + MatchEntry.COLUMN_NAME_RED_2 + ">\n" +
