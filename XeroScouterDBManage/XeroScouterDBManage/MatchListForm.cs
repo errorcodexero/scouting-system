@@ -140,7 +140,7 @@ namespace XeroScouterDBManage_Server
                 {
                     cmd = connection.CreateCommand();
                     
-                    string query = MatchTable.SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX;
+                    string query = MatchTable.SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX;
                     query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
 					query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
                     query += MatchTable.SELECT_BLUE2_FOR_ID_PART;

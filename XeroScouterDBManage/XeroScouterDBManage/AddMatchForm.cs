@@ -98,7 +98,7 @@ namespace XeroScouterDBManage_Server
 
                     foreach (ComboBox combo in teamComboList)
                     {
-                        combo.BindingContext = new System.Windows.Forms.BindingContext();
+                        combo.BindingContext = new BindingContext();
                         combo.DataSource = ds.Tables[0].DefaultView;
                         combo.ValueMember = TeamTable.COL_ID;
                         combo.DisplayMember = TeamTable.COL_TEAM_NUMBER;
