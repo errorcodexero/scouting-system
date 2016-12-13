@@ -298,5 +298,11 @@ namespace XeroScouterDBManage_Server
 			gridMatchList.Columns[11].Visible = false;
 			gridMatchList.Columns[13].Visible = false;
 		}
+
+		private void btnAddMatchData_Click(object sender, EventArgs e)
+		{
+			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, -1);
+			frmUpdateMatchData.Show();
+		}
 	}
 }
