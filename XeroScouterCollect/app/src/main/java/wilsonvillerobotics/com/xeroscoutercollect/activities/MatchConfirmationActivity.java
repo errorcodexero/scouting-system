@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -29,7 +30,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
 /**
  * Created by Luke on 11/5/2016.
  */
-public class MatchConfirmationActivity extends Activity implements View.OnClickListener{
+public class MatchConfirmationActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private final int numTeams = 6;
     private Spinner spinner_match_list;
     private Button btn_next;
@@ -48,6 +49,8 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private TextView lbl_team_4;
     private TextView lbl_team_5;
     private TextView lbl_team_6;
+
+    public ArrayAdapter<String> dataAdapter;
 
     private String tabID;
     private String eventName;
@@ -71,15 +74,23 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
 
+        spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
+
+
+        spinner_match_list.setOnItemSelectedListener(this);
+
+
+
         populateLblList();
         updateLabels();
         populateMatchTable();
         highlightTabletIdTeam();
         addItemsOnSpinner();
         addListenerOnButton();
-
-
     }
+
+
+
     //Highlights the team to scout.
     private void highlightTabletIdTeam() {
         Boolean isRed = null;
@@ -216,10 +227,8 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
     //Add matches to spinner
     public void addItemsOnSpinner() {
-
-        spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
-
         match_list = new ArrayList<String>();
+
         /*match_list.add(match1.getMatchNumber());
         match_list.add(match2.getMatchNumber());
         match_list.add(match3.getMatchNumber());*/
@@ -227,10 +236,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         for (TeamMatchModel tempMatch : matchObjList) {
             match_list.add(String.valueOf(Integer.valueOf(tempMatch.getMatchNumber())));
         }
-
-
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, match_list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_match_list.setAdapter(dataAdapter);
@@ -271,4 +277,13 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this,spinner_match_list.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
