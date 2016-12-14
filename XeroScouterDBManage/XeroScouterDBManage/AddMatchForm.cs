@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using XeroScouterDBManage;
 using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
@@ -99,7 +98,7 @@ namespace XeroScouterDBManage_Server
 
                     foreach (ComboBox combo in teamComboList)
                     {
-                        combo.BindingContext = new System.Windows.Forms.BindingContext();
+                        combo.BindingContext = new BindingContext();
                         combo.DataSource = ds.Tables[0].DefaultView;
                         combo.ValueMember = TeamTable.COL_ID;
                         combo.DisplayMember = TeamTable.COL_TEAM_NUMBER;
@@ -117,7 +116,6 @@ namespace XeroScouterDBManage_Server
                     string message = "Unknown error - check if the database is installed and running!";
                     Console.Out.WriteLine(message);
                     lblStatus.Text = message;
-                    //throw;
                 }
                 finally
                 {

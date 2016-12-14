@@ -15,7 +15,7 @@ for action in actions_done:
     xml_file.getcol(team_match).add(actions.done.get(action))
 
 <match_list>
-    <match id="0">
+    <match id="1">
         <red_alliance>
             <team id="0">TEAM NUMBER</team>
             <team id="1">TEAM NUMBER</team>

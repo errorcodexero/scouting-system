@@ -2,8 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using XeroScouterDBManage;
 using XeroScouterDBManage_Server.DatabaseInfo;
+using System.Collections.Generic;
 
 namespace XeroScouterDBManage_Server
 {
@@ -11,12 +11,21 @@ namespace XeroScouterDBManage_Server
 	{
 		private long competitionID;
 		private Int32 matchID;
+		private List<ComboBox> teamComboList;
+		private List<String> allianceColorList;
+
 		public UpdateMatchDataForm(long comp_id, Int32 match_id)
 		{
 			this.competitionID = comp_id;
 			this.matchID = match_id;
+			this.teamComboList = new List<ComboBox>(6);
+			this.allianceColorList = new List<string>() { "Blue1ID", "Blue2ID", "Blue3ID", "Red1ID", "Red2ID", "Red3ID" };
+
 			InitializeComponent();
+			initTeamComboBoxes();
 			LoadCompetitions();
+			LoadTeams();
+			LoadData();
 		}
 
 		public void LoadCompetitions()
@@ -51,6 +60,130 @@ namespace XeroScouterDBManage_Server
 					Console.Out.WriteLine(message);
 					lblStatus.Text = message;
 					//throw;
+				}
+				finally
+				{
+					if (connection.State == System.Data.ConnectionState.Open)
+					{
+						connection.Close();
+					}
+				}
+			}
+		}
+
+		public void initTeamComboBoxes()
+		{
+			teamComboList.Add(cmbBlue1);
+			teamComboList.Add(cmbBlue2);
+			teamComboList.Add(cmbBlue3);
+			teamComboList.Add(cmbRed1);
+			teamComboList.Add(cmbRed2);
+			teamComboList.Add(cmbRed3);
+		}
+
+		public void LoadTeams()
+		{
+			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
+			MySqlCommand cmd;
+			bool connectionAvailable = Utils.openConnection(connection, lblStatus);
+
+			if (connectionAvailable)
+			{
+				try
+				{
+					cmd = connection.CreateCommand();
+					cmd.CommandText = TeamTable.SELECT_ID_AND_NUMBER;
+					MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
+					DataSet ds = new DataSet();
+					adap.Fill(ds);
+
+					foreach (ComboBox combo in teamComboList)
+					{
+						combo.BindingContext = new BindingContext();
+						combo.DataSource = ds.Tables[0].DefaultView;
+						combo.ValueMember = TeamTable.COL_ID;
+						combo.DisplayMember = TeamTable.COL_TEAM_NUMBER;
+						//cmbCompetitionName.SelectedValue = this.compID;
+					}
+				}
+				catch (MySql.Data.MySqlClient.MySqlException)
+				{
+					string message = "Unable to open MySQL connection - check if the database is installed and running!";
+					Console.Out.WriteLine(message);
+					lblStatus.Text = message;
+				}
+				catch (Exception)
+				{
+					string message = "Unknown error - check if the database is installed and running!";
+					Console.Out.WriteLine(message);
+					lblStatus.Text = message;
+				}
+				finally
+				{
+					if (connection.State == System.Data.ConnectionState.Open)
+					{
+						connection.Close();
+					}
+				}
+			}
+		}
+
+		public void LoadData()
+		{
+			if (this.competitionID < 0) return;
+			if (this.matchID < 0) return;
+			if (this.allianceColorList.Count != this.teamComboList.Count) return; // should be same number of items in each
+
+			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
+			MySqlCommand cmd;
+			bool connectionAvailable = Utils.openConnection(connection, lblStatus);
+
+			if (connectionAvailable)
+			{
+				try
+				{
+					cmd = connection.CreateCommand();
+
+					string query = MatchTable.SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX;
+					query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
+					query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
+					query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
+					query += MatchTable.SELECT_RED1_FOR_ID_PART;
+					query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
+					query += MatchTable.SELECT_RED2_FOR_ID_PART;
+					query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
+					query += MatchTable.SELECT_RED3_FOR_ID_PART;
+					query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
+					query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
+					query += this.competitionID;
+
+					cmd.CommandText = query;
+
+					MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
+
+					DataSet ds = new DataSet();
+					adap.Fill(ds);
+
+					txtMatchNumber.Text = ds.Tables[0].Rows[0][MatchTable.COL_MATCH_NUMBER].ToString();
+
+					for (int i = 0; i < this.teamComboList.Count; i++)
+					{
+						this.teamComboList[i].SelectedValue = ds.Tables[0].Rows[0][this.allianceColorList[i]].ToString();
+					}
+					
+				}
+				catch (MySql.Data.MySqlClient.MySqlException)
+				{
+					string message = "Unable to open MySQL connection - check if the database is installed and running!";
+					Console.Out.WriteLine(message);
+					lblStatus.Text = message;
+				}
+				catch (Exception)
+				{
+					throw;
 				}
 				finally
 				{
