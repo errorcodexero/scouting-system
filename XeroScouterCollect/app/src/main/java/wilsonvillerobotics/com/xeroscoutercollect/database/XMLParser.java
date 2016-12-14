@@ -83,6 +83,7 @@ public class XMLParser{
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
 
             //Creates a map, then depending on filename, creates the right map
+
             final String TABLE_NAME_KEY = context.getString(R.string.table_name_key);
             TableTableNameColumn tc = new TableTableNameColumn(TABLE_NAME_KEY);
             if(xmlFilePath.contains(MatchContract.MatchEntry.TABLE_NAME + XML_EXT)) { // match.xml
@@ -123,7 +124,7 @@ public class XMLParser{
                     continue;
                 }
                 String tagName = myParser.getName();
-                if (tagName.equals("ROW")) {
+                if (tagName.equals("Table")) {
                     //String id = null, date = null, pob = null;
                     while (myParser.next() != XmlPullParser.END_TAG) {
                         if (myParser.getEventType() != XmlPullParser.START_TAG) {

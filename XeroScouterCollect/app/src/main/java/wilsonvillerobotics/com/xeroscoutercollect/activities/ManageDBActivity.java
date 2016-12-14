@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +48,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         UNKNOWN
     };
     DatabaseHelper db;
+    private String DOWNLOAD_FILE_PATH;
 
 
     @Override
@@ -55,6 +57,9 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_manage_db);
         parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
+
+
+        DOWNLOAD_FILE_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath() + "/";
 
     }
 
@@ -109,11 +114,12 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     public void importDataFromXML(){
         XMLParser myParser = new XMLParser("",this);
         ArrayList<String> xmlFilePaths = new ArrayList<String>();
-        xmlFilePaths.add(getFilesDir() + "/" + EventContract.EventEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
+
+        xmlFilePaths.add(DOWNLOAD_FILE_PATH + EventContract.EventEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(DOWNLOAD_FILE_PATH + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(DOWNLOAD_FILE_PATH + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(DOWNLOAD_FILE_PATH + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(DOWNLOAD_FILE_PATH + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
 
         for(String path:xmlFilePaths){
             HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);

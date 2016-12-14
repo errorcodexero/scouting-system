@@ -21,7 +21,7 @@ public class DeviceUuidFactory {
     protected static volatile Long wifiId;
 
     public DeviceUuidFactory(Context context) {
-        generateWiFiUUID(context);
+        //generateWiFiUUID(context);
         generateAndroidUUID(context);
     }
 
@@ -70,7 +70,7 @@ public class DeviceUuidFactory {
         }
     }
 
-    private void generateWiFiUUID(Context context) {
+    /*private void generateWiFiUUID(Context context) {
         if (wifiId == null) {
             synchronized (DeviceUuidFactory.class) {
                 if (wifiId == null) {

@@ -1,46 +1,45 @@
+
 package wilsonvillerobotics.com.xeroscoutercollect.connection;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.util.ArrayList;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 import android.util.Log;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
 /**
- * Created by Luke on 12/10/2016.
+ * Created by Luke on 12/13/2016.
  */
 
-public class DataXmlExporter {
-
+public class DataXMLExporter {
     public static final String DATASUBDIRECTORY = "files";
     private final String LOG_TAG = "FTS_XmlExporter";
 
     private final SQLiteDatabase db;
-    private XmlBuilder xmlBuilder;
+    //private XmlBuilder xmlBuilder;
     private DatabaseHelper helper;
 
 
-    public DataXmlExporter(Context c) {
+    public DataXMLExporter(Context c) {
         helper = DatabaseHelper.getInstance(c);
         this.db = helper.getWritableDatabase();
     }
 
     //public int export(final String dbName, final String exportFileNamePrefix, final String androidUuid, final String timestamp) throws IOException {
-    public int export(final String dbName) throws IOException {
+   /* public int export(final String dbName) throws IOException {
         //Log.i(LOG_TAG, "exporting database - " + dbName + " exportFileNamePrefix=" + exportFileNamePrefix + "   androidUuid=" + androidUuid + "  timestamp=" + timestamp);
         Log.i(LOG_TAG, "exporting database - " + dbName);
 
         int exportCount = 0;
-        for(DBAdapter.TABLE_NAMES tn : DBAdapter.TABLE_NAMES.values()) {
+        for(helper.TABLE_NAMES tn : DBAdapter.TABLE_NAMES.values()) {
             xmlBuilder = new XmlBuilder();
             xmlBuilder.start(dbName);
             String tableName = tn.getTableName();
@@ -160,7 +159,7 @@ public class DataXmlExporter {
 
     private boolean writeToFile(final String xmlString, final String exportFileName) throws IOException {
         boolean exportSuccess = true;
-        File dir = FTSUtilities.getFileDirectory(""); //new File(Environment.getExternalStorageDirectory(), DataXmlExporter.DATASUBDIRECTORY);
+        File dir = FTSUtilities.getFileDirectory(""); //new File(Environment.getExternalStorageDirectory(), DataXMLExporter.DATASUBDIRECTORY);
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -192,7 +191,7 @@ public class DataXmlExporter {
      * @author ccollins
      *
      */
-    static class XmlBuilder {
+    /*static class XmlBuilder {
         private static final String OPEN_XML_STANZA = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
         private static final String OPEN = "<";
         private static final String CLOSE = ">";
@@ -244,4 +243,6 @@ public class DataXmlExporter {
         }
     }
 
+}
+*/
 }

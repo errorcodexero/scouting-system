@@ -218,7 +218,7 @@ public class FTSUtilities {
 */
     /**
      * gets the long value from byte array
-     * @param byteArrayToConvert
+     * @param //byteArrayToConvert
      */
     /*
     public static long convertByteArrayToLong(Byte[] byteArrayToConvert) {
@@ -288,9 +288,9 @@ public class FTSUtilities {
 
     public static File getFileDirectory(String subDirectory) {
         if(subDirectory == null || subDirectory == "") {
-            subDirectory = DataXmlExporter.DATASUBDIRECTORY;
+            subDirectory = DataXMLExporter.DATASUBDIRECTORY;
         } else {
-            subDirectory = DataXmlExporter.DATASUBDIRECTORY + "/" + subDirectory;
+            subDirectory = DataXMLExporter.DATASUBDIRECTORY + "/" + subDirectory;
         }
         File fileDir = new File(Environment.getExternalStorageDirectory(), subDirectory);
         if (!fileDir.exists()) {
@@ -332,7 +332,7 @@ public class FTSUtilities {
             put(1000, "Grommets");
         }
     };*/
-/*
+
     public static void printToConsole(String message) {
         if(message.isEmpty() || !DEBUG) return;
         int len = 50 - message.length();
@@ -346,7 +346,7 @@ public class FTSUtilities {
         System.out.println("**************************************************");
         System.out.println("");
     }
-
+    /*
     public static Set<Integer> getTestTeamNumbers() {
         Set<Integer> teamNums = testTeamData.keySet();
         return teamNums;

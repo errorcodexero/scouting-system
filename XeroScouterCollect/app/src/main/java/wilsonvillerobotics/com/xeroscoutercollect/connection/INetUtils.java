@@ -93,7 +93,7 @@ public class INetUtils {
         return macAddress;
     }
 
-    public static Long getWifiMACAddressNumeric(Context context) {
+    /*public static Long getWifiMACAddressNumeric(Context context) {
         Long macAddress = -1l;
         try {
             String mac = getWifiMACAddress(context);
@@ -103,7 +103,7 @@ public class INetUtils {
             e.printStackTrace();
         }
         return  macAddress;
-    }
+    }*/
 
     /**
      * Returns MAC address of the given interface name.
@@ -134,7 +134,7 @@ public class INetUtils {
      * @param interfaceName eth0, wlan0 or NULL=use first interface
      * @return  mac address or empty string
      */
-    public static Long getMACAddressNumeric(String interfaceName) {
+    /*public static Long getMACAddressNumeric(String interfaceName) {
         long macAddress = -1l;
         try {
             List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
@@ -148,7 +148,7 @@ public class INetUtils {
             }
         } catch (Exception ex) { } // for now eat exceptions
         return macAddress;
-    }
+    }*/
 
     /**
      * Returns MAC address of the given interface name.
