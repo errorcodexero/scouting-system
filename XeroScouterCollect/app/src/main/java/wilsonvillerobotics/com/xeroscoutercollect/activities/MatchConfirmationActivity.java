@@ -82,6 +82,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
 
         populateLblList();
+        resetLblColors(lbl_list);
         updateLabels();
         populateMatchTable();
         highlightTabletIdTeam();
@@ -136,6 +137,17 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         tempView = (TextView) findViewById(txtTeamID);
         tempView.setBackgroundColor(Color.YELLOW);
         tempView.setTextColor(Color.BLACK);
+    }
+    public void resetLblColors(ArrayList<Integer> list){
+        TextView tempView;
+        for(int i = 0; i < list.size()/2; i++){
+            tempView = (TextView) findViewById(list.get(i));
+            tempView.setBackgroundColor(Color.RED);
+        }
+        for(int i = (list.size()/2); i < list.size(); i++){
+            tempView = (TextView) findViewById(list.get(i));
+            tempView.setBackgroundColor(Color.BLUE);
+        }
     }
 
     //Adds textView label objects to array
