@@ -233,9 +233,9 @@ public class MatchModel {
     private String matchWinner;
     private String driverComments;
 
-    public static String getAllMatchs(String eventId) {
+    public static String getAllMatches(int eventId) {
 
-        return ("SELECT * FROM `" + MatchContract.MatchEntry.TABLE_NAME + "` WHERE " + MatchContract.MatchEntry.COLUMN_NAME_EVENT_ID + " = \'" + eventId + "\' ORDER BY _id;");
+        return ("SELECT * FROM `" + MatchContract.MatchEntry.TABLE_NAME + "` WHERE " + MatchContract.MatchEntry.COLUMN_NAME_EVENT_ID + "=" + eventId + " ORDER BY _id ASC;");
 
     }
 }

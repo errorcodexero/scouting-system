@@ -181,8 +181,11 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        //Cursor cursor = db.rawQuery(MatchModel.getAllMatchs(getIntent().getIntExtra("eventId", 0)));
-        Cursor cursor = db.rawQuery(MatchModel.getAllMatchs("1"), null);
+        int event_id = getIntent().getIntExtra("eventId", 1);
+        String query = MatchModel.getAllMatches(event_id);
+        Cursor cursor = db.rawQuery(query, null);
+        int numMatches = cursor.getCount();
+        //Cursor cursor = db.rawQuery(MatchModel.getAllMatchs("1"), null);
 
         try {
             while(cursor.moveToNext()) {
@@ -265,9 +268,9 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
     //Updates the team field according to the selected match
     private void updateTeams() {
-        String tempText = spinner_match_list.getSelectedItem().toString();
-        Toast.makeText(this,tempText,Toast.LENGTH_SHORT).show();
-        currentSelectedMatch = Integer.valueOf(tempText);
+        int currentSelectedMatch = spinner_match_list.getSelectedItemPosition(); //.getSelectedItem().toString();
+        //Toast.makeText(this,"Position: " + currentSelectedMatch,Toast.LENGTH_SHORT).show();
+        //currentSelectedMatch = Integer.valueOf(tempText);
         if(numTeams != 0) {
             for (int i = 0; i < numTeams; i++) {
                 String temp = matchObjList.get(currentSelectedMatch).getTeamNumber(i);
@@ -292,6 +295,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(this,spinner_match_list.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+        updateTeams();
     }
 
     @Override

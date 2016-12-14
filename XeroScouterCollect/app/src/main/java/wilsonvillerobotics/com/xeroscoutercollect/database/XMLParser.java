@@ -50,10 +50,9 @@ public class XMLParser{
         this("", c);
     }
 
-    public HashMap<String, TableColumn> parseXML(String filePath) {
+    public ArrayList<HashMap<String, TableColumn>> parseXML(String filePath) {
         xmlFilePath = filePath;
-        map = parseXml();
-        return map;
+        return parseXml();
     }
 
     private String readString(XmlPullParser parser) throws IOException,
@@ -78,79 +77,105 @@ public class XMLParser{
     private HashMap<String, TableColumn> map = null;
 
     // TODO - Look at https://developer.android.com/training/basics/network-ops/xml.html#skip for better examples of XML Parsing. When we pass a parser to a function it keeps its current state, including 'position'
-    public HashMap<String, TableColumn> parseXml(){
+    public ArrayList<HashMap<String, TableColumn>> parseXml(){
+        ArrayList<HashMap<String, TableColumn>> hashMapArrayList = new ArrayList<HashMap<String, TableColumn>>();
+        int index = -1;
+
         try {
             FileInputStream fileStream = new FileInputStream(xmlFilePath);
 
             //Creates a map, then depending on filename, creates the right map
             final String TABLE_NAME_KEY = context.getString(R.string.table_name_key);
             TableTableNameColumn tc = new TableTableNameColumn(TABLE_NAME_KEY);
-            if(xmlFilePath.contains(MatchContract.MatchEntry.TABLE_NAME + XML_EXT)) { // match.xml
-                map = mapMaker(makeMatchList());
-                tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
-                map.put(TABLE_NAME_KEY,tc);
-                Log.d(TNTAG, MatchContract.MatchEntry.TABLE_NAME);
-            }else if(xmlFilePath.contains(EventContract.EventEntry.TABLE_NAME + XML_EXT)){
-                map = mapMaker(makeEventList());
-                tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
-                map.put(TABLE_NAME_KEY,tc);
-                Log.d(TNTAG, EventContract.EventEntry.TABLE_NAME);
-            }else if(xmlFilePath.contains(ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT)){
-                map = mapMaker(makeActionTypeList());
-                tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
-                map.put(TABLE_NAME_KEY,tc);
-                Log.d(TNTAG, ActionsContract.ActionsEntry.TABLE_NAME);
-            }else if(xmlFilePath.contains(TeamMatchEntry.TABLE_NAME + XML_EXT)){
-                map = makeTeamMatchMap();
-                tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
-                map.put(TABLE_NAME_KEY,tc);
-                Log.d(TNTAG, TeamMatchEntry.TABLE_NAME);
-            }else if(xmlFilePath.contains(TeamContract.TeamEntry.TABLE_NAME + XML_EXT)){
-                map = mapMaker(makeTeamList());
-                tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
-                map.put(TABLE_NAME_KEY,tc);
-                Log.d(TNTAG, TeamContract.TeamEntry.TABLE_NAME);
+            String tokens[] = xmlFilePath.split("/");
+            if(tokens.length > 0)
+            {
+                String fileName = tokens[tokens.length - 1];
+                //if(xmlFilePath.contains(MatchContract.MatchEntry.TABLE_NAME + XML_EXT)) { // match.xml
+                if(fileName.equalsIgnoreCase(MatchContract.MatchEntry.TABLE_NAME + XML_EXT)) {
+                    map = mapMaker(makeMatchList());
+                    tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
+                    map.put(TABLE_NAME_KEY,tc);
+                    Log.d(TNTAG, MatchContract.MatchEntry.TABLE_NAME);
+                }else if(fileName.equalsIgnoreCase(EventContract.EventEntry.TABLE_NAME + XML_EXT)){
+                    map = mapMaker(makeEventList());
+                    tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
+                    map.put(TABLE_NAME_KEY,tc);
+                    Log.d(TNTAG, EventContract.EventEntry.TABLE_NAME);
+                }else if(fileName.equalsIgnoreCase(ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT)){
+                    map = mapMaker(makeActionTypeList());
+                    tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
+                    map.put(TABLE_NAME_KEY,tc);
+                    Log.d(TNTAG, ActionsContract.ActionsEntry.TABLE_NAME);
+                }else if(fileName.equalsIgnoreCase(TeamMatchEntry.TABLE_NAME + XML_EXT)){
+                    map = makeTeamMatchMap();
+                    tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
+                    map.put(TABLE_NAME_KEY,tc);
+                    Log.d(TNTAG, TeamMatchEntry.TABLE_NAME);
+                }else if(fileName.equalsIgnoreCase(TeamContract.TeamEntry.TABLE_NAME + XML_EXT)){
+                    map = mapMaker(makeTeamList());
+                    tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
+                    map.put(TABLE_NAME_KEY,tc);
+                    Log.d(TNTAG, TeamContract.TeamEntry.TABLE_NAME);
+                }
+            } else {
+                Log.e(TNTAG, "No tokens");
             }
+
 
             xmlFactoryObject = XmlPullParserFactory.newInstance();
             myParser = xmlFactoryObject.newPullParser();
             myParser.setInput(fileStream, null);
 
-
-
-            while (myParser.next() != XmlPullParser.END_TAG) {
-                if (myParser.getEventType() != XmlPullParser.START_TAG) {
-                    continue;
-                }
-                String tagName = myParser.getName();
-                if (tagName.equals("ROW")) {
-                    //String id = null, date = null, pob = null;
-                    while (myParser.next() != XmlPullParser.END_TAG) {
-                        if (myParser.getEventType() != XmlPullParser.START_TAG) {
-                            continue;
-                        }
-                        tagName = myParser.getName();
-                        // Iterate through the map, setting the value of each element based on the tag name
-                        if (map.containsKey(tagName)) {
-                            TableColumn tableCol = map.get(tagName);
-                            if (tableCol.getClass() == TableIntegerColumn.class) {
-                                tableCol.setValue(readInteger(myParser));
-                                Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tableCol.getValue()));
-                            } else if (tableCol.getClass() == TableStringColumn.class) {
-                                tableCol.setValue(readString(myParser));
-                                Log.d(TAG, "parseXML: " + tagName + ": " + tableCol.getValue());
-                            }
-                        } else {
-                            // We didn't find this tag, log it
-                            Log.e(TAG, "Invalid tag: " + tagName);
-                        }
+            while (myParser.next() != XmlPullParser.END_DOCUMENT) {
+                while (myParser.next() != XmlPullParser.END_TAG) {
+                    if (myParser.getEventType() != XmlPullParser.START_TAG) {
+                        continue;
                     }
-                    //myDbHelper.insertData(id,date,pob);
+                    String tagName = myParser.getName();
+                    if (tagName.equals("Table")) {
+                        HashMap<String, TableColumn> hMap = null;
+                        if(tc.getValue() == ManageDBActivity.TABLE_NAME.MATCH) {
+                            hMap = mapMaker(makeMatchList());
+                        }else if(tc.getValue() == ManageDBActivity.TABLE_NAME.EVENT){
+                            hMap = mapMaker(makeEventList());
+                        }else if(tc.getValue() == ManageDBActivity.TABLE_NAME.ACTIONTYPE){
+                            hMap = mapMaker(makeActionTypeList());
+                        }else if(tc.getValue() == ManageDBActivity.TABLE_NAME.TEAMMATCH){
+                            hMap = makeTeamMatchMap();
+                        }else if(tc.getValue() == ManageDBActivity.TABLE_NAME.TEAM){
+                            hMap = mapMaker(makeTeamList());
+                        }
+                        hMap.put(TABLE_NAME_KEY,tc);
+                        hashMapArrayList.add(hMap);
+                        //String id = null, date = null, pob = null;
+                        while (myParser.next() != XmlPullParser.END_TAG) {
+                            if (myParser.getEventType() != XmlPullParser.START_TAG) {
+                                continue;
+                            }
+                            tagName = myParser.getName();
+                            // Iterate through the map, setting the value of each element based on the tag name
+                            if (map.containsKey(tagName)) {
+                                TableColumn tableCol = hMap.get(tagName);
+                                if (tableCol.getClass() == TableIntegerColumn.class) {
+                                    tableCol.setValue(readInteger(myParser));
+                                    Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tableCol.getValue()));
+                                } else if (tableCol.getClass() == TableStringColumn.class) {
+                                    tableCol.setValue(readString(myParser));
+                                    Log.d(TAG, "parseXML: " + tagName + ": " + tableCol.getValue());
+                                }
+                            } else {
+                                // We didn't find this tag, log it
+                                Log.e(TAG, "Invalid tag: " + tagName);
+                            }
+                        }
+                        //myDbHelper.insertData(id,date,pob);
+                    }
                 }
             }
         }
         catch(Exception e) {e.printStackTrace();}
-        return map;
+        return hashMapArrayList;
     }
 
 
@@ -278,6 +303,7 @@ public class XMLParser{
         teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_MATCH_ID, new TableIntegerColumn(TeamMatchEntry.COLUMN_NAME_MATCH_ID));
         teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_ALLIANCE, new TableStringColumn(TeamMatchEntry.COLUMN_NAME_ALLIANCE));
         teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_POSITION, new TableIntegerColumn(TeamMatchEntry.COLUMN_NAME_POSITION));
+        teamMatchMap.put(TeamMatchEntry.COLUMN_NAME_SCOUT_NAME, new TableStringColumn(TeamMatchEntry.COLUMN_NAME_SCOUT_NAME));
         return teamMatchMap;
     }
 
@@ -286,6 +312,7 @@ public class XMLParser{
     public ArrayList<TableColumn> makeTeamList(){
         ArrayList<TableColumn> teamList = new ArrayList<TableColumn>();
         teamList.add(new TableIntegerColumn(TeamContract.TeamEntry.COLUMN_NAME_ID));
+        teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_NUMBER));
         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TBA_TEAM_KEY));
         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_LONG_NAME));
         teamList.add(new TableStringColumn(TeamContract.TeamEntry.COLUMN_NAME_TEAM_NAME));

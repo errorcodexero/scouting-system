@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -93,7 +94,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 i++;
             }
 
-            Toast.makeText(this, results, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, results, Toast.LENGTH_SHORT).show();
 
         } catch (SQLException e) {
             Log.d("Debug", "Failed to execute sql");
@@ -104,44 +105,48 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     }
 
     private final String XML_EXT = ".xml";
-    private String TN = "table_name";
+    private String TN = "table_file_name";
 
     public void importDataFromXML(){
+        String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+
         XMLParser myParser = new XMLParser("",this);
         ArrayList<String> xmlFilePaths = new ArrayList<String>();
-        xmlFilePaths.add(getFilesDir() + "/" + EventContract.EventEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(getFilesDir() + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(downloadDirectory + "/" + EventContract.EventEntry.TABLE_NAME + XML_EXT); //getFilesDir()
+        xmlFilePaths.add(downloadDirectory + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(downloadDirectory + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(downloadDirectory + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
+        xmlFilePaths.add(downloadDirectory + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
 
         for(String path:xmlFilePaths){
-            HashMap<String, XMLParser.TableColumn> map = myParser.parseXML(path);
-            boolean hasTN = map.containsKey(TN);
-            if(hasTN) {
-                TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get(TN))).getValue();
-                switch (tName) {
-                    case EVENT:
-                        EventContract ec = new EventContract();
-                        ec.queryInsertEventData(map, this);
-                        break;
-                    case TEAM:
-                        TeamContract tc = new TeamContract();
-                        tc.queryInsertTeamData(map, this);
-                        break;
-                    case TEAMMATCH:
-                        TeamMatchContract tmc = new TeamMatchContract();
-                        tmc.queryInsertTeamMatchData(map, this);
-                        break;
-                    case ACTIONTYPE:
-                        ActionsContract ac = new ActionsContract();
-                        ac.queryInsertActionsData(map, this);
-                        break;
-                    case MATCH:
-                        MatchContract mc = new MatchContract();
-                        mc.queryInsertMatchData(map, this);
-                        break;
+            ArrayList<HashMap<String, XMLParser.TableColumn>> hashMapArrayList = myParser.parseXML(path);
+            for(HashMap<String, XMLParser.TableColumn> map : hashMapArrayList){
+                boolean hasTN = map.containsKey(TN);
+                if (hasTN) {
+                    TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get(TN))).getValue();
+                    switch (tName) {
+                        case EVENT:
+                            EventContract ec = new EventContract();
+                            ec.queryInsertEventData(map, this);
+                            break;
+                        case TEAM:
+                            TeamContract tc = new TeamContract();
+                            tc.queryInsertTeamData(map, this);
+                            break;
+                        case TEAMMATCH:
+                            TeamMatchContract tmc = new TeamMatchContract();
+                            tmc.queryInsertTeamMatchData(map, this);
+                            break;
+                        case ACTIONTYPE:
+                            ActionsContract ac = new ActionsContract();
+                            ac.queryInsertActionsData(map, this);
+                            break;
+                        case MATCH:
+                            MatchContract mc = new MatchContract();
+                            mc.queryInsertMatchData(map, this);
+                            break;
 
+                    }
                 }
             }
         }
@@ -153,12 +158,12 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         if (view == findViewById(R.id.btn_import)) {
             importDataFromXML();
             //parser.parseXML(getFilesDir() + "/" + fileName);
-            Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
         }
         if (view == findViewById(R.id.btn_create_test_data)) {
             GenerateTestData g = new GenerateTestData(this);
             g.generateAllData();
-            Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
         }
     }
 }

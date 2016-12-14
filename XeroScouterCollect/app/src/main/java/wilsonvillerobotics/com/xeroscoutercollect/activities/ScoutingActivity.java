@@ -292,7 +292,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
 
         if (index != -1) {
-            Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
             ActionObject tempObject = actionObjectArrayList.get(index);
             tempObject.changeValue(decrement);
 

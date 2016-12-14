@@ -20,7 +20,7 @@ public class ActionsContract implements SQLDataTypeDefines {
     public ActionsContract(){}
 
     public static class ActionsEntry implements BaseColumns {
-        public static final String TABLE_NAME = "actions";
+        public static final String TABLE_NAME = "action_type";
         public static final String COLUMN_NAME_ID = "_id";
         public static final String COLUMN_NAME_ACTION_NAME = "name";
         public static final String COLUMN_NAME_ACTION_DESCRIPTION = "description";

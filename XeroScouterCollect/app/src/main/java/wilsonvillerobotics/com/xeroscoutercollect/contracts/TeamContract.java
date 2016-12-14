@@ -22,6 +22,7 @@ public class TeamContract implements SQLDataTypeDefines {
     public static class TeamEntry implements BaseColumns{
         public static final String TABLE_NAME = "team";
         public static final String COLUMN_NAME_ID = "_id";
+        public static final String COLUMN_NAME_TEAM_NUMBER = "team_number";
         public static final String COLUMN_NAME_TBA_TEAM_KEY = "tba_team_key";
         public static final String COLUMN_NAME_TEAM_LONG_NAME = "long_name";
         public static final String COLUMN_NAME_TEAM_NAME = "name";
@@ -42,6 +43,7 @@ public class TeamContract implements SQLDataTypeDefines {
 
         public static final String CREATE_TABLE_TEAM =
                 "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_NAME_ID + INTPK + COMMA_SEP
+                        + COLUMN_NAME_TEAM_NUMBER + INT11 + COMMA_SEP
                         + COLUMN_NAME_TBA_TEAM_KEY + VC45 + COMMA_SEP
                         + COLUMN_NAME_TEAM_LONG_NAME + VC255 + COMMA_SEP
                         + COLUMN_NAME_TEAM_NAME + VC255 + COMMA_SEP

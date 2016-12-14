@@ -61,7 +61,7 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
                     msg = msg + Integer.toString(i)+ ", ";
                 }
             }
-            Toast.makeText(PitScoutingActivity.this, "Found: " + msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(PitScoutingActivity.this, "Found: " + msg, Toast.LENGTH_SHORT).show();
         }
     }
 }
