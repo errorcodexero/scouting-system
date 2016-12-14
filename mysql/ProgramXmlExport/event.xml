@@ -1,0 +1,15 @@
+<NewDataSet>
+  <Table>
+    <_id>1</_id>
+    <tba_event_key>TBA_1</tba_event_key>
+    <name>BunnyBots2016</name>
+    <short_name>BunnyBots2016</short_name>
+    <event_type>Exhibition</event_type>
+    <event_district>PNW</event_district>
+    <year>2016</year>
+    <week>50</week>
+    <location>Catlin Gabel</location>
+    <tba_event_code>A</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+</NewDataSet>
