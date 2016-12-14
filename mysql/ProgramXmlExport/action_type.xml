@@ -1,0 +1,119 @@
+<NewDataSet>
+  <Table>
+    <_id>1</_id>
+    <name>Auto Line Crossed</name>
+    <description>Auto Line Crossed</description>
+    <match_phase>Auto</match_phase>
+    <points>4</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Crossing</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>2</_id>
+    <name>Auto Bunnies Picked-up</name>
+    <description>Auto Bunnies Picked-up</description>
+    <match_phase>Auto</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Bunny Handling</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>3</_id>
+    <name>Auto Bunnies Scored</name>
+    <description>Auto Bunnies Scored</description>
+    <match_phase>Auto</match_phase>
+    <points>15</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Bunny Handling</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>4</_id>
+    <name>Lines Crossed</name>
+    <description>Lines Crossed</description>
+    <match_phase>Teleop</match_phase>
+    <points>2</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Crossing</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>5</_id>
+    <name>Bunnies Deposited</name>
+    <description>Bunnies Scored</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Bunny Handling</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>6</_id>
+    <name>Bunnies Picked-up</name>
+    <description>Bunnies Picked-up</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Bunny Handling</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>7</_id>
+    <name>Bunnies Stolen</name>
+    <description>Bunnies Stolen</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Bunny Handling</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>8</_id>
+    <name>Shots Hit</name>
+    <description>Shots Hit</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>-5</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Shooting</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>9</_id>
+    <name>Shots Missed</name>
+    <description>Shots Missed</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Shooting</category>
+    <table_name>action_type</table_name>
+  </Table>
+</NewDataSet>

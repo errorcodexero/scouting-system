@@ -99,15 +99,16 @@ namespace XeroScouterDBManage_Server
                     try
                     {
                         cmd = connection.CreateCommand();
-                        cmd.CommandText = "SELECT *, '" + Program.dbName + "." + table + "' AS table_name" +
+                        cmd.CommandText = "SELECT *, '" + table + "' AS table_name" +
 							" FROM " + Program.dbName + "." + table;
                         MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
 
                         DataSet ds = new DataSet();
                         adap.Fill(ds);
 
-                        string path = this.exportPath + "\\ftsData-" + table + "-export.xml";
-                        if (File.Exists(path)) File.Delete(path);
+						//string path = this.exportPath + "\\ftsData-" + table + "-export.xml";
+						string path = this.exportPath + "\\" + table + ".xml";
+						if (File.Exists(path)) File.Delete(path);
                         var fileStream = new FileStream(path, FileMode.Create);
                         ds.WriteXml(fileStream);
                         fileStream.Close();

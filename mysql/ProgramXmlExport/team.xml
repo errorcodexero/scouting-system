@@ -1,0 +1,312 @@
+<NewDataSet>
+  <Table>
+    <_id>1</_id>
+    <team_number>1425A</team_number>
+    <tba_team_key>TBA1425A</tba_team_key>
+    <name>Error Code Xero</name>
+    <city>Wilsonvillle</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <motto>'Building Robots, Building People'</motto>
+    <rookie_year>2004</rookie_year>
+    <robot_name>Dash</robot_name>
+    <robot_drive_type>Holononic</robot_drive_type>
+    <robot_wheel_count>3</robot_wheel_count>
+    <robot_drive_motor_count>6</robot_drive_motor_count>
+    <robot_software_language>C++</robot_software_language>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>2</_id>
+    <team_number>1425B</team_number>
+    <tba_team_key>TBA1425B</tba_team_key>
+    <name>Error Code Xero</name>
+    <city>Wilsonville</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <motto>'Building Robots, Building People'</motto>
+    <rookie_year>2004</rookie_year>
+    <robot_name>Hammy</robot_name>
+    <robot_drive_type>H-Drive</robot_drive_type>
+    <robot_wheel_count>5</robot_wheel_count>
+    <robot_drive_motor_count>5</robot_drive_motor_count>
+    <robot_software_language>C++</robot_software_language>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>3</_id>
+    <team_number>2471A</team_number>
+    <tba_team_key>TBA2471A</tba_team_key>
+    <name>Team Mean Machine</name>
+    <city>Camas</city>
+    <state_code>WA</state_code>
+    <country>USA</country>
+    <motto>"24 hours a day, 7 days a week, 1 build season"</motto>
+    <rookie_year>2008</rookie_year>
+    <robot_drive_type>NA</robot_drive_type>
+    <robot_software_language>NA</robot_software_language>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>4</_id>
+    <team_number>2471B</team_number>
+    <tba_team_key>TBA2471B</tba_team_key>
+    <name>Team Mean Machine</name>
+    <city>Camas</city>
+    <state_code>WA</state_code>
+    <country>USA</country>
+    <motto>"24 hours a day, 7 days a week, 1 build season"</motto>
+    <rookie_year>2008</rookie_year>
+    <robot_drive_type>NA</robot_drive_type>
+    <robot_software_language>NA</robot_software_language>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>5</_id>
+    <team_number>3711A</team_number>
+    <tba_team_key>TBA3711A</tba_team_key>
+    <name>Iron Mustangs</name>
+    <city>Trout Lake</city>
+    <state_code>WA</state_code>
+    <country>USA</country>
+    <motto>"Do great things"</motto>
+    <rookie_year>2011</rookie_year>
+    <robot_drive_type>NA</robot_drive_type>
+    <robot_software_language>NA</robot_software_language>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>6</_id>
+    <team_number>3711B</team_number>
+    <tba_team_key>TBA3711B</tba_team_key>
+    <name>Iron Mustangs</name>
+    <city>Trout Lake</city>
+    <state_code>WA</state_code>
+    <country>USA</country>
+    <motto>"Do great things"</motto>
+    <rookie_year>2011</rookie_year>
+    <robot_drive_type>NA</robot_drive_type>
+    <robot_software_language>NA</robot_software_language>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>7</_id>
+    <team_number>955</team_number>
+    <tba_team_key>TBA955</tba_team_key>
+    <name>CV Robotics</name>
+    <city>Corvallis</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2002</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>8</_id>
+    <team_number>997</team_number>
+    <tba_team_key>TBA997</tba_team_key>
+    <name>Spartan Robotics</name>
+    <city>Corvallis</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2002</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>9</_id>
+    <team_number>1432</team_number>
+    <tba_team_key>TBA1432</tba_team_key>
+    <name>Metal Beavers</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2004</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>10</_id>
+    <team_number>1540A</team_number>
+    <tba_team_key>TBA1540A</tba_team_key>
+    <name>Flaming Chickens</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2005</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>11</_id>
+    <team_number>1540B</team_number>
+    <tba_team_key>TBA1540B</tba_team_key>
+    <name>Flaming Chickens</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2005</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>12</_id>
+    <team_number>1540C</team_number>
+    <tba_team_key>TBA1540C</tba_team_key>
+    <name>Flaming Chickens</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2005</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>13</_id>
+    <team_number>1571</team_number>
+    <tba_team_key>TBA1571</tba_team_key>
+    <name>CALibrate</name>
+    <city>Gresham</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2005</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>14</_id>
+    <team_number>2374</team_number>
+    <tba_team_key>TBA2374</tba_team_key>
+    <name>CrusaderBots</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2008</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>15</_id>
+    <team_number>2411</team_number>
+    <tba_team_key>TBA2411</tba_team_key>
+    <name>Rebel @lliance</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2008</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>16</_id>
+    <team_number>2635</team_number>
+    <tba_team_key>TBA2635</tba_team_key>
+    <name>Lake Monsters</name>
+    <city>Lake Oswego</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2008</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>17</_id>
+    <team_number>2733</team_number>
+    <tba_team_key>TBA2733</tba_team_key>
+    <name>Pigmice</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2009</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>18</_id>
+    <team_number>2898</team_number>
+    <tba_team_key>TBA2898</tba_team_key>
+    <name>Flying Hedgehogs</name>
+    <city>Beaverton</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2009</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>19</_id>
+    <team_number>3131</team_number>
+    <tba_team_key>TBA3131</tba_team_key>
+    <name>Gladstone Gladiators</name>
+    <city>Gladstone</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2010</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>20</_id>
+    <team_number>3636</team_number>
+    <tba_team_key>TBA3636</tba_team_key>
+    <name>General Robotics</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2011</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>21</_id>
+    <team_number>3674</team_number>
+    <tba_team_key>TBA3674</tba_team_key>
+    <name>4-H CloverBots</name>
+    <city>Battle Ground</city>
+    <state_code>WA</state_code>
+    <country>USA</country>
+    <rookie_year>2011</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>22</_id>
+    <team_number>4043</team_number>
+    <tba_team_key>TBA4043</tba_team_key>
+    <name>NerdHerd</name>
+    <city>McMinnville</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2012</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>23</_id>
+    <team_number>4051</team_number>
+    <tba_team_key>TBA4051</tba_team_key>
+    <name>Sabin-Sharks</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2012</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>24</_id>
+    <team_number>4692</team_number>
+    <tba_team_key>TBA4692</tba_team_key>
+    <name>Metal Mallards</name>
+    <city>Toutle</city>
+    <state_code>WA</state_code>
+    <country>USA</country>
+    <rookie_year>2013</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>25</_id>
+    <team_number>5977</team_number>
+    <tba_team_key>TBA5977</tba_team_key>
+    <name>Rosemary Rebels</name>
+    <city>Portland</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2016</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+  <Table>
+    <_id>26</_id>
+    <team_number>6456</team_number>
+    <tba_team_key>TBA6456</tba_team_key>
+    <name>Wolfpack</name>
+    <city>Boring</city>
+    <state_code>OR</state_code>
+    <country>USA</country>
+    <rookie_year>2017</rookie_year>
+    <table_name>team</table_name>
+  </Table>
+</NewDataSet>
