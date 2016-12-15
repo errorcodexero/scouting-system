@@ -28,14 +28,6 @@
     <Setting Name="TestDatabaseName" Type="System.String" Scope="User">
       <Value Profile="(Default)">scouting_test</Value>
     </Setting>
-    <Setting Name="DBConnectionTemplate" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4}&lt;/ConnectionString&gt;
-  &lt;ProviderName /&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4}</Value>
-    </Setting>
     <Setting Name="dbHost" Type="System.String" Scope="User">
       <Value Profile="(Default)">localhost</Value>
     </Setting>
@@ -47,6 +39,13 @@
     </Setting>
     <Setting Name="dbPersistSecurity" Type="System.String" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DBConnectionTemplate" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4};Convert Zero Datetime=True&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4};Convert Zero Datetime=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

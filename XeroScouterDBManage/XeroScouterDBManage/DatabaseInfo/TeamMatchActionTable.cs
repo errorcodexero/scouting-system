@@ -18,6 +18,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 		public static String COL_OBJECT_COUNT = "object_count";
 
 		public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
+		public static String SELECT_ALL_FOR_TEAM_MATCH_ID = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_TEAM_MATCH_ID + "=";
 
 		public static String getInsertRecordQuery(Int32 tmID, Dictionary<int, Int32> dictIdToCount)
 		{

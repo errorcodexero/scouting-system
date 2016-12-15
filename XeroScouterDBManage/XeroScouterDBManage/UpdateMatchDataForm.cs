@@ -167,11 +167,11 @@ namespace XeroScouterDBManage_Server
 					DataSet ds = new DataSet();
 					adap.Fill(ds);
 
-					txtMatchNumber.Text = ds.Tables[0].Rows[0][MatchTable.COL_MATCH_NUMBER].ToString();
+					txtMatchNumber.Text = ds.Tables[0].Rows[this.matchID - 1][MatchTable.COL_MATCH_NUMBER].ToString();
 
 					for (int i = 0; i < this.teamComboList.Count; i++)
 					{
-						this.teamComboList[i].SelectedValue = ds.Tables[0].Rows[0][this.allianceColorList[i]].ToString();
+						this.teamComboList[i].SelectedValue = ds.Tables[0].Rows[this.matchID - 1][this.allianceColorList[i]].ToString();
 					}
 					
 				}

@@ -209,7 +209,7 @@ namespace XeroScouterDBManage_Server
 
                     cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_TEAM_ID, 0);
                     cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_MATCH_ID, 0);
-                    cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_EVENT_ID, 0);
+                    //cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_EVENT_ID, 0);
                     cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_POSITION, "");
                     cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_ALLIANCE, "");
 
@@ -217,7 +217,7 @@ namespace XeroScouterDBManage_Server
                     {
                         cmd.Parameters["@" + TeamMatchTable.COL_TEAM_ID].Value = teamIDs[tm];
                         cmd.Parameters["@" + TeamMatchTable.COL_MATCH_ID].Value = match_id;
-                        cmd.Parameters["@" + TeamMatchTable.COL_EVENT_ID].Value = this.compID;
+                        //cmd.Parameters["@" + TeamMatchTable.COL_EVENT_ID].Value = this.compID;
                         cmd.Parameters["@" + TeamMatchTable.COL_POSITION].Value = (tm % 3) + 1 ;
                         cmd.Parameters["@" + TeamMatchTable.COL_ALLIANCE].Value = (tm < 3) ? "Blue" : "Red";
 

@@ -106,16 +106,6 @@ namespace XeroScouterDBManage_Server.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4}")]
-        public string DBConnectionTemplate {
-            get {
-                return ((string)(this["DBConnectionTemplate"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
@@ -161,6 +151,17 @@ namespace XeroScouterDBManage_Server.Properties {
             }
             set {
                 this["dbPersistSecurity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4};Conver" +
+            "t Zero Datetime=True")]
+        public string DBConnectionTemplate {
+            get {
+                return ((string)(this["DBConnectionTemplate"]));
             }
         }
     }

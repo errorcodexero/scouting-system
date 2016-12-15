@@ -12,7 +12,9 @@ namespace XeroScouterDBManage_Server
 		private Int32 teamMatchID;
 		private Int32 matchID, teamID;
 		private Dictionary<String, Int32> dictActionTypes;
+		private Dictionary<Int32, String> dictActionTypeIDs;
 		private Dictionary<Control, String> dictActionTypeControls;
+		private Dictionary<String, Control> dictActionTypeNames;
 		private bool existingDataFound;
 
 		public TeamMatchActionEntryForm(Int32 mID, Int32 tID)
@@ -25,15 +27,16 @@ namespace XeroScouterDBManage_Server
 			// once the maps are hard-coded, we can iterate through the controls and insert a record for each action_type_id
 			this.dictActionTypeControls = new Dictionary<Control, String>(); // maps UI control to action_type_id
 			this.dictActionTypes = new Dictionary<String, Int32>(); // maps action type name to action_type_id
+			this.dictActionTypeIDs = new Dictionary<int, string>(); // maps action type id to name
+			this.dictActionTypeNames = new Dictionary<string, Control>(); // maps names to controls
 
-			loadTeamMatchData();
-			mapActionTypeControls();
 			loadActionTypeData();
+			mapActionTypeControls();
+			loadTeamMatchData();
 			//this.Width = 1450;
 			//this.Height = 1250;
 
 			existingDataFound = false;
-			// TODO - add query to load in existing data
 			loadExistingData();
 		}
 
@@ -58,6 +61,16 @@ namespace XeroScouterDBManage_Server
 			this.dictActionTypeControls.Add(this.txtTeleBunniesStolen, "Bunnies Stolen");
 			this.dictActionTypeControls.Add(this.txtNerfShotsHit, "Shots Hit");
 			this.dictActionTypeControls.Add(this.txtNerfShotsMissed, "Shots Missed");
+
+			this.dictActionTypeNames.Add("Auto Line Crossed", this.txtAutoLinesCrossed);
+			this.dictActionTypeNames.Add("Auto Bunnies Picked-up", this.txtAutoBunniesPicked);
+			this.dictActionTypeNames.Add("Auto Bunnies Scored", this.txtAutoBunniesScored);
+			this.dictActionTypeNames.Add("Lines Crossed", this.txtTeleLinesCrossed);
+			this.dictActionTypeNames.Add("Bunnies Deposited", this.txtTeleBunniesScored);
+			this.dictActionTypeNames.Add("Bunnies Picked-up", this.txtTeleBunniesGround);
+			this.dictActionTypeNames.Add("Bunnies Stolen", this.txtTeleBunniesStolen);
+			this.dictActionTypeNames.Add("Shots Hit", this.txtNerfShotsHit);
+			this.dictActionTypeNames.Add("Shots Missed", this.txtNerfShotsMissed);
 		}
 
 		private void loadActionTypeData()
@@ -83,6 +96,7 @@ namespace XeroScouterDBManage_Server
 						foreach (DataRow r in ds.Tables[0].Rows)
 						{
 							dictActionTypes.Add(r.Field<String>(ActionTypeTable.COL_NAME), r.Field<Int32>(ActionTypeTable.COL_ID));
+							dictActionTypeIDs.Add(r.Field<Int32>(ActionTypeTable.COL_ID), r.Field<String>(ActionTypeTable.COL_NAME));
 						}
 					}
 				}
@@ -150,8 +164,8 @@ namespace XeroScouterDBManage_Server
 
 					if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
 					{
-						Int32 number = ds.Tables[0].Rows[0].Field<Int32>(MatchTable.COL_MATCH_NUMBER);
-						this.txtMatchNumber.Text = String.Format("{0}", number);
+						Int32 num = ds.Tables[0].Rows[0].Field<Int32>(MatchTable.COL_MATCH_NUMBER);
+						this.txtMatchNumber.Text = String.Format("{0}", num);
 					}
 
 					cmd.CommandText = TeamTable.SELECT_NUMBER_FROM_MATCHING_ID + String.Format("{0}", this.teamID);
@@ -161,8 +175,48 @@ namespace XeroScouterDBManage_Server
 
 					if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
 					{
-						String number = ds.Tables[0].Rows[0].Field<String>(TeamTable.COL_TEAM_NUMBER);
-						this.txtTeamNumber.Text = number;
+						String num = ds.Tables[0].Rows[0].Field<String>(TeamTable.COL_TEAM_NUMBER);
+						this.txtTeamNumber.Text = num;
+					}
+
+					// load the TeamMatchActions
+					cmd.CommandText = TeamMatchActionTable.SELECT_ALL_FOR_TEAM_MATCH_ID + String.Format("{0}", this.teamMatchID);
+					adap = new MySqlDataAdapter(cmd);
+					ds.Clear();
+					adap.Fill(ds);
+
+					Dictionary<Int32, int> dictTemp = new Dictionary<Int32, int>();
+					int quantity = 0;
+
+					if (ds.Tables.Count > 0)
+					{
+						foreach (DataRow r in ds.Tables[0].Rows)
+						{
+							int id = r.Field<Int32>(TeamMatchActionTable.COL_ACTION_TYPE_ID);
+							if (!dictTemp.ContainsKey(id))
+							{
+								dictTemp.Add(id, r.Field<int>(TeamMatchActionTable.COL_QUANTITY));
+							}
+							else
+							{
+								dictTemp.TryGetValue(id, out quantity);
+								dictTemp[id] = quantity + r.Field<int>(TeamMatchActionTable.COL_QUANTITY);
+							}
+						}
+					}
+
+					String strAction;
+					foreach(Int32 id in dictTemp.Keys)
+					{
+						Control textBox = null;
+						dictTemp.TryGetValue(id, out quantity);
+						dictActionTypeIDs.TryGetValue(id, out strAction);
+						dictActionTypeNames.TryGetValue(strAction, out textBox);
+
+						if(textBox != null)
+						{
+							textBox.Text = String.Format("{0}", quantity);
+						}
 					}
 				}
 				catch (MySqlException)
@@ -207,7 +261,10 @@ namespace XeroScouterDBManage_Server
 					int id;
 					dictActionTypeControls.TryGetValue(k, out name);
 					dictActionTypes.TryGetValue(name, out id);
-					dictIdToCount.Add(id, Int32.Parse(k.Text));
+					if (k.Text != "")
+					{
+						dictIdToCount.Add(id, Int32.Parse(k.Text));
+					}
 				}
 			}
 			catch (Exception e)
