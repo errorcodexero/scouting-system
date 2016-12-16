@@ -190,7 +190,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         try {
             while(cursor.moveToNext()) {
                 matchObjList.add(new TeamMatchModel(
-                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
+                        String.valueOf(cursor.getString(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_1))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_2))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_3))),
@@ -249,7 +249,8 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         match_list.add(match3.getMatchNumber());*/
 
         for (TeamMatchModel tempMatch : matchObjList) {
-            match_list.add(String.valueOf(Integer.valueOf(tempMatch.getMatchNumber())));
+            //match_list.add(String.valueOf(Integer.parseInt(tempMatch.getMatchNumber().replaceAll("[\\D]", ""))));
+            match_list.add(tempMatch.getMatchNumber());
         }
         dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, match_list);

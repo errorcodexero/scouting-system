@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 
 /**
  * Created by Luke on 11/8/2016.
@@ -35,7 +39,7 @@ public class SanityCheckActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (view == findViewById(R.id.btn_sanity_check_completed)) {
+        if (view.getId() == R.id.btn_sanity_check_completed) {
             Intent scoutingActivity = new Intent(this,ScoutingActivity.class);
             startActivity(scoutingActivity);
         }

@@ -15,10 +15,12 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
@@ -134,110 +136,130 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         int index = -1;
+        int action_id = 0;
         boolean decrement = false;
         Intent mainScreen = new Intent(this, MatchConfirmationActivity.class);
         String queryString = "";
+
         switch (view.getId()) {
 
             // Doing that young fallthough
 
             case R.id.btn_decrement_action_1:
                 index = 0;
+                action_id = 1;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_2:
                 index = 1;
+                action_id = 2;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_3:
                 index = 2;
+                action_id = 3;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_4:
                 index = 3;
+                action_id = 4;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_5:
                 index = 4;
+                action_id = 5;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_6:
                 index = 5;
+                action_id = 6;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_7:
                 index = 6;
+                action_id = 7;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_8:
                 index = 7;
+                action_id = 8;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_decrement_action_9:
                 index = 8;
+                action_id = 9;
                 decrement = true;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_1:
                 index = 0;
+                action_id = 1;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_2:
                 index = 1;
+                action_id = 2;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_3:
                 index = 2;
+                action_id = 3;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_4:
                 index = 3;
+                action_id = 4;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_5:
                 index = 4;
+                action_id = 5;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_6:
                 index = 5;
+                action_id = 6;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_7:
                 index = 6;
+                action_id = 7;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_8:
                 index = 7;
+                action_id = 8;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
             case R.id.btn_increment_action_9:
                 index = 8;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                action_id = 9;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_auto_back:
@@ -299,7 +321,14 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
             if (tempTextView != null) {
                 tempTextView.setText(String.valueOf(tempObject.getActionCount()));
+                try {
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    db.execSQL(queryString);
+                }  finally {
+
+                }
                 //Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
+
             } else {
                 Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
             }
