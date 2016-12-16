@@ -64,15 +64,25 @@ public class TeamContract implements SQLDataTypeDefines {
                         + ")";
 
     }
-    public void queryInsertTeamData(HashMap<String, XMLParser.TableColumn> teamMap, Context c){
+
+    public String getTeamListQuery()
+    {
+        String query = "SELECT " + TeamEntry.COLUMN_NAME_ID + ", " + TeamEntry.COLUMN_NAME_TEAM_NUMBER + " FROM " + TeamEntry.TABLE_NAME;
+        return query;
+    }
+
+    public void queryInsertTeamData(HashMap<String, XMLParser.TableColumn> teamMap, Context c)
+    {
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues content = new ContentValues();
-        if(teamMap.containsKey(TeamContract.TeamEntry.COLUMN_NAME_ID)){
+        if(teamMap.containsKey(TeamContract.TeamEntry.COLUMN_NAME_ID))
+        {
             teamMap.remove(TeamContract.TeamEntry.COLUMN_NAME_ID);
         }
-        for(String key : teamMap.keySet()){
+        for(String key : teamMap.keySet())
+        {
             if(teamMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
                 content.put(key, ((XMLParser.TableStringColumn) teamMap.get(key)).getValue());
             } else if(teamMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){
@@ -80,10 +90,13 @@ public class TeamContract implements SQLDataTypeDefines {
             }
 
         }
-        try{
+        try
+        {
             db.insert(TeamContract.TeamEntry.TABLE_NAME,null, content);
         }
-        catch (Exception e) {e.printStackTrace();}
-
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
