@@ -66,8 +66,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     String filename = "tma_exports-" + xmlExporter.getLastTeamMatchAction() + ".xml";
                     File xmlFile = new File(tempCtx.getFilesDir(), filename);
                     FileOutputStream outputStream;
-                    String xml = xmlExporter.GenerateNewMatches();
-                    Log.d("Debug", xml);
 
                     try {
                         outputStream = openFileOutput(filename, tempCtx.MODE_PRIVATE);

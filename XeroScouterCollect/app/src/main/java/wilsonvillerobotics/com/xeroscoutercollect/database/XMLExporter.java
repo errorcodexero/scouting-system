@@ -40,7 +40,7 @@ public class XMLExporter {
     public XMLExporter(Context appContext) {
         dbHelper = DatabaseHelper.getInstance(appContext);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext);
-        lastTeamMatchAction = sharedPreferences.getInt("last_tma_index", 0);
+        lastTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
 
     }
 
@@ -153,7 +153,7 @@ public class XMLExporter {
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 2, false, false) +
                 cursor.getInt(cursor.getColumnIndex("action_object_count")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 0, true, true);
 
-        xmlResult += GenerateTagByName(ROW, 1, false, true) + "\n";
+        xmlResult += GenerateTagByName(ROW, 1, true, true) + "\n";
 
         if (endDataTag) {
             xmlResult = GenerateTagByName(DATA, 0, false, true);
@@ -178,7 +178,7 @@ public class XMLExporter {
         Boolean firstRun = true;
 
         Cursor cursor = db.rawQuery(queryStatement, null);
-        cursor.moveToFirst();
+        //cursor.moveToFirst();
         try {
             while (cursor.moveToNext()) {
                 xmlResult += GenerateNextTeamMatchAction(firstRun, false, cursor);
@@ -190,7 +190,7 @@ public class XMLExporter {
             Log.d("ERROR", "No Data Present!");
         } finally {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("last_tma_index", lastTeamMatchAction);
+            editor.putString("tma_index_id", String.valueOf(lastTeamMatchAction));
             editor.commit();
             cursor.close();
             xmlResult += GenerateTagByName(DATA, 0, true, false);

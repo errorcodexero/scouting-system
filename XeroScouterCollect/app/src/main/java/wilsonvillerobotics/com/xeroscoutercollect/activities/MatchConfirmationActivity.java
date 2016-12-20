@@ -231,13 +231,13 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_1))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_2))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3))))
-                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
+                        /*String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
                         String.valueOf(team_list.get(red1ID)),
                         String.valueOf(team_list.get(red2ID)),
                         String.valueOf(team_list.get(red3ID)),
                         String.valueOf(team_list.get(blue1ID)),
                         String.valueOf(team_list.get(blue2ID)),
-                        String.valueOf(team_list.get(blue3ID)))
+                        String.valueOf(team_list.get(blue3ID)))*/
                 );
             }
         } finally {

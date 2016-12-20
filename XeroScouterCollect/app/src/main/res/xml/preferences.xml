@@ -18,6 +18,12 @@
             android:summary=""
             android:defaultValue="@string/default_pref_value"
             android:dialogTitle="@string/string_set_tablet_id" />
+        <EditTextPreference
+            android:key="@string/tma_index_pref"
+            android:title="TeamMatchAction Index:"
+            android:summary=""
+            android:defaultValue="0"
+            android:dialogTitle="Set TeamMatchAction Index" />
 
     </PreferenceCategory>
 
