@@ -8,4 +8,8 @@
     <string name="tma_index_pref">tma_index_id</string>
     <string name="show_finish_button_on_settings">show_finish_button_on_settings</string>
     <string name="table_name_key">table_file_name</string>
+    <string name="manual_selection_pref">manual_selection</string>
+    <string name="uuid_value_pref">uuid_value</string>
+
+
 </resources>

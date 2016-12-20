@@ -23,6 +23,7 @@
     <string name="lbl_tablet_id_match_confirmation">Tablet ID:</string>
 
     <string name="match_prompt">Choose a match</string>
+    <string name="team_prompt">Choose a team</string>
     <string name="team_1">Team 1</string>
     <string name="team_2">Team 2</string>
     <string name="team_3">Team 3</string>
@@ -43,6 +44,10 @@
     <string name="string_set_tablet_id">Set Tablet ID</string>
     <string name="default_pref_value">*</string>
     <string name="manage_db">Manage DB</string>
+    <string name="manual_selection">Manual Selection</string>
+    <string name="string_set_manual_selection">Set Manual Selection</string>
+    <string name="tablet_uuid">Tablet UUID</string>
+    <string name="set_tablet_uuid">Tablet UUID</string>
 
 
 </resources>
