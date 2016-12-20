@@ -109,7 +109,6 @@
             this.txtMatchLocation.Name = "txtMatchLocation";
             this.txtMatchLocation.Size = new System.Drawing.Size(100, 20);
             this.txtMatchLocation.TabIndex = 3;
-            this.txtMatchLocation.Text = "Auburn";
             // 
             // lblMatchLocation
             // 

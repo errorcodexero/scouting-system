@@ -18,10 +18,15 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.http.response import HttpResponseRedirect
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^explore/', include(explore.site.urls)),
-    url(r'^explore/', TemplateView.as_view(template_name='explore/index.html')),
-    url(r'^$', TemplateView.as_view(template_name='index.html'))
-]# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^explore/', include('explore.urls')),
+    url(r'^$', lambda r: HttpResponseRedirect('home/')),
+    url(r'^home/', include('home.urls')),
+    url(r'^teams/', include('teams.urls')),
+    url(r'^strategy/', include('strategy.urls'))
+] + staticfiles_urlpatterns()

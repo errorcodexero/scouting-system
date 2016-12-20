@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,12 +20,13 @@
         android:layout_gravity="center_horizontal"
         android:textSize="50dp"
         android:paddingTop="5dp"
-        android:paddingBottom="15dp" />
+        android:paddingBottom="20dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="261dp"
+        android:paddingBottom="15dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -39,8 +41,8 @@
                 android:text="Match List"
                 android:id="@+id/lbl_match_list"
                 android:layout_gravity="center_horizontal"
-                android:textSize="40dp"
-                android:paddingBottom="10dp" />
+                android:paddingBottom="10dp"
+                android:textSize="40sp" />
 
             <Spinner
                 android:layout_width="327dp"
@@ -49,13 +51,39 @@
                 android:prompt="@string/match_prompt"
                 android:layout_gravity="center_horizontal" />
 
+            <Button
+                android:text="Update Teams"
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_get_teams"
+                android:onClick="onClick (SanityCheckActivity)"
+                android:visibility="gone" />
+
+            <TextView
+                android:text="Team List"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lbl_team_list"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:paddingTop="30dp"
+                android:paddingBottom="10dp"
+                android:textColor="@android:color/background_light" />
+
+            <Spinner
+                android:layout_width="327dp"
+                android:layout_height="50dp"
+                android:id="@+id/spinner_team_list"
+                android:prompt="@string/team_prompt"
+                android:layout_gravity="center_horizontal" />
+
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".5">
+            android:layout_weight=".45">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -173,18 +201,26 @@
                         android:background="@android:color/holo_blue_light"
                         android:layout_weight=".5"
                         android:textAlignment="center" />
+
                 </TableRow>
 
             </TableLayout>
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight=".07" />
+
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
-        android:id="@+id/btn_submit"
-        android:layout_gravity="right" />
+        android:layout_width="191dp"
+        android:layout_height="66dp"
+        android:text="Next"
+        android:id="@+id/btn_next"
+        android:layout_gravity="right"
+        android:onClick="onClick"
+        android:textSize="25sp" />
 </LinearLayout>

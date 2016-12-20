@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
 {
@@ -48,14 +44,21 @@ namespace XeroScouterDBManage_Server
                     try
                     {
                         cmd = connection.CreateCommand();
-                        cmd.CommandText = "SELECT competition_name FROM competition_data WHERE _id=" + this.competitionID;
+                        cmd.CommandText = EventTable.SELECT_NAME_FROM_MATCHING_ID + this.competitionID;
                         MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                         DataSet ds = new DataSet();
                         adap.Fill(ds);
-                        compLabeltext = ds.Tables[0].Rows[0]["competition_name"].ToString();
+                        if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                        {
+                            compLabeltext = ds.Tables[0].Rows[0][EventTable.COL_NAME].ToString();
+                        } else
+                        {
+                            Console.Out.WriteLine(String.Format("MatchListForm::LoadSelectedCompetition: Could not find competition with ID=%d", this.competitionID));
+                            this.competitionID = -1;
+                        }
                         //cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                        //cmbCompetitionName.ValueMember = "_id";
-                        //cmbCompetitionName.DisplayMember = "competition_name";
+                        //cmbCompetitionName.ValueMember = "event_id";
+                        //cmbCompetitionName.DisplayMember = "name";
                     }
                     catch (MySql.Data.MySqlClient.MySqlException)
                     {
@@ -79,6 +82,7 @@ namespace XeroScouterDBManage_Server
 
         public void loadSelectedSeason()
         {
+            /*
             string seasonLabeltext = string.Empty;
             if (this.seasonID < 0)
             {
@@ -119,12 +123,12 @@ namespace XeroScouterDBManage_Server
                 }
             }
             lblSeasonValue.Text = seasonLabeltext;
+            */
         }
 
         public void LoadData()
         {
             if (this.competitionID < 0) return;
-            //long compID = Utils.getLongIDFromComboSelectedValue(cmbCompetitionName, lblStatus);
 
             MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
             MySqlCommand cmd;
@@ -136,18 +140,21 @@ namespace XeroScouterDBManage_Server
                 {
                     cmd = connection.CreateCommand();
                     
-                    string query = "SELECT match_number AS 'Match Number'," +
-		            " match_time AS 'Match Time'," +
-                    " match_type AS 'Match Type'," +
-                    " match_location AS 'Match Location'," +
-                    " (SELECT team_data.team_number FROM team_data WHERE team_data._id = match_data.blue_team_one_id) AS 'Blue One'," +
-                    " (SELECT team_data.team_number FROM team_data WHERE team_data._id = match_data.blue_team_two_id) AS 'Blue Two'," +
-                    " (SELECT team_data.team_number FROM team_data WHERE team_data._id = match_data.blue_team_three_id) AS 'Blue Three'," +
-                    " (SELECT team_data.team_number FROM team_data WHERE team_data._id = match_data.red_team_one_id) AS 'Red One'," +
-                    " (SELECT team_data.team_number FROM team_data WHERE team_data._id = match_data.red_team_two_id) AS 'Red Two'," +
-                    " (SELECT team_data.team_number FROM team_data WHERE team_data._id = match_data.red_team_three_id) AS 'Red Three'" +
-                    " FROM match_data" +
-                    " WHERE competition_id=" + this.competitionID;
+                    string query = MatchTable.SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX;
+                    query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
+                    query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
+					query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
+					query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
+					query += MatchTable.SELECT_RED1_FOR_ID_PART;
+					query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
+					query += MatchTable.SELECT_RED2_FOR_ID_PART;
+					query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
+					query += MatchTable.SELECT_RED3_FOR_ID_PART;
+					query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
+					query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
+                    query += this.competitionID;
 
                     cmd.CommandText = query;
  
@@ -223,6 +230,7 @@ namespace XeroScouterDBManage_Server
 
         private void btnSetSeason_Click(object sender, EventArgs e)
         {
+            /*
             SeasonSelectForm seasonSelect = new SeasonSelectForm();
             System.Windows.Forms.DialogResult res = seasonSelect.ShowDialog();
             if (res == System.Windows.Forms.DialogResult.OK)
@@ -235,6 +243,66 @@ namespace XeroScouterDBManage_Server
                 lblCompetitionValue.Text = "No Competition Selected";
                 this.LoadData();
             }
+            */
         }
-    }
+
+        private void gridMatchList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*if (cell.Value == blank)
+            {
+                if (IsOsTurn())
+                {
+                    cell.Value = o;
+                }
+                else
+                {
+                    cell.Value = x;
+                }
+                ToggleTurn();
+            }*/
+        }
+
+        private void gridMatchList_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+			DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
+			MessageBox.Show("Row: " + cell.OwningRow.Index.ToString() + " Team: " + cell.Value.ToString());
+        }
+
+		private void gridMatchList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			// if clicking the match number, update the match data
+			if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+			{
+				DataGridViewTextBoxCell idCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
+				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, (Int32)idCell.Value);
+				updateForm.Show();
+
+			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
+			// if clicking a team number, update the team_match data
+			{
+				DataGridViewTextBoxCell mIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
+				DataGridViewTextBoxCell tIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[e.ColumnIndex + 1];
+				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm((Int32)mIDCell.Value, (Int32)tIDCell.Value);
+				entryForm.Show();
+			}
+		}
+
+		private void gridMatchList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+		{
+			// Hide ID columns
+			gridMatchList.Columns[0].Visible = false;
+			gridMatchList.Columns[3].Visible = false;
+			gridMatchList.Columns[5].Visible = false;
+			gridMatchList.Columns[7].Visible = false;
+			gridMatchList.Columns[9].Visible = false;
+			gridMatchList.Columns[11].Visible = false;
+			gridMatchList.Columns[13].Visible = false;
+		}
+
+		private void btnAddMatchData_Click(object sender, EventArgs e)
+		{
+			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, -1);
+			frmUpdateMatchData.Show();
+		}
+	}
 }

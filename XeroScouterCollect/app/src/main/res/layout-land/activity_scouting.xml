@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <FrameLayout tools:context=".ScoutingActivity"
+    <FrameLayout tools:context=".activities.ScoutingActivity"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -40,7 +40,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:weightSum="1" >
+                        android:weightSum="1"
+                        android:paddingTop="20dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -267,7 +268,7 @@
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
                                     android:ems="10"
-                                    android:id="@+id/entry_action_3"
+                                    android:id="@+id/entry_action_4"
                                     android:layout_weight="0.50"
                                     android:gravity="center_horizontal"
                                     android:text="@string/default_text_0"

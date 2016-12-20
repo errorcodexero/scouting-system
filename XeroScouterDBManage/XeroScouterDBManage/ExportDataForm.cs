@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using XeroScouterDBManage_Server.DatabaseInfo;
 
 namespace XeroScouterDBManage_Server
 {
@@ -31,11 +27,11 @@ namespace XeroScouterDBManage_Server
         public void initTableList()
         {
             CheckedListBox.ObjectCollection items = chkTableList.Items;
-            items.Add("competition_data");
-            items.Add("match_data");
-            items.Add("robot_data");
-            items.Add("team_data");
-            items.Add("team_match");
+            items.Add(ActionTypeTable.TABLE_NAME);
+            items.Add(EventTable.TABLE_NAME);
+            items.Add(MatchTable.TABLE_NAME);
+            items.Add(TeamTable.TABLE_NAME);
+            items.Add(TeamMatchTable.TABLE_NAME);
 
             chkTableList.Refresh();
         }
@@ -56,13 +52,13 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = "SELECT _id, competition_name, competition_location FROM competition_data";
+                    cmd.CommandText = EventTable.SELECT_ID_NAME_LOC;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
                     cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                    cmbCompetitionName.ValueMember = "_id";
-                    cmbCompetitionName.DisplayMember = "competition_name";
+                    cmbCompetitionName.ValueMember = EventTable.COL_ID;
+                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
                     cmbCompetitionName.SelectedValue = this.compID;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
@@ -103,15 +99,16 @@ namespace XeroScouterDBManage_Server
                     try
                     {
                         cmd = connection.CreateCommand();
-                        cmd.CommandText = "SELECT *" +
-                            " FROM " + table;
+                        cmd.CommandText = "SELECT *, '" + table + "' AS table_name" +
+							" FROM " + Program.dbName + "." + table;
                         MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
 
                         DataSet ds = new DataSet();
                         adap.Fill(ds);
 
-                        string path = this.exportPath + "\\ftsData-" + table + "-export.xml";
-                        if (File.Exists(path)) File.Delete(path);
+						//string path = this.exportPath + "\\ftsData-" + table + "-export.xml";
+						string path = this.exportPath + "\\" + table + ".xml";
+						if (File.Exists(path)) File.Delete(path);
                         var fileStream = new FileStream(path, FileMode.Create);
                         ds.WriteXml(fileStream);
                         fileStream.Close();

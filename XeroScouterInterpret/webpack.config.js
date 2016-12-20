@@ -7,12 +7,15 @@ module.exports = {
     context: __dirname,
 
     entry: {
-        main: './src/tsx/index.tsx'//,
-        //explore: './src/ts/explore/explore.tsx'
+        home: './src/jsx/home/home.jsx',
+        explore: './src/jsx/explore/explore.jsx',
+        teams: './src/jsx/teams/teams.jsx',
+        strategy: './src/jsx/strategy/strategy.jsx'
+
     },
 
     output: {
-        path: path.resolve('./assets/bundles/'),
+        path: path.resolve('./staging/bundles/'),
 
         filename: '[name].js',
         },
@@ -34,15 +37,23 @@ module.exports = {
     module: {
             loaders: [
                 {
-                    test: /\.jsx$/,
+                    test: /\.js$/,
 
                     loader: 'babel-loader',
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.jsx$/,
+
+                    loader: 'babel',
+                    exclude: /node_modules/,
+
                     query: {
-                        presets: ['react']
+                        presets: ['stage-0', 'react']
                     }
                 },
-                {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'ts-loader'}//,
+                {test: /\.tsx?$/, exclude: /node_modules/, loader: 'babel-loader!ts-loader'},
+                {test: /\.json$/, exclude: /node_modules/, loader: 'json-loader'}
                 //{test: /(explore)?(\.tsx?$)/, exclude: /node_modules/, loader: 'ts-loader?tsconfig=src/ts/explore/tsconfig.json'}
 
             ]
@@ -52,7 +63,7 @@ module.exports = {
     resolve: {
         modulesDirectories: ['node_modules'],
 
-        extensions: ['', '.js', '.jsx', '.ts', '.tsx', '.webpack/js', '.web.js']
+        extensions: ['', '.js', '.jsx', '.webpack/js', '.web.js']
     },
     externals: {
         "react": "React",

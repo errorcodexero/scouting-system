@@ -1,0 +1,13 @@
+| {% load render_bundle from webpack_loader %}
+doctype html
+body
+    link(rel="stylesheet" type="text/css" href="{% static 'css/index.min.css' %}")
+    include ../navbar
+    .container
+        .jumbotron
+            h1#titleBar.animated.fadeIn
+                |<i>XeroScouter Interpret</i>
+            h5
+                |The <i>best</i> data interpreter
+
+                | {% render_bundle 'home' %}

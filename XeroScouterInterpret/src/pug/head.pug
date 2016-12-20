@@ -1,10 +1,14 @@
-mixin head_with_title(title)
+| {% load static %}
+
+html
     head
-        script(src='assets/react/dist/react.js')
-        script(src='assets/react-dom/dist/react-dom.js')
-        script(src='assets/jquery/dist/jquery.js')
-        script(src='assets/bootstrap/dist/js/bootstrap.js')
-        script(src='assets/bootstrap-material-design/dist/js/material.js')
-        link(rel='stylesheet' type='text/css' href='assets/bootstrap/dist/css/bootstrap.css')
-        link(rel='stylesheet' type='text/css' href='assets/bootstrap-material-design/dist/css/bootstrap-material-design.css')
+        script(src="{% static 'react/dist/react.js' %}")
+        script(src="{% static 'react-dom/dist/react-dom.js' %}")
+        script(src="{% static 'jquery/dist/jquery.js' %}")
+        script(src="{% static 'bootstrap/dist/js/bootstrap.js' %}")
+        script(src="{% static 'bootstrap-material-design/dist/js/material.js' %}")
+        link(rel="stylesheet" type="text/css" href="{% static 'css/chart.css' %}")
+        link(rel="stylesheet" type="text/css" href="{% static 'animate.css/animate.css'%}")
+        link(rel="stylesheet" type="text/css" href="{% static 'bootstrap/dist/css/bootstrap.css' %}")
+        link(rel="stylesheet" type="text/css" href="{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.css' %}")
         title= title

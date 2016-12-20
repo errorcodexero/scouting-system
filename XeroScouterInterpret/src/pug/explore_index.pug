@@ -1,9 +1,0 @@
-| {% load render_bundle from webpack_loader %}
-doctype html
-include head
-html
-    +head_with_title('Welcome')
-    body
-        include navbar
-        #container
-        | {% render_bundle 'explore' %}

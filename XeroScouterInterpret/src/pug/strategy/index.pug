@@ -1,0 +1,11 @@
+| {% load render_bundle from webpack_loader %}
+doctype html
+body
+    link(rel="stylesheet" type="text/css" href="{% static 'css/index.min.css' %}")
+    include ../navbar
+    .container
+        .jumbotron
+            h1#titleBar.animated.fadeIn
+                |<i>Welcome to the <b>The Strategizer</b></i>
+
+                | {% render_bundle 'strategy' %}

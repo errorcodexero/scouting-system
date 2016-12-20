@@ -1,0 +1,866 @@
+<match_list>
+	<match id="1">
+		<red_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="4">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="6">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="2">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="10">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="3">
+		<red_alliance>
+			<team id="13">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="16">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="4">
+		<red_alliance>
+			<team id="19">TEAM NUMBER</team>
+			<team id="20">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="22">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="5">
+		<red_alliance>
+			<team id="25">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="28">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="6">
+		<red_alliance>
+			<team id="31">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="34">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="7">
+		<red_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="7">TEAM NUMBER</team>
+			<team id="13">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="19">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="8">
+		<red_alliance>
+			<team id="2">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="20">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="9">
+		<red_alliance>
+			<team id="3">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="21">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="10">
+		<red_alliance>
+			<team id="4">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="22">TEAM NUMBER</team>
+			<team id="28">TEAM NUMBER</team>
+			<team id="34">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="11">
+		<red_alliance>
+			<team id="5">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="23">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="12">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="24">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="13">
+		<red_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="34">TEAM NUMBER</team>
+			<team id="28">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="14">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+			<team id="13">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="19">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="15">
+		<red_alliance>
+			<team id="24">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="14">TEAM NUMBER</team>
+			<team id="20">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="16">
+		<red_alliance>
+			<team id="31">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="4">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="17">
+		<red_alliance>
+			<team id="22">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="10">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="18">
+		<red_alliance>
+			<team id="17">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="27">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+			<team id="6">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="19">
+		<red_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="19">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="20">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="20">
+		<red_alliance>
+			<team id="13">TEAM NUMBER</team>
+			<team id="7">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="8">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="21">
+		<red_alliance>
+			<team id="32">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="21">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="22">
+		<red_alliance>
+			<team id="33">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="9">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="23">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="35">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="24">
+		<red_alliance>
+			<team id="18">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+			<team id="34">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="28">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="25">
+		<red_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="13">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="20">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="26">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="30">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="27">
+		<red_alliance>
+			<team id="14">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="34">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+			<team id="19">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="28">
+		<red_alliance>
+			<team id="15">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="36">TEAM NUMBER</team>
+			<team id="28">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="29">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="33">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="30">
+		<red_alliance>
+			<team id="2">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="17">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="31">
+		<red_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="14">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="32">
+		<red_alliance>
+			<team id="26">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="27">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="33">
+		<red_alliance>
+			<team id="17">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="34">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="34">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="13">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="35">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="28">TEAM NUMBER</team>
+			<team id="20">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="36">
+		<red_alliance>
+			<team id="18">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="19">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="37">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="20">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="34">TEAM NUMBER</team>
+			<team id="19">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="38">
+		<red_alliance>
+			<team id="14">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="36">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="39">
+		<red_alliance>
+			<team id="13">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+			<team id="1">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="12">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="40">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="35">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+			<team id="28">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="41">
+		<red_alliance>
+			<team id="23">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="4">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="42">
+		<red_alliance>
+			<team id="15">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="5">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="43">
+		<red_alliance>
+			<team id="33">TEAM NUMBER</team>
+			<team id="7">TEAM NUMBER</team>
+			<team id="13">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="22">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="44">
+		<red_alliance>
+			<team id="32">TEAM NUMBER</team>
+			<team id="6">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="29">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="45">
+		<red_alliance>
+			<team id="19">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="10">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="46">
+		<red_alliance>
+			<team id="8">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="2">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="47">
+		<red_alliance>
+			<team id="34">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+			<team id="1">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="28">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="48">
+		<red_alliance>
+			<team id="20">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="14">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="49">
+		<red_alliance>
+			<team id="15">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+			<team id="13">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="20">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="50">
+		<red_alliance>
+			<team id="23">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="2">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+			<team id="19">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="51">
+		<red_alliance>
+			<team id="24">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+			<team id="28">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="21">TEAM NUMBER</team>
+			<team id="34">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="52">
+		<red_alliance>
+			<team id="16">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="7">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="53">
+		<red_alliance>
+			<team id="9">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="36">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="54">
+		<red_alliance>
+			<team id="10">TEAM NUMBER</team>
+			<team id="1">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="27">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="55">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="8">TEAM NUMBER</team>
+			<team id="27">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="56">
+		<red_alliance>
+			<team id="36">TEAM NUMBER</team>
+			<team id="13">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="26">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+			<team id="28">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="57">
+		<red_alliance>
+			<team id="20">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="9">TEAM NUMBER</team>
+			<team id="19">TEAM NUMBER</team>
+			<team id="1">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="58">
+		<red_alliance>
+			<team id="33">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="11">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="59">
+		<red_alliance>
+			<team id="21">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+			<team id="34">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="32">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="60">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="12">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+			<team id="29">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="61">
+		<red_alliance>
+			<team id="25">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="23">TEAM NUMBER</team>
+			<team id="9">TEAM NUMBER</team>
+			<team id="18">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="62">
+		<red_alliance>
+			<team id="3">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="22">TEAM NUMBER</team>
+			<team id="8">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="63">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+			<team id="21">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="15">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="64">
+		<red_alliance>
+			<team id="6">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="29">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="65">
+		<red_alliance>
+			<team id="13">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="20">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="28">TEAM NUMBER</team>
+			<team id="16">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="66">
+		<red_alliance>
+			<team id="12">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+			<team id="34">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="27">TEAM NUMBER</team>
+			<team id="19">TEAM NUMBER</team>
+			<team id="1">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="67">
+		<red_alliance>
+			<team id="27">TEAM NUMBER</team>
+			<team id="25">TEAM NUMBER</team>
+			<team id="34">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="28">TEAM NUMBER</team>
+			<team id="24">TEAM NUMBER</team>
+			<team id="33">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="68">
+		<red_alliance>
+			<team id="9">TEAM NUMBER</team>
+			<team id="3">TEAM NUMBER</team>
+			<team id="10">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="16">TEAM NUMBER</team>
+			<team id="4">TEAM NUMBER</team>
+			<team id="23">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="69">
+		<red_alliance>
+			<team id="8">TEAM NUMBER</team>
+			<team id="2">TEAM NUMBER</team>
+			<team id="17">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="21">TEAM NUMBER</team>
+			<team id="11">TEAM NUMBER</team>
+			<team id="5">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="70">
+		<red_alliance>
+			<team id="18">TEAM NUMBER</team>
+			<team id="26">TEAM NUMBER</team>
+			<team id="36">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="29">TEAM NUMBER</team>
+			<team id="32">TEAM NUMBER</team>
+			<team id="22">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="71">
+		<red_alliance>
+			<team id="19">TEAM NUMBER</team>
+			<team id="15">TEAM NUMBER</team>
+			<team id="35">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="1">TEAM NUMBER</team>
+			<team id="12">TEAM NUMBER</team>
+			<team id="30">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+	<match id="72">
+		<red_alliance>
+			<team id="7">TEAM NUMBER</team>
+			<team id="14">TEAM NUMBER</team>
+			<team id="20">TEAM NUMBER</team>
+		</red_alliance>
+		<blue_alliance>
+			<team id="13">TEAM NUMBER</team>
+			<team id="31">TEAM NUMBER</team>
+			<team id="6">TEAM NUMBER</team>
+		</blue_alliance>
+	</match>
+</match_list>

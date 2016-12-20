@@ -10,3 +10,7 @@ bower_modules/*
 ./assets/**/*.min.css
 
 ./templates/*.html
+
+./typings/**/*
+
+./.idea/**/*

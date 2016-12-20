@@ -1,0 +1,8 @@
+| {% load render_bundle from webpack_loader %}
+doctype html
+body
+    include ../navbar
+    link(rel="stylesheet" type="text/css" src="{% static 'css/teams.css' %}")
+    .spacer.large
+    #team-container
+    | {% render_bundle 'teams' %}
