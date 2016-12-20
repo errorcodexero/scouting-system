@@ -8,7 +8,7 @@ namespace XeroScouterDBManage_Server
     {
         // globals
 
-        public static Boolean TEST_MODE = true;
+        public static Boolean TEST_MODE = false;
         public static String dbName = (TEST_MODE) ? Properties.Settings.Default.TestDatabaseName : Properties.Settings.Default.DatabaseName;
 
         private static String[] sA = new String[5]{

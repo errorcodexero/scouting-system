@@ -15,6 +15,8 @@ namespace XeroScouterDBManage_Server
 		private Dictionary<Int32, String> dictActionTypeIDs;
 		private Dictionary<Control, String> dictActionTypeControls;
 		private Dictionary<String, Control> dictActionTypeNames;
+		private Dictionary<Int32, bool> dictUpdatedFieldIDs;
+		private bool scouterDataFound;
 		private bool existingDataFound;
 
 		public TeamMatchActionEntryForm(Int32 mID, Int32 tID)
@@ -23,12 +25,15 @@ namespace XeroScouterDBManage_Server
 			this.matchID = mID;
 			this.teamID = tID;
 
+			
+
 			// The dictionaries help map from control to description string, and description string to action_type_id
 			// once the maps are hard-coded, we can iterate through the controls and insert a record for each action_type_id
 			this.dictActionTypeControls = new Dictionary<Control, String>(); // maps UI control to action_type_id
 			this.dictActionTypes = new Dictionary<String, Int32>(); // maps action type name to action_type_id
 			this.dictActionTypeIDs = new Dictionary<int, string>(); // maps action type id to name
 			this.dictActionTypeNames = new Dictionary<string, Control>(); // maps names to controls
+			this.dictUpdatedFieldIDs = new Dictionary<int, bool>(); // maps ids to bool representing if the field was updated on load, use this to only save fields that didn't have data
 
 			loadActionTypeData();
 			mapActionTypeControls();
@@ -37,6 +42,7 @@ namespace XeroScouterDBManage_Server
 			//this.Height = 1250;
 
 			existingDataFound = false;
+			scouterDataFound = false;
 			loadExistingData();
 		}
 
@@ -202,6 +208,11 @@ namespace XeroScouterDBManage_Server
 								dictTemp.TryGetValue(id, out quantity);
 								dictTemp[id] = quantity + r.Field<int>(TeamMatchActionTable.COL_QUANTITY);
 							}
+
+							if(!dictUpdatedFieldIDs.ContainsKey(id))
+							{
+								dictUpdatedFieldIDs.Add(id, true);
+							}
 						}
 					}
 
@@ -217,6 +228,18 @@ namespace XeroScouterDBManage_Server
 						{
 							textBox.Text = String.Format("{0}", quantity);
 						}
+					}
+
+
+					cmd.CommandText = TeamMatchTable.getScouterNameQuery(this.teamMatchID);
+					adap = new MySqlDataAdapter(cmd);
+					ds.Clear();
+					adap.Fill(ds);
+
+					if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+					{
+						scouterDataFound = true;
+						txtScouter.Text = ds.Tables[0].Rows[0].Field<String>(TeamMatchTable.COL_SCOUT_NAME);
 					}
 				}
 				catch (MySqlException)
@@ -248,6 +271,7 @@ namespace XeroScouterDBManage_Server
 			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
 			MySqlCommand cmd;
 			bool saved = true, validated = true;
+			String scoutName = "";
 
 			Dictionary<int, Int32> dictIdToCount = new Dictionary<int, Int32>();
 			
@@ -261,11 +285,15 @@ namespace XeroScouterDBManage_Server
 					int id;
 					dictActionTypeControls.TryGetValue(k, out name);
 					dictActionTypes.TryGetValue(name, out id);
-					if (k.Text != "")
+					bool hasData = false;
+					dictUpdatedFieldIDs.TryGetValue(id, out hasData);
+					if (k.Text != "" && !hasData)
 					{
 						dictIdToCount.Add(id, Int32.Parse(k.Text));
 					}
 				}
+
+				scoutName = txtScouter.Text;
 			}
 			catch (Exception e)
 			{
@@ -299,6 +327,12 @@ namespace XeroScouterDBManage_Server
 						cmd.Parameters["@" + TeamMatchActionTable.COL_OBJECT_COUNT].Value = 0;
 
 						cmd.ExecuteNonQuery();
+					}
+
+					if (!scouterDataFound)
+					{
+						cmd.CommandText = TeamMatchTable.getUpdateScouterQuery(this.teamMatchID, scoutName);
+						int numRowsUpdated = cmd.ExecuteNonQuery();
 					}
 
 				}

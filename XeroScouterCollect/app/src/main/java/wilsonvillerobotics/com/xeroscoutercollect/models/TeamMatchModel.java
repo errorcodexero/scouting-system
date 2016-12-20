@@ -46,6 +46,7 @@ public class TeamMatchModel {
         return matchNumber;
     }
     public String getTeamNumber(int k){
-        return teamList.get(k);
+        String retVal = teamList.get(k);
+        return retVal;
     }
 }

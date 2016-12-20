@@ -81,12 +81,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         });
         parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
-
     }
 
 
-
     /*public String queryMySQLDb(String queryString) {
+    public String queryMySQLDb(String queryString) {
 
         String results = "";
 
@@ -95,6 +94,12 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
             String defaultString = "*";
+
+            String user = sharedPreferences.getString("dbUsername", "root");
+            String pass = sharedPreferences.getString("dbPassword", "D3@ThC0D3");
+            String ip   = sharedPreferences.getString("dbIp", "127.0.0.1");
+
+            String url = "jdbc://" + ip + ":3306/match";
 
             //Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, pass);
@@ -143,27 +148,26 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 if (hasTN) {
                     TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get(TN))).getValue();
                     switch (tName) {
-                        case EVENT:
-                            EventContract ec = new EventContract();
-                            ec.queryInsertEventData(map, this);
-                            break;
-                        case TEAM:
-                            TeamContract tc = new TeamContract();
-                            tc.queryInsertTeamData(map, this);
-                            break;
-                        case TEAMMATCH:
-                            TeamMatchContract tmc = new TeamMatchContract();
-                            tmc.queryInsertTeamMatchData(map, this);
-                            break;
-                        case ACTIONTYPE:
-                            ActionsContract ac = new ActionsContract();
-                            ac.queryInsertActionsData(map, this);
-                            break;
-                        case MATCH:
-                            MatchContract mc = new MatchContract();
-                            mc.queryInsertMatchData(map, this);
-                            break;
-
+                    case EVENT:
+                        EventContract ec = new EventContract();
+                        ec.queryInsertEventData(map, this);
+                        break;
+                    case TEAM:
+                        TeamContract tc = new TeamContract();
+                        tc.queryInsertTeamData(map, this);
+                        break;
+                    case TEAMMATCH:
+                        TeamMatchContract tmc = new TeamMatchContract();
+                        tmc.queryInsertTeamMatchData(map, this);
+                        break;
+                    case ACTIONTYPE:
+                        ActionsContract ac = new ActionsContract();
+                        ac.queryInsertActionsData(map, this);
+                        break;
+                    case MATCH:
+                        MatchContract mc = new MatchContract();
+                        mc.queryInsertMatchData(map, this);
+                        break;
                     }
                 }
             }
