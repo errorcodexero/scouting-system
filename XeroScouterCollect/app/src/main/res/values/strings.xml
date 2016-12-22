@@ -48,6 +48,7 @@
     <string name="string_set_manual_selection">Set Manual Selection</string>
     <string name="tablet_uuid">Tablet UUID</string>
     <string name="set_tablet_uuid">Tablet UUID</string>
+    <string name="no_app_handling_ftp_available">No app handling ftp available.</string>
 
 
 </resources>

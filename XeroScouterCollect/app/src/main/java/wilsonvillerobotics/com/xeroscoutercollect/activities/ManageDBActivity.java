@@ -8,10 +8,15 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.connection.FTPConnection;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
@@ -50,33 +56,16 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         UNKNOWN
     };
     DatabaseHelper db;
+    private String filename;
+    private Context tempCtx;
+    Button btn_export;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Context tempCtx = this;
+        tempCtx = this;
         setContentView(R.layout.activity_manage_db);
-        View exportButton = findViewById(R.id.btn_export);
-        exportButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getId() == R.id.btn_export) {
-                    XMLExporter xmlExporter = new XMLExporter(tempCtx);
-                    String filename = "tma_exports-" + xmlExporter.getLastTeamMatchAction() + ".xml";
-                    File xmlFile = new File(tempCtx.getFilesDir(), filename);
-                    FileOutputStream outputStream;
-
-                    try {
-                        outputStream = openFileOutput(filename, tempCtx.MODE_PRIVATE);
-                        outputStream.write(xmlExporter.GenerateNewMatches().getBytes());
-                        outputStream.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();;
-                    }
-                }
-            }
-        });
         parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
     }
@@ -186,6 +175,55 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             GenerateTestData g = new GenerateTestData(this);
             g.generateAllData();
             //Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
+        } else if (view.getId() == R.id.btn_export) {
+            XMLExporter xmlExporter = new XMLExporter(tempCtx);
+            filename = "tma-" + xmlExporter.getLastTeamMatchAction() + ".xml";
+            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
+            File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
+
+
+            String baseFolder;
+            // check if external storage is available
+            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+            }
+            // revert to using internal storage (not sure if there's an equivalent to the above)
+            else {
+                baseFolder = this.getFilesDir().getAbsolutePath();
+            }
+            String string = xmlExporter.GenerateNewMatches();
+            File file = new File(baseFolder + File.separator + filename);
+            file.getParentFile().mkdirs();
+            FileOutputStream fos;
+            try {
+                fos = new FileOutputStream(xmlFile);
+                fos.write(string.getBytes());
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            /*
+            if(!xmlFile.exists()){
+                try {
+                    xmlFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            FileOutputStream outputStream;
+
+            try {
+                outputStream = openFileOutput(filename, MODE_PRIVATE);
+                outputStream.write(xmlExporter.GenerateNewMatches().getBytes());
+                outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            */
+            FTPConnection ftp = new FTPConnection(this);
+            ftp.sendFile(path);
         }
     }
 }

@@ -52,7 +52,7 @@
             android:id="@+id/btn_export"
             android:layout_marginLeft="25dp"
             android:textSize="20sp"
-            android:onClick="onClick (SanityCheckActivity)" />
+            android:onClick="onClick" />
 
         <Button
             android:layout_width="wrap_content"
