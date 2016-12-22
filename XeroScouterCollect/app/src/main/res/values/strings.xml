@@ -32,5 +32,7 @@
     <string name="confirmation">Confirmation</string>
     <string name="match_list">Match List</string>
 
+    <string name="no_app_handling_ftp_available">No app handling ftp available. Install <span class="application">Send With FTP</span> from Google Play?</string>
+
 
 </resources>

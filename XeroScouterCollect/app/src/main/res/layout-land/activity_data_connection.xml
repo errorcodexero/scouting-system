@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:text="Enable Bluetooth Connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_enable_bluetooth"
+        android:onClick="onClick" />
+
+    <Button
+        android:text="Enable FTP Connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_enable_ftp"
+        android:onClick="onClick" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:text="Send Test File"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_send_file"
+        android:onClick="onClick" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</LinearLayout>

@@ -2,3 +2,7 @@
 **/node_modules/
 /XeroScouterCollect/.idea/.name
 /XeroScouterCollect/.idea/gradle.xml
+/XeroScouterDBManage/XeroScouterDBManage/bin/x64/Debug
+/XeroScouterDBManage/XeroScouterDBManage/bin/x64/Release
+/XeroScouterDBManage/XeroScouterDBManage/obj/x64/Debug
+/XeroScouterDBManage/XeroScouterDBManage/obj/x64/Release
