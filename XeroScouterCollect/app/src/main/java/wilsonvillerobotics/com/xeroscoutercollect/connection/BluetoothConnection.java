@@ -73,7 +73,7 @@ public class BluetoothConnection extends ConnectionType{
     public boolean sendDataFile() {
         super.sendDataFile();
         //String path = Environment.getExternalStorageDirectory() + "/test.xml";
-        String path = Environment.getExternalStorageDirectory() + "/xmlData.xml";
+        String path = Environment.getExternalStorageDirectory() + "files/tma_exports-0.xml";
 
         File file = new File(path);
         try {
