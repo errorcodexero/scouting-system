@@ -38,6 +38,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private Spinner spinner_team_list;
     private Button btn_next;
     private Intent sanityCheckActivity;
+    private Intent landingActivity;
     private List<String> match_list;
     private HashMap<Integer, String> team_list;
     public int currentSelectedMatch;
@@ -83,6 +84,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
+        landingActivity = new Intent(this, LandingActivity.class);
 
         spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
         spinner_team_list = (Spinner) findViewById(R.id.spinner_team_list);
@@ -354,6 +356,9 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         }
         if(view == findViewById(R.id.btn_get_teams)){
             updateTeams();
+        }
+        if(view.getId() == R.id.btn_home){
+            startActivity(landingActivity);
         }
     }
 

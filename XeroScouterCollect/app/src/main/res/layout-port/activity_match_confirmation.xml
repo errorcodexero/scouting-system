@@ -94,6 +94,12 @@
             android:paddingBottom="5dp"
             android:layout_weight=".2" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight=".15" />
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -207,20 +213,35 @@
 
         </TableLayout>
 
-        <Space
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight=".15" />
+            android:layout_weight=".15">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="Next"
-            android:id="@+id/btn_next"
-            android:layout_gravity="right"
-            android:layout_weight=".2"
-            android:onClick="onClick" />
+            <Button
+                android:layout_height="match_parent"
+                android:text="Home"
+                android:id="@+id/btn_home"
+                android:layout_gravity="right"
+                android:onClick="onClick"
+                android:layout_width="272dp" />
+
+            <Space
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="80dp" />
+
+            <Button
+                android:layout_width="273dp"
+                android:layout_height="match_parent"
+                android:text="Next"
+                android:id="@+id/btn_next"
+                android:layout_gravity="right"
+                android:onClick="onClick" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
