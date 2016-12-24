@@ -11,8 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.UUID;
+
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.utils.UUIDGenerator;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -21,6 +24,8 @@ public class LandingActivity extends Activity implements View.OnClickListener{
 
     private String eventName;
     private String tabletID;
+    private String uidString;
+
 
     DatabaseHelper db;
 
@@ -31,11 +36,22 @@ public class LandingActivity extends Activity implements View.OnClickListener{
 
         // Load default values if needed for preferences
         PreferenceManager.setDefaultValues(getApplicationContext(), R.xml.preferences, false);
+        getSharedPrefs();
         updateLabels();
 
         // TODO - is there a danger in creating the database object inside if an Activity? Think about the life cycle.
         db = DatabaseHelper.getInstance(getApplicationContext());
         // TODO - Investigate Loaders. http://www.androiddesignpatterns.com/2012/07/understanding-loadermanager.html
+
+        if(uidString.equals(getString(R.string.default_pref_value))){
+            UUID uid = UUIDGenerator.generateUUID();
+            uidString =  uid.toString();
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(getString(R.string.uuid_value_pref), uidString).commit();
+        }
+
+
     }
 
     @Override
@@ -44,13 +60,15 @@ public class LandingActivity extends Activity implements View.OnClickListener{
         updateLabels();
     }
 
-    private void updateLabels()
-    {
+    public void getSharedPrefs(){
         String pref_default = getString(R.string.default_pref_value);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
         eventName = sharedPreferences.getString(getString(R.string.event_name_pref), pref_default);
-
+        uidString = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
+    }
+    private void updateLabels()
+    {
         TextView lblTabletID = (TextView)findViewById(R.id.lbl_tablet_id);
         TextView lblEventName = (TextView)findViewById(R.id.lbl_event_name);
 

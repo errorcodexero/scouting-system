@@ -1,6 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,6 +35,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
+import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
 
@@ -53,11 +55,34 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Context tempCtx = this;
         setContentView(R.layout.activity_manage_db);
+        View exportButton = findViewById(R.id.btn_export);
+        exportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getId() == R.id.btn_export) {
+                    XMLExporter xmlExporter = new XMLExporter(tempCtx);
+                    String filename = "tma_exports-" + xmlExporter.getLastTeamMatchAction() + ".xml";
+                    File xmlFile = new File(tempCtx.getFilesDir(), filename);
+                    FileOutputStream outputStream;
+
+                    try {
+                        outputStream = openFileOutput(filename, tempCtx.MODE_PRIVATE);
+                        outputStream.write(xmlExporter.GenerateNewMatches().getBytes());
+                        outputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();;
+                    }
+                }
+            }
+        });
         parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
     }
 
+
+    /*public String queryMySQLDb(String queryString) {
     public String queryMySQLDb(String queryString) {
 
         String results = "";
@@ -98,7 +123,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             finally {
             return "yay";
         }
-    }
+    }*/
 
     private final String XML_EXT = ".xml";
     private String TN = "table_file_name";
@@ -156,6 +181,8 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
         }
         if (view == findViewById(R.id.btn_create_test_data)) {
+            Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
+        } else if (view == findViewById(R.id.btn_create_test_data)) {
             GenerateTestData g = new GenerateTestData(this);
             g.generateAllData();
             //Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();

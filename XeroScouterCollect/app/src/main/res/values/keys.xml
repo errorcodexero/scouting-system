@@ -5,6 +5,11 @@
     <string name="tablet_id_intent_key">tablet_id_key</string>
     <string name="event_name_pref">edittext_event_name_preference</string>
     <string name="event_name_intent_key">event_name_key</string>
+    <string name="tma_index_pref">tma_index_id</string>
     <string name="show_finish_button_on_settings">show_finish_button_on_settings</string>
     <string name="table_name_key">table_file_name</string>
+    <string name="manual_selection_pref">manual_selection</string>
+    <string name="uuid_value_pref">uuid_value</string>
+
+
 </resources>
