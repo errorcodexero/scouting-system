@@ -44,7 +44,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 				}
 			}
 
-			String query = "INSERT INTO " + Program.dbName + "." + TABLE_NAME + " (";
+			String query = "INSERT INTO " + Utils.getDBName() + "." + TABLE_NAME + " (";
 			query += COL_TEAM_MATCH_ID + ", ";
 			query += COL_ACTION_TYPE_ID + ", ";
 			query += COL_QUANTITY + ", ";
@@ -59,7 +59,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 
 		public static String getInsertRecordQuery()
 		{
-			String query = "INSERT INTO " + Program.dbName + "." + TABLE_NAME + " (";
+			String query = "INSERT INTO " + Utils.getDBName() + "." + TABLE_NAME + " (";
 			query += COL_TEAM_MATCH_ID + ", ";
 			query += COL_ACTION_TYPE_ID + ", ";
 			query += COL_QUANTITY + ", ";

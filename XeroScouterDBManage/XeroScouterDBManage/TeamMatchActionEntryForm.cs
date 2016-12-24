@@ -354,7 +354,7 @@ namespace XeroScouterDBManage_Server
 				if (exit)
 				{
 					MatchListForm formObj = (MatchListForm)Application.OpenForms["MatchListForm"];
-					formObj.LoadData();
+					formObj.LoadMatchData();
 					this.Close();
 				}
 				else

@@ -10,12 +10,12 @@ namespace XeroScouterDBManage_Server
 	public partial class UpdateMatchDataForm : Form
 	{
 		private long competitionID;
-		private Int32 matchID;
+		private long matchID;
 		private int rowID;
 		private List<ComboBox> teamComboList;
 		private List<String> allianceColorList;
 
-		public UpdateMatchDataForm(long comp_id, Int32 match_id, int rowId)
+		public UpdateMatchDataForm(long comp_id, long match_id, int rowId)
 		{
 			this.competitionID = comp_id;
 			this.matchID = match_id;
@@ -147,21 +147,22 @@ namespace XeroScouterDBManage_Server
 				{
 					cmd = connection.CreateCommand();
 
-					string query = MatchTable.SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX;
-					query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
-					query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
-					query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
-					query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
-					query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
-					query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
-					query += MatchTable.SELECT_RED1_FOR_ID_PART;
-					query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
-					query += MatchTable.SELECT_RED2_FOR_ID_PART;
-					query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
-					query += MatchTable.SELECT_RED3_FOR_ID_PART;
-					query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
-					query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
-					query += this.competitionID;
+					string query = MatchTable.getSelectMatchNumberAndTeamsForID(this.competitionID);
+					//string query = MatchTable.SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX;
+					//query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
+					//query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
+					//query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
+					//query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
+					//query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
+					//query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
+					//query += MatchTable.SELECT_RED1_FOR_ID_PART;
+					//query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
+					//query += MatchTable.SELECT_RED2_FOR_ID_PART;
+					//query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
+					//query += MatchTable.SELECT_RED3_FOR_ID_PART;
+					//query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
+					//query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
+					//query += this.competitionID;
 
 					cmd.CommandText = query;
 
@@ -317,7 +318,7 @@ namespace XeroScouterDBManage_Server
 				if (exit)
 				{
 					MatchListForm formObj = (MatchListForm)Application.OpenForms["Form1"];
-					formObj.LoadData();
+					formObj.LoadMatchData();
 					this.Close();
 				}
 				else

@@ -7,16 +7,26 @@ namespace XeroScouterDBManage_Server
 {
 	class Utils
     {
-        public static String getConnectionString()
+		public static String getDBName()
+		{
+			return (Properties.Settings.Default.TEST_MODE) ? Properties.Settings.Default.TestDatabaseName : Properties.Settings.Default.DatabaseName;
+		}
+
+		public static String getConnectionString()
         {
-            //string csKey = (Program.TEST_MODE) ? "XeroScouterDBManage_Server.Properties.Settings.FTS_TEST_ConnectionString" : "XeroScouterDBManage.Properties.Settings.FTS_ConnectionString";
-            //ConnectionStringSettings csSettings = ConfigurationManager.ConnectionStrings[csKey];
-            //string connectionString = csSettings.ConnectionString;
+			String dbName = Utils.getDBName();
 
-            //String connectionString = (Program.TEST_MODE) ? Program.conTestString : Program.conString;
-            //return connectionString;
+			String[] sA = new String[5]{
+				Properties.Settings.Default.dbHost,
+				Properties.Settings.Default.dbUser,
+				Properties.Settings.Default.dbPassword,
+				Properties.Settings.Default.dbPersistSecurity,
+				dbName
+			};
 
-            return Program.connectionString;
+			String connectionString = String.Format(Properties.Settings.Default.DBConnectionTemplate, sA);
+
+            return connectionString;
         }
 
 		public static bool openConnection(MySqlConnection connection)

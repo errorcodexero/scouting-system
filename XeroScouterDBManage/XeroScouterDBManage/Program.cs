@@ -8,18 +8,18 @@ namespace XeroScouterDBManage_Server
     {
         // globals
 
-        public static Boolean TEST_MODE = false;
-        public static String dbName = (TEST_MODE) ? Properties.Settings.Default.TestDatabaseName : Properties.Settings.Default.DatabaseName;
+        //public static Boolean TEST_MODE = true;
+        //public static String dbName = (TEST_MODE) ? Properties.Settings.Default.TestDatabaseName : Properties.Settings.Default.DatabaseName;
 
-        private static String[] sA = new String[5]{
-                Properties.Settings.Default.dbHost,
-                Properties.Settings.Default.dbUser,
-                Properties.Settings.Default.dbPassword,
-                Properties.Settings.Default.dbPersistSecurity,
-                dbName
-            };
+        //private static String[] sA = new String[5]{
+        //        Properties.Settings.Default.dbHost,
+        //        Properties.Settings.Default.dbUser,
+        //        Properties.Settings.Default.dbPassword,
+        //        Properties.Settings.Default.dbPersistSecurity,
+        //        dbName
+        //    };
 
-        public static String connectionString = String.Format(Properties.Settings.Default.DBConnectionTemplate, sA); 
+        //public static String connectionString = String.Format(Properties.Settings.Default.DBConnectionTemplate, sA); 
         //"server=localhost;" +
         //"port=3306;" +
         //"uid=ftsscout;" +
@@ -47,9 +47,10 @@ namespace XeroScouterDBManage_Server
                 MatchListForm frm = new MatchListForm();
                 Application.Run(frm);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.Out.WriteLine("Could not create form due to database issues");
+				Console.Out.WriteLine(e.StackTrace);
             }
             
         }

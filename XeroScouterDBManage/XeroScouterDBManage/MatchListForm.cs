@@ -8,28 +8,55 @@ namespace XeroScouterDBManage_Server
 {
     public partial class MatchListForm : Form
     {
-        long competitionID;
+		const long INVALID_ID = -1;
+		const int INVALID_ROW = -1;
+
+
+		long competitionID;
         long seasonID;
         public MatchListForm()
         {
-            InitializeComponent();
-            this.competitionID = Properties.Settings.Default.CompetitionID;
-            this.seasonID = Properties.Settings.Default.SeasonID;
-            this.loadSelectedSeason();
-            loadSelectedCompetition();
-            //LoadCompetitions();
-            LoadData();
+			InitializeComponent();
+			this.modeToolStripMenuItem.Checked = Properties.Settings.Default.TEST_MODE;
 
-            if (Program.TEST_MODE)
-            {
-                lblTestMode.Text = " **** TEST MODE ****";
-            }
-        }
+			this.competitionID = Properties.Settings.Default.CompetitionID;
+            this.seasonID = Properties.Settings.Default.SeasonID;
+			this.LoadData();
+
+			setTestModeLabel();
+		}
+
+		private void setTestModeLabel()
+		{
+			if (Properties.Settings.Default.TEST_MODE)
+			{
+				lblTestMode.Text = " **** TEST MODE ****";
+			}
+			else
+			{
+				lblTestMode.Text = "";
+			}
+		}
+
+		private void LoadData()
+		{
+			this.loadSelectedSeason();
+			this.loadSelectedCompetition();
+			this.LoadMatchData();
+		}
+
+		private void ResetData()
+		{
+			this.competitionID = INVALID_ID;
+			clearMatchList();
+			this.LoadData();
+			setTestModeLabel();
+		}
 
         public void loadSelectedCompetition()
         {
             string compLabeltext = string.Empty;
-            if (this.competitionID < 0)
+            if (!CompetitionIDIsValid(this.competitionID))
             {
                 compLabeltext = "No Competition Selected";
             }
@@ -53,8 +80,8 @@ namespace XeroScouterDBManage_Server
                             compLabeltext = ds.Tables[0].Rows[0][EventTable.COL_NAME].ToString();
                         } else
                         {
-                            Console.Out.WriteLine(String.Format("MatchListForm::LoadSelectedCompetition: Could not find competition with ID=%d", this.competitionID));
-                            this.competitionID = -1;
+                            Console.Out.WriteLine(String.Format("MatchListForm::LoadSelectedCompetition: Could not find competition with ID={0}", this.competitionID));
+                            this.competitionID = INVALID_ID;
                         }
                         //cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
                         //cmbCompetitionName.ValueMember = "event_id";
@@ -126,9 +153,9 @@ namespace XeroScouterDBManage_Server
             */
         }
 
-        public void LoadData()
+        public void LoadMatchData()
         {
-            if (this.competitionID < 0) return;
+            if (!CompetitionIDIsValid(this.competitionID)) return;
 
             MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
             MySqlCommand cmd;
@@ -139,22 +166,23 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    
-                    string query = MatchTable.SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX;
-                    query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
-					query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
-                    query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
-					query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
-					query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
-					query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
-					query += MatchTable.SELECT_RED1_FOR_ID_PART;
-					query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
-					query += MatchTable.SELECT_RED2_FOR_ID_PART;
-					query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
-					query += MatchTable.SELECT_RED3_FOR_ID_PART;
-					query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
-					query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
-                    query += this.competitionID;
+
+					string query = MatchTable.getSelectMatchNumberAndTeamsForID(this.competitionID);
+                    //string query = MatchTable.SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX;
+                    //query += MatchTable.SELECT_BLUE1_FOR_ID_PART;
+					//query += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
+                    //query += MatchTable.SELECT_BLUE2_FOR_ID_PART;
+					//query += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
+					//query += MatchTable.SELECT_BLUE3_FOR_ID_PART;
+					//query += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
+					//query += MatchTable.SELECT_RED1_FOR_ID_PART;
+					//query += MatchTable.COL_RED_1 + " AS 'Red1ID',";
+					//query += MatchTable.SELECT_RED2_FOR_ID_PART;
+					//query += MatchTable.COL_RED_2 + " AS 'Red2ID',";
+					//query += MatchTable.SELECT_RED3_FOR_ID_PART;
+					//query += MatchTable.COL_RED_3 + " AS 'Red3ID'";
+					//query += MatchTable.FROM_MATCH_FOR_EVENT_ID;
+                    //query += this.competitionID;
 
                     cmd.CommandText = query;
  
@@ -184,12 +212,27 @@ namespace XeroScouterDBManage_Server
             }
         }
 
+		private void clearMatchList()
+		{
+			gridMatchList.DataSource = null;
+			gridMatchList.Refresh();
+		}
+
+		private bool CompetitionIDIsValid(long compID)
+		{
+			if(compID <= INVALID_ID)
+			{
+				return false;
+			}
+			return true;
+		}
+
         private void btnAddMatch_Click(object sender, EventArgs e)
         {
-            if (this.competitionID < 0) return;
+            if (!CompetitionIDIsValid(this.competitionID)) return;
             AddMatchForm amForm = new AddMatchForm(this.competitionID);
             amForm.Show();
-            //this.LoadData();
+            //this.LoadMatchData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -199,19 +242,19 @@ namespace XeroScouterDBManage_Server
 
         private void btnRefreshData_Click(object sender, EventArgs e)
         {
-            this.LoadData();
+            this.LoadMatchData();
         }
 
         private void btnExportData_Click(object sender, EventArgs e)
         {
-            if (this.competitionID < 0) return;
+            if (!CompetitionIDIsValid(this.competitionID)) return;
             ExportDataForm exportForm = new ExportDataForm(this.competitionID);
             exportForm.Show();
         }
 
         private void btnImportData_Click(object sender, EventArgs e)
         {
-            if (this.competitionID < 0) return;
+            if (!CompetitionIDIsValid(this.competitionID)) return;
             ImportDataForm importForm = new ImportDataForm(this.competitionID);
             importForm.Show();
         }
@@ -224,7 +267,7 @@ namespace XeroScouterDBManage_Server
             {
                 this.competitionID = Properties.Settings.Default.CompetitionID;
                 this.loadSelectedCompetition();
-                this.LoadData();
+                this.LoadMatchData();
             }
         }
 
@@ -241,7 +284,7 @@ namespace XeroScouterDBManage_Server
                 Properties.Settings.Default.CompetitionID = -1;
                 Properties.Settings.Default.Save();
                 lblCompetitionValue.Text = "No Competition Selected";
-                this.LoadData();
+                this.LoadMatchData();
             }
             */
         }
@@ -274,7 +317,7 @@ namespace XeroScouterDBManage_Server
 			if (e.ColumnIndex == 1 && e.RowIndex >= 0)
 			{
 				DataGridViewTextBoxCell idCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
-				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, (Int32)idCell.Value, e.RowIndex);
+				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, (long)idCell.Value, e.RowIndex);
 				updateForm.Show();
 
 			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
@@ -301,8 +344,15 @@ namespace XeroScouterDBManage_Server
 
 		private void btnAddMatchData_Click(object sender, EventArgs e)
 		{
-			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, -1, -1);
+			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, INVALID_ID, INVALID_ROW);
 			frmUpdateMatchData.Show();
+		}
+
+		private void testModeToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.TEST_MODE = ((ToolStripMenuItem)sender).Checked;
+			Properties.Settings.Default.Save();
+			this.ResetData();
 		}
 	}
 }

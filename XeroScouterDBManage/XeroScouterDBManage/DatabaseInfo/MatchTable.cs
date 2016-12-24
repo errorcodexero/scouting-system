@@ -36,7 +36,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String COLUMN_NAME_DRIVE_TEAM_COMMENTS = "drive_team_comments";
 
         public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
-        public static String SELECT_NUMBER_FROM_MATCHING_ID = "SELECT " + COL_MATCH_NUMBER + " FROM " + Program.dbName + "." + TABLE_NAME + " WHERE " + COL_ID + "=";
+        public static String SELECT_NUMBER_FROM_MATCHING_ID = "SELECT " + COL_MATCH_NUMBER + " FROM " + Utils.getDBName() + "." + TABLE_NAME + " WHERE " + COL_ID + "=";
         public static String SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX = "SELECT " + COL_ID + ", " + COL_MATCH_NUMBER + " AS 'Match Number',";
 		public static String SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX = "SELECT " + COL_ID + ", " + COL_MATCH_NUMBER + ", ";
 		public static String SELECT_BLUE1_FOR_ID_PART = " (SELECT " + TeamTable.COL_TEAM_NUMBER + " FROM " + TeamTable.TABLE_NAME + " WHERE " + TeamTable.TABLE_NAME + "." + TeamTable.COL_ID + "=" + COL_BLUE_1 + ") AS 'Blue One', ";
@@ -45,29 +45,58 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String SELECT_RED1_FOR_ID_PART  = " (SELECT " + TeamTable.COL_TEAM_NUMBER + " FROM " + TeamTable.TABLE_NAME + " WHERE " + TeamTable.TABLE_NAME + "." + TeamTable.COL_ID + "=" + COL_RED_1 + ") AS 'Red One', ";
         public static String SELECT_RED2_FOR_ID_PART  = " (SELECT " + TeamTable.COL_TEAM_NUMBER + " FROM " + TeamTable.TABLE_NAME + " WHERE " + TeamTable.TABLE_NAME + "." + TeamTable.COL_ID + "=" + COL_RED_2 + ") AS 'Red Two', ";
         public static String SELECT_RED3_FOR_ID_PART  = " (SELECT " + TeamTable.COL_TEAM_NUMBER + " FROM " + TeamTable.TABLE_NAME + " WHERE " + TeamTable.TABLE_NAME + "." + TeamTable.COL_ID + "=" + COL_RED_3 + ") AS 'Red Three', ";
-        public static String FROM_MATCH_FOR_EVENT_ID = " FROM " + Program.dbName + "." + MatchTable.TABLE_NAME + " WHERE " + MatchTable.COL_EVENT_ID + "=";
 
-        public static String INSERT_RECORD = "INSERT INTO " + Program.dbName + "." + MatchTable.TABLE_NAME + "(" +
-            COL_EVENT_ID + ", " +
-            COL_MATCH_NUMBER + ", " +
-            COL_MATCH_COMP_LEVEL + ", " + 
-            //"match_time, " + "match_location, " +
-            COL_BLUE_1 + ", " + COL_BLUE_2 + ", " + COL_BLUE_3 + ", " +
-            COL_RED_1 + ", " + COL_RED_2 + ", " + COL_RED_3 + ", " +
-            COL_BLUE_AUTO_SCORE + ", " + COL_BLUE_TELEOP_SCORE + ", " + COL_BLUE_TOTAL_SCORE + ", " +
-            COL_BLUE_QP + ", " + COL_BLUE_FOUL_POINTS + ", " + 
-            COL_RED_AUTO_SCORE + ", " + COL_RED_TELEOP_SCORE + ", " + COL_RED_TOTAL_SCORE + ", " +
-            COL_RED_QP + ", " + COL_RED_FOUL_POINTS + ", " +
-            COLUMN_NAME_MATCH_WINNER + ", " + COLUMN_NAME_DRIVE_TEAM_COMMENTS + ") " +
-            "VALUES(@" + COL_EVENT_ID + ", @" + COL_MATCH_NUMBER + ", @" + 
-            COL_MATCH_COMP_LEVEL + ", @" + 
-            //matchTime + ", @" + matchLocation + ", @" +
-            COL_BLUE_1 + ", @" + COL_BLUE_2 + ", @" + COL_BLUE_3 + ", @" +
-            COL_RED_1 + ", @" + COL_RED_2 + ", @" + COL_RED_3 + ", @" +
-            COL_BLUE_AUTO_SCORE + ", @" + COL_BLUE_TELEOP_SCORE + ", @" + COL_BLUE_TOTAL_SCORE + ", @" +
-            COL_BLUE_QP + ", @" + COL_BLUE_FOUL_POINTS + ", @" +
-            COL_RED_AUTO_SCORE + ", @" + COL_RED_TELEOP_SCORE + ", @" + COL_RED_TOTAL_SCORE + ", @" +
-            COL_RED_QP + ", @" + COL_RED_FOUL_POINTS + ", @" +
-            COLUMN_NAME_MATCH_WINNER + ", @" + COLUMN_NAME_DRIVE_TEAM_COMMENTS + ")";
-    }
+		//private String FROM_MATCH_FOR_EVENT_ID = " FROM " + Utils.getDBName() + "." + MatchTable.TABLE_NAME + " WHERE " + MatchTable.COL_EVENT_ID + "=";
+		private static String getFromMatchForIDString()
+		{
+			return " FROM " + Utils.getDBName() + "." + MatchTable.TABLE_NAME + " WHERE " + MatchTable.COL_EVENT_ID + "=";
+		}
+
+		public static String getInsertRecordString()
+		{
+			return ("INSERT INTO " + Utils.getDBName() + "." + MatchTable.TABLE_NAME + "(" +
+			COL_EVENT_ID + ", " +
+			COL_MATCH_NUMBER + ", " +
+			COL_MATCH_COMP_LEVEL + ", " +
+			//"match_time, " + "match_location, " +
+			COL_BLUE_1 + ", " + COL_BLUE_2 + ", " + COL_BLUE_3 + ", " +
+			COL_RED_1 + ", " + COL_RED_2 + ", " + COL_RED_3 + ", " +
+			COL_BLUE_AUTO_SCORE + ", " + COL_BLUE_TELEOP_SCORE + ", " + COL_BLUE_TOTAL_SCORE + ", " +
+			COL_BLUE_QP + ", " + COL_BLUE_FOUL_POINTS + ", " +
+			COL_RED_AUTO_SCORE + ", " + COL_RED_TELEOP_SCORE + ", " + COL_RED_TOTAL_SCORE + ", " +
+			COL_RED_QP + ", " + COL_RED_FOUL_POINTS + ", " +
+			COLUMN_NAME_MATCH_WINNER + ", " + COLUMN_NAME_DRIVE_TEAM_COMMENTS + ") " +
+			"VALUES(@" + COL_EVENT_ID + ", @" + COL_MATCH_NUMBER + ", @" +
+			COL_MATCH_COMP_LEVEL + ", @" +
+			//matchTime + ", @" + matchLocation + ", @" +
+			COL_BLUE_1 + ", @" + COL_BLUE_2 + ", @" + COL_BLUE_3 + ", @" +
+			COL_RED_1 + ", @" + COL_RED_2 + ", @" + COL_RED_3 + ", @" +
+			COL_BLUE_AUTO_SCORE + ", @" + COL_BLUE_TELEOP_SCORE + ", @" + COL_BLUE_TOTAL_SCORE + ", @" +
+			COL_BLUE_QP + ", @" + COL_BLUE_FOUL_POINTS + ", @" +
+			COL_RED_AUTO_SCORE + ", @" + COL_RED_TELEOP_SCORE + ", @" + COL_RED_TOTAL_SCORE + ", @" +
+			COL_RED_QP + ", @" + COL_RED_FOUL_POINTS + ", @" +
+			COLUMN_NAME_MATCH_WINNER + ", @" + COLUMN_NAME_DRIVE_TEAM_COMMENTS + ")");
+		}
+
+		public static String getSelectMatchNumberAndTeamsForID(long compID)
+		{
+			String q = SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX;
+			q += MatchTable.SELECT_BLUE1_FOR_ID_PART;
+			q += MatchTable.COL_BLUE_1 + " AS 'Blue1ID',";
+			q += MatchTable.SELECT_BLUE2_FOR_ID_PART;
+			q += MatchTable.COL_BLUE_2 + " AS 'Blue2ID',";
+			q += MatchTable.SELECT_BLUE3_FOR_ID_PART;
+			q += MatchTable.COL_BLUE_3 + " AS 'Blue3ID',";
+			q += MatchTable.SELECT_RED1_FOR_ID_PART;
+			q += MatchTable.COL_RED_1 + " AS 'Red1ID',";
+			q += MatchTable.SELECT_RED2_FOR_ID_PART;
+			q += MatchTable.COL_RED_2 + " AS 'Red2ID',";
+			q += MatchTable.SELECT_RED3_FOR_ID_PART;
+			q += MatchTable.COL_RED_3 + " AS 'Red3ID'";
+			q += getFromMatchForIDString();
+			q += compID;
+
+			return q;
+		}
+	}
 }
