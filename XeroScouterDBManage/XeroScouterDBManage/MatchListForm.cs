@@ -274,7 +274,7 @@ namespace XeroScouterDBManage_Server
 			if (e.ColumnIndex == 1 && e.RowIndex >= 0)
 			{
 				DataGridViewTextBoxCell idCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
-				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, (Int32)idCell.Value);
+				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, (Int32)idCell.Value, e.RowIndex);
 				updateForm.Show();
 
 			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
@@ -301,7 +301,7 @@ namespace XeroScouterDBManage_Server
 
 		private void btnAddMatchData_Click(object sender, EventArgs e)
 		{
-			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, -1);
+			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, -1, -1);
 			frmUpdateMatchData.Show();
 		}
 	}

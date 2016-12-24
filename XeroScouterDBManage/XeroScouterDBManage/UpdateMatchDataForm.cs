@@ -11,13 +11,15 @@ namespace XeroScouterDBManage_Server
 	{
 		private long competitionID;
 		private Int32 matchID;
+		private int rowID;
 		private List<ComboBox> teamComboList;
 		private List<String> allianceColorList;
 
-		public UpdateMatchDataForm(long comp_id, Int32 match_id)
+		public UpdateMatchDataForm(long comp_id, Int32 match_id, int rowId)
 		{
 			this.competitionID = comp_id;
 			this.matchID = match_id;
+			this.rowID = rowId;
 			this.teamComboList = new List<ComboBox>(6);
 			this.allianceColorList = new List<string>() { "Blue1ID", "Blue2ID", "Blue3ID", "Red1ID", "Red2ID", "Red3ID" };
 
@@ -132,6 +134,7 @@ namespace XeroScouterDBManage_Server
 		{
 			if (this.competitionID < 0) return;
 			if (this.matchID < 0) return;
+			if (this.rowID < 0) return;
 			if (this.allianceColorList.Count != this.teamComboList.Count) return; // should be same number of items in each
 
 			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
@@ -167,11 +170,11 @@ namespace XeroScouterDBManage_Server
 					DataSet ds = new DataSet();
 					adap.Fill(ds);
 
-					txtMatchNumber.Text = ds.Tables[0].Rows[this.matchID - 1][MatchTable.COL_MATCH_NUMBER].ToString();
+					txtMatchNumber.Text = ds.Tables[0].Rows[this.rowID][MatchTable.COL_MATCH_NUMBER].ToString();
 
 					for (int i = 0; i < this.teamComboList.Count; i++)
 					{
-						this.teamComboList[i].SelectedValue = ds.Tables[0].Rows[this.matchID - 1][this.allianceColorList[i]].ToString();
+						this.teamComboList[i].SelectedValue = ds.Tables[0].Rows[this.rowID][this.allianceColorList[i]].ToString();
 					}
 					
 				}
