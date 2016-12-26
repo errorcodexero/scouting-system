@@ -67,64 +67,64 @@
 			// lblScouter
 			// 
 			this.lblScouter.AutoSize = true;
-			this.lblScouter.Location = new System.Drawing.Point(128, 81);
-			this.lblScouter.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblScouter.Location = new System.Drawing.Point(299, 181);
+			this.lblScouter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblScouter.Name = "lblScouter";
-			this.lblScouter.Size = new System.Drawing.Size(47, 13);
+			this.lblScouter.Size = new System.Drawing.Size(102, 29);
 			this.lblScouter.TabIndex = 0;
 			this.lblScouter.Text = "Scouter:";
 			// 
 			// txtScouter
 			// 
-			this.txtScouter.Location = new System.Drawing.Point(178, 80);
-			this.txtScouter.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtScouter.Location = new System.Drawing.Point(415, 178);
+			this.txtScouter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtScouter.Name = "txtScouter";
-			this.txtScouter.Size = new System.Drawing.Size(215, 20);
+			this.txtScouter.Size = new System.Drawing.Size(496, 35);
 			this.txtScouter.TabIndex = 1;
 			// 
 			// txtMatchNumber
 			// 
-			this.txtMatchNumber.Location = new System.Drawing.Point(77, 131);
-			this.txtMatchNumber.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtMatchNumber.Location = new System.Drawing.Point(180, 292);
+			this.txtMatchNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtMatchNumber.Name = "txtMatchNumber";
-			this.txtMatchNumber.Size = new System.Drawing.Size(92, 20);
-			this.txtMatchNumber.TabIndex = 3;
+			this.txtMatchNumber.Size = new System.Drawing.Size(209, 35);
+			this.txtMatchNumber.TabIndex = 2;
 			// 
 			// lblMatchNumber
 			// 
 			this.lblMatchNumber.AutoSize = true;
-			this.lblMatchNumber.Location = new System.Drawing.Point(29, 132);
-			this.lblMatchNumber.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblMatchNumber.Location = new System.Drawing.Point(68, 294);
+			this.lblMatchNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblMatchNumber.Name = "lblMatchNumber";
-			this.lblMatchNumber.Size = new System.Drawing.Size(47, 13);
+			this.lblMatchNumber.Size = new System.Drawing.Size(96, 29);
 			this.lblMatchNumber.TabIndex = 2;
 			this.lblMatchNumber.Text = "Match#:";
 			// 
 			// txtTeamNumber
 			// 
-			this.txtTeamNumber.Location = new System.Drawing.Point(234, 131);
-			this.txtTeamNumber.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtTeamNumber.Location = new System.Drawing.Point(546, 292);
+			this.txtTeamNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtTeamNumber.Name = "txtTeamNumber";
-			this.txtTeamNumber.Size = new System.Drawing.Size(92, 20);
-			this.txtTeamNumber.TabIndex = 5;
+			this.txtTeamNumber.Size = new System.Drawing.Size(209, 35);
+			this.txtTeamNumber.TabIndex = 3;
 			// 
 			// lblTeamNumnber
 			// 
 			this.lblTeamNumnber.AutoSize = true;
-			this.lblTeamNumnber.Location = new System.Drawing.Point(186, 132);
-			this.lblTeamNumnber.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblTeamNumnber.Location = new System.Drawing.Point(434, 294);
+			this.lblTeamNumnber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblTeamNumnber.Name = "lblTeamNumnber";
-			this.lblTeamNumnber.Size = new System.Drawing.Size(44, 13);
+			this.lblTeamNumnber.Size = new System.Drawing.Size(95, 29);
 			this.lblTeamNumnber.TabIndex = 4;
 			this.lblTeamNumnber.Text = "Team#:";
 			// 
 			// lblAllianceColor
 			// 
 			this.lblAllianceColor.AutoSize = true;
-			this.lblAllianceColor.Location = new System.Drawing.Point(342, 132);
-			this.lblAllianceColor.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblAllianceColor.Location = new System.Drawing.Point(798, 294);
+			this.lblAllianceColor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblAllianceColor.Name = "lblAllianceColor";
-			this.lblAllianceColor.Size = new System.Drawing.Size(74, 13);
+			this.lblAllianceColor.Size = new System.Drawing.Size(169, 29);
 			this.lblAllianceColor.TabIndex = 6;
 			this.lblAllianceColor.Text = "Alliance Color:";
 			// 
@@ -134,11 +134,11 @@
 			this.cmbAllianceColor.Items.AddRange(new object[] {
             "Blue",
             "Red"});
-			this.cmbAllianceColor.Location = new System.Drawing.Point(423, 131);
-			this.cmbAllianceColor.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.cmbAllianceColor.Location = new System.Drawing.Point(987, 292);
+			this.cmbAllianceColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.cmbAllianceColor.Name = "cmbAllianceColor";
-			this.cmbAllianceColor.Size = new System.Drawing.Size(81, 21);
-			this.cmbAllianceColor.TabIndex = 7;
+			this.cmbAllianceColor.Size = new System.Drawing.Size(184, 37);
+			this.cmbAllianceColor.TabIndex = 4;
 			// 
 			// lblAddAMatch
 			// 
@@ -146,9 +146,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblAddAMatch.AutoSize = true;
 			this.lblAddAMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblAddAMatch.Location = new System.Drawing.Point(175, 22);
+			this.lblAddAMatch.Location = new System.Drawing.Point(408, 49);
+			this.lblAddAMatch.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.lblAddAMatch.Name = "lblAddAMatch";
-			this.lblAddAMatch.Size = new System.Drawing.Size(181, 29);
+			this.lblAddAMatch.Size = new System.Drawing.Size(412, 63);
 			this.lblAddAMatch.TabIndex = 24;
 			this.lblAddAMatch.Text = "Add Match Data";
 			this.lblAddAMatch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,108 +157,108 @@
 			// lblAutoBunniesScored
 			// 
 			this.lblAutoBunniesScored.AutoSize = true;
-			this.lblAutoBunniesScored.Location = new System.Drawing.Point(342, 209);
-			this.lblAutoBunniesScored.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblAutoBunniesScored.Location = new System.Drawing.Point(798, 466);
+			this.lblAutoBunniesScored.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblAutoBunniesScored.Name = "lblAutoBunniesScored";
-			this.lblAutoBunniesScored.Size = new System.Drawing.Size(85, 13);
+			this.lblAutoBunniesScored.Size = new System.Drawing.Size(190, 29);
 			this.lblAutoBunniesScored.TabIndex = 29;
 			this.lblAutoBunniesScored.Text = "Bunnies Scored:";
 			// 
 			// txtAutoBunniesPicked
 			// 
-			this.txtAutoBunniesPicked.Location = new System.Drawing.Point(267, 208);
-			this.txtAutoBunniesPicked.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtAutoBunniesPicked.Location = new System.Drawing.Point(623, 464);
+			this.txtAutoBunniesPicked.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtAutoBunniesPicked.Name = "txtAutoBunniesPicked";
-			this.txtAutoBunniesPicked.Size = new System.Drawing.Size(59, 20);
-			this.txtAutoBunniesPicked.TabIndex = 28;
+			this.txtAutoBunniesPicked.Size = new System.Drawing.Size(132, 35);
+			this.txtAutoBunniesPicked.TabIndex = 6;
 			// 
 			// lblAutoBunniesPicked
 			// 
 			this.lblAutoBunniesPicked.AutoSize = true;
-			this.lblAutoBunniesPicked.Location = new System.Drawing.Point(186, 209);
-			this.lblAutoBunniesPicked.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblAutoBunniesPicked.Location = new System.Drawing.Point(434, 466);
+			this.lblAutoBunniesPicked.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblAutoBunniesPicked.Name = "lblAutoBunniesPicked";
-			this.lblAutoBunniesPicked.Size = new System.Drawing.Size(84, 13);
+			this.lblAutoBunniesPicked.Size = new System.Drawing.Size(186, 29);
 			this.lblAutoBunniesPicked.TabIndex = 27;
 			this.lblAutoBunniesPicked.Text = "Bunnies Picked:";
 			// 
 			// txtAutoLinesCrossed
 			// 
-			this.txtAutoLinesCrossed.Location = new System.Drawing.Point(104, 208);
-			this.txtAutoLinesCrossed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtAutoLinesCrossed.Location = new System.Drawing.Point(243, 464);
+			this.txtAutoLinesCrossed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtAutoLinesCrossed.Name = "txtAutoLinesCrossed";
-			this.txtAutoLinesCrossed.Size = new System.Drawing.Size(65, 20);
-			this.txtAutoLinesCrossed.TabIndex = 26;
+			this.txtAutoLinesCrossed.Size = new System.Drawing.Size(146, 35);
+			this.txtAutoLinesCrossed.TabIndex = 5;
 			// 
 			// lblAutoLinesCrossed
 			// 
 			this.lblAutoLinesCrossed.AutoSize = true;
-			this.lblAutoLinesCrossed.Location = new System.Drawing.Point(29, 209);
-			this.lblAutoLinesCrossed.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblAutoLinesCrossed.Location = new System.Drawing.Point(68, 466);
+			this.lblAutoLinesCrossed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblAutoLinesCrossed.Name = "lblAutoLinesCrossed";
-			this.lblAutoLinesCrossed.Size = new System.Drawing.Size(76, 13);
+			this.lblAutoLinesCrossed.Size = new System.Drawing.Size(174, 29);
 			this.lblAutoLinesCrossed.TabIndex = 25;
 			this.lblAutoLinesCrossed.Text = "Lines Crossed:";
 			// 
 			// txtAutoBunniesScored
 			// 
-			this.txtAutoBunniesScored.Location = new System.Drawing.Point(423, 208);
-			this.txtAutoBunniesScored.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtAutoBunniesScored.Location = new System.Drawing.Point(987, 464);
+			this.txtAutoBunniesScored.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtAutoBunniesScored.Name = "txtAutoBunniesScored";
-			this.txtAutoBunniesScored.Size = new System.Drawing.Size(81, 20);
-			this.txtAutoBunniesScored.TabIndex = 30;
+			this.txtAutoBunniesScored.Size = new System.Drawing.Size(184, 35);
+			this.txtAutoBunniesScored.TabIndex = 7;
 			// 
 			// txtTeleBunniesStolen
 			// 
-			this.txtTeleBunniesStolen.Location = new System.Drawing.Point(356, 275);
-			this.txtTeleBunniesStolen.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtTeleBunniesStolen.Location = new System.Drawing.Point(831, 613);
+			this.txtTeleBunniesStolen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtTeleBunniesStolen.Name = "txtTeleBunniesStolen";
-			this.txtTeleBunniesStolen.Size = new System.Drawing.Size(34, 20);
-			this.txtTeleBunniesStolen.TabIndex = 36;
+			this.txtTeleBunniesStolen.Size = new System.Drawing.Size(74, 35);
+			this.txtTeleBunniesStolen.TabIndex = 10;
 			// 
 			// lblTeleBunniesStolen
 			// 
 			this.lblTeleBunniesStolen.AutoSize = true;
-			this.lblTeleBunniesStolen.Location = new System.Drawing.Point(278, 276);
-			this.lblTeleBunniesStolen.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblTeleBunniesStolen.Location = new System.Drawing.Point(649, 616);
+			this.lblTeleBunniesStolen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblTeleBunniesStolen.Name = "lblTeleBunniesStolen";
-			this.lblTeleBunniesStolen.Size = new System.Drawing.Size(81, 13);
+			this.lblTeleBunniesStolen.Size = new System.Drawing.Size(181, 29);
 			this.lblTeleBunniesStolen.TabIndex = 35;
 			this.lblTeleBunniesStolen.Text = "Bunnies Stolen:";
 			// 
 			// txtTeleBunniesGround
 			// 
-			this.txtTeleBunniesGround.Location = new System.Drawing.Point(224, 275);
-			this.txtTeleBunniesGround.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtTeleBunniesGround.Location = new System.Drawing.Point(523, 613);
+			this.txtTeleBunniesGround.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtTeleBunniesGround.Name = "txtTeleBunniesGround";
-			this.txtTeleBunniesGround.Size = new System.Drawing.Size(34, 20);
-			this.txtTeleBunniesGround.TabIndex = 34;
+			this.txtTeleBunniesGround.Size = new System.Drawing.Size(74, 35);
+			this.txtTeleBunniesGround.TabIndex = 9;
 			// 
 			// lblTeleBunniesGround
 			// 
 			this.lblTeleBunniesGround.AutoSize = true;
-			this.lblTeleBunniesGround.Location = new System.Drawing.Point(141, 276);
-			this.lblTeleBunniesGround.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblTeleBunniesGround.Location = new System.Drawing.Point(329, 616);
+			this.lblTeleBunniesGround.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblTeleBunniesGround.Name = "lblTeleBunniesGround";
-			this.lblTeleBunniesGround.Size = new System.Drawing.Size(86, 13);
+			this.lblTeleBunniesGround.Size = new System.Drawing.Size(192, 29);
 			this.lblTeleBunniesGround.TabIndex = 33;
 			this.lblTeleBunniesGround.Text = "Bunnies Ground:";
 			// 
 			// txtTeleLinesCrossed
 			// 
-			this.txtTeleLinesCrossed.Location = new System.Drawing.Point(92, 275);
-			this.txtTeleLinesCrossed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtTeleLinesCrossed.Location = new System.Drawing.Point(215, 613);
+			this.txtTeleLinesCrossed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtTeleLinesCrossed.Name = "txtTeleLinesCrossed";
-			this.txtTeleLinesCrossed.Size = new System.Drawing.Size(34, 20);
-			this.txtTeleLinesCrossed.TabIndex = 32;
+			this.txtTeleLinesCrossed.Size = new System.Drawing.Size(74, 35);
+			this.txtTeleLinesCrossed.TabIndex = 8;
 			// 
 			// lblTeleLinesCrossed
 			// 
 			this.lblTeleLinesCrossed.AutoSize = true;
-			this.lblTeleLinesCrossed.Location = new System.Drawing.Point(17, 276);
-			this.lblTeleLinesCrossed.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblTeleLinesCrossed.Location = new System.Drawing.Point(40, 616);
+			this.lblTeleLinesCrossed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblTeleLinesCrossed.Name = "lblTeleLinesCrossed";
-			this.lblTeleLinesCrossed.Size = new System.Drawing.Size(76, 13);
+			this.lblTeleLinesCrossed.Size = new System.Drawing.Size(174, 29);
 			this.lblTeleLinesCrossed.TabIndex = 31;
 			this.lblTeleLinesCrossed.Text = "Lines Crossed:";
 			// 
@@ -265,9 +266,10 @@
 			// 
 			this.lblBlueAlliance.AutoSize = true;
 			this.lblBlueAlliance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblBlueAlliance.Location = new System.Drawing.Point(241, 179);
+			this.lblBlueAlliance.Location = new System.Drawing.Point(562, 399);
+			this.lblBlueAlliance.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.lblBlueAlliance.Name = "lblBlueAlliance";
-			this.lblBlueAlliance.Size = new System.Drawing.Size(47, 20);
+			this.lblBlueAlliance.Size = new System.Drawing.Size(95, 40);
 			this.lblBlueAlliance.TabIndex = 38;
 			this.lblBlueAlliance.Text = "Auto";
 			// 
@@ -275,63 +277,64 @@
 			// 
 			this.label11.AutoSize = true;
 			this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label11.Location = new System.Drawing.Point(231, 248);
+			this.label11.Location = new System.Drawing.Point(539, 553);
+			this.label11.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(66, 20);
+			this.label11.Size = new System.Drawing.Size(141, 40);
 			this.label11.TabIndex = 39;
 			this.label11.Text = "TeleOp";
 			// 
 			// txtTeleBunniesScored
 			// 
-			this.txtTeleBunniesScored.Location = new System.Drawing.Point(482, 275);
-			this.txtTeleBunniesScored.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtTeleBunniesScored.Location = new System.Drawing.Point(1125, 613);
+			this.txtTeleBunniesScored.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtTeleBunniesScored.Name = "txtTeleBunniesScored";
-			this.txtTeleBunniesScored.Size = new System.Drawing.Size(34, 20);
-			this.txtTeleBunniesScored.TabIndex = 41;
+			this.txtTeleBunniesScored.Size = new System.Drawing.Size(74, 35);
+			this.txtTeleBunniesScored.TabIndex = 11;
 			// 
 			// lblTeleBunniesScored
 			// 
 			this.lblTeleBunniesScored.AutoSize = true;
-			this.lblTeleBunniesScored.Location = new System.Drawing.Point(399, 276);
-			this.lblTeleBunniesScored.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblTeleBunniesScored.Location = new System.Drawing.Point(931, 616);
+			this.lblTeleBunniesScored.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblTeleBunniesScored.Name = "lblTeleBunniesScored";
-			this.lblTeleBunniesScored.Size = new System.Drawing.Size(85, 13);
+			this.lblTeleBunniesScored.Size = new System.Drawing.Size(190, 29);
 			this.lblTeleBunniesScored.TabIndex = 40;
 			this.lblTeleBunniesScored.Text = "Bunnies Scored:";
 			// 
 			// txtNerfShotsMissed
 			// 
-			this.txtNerfShotsMissed.Location = new System.Drawing.Point(340, 345);
-			this.txtNerfShotsMissed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtNerfShotsMissed.Location = new System.Drawing.Point(793, 770);
+			this.txtNerfShotsMissed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtNerfShotsMissed.Name = "txtNerfShotsMissed";
-			this.txtNerfShotsMissed.Size = new System.Drawing.Size(92, 20);
-			this.txtNerfShotsMissed.TabIndex = 45;
+			this.txtNerfShotsMissed.Size = new System.Drawing.Size(209, 35);
+			this.txtNerfShotsMissed.TabIndex = 13;
 			// 
 			// lblNerfShotsMissed
 			// 
 			this.lblNerfShotsMissed.AutoSize = true;
-			this.lblNerfShotsMissed.Location = new System.Drawing.Point(265, 346);
-			this.lblNerfShotsMissed.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblNerfShotsMissed.Location = new System.Drawing.Point(618, 772);
+			this.lblNerfShotsMissed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblNerfShotsMissed.Name = "lblNerfShotsMissed";
-			this.lblNerfShotsMissed.Size = new System.Drawing.Size(73, 13);
+			this.lblNerfShotsMissed.Size = new System.Drawing.Size(164, 29);
 			this.lblNerfShotsMissed.TabIndex = 44;
 			this.lblNerfShotsMissed.Text = "Shots Missed:";
 			// 
 			// txtNerfShotsHit
 			// 
-			this.txtNerfShotsHit.Location = new System.Drawing.Point(157, 345);
-			this.txtNerfShotsHit.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.txtNerfShotsHit.Location = new System.Drawing.Point(366, 770);
+			this.txtNerfShotsHit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txtNerfShotsHit.Name = "txtNerfShotsHit";
-			this.txtNerfShotsHit.Size = new System.Drawing.Size(92, 20);
-			this.txtNerfShotsHit.TabIndex = 43;
+			this.txtNerfShotsHit.Size = new System.Drawing.Size(209, 35);
+			this.txtNerfShotsHit.TabIndex = 12;
 			// 
 			// lblNerfShotsHit
 			// 
 			this.lblNerfShotsHit.AutoSize = true;
-			this.lblNerfShotsHit.Location = new System.Drawing.Point(109, 346);
-			this.lblNerfShotsHit.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+			this.lblNerfShotsHit.Location = new System.Drawing.Point(254, 772);
+			this.lblNerfShotsHit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblNerfShotsHit.Name = "lblNerfShotsHit";
-			this.lblNerfShotsHit.Size = new System.Drawing.Size(53, 13);
+			this.lblNerfShotsHit.Size = new System.Drawing.Size(115, 29);
 			this.lblNerfShotsHit.TabIndex = 42;
 			this.lblNerfShotsHit.Text = "Shots Hit:";
 			// 
@@ -339,41 +342,42 @@
 			// 
 			this.label15.AutoSize = true;
 			this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label15.Location = new System.Drawing.Point(234, 313);
+			this.label15.Location = new System.Drawing.Point(546, 698);
+			this.label15.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(57, 20);
+			this.label15.Size = new System.Drawing.Size(119, 40);
 			this.label15.TabIndex = 46;
 			this.label15.Text = "NERF";
 			// 
 			// chkDefenceFlag
 			// 
 			this.chkDefenceFlag.AutoSize = true;
-			this.chkDefenceFlag.Location = new System.Drawing.Point(165, 390);
-			this.chkDefenceFlag.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.chkDefenceFlag.Location = new System.Drawing.Point(385, 870);
+			this.chkDefenceFlag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.chkDefenceFlag.Name = "chkDefenceFlag";
-			this.chkDefenceFlag.Size = new System.Drawing.Size(90, 17);
-			this.chkDefenceFlag.TabIndex = 50;
+			this.chkDefenceFlag.Size = new System.Drawing.Size(189, 33);
+			this.chkDefenceFlag.TabIndex = 14;
 			this.chkDefenceFlag.Text = "Defence Flag";
 			this.chkDefenceFlag.UseVisualStyleBackColor = true;
 			// 
 			// chkBreakdownFlag
 			// 
 			this.chkBreakdownFlag.AutoSize = true;
-			this.chkBreakdownFlag.Location = new System.Drawing.Point(262, 390);
-			this.chkBreakdownFlag.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.chkBreakdownFlag.Location = new System.Drawing.Point(611, 870);
+			this.chkBreakdownFlag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.chkBreakdownFlag.Name = "chkBreakdownFlag";
-			this.chkBreakdownFlag.Size = new System.Drawing.Size(103, 17);
-			this.chkBreakdownFlag.TabIndex = 51;
+			this.chkBreakdownFlag.Size = new System.Drawing.Size(221, 33);
+			this.chkBreakdownFlag.TabIndex = 15;
 			this.chkBreakdownFlag.Text = "Breakdown Flag";
 			this.chkBreakdownFlag.UseVisualStyleBackColor = true;
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(161, 427);
-			this.btnSave.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.btnSave.Location = new System.Drawing.Point(376, 953);
+			this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(77, 39);
-			this.btnSave.TabIndex = 52;
+			this.btnSave.Size = new System.Drawing.Size(180, 87);
+			this.btnSave.TabIndex = 16;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -381,21 +385,21 @@
 			// btnCancel
 			// 
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(273, 427);
-			this.btnCancel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.btnCancel.Location = new System.Drawing.Point(637, 953);
+			this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(77, 39);
-			this.btnCancel.TabIndex = 53;
+			this.btnCancel.Size = new System.Drawing.Size(180, 87);
+			this.btnCancel.TabIndex = 17;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// TeamMatchActionEntryForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(532, 486);
+			this.ClientSize = new System.Drawing.Size(1241, 1084);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.chkBreakdownFlag);
@@ -430,9 +434,9 @@
 			this.Controls.Add(this.lblMatchNumber);
 			this.Controls.Add(this.txtScouter);
 			this.Controls.Add(this.lblScouter);
-			this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.Name = "TeamMatchActionEntryForm";
-			this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
 			this.Text = "TeamMatchActionEntryForm";
 			this.ResumeLayout(false);
 			this.PerformLayout();
