@@ -35,9 +35,12 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String COLUMN_NAME_MATCH_WINNER = "winner";
         public static String COLUMN_NAME_DRIVE_TEAM_COMMENTS = "drive_team_comments";
 
-        public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
+		public static String COLUMN_LABEL_MATCH_NUMBER = "Match Number";
+
+
+		public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
         public static String SELECT_NUMBER_FROM_MATCHING_ID = "SELECT " + COL_MATCH_NUMBER + " FROM " + Utils.getDBName() + "." + TABLE_NAME + " WHERE " + COL_ID + "=";
-        public static String SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX = "SELECT " + COL_ID + ", " + COL_MATCH_NUMBER + " AS 'Match Number',";
+        public static String SELECT_MATCH_NUMBER_AND_TEAMS_FROM_ID_PREFIX = "SELECT " + COL_ID + ", " + COL_MATCH_NUMBER + " AS '" + COLUMN_LABEL_MATCH_NUMBER + "',";
 		public static String SELECT_MATCH_AND_TEAMS_FROM_ID_PREFIX = "SELECT " + COL_ID + ", " + COL_MATCH_NUMBER + ", ";
 		public static String SELECT_BLUE1_FOR_ID_PART = " (SELECT " + TeamTable.COL_TEAM_NUMBER + " FROM " + TeamTable.TABLE_NAME + " WHERE " + TeamTable.TABLE_NAME + "." + TeamTable.COL_ID + "=" + COL_BLUE_1 + ") AS 'Blue One', ";
         public static String SELECT_BLUE2_FOR_ID_PART = " (SELECT " + TeamTable.COL_TEAM_NUMBER + " FROM " + TeamTable.TABLE_NAME + " WHERE " + TeamTable.TABLE_NAME + "." + TeamTable.COL_ID + "=" + COL_BLUE_2 + ") AS 'Blue Two', ";

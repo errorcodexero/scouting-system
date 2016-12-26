@@ -317,7 +317,9 @@ namespace XeroScouterDBManage_Server
 			if (e.ColumnIndex == 1 && e.RowIndex >= 0)
 			{
 				DataGridViewTextBoxCell idCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
-				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, (long)idCell.Value, e.RowIndex);
+				Int32 idIntVal = (Int32)idCell.Value;
+				long idLongVal = (long)idIntVal;
+				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, idLongVal, e.RowIndex);
 				updateForm.Show();
 
 			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
@@ -325,7 +327,7 @@ namespace XeroScouterDBManage_Server
 			{
 				DataGridViewTextBoxCell mIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
 				DataGridViewTextBoxCell tIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[e.ColumnIndex + 1];
-				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm((Int32)mIDCell.Value, (Int32)tIDCell.Value);
+				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm((Int32)(mIDCell.Value), (Int32)(tIDCell.Value));
 				entryForm.Show();
 			}
 		}

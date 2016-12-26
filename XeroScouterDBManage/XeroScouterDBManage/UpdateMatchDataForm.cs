@@ -171,7 +171,7 @@ namespace XeroScouterDBManage_Server
 					DataSet ds = new DataSet();
 					adap.Fill(ds);
 
-					txtMatchNumber.Text = ds.Tables[0].Rows[this.rowID][MatchTable.COL_MATCH_NUMBER].ToString();
+					txtMatchNumber.Text = ds.Tables[0].Rows[this.rowID][MatchTable.COLUMN_LABEL_MATCH_NUMBER].ToString();
 
 					for (int i = 0; i < this.teamComboList.Count; i++)
 					{
