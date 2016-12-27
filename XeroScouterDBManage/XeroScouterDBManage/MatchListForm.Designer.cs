@@ -60,7 +60,7 @@
 			this.gridMatchList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.gridMatchList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.gridMatchList.Location = new System.Drawing.Point(28, 335);
-			this.gridMatchList.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.gridMatchList.Margin = new System.Windows.Forms.Padding(7);
 			this.gridMatchList.Name = "gridMatchList";
 			this.gridMatchList.Size = new System.Drawing.Size(1783, 620);
 			this.gridMatchList.TabIndex = 10;
@@ -86,7 +86,7 @@
 			// btnAddMatch
 			// 
 			this.btnAddMatch.Location = new System.Drawing.Point(33, 1019);
-			this.btnAddMatch.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnAddMatch.Margin = new System.Windows.Forms.Padding(7);
 			this.btnAddMatch.Name = "btnAddMatch";
 			this.btnAddMatch.Size = new System.Drawing.Size(243, 83);
 			this.btnAddMatch.TabIndex = 12;
@@ -97,7 +97,7 @@
 			// btnClose
 			// 
 			this.btnClose.Location = new System.Drawing.Point(1545, 1019);
-			this.btnClose.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(7);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.btnClose.Size = new System.Drawing.Size(243, 83);
@@ -109,7 +109,7 @@
 			// btnRefreshData
 			// 
 			this.btnRefreshData.Location = new System.Drawing.Point(315, 1019);
-			this.btnRefreshData.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnRefreshData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnRefreshData.Name = "btnRefreshData";
 			this.btnRefreshData.Size = new System.Drawing.Size(243, 83);
 			this.btnRefreshData.TabIndex = 12;
@@ -133,7 +133,7 @@
 			// btnExportData
 			// 
 			this.btnExportData.Location = new System.Drawing.Point(1265, 1019);
-			this.btnExportData.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnExportData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnExportData.Name = "btnExportData";
 			this.btnExportData.Size = new System.Drawing.Size(243, 83);
 			this.btnExportData.TabIndex = 12;
@@ -144,7 +144,7 @@
 			// btnImportData
 			// 
 			this.btnImportData.Location = new System.Drawing.Point(985, 1019);
-			this.btnImportData.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnImportData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnImportData.Name = "btnImportData";
 			this.btnImportData.Size = new System.Drawing.Size(243, 83);
 			this.btnImportData.TabIndex = 12;
@@ -228,7 +228,7 @@
 			// btnAddMatchData
 			// 
 			this.btnAddMatchData.Location = new System.Drawing.Point(602, 1019);
-			this.btnAddMatchData.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnAddMatchData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnAddMatchData.Name = "btnAddMatchData";
 			this.btnAddMatchData.Size = new System.Drawing.Size(243, 83);
 			this.btnAddMatchData.TabIndex = 23;
@@ -244,14 +244,14 @@
             this.modeToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1890, 47);
+			this.menuStrip1.Size = new System.Drawing.Size(1890, 45);
 			this.menuStrip1.TabIndex = 24;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(70, 43);
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(70, 41);
 			this.fileToolStripMenuItem.Text = "File";
 			// 
 			// modeToolStripMenuItem
@@ -260,7 +260,7 @@
 			this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testModeToolStripMenuItem});
 			this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-			this.modeToolStripMenuItem.Size = new System.Drawing.Size(99, 43);
+			this.modeToolStripMenuItem.Size = new System.Drawing.Size(99, 41);
 			this.modeToolStripMenuItem.Text = "Mode";
 			this.modeToolStripMenuItem.ToolTipText = "Set test mode to use test database";
 			// 
@@ -268,14 +268,15 @@
 			// 
 			this.testModeToolStripMenuItem.CheckOnClick = true;
 			this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
-			this.testModeToolStripMenuItem.Size = new System.Drawing.Size(298, 42);
+			this.testModeToolStripMenuItem.Size = new System.Drawing.Size(247, 42);
 			this.testModeToolStripMenuItem.Text = "Test Mode";
 			this.testModeToolStripMenuItem.CheckedChanged += new System.EventHandler(this.testModeToolStripMenuItem_CheckedChanged);
 			// 
 			// MatchListForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(216F, 216F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoSize = true;
 			this.ClientSize = new System.Drawing.Size(1890, 1149);
 			this.Controls.Add(this.btnAddMatchData);
 			this.Controls.Add(this.btnSetSeason);
@@ -294,7 +295,7 @@
 			this.Controls.Add(this.menuStrip1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
-			this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.Margin = new System.Windows.Forms.Padding(7);
 			this.Name = "MatchListForm";
 			this.Text = "Match List";
 			((System.ComponentModel.ISupportInitialize)(this.gridMatchList)).EndInit();

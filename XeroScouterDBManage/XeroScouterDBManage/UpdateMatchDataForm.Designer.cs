@@ -105,7 +105,7 @@
 			// 
 			this.cmbCompetitionName.FormattingEnabled = true;
 			this.cmbCompetitionName.Location = new System.Drawing.Point(231, 118);
-			this.cmbCompetitionName.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbCompetitionName.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbCompetitionName.Name = "cmbCompetitionName";
 			this.cmbCompetitionName.Size = new System.Drawing.Size(786, 37);
 			this.cmbCompetitionName.TabIndex = 1;
@@ -123,7 +123,7 @@
 			// btnCancel
 			// 
 			this.btnCancel.Location = new System.Drawing.Point(1288, 1095);
-			this.btnCancel.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnCancel.Margin = new System.Windows.Forms.Padding(7);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(238, 91);
 			this.btnCancel.TabIndex = 29;
@@ -134,7 +134,7 @@
 			// btnSaveAndAddNew
 			// 
 			this.btnSaveAndAddNew.Location = new System.Drawing.Point(616, 1095);
-			this.btnSaveAndAddNew.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnSaveAndAddNew.Margin = new System.Windows.Forms.Padding(7);
 			this.btnSaveAndAddNew.Name = "btnSaveAndAddNew";
 			this.btnSaveAndAddNew.Size = new System.Drawing.Size(238, 91);
 			this.btnSaveAndAddNew.TabIndex = 28;
@@ -145,7 +145,7 @@
 			// btnSave
 			// 
 			this.btnSave.Location = new System.Drawing.Point(28, 1095);
-			this.btnSave.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.btnSave.Margin = new System.Windows.Forms.Padding(7);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(238, 91);
 			this.btnSave.TabIndex = 27;
@@ -159,7 +159,7 @@
 			this.cmbRed3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbRed3.FormattingEnabled = true;
 			this.cmbRed3.Location = new System.Drawing.Point(98, 665);
-			this.cmbRed3.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbRed3.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbRed3.Name = "cmbRed3";
 			this.cmbRed3.Size = new System.Drawing.Size(277, 37);
 			this.cmbRed3.TabIndex = 11;
@@ -170,7 +170,7 @@
 			this.cmbRed2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbRed2.FormattingEnabled = true;
 			this.cmbRed2.Location = new System.Drawing.Point(98, 591);
-			this.cmbRed2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbRed2.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbRed2.Name = "cmbRed2";
 			this.cmbRed2.Size = new System.Drawing.Size(277, 37);
 			this.cmbRed2.TabIndex = 10;
@@ -181,7 +181,7 @@
 			this.cmbBlue3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbBlue3.FormattingEnabled = true;
 			this.cmbBlue3.Location = new System.Drawing.Point(98, 986);
-			this.cmbBlue3.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbBlue3.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbBlue3.Name = "cmbBlue3";
 			this.cmbBlue3.Size = new System.Drawing.Size(277, 37);
 			this.cmbBlue3.TabIndex = 19;
@@ -192,7 +192,7 @@
 			this.cmbRed1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbRed1.FormattingEnabled = true;
 			this.cmbRed1.Location = new System.Drawing.Point(98, 515);
-			this.cmbRed1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbRed1.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbRed1.Name = "cmbRed1";
 			this.cmbRed1.Size = new System.Drawing.Size(277, 37);
 			this.cmbRed1.TabIndex = 9;
@@ -203,7 +203,7 @@
 			this.cmbBlue2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbBlue2.FormattingEnabled = true;
 			this.cmbBlue2.Location = new System.Drawing.Point(98, 912);
-			this.cmbBlue2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbBlue2.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbBlue2.Name = "cmbBlue2";
 			this.cmbBlue2.Size = new System.Drawing.Size(277, 37);
 			this.cmbBlue2.TabIndex = 18;
@@ -214,7 +214,7 @@
 			this.cmbBlue1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.cmbBlue1.FormattingEnabled = true;
 			this.cmbBlue1.Location = new System.Drawing.Point(98, 837);
-			this.cmbBlue1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.cmbBlue1.Margin = new System.Windows.Forms.Padding(7);
 			this.cmbBlue1.Name = "cmbBlue1";
 			this.cmbBlue1.Size = new System.Drawing.Size(277, 37);
 			this.cmbBlue1.TabIndex = 17;
@@ -245,7 +245,7 @@
 			// 
 			this.txtMatchLocation.Enabled = false;
 			this.txtMatchLocation.Location = new System.Drawing.Point(735, 361);
-			this.txtMatchLocation.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtMatchLocation.Margin = new System.Windows.Forms.Padding(7);
 			this.txtMatchLocation.Name = "txtMatchLocation";
 			this.txtMatchLocation.Size = new System.Drawing.Size(228, 35);
 			this.txtMatchLocation.TabIndex = 7;
@@ -263,7 +263,7 @@
 			// txtMatchType
 			// 
 			this.txtMatchType.Location = new System.Drawing.Point(735, 254);
-			this.txtMatchType.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtMatchType.Margin = new System.Windows.Forms.Padding(7);
 			this.txtMatchType.Name = "txtMatchType";
 			this.txtMatchType.Size = new System.Drawing.Size(228, 35);
 			this.txtMatchType.TabIndex = 4;
@@ -283,7 +283,7 @@
 			// 
 			this.txtMatchTime.Enabled = false;
 			this.txtMatchTime.Location = new System.Drawing.Point(231, 361);
-			this.txtMatchTime.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtMatchTime.Margin = new System.Windows.Forms.Padding(7);
 			this.txtMatchTime.Name = "txtMatchTime";
 			this.txtMatchTime.Size = new System.Drawing.Size(228, 35);
 			this.txtMatchTime.TabIndex = 6;
@@ -301,7 +301,7 @@
 			// txtMatchNumber
 			// 
 			this.txtMatchNumber.Location = new System.Drawing.Point(231, 254);
-			this.txtMatchNumber.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtMatchNumber.Margin = new System.Windows.Forms.Padding(7);
 			this.txtMatchNumber.Name = "txtMatchNumber";
 			this.txtMatchNumber.Size = new System.Drawing.Size(228, 35);
 			this.txtMatchNumber.TabIndex = 3;
@@ -319,7 +319,7 @@
 			// txtTbaMatchKey
 			// 
 			this.txtTbaMatchKey.Location = new System.Drawing.Point(1286, 254);
-			this.txtTbaMatchKey.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtTbaMatchKey.Margin = new System.Windows.Forms.Padding(7);
 			this.txtTbaMatchKey.Name = "txtTbaMatchKey";
 			this.txtTbaMatchKey.Size = new System.Drawing.Size(228, 35);
 			this.txtTbaMatchKey.TabIndex = 5;
@@ -337,7 +337,7 @@
 			// txtMatchSetNumber
 			// 
 			this.txtMatchSetNumber.Location = new System.Drawing.Point(1286, 361);
-			this.txtMatchSetNumber.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtMatchSetNumber.Margin = new System.Windows.Forms.Padding(7);
 			this.txtMatchSetNumber.Name = "txtMatchSetNumber";
 			this.txtMatchSetNumber.Size = new System.Drawing.Size(228, 35);
 			this.txtMatchSetNumber.TabIndex = 8;
@@ -355,7 +355,7 @@
 			// txtMatchStatus
 			// 
 			this.txtMatchStatus.Location = new System.Drawing.Point(1286, 118);
-			this.txtMatchStatus.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtMatchStatus.Margin = new System.Windows.Forms.Padding(7);
 			this.txtMatchStatus.Name = "txtMatchStatus";
 			this.txtMatchStatus.Size = new System.Drawing.Size(228, 35);
 			this.txtMatchStatus.TabIndex = 2;
@@ -373,7 +373,7 @@
 			// txtRedAutoScore
 			// 
 			this.txtRedAutoScore.Location = new System.Drawing.Point(735, 515);
-			this.txtRedAutoScore.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtRedAutoScore.Margin = new System.Windows.Forms.Padding(7);
 			this.txtRedAutoScore.Name = "txtRedAutoScore";
 			this.txtRedAutoScore.Size = new System.Drawing.Size(228, 35);
 			this.txtRedAutoScore.TabIndex = 12;
@@ -451,7 +451,7 @@
 			// txtRedTeleScore
 			// 
 			this.txtRedTeleScore.Location = new System.Drawing.Point(735, 591);
-			this.txtRedTeleScore.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtRedTeleScore.Margin = new System.Windows.Forms.Padding(7);
 			this.txtRedTeleScore.Name = "txtRedTeleScore";
 			this.txtRedTeleScore.Size = new System.Drawing.Size(228, 35);
 			this.txtRedTeleScore.TabIndex = 13;
@@ -469,7 +469,7 @@
 			// txtRedTotalScore
 			// 
 			this.txtRedTotalScore.Location = new System.Drawing.Point(735, 665);
-			this.txtRedTotalScore.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtRedTotalScore.Margin = new System.Windows.Forms.Padding(7);
 			this.txtRedTotalScore.Name = "txtRedTotalScore";
 			this.txtRedTotalScore.Size = new System.Drawing.Size(228, 35);
 			this.txtRedTotalScore.TabIndex = 14;
@@ -487,7 +487,7 @@
 			// txtRedFoulPoints
 			// 
 			this.txtRedFoulPoints.Location = new System.Drawing.Point(1286, 591);
-			this.txtRedFoulPoints.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtRedFoulPoints.Margin = new System.Windows.Forms.Padding(7);
 			this.txtRedFoulPoints.Name = "txtRedFoulPoints";
 			this.txtRedFoulPoints.Size = new System.Drawing.Size(228, 35);
 			this.txtRedFoulPoints.TabIndex = 16;
@@ -505,7 +505,7 @@
 			// txtRedQP
 			// 
 			this.txtRedQP.Location = new System.Drawing.Point(1286, 515);
-			this.txtRedQP.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtRedQP.Margin = new System.Windows.Forms.Padding(7);
 			this.txtRedQP.Name = "txtRedQP";
 			this.txtRedQP.Size = new System.Drawing.Size(228, 35);
 			this.txtRedQP.TabIndex = 15;
@@ -523,7 +523,7 @@
 			// txtBlueFoulPoints
 			// 
 			this.txtBlueFoulPoints.Location = new System.Drawing.Point(1286, 912);
-			this.txtBlueFoulPoints.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtBlueFoulPoints.Margin = new System.Windows.Forms.Padding(7);
 			this.txtBlueFoulPoints.Name = "txtBlueFoulPoints";
 			this.txtBlueFoulPoints.Size = new System.Drawing.Size(228, 35);
 			this.txtBlueFoulPoints.TabIndex = 24;
@@ -541,7 +541,7 @@
 			// txtBlueQP
 			// 
 			this.txtBlueQP.Location = new System.Drawing.Point(1286, 837);
-			this.txtBlueQP.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtBlueQP.Margin = new System.Windows.Forms.Padding(7);
 			this.txtBlueQP.Name = "txtBlueQP";
 			this.txtBlueQP.Size = new System.Drawing.Size(228, 35);
 			this.txtBlueQP.TabIndex = 23;
@@ -559,7 +559,7 @@
 			// txtBlueTotalScore
 			// 
 			this.txtBlueTotalScore.Location = new System.Drawing.Point(735, 986);
-			this.txtBlueTotalScore.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtBlueTotalScore.Margin = new System.Windows.Forms.Padding(7);
 			this.txtBlueTotalScore.Name = "txtBlueTotalScore";
 			this.txtBlueTotalScore.Size = new System.Drawing.Size(228, 35);
 			this.txtBlueTotalScore.TabIndex = 22;
@@ -577,7 +577,7 @@
 			// txtBlueTeleScore
 			// 
 			this.txtBlueTeleScore.Location = new System.Drawing.Point(735, 912);
-			this.txtBlueTeleScore.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtBlueTeleScore.Margin = new System.Windows.Forms.Padding(7);
 			this.txtBlueTeleScore.Name = "txtBlueTeleScore";
 			this.txtBlueTeleScore.Size = new System.Drawing.Size(228, 35);
 			this.txtBlueTeleScore.TabIndex = 21;
@@ -595,7 +595,7 @@
 			// txtBlueAutoScore
 			// 
 			this.txtBlueAutoScore.Location = new System.Drawing.Point(735, 837);
-			this.txtBlueAutoScore.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.txtBlueAutoScore.Margin = new System.Windows.Forms.Padding(7);
 			this.txtBlueAutoScore.Name = "txtBlueAutoScore";
 			this.txtBlueAutoScore.Size = new System.Drawing.Size(228, 35);
 			this.txtBlueAutoScore.TabIndex = 20;
@@ -614,7 +614,7 @@
 			// 
 			this.radWinnerRed.AutoSize = true;
 			this.radWinnerRed.Location = new System.Drawing.Point(961, 455);
-			this.radWinnerRed.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.radWinnerRed.Margin = new System.Windows.Forms.Padding(7);
 			this.radWinnerRed.Name = "radWinnerRed";
 			this.radWinnerRed.Size = new System.Drawing.Size(116, 33);
 			this.radWinnerRed.TabIndex = 25;
@@ -626,7 +626,7 @@
 			// 
 			this.radWinnerBlue.AutoSize = true;
 			this.radWinnerBlue.Location = new System.Drawing.Point(961, 783);
-			this.radWinnerBlue.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.radWinnerBlue.Margin = new System.Windows.Forms.Padding(7);
 			this.radWinnerBlue.Name = "radWinnerBlue";
 			this.radWinnerBlue.Size = new System.Drawing.Size(116, 33);
 			this.radWinnerBlue.TabIndex = 26;
@@ -709,7 +709,7 @@
 			this.Controls.Add(this.txtMatchNumber);
 			this.Controls.Add(this.lblMatchNumber);
 			this.Controls.Add(this.lblAddAMatch);
-			this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.Margin = new System.Windows.Forms.Padding(7);
 			this.Name = "UpdateMatchDataForm";
 			this.Text = "UpdateMatchDataForm";
 			this.ResumeLayout(false);

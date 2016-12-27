@@ -321,9 +321,9 @@ namespace XeroScouterDBManage_Server
 				long idLongVal = (long)idIntVal;
 				UpdateMatchDataForm updateForm = new UpdateMatchDataForm(this.competitionID, idLongVal, e.RowIndex);
 				updateForm.Show();
-
-			} else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
+			}
 			// if clicking a team number, update the team_match data
+			else if (e.ColumnIndex > 1 && e.RowIndex >= 0)
 			{
 				DataGridViewTextBoxCell mIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[0];
 				DataGridViewTextBoxCell tIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[e.ColumnIndex + 1];
