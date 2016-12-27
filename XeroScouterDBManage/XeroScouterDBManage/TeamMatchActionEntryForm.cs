@@ -203,125 +203,25 @@ namespace XeroScouterDBManage_Server
 			{
 				try
 				{
-					//cmd = connection.CreateCommand();
-
-					//cmd.CommandText = TeamMatchTable.getIdQuery(teamID, matchID);
-
-					//MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
-
-					//DataSet ds = new DataSet();
-					//adap.Fill(ds);
-
-					//if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-					//{
-					//	this.teamMatchID = ds.Tables[0].Rows[0].Field<Int32>(TeamMatchTable.COL_ID);
-					//}
-
-					if (!loadTeamMatchID(connection)) return;
-
-					//cmd.CommandText = TeamMatchTable.getRecordQuery(this.teamMatchID);
-					//adap = new MySqlDataAdapter(cmd);
-					//ds.Clear();
-					//adap.Fill(ds);
-
-					//if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-					//{
-					//	String color = ds.Tables[0].Rows[0].Field<String>(TeamMatchTable.COL_ALLIANCE);
-					//
-					//	int index = this.cmbAllianceColor.FindString(color);
-					//	if (index >= 0)
-					//	{
-					//		this.cmbAllianceColor.SelectedIndex = index;
-					//	}
-					//}
+					if (!loadTeamMatchID(connection))
+					{
+						this.txtScouter.Enabled = false;
+						this.txtMatchNumber.Enabled = false;
+						this.txtTeamNumber.Enabled = false;
+						this.cmbAllianceColor.Enabled = false;
+						this.chkBreakdownFlag.Enabled = false;
+						this.chkDefenceFlag.Enabled = false;
+						foreach(Control c in dictActionTypeNames.Values)
+						{
+							c.Enabled = false;
+						}
+						return;
+					}
 
 					bool colorFound = loadAllianceColorForMatch(connection);
-
-					//cmd.CommandText = MatchTable.SELECT_NUMBER_FROM_MATCHING_ID + String.Format("{0}", this.matchID);
-					//adap = new MySqlDataAdapter(cmd);
-					//ds.Clear();
-					//adap.Fill(ds);
-
-					//if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-					//{
-					//	Int32 num = ds.Tables[0].Rows[0].Field<Int32>(MatchTable.COL_MATCH_NUMBER);
-					//	this.txtMatchNumber.Text = String.Format("{0}", num);
-					//}
-
 					bool found = loadMatchNumberForMatch(connection);
-
-					//cmd.CommandText = TeamTable.SELECT_NUMBER_FROM_MATCHING_ID + String.Format("{0}", this.teamID);
-					//adap = new MySqlDataAdapter(cmd);
-					//ds.Clear();
-					//adap.Fill(ds);
-
-					//if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-					//{
-					//	String num = ds.Tables[0].Rows[0].Field<String>(TeamTable.COL_TEAM_NUMBER);
-					//	this.txtTeamNumber.Text = num;
-					//}
-
 					bool numFound = loadTeamNumberForMatch(connection);
-
-					// load the TeamMatchActions
-					//cmd.CommandText = TeamMatchActionTable.SELECT_ALL_FOR_TEAM_MATCH_ID + String.Format("{0}", this.teamMatchID);
-					//adap = new MySqlDataAdapter(cmd);
-					//ds.Clear();
-					//adap.Fill(ds);
-
-					//Dictionary<Int32, int> dictTemp = new Dictionary<Int32, int>();
-					//int quantity = 0;
-
-					//if (ds.Tables.Count > 0)
-					//{
-					//	foreach (DataRow r in ds.Tables[0].Rows)
-					//	{
-					//		int id = r.Field<Int32>(TeamMatchActionTable.COL_ACTION_TYPE_ID);
-					//		if (!dictTemp.ContainsKey(id))
-					//		{
-					//			dictTemp.Add(id, r.Field<int>(TeamMatchActionTable.COL_QUANTITY));
-					//		}
-					//		else
-					//		{
-					//			dictTemp.TryGetValue(id, out quantity);
-					//			dictTemp[id] = quantity + r.Field<int>(TeamMatchActionTable.COL_QUANTITY);
-					//		}
-
-					//		if(!dictUpdatedFieldIDs.ContainsKey(id))
-					//		{
-					//			dictUpdatedFieldIDs.Add(id, true);
-					//		}
-					//	}
-					//}
-
-					//String strAction;
-					//foreach(Int32 id in dictTemp.Keys)
-					//{
-					//	Control textBox = null;
-					//	dictTemp.TryGetValue(id, out quantity);
-					//	dictActionTypeIDs.TryGetValue(id, out strAction);
-					//	dictActionTypeNames.TryGetValue(strAction, out textBox);
-
-					//	if(textBox != null)
-					//	{
-					//		textBox.Text = String.Format("{0}", quantity);
-					//	}
-					//}
-
 					bool actionsFound = loadTeamMatchActions(connection);
-
-
-					//cmd.CommandText = TeamMatchTable.getScouterNameQuery(this.teamMatchID);
-					//adap = new MySqlDataAdapter(cmd);
-					//ds.Clear();
-					//adap.Fill(ds);
-
-					//if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-					//{
-					//	scouterDataFound = true;
-					//	txtScouter.Text = ds.Tables[0].Rows[0].Field<String>(TeamMatchTable.COL_SCOUT_NAME);
-					//}
-
 					scouterDataFound = loadScouter(connection);
 				}
 				catch (MySqlException)
