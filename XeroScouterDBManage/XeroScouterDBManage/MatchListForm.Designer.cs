@@ -47,8 +47,19 @@
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.panel4 = new System.Windows.Forms.Panel();
+			this.panel5 = new System.Windows.Forms.Panel();
+			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			((System.ComponentModel.ISupportInitialize)(this.gridMatchList)).BeginInit();
 			this.menuStrip1.SuspendLayout();
+			this.panel1.SuspendLayout();
+			this.panel2.SuspendLayout();
+			this.panel3.SuspendLayout();
+			this.panel4.SuspendLayout();
+			this.panel5.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gridMatchList
@@ -59,7 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gridMatchList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.gridMatchList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.gridMatchList.Location = new System.Drawing.Point(28, 335);
+			this.gridMatchList.Location = new System.Drawing.Point(38, 83);
 			this.gridMatchList.Margin = new System.Windows.Forms.Padding(7);
 			this.gridMatchList.Name = "gridMatchList";
 			this.gridMatchList.Size = new System.Drawing.Size(1783, 620);
@@ -75,7 +86,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblMatchList.AutoSize = true;
 			this.lblMatchList.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblMatchList.Location = new System.Drawing.Point(756, 263);
+			this.lblMatchList.Location = new System.Drawing.Point(766, 11);
 			this.lblMatchList.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.lblMatchList.Name = "lblMatchList";
 			this.lblMatchList.Size = new System.Drawing.Size(273, 63);
@@ -85,7 +96,7 @@
 			// 
 			// btnAddMatch
 			// 
-			this.btnAddMatch.Location = new System.Drawing.Point(33, 1019);
+			this.btnAddMatch.Location = new System.Drawing.Point(23, 18);
 			this.btnAddMatch.Margin = new System.Windows.Forms.Padding(7);
 			this.btnAddMatch.Name = "btnAddMatch";
 			this.btnAddMatch.Size = new System.Drawing.Size(243, 83);
@@ -96,7 +107,7 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(1545, 1019);
+			this.btnClose.Location = new System.Drawing.Point(25, 18);
 			this.btnClose.Margin = new System.Windows.Forms.Padding(7);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -108,7 +119,7 @@
 			// 
 			// btnRefreshData
 			// 
-			this.btnRefreshData.Location = new System.Drawing.Point(315, 1019);
+			this.btnRefreshData.Location = new System.Drawing.Point(299, 18);
 			this.btnRefreshData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnRefreshData.Name = "btnRefreshData";
 			this.btnRefreshData.Size = new System.Drawing.Size(243, 83);
@@ -123,7 +134,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblStatus.AutoSize = true;
 			this.lblStatus.Enabled = false;
-			this.lblStatus.Location = new System.Drawing.Point(28, 1343);
+			this.lblStatus.Location = new System.Drawing.Point(28, 1358);
 			this.lblStatus.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.lblStatus.Name = "lblStatus";
 			this.lblStatus.Size = new System.Drawing.Size(0, 29);
@@ -132,7 +143,7 @@
 			// 
 			// btnExportData
 			// 
-			this.btnExportData.Location = new System.Drawing.Point(1265, 1019);
+			this.btnExportData.Location = new System.Drawing.Point(274, 18);
 			this.btnExportData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnExportData.Name = "btnExportData";
 			this.btnExportData.Size = new System.Drawing.Size(243, 83);
@@ -143,7 +154,7 @@
 			// 
 			// btnImportData
 			// 
-			this.btnImportData.Location = new System.Drawing.Point(985, 1019);
+			this.btnImportData.Location = new System.Drawing.Point(17, 18);
 			this.btnImportData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnImportData.Name = "btnImportData";
 			this.btnImportData.Size = new System.Drawing.Size(243, 83);
@@ -158,7 +169,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblTestMode.AutoSize = true;
 			this.lblTestMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblTestMode.Location = new System.Drawing.Point(1227, 263);
+			this.lblTestMode.Location = new System.Drawing.Point(1101, 11);
 			this.lblTestMode.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
 			this.lblTestMode.Name = "lblTestMode";
 			this.lblTestMode.Size = new System.Drawing.Size(0, 63);
@@ -227,7 +238,7 @@
 			// 
 			// btnAddMatchData
 			// 
-			this.btnAddMatchData.Location = new System.Drawing.Point(602, 1019);
+			this.btnAddMatchData.Location = new System.Drawing.Point(569, 18);
 			this.btnAddMatchData.Margin = new System.Windows.Forms.Padding(7);
 			this.btnAddMatchData.Name = "btnAddMatchData";
 			this.btnAddMatchData.Size = new System.Drawing.Size(243, 83);
@@ -272,26 +283,75 @@
 			this.testModeToolStripMenuItem.Text = "Test Mode";
 			this.testModeToolStripMenuItem.CheckedChanged += new System.EventHandler(this.testModeToolStripMenuItem_CheckedChanged);
 			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.btnAddMatch);
+			this.panel1.Controls.Add(this.btnAddMatchData);
+			this.panel1.Controls.Add(this.btnRefreshData);
+			this.panel1.Location = new System.Drawing.Point(28, 983);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(839, 119);
+			this.panel1.TabIndex = 25;
+			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.btnImportData);
+			this.panel2.Controls.Add(this.btnExportData);
+			this.panel2.Location = new System.Drawing.Point(967, 983);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(533, 119);
+			this.panel2.TabIndex = 26;
+			// 
+			// panel3
+			// 
+			this.panel3.Controls.Add(this.btnClose);
+			this.panel3.Location = new System.Drawing.Point(1568, 983);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(287, 119);
+			this.panel3.TabIndex = 27;
+			// 
+			// panel4
+			// 
+			this.panel4.Controls.Add(this.gridMatchList);
+			this.panel4.Controls.Add(this.lblMatchList);
+			this.panel4.Controls.Add(this.lblTestMode);
+			this.panel4.Location = new System.Drawing.Point(12, 263);
+			this.panel4.Name = "panel4";
+			this.panel4.Size = new System.Drawing.Size(1865, 714);
+			this.panel4.TabIndex = 28;
+			// 
+			// panel5
+			// 
+			this.panel5.Controls.Add(this.statusStrip1);
+			this.panel5.Location = new System.Drawing.Point(13, 1108);
+			this.panel5.Name = "panel5";
+			this.panel5.Size = new System.Drawing.Size(1865, 66);
+			this.panel5.TabIndex = 29;
+			// 
+			// statusStrip1
+			// 
+			this.statusStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 44);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(1865, 22);
+			this.statusStrip1.TabIndex = 0;
+			// 
 			// MatchListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(216F, 216F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.AutoSize = true;
-			this.ClientSize = new System.Drawing.Size(1890, 1149);
-			this.Controls.Add(this.btnAddMatchData);
+			this.ClientSize = new System.Drawing.Size(1890, 1164);
+			this.Controls.Add(this.panel5);
+			this.Controls.Add(this.panel4);
+			this.Controls.Add(this.panel3);
+			this.Controls.Add(this.panel2);
+			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.btnSetSeason);
 			this.Controls.Add(this.btnSetCompetition);
 			this.Controls.Add(this.lblSeasonValue);
 			this.Controls.Add(this.lblCompetitionValue);
-			this.Controls.Add(this.lblTestMode);
 			this.Controls.Add(this.lblStatus);
-			this.Controls.Add(this.btnClose);
-			this.Controls.Add(this.btnImportData);
-			this.Controls.Add(this.btnExportData);
-			this.Controls.Add(this.btnRefreshData);
-			this.Controls.Add(this.btnAddMatch);
-			this.Controls.Add(this.lblMatchList);
-			this.Controls.Add(this.gridMatchList);
 			this.Controls.Add(this.menuStrip1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
@@ -301,6 +361,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.gridMatchList)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.panel2.ResumeLayout(false);
+			this.panel3.ResumeLayout(false);
+			this.panel4.ResumeLayout(false);
+			this.panel4.PerformLayout();
+			this.panel5.ResumeLayout(false);
+			this.panel5.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -326,6 +393,12 @@
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem testModeToolStripMenuItem;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Panel panel4;
+		private System.Windows.Forms.Panel panel5;
+		private System.Windows.Forms.StatusStrip statusStrip1;
 	}
 }
 
