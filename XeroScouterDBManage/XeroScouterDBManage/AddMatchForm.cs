@@ -172,9 +172,9 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = MatchTable.INSERT_RECORD;
+					cmd.CommandText = MatchTable.getInsertRecordString();
 
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_EVENT_ID, this.compID);
+					cmd.Parameters.AddWithValue("@" + MatchTable.COL_EVENT_ID, this.compID);
                     cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_COMP_LEVEL, txtMatchType.Text);
                     cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_NUMBER, int.Parse(txtMatchNumber.Text));
                     cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_STATUS, "");
@@ -245,7 +245,7 @@ namespace XeroScouterDBManage_Server
                 if (exit)
                 {
                     MatchListForm formObj = (MatchListForm)Application.OpenForms["MatchListForm"];
-                    formObj.LoadData();
+                    formObj.LoadMatchData();
                     this.Close();
                 }
                 else

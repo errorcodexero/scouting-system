@@ -100,7 +100,7 @@ namespace XeroScouterDBManage_Server
                     {
                         cmd = connection.CreateCommand();
                         cmd.CommandText = "SELECT *, '" + table + "' AS table_name" +
-							" FROM " + Program.dbName + "." + table;
+							" FROM " + Utils.getDBName() + "." + table;
                         MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
 
                         DataSet ds = new DataSet();

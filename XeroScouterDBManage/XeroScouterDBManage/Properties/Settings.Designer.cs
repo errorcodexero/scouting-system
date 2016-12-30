@@ -164,5 +164,17 @@ namespace XeroScouterDBManage_Server.Properties {
                 return ((string)(this["DBConnectionTemplate"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TEST_MODE {
+            get {
+                return ((bool)(this["TEST_MODE"]));
+            }
+            set {
+                this["TEST_MODE"] = value;
+            }
+        }
     }
 }
