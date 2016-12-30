@@ -105,7 +105,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         String pref_default = "*";
 
         tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
-        teamMatchId = 34;
+        teamMatchId = 0;
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override

@@ -2,9 +2,11 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,8 +14,10 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
@@ -42,9 +46,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     public DatabaseHelper db;
     private String filename;
     private Context tempCtx;
-    Button btn_export;
-    SQLiteDatabase sqlDB;
-
+    private Button btn_export;
+    private SQLiteDatabase sqlDB;
+    private String pref_default = "*";
+    private SharedPreferences sharedPreferences;
+    private String tabletId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
         sqlDB = db.getWritableDatabase();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        tabletId = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
+
+
+
     }
 
 
@@ -164,7 +175,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             //Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
-            filename = "tma-" + xmlExporter.getLastTeamMatchAction() + ".xml";
+            filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
             File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
 
@@ -214,6 +225,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    //Cleans up tables in the database
     private void clearDatabase() {
         ArrayList<String> tableList = new ArrayList<String>();
         tableList.add("event");
@@ -230,7 +242,19 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
 
-        
+        //Updates TeamMatchAction shared preference
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.tma_index_pref),"0");
+        editor.commit();
+
 
     }
+
+    private String getTimeStamp(){
+        Date curDate = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("MMdd_hhmmss");
+        return format.format(curDate);
+    }
+
 }
+
