@@ -2,34 +2,18 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Struct;
 import java.util.ArrayList;
 
-import android.view.View;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
@@ -55,10 +39,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         TEAMMATCH,
         UNKNOWN
     };
-    DatabaseHelper db;
+    public DatabaseHelper db;
     private String filename;
     private Context tempCtx;
     Button btn_export;
+    SQLiteDatabase sqlDB;
 
 
     @Override
@@ -68,6 +53,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_manage_db);
         parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
+        sqlDB = db.getWritableDatabase();
     }
 
 
@@ -169,9 +155,10 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             //parser.parseXML(getFilesDir() + "/" + fileName);
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
         }
-        if (view == findViewById(R.id.btn_create_test_data)) {
-            Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
-        } else if (view == findViewById(R.id.btn_create_test_data)) {
+        if (view == findViewById(R.id.btn_clear_db_data)) {
+            //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
+            clearDatabase();
+        } else if (view == findViewById(R.id.btn_clear_db_data)) {
             GenerateTestData g = new GenerateTestData(this);
             g.generateAllData();
             //Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
@@ -225,5 +212,25 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             FTPConnection ftp = new FTPConnection(this);
             ftp.sendFile(path);
         }
+    }
+
+    private void clearDatabase() {
+        ArrayList<String> tableList = new ArrayList<String>();
+        tableList.add("event");
+        tableList.add("match");
+        tableList.add("team_match");
+        tableList.add("action_type");
+        tableList.add("team");
+        try{
+            for(String name : tableList){
+                String query = "delete from " + name;
+                sqlDB.execSQL(query);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        
+
     }
 }
