@@ -69,7 +69,9 @@
                 android:textSize="40sp"
                 android:paddingTop="30dp"
                 android:paddingBottom="10dp"
-                android:textColor="@android:color/background_light" />
+                android:textColor="@android:color/background_light"
+                android:enabled="false"
+                android:visibility="gone" />
 
             <Spinner
                 android:layout_width="327dp"

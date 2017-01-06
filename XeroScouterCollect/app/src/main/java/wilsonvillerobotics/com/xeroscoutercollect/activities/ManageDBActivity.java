@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -189,17 +190,19 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             else {
                 baseFolder = this.getFilesDir().getAbsolutePath();
             }
-            String string = xmlExporter.GenerateNewMatches();
+            ArrayList<String> string = xmlExporter.GenerateNewMatches();
             File file = new File(baseFolder + File.separator + filename);
             file.getParentFile().mkdirs();
             FileOutputStream fos;
-            try {
-                fos = new FileOutputStream(xmlFile);
-                fos.write(string.getBytes());
-                fos.flush();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            for(String teamMatchAction : string) {
+                try {
+                    fos = new FileOutputStream(xmlFile);
+                    fos.write(teamMatchAction.getBytes());
+                    fos.flush();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             /*

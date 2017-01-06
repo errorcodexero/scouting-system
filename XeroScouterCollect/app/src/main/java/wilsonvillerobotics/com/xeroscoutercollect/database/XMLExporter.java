@@ -10,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
 
 /**
@@ -167,12 +169,12 @@ public class XMLExporter {
         return GenerateTeamMatchAction(lastTeamMatchAction + 1, startDataTag, endDataTag, cursor);
     }
 
-    public String GenerateNewMatches() {
+    public ArrayList<String> GenerateNewMatches() {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         String queryStatement = "SELECT * FROM team_match_action WHERE _id > " + lastTeamMatchAction + ";";
-        String xmlResult = "";
+        ArrayList<String> xmlResult = new ArrayList<String>();
         Log.d("DEBUG", String.valueOf(lastTeamMatchAction));
 
         Boolean firstRun = true;
@@ -181,7 +183,7 @@ public class XMLExporter {
         //cursor.moveToFirst();
         try {
             while (cursor.moveToNext()) {
-                xmlResult += GenerateNextTeamMatchAction(firstRun, false, cursor);
+                xmlResult.add(GenerateNextTeamMatchAction(firstRun, false, cursor));
                 firstRun = false;
             }
             cursor.moveToLast();
@@ -193,7 +195,7 @@ public class XMLExporter {
             editor.putString("tma_index_id", String.valueOf(lastTeamMatchAction));
             editor.commit();
             cursor.close();
-            xmlResult += GenerateTagByName(DATA, 0, true, false);
+            xmlResult.add(GenerateTagByName(DATA, 0, true, false));
             }
         return xmlResult;
         }

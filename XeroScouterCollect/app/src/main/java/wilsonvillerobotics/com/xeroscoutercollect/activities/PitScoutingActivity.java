@@ -43,13 +43,11 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
     public void onClick(View view)
     {
         if (view == findViewById(R.id.btn_check_all)) {
-            //Toast.makeText(PitScoutingActivity.this, "I AM PRESSING THE CHECK ALL BUTTON, GOD DAMMIT!", Toast.LENGTH_SHORT).show();
             for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
                 lvCheckBox.setItemChecked(i, true);
             }
         }
         if(view == findViewById(R.id.btn_clear_all)){
-            //Toast.makeText(PitScoutingActivity.this, "CLEAR THE DECKS! BOMBS INCOMING!", Toast.LENGTH_SHORT).show();
             for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
                 lvCheckBox.setItemChecked(i, false);
             }
