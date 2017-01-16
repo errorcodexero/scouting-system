@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -90,18 +89,15 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         spinner_team_list = (Spinner) findViewById(R.id.spinner_team_list);
         btn_next = (Button) findViewById(R.id.btn_next);
 
-        teamSpinnerActive = false;
-        spinner_team_list.setEnabled(teamSpinnerActive);
 
-        nextButtonActive = false;
-        btn_next.setEnabled(nextButtonActive);
 
         matchSpinnerHasBeenCreated = false;
         manualSelection = false;
         isRed = false;
 
         getSharedPrefs();
-        updateLabels();
+        doManualSettingCheck();
+        updateTabletIdLabel();
         populateTeamList();
         getSelectedTeamIndex();
         populateLblList();
@@ -111,6 +107,15 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         addItemsToMatchSpinner();
         addItemsToTeamSpinner();
         //addListenerOnButton();
+    }
+
+    private void doManualSettingCheck() {
+        if(manualSelection){
+            teamSpinnerActive = false;
+            spinner_team_list.setEnabled(teamSpinnerActive);
+            nextButtonActive = false;
+            btn_next.setEnabled(nextButtonActive);
+        }
     }
 
     @Override
@@ -204,6 +209,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         lbl_list.add(R.id.lbl_team_6);
     }
 
+    //Finds the tablet id and if manual selection is checked
     private void getSharedPrefs(){
         String pref_default = getString(R.string.default_pref_value);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -211,9 +217,8 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         manualSelection = sharedPreferences.getBoolean(getString(R.string.manual_selection_pref), false);
 
     }
-
-    private void updateLabels()
-    {
+    //Sets tablet id label
+    private void updateTabletIdLabel() {
         TextView lblTabletID = (TextView)findViewById(R.id.lbl_tablet_id);
         if(lblTabletID != null) {
             lblTabletID.setText(getString(R.string.lbl_tablet_id) + " " + tabletID);
@@ -303,13 +308,16 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         spinner_match_list.setAdapter(matchDataAdapter);
     }
 
+    //Do only if manual selection is selected
     public void addItemsToTeamSpinner() {
-        Collection<String> teamNumbers = team_list.values();
-        ArrayList<String> teamArrayList = new ArrayList<String>(teamNumbers);
-        teamArrayList.add(0,"Select A Team");
-        teamDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamArrayList);
-        teamDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_team_list.setAdapter(teamDataAdapter);
+        if(manualSelection) {
+            Collection<String> teamNumbers = team_list.values();
+            ArrayList<String> teamArrayList = new ArrayList<String>(teamNumbers);
+            teamArrayList.add(0, "Select A Team");
+            teamDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamArrayList);
+            teamDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner_team_list.setAdapter(teamDataAdapter);
+        }
     }
 
 
