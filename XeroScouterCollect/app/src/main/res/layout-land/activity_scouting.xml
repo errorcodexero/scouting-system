@@ -55,7 +55,7 @@
                                 android:layout_weight="45">
 
                                 <TextView
-                                    android:text="TextView"
+                                    android:text="@string/action_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/top"
@@ -72,7 +72,7 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button14"
+                                        android:id="@+id/btn_decrement_6"
                                         android:layout_weight="15" />
 
                                     <EditText
@@ -86,13 +86,13 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button13"
+                                        android:id="@+id/btn_increment_6"
                                         android:layout_weight="15" />
 
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="TextView"
+                                    android:text="@string/action_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView12"
@@ -109,7 +109,7 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button15"
+                                        android:id="@+id/btn_decrement_7"
                                         android:layout_weight="15" />
 
                                     <EditText
@@ -123,13 +123,13 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button13"
+                                        android:id="@+id/btn_increment_7"
                                         android:layout_weight="15" />
 
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="TextView"
+                                    android:text="@string/action_3"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView11"
@@ -146,7 +146,7 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button14"
+                                        android:id="@+id/btn_decrement_8"
                                         android:layout_weight="15" />
 
                                     <EditText
@@ -160,7 +160,7 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button13"
+                                        android:id="@+id/btn_increment_8"
                                         android:layout_weight="15" />
 
                                 </LinearLayout>
@@ -182,7 +182,7 @@
 
 
                                 <TextView
-                                    android:text="TextView"
+                                    android:text="@string/action_5"
                                     android:layout_width="match_parent"
                                     android:layout_height="10dp"
                                     android:id="@+id/textView18"
@@ -199,7 +199,7 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button14"
+                                        android:id="@+id/btn_decrement_6"
                                         android:layout_weight="15" />
 
                                     <EditText
@@ -213,13 +213,13 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button13"
+                                        android:id="@+id/btn_increment_9"
                                         android:layout_weight="15" />
 
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="TextView"
+                                    android:text="@string/action_6"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView16"
@@ -250,13 +250,13 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button13"
+                                        android:id="@+id/btn_increment_10"
                                         android:layout_weight="15" />
 
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="TextView"
+                                    android:text="@string/action_4"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView19"
@@ -266,7 +266,7 @@
                                 <CheckBox
                                     android:layout_width="match_parent"
                                     android:layout_height="10dp"
-                                    android:id="@+id/checkBox"
+                                    android:id="@+id/chkbx_1"
                                     android:layout_weight="20"
                                     android:gravity="top|center"
                                     android:paddingLeft="0dp"
