@@ -43,9 +43,239 @@
                         android:paddingTop="20dp">
 
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"></LinearLayout>
+                            android:layout_height="match_parent"
+                            android:layout_weight="100">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="10dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="45">
+
+                                <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/top"
+                                    android:layout_weight="5"
+                                    android:gravity="center" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="20">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button14"
+                                        android:layout_weight="15" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="70" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button13"
+                                        android:layout_weight="15" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView12"
+                                    android:layout_weight="5"
+                                    android:gravity="center" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="20">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button15"
+                                        android:layout_weight="15" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="70" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button13"
+                                        android:layout_weight="15" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView11"
+                                    android:layout_weight="5"
+                                    android:gravity="center" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="20">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button14"
+                                        android:layout_weight="15" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="70" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button13"
+                                        android:layout_weight="15" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_height="wrap_content"
+                                android:layout_weight="10"
+                                android:layout_width="10dp" />
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="10dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="45"
+                                android:id="@+id/second">
+
+
+                                <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:id="@+id/textView18"
+                                    android:layout_weight="5"
+                                    android:gravity="center" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="20">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button14"
+                                        android:layout_weight="15" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="70" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button13"
+                                        android:layout_weight="15" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView16"
+                                    android:layout_weight="5"
+                                    android:gravity="center" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:layout_weight="20">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button14"
+                                        android:layout_weight="15" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="70" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/button13"
+                                        android:layout_weight="15" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView19"
+                                    android:layout_weight="5"
+                                    android:gravity="center" />
+
+                                <CheckBox
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"
+                                    android:id="@+id/checkBox"
+                                    android:layout_weight="20"
+                                    android:gravity="top|center"
+                                    android:paddingLeft="0dp"
+                                    android:layout_marginLeft="190dp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
                     </LinearLayout>
 
                     <LinearLayout
