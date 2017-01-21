@@ -286,7 +286,7 @@ namespace XeroScouterDBManage_Server
 
                         if(tabletSpecificTables.Contains<string>(tableName))
                         {
-                            postfix += " AND tablet_id=@tablet_id";
+                            //postfix += " AND tablet_id=@tablet_id";
                         }
 
                         string insertPrefix = "INSERT INTO " + tableName + "(";

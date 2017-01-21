@@ -4,6 +4,11 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 {
     class MatchTable
     {
+        private static Type VARCHAR = typeof(String);
+        private static Type INT = typeof(Int32);
+        private static Type FLOAT = typeof(float);
+        private static Type DATETIME = typeof(DateTime);
+
         public static String TABLE_NAME = "match";
 
         public static String COL_ID = "_id";
@@ -35,7 +40,36 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String COLUMN_NAME_MATCH_WINNER = "winner";
         public static String COLUMN_NAME_DRIVE_TEAM_COMMENTS = "drive_team_comments";
 
-		public static String COLUMN_LABEL_MATCH_NUMBER = "Match Number";
+        public static Type COL_ID_TYPE = INT;
+        public static Type COL_EVENT_ID_TYPE = INT;
+        public static Type COL_TBA_MATCH_KEY_TYPE = VARCHAR;
+        public static Type COL_MATCH_COMP_LEVEL_TYPE = VARCHAR;
+        public static Type COL_MATCH_SET_NUMBER_TYPE = INT;
+        public static Type COL_MATCH_NUMBER_TYPE = INT;
+        public static Type COL_MATCH_STATUS_TYPE = VARCHAR;
+
+        public static Type COL_RED_1_TYPE = INT;
+        public static Type COL_RED_2_TYPE = INT;
+        public static Type COL_RED_3_TYPE = INT;
+        public static Type COL_RED_AUTO_SCORE_TYPE = INT;
+        public static Type COL_RED_TELEOP_SCORE_TYPE = INT;
+        public static Type COL_RED_TOTAL_SCORE_TYPE = INT;
+        public static Type COL_RED_QP_TYPE = FLOAT;
+        public static Type COL_RED_FOUL_POINTS_TYPE = INT;
+
+        public static Type COL_BLUE_1_TYPE = INT;
+        public static Type COL_BLUE_2_TYPE = INT;
+        public static Type COL_BLUE_3_TYPE = INT;
+        public static Type COL_BLUE_AUTO_SCORE_TYPE = INT;
+        public static Type COL_BLUE_TELEOP_SCORE_TYPE = INT;
+        public static Type COL_BLUE_TOTAL_SCORE_TYPE = INT;
+        public static Type COL_BLUE_QP_TYPE = FLOAT;
+        public static Type COL_BLUE_FOUL_POINTS_TYPE = INT;
+
+        public static Type COLUMN_NAME_MATCH_WINNER_TYPE = VARCHAR;
+        public static Type COLUMN_NAME_DRIVE_TEAM_COMMENTS_TYPE = VARCHAR;
+
+        public static String COLUMN_LABEL_MATCH_NUMBER = "Match Number";
 
 
 		public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;

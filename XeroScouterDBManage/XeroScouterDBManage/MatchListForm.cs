@@ -329,6 +329,8 @@ namespace XeroScouterDBManage_Server
 				DataGridViewTextBoxCell tIDCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[e.ColumnIndex + 1];
 				TeamMatchActionEntryForm entryForm = new TeamMatchActionEntryForm((Int32)(mIDCell.Value), (Int32)(tIDCell.Value));
 				entryForm.Show();
+				DataGridViewTextBoxCell currCell = (DataGridViewTextBoxCell)gridMatchList.Rows[e.RowIndex].Cells[e.ColumnIndex];
+				currCell.Selected = true;
 			}
 		}
 
