@@ -55,10 +55,10 @@
                                 android:layout_weight="45">
 
                                 <TextView
-                                    android:text="@string/action_1"
+                                    android:text="@string/action_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_albd"
+                                    android:id="@+id/lbl_action_2"
                                     android:layout_weight="5"
                                     android:gravity="center" />
 
@@ -80,7 +80,9 @@
                                         android:layout_height="wrap_content"
                                         android:inputType="number"
                                         android:id="@+id/entry_action_2"
-                                        android:layout_weight="70" />
+                                        android:layout_weight="70"
+                                        android:text="@string/default_text_0"
+                                        android:textAlignment="center" />
 
                                     <Button
                                         android:text="@string/increment"
@@ -92,10 +94,10 @@
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="@string/action_2"
+                                    android:text="@string/action_3"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_ahbs"
+                                    android:id="@+id/lbl_action_3"
                                     android:layout_weight="5"
                                     android:gravity="center" />
 
@@ -117,7 +119,9 @@
                                         android:layout_height="wrap_content"
                                         android:inputType="number"
                                         android:id="@+id/entry_action_3"
-                                        android:layout_weight="70" />
+                                        android:layout_weight="70"
+                                        android:text="@string/default_text_0"
+                                        android:textAlignment="center" />
 
                                     <Button
                                         android:text="@string/increment"
@@ -129,10 +133,10 @@
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="@string/action_3"
+                                    android:text="@string/action_4"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_ahbm"
+                                    android:id="@+id/lbl_action_4"
                                     android:layout_weight="5"
                                     android:gravity="center" />
 
@@ -154,7 +158,9 @@
                                         android:layout_height="wrap_content"
                                         android:inputType="number"
                                         android:id="@+id/entry_action_4"
-                                        android:layout_weight="70" />
+                                        android:layout_weight="70"
+                                        android:text="@string/default_text_0"
+                                        android:textAlignment="center" />
 
                                     <Button
                                         android:text="@string/increment"
@@ -185,7 +191,7 @@
                                     android:text="@string/action_5"
                                     android:layout_width="match_parent"
                                     android:layout_height="10dp"
-                                    android:id="@+id/lbl_agd"
+                                    android:id="@+id/lbl_action_5"
                                     android:layout_weight="5"
                                     android:gravity="center" />
 
@@ -207,7 +213,9 @@
                                         android:layout_height="wrap_content"
                                         android:inputType="number"
                                         android:id="@+id/entry_action_5"
-                                        android:layout_weight="70" />
+                                        android:layout_weight="70"
+                                        android:text="@string/default_text_0"
+                                        android:textAlignment="center" />
 
                                     <Button
                                         android:text="@string/increment"
@@ -222,7 +230,7 @@
                                     android:text="@string/action_6"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_afbt"
+                                    android:id="@+id/lbl_action_6"
                                     android:layout_weight="5"
                                     android:gravity="center" />
 
@@ -244,7 +252,9 @@
                                         android:layout_height="wrap_content"
                                         android:inputType="number"
                                         android:id="@+id/entry_action_6"
-                                        android:layout_weight="70" />
+                                        android:layout_weight="70"
+                                        android:text="@string/default_text_0"
+                                        android:textAlignment="center" />
 
                                     <Button
                                         android:text="@string/increment"
@@ -256,7 +266,7 @@
                                 </LinearLayout>
 
                                 <TextView
-                                    android:text="@string/action_4"
+                                    android:text="@string/action_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lbl_abc"
@@ -299,7 +309,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_7"
-                                android:id="@+id/lbl_low_boiler_dump"
+                                android:id="@+id/lbl_action_7"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
 
@@ -313,7 +323,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_10"
-                                android:id="@+id/lbl_gear_delivered"
+                                android:id="@+id/lbl_action_10"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
                         </LinearLayout>
@@ -422,22 +432,22 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_8"
-                                android:id="@+id/lbl_high_boiler_score"
-                                android:layout_weight=".4"
+                                android:id="@+id/lbl_action_8"
+                                android:layout_weight="0.35"
                                 android:gravity="center" />
 
                             <Space
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight=".2" />
+                                android:layout_weight="0.31" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_11"
-                                android:id="@+id/lbl_fuel_bin_triggered"
-                                android:layout_weight=".4"
+                                android:id="@+id/lbl_action_11"
+                                android:layout_weight="0.30"
                                 android:gravity="center" />
                         </LinearLayout>
 
@@ -544,7 +554,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_9"
-                                android:id="@+id/lbl_high_boiler_miss"
+                                android:id="@+id/lbl_action_9"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
 
@@ -558,7 +568,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_12"
-                                android:id="@+id/lbl_loading_station_triggered"
+                                android:id="@+id/lbl_action_12"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
                         </LinearLayout>
@@ -658,7 +668,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:paddingTop="20dp"
-                            android:layout_weight=".3">
+                            android:layout_weight=".26">
 
                             <LinearLayout
                                 android:orientation="vertical"
@@ -707,26 +717,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3" />
 
-                            <Button
-                                android:text="@string/action_16"
-                                android:layout_width="0dp"
+                            <ToggleButton
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btn_action_16"
-                                android:layout_weight="2" />
+                                android:textOff="Defensive"
+                                android:textOn="Defensive" />
 
-                            <Button
-                                android:text="@string/action_17"
-                                android:layout_width="0dp"
+                            <ToggleButton
+                                android:text="ToggleButton"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btn_action_17"
-                                android:layout_weight="2" />
+                                android:textOff="Breakdown"
+                                android:textOn="Breakdown" />
 
-                            <Button
-                                android:text="@string/action_18"
-                                android:layout_width="0dp"
+                            <ToggleButton
+                                android:text="ToggleButton"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btn_action_18"
-                                android:layout_weight="2" />
+                                android:textOff="Disconnect"
+                                android:textOn="Disconnect" />
+
                         </LinearLayout>
 
                     </LinearLayout>
