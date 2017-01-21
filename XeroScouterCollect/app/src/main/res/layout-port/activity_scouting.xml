@@ -35,15 +35,6 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/Teleop"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1">
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/Autonomous"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -88,7 +79,7 @@
                                     <CheckBox
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/checkBox2" />
+                                        android:id="@+id/chkbx_action_1" />
 
                                     <Space
                                         android:layout_width="10dp"
@@ -146,7 +137,7 @@
                                             android:text="@string/decrement"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button4"
+                                            android:id="@+id/btn_decrement_action_6"
                                             android:layout_weight="23.33" />
 
                                         <EditText
@@ -163,7 +154,7 @@
                                             android:text="@string/increment"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button3"
+                                            android:id="@+id/btn_increment_action_6"
                                             android:layout_weight="23.33" />
                                     </LinearLayout>
                                 </LinearLayout>
@@ -216,7 +207,7 @@
                                             android:text="@string/decrement"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button10"
+                                            android:id="@+id/btn_decrement_action_5"
                                             android:layout_weight="23.33" />
 
                                         <EditText
@@ -233,7 +224,7 @@
                                             android:text="@string/increment"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button9"
+                                            android:id="@+id/btn_increment_action_5"
                                             android:layout_weight="23.33" />
                                     </LinearLayout>
                                 </LinearLayout>
@@ -284,7 +275,7 @@
                                             android:text="@string/decrement"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button6"
+                                            android:id="@+id/btn_decrement_action_2"
                                             android:layout_weight="23.33" />
 
                                         <EditText
@@ -301,7 +292,7 @@
                                             android:text="@string/increment"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button5"
+                                            android:id="@+id/btn_increment_action_2"
                                             android:layout_weight="23.33" />
                                     </LinearLayout>
 
@@ -355,7 +346,7 @@
                                             android:text="@string/decrement"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button8"
+                                            android:id="@+id/btn_decrement_action_3"
                                             android:layout_weight="23.33" />
 
                                         <EditText
@@ -372,7 +363,7 @@
                                             android:text="@string/increment"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button7"
+                                            android:id="@+id/btn_increment_action_3"
                                             android:layout_weight="23.33" />
                                     </LinearLayout>
                                 </LinearLayout>
@@ -409,7 +400,7 @@
                                     android:layout_height="match_parent">
 
                                     <TextView
-                                        android:text="TextView"
+                                        android:text="High Score Miss"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
                                         android:id="@+id/textView6"
@@ -425,7 +416,7 @@
                                             android:text="@string/decrement"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button12"
+                                            android:id="@+id/btn_decrement_action_4"
                                             android:layout_weight="23.33" />
 
                                         <EditText
@@ -442,7 +433,7 @@
                                             android:text="@string/increment"
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/button11"
+                                            android:id="@+id/btn_increment_action_4"
                                             android:layout_weight="23.33" />
                                     </LinearLayout>
                                 </LinearLayout>
@@ -460,6 +451,420 @@
                             android:layout_width="match_parent"
                             android:layout_weight="14.285"
                             android:layout_height="wrap_content"></LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Teleop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="11.11">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:text="Fuel Bin Triggered"
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView9"
+                                    android:layout_weight="50" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_decrement_action_12"
+                                        android:layout_weight="23.33"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:ems="10"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="45"
+                                        android:rotation="0.5"
+                                        android:rotationX="0"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="23.33"
+                                        android:translationY="10dp"
+                                        android:id="@+id/btn_increment_action_12" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="11.11">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:text="Loading Station Triggered"
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView9"
+                                    android:layout_weight="50" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_decrement_action_13"
+                                        android:layout_weight="23.33"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:ems="10"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="45"
+                                        android:rotation="0.5"
+                                        android:rotationX="0"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_increment_action_13"
+                                        android:layout_weight="23.33"
+                                        android:translationY="10dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="11.11">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:text="Gears Delivered"
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView9"
+                                    android:layout_weight="50" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_decrement_action_11"
+                                        android:layout_weight="23.33"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:ems="10"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="45"
+                                        android:rotation="0.5"
+                                        android:rotationX="0"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_increment_action_11"
+                                        android:layout_weight="23.33"
+                                        android:translationY="10dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="11.11">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:text="Low Boiler Dumps"
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView9"
+                                    android:layout_weight="50" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_decrement_action_8"
+                                        android:layout_weight="23.33"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:ems="10"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="45"
+                                        android:rotation="0.5"
+                                        android:rotationX="0"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_increment_action_8"
+                                        android:layout_weight="23.33"
+                                        android:translationY="10dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="11.11">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:text="High Boiler Score"
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView9"
+                                    android:layout_weight="50" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_decrement_action_10"
+                                        android:layout_weight="23.33"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:ems="10"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="45"
+                                        android:rotation="0.5"
+                                        android:rotationX="0"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_increment_action_10"
+                                        android:layout_weight="23.33"
+                                        android:translationY="10dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="11.11">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:text="High Boiler Miss"
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView9"
+                                    android:layout_weight="50" />
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <Button
+                                        android:text="@string/decrement"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_decrement_action_11"
+                                        android:layout_weight="23.33"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
+
+                                    <EditText
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:ems="10"
+                                        android:id="@+id/editText6"
+                                        android:layout_weight="45"
+                                        android:rotation="0.5"
+                                        android:rotationX="0"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
+
+                                    <Button
+                                        android:text="@string/increment"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/btn_increment_action_11"
+                                        android:layout_weight="23.33"
+                                        android:translationY="10dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="33.33">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <RadioButton
+                                        android:text="Climb Attempt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/radio_action_14" />
+
+                                    <RadioButton
+                                        android:text="Successful Climb"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/radio_action_15" />
+
+                                    <RadioButton
+                                        android:text="Climb Score"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/radio_action_16" />
+
+                                    <RadioButton
+                                        android:text="None"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/radio_no_climb" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="10dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="50">
+
+                                    <CheckBox
+                                        android:text="Defensive"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/chkbx_action_17" />
+
+                                    <CheckBox
+                                        android:text="Breakdown"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/chkbx_action_17" />
+
+                                    <CheckBox
+                                        android:text="Disconnect"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/chkbx_action_19" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 

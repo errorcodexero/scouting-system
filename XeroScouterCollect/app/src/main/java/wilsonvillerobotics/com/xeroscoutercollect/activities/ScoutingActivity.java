@@ -86,16 +86,19 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
         String[] actionArray = res.getStringArray(R.array.action_array);
 
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_1, R.id.entry_action_1, R.string.action_1, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_2, R.id.entry_action_2, R.string.action_2, 0));
+        //actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_1, R.id.entry_action_1, R.string.action_1, 0));
+        /*actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_2, R.id.entry_action_2, R.string.action_2, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_3, R.id.btn_increment_action_3, R.id.entry_action_3, R.string.action_3, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_4, R.id.btn_increment_action_4, R.id.entry_action_4, R.string.action_4, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_5, R.id.btn_increment_action_5, R.id.entry_action_5, R.string.action_5, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_6, R.id.btn_increment_action_6, R.id.entry_action_6, R.string.action_6, 0));
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_7, R.id.btn_increment_action_7, R.id.entry_action_7, R.string.action_7, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_8, R.id.btn_increment_action_8, R.id.entry_action_8, R.string.action_8, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, R.string.action_9, 0));
-
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_10, R.id.btn_increment_action_10, R.id.entry_action_10, R.string.action_10, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_11, R.id.btn_increment_action_11, R.id.entry_action_11, R.string.action_11, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_12, R.id.btn_increment_action_12, R.id.entry_action_12, R.string.action_12, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_13, R.id.btn_increment_action_13, R.id.entry_action_13, R.string.action_13, 0));
+*/
         //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
 
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
@@ -144,13 +147,6 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         switch (view.getId()) {
 
             // Doing that young fallthough
-
-            case R.id.btn_decrement_action_1:
-                index = 0;
-                action_id = 1;
-                decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
-                break;
 
             case R.id.btn_decrement_action_2:
                 index = 1;
@@ -208,12 +204,6 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
                 break;
 
-            case R.id.btn_increment_action_1:
-                index = 0;
-                action_id = 1;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
-                break;
-
             case R.id.btn_increment_action_2:
                 index = 1;
                 action_id = 2;
@@ -260,16 +250,6 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 index = 8;
                 action_id = 9;
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
-                break;
-
-            case R.id.btn_auto_back:
-                // Moves back to main screen
-                startActivity(mainScreen);
-                break;
-
-            case R.id.btn_auto_next:
-                // Moves to Teleop Tab
-                getTabHost().setCurrentTabByTag("tab2");
                 break;
 
             case R.id.btn_teleop_back:
@@ -323,7 +303,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 tempTextView.setText(String.valueOf(tempObject.getActionCount()));
                 try {
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
-                    db.execSQL(queryString);
+                    //db.execSQL(queryString);
                 }  finally {
 
                 }
