@@ -86,7 +86,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
         String[] actionArray = res.getStringArray(R.array.action_array);
 
-        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_1, R.id.entry_action_1, R.string.action_1, 0));
+        //actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_1, R.id.btn_increment_action_1, R.id.entry_action_1, R.string.action_1, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_2, R.id.btn_increment_action_2, R.id.entry_action_2, R.string.action_2, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_3, R.id.btn_increment_action_3, R.id.entry_action_3, R.string.action_3, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_4, R.id.btn_increment_action_4, R.id.entry_action_4, R.string.action_4, 0));
@@ -95,6 +95,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_7, R.id.btn_increment_action_7, R.id.entry_action_7, R.string.action_7, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_8, R.id.btn_increment_action_8, R.id.entry_action_8, R.string.action_8, 0));
         actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_9, R.id.btn_increment_action_9, R.id.entry_action_9, R.string.action_9, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_10, R.id.btn_increment_action_10, R.id.entry_action_10, R.string.action_10, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_11, R.id.btn_increment_action_11, R.id.entry_action_11, R.string.action_11, 0));
+        actionObjectArrayList.add(new ActionObject(R.id.btn_decrement_action_12, R.id.btn_increment_action_12, R.id.entry_action_12, R.string.action_12, 0));
 
         //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
 
@@ -132,6 +135,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     }
 
+    private int getActionArrayIndex(int inputIndex) {return (inputIndex - 2);}
+
 
     @Override
     public void onClick(View view) {
@@ -145,115 +150,123 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
             // Doing that young fallthough
 
-            case R.id.btn_decrement_action_1:
-                index = 0;
-                action_id = 1;
-                decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
-                break;
-
             case R.id.btn_decrement_action_2:
                 index = 1;
                 action_id = 2;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_3:
                 index = 2;
                 action_id = 3;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_4:
                 index = 3;
                 action_id = 4;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_5:
                 index = 4;
                 action_id = 5;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_6:
                 index = 5;
                 action_id = 6;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_7:
                 index = 6;
                 action_id = 7;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_8:
                 index = 7;
                 action_id = 8;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_decrement_action_9:
                 index = 8;
                 action_id = 9;
                 decrement = true;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
-            case R.id.btn_increment_action_1:
-                index = 0;
-                action_id = 1;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+            case R.id.btn_decrement_action_10:
+                index = 9;
+                action_id = 10;
+                decrement = true;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
+                break;
+
+            case R.id.btn_decrement_action_11:
+                index = 10;
+                action_id = 11;
+                decrement = true;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
+                break;
+
+            case R.id.btn_decrement_action_12:
+                index = 11;
+                action_id = 12;
+                decrement = true;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_2:
                 index = 1;
                 action_id = 2;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_3:
                 index = 2;
                 action_id = 3;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_4:
                 index = 3;
                 action_id = 4;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_5:
                 index = 4;
                 action_id = 5;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_6:
                 index = 5;
                 action_id = 6;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_7:
                 index = 6;
                 action_id = 7;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_8:
                 index = 7;
                 action_id = 8;
-                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, index + 1, decrement);
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_increment_action_9:
@@ -262,24 +275,22 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
-            case R.id.btn_auto_back:
-                // Moves back to main screen
-                startActivity(mainScreen);
+            case R.id.btn_increment_action_10:
+                index = 9;
+                action_id = 10;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
-            case R.id.btn_auto_next:
-                // Moves to Teleop Tab
-                getTabHost().setCurrentTabByTag("tab2");
+            case R.id.btn_increment_action_11:
+                index = 10;
+                action_id = 11;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
-            case R.id.btn_teleop_back:
-                // Moves to Auto Tab
-                getTabHost().setCurrentTabByTag("tab1");
-                break;
-
-            case R.id.btn_teleop_next:
-                // Moves to finalize
-                getTabHost().setCurrentTabByTag("tab3");
+            case R.id.btn_increment_action_12:
+                index = 11;
+                action_id = 12;
+                queryString = TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, decrement);
                 break;
 
             case R.id.btn_finalize_back:
@@ -313,9 +324,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         }
 
 
-        if (index != -1) {
+        if (action_id != 0) {
             //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
-            ActionObject tempObject = actionObjectArrayList.get(index);
+            ActionObject tempObject = actionObjectArrayList.get(getActionArrayIndex(action_id));
             tempObject.changeValue(decrement);
 
             EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
@@ -323,7 +334,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 tempTextView.setText(String.valueOf(tempObject.getActionCount()));
                 try {
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
-                    db.execSQL(queryString);
+                    //db.execSQL(queryString);
                 }  finally {
 
                 }

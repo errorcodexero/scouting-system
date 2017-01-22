@@ -21,48 +21,34 @@
         </activity>
 
         <activity
-            android:name=".activities.ScoutingActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.ScoutingActivity"/>
 
         <activity
-            android:name=".activities.LandingActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.LandingActivity"/>
         <activity
-            android:name=".activities.DataConnectionActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.DataConnectionActivity"/>
         <activity
-            android:name=".activities.MatchConfirmationActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.MatchConfirmationActivity"/>
         <activity
-            android:name=".activities.SanityCheckActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.SanityCheckActivity"/>
         <activity
-            android:name=".activities.SyncActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.SyncActivity"/>
         <activity
-            android:name=".activities.ExportActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.ExportActivity"/>
         <activity
-            android:name=".activities.AutonomousTabActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.AutonomousTabActivity"/>
         <activity
-            android:name=".activities.TeleopTabActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.TeleopTabActivity"/>
         <activity
-            android:name=".activities.FinalizeTabActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.FinalizeTabActivity"/>
         <activity
-            android:name=".activities.ManageDBActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.ManageDBActivity"/>
         <activity
-            android:name=".activities.PitScoutingActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.PitScoutingActivity"/>
         <activity
-            android:name=".activities.SettingsActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.SettingsActivity"/>
         <activity
-            android:name=".activities.ScoutingActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.ScoutingActivity"/>
     </application>
 
 </manifest>
