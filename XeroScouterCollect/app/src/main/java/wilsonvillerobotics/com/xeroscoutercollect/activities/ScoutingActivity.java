@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -257,14 +258,14 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 ToggleButton breakdownToggle = (ToggleButton) findViewById(R.id.btn_action_18);
 
 
-                if(autoBaseline.isChecked()) {
+                if (autoBaseline.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 1, false));
                 }
-                if(action_13.isChecked()) {
+                if (action_13.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 13, false));
-                } else if(action_14.isChecked()) {
+                } else if (action_14.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 14, false));
-                } else if(action_15.isChecked()) {
+                } else if (action_15.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 15, false));
                 }
 
@@ -284,27 +285,44 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             default:
                 ActionCreationData actionData = actionDataMap.get(view.getId());
                 action_id = actionData.getAction_id();
+                int id = view.getId();
+                boolean belowZero = false;
                 if (action_id != 0) {
-                    //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
-                    ActionObject tempObject = actionObjectArrayList.get(getActionArrayIndex(action_id));
-                    tempObject.changeValue(actionData.getDecrement());
+                    for (ActionObject spinBox : actionObjectArrayList) {
+                        Button decrementButton = (Button) findViewById(spinBox.getDecrementButtonId());
+                        if (id == spinBox.getDecrementButtonId()) {
 
-                    EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
-                    if (tempTextView != null) {
-                        tempTextView.setText(String.valueOf(tempObject.getActionCount()));
-                        try {
-                            db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
-                        }  finally {
-
+                            if (spinBox.getActionCount() <= 0) {
+                                belowZero = true;
+                                decrementButton.setEnabled(false);
+                            }
+                            break;
+                        } else if (!decrementButton.isEnabled()){
+                            decrementButton.setEnabled(true);
                         }
-                        //Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
                     }
-                }
-                break;
+                    if (belowZero == false) {
+                        //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
+                        ActionObject tempObject = actionObjectArrayList.get(getActionArrayIndex(action_id));
+                        tempObject.changeValue(actionData.getDecrement());
 
+                        EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
+                        if (tempTextView != null) {
+                            tempTextView.setText(String.valueOf(tempObject.getActionCount()));
+                            try {
+                                db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                            } finally {
+
+                            }
+                            //Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    break;
+
+                }
         }
 
 
