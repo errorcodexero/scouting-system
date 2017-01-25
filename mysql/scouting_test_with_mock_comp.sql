@@ -366,6 +366,30 @@ INSERT INTO `team_match_action` VALUES (1,15,9,0,NULL,NULL,NULL),(2,63,9,0,NULL,
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `team_match_result`
+--
+
+DROP TABLE IF EXISTS `team_match_result`;
+/*!50001 DROP VIEW IF EXISTS `team_match_result`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `team_match_result` AS SELECT 
+ 1 AS `team_id`,
+ 1 AS `match_id`,
+ 1 AS `alliance`,
+ 1 AS `position`,
+ 1 AS `test_id`,
+ 1 AS `score`,
+ 1 AS `opp_score`,
+ 1 AS `qp`,
+ 1 AS `result`,
+ 1 AS `_id`,
+ 1 AS `wins`,
+ 1 AS `draws`,
+ 1 AS `losses`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `team_old`
 --
 
@@ -423,6 +447,24 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `team_match_result`
+--
+
+/*!50001 DROP VIEW IF EXISTS `team_match_result`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `team_match_result` AS select `t`.`_id` AS `team_id`,`tm`.`match_id` AS `match_id`,`tm`.`alliance` AS `alliance`,`tm`.`position` AS `position`,if((`tm`.`alliance` = 'red'),if((`tm`.`position` = 1),`m`.`red_1_team_id`,if((`tm`.`position` = 2),`m`.`red_2_team_id`,if((`tm`.`position` = 3),`m`.`red_3_team_id`,0))),if((`tm`.`alliance` = 'blue'),if((`tm`.`position` = 1),`m`.`blue_1_team_id`,if((`tm`.`position` = 2),`m`.`blue_2_team_id`,if((`tm`.`position` = 3),`m`.`blue_3_team_id`,0))),0)) AS `test_id`,if((`tm`.`alliance` = 'red'),`m`.`red_total_score`,`m`.`blue_total_score`) AS `score`,if((`tm`.`alliance` = 'blue'),`m`.`red_total_score`,`m`.`blue_total_score`) AS `opp_score`,if((`tm`.`alliance` = 'red'),`m`.`red_qp`,`m`.`blue_qp`) AS `qp`,if((`m`.`winner` = 'draw'),'draw',if((`tm`.`alliance` = `m`.`winner`),'win','loss')) AS `result`,((`tm`.`team_id` * 100) + `tm`.`match_id`) AS `_id`,if((`m`.`winner` = `tm`.`alliance`),1,0) AS `wins`,if((`m`.`winner` = 'draw'),1,0) AS `draws`,if(((`tm`.`alliance` = 'red') and (`m`.`winner` = 'blue')),1,if(((`tm`.`alliance` = 'blue') and (`m`.`winner` = 'red')),1,0)) AS `losses` from ((`team` `t` join `team_match` `tm`) join `match` `m` on(((`t`.`_id` = `tm`.`team_id`) and (`tm`.`match_id` = `m`.`_id`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -433,4 +475,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-21 14:48:51
+-- Dump completed on 2017-01-24 20:38:31
