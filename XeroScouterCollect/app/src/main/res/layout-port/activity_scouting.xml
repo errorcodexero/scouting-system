@@ -77,7 +77,9 @@
                                         android:id="@+id/btn_decrement_action_11"
                                         android:layout_weight="23.33"
                                         android:translationX="0dp"
-                                        android:translationY="9dp" />
+                                        android:translationY="9dp"
+                                        android:onClick="onClick"
+                                        android:textAlignment="center" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -100,7 +102,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="23.33"
                                         android:translationY="10dp"
-                                        android:id="@+id/btn_increment_action_11" />
+                                        android:id="@+id/btn_increment_action_11"
+                                        android:onClick="onClick" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -135,7 +138,8 @@
                                         android:id="@+id/btn_decrement_action_12"
                                         android:layout_weight="23.33"
                                         android:translationX="0dp"
-                                        android:translationY="9dp" />
+                                        android:translationY="9dp"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -158,7 +162,8 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/btn_increment_action_12"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp" />
+                                        android:translationY="10dp"
+                                        android:onClick="onClick" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -193,7 +198,8 @@
                                         android:id="@+id/btn_decrement_action_10"
                                         android:layout_weight="23.33"
                                         android:translationX="0dp"
-                                        android:translationY="9dp" />
+                                        android:translationY="9dp"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -208,7 +214,8 @@
                                         android:translationY="10dp"
                                         android:textAlignment="center"
                                         android:text="@string/default_text_0"
-                                        android:clickable="false" />
+                                        android:clickable="false"
+                                        android:onClick="onClick" />
 
                                     <Button
                                         android:text="@string/increment"
@@ -216,7 +223,8 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/btn_increment_action_10"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp" />
+                                        android:translationY="10dp"
+                                        android:onClick="onClick" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -251,7 +259,8 @@
                                         android:id="@+id/btn_decrement_action_7"
                                         android:layout_weight="23.33"
                                         android:translationX="0dp"
-                                        android:translationY="9dp" />
+                                        android:translationY="9dp"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -274,7 +283,8 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/btn_increment_action_7"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp" />
+                                        android:translationY="10dp"
+                                        android:onClick="onClick" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -309,7 +319,8 @@
                                         android:id="@+id/btn_decrement_action_8"
                                         android:layout_weight="23.33"
                                         android:translationX="0dp"
-                                        android:translationY="9dp" />
+                                        android:translationY="9dp"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -332,7 +343,8 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/btn_increment_action_8"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp" />
+                                        android:translationY="10dp"
+                                        android:onClick="onClick" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -367,7 +379,8 @@
                                         android:id="@+id/btn_decrement_action_9"
                                         android:layout_weight="23.33"
                                         android:translationX="0dp"
-                                        android:translationY="9dp" />
+                                        android:translationY="9dp"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -389,7 +402,8 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/btn_increment_action_9"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp" />
+                                        android:translationY="10dp"
+                                        android:onClick="onClick" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -404,37 +418,41 @@
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
-
-                                <LinearLayout
+                                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:layout_width="10dp"
-                                    android:layout_height="match_parent"
                                     android:layout_weight="50">
 
                                     <RadioButton
                                         android:text="Climb Attempt"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/radio_action_14" />
+                                        android:id="@+id/radio_action_13"
+                                        android:onClick="onRadioButtonClicked" />
 
                                     <RadioButton
                                         android:text="Successful Climb"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/radio_action_15" />
+                                        android:id="@+id/radio_action_14"
+                                        android:onClick="onRadioButtonClicked" />
 
                                     <RadioButton
                                         android:text="Climb Score"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/radio_action_16" />
+                                        android:id="@+id/radio_action_15"
+                                        android:onClick="onRadioButtonClicked" />
 
                                     <RadioButton
                                         android:text="None"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/radio_no_climb" />
-                                </LinearLayout>
+                                        android:id="@+id/radio_no_climb"
+                                        android:onClick="onRadioButtonClicked" />
+
+                                </RadioGroup>
 
                                 <LinearLayout
                                     android:orientation="vertical"
@@ -575,14 +593,15 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_decrement_action_6"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
 
                                         <EditText
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:inputType="number"
                                             android:ems="10"
-                                            android:id="@+id/editText"
+                                            android:id="@+id/entry_action_6"
                                             android:layout_weight="45"
                                             android:text="@string/default_text_0"
                                             android:textAlignment="center"
@@ -593,7 +612,8 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_increment_action_6"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
                                     </LinearLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -646,14 +666,15 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_decrement_action_5"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
 
                                         <EditText
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:inputType="number"
                                             android:ems="10"
-                                            android:id="@+id/editText3"
+                                            android:id="@+id/entry_action_5"
                                             android:layout_weight="45"
                                             android:textAlignment="center"
                                             android:text="@string/default_text_0"
@@ -664,7 +685,8 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_increment_action_5"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
                                     </LinearLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -715,14 +737,15 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_decrement_action_2"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
 
                                         <EditText
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:inputType="number"
                                             android:ems="10"
-                                            android:id="@+id/editText2"
+                                            android:id="@+id/entry_action_2"
                                             android:layout_weight="45"
                                             android:text="@string/default_text_0"
                                             android:textAlignment="center"
@@ -733,7 +756,8 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_increment_action_2"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
                                     </LinearLayout>
 
                                 </LinearLayout>
@@ -787,14 +811,15 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_decrement_action_3"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
 
                                         <EditText
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:inputType="number"
                                             android:ems="10"
-                                            android:id="@+id/editText4"
+                                            android:id="@+id/entry_action_3"
                                             android:layout_weight="45"
                                             android:text="@string/default_text_0"
                                             android:textAlignment="center"
@@ -805,7 +830,8 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_increment_action_3"
-                                            android:layout_weight="23.33" />
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick" />
                                     </LinearLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -865,7 +891,7 @@
                                             android:layout_height="wrap_content"
                                             android:inputType="number"
                                             android:ems="10"
-                                            android:id="@+id/editText5"
+                                            android:id="@+id/entry_action_4"
                                             android:layout_weight="45"
                                             android:text="@string/default_text_0"
                                             android:textAlignment="center" />
@@ -875,6 +901,7 @@
                                             android:layout_width="10dp"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/btn_increment_action_4"
+                                            android:onClick="onClick"
                                             android:layout_weight="23.33" />
                                     </LinearLayout>
                                 </LinearLayout>

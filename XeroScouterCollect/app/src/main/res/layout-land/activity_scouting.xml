@@ -48,7 +48,7 @@
                             android:weightSum="1"
                             android:layout_gravity="center_horizontal"
                             android:gravity="left|right"
-                            android:layout_weight=".1" >
+                            android:layout_weight=".08" >
 
                             <TextView
                                 android:layout_width="0dp"
@@ -78,7 +78,7 @@
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.15"
+                            android:layout_weight="0.14"
                             android:weightSum="1"
                             android:baselineAligned="false">
 
@@ -173,7 +173,7 @@
                             android:weightSum="1"
                             android:layout_gravity="center_horizontal"
                             android:gravity="left|right"
-                            android:layout_weight=".1" >
+                            android:layout_weight=".085" >
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -203,7 +203,7 @@
                             android:orientation="horizontal"
                             android:layout_width="fill_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.15"
+                            android:layout_weight="0.14"
                             android:weightSum="1"
                             android:layout_gravity="center_horizontal"
                             android:baselineAligned="false">
@@ -297,7 +297,7 @@
                             android:layout_height="0dp"
                             android:weightSum="1"
                             android:gravity="left|right"
-                            android:layout_weight=".1" >
+                            android:layout_weight=".085" >
 
                             <TextView
                                 android:layout_width="0dp"
@@ -327,7 +327,7 @@
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.15"
+                            android:layout_weight="0.14"
                             android:weightSum="1"
                             android:baselineAligned="false">
 
@@ -420,48 +420,62 @@
                             android:layout_height="0dp"
                             android:paddingTop="20dp"
                             android:layout_weight=".26">
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:orientation="horizontal"
+                                android:layout_weight="50"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                            <LinearLayout
+                                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="3.2">
-
-                                <RadioButton
-                                    android:text="No Climb"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/radio_action_no_climb"
-                                    android:textSize="20sp" />
+                                android:layout_weight="0.02">
 
                                 <RadioButton
                                     android:text="@string/action_13"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/radio_action_13"
-                                    android:textSize="20sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="3.2">
+                                    android:textSize="20sp"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:layout_weight="3.2" />
 
                                 <RadioButton
                                     android:text="@string/action_14"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/radio_action_14"
-                                    android:textSize="20sp" />
+                                    android:textSize="20sp"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:layout_weight="3.2" />
+                                </LinearLayout>
+                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_width="0dp"
+                                android:layout_weight=".02">
                                 <RadioButton
                                     android:text="@string/action_15"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/radio_action_15"
-                                    android:textSize="20sp" />
+                                    android:textSize="20sp"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:layout_weight="3.2" />
+
+                                <RadioButton
+                                    android:text="No Climb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/radio_no_climb"
+                                    android:textSize="20sp"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:layout_weight="3.2" /></LinearLayout>
+
                             </LinearLayout>
+
 
                             <Space
                                 android:layout_width="wrap_content"
@@ -533,8 +547,9 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_decrement_action_2"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -550,8 +565,9 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_1"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_increment_action_2"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                 </LinearLayout>
 
@@ -573,8 +589,9 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_2"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_decrement_action_3"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -590,8 +607,9 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_2"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_increment_action_3"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                 </LinearLayout>
 
@@ -613,8 +631,9 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_3"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_decrement_action_4"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -629,8 +648,9 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_3"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_increment_action_4"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                 </LinearLayout>
 
@@ -668,8 +688,9 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_4"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_decrement_action_5"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -685,8 +706,9 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_4"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_increment_action_5"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                 </LinearLayout>
 
@@ -708,8 +730,9 @@
                                         android:text="@string/decrement"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_5"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_decrement_action_6"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                     <EditText
                                         android:layout_width="10dp"
@@ -725,8 +748,9 @@
                                         android:text="@string/increment"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_15"
-                                        android:layout_weight="23.33" />
+                                        android:id="@+id/btn_increment_action_6"
+                                        android:layout_weight="23.33"
+                                        android:onClick="onClick" />
 
                                 </LinearLayout>
 

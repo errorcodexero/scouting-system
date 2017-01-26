@@ -194,16 +194,19 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             File file = new File(baseFolder + File.separator + filename);
             file.getParentFile().mkdirs();
             FileOutputStream fos;
-            for(String teamMatchAction : string) {
-                try {
-                    fos = new FileOutputStream(xmlFile);
+            try {
+                fos = new FileOutputStream(xmlFile);
+
+                for(String teamMatchAction : string) {
                     fos.write(teamMatchAction.getBytes());
-                    fos.flush();
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
 
             /*
             if(!xmlFile.exists()){
