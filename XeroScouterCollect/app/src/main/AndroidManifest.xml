@@ -26,6 +26,8 @@
         <activity
             android:name=".activities.LandingActivity"/>
         <activity
+            android:name=".activities.DriveTeamFeedbackActivity"/>
+        <activity
             android:name=".activities.DataConnectionActivity"/>
         <activity
             android:name=".activities.MatchConfirmationActivity"/>
