@@ -4,13 +4,17 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,8 +24,14 @@ import android.widget.TabHost;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
@@ -41,9 +51,15 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     protected HashMap<Integer, ActionCreationData> actionDataMap = new HashMap<>();
 
+    protected HashMap<String, Integer> restoreHashMap;
+
     protected ArrayList<Pair<String, String>> finalizeDataList = new ArrayList<>();
 
+    protected ArrayList<String> queryStringList = new ArrayList<>();
+
     protected TwoColumnAdapter finalizeTabAdapter;
+
+    private boolean didCleanExit = false;
 
     protected int currentClickedId;
 
@@ -76,6 +92,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         TabHost.TabSpec teleopTab = tabHost.newTabSpec("tab2");
         TabHost.TabSpec finalizeTab = tabHost.newTabSpec("tab3");
 
+        teamMatchId = getIntent().getExtras().getInt("team_match_id");
+
         RadioButton noClimb = (RadioButton) findViewById(R.id.radio_no_climb);
         noClimb.setChecked(true);
 
@@ -87,9 +105,14 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
 
+        Intent mcaIntent = getIntent();
+        //teamMatchId = mcaIntent.getIntExtra("team_match_id");
+
         //DatabaseHelper tempDB = new DatabaseHelper(this);
 
         // Begin mapping text entries to variables
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
 
         // b -> a; [] key -> b; b key -> textview
@@ -116,10 +139,14 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         for (int i = 2; i < 13; i++) {
             String strIncId = "btn_increment_action_" + i;
             String strDecId = "btn_decrement_action_" + i;
+            String entryId = "entry_action_" + i;
 
             actionDataMap.put(getResources().getIdentifier(strIncId, "id", getPackageName()), new ActionCreationData(false, i));
             actionDataMap.put(getResources().getIdentifier(strDecId, "id", getPackageName()), new ActionCreationData(true, i));
+            actionDataMap.put(getResources().getIdentifier(entryId, "id", getPackageName()), new ActionCreationData(true, i));
         }
+
+
 
         //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
 
@@ -130,7 +157,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         String pref_default = "*";
 
         tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
-        teamMatchId = 0;
+        //teamMatchId = 0;
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -154,6 +181,51 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 }
             }
         });
+
+    }
+
+    private String getTimeStamp(){
+        Date curDate = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("MMdd_hhmmss");
+        return format.format(curDate);
+    }
+
+    public void onStop() {
+    super.onStop();
+        if (!didCleanExit) {
+
+            String baseFolder;
+            String filename = "match_backup_";
+
+            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+            }
+            // revert to using internal storage (not sure if there's an equivalent to the above)
+            else {
+                baseFolder = this.getFilesDir().getAbsolutePath();
+            }
+
+            File file = new File(baseFolder + File.separator + filename);
+            file.getParentFile().mkdirs();
+            FileOutputStream fos;
+            ObjectOutputStream oos;
+            try {
+                fos = new FileOutputStream(file);
+                oos = new ObjectOutputStream(fos);
+
+                for (ActionObject dataObjects : actionObjectArrayList) {
+                    fos.write(dataObjects.getActionCount());
+
+                }
+
+
+                fos.flush();
+                fos.close();
+            }
+            catch (IOException ioe) {
+                System.out.println(ioe.getStackTrace());
+            }
+        }
 
     }
 
@@ -247,6 +319,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
             case R.id.btn_finalize_finish:
 
+                didCleanExit = true;
+
                 CheckBox autoBaseline = (CheckBox) findViewById(R.id.chkbx_action_1);
 
                 RadioButton action_13 = (RadioButton) findViewById(R.id.radio_action_13);
@@ -279,6 +353,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                     db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 18, false));
                 }
 
+                for (String queryStringInstance : queryStringList) {
+                    db.execSQL(queryStringInstance);
+                }
+
                 startActivity(mainScreen);
 
                 break;
@@ -288,19 +366,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 int id = view.getId();
                 boolean belowZero = false;
                 if (action_id != 0) {
-                    for (ActionObject spinBox : actionObjectArrayList) {
-                        Button decrementButton = (Button) findViewById(spinBox.getDecrementButtonId());
-                        if (id == spinBox.getDecrementButtonId()) {
 
-                            if (spinBox.getActionCount() <= 0) {
-                                belowZero = true;
-                                decrementButton.setEnabled(false);
-                            }
-                            break;
-                        } else if (!decrementButton.isEnabled()){
-                            decrementButton.setEnabled(true);
-                        }
-                    }
                     if (belowZero == false) {
                         //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
                         ActionObject tempObject = actionObjectArrayList.get(getActionArrayIndex(action_id));
@@ -310,7 +376,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                         if (tempTextView != null) {
                             tempTextView.setText(String.valueOf(tempObject.getActionCount()));
                             try {
-                                db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                                //db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                                queryStringList.add(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
                             } finally {
 
                             }
@@ -318,6 +385,19 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
                         } else {
                             Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    for (ActionObject spinBox : actionObjectArrayList) {
+                        Button decrementButton = (Button) findViewById(spinBox.getDecrementButtonId());
+                        if (id == spinBox.getDecrementButtonId()) {
+
+                            if (spinBox.getActionCount() < 1) {
+                                belowZero = true;
+                                decrementButton.setEnabled(false);
+                            }
+                            break;
+                        } else if (!decrementButton.isEnabled()){
+                            decrementButton.setEnabled(true);
                         }
                     }
                     break;

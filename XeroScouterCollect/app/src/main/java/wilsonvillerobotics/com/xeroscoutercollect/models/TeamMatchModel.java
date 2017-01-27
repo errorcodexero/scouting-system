@@ -17,10 +17,11 @@ public class TeamMatchModel {
     private String team4Number;
     private String team5Number;
     private String team6Number;
+    private int teamMatchId;
 
 
     public TeamMatchModel(String matchNumb, String team1, String team2, String team3,
-                          String team4, String team5, String team6){
+                          String team4, String team5, String team6, int tmId){
         matchNumber = matchNumb;
         team1Number = team1;
         team2Number = team2;
@@ -28,6 +29,7 @@ public class TeamMatchModel {
         team4Number = team4;
         team5Number = team5;
         team6Number = team6;
+        teamMatchId = tmId;
         teamList = new ArrayList<String>();
         updateArrayList();
 
