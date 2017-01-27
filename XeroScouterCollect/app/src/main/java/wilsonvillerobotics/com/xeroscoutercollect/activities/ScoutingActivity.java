@@ -17,9 +17,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.security.cert.Certificate;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,6 +68,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scouting);
+        Log.i("Scouting Activity", "onCreate");
 
         // Initializing the tabbing system
 
@@ -86,6 +89,24 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(autonomousTab);
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String s) {
+                // If string is identical
+                ListView finalizeDataView = (ListView) findViewById(R.id.finalizeDataView);
+
+                finalizeDataList.clear();
+
+                for ( ActionObject i : actionObjectArrayList) {
+                    finalizeDataList.add(new Pair<>(getString(i.getTextFieldValueId()), String.valueOf(i.getActionCount())));
+                }
+                finalizeDataView.setAdapter(finalizeTabAdapter);
+
+                if (s.compareTo("tab3") == 0) {
+                }
+            }
+        });
 
         //DatabaseHelper tempDB = new DatabaseHelper(this);
 
@@ -132,28 +153,55 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
         teamMatchId = 0;
 
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String s) {
-                // If string is identical
-                ListView finalizeDataView = (ListView) findViewById(R.id.finalizeDataView);
-
-                finalizeDataList.clear();
-
-                for ( ActionObject i : actionObjectArrayList) {
-                    finalizeDataList.add(new Pair<>(getString(i.getTextFieldValueId()), String.valueOf(i.getActionCount())));
-                }
-
-
-                finalizeDataView.setAdapter(finalizeTabAdapter);
-
-                if (s.compareTo("tab3") == 0) {
+        updateSavedState(savedInstanceState);
 
 
 
+    }
+
+    private void updateSavedState(Bundle savedState){
+        if(savedState!=null) {
+            for (int i = 2; i < 7; i++) {
+                String strId = "entry_action_" + i;
+                int resid = getResources().getIdentifier(strId, "id", getPackageName());
+                EditText tv = (EditText) findViewById(resid);
+                if (tv != null) {
+                    tv.setText(savedState.getString(strId, "0"));
+                    Log.e("Saving Data", strId + " " + tv.getText().toString());
                 }
             }
-        });
+            CheckBox cb = (CheckBox) findViewById(R.id.chkbx_action_1);
+            if (cb != null) {
+                cb.setChecked(savedState.getBoolean("chkbx_action_1", false));
+            }
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.i("Scouting Activity", "onResume");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceSate){
+        super.onSaveInstanceState(savedInstanceSate);
+        TabHost th = getTabHost();
+        if(th!=null) {
+            for (int i = 2; i < 7; i++) {
+                String strId = "entry_action_" + i;
+                int resid = getResources().getIdentifier(strId, "id", getPackageName());
+                EditText tv = (EditText) th.findViewById(resid);
+                if (tv != null) {
+                    Log.e("Saving Data", strId + " " + tv.getText().toString());
+                    savedInstanceSate.putString(strId, tv.getText().toString());
+                }
+            }
+            CheckBox cb = (CheckBox) th.findViewById(R.id.chkbx_action_1);
+            if (cb != null) {
+                savedInstanceSate.putBoolean("chkbx_action_1", cb.isChecked());
+            }
+        }
 
     }
 
@@ -203,7 +251,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     private class ActionCreationData {
         private Boolean isDecrement;
-        private Integer action_id;
+        public Integer action_id;
 
         public ActionCreationData(Boolean isDecrement, Integer action_id) {
             this.isDecrement = isDecrement;

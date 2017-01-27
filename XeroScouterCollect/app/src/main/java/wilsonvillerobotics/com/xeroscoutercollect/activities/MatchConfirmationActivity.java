@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -116,6 +117,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
             nextButtonActive = false;
             btn_next.setEnabled(nextButtonActive);
         }
+        spinner_team_list.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -285,15 +287,6 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         }
     }
 
-    private void generateTestMatches() {
-        match1 = new TeamMatchModel("1","1","7","13","19","25","31");
-        match2 = new TeamMatchModel("2","2","8","14","20","26","32");
-        match3 = new TeamMatchModel("3","3","9","15","21","27","33");
-        matchObjList.add(match1);
-        matchObjList.add(match2);
-        matchObjList.add(match3);
-    }
-
     //Add matches to spinner
     public void addItemsToMatchSpinner() {
         match_list = new ArrayList<String>();
@@ -381,6 +374,10 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
                 if(matchSpinnerHasBeenCreated) { //Prevents running on startup
                     teamSpinnerActive = true;
                     spinner_team_list.setEnabled(teamSpinnerActive);
+                    if(manualSelection){
+                        spinner_team_list.setVisibility(View.VISIBLE);
+                    }
+
                 }
                 matchSpinnerHasBeenCreated = true;
                 break;
