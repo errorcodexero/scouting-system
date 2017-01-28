@@ -1,6 +1,8 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
+import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -135,11 +137,6 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             actionDataMap.put(getResources().getIdentifier(strDecId, "id", getPackageName()), new ActionCreationData(true, i));
             actionDataMap.put(getResources().getIdentifier(entryId, "id", getPackageName()), new ActionCreationData(true, i));
         }
-
-
-
-        //matchDB.execSQL("CREATE TABLE IF NOT EXISTS team_match");
-
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -147,60 +144,53 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         String pref_default = "*";
 
         tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
-        //teamMatchId = 0;
-
-        //updateSavedState(savedInstanceState);
-
-
-
     }
 
-    /*
-    private void updateSavedState(Bundle savedState){
-        if(savedState!=null) {
-            for (int i = 2; i < 7; i++) {
-                String strId = "entry_action_" + i;
-                int resid = getResources().getIdentifier(strId, "id", getPackageName());
-                EditText tv = (EditText) findViewById(resid);
-                if (tv != null) {
-                    tv.setText(savedState.getString(strId, "0"));
-                    Log.e("Saving Data", strId + " " + tv.getText().toString());
-                }
-            }
-            CheckBox cb = (CheckBox) findViewById(R.id.chkbx_action_1);
-            if (cb != null) {
-                cb.setChecked(savedState.getBoolean("chkbx_action_1", false));
-            }
-        }
-    }*/
+
 
     @Override
-    public void onResume(){
-        super.onResume();
-        Log.i("Scouting Activity", "onResume");
+    public void onStart(){
+        super.onStart();
+        Log.e("Scouting Activity", "onStart");
+
+        AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
+        aBuilder.setMessage("Previous data for this match has been found." +
+                            " Would you like to load it?")
+                .setCancelable(Boolean.FALSE)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //De-Serialize data
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AlertDialog.Builder aDeleteBuilder = new AlertDialog.Builder(ScoutingActivity.this);
+                        aDeleteBuilder.setMessage("Would you like to delete the backup?")
+                                      .setCancelable(Boolean.FALSE)
+                                      .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                          @Override
+                                          public void onClick(DialogInterface dialog, int which) {
+                                              //delete file
+                                          }
+                                      })
+                                      .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                          @Override
+                                          public void onClick(DialogInterface dialog, int which) {
+                                              dialog.cancel();
+                                          }
+                                      });
+                        AlertDialog alert = aDeleteBuilder.create();
+                        alert.setTitle("Delete Backup?");
+                        alert.show();
+                    }
+                });
+        AlertDialog alert = aBuilder.create();
+        alert.setTitle("Alert");
+        alert.show();
     }
 
-    /*@Override
-    public void onSaveInstanceState(Bundle savedInstanceSate){
-        super.onSaveInstanceState(savedInstanceSate);
-        TabHost th = getTabHost();
-        if(th!=null) {
-            for (int i = 2; i < 7; i++) {
-                String strId = "entry_action_" + i;
-                int resid = getResources().getIdentifier(strId, "id", getPackageName());
-                EditText tv = (EditText) th.findViewById(resid);
-                if (tv != null) {
-                    Log.e("Saving Data", strId + " " + tv.getText().toString());
-                    savedInstanceSate.putString(strId, tv.getText().toString());
-                }
-            }
-            CheckBox cb = (CheckBox) th.findViewById(R.id.chkbx_action_1);
-            if (cb != null) {
-                savedInstanceSate.putBoolean("chkbx_action_1", cb.isChecked());
-            }
-        }
-
-    }*/
 
     private String getTimeStamp(){
         Date curDate = new Date();

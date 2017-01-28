@@ -49,8 +49,6 @@
             android:name=".activities.PitScoutingActivity"/>
         <activity
             android:name=".activities.SettingsActivity"/>
-        <activity
-            android:name=".activities.ScoutingActivity"/>
     </application>
 
 </manifest>
