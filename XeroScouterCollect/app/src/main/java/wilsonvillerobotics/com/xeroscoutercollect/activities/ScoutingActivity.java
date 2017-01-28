@@ -24,13 +24,18 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
@@ -43,7 +48,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected HashMap<Integer, ActionCreationData> actionDataMap = new HashMap<>();
 
     //Map containing entries and their values for a given TeamMatch scouted
-    protected HashMap<Integer, Integer> entryValueMap = new HashMap<>();
+    protected HashMap<String, Integer> entryValueMap = new HashMap<>();
     protected ArrayList<Pair<String, String>> finalizeDataList = new ArrayList<>();
     protected ArrayList<String> queryStringList = new ArrayList<>();
     protected TwoColumnAdapter finalizeTabAdapter;
@@ -52,7 +57,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
     int tabletId, teamMatchId;
-
+    private String baseFolder;
+    private String filename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,12 +146,24 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         String pref_default = "*";
-
         tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
+
+        createFileAssociations();
     }
 
+    public void createFileAssociations(){
+        //Sets up file location data
+        filename = "match_backup_entryValueMap_" + teamMatchId + ".ser";
+        //Gets the /mnt/sdcard/Download folder path
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+        }
+        // revert to using internal storage (not sure if there's an equivalent to the above)
+        else {
+            baseFolder = this.getFilesDir().getAbsolutePath();
+        }
+    }
 
 
     @Override
@@ -153,42 +171,47 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         super.onStart();
         Log.e("Scouting Activity", "onStart");
 
-        AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
-        aBuilder.setMessage("Previous data for this match has been found." +
-                            " Would you like to load it?")
-                .setCancelable(Boolean.FALSE)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //De-Serialize data
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AlertDialog.Builder aDeleteBuilder = new AlertDialog.Builder(ScoutingActivity.this);
-                        aDeleteBuilder.setMessage("Would you like to delete the backup?")
-                                      .setCancelable(Boolean.FALSE)
-                                      .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                          @Override
-                                          public void onClick(DialogInterface dialog, int which) {
-                                              //delete file
-                                          }
-                                      })
-                                      .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                          @Override
-                                          public void onClick(DialogInterface dialog, int which) {
-                                              dialog.cancel();
-                                          }
-                                      });
-                        AlertDialog alert = aDeleteBuilder.create();
-                        alert.setTitle("Delete Backup?");
-                        alert.show();
-                    }
-                });
-        AlertDialog alert = aBuilder.create();
-        alert.setTitle("Alert");
-        alert.show();
+        File f = new File(baseFolder + File.separator + filename);
+        if(f.exists() && !f.isDirectory()) {
+            AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
+            aBuilder.setMessage("Previous data for this match has been found." +
+                    " Would you like to load it?")
+                    .setCancelable(Boolean.FALSE)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            deSerializeEntryValueMap();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AlertDialog.Builder aDeleteBuilder = new AlertDialog.Builder(ScoutingActivity.this);
+                            aDeleteBuilder.setMessage("Would you like to delete the backup?")
+                                    .setCancelable(Boolean.FALSE)
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            f.delete();
+                                        }
+                                    })
+                                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                            AlertDialog alert = aDeleteBuilder.create();
+                            alert.setTitle("Delete Backup?");
+                            alert.show();
+                        }
+                    });
+            AlertDialog alert = aBuilder.create();
+            alert.setTitle("Alert");
+            alert.show();
+        } else {
+            Log.d("FileLoader","No backup file found");
+        }
     }
 
 
@@ -203,7 +226,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         super.onPause();
         if (!didCleanExit) {
             updateEntryValueMap();
-            serializeEntryValueMap(entryValueMap);
+            serializeEntryValueMap();
         }
     }
 
@@ -211,25 +234,12 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     //and puts them into the HashMap EntryValueMap
     public void updateEntryValueMap(){
         for(ActionObject object : actionObjectArrayList){
-            entryValueMap.put(object.getTextFieldId(), object.getActionCount());
+            entryValueMap.put(getResources().getResourceEntryName(object.getTextFieldId()), object.getActionCount());
         }
     }
 
     //Serializes the EntryValueMap, saves to downloads folder
-    public void serializeEntryValueMap(HashMap<Integer, Integer> map){
-        //Sets up file location data
-        String baseFolder;
-        String filename = "match_backup_entryValueMap_" + teamMatchId + ".ser";
-        //Gets the /mnt/sdcard/Download folder path
-        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-        }
-        // revert to using internal storage (not sure if there's an equivalent to the above)
-        else {
-            baseFolder = this.getFilesDir().getAbsolutePath();
-        }
-
-
+    public void serializeEntryValueMap(){
         //Outputs the file
         File file = new File(baseFolder + File.separator + filename);
         file.getParentFile().mkdirs();
@@ -241,13 +251,46 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             oos.writeObject(entryValueMap);
             oos.close();
             fos.close();
-            Log.e("ScoutingActivity","Serialized entryValueMap at filename: " + filename);
+            Log.d("ScoutingActivity","Serialized entryValueMap at filename: " + filename);
         }
         catch (IOException ioe) {
             System.out.println(ioe.getStackTrace());
         }
     }
 
+    public void deSerializeEntryValueMap(){
+        try
+        {
+            FileInputStream fis = new FileInputStream(baseFolder + File.separator + filename);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            entryValueMap = (HashMap) ois.readObject();
+            ois.close();
+            fis.close();
+            //Updates the Entry Fields with the backup values;
+            updateEntryValues();
+        }catch(IOException ioe)
+        {
+            ioe.printStackTrace();
+            return;
+        }catch(ClassNotFoundException c)
+        {
+            System.out.println("Class not found");
+            c.printStackTrace();
+            return;
+        }
+    }
+
+    public void updateEntryValues(){
+        EditText tempTextView;
+
+        for(ActionObject a : actionObjectArrayList){
+            tempTextView = (EditText) findViewById(a.getTextFieldId());
+            a.setActionCount(entryValueMap.get(getResources().getResourceEntryName(a.getTextFieldId())));
+            if (tempTextView != null) {
+                tempTextView.setText(String.valueOf(a.getActionCount()));
+            }
+        }
+    }
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
