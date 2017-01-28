@@ -4,13 +4,10 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -21,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -29,55 +25,31 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.security.cert.Certificate;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
-import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchActionModel;
 
 public class ScoutingActivity extends TabActivity implements View.OnClickListener {
-
-    protected HashMap<Integer, Integer> matchMap = new HashMap<>();
-
     protected ArrayList<ActionObject> actionObjectArrayList = new ArrayList<>();
-
     protected HashMap<Integer, ActionCreationData> actionDataMap = new HashMap<>();
 
-    protected HashMap<String, Integer> restoreHashMap;
-
+    //Map containing entries and their values for a given TeamMatch scouted
+    protected HashMap<Integer, Integer> entryValueMap = new HashMap<>();
     protected ArrayList<Pair<String, String>> finalizeDataList = new ArrayList<>();
-
     protected ArrayList<String> queryStringList = new ArrayList<>();
-
     protected TwoColumnAdapter finalizeTabAdapter;
-
     private boolean didCleanExit = false;
-
     protected int currentClickedId;
-
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
-
-    protected TeamMatch currentMatch = new TeamMatch();
-
     protected DatabaseHelper dbHelper;
-
     int tabletId, teamMatchId;
-
-    protected String generateTransaction() {
-        return null;
-
-
-    }
 
 
     @Override
@@ -177,12 +149,13 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
         //teamMatchId = 0;
 
-        updateSavedState(savedInstanceState);
+        //updateSavedState(savedInstanceState);
 
 
 
     }
 
+    /*
     private void updateSavedState(Bundle savedState){
         if(savedState!=null) {
             for (int i = 2; i < 7; i++) {
@@ -199,7 +172,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 cb.setChecked(savedState.getBoolean("chkbx_action_1", false));
             }
         }
-    }
+    }*/
 
     @Override
     public void onResume(){
@@ -207,7 +180,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         Log.i("Scouting Activity", "onResume");
     }
 
-    @Override
+    /*@Override
     public void onSaveInstanceState(Bundle savedInstanceSate){
         super.onSaveInstanceState(savedInstanceSate);
         TabHost th = getTabHost();
@@ -227,7 +200,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             }
         }
 
-    }
+    }*/
 
     private String getTimeStamp(){
         Date curDate = new Date();
@@ -235,44 +208,56 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         return format.format(curDate);
     }
 
-    public void onStop() {
-    super.onStop();
+    @Override
+    public void onPause() {
+        super.onPause();
         if (!didCleanExit) {
+            updateEntryValueMap();
+            serializeEntryValueMap(entryValueMap);
+        }
+    }
 
-            String baseFolder;
-            String filename = "match_backup_";
+    //Gets all the values of each Entry method(EditText, Radio buttons, and Checkboxes,
+    //and puts them into the HashMap EntryValueMap
+    public void updateEntryValueMap(){
+        for(ActionObject object : actionObjectArrayList){
+            entryValueMap.put(object.getTextFieldId(), object.getActionCount());
+        }
+    }
 
-            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-            }
-            // revert to using internal storage (not sure if there's an equivalent to the above)
-            else {
-                baseFolder = this.getFilesDir().getAbsolutePath();
-            }
-
-            File file = new File(baseFolder + File.separator + filename);
-            file.getParentFile().mkdirs();
-            FileOutputStream fos;
-            ObjectOutputStream oos;
-            try {
-                fos = new FileOutputStream(file);
-                oos = new ObjectOutputStream(fos);
-
-                for (ActionObject dataObjects : actionObjectArrayList) {
-                    fos.write(dataObjects.getActionCount());
-
-                }
-
-
-                fos.flush();
-                fos.close();
-            }
-            catch (IOException ioe) {
-                System.out.println(ioe.getStackTrace());
-            }
+    //Serializes the EntryValueMap, saves to downloads folder
+    public void serializeEntryValueMap(HashMap<Integer, Integer> map){
+        //Sets up file location data
+        String baseFolder;
+        String filename = "match_backup_entryValueMap_" + teamMatchId + ".ser";
+        //Gets the /mnt/sdcard/Download folder path
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+        }
+        // revert to using internal storage (not sure if there's an equivalent to the above)
+        else {
+            baseFolder = this.getFilesDir().getAbsolutePath();
         }
 
+
+        //Outputs the file
+        File file = new File(baseFolder + File.separator + filename);
+        file.getParentFile().mkdirs();
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+        try {
+            fos = new FileOutputStream(file);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(entryValueMap);
+            oos.close();
+            fos.close();
+            Log.e("ScoutingActivity","Serialized entryValueMap at filename: " + filename);
+        }
+        catch (IOException ioe) {
+            System.out.println(ioe.getStackTrace());
+        }
     }
+
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();

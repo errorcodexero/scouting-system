@@ -115,7 +115,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private final String XML_EXT = ".xml";
     private String TN = "table_file_name";
 
-    public void importDataFromXML(){
+        public void importDataFromXML(){
         String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
 
         XMLParser myParser = new XMLParser("",this);
