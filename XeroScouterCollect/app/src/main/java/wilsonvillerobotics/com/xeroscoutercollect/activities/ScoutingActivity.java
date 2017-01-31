@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -35,6 +36,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
@@ -59,6 +61,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     int tabletId, teamMatchId;
     private String baseFolder;
     private String filename;
+    private Boolean doSaveToFile = true;
+    private boolean doAskRestore = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
         RadioButton noClimb = (RadioButton) findViewById(R.id.radio_no_climb);
         noClimb.setChecked(true);
+        currentClickedId = R.id.radio_no_climb;
 
         autonomousTab.setIndicator("Autonomous Tab").setContent(R.id.Autonomous);
         teleopTab.setIndicator("Teleop Tab").setContent(R.id.Teleop);
@@ -165,14 +171,32 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        doSaveToFile = false; // FFFFFAAAAALLLLLSSSSSEEEEE
+        updateEntryValueMap();
+        serializeEntryValueMap();
+
+        outState.putSerializable("entryValueMap", entryValueMap);
+        //super.onSaveInstanceState();
+    }
 
     @Override
-    public void onStart(){
-        super.onStart();
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        doAskRestore = false;
+        entryValueMap = (HashMap<String, Integer>) savedInstanceState.getSerializable("entryValueMap");
+        updateEntryValues();
+
+    }
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
         Log.e("Scouting Activity", "onStart");
 
         File f = new File(baseFolder + File.separator + filename);
-        if(f.exists() && !f.isDirectory()) {
+        if(f.exists() && !f.isDirectory() && doAskRestore) {
             AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
             aBuilder.setMessage("Previous data for this match has been found." +
                     " Would you like to load it?")
@@ -180,6 +204,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            RadioButton noClimbTempDisable = (RadioButton) findViewById(R.id.radio_no_climb);
+                            noClimbTempDisable.setChecked(false);
                             deSerializeEntryValueMap();
                         }
                     })
@@ -222,11 +248,13 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        if (!didCleanExit) {
-            updateEntryValueMap();
-            serializeEntryValueMap();
+    public void onStop() {
+        super.onStop();
+        if(doSaveToFile) {
+            if (!didCleanExit) {
+                updateEntryValueMap();
+                serializeEntryValueMap();
+            }
         }
     }
 
@@ -236,6 +264,19 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         for(ActionObject object : actionObjectArrayList){
             entryValueMap.put(getResources().getResourceEntryName(object.getTextFieldId()), object.getActionCount());
         }
+        CheckBox action_1 = (CheckBox) findViewById(R.id.chkbx_action_1);
+        entryValueMap.put(getResources().getResourceEntryName(R.id.chkbx_action_1), action_1.isChecked()? 1 : 0);
+        RadioButton checkedRadio = (RadioButton) findViewById(currentClickedId);
+        entryValueMap.put(getResources().getResourceEntryName(currentClickedId), 1);
+        ToggleButton currentToggle = (ToggleButton) findViewById(R.id.btn_action_16);
+        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked()? 1 : 0);
+        currentToggle = (ToggleButton) findViewById(R.id.btn_action_17);
+        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked()? 1 : 0);
+        currentToggle = (ToggleButton) findViewById(R.id.btn_action_18);
+        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked()? 1 : 0);
+        entryValueMap.put("doRestore", doSaveToFile? 1 : 0);
+
+
     }
 
     //Serializes the EntryValueMap, saves to downloads folder
@@ -289,7 +330,25 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             if (tempTextView != null) {
                 tempTextView.setText(String.valueOf(a.getActionCount()));
             }
+
         }
+        for (String key : entryValueMap.keySet()) {
+            if (key.contains("radio")) {
+                RadioButton radio = (RadioButton) findViewById(getResources().getIdentifier(key, "id", getPackageName()));
+                radio.setChecked(true);
+            }
+        }
+        ToggleButton currentToggle = (ToggleButton) findViewById(R.id.btn_action_16);
+        currentToggle.setChecked((entryValueMap.get("btn_action_16") == 1));
+
+        currentToggle = (ToggleButton) findViewById(R.id.btn_action_17);
+        currentToggle.setChecked((entryValueMap.get("btn_action_17") == 1));
+
+        currentToggle = (ToggleButton) findViewById(R.id.btn_action_18);
+        currentToggle.setChecked((entryValueMap.get("btn_action_18") == 1));
+        CheckBox action_1 = (CheckBox) findViewById(R.id.chkbx_action_1);
+        action_1.setChecked(entryValueMap.get("chkbx_action_1") == 1);
+
     }
 
     public void onRadioButtonClicked(View view) {
@@ -303,6 +362,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         switch(view.getId()) {
             case R.id.radio_no_climb:
                 if (checked) {
+                    currentClickedId = R.id.radio_no_climb;
                     //Toast.makeText(this, "No Climb", Toast.LENGTH_SHORT).show();
                     action_13.setChecked(false);
                     action_14.setChecked(false);
@@ -311,6 +371,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
             case R.id.radio_action_13:
                 if (checked){
+                    currentClickedId = R.id.radio_action_13;
+
                     //Toast.makeText(this, "14", Toast.LENGTH_SHORT).show();
                     action_no_climb.setChecked(false);
                     action_14.setChecked(false);
@@ -319,6 +381,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
             case R.id.radio_action_14:
                 if (checked){
+                    currentClickedId = R.id.radio_action_13;
+
                     //Toast.makeText(this, "15", Toast.LENGTH_SHORT).show();
                     action_no_climb.setChecked(false);
                     action_13.setChecked(false);
@@ -327,6 +391,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
             case R.id.radio_action_15:
                 if (checked){
+                    currentClickedId = R.id.radio_action_15;
+
                     //Toast.makeText(this, "16", Toast.LENGTH_SHORT).show();
                     action_no_climb.setChecked(false);
                     action_13.setChecked(false);
