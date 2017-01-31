@@ -118,6 +118,9 @@ public class LandingActivity extends Activity implements View.OnClickListener{
             pitScoutingIntent.putExtra("event_name", eventName);
             pitScoutingIntent.putExtra("tablet_id", tabletID);
             startActivity(pitScoutingIntent);
+        } else if(view.getId() == R.id.btn_start_drive_team_feedback) {
+            Intent driveTeamFeedbackActivity = new Intent(this,DriveTeamFeedbackActivity.class);
+            startActivity(driveTeamFeedbackActivity);
         }
     }
 }

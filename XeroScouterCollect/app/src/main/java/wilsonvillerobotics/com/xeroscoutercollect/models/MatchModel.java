@@ -1,5 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect.models;
 
+import java.util.ArrayList;
+
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 
 /**
@@ -58,30 +60,6 @@ public class MatchModel {
         this.matchStatus = matchStatus;
     }
 
-    public Integer getRed1Score() {
-        return red1Score;
-    }
-
-    public void setRed1Score(Integer red1Score) {
-        this.red1Score = red1Score;
-    }
-
-    public Integer getRed2Score() {
-        return red2Score;
-    }
-
-    public void setRed2Score(Integer red2Score) {
-        this.red2Score = red2Score;
-    }
-
-    public Integer getRed3Score() {
-        return red3Score;
-    }
-
-    public void setRed3Score(Integer red3Score) {
-        this.red3Score = red3Score;
-    }
-
     public Integer getRedAutoScore() {
         return redAutoScore;
     }
@@ -122,30 +100,6 @@ public class MatchModel {
         this.redQp = redQp;
     }
 
-    public Integer getBlue1Score() {
-        return blue1Score;
-    }
-
-    public void setBlue1Score(Integer blue1Score) {
-        this.blue1Score = blue1Score;
-    }
-
-    public Integer getBlue2Score() {
-        return blue2Score;
-    }
-
-    public void setBlue2Score(Integer blue2Score) {
-        this.blue2Score = blue2Score;
-    }
-
-    public Integer getBlue3Score() {
-        return blue3Score;
-    }
-
-    public void setBlue3Score(Integer blue3Score) {
-        this.blue3Score = blue3Score;
-    }
-
     public Integer getBlueAutoScore() {
         return blueAutoScore;
     }
@@ -168,6 +122,54 @@ public class MatchModel {
 
     public void setBlueTeleopScore(Integer blueTeleopScore) {
         this.blueTeleopScore = blueTeleopScore;
+    }
+
+    public String getRed1Id() {
+        return red1Id;
+    }
+
+    public void setRed1Id(String red1Id) {
+        this.red1Id = red1Id;
+    }
+
+    public String getRed2Id() {
+        return red2Id;
+    }
+
+    public void setRed2Id(String red2Id) {
+        this.red2Id = red2Id;
+    }
+
+    public String getRed3Id() {
+        return red3Id;
+    }
+
+    public void setRed3Id(String red3Id) {
+        this.red3Id = red3Id;
+    }
+
+    public String getBlue1Id() {
+        return blue1Id;
+    }
+
+    public void setBlue1Id(String blue1Id) {
+        this.blue1Id = blue1Id;
+    }
+
+    public String getBlue2Id() {
+        return blue2Id;
+    }
+
+    public void setBlue2Id(String blue2Id) {
+        this.blue2Id = blue2Id;
+    }
+
+    public String getBlue3Id() {
+        return blue3Id;
+    }
+
+    public void setBlue3Id(String blue3Id) {
+        this.blue3Id = blue3Id;
     }
 
     public Integer getBlueTotalScore() {
@@ -194,6 +196,16 @@ public class MatchModel {
         this.matchWinner = matchWinner;
     }
 
+    public MatchModel(String matchNumber, String red1Id, String red2Id, String red3Id, String blue1Id, String blue2Id, String blue3Id) {
+        this.matchNumber = matchNumber;
+        this.red1Id = red1Id;
+        this.red2Id = red2Id;
+        this.red3Id = red3Id;
+        this.blue1Id = blue1Id;
+        this.blue2Id = blue2Id;
+        this.blue3Id = blue3Id;
+    }
+
     public String getDriverComments() {
         return driverComments;
     }
@@ -210,9 +222,9 @@ public class MatchModel {
     private String matchNumber;
     private String matchStatus;
 
-    private Integer red1Score;
-    private Integer red2Score;
-    private Integer red3Score;
+    private String red1Id;
+    private String red2Id;
+    private String red3Id;
 
     private Integer redAutoScore;
     private Integer redFoulPoints;
@@ -220,9 +232,9 @@ public class MatchModel {
     private Integer redTotalScore;
     private Integer redQp;
 
-    private Integer blue1Score;
-    private Integer blue2Score;
-    private Integer blue3Score;
+    private String blue1Id;
+    private String blue2Id;
+    private String blue3Id;
 
     private Integer blueAutoScore;
     private Integer blueFoulPoints;
@@ -232,6 +244,43 @@ public class MatchModel {
 
     private String matchWinner;
     private String driverComments;
+
+
+    public String getTeamNumber(int teamNumber) {
+
+        String tempTeamString = "";
+
+        switch (teamNumber) {
+
+            case 1:
+                tempTeamString =  red1Id;
+                break;
+            case 2:
+                tempTeamString =  red2Id;
+                break;
+            case 3:
+                tempTeamString =  red3Id;
+                break;
+
+            case 4:
+                tempTeamString =  blue1Id;
+                break;
+            case 5:
+                tempTeamString =  blue2Id;
+                break;
+            case 6:
+                tempTeamString =  blue3Id;
+                break;
+
+            default:
+                tempTeamString =  "No team Selected";
+                break;
+
+
+        }
+        return tempTeamString;
+    }
+
 
     public static String getAllMatches(int eventId) {
 

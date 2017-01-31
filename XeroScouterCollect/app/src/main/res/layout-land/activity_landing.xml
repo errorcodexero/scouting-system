@@ -54,17 +54,31 @@
         android:layout_weight=".3">
 
         <Space
+            android:layout_height="wrap_content"
+            android:layout_weight=".05"
+            android:layout_width="wrap_content" />
+
+        <Button
             android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="@string/btn_start_pit_scouting"
+            android:id="@+id/btn_start_pit_scouting"
+            android:layout_weight=".25"
+            android:textSize="32sp"
+            android:onClick="onClick"/>
+
+        <Space
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_weight=".1" />
+            android:layout_weight=".05"
+            android:layout_width="wrap_content" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:text="@string/btn_start_stand_scouting"
             android:id="@+id/btn_start_stand_scouting"
-            android:layout_weight=".3"
+            android:layout_weight=".25"
             android:textSize="32sp"
             android:onClick="onClick" />
 
@@ -72,22 +86,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_weight=".1" />
+            android:layout_weight=".05" />
 
         <Button
+            android:text="Drive Team Feedback"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:text="@string/btn_start_pit_scouting"
-            android:id="@+id/btn_start_pit_scouting"
-            android:layout_weight=".3"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_start_drive_team_feedback"
+            android:layout_weight=".25"
             android:textSize="32sp"
-            android:onClick="onClick"/>
+            android:onClick="onClick" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_weight=".1" />
+            android:layout_weight=".05" />
     </LinearLayout>
 
     <Space

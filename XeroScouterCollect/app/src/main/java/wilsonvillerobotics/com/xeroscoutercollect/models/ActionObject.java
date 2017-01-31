@@ -1,15 +1,34 @@
 package wilsonvillerobotics.com.xeroscoutercollect.models;
 
+import java.io.IOException;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+
 /**
  * Created by nick on 11/1/16.
  */
-public class ActionObject {
+public class ActionObject implements Serializable {
 
     private int decrementButtonId;
     private int incrementButtonId;
     private int textFieldId;
     private int textFieldValueId;
     private Integer actionCount;
+
+    public ActionObject() {
+    }
+    private void writeObject(java.io.ObjectOutputStream out)
+            throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+
+    }
+    private void readObjectNoData()
+            throws ObjectStreamException {
+
+    }
 
     public ActionObject(int decrementButtonId, int incrementButtonId, int textFieldId, int textFieldValueId, Integer actionCount) {
         this.decrementButtonId = decrementButtonId;

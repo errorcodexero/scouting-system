@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,6 +26,7 @@ import java.util.List;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.MatchModel;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
@@ -40,13 +43,14 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private Intent landingActivity;
     private List<String> match_list;
     private HashMap<Integer, String> team_list;
+    private HashMap<String, Integer> teamIdMap;
     public int currentSelectedMatch;
     private int currentSelectedTeamIndex;
     private boolean isRed;
-    public ArrayList<TeamMatchModel> matchObjList;
-    private TeamMatchModel match1;
-    private TeamMatchModel match2;
-    private TeamMatchModel match3;
+    public ArrayList<MatchModel> matchObjList;
+    private MatchModel match1;
+    private MatchModel match2;
+    private MatchModel match3;
     private ArrayList<Integer> lbl_list;
     private TextView lbl_team_1;
     private TextView lbl_team_2;
@@ -77,7 +81,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_confirmation);
 
-        matchObjList = new ArrayList<TeamMatchModel>();
+        matchObjList = new ArrayList<MatchModel>();
         lbl_list = new ArrayList<Integer>();
         team_list = new HashMap<Integer, String>();
 
@@ -116,6 +120,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
             nextButtonActive = false;
             btn_next.setEnabled(nextButtonActive);
         }
+        spinner_team_list.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -229,6 +234,8 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+        teamIdMap = new HashMap<>();
+
         TeamContract tc = new TeamContract();
         String query = tc.getTeamListQuery();
         Cursor cursor = db.rawQuery(query, null);
@@ -241,6 +248,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
                 int id = cursor.getInt(idIndex);
                 String teamNum = cursor.getString(numIndex);
                 team_list.put(id, teamNum);
+                teamIdMap.put(teamNum, id);
             }
         } finally {
             cursor.close();
@@ -263,42 +271,25 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
                 int blue1ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_1));
                 int blue2ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_2));
                 int blue3ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3));
-                matchObjList.add(new TeamMatchModel(
+                matchObjList.add(new MatchModel(
                         String.valueOf(cursor.getString(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_1))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_2))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_3))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_1))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_2))),
-                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3))))
-                        /*String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
-                        String.valueOf(team_list.get(red1ID)),
-                        String.valueOf(team_list.get(red2ID)),
-                        String.valueOf(team_list.get(red3ID)),
-                        String.valueOf(team_list.get(blue1ID)),
-                        String.valueOf(team_list.get(blue2ID)),
-                        String.valueOf(team_list.get(blue3ID)))*/
-                );
+                        String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3)))));
             }
         } finally {
             cursor.close();
         }
     }
 
-    private void generateTestMatches() {
-        match1 = new TeamMatchModel("1","1","7","13","19","25","31");
-        match2 = new TeamMatchModel("2","2","8","14","20","26","32");
-        match3 = new TeamMatchModel("3","3","9","15","21","27","33");
-        matchObjList.add(match1);
-        matchObjList.add(match2);
-        matchObjList.add(match3);
-    }
-
     //Add matches to spinner
     public void addItemsToMatchSpinner() {
         match_list = new ArrayList<String>();
         match_list.add("Select A Match");
-        for (TeamMatchModel tempMatch : matchObjList) {
+        for (MatchModel tempMatch : matchObjList) {
             //match_list.add(String.valueOf(Integer.parseInt(tempMatch.getMatchNumber().replaceAll("[\\D]", ""))));
             match_list.add(tempMatch.getMatchNumber());
         }
@@ -350,16 +341,39 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_next)) {
-            TeamMatchModel tmModel = matchObjList.get(currentSelectedMatch);
+            String queryString = "";
+            MatchModel matchModel = matchObjList.get(currentSelectedMatch);
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            Integer matchId = 0;
+            Integer teamMatchId = 0;
             String tn;
+            queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " = " + matchModel.getMatchNumber() + ";";
+            Cursor cursor = db.rawQuery(queryString, null);
+            if(cursor.moveToNext())
+               matchId = cursor.getInt(cursor.getColumnIndex("_id"));
+            else {
+                Toast.makeText(this, "NO MATCH DATA", Toast.LENGTH_LONG).show();
+            }
             if(!manualSelection) {
                 tn = matchObjList.get(currentSelectedMatch).getTeamNumber(currentSelectedTeamIndex);
             }
             else{
                 tn = currentSelectedTeam;
             }
+            queryString = "SELECT * FROM team_match WHERE team_id = " + teamIdMap.get(tn) + " AND " + TeamMatchContract.TeamMatchEntry.COLUMN_NAME_MATCH_ID + " = " + matchId + ";";
+            cursor = db.rawQuery(queryString, null);
+            cursor.moveToFirst();
+            teamMatchId = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_ID));
+            //Toast.makeText(this, "TMA = " + teamMatchId, Toast.LENGTH_LONG).show();
+
+
+            //Cursor
+
+            //Cursor cursor = db.execSQL("SELECT * FROM team_match WHERE id = " + tn);
+
             sanityCheckActivity.putExtra("background",isRed);
             sanityCheckActivity.putExtra("team_number", tn);
+            sanityCheckActivity.putExtra("team_match_id", teamMatchId);
             startActivity(sanityCheckActivity);
         }
         if(view == findViewById(R.id.btn_get_teams)){
@@ -381,6 +395,10 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
                 if(matchSpinnerHasBeenCreated) { //Prevents running on startup
                     teamSpinnerActive = true;
                     spinner_team_list.setEnabled(teamSpinnerActive);
+                    if(manualSelection){
+                        spinner_team_list.setVisibility(View.VISIBLE);
+                    }
+
                 }
                 matchSpinnerHasBeenCreated = true;
                 break;
