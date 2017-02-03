@@ -8,7 +8,5 @@ import android.os.Bundle;
  */
 public class FinalizeTabActivity extends Activity {
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
 }

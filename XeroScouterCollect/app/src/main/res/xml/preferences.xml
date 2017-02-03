@@ -7,6 +7,7 @@
 
         <EditTextPreference
             android:key="@string/event_name_pref"
+            android:inputType="number"
             android:title="@string/string_event_name"
             android:summary=""
             android:defaultValue="@string/default_pref_value"
@@ -14,12 +15,14 @@
 
         <EditTextPreference
             android:key="@string/tablet_id_pref"
+            android:inputType="number"
             android:title="@string/string_tablet_id"
             android:summary=""
             android:defaultValue="@string/default_pref_value"
             android:dialogTitle="@string/string_set_tablet_id" />
         <EditTextPreference
             android:key="@string/tma_index_pref"
+            android:inputType="number"
             android:title="TeamMatchAction Index:"
             android:summary=""
             android:defaultValue="0"

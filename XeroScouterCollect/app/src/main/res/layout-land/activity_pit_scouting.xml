@@ -4,56 +4,179 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lbl_tablet_id"
-    android:weightSum="1">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/lbl_tablet_id"
-        android:id="@+id/lbl_tablet_id"
-        android:layout_gravity="left|center_horizontal" />
+    android:weightSum="100"><![CDATA[
 
     "fill_parent">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_height="wrap_content">
+    ]]>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:text="Check All"
-            android:layout_marginRight="7dip"
-            android:id="@+id/btn_check_all"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <TextView
+            android:text="Team:"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
-            android:onClick="onClick">
-        </Button>
-        <Button
+            android:id="@+id/lbl_pit_team_number"
+            android:textSize="18sp"
+            android:layout_weight="10" />
+
+        <Space
             android:layout_width="wrap_content"
-            android:text="Clear All"
-            android:id="@+id/btn_clear_all"
             android:layout_height="wrap_content"
-            android:onClick="onClick">
-        </Button>
+            android:layout_weight="40" />
+
     </LinearLayout>
 
-    <ListView
-        android:layout_width="fill_parent"
-        android:id="@+id/lvCheckBox"
-        android:fadingEdge="none"
-        android:cacheColorHint="@null"
-        android:layout_height="164dp"
-        android:layout_weight="0.69">
-    </ListView>
-
-    <Button
-        android:text="Find Checked Buttons"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_checked_boxes"
-        android:onClick="onClick" />
+        android:layout_height="0dp"
+        android:layout_weight="80">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:id="@+id/lvCheckBox"
+                android:fadingEdge="none"
+                android:cacheColorHint="@null"
+                android:layout_height="0dp"
+                android:layout_weight="80">
+            </ListView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:text="Clear All"
+                android:id="@+id/btn_clear_all"
+                android:layout_height="0dp"
+                android:onClick="onClick"
+                android:layout_weight="20">
+            </Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50">
+
+            <TextView
+                android:text="Programming Language"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:id="@+id/textView4"
+                android:layout_weight="15"
+                android:textSize="18sp"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.2" />
+
+                <CheckBox
+                    android:text="C++"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chbox_pit_field_1"
+                    android:layout_weight="30" />
+
+                <CheckBox
+                    android:text="Java"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chbox_pit_field_2"
+                    android:layout_weight="30" />
+
+                <CheckBox
+                    android:text="LabView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chbox_pit_field_3"
+                    android:layout_weight="30" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="20"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5" />
+
+                <CheckBox
+                    android:text="Other:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chbox_pit_field_4"
+                    android:layout_weight="30" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Language"
+                    android:ems="0"
+                    android:id="@+id/entry_field_language"
+                    android:layout_weight="80"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20" />
+
+            <TextView
+                android:text="Drive Base"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_weight="5"
+                android:textSize="18sp"
+                android:gravity="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Drive Base"
+                android:ems="0"
+                android:id="@+id/entry_field_drive_base"
+                android:layout_weight="10"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>

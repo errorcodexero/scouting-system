@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/lbl_tablet_id"
-        android:id="@+id/textView2"
+        android:id="@+id/lbl_pit_team_number"
         android:layout_gravity="left|center_horizontal" />
 
  "fill_parent">

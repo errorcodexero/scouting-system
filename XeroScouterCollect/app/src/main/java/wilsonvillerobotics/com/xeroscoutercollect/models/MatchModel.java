@@ -247,11 +247,8 @@ public class MatchModel {
 
 
     public String getTeamNumber(int teamNumber) {
-
         String tempTeamString = "";
-
         switch (teamNumber) {
-
             case 1:
                 tempTeamString =  red1Id;
                 break;
@@ -261,7 +258,6 @@ public class MatchModel {
             case 3:
                 tempTeamString =  red3Id;
                 break;
-
             case 4:
                 tempTeamString =  blue1Id;
                 break;
@@ -271,12 +267,9 @@ public class MatchModel {
             case 6:
                 tempTeamString =  blue3Id;
                 break;
-
             default:
                 tempTeamString =  "No team Selected";
                 break;
-
-
         }
         return tempTeamString;
     }
