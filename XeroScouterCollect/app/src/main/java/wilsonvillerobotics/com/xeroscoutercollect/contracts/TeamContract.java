@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
@@ -40,6 +42,22 @@ public class TeamContract implements SQLDataTypeDefines {
         public static final String COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE = "robot_software_language";
         public static final String COLUMN_NAME_ROBOT_DESCRIPTION = "robot_description";
         public static final String COLUMN_NAME_PIT_SCOUT_COMMENTS = "pit_scout_comments";
+        public static final String COLUMN_NAME_CAN_COLLECT_GROUND_FUEL_= "can_collect_ground_fuel";
+        public static final String COLUMN_NAME_CAN_COLLECT_FEEDER_FUEL = "can_collect_feeder_fuel";
+        public static final String COLUMN_NAME_CAN_COLLECT_HOPPER_FUEL = "can_collect_hopper_fuel";
+        public static final String COLUMN_NAME_CAN_ACTIVATE_HOPPERS = "can_activate_hoppers";
+        public static final String COLUMN_NAME_CAN_SCORE_FUEL_LOW = "can_score_fuel_low";
+        public static final String COLUMN_NAME_CAN_SCORE_HIGH_LOW = "can_score_high_low";
+        public static final String COLUMN_NAME_CAN_COLLECT_FEEDER_GEARS = "can_collect_feeder_gears";
+        public static final String COLUMN_NAME_CAN_COLLECT_GROUND_GEARS = "can_collect_ground_gears";
+        public static final String COLUMN_NAME_CAN_SCORE_GEARS = "can_score_gears";
+        public static final String COLUMN_NAME_CAN_CLIMB = "can_climb";
+        public static final String COLUMN_NAME_CAN_ACTIVATE_TOUCHPAD = "can_activate_touchpad";
+        public static final String COLUMN_NAME_USES_OWN_ROPE = "uses_own_rope";
+        public static final String COLUMN_NAME_DEFENSIVE = "defensive";
+        public static final String COLUMN_NAME_MAX_FUEL_CAPACITY = "max_fuel_capacity";
+        public static final String COLUMN_NAME_FUEL_CONTAINER_VOLUME = "fuel_container_volume";
+
 
         public static final String CREATE_TABLE_TEAM =
                 "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_NAME_ID + INTPK + COMMA_SEP
@@ -60,9 +78,40 @@ public class TeamContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + INT11 + COMMA_SEP
                         + COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + VC45 + COMMA_SEP
                         + COLUMN_NAME_ROBOT_DESCRIPTION + VC2000 + COMMA_SEP
-                        + COLUMN_NAME_PIT_SCOUT_COMMENTS + VC2000
+                        + COLUMN_NAME_CAN_COLLECT_GROUND_FUEL_ + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_COLLECT_FEEDER_FUEL + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_COLLECT_HOPPER_FUEL + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_ACTIVATE_HOPPERS + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_SCORE_FUEL_LOW + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_SCORE_HIGH_LOW + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_COLLECT_FEEDER_GEARS + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_COLLECT_GROUND_GEARS + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_SCORE_GEARS + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_CLIMB + INT11 + COMMA_SEP
+                        + COLUMN_NAME_CAN_ACTIVATE_TOUCHPAD + INT11 + COMMA_SEP
+                        + COLUMN_NAME_USES_OWN_ROPE + INT11 + COMMA_SEP
+                        + COLUMN_NAME_DEFENSIVE + INT11 + COMMA_SEP
+                        + COLUMN_NAME_MAX_FUEL_CAPACITY + INT11 + COMMA_SEP
+                        + COLUMN_NAME_FUEL_CONTAINER_VOLUME + INT11
                         + ")";
 
+    }
+
+    public ArrayList<String> getPitDataArrayList(){
+        ArrayList<String> pitData = new ArrayList<String>();
+        pitData.add("Can Collect Ground Fuel");
+        pitData.add("Can Collect Feeder Fuel");
+        pitData.add("Can Collect Hopper Fuel");
+        pitData.add("Can Activate Hoppers");
+        pitData.add("Can Score Fuel Low");
+        pitData.add("Can Score High Low");
+        pitData.add("Can Collect Feeder Gears");
+        pitData.add("Can Collect Ground Gears");
+        pitData.add("Can Score Gears");
+        pitData.add("Can Climb");
+        pitData.add("Can Activate Touchpad");
+        pitData.add("Uses Own Rope");
+        return pitData;
     }
 
     public String getTeamListQuery()

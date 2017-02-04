@@ -114,10 +114,10 @@ public class LandingActivity extends Activity implements View.OnClickListener{
             matchConfirmationActivity.putExtra("tablet_id", tabletID);
             startActivity(matchConfirmationActivity);
         } else if(view.getId() == R.id.btn_start_pit_scouting) {
-            Intent pitScoutingIntent = new Intent(this, PitScoutingActivity.class);
-            pitScoutingIntent.putExtra("event_name", eventName);
-            pitScoutingIntent.putExtra("tablet_id", tabletID);
-            startActivity(pitScoutingIntent);
+            Intent beforePitScoutingIntent = new Intent(this, BeforePitScoutingActivity.class);
+            beforePitScoutingIntent.putExtra("event_name", eventName);
+            beforePitScoutingIntent.putExtra("tablet_id", tabletID);
+            startActivity(beforePitScoutingIntent);
         } else if(view.getId() == R.id.btn_start_drive_team_feedback) {
             Intent driveTeamFeedbackActivity = new Intent(this,DriveTeamFeedbackActivity.class);
             startActivity(driveTeamFeedbackActivity);
