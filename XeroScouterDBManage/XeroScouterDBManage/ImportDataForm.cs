@@ -20,7 +20,7 @@ namespace XeroScouterDBManage_Server
                                                            "notes_data",
                                                            "picture_data",
                                                            "robot_data",
-                                                           "team_match_transaction"
+                                                           "team_match_action"
                                                        };
 
         public ImportDataForm(long competition_id)
@@ -286,7 +286,7 @@ namespace XeroScouterDBManage_Server
 
                         if(tabletSpecificTables.Contains<string>(tableName))
                         {
-                            //postfix += " AND tablet_id=@tablet_id";
+                            postfix += " AND tablet_id=@tablet_id";
                         }
 
                         string insertPrefix = "INSERT INTO " + tableName + "(";

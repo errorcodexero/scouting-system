@@ -1,4 +1,7 @@
 <DATA>
+	<table>
+		<name>team_match_action</name>
+	</table>
 	<ROW>
 
 		<_id>1</_id>
