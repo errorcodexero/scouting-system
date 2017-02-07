@@ -8,11 +8,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.DateFormat;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
+
+import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry.TABLE_NAME;
 
 /**
  * Created by nick on 12/12/16.
@@ -34,6 +38,8 @@ public class XMLExporter {
 
     private String DATA = "DATA";
     private String ROW = "ROW";
+    private String TABLE = "TABLE";
+    private String NAME = "NAME";
 
     private String NEWLINE = "\n";
     private String TAB = "\t";
@@ -85,10 +91,12 @@ public class XMLExporter {
         if (startDataTag) {
             xmlResult = GenerateTagByName(DATA, 0, false, true);
         }
-        xmlResult += GenerateTagByName(ROW, 1, false, true);
+        //Adds table name tag for DataManager
+        xmlResult += GenerateTagByName(TABLE,1,false,false);
+        xmlResult += GenerateTagByName(NAME, 2, false, false) + TABLE_NAME + GenerateTagByName(NAME, 0, true, true);
+        xmlResult += GenerateTagByName(TABLE,1,true,true);
 
-        String tempString = GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 0, true, true);
+        xmlResult += GenerateTagByName(ROW, 1, false, true);
 
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 2, false, false) +
