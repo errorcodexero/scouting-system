@@ -1,6 +1,6 @@
-SELECT * FROM scouting_test.`match`;
+SELECT * FROM scouting_test_3.`match`;
 
-/*INSERT INTO `match` (_id, event_id, match_number)
+INSERT INTO `match` (_id, event_id, match_number)
 SELECT DISTINCT match_id, '1', match_id FROM team_match;
 
 UPDATE `match` INNER JOIN team_match ON team_match.match_id = `match`._id
@@ -22,8 +22,7 @@ UPDATE `match` INNER JOIN team_match ON team_match.match_id = `match`._id
 	SET blue_3_team_id = team_id WHERE team_match.`position` = 3 AND team_match.alliance = 'blue';
     
 --   */ 
-
-/* UPDATE `match` INNER JOIN (
+ UPDATE `match` INNER JOIN (
 SELECT match_id, 
 FLOOR(SUM(tma.quantity * `at`.points)) AS p
 ,tm.alliance, `at`.match_phase
@@ -66,11 +65,11 @@ GROUP BY match_id, tm.alliance, `at`.match_phase
 ON `match`._id = t.match_id 
 	SET `match`.blue_teleop_score = p WHERE t.alliance = 'blue' and t.match_phase = 'teleop';
     
-    */
     
     
     
-/* UPDATE `match` INNER JOIN (
+    
+ UPDATE `match` INNER JOIN (
 SELECT match_id, 
 CASE WHEN SUM(tma.quantity) >= 12 THEN 160
 WHEN SUM(tma.quantity) >=6 THEN 120
@@ -98,14 +97,14 @@ GROUP BY match_id, tm.alliance) AS gp
 ON `match`._id = gp.match_id
 	SET `match`.blue_teleop_score = `match`.blue_teleop_score + gp.rotor_points
     WHERE gp.alliance = 'blue';
-    */
+    
     
 
--- UPDATE `match` SET red_total_score = red_auto_score + red_teleop_score, blue_total_score = blue_auto_score + blue_teleop_score;
+ UPDATE `match` SET red_total_score = red_auto_score + red_teleop_score, blue_total_score = blue_auto_score + blue_teleop_score;
  
---  UPDATE `match` SET winner = IF(red_total_score > blue_total_score, 'red', IF(blue_total_score > red_total_score, 'blue', 'draw'));
+ UPDATE `match` SET winner = IF(red_total_score > blue_total_score, 'red', IF(blue_total_score > red_total_score, 'blue', 'draw'));
 
-/* UPDATE `match` INNER JOIN (
+ UPDATE `match` INNER JOIN (
 SELECT match_id, 
 IF(SUM(tma.quantity) >= 12 , 1,0) q
 ,tm.alliance
@@ -128,10 +127,10 @@ ON `match`._id = gp.match_id
 	SET red_qp = q
     WHERE gp.alliance = 'red';
     
-*/
 
 
-/* UPDATE `match` INNER JOIN (
+
+ UPDATE `match` INNER JOIN (
 SELECT match_id, 
 IF(FLOOR(SUM(tma.quantity * `at`.points)) >= 40, 1, 0) AS w
 ,tm.alliance
@@ -154,15 +153,14 @@ ON `match`._id = k.match_id
 	SET blue_qp = blue_qp + w
     WHERE k.alliance = 'blue';
     
-    */
     
     
     
-/* UPDATE `match`
+    
+ UPDATE `match`
 SET red_qp = red_qp + 
 IF(winner = 'red',2,IF(winner = 'draw', 1,0));
 
 UPDATE `match`
 SET blue_qp = blue_qp + 
 IF(winner = 'blue',2,IF(winner = 'draw', 1,0));
-*/
