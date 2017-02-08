@@ -131,12 +131,23 @@ public class XMLExporter {
         return xmlResult;
     }
 
+    public String generateInlineTag(String tagName, String tagText, Integer tabCount) {
+
+        return (GenerateTagByName(tagName, tabCount, false, false) + tagText + GenerateTagByName(tagName, 0, true, true));
+
+    }
+
     private String GenerateTeamMatchAction(Integer matchId, Boolean startDataTag, Boolean endDataTag, Cursor cursor) {
 
         String xmlResult = "";
         if (startDataTag) {
             xmlResult = GenerateTagByName(DATA, 0, false, true);
         }
+
+        xmlResult += GenerateTagByName(TABLE,1,false,false);
+        xmlResult += GenerateTagByName(NAME, 2, false, false) + TABLE_NAME + GenerateTagByName(NAME, 0, true, true);
+        xmlResult += GenerateTagByName(TABLE,1,true,true);
+
         xmlResult += GenerateTagByName(ROW, 1, false, true) + "\n";
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 2, false, false) +
