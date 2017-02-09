@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pit_action_1" >Can Collect Ground Fuel</string>
+    <string name="pit_action_2" >Can Collect Feeder Fuel</string>
+    <string name="pit_action_3" >Can Collect Hopper Fuel</string>
+    <string name="pit_action_4" >Can Activate Hoppers</string>
+    <string name="pit_action_5" >Can Score Fuel Low</string>
+    <string name="pit_action_6" >Can Score High Low</string>
+    <string name="pit_action_7" >Can Collect Feeder Gears</string>
+    <string name="pit_action_8" >Can Collect Ground Gears</string>
+    <string name="pit_action_9" >Can Score Gears</string>
+    <string name="pit_action_10">Can Climb</string>
+    <string name="pit_action_11">Can Activate Touchpad</string>
+    <string name="pit_action_12">Uses Own Rope</string>
+    <string-array name="pit_action_array">
+        <item name="action_1" >Can Collect Ground Fuel</item>
+        <item name="action_2" >Can Collect Feeder Fuel</item>
+        <item name="action_3" >Can Collect Hopper Fuel</item>
+        <item name="action_4" >Can Activate Hoppers</item>
+        <item name="action_5" >Can Score Fuel Low</item>
+        <item name="action_6" >Can Score High Low</item>
+        <item name="action_7" >Can Collect Feeder Gears</item>
+        <item name="action_8" >Can Collect Ground Gears</item>
+        <item name="action_9" >Can Score Gears</item>
+        <item name="action_10">Can Climb</item>
+        <item name="action_11">Can Activate Touchpad</item>
+        <item name="action_12">Uses Own Rope</item>
+    </string-array>
+</resources>

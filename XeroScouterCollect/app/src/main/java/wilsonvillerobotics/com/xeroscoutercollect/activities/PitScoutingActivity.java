@@ -36,6 +36,7 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
     private DatabaseHelper dbHelper;
     private TeamContract teamContract = new TeamContract();
     private String teamName;
+    private SQLiteDatabase db;
 
 
     @Override
@@ -47,10 +48,12 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
         btn_check_all = (Button)findViewById(R.id.btn_check_all);
 
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
 
         addTeamContractStringToListView();
         createCheckBoxListView(); //Needs addTeamContractStringToListView
         updateTeamNumberLabel();
+
     }
 
     public void updateTeamNumberLabel(){
@@ -68,7 +71,7 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
     }
 
     public void addTeamContractStringToListView(){
-        arr = teamContract.getPitDataArrayList(); //Look to TeamContract for the creation function
+        arr = teamContract.getPitDataArrayList(this); //Look to TeamContract for the creation function
     }
 
 
@@ -76,7 +79,7 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
     @Override
     public void onClick(View view)
     {
-        if (view.getId() == R.id.btn_check_all) {
+        /*if (view.getId() == R.id.btn_check_all) {
             for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
                 lvCheckBox.setItemChecked(i, true);
             }
@@ -85,12 +88,30 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
             for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
                 lvCheckBox.setItemChecked(i, false);
             }
-        }
-        if(view.getId() == R.id.btn_checked_boxes){
+        }*/
+        if(view.getId() == R.id.btn_clear_all){
+            //Creates string to put stuff into the Team Table
+            String queryString = "INSERT INTO " + TeamContract.TeamEntry.TABLE_NAME + "(";
+            int i = 0;
+            for (String str : teamContract.getPitDataArrayList(this)) {
+                if (i == teamContract.getPitDataArrayList(this).size())
+                    queryString += str + "), VALUES (";
+                else {
+                    queryString += str + ", ";
+                    i++;
+                }
+            }
+
+            //Runs the sqlScript
+            db.execSQL(queryString);
+            //FOR TESTING DB ONLY
+
+
+
             String msg = "";
-            for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
+            for (i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
                 if(lvCheckBox.isItemChecked(i)){
-                    msg = msg + Integer.toString(i)+ ", ";
+                    msg += Integer.toString(i)+ ", ";
                 }
             }
             Toast.makeText(PitScoutingActivity.this, "Found: " + msg, Toast.LENGTH_SHORT).show();

@@ -5,10 +5,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
@@ -78,6 +78,7 @@ public class TeamContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ROBOT_DRIVE_MOTOR_COUNT + INT11 + COMMA_SEP
                         + COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE + VC45 + COMMA_SEP
                         + COLUMN_NAME_ROBOT_DESCRIPTION + VC2000 + COMMA_SEP
+                        + COLUMN_NAME_PIT_SCOUT_COMMENTS + VC2000 + COMMA_SEP
                         + COLUMN_NAME_CAN_COLLECT_GROUND_FUEL_ + INT11 + COMMA_SEP
                         + COLUMN_NAME_CAN_COLLECT_FEEDER_FUEL + INT11 + COMMA_SEP
                         + COLUMN_NAME_CAN_COLLECT_HOPPER_FUEL + INT11 + COMMA_SEP
@@ -97,41 +98,30 @@ public class TeamContract implements SQLDataTypeDefines {
 
     }
 
-    public ArrayList<String> getPitDataArrayList(){
+
+    public ArrayList<String> getPitDataArrayList(Context c){
         ArrayList<String> pitData = new ArrayList<String>();
-        pitData.add("Can Collect Ground Fuel");
-        pitData.add("Can Collect Feeder Fuel");
-        pitData.add("Can Collect Hopper Fuel");
-        pitData.add("Can Activate Hoppers");
-        pitData.add("Can Score Fuel Low");
-        pitData.add("Can Score High Low");
-        pitData.add("Can Collect Feeder Gears");
-        pitData.add("Can Collect Ground Gears");
-        pitData.add("Can Score Gears");
-        pitData.add("Can Climb");
-        pitData.add("Can Activate Touchpad");
-        pitData.add("Uses Own Rope");
+        for(String str : c.getResources().getStringArray(R.array.pit_action_array))
+            pitData.add(str);
         return pitData;
     }
 
-    public String getTeamListQuery()
-    {
+
+
+    public String getTeamListQuery() {
         String query = "SELECT " + TeamEntry.COLUMN_NAME_ID + ", " + TeamEntry.COLUMN_NAME_TEAM_NUMBER + " FROM " + TeamEntry.TABLE_NAME;
         return query;
     }
 
-    public void queryInsertTeamData(HashMap<String, XMLParser.TableColumn> teamMap, Context c)
-    {
+    public void queryInsertTeamData(HashMap<String, XMLParser.TableColumn> teamMap, Context c) {
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues content = new ContentValues();
-        if(teamMap.containsKey(TeamContract.TeamEntry.COLUMN_NAME_ID))
-        {
+        if(teamMap.containsKey(TeamContract.TeamEntry.COLUMN_NAME_ID)) {
             teamMap.remove(TeamContract.TeamEntry.COLUMN_NAME_ID);
         }
-        for(String key : teamMap.keySet())
-        {
+        for(String key : teamMap.keySet()) {
             if(teamMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
                 content.put(key, ((XMLParser.TableStringColumn) teamMap.get(key)).getValue());
             } else if(teamMap.get(key).getClass() == XMLParser.TableIntegerColumn.class){

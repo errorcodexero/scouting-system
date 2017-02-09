@@ -18,7 +18,7 @@ public class TeamMatchActionContract implements SQLDataTypeDefines {
         public static final String COLUMN_NAME_TABLET_ID = "tablet_id";
         public static final String COLUMN_NAME_TEAM_MATCH_ID = "team_match_id";
         public static final String COLUMN_NAME_ACTION_TYPE_ID = "action_type_id";
-        public static final String COLUMN_NAME_ACTION_QUANTITY = "action_quantity";
+        public static final String COLUMN_NAME_ACTION_QUANTITY = "quantity";
         public static final String COLUMN_NAME_START_TIME = "action_start_time";
         public static final String COLUMN_NAME_END_TIME = "action_end_time";
         public static final String COLUMN_NAME_OBJECT_COUNT = "action_object_count";
