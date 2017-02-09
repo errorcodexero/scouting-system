@@ -1,10 +1,10 @@
 <NewDataSet>
   <Table>
     <_id>1</_id>
-    <name>Auto Line Crossed</name>
-    <description>Auto Line Crossed</description>
+    <name>auto_baseline_crossed</name>
+    <description>Auto Baseline Cross</description>
     <match_phase>Auto</match_phase>
-    <points>4</points>
+    <points>5</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
@@ -14,106 +14,221 @@
   </Table>
   <Table>
     <_id>2</_id>
-    <name>Auto Bunnies Picked-up</name>
-    <description>Auto Bunnies Picked-up</description>
+    <name>auto_low_dump</name>
+    <description>Auto Low Boiler Score</description>
     <match_phase>Auto</match_phase>
-    <points>0</points>
+    <points>0.333</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Bunny Handling</category>
+    <category>Fuel Scoring</category>
     <table_name>action_type</table_name>
   </Table>
   <Table>
     <_id>3</_id>
-    <name>Auto Bunnies Scored</name>
-    <description>Auto Bunnies Scored</description>
+    <name>auto_high_scores</name>
+    <description>Auto High Boiler Score</description>
     <match_phase>Auto</match_phase>
-    <points>15</points>
+    <points>1</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Bunny Handling</category>
+    <category>Fuel Scoring</category>
     <table_name>action_type</table_name>
   </Table>
   <Table>
     <_id>4</_id>
-    <name>Lines Crossed</name>
-    <description>Lines Crossed</description>
-    <match_phase>Teleop</match_phase>
-    <points>2</points>
+    <name>auto_high_missed</name>
+    <description>Auto High Boiler Misses</description>
+    <match_phase>Auto</match_phase>
+    <points>0</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Crossing</category>
+    <category>Fuel Scoring</category>
     <table_name>action_type</table_name>
   </Table>
   <Table>
     <_id>5</_id>
-    <name>Bunnies Deposited</name>
-    <description>Bunnies Scored</description>
-    <match_phase>Teleop</match_phase>
+    <name>auto_gear_delivered</name>
+    <description>Auto Gear Delivered</description>
+    <match_phase>Auto</match_phase>
     <points>0</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Bunny Handling</category>
+    <category>Gears</category>
     <table_name>action_type</table_name>
   </Table>
   <Table>
     <_id>6</_id>
-    <name>Bunnies Picked-up</name>
-    <description>Bunnies Picked-up</description>
-    <match_phase>Teleop</match_phase>
+    <name>auto_fuel_bin_triggered</name>
+    <description>Auto Fuel Bin Triggered</description>
+    <match_phase>Auto</match_phase>
     <points>0</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Bunny Handling</category>
+    <category>Fuel Bin</category>
     <table_name>action_type</table_name>
   </Table>
   <Table>
     <_id>7</_id>
-    <name>Bunnies Stolen</name>
-    <description>Bunnies Stolen</description>
+    <name>tele_low_dumps</name>
+    <description>Teleop Low Dumps</description>
     <match_phase>Teleop</match_phase>
     <points>0</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Bunny Handling</category>
+    <category>Fuel Scoring</category>
     <table_name>action_type</table_name>
   </Table>
   <Table>
     <_id>8</_id>
-    <name>Shots Hit</name>
-    <description>Shots Hit</description>
-    <match_phase>Teleop</match_phase>
-    <points>0</points>
-    <opponent_points>-5</opponent_points>
-    <qual_points>0</qual_points>
-    <foul_points>0</foul_points>
-    <coop_flag>N</coop_flag>
-    <category>Shooting</category>
-    <table_name>action_type</table_name>
-  </Table>
-  <Table>
-    <_id>9</_id>
-    <name>Shots Missed</name>
-    <description>Shots Missed</description>
+    <name>tele_high_scores</name>
+    <description>Teleop High Scores</description>
     <match_phase>Teleop</match_phase>
     <points>0</points>
     <opponent_points>0</opponent_points>
     <qual_points>0</qual_points>
     <foul_points>0</foul_points>
     <coop_flag>N</coop_flag>
-    <category>Shooting</category>
+    <category>Fuel Scoring</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>9</_id>
+    <name>tele_high_missed</name>
+    <description>Teleop High Missed</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Fuel Scoring</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>10</_id>
+    <name>tele_gear_delivered</name>
+    <description>Teleop Gears Delivered</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Gear</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>11</_id>
+    <name>tele_fuel_bin_triggered</name>
+    <description>Teleop Fuel Bin Delivered</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Fuel Scoring</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>12</_id>
+    <name>tele_loading_station_trip</name>
+    <description>Teleop Loading Station Trip</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Loading</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>13</_id>
+    <name>tele_try_climb</name>
+    <description>Teleop Try Climb</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Climbing</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>14</_id>
+    <name>tele_did_climb</name>
+    <description>Teleop Did Climb</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Climbing</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>15</_id>
+    <name>tele_tiggered_pressure_pad</name>
+    <description>Pressure Pad Triggered On Climb</description>
+    <match_phase>Teleop</match_phase>
+    <points>50</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>0</coop_flag>
+    <category>Climbing</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>16</_id>
+    <name>tele_played_defensively</name>
+    <description>Teleop Played Defensively</description>
+    <match_phase>Teleop</match_phase>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Defense</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>17</_id>
+    <name>breakdown</name>
+    <description>No description</description>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Uncategorized</category>
+    <table_name>action_type</table_name>
+  </Table>
+  <Table>
+    <_id>18</_id>
+    <name>disconnect</name>
+    <description>No description</description>
+    <points>0</points>
+    <opponent_points>0</opponent_points>
+    <qual_points>0</qual_points>
+    <foul_points>0</foul_points>
+    <coop_flag>N</coop_flag>
+    <category>Uncategorized</category>
     <table_name>action_type</table_name>
   </Table>
 </NewDataSet>

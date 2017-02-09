@@ -10,7 +10,7 @@
     <motto>'Building Robots, Building People'</motto>
     <rookie_year>2004</rookie_year>
     <robot_name>Dash</robot_name>
-    <robot_drive_base>Holononic</robot_drive_base>
+    <robot_drive_type>Holononic</robot_drive_type>
     <robot_wheel_count>3</robot_wheel_count>
     <robot_drive_motor_count>6</robot_drive_motor_count>
     <robot_software_language>C++</robot_software_language>
@@ -27,7 +27,7 @@
     <motto>'Building Robots, Building People'</motto>
     <rookie_year>2004</rookie_year>
     <robot_name>Hammy</robot_name>
-    <robot_drive_base>H-Drive</robot_drive_base>
+    <robot_drive_type>H-Drive</robot_drive_type>
     <robot_wheel_count>5</robot_wheel_count>
     <robot_drive_motor_count>5</robot_drive_motor_count>
     <robot_software_language>C++</robot_software_language>
@@ -43,7 +43,7 @@
     <country>USA</country>
     <motto>"24 hours a day, 7 days a week, 1 build season"</motto>
     <rookie_year>2008</rookie_year>
-    <robot_drive_base>NA</robot_drive_base>
+    <robot_drive_type>NA</robot_drive_type>
     <robot_software_language>NA</robot_software_language>
     <table_name>team</table_name>
   </Table>
@@ -57,7 +57,7 @@
     <country>USA</country>
     <motto>"24 hours a day, 7 days a week, 1 build season"</motto>
     <rookie_year>2008</rookie_year>
-    <robot_drive_base>NA</robot_drive_base>
+    <robot_drive_type>NA</robot_drive_type>
     <robot_software_language>NA</robot_software_language>
     <table_name>team</table_name>
   </Table>
@@ -71,7 +71,7 @@
     <country>USA</country>
     <motto>"Do great things"</motto>
     <rookie_year>2011</rookie_year>
-    <robot_drive_base>NA</robot_drive_base>
+    <robot_drive_type>NA</robot_drive_type>
     <robot_software_language>NA</robot_software_language>
     <table_name>team</table_name>
   </Table>
@@ -85,7 +85,7 @@
     <country>USA</country>
     <motto>"Do great things"</motto>
     <rookie_year>2011</rookie_year>
-    <robot_drive_base>NA</robot_drive_base>
+    <robot_drive_type>NA</robot_drive_type>
     <robot_software_language>NA</robot_software_language>
     <table_name>team</table_name>
   </Table>

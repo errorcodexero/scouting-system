@@ -12,17 +12,4 @@
     <tba_event_code>A</tba_event_code>
     <table_name>event</table_name>
   </Table>
-  <Table>
-    <_id>2</_id>
-    <tba_event_key>TBA_2</tba_event_key>
-    <name>Steamworks Scrimmage</name>
-    <short_name>Scrimmage</short_name>
-    <event_type>Scrimmage</event_type>
-    <event_district>PNW</event_district>
-    <year>2017</year>
-    <week>0</week>
-    <location>Corvallis</location>
-    <tba_event_code>B</tba_event_code>
-    <table_name>event</table_name>
-  </Table>
 </NewDataSet>
