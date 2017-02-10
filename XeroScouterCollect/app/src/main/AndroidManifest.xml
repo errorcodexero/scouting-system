@@ -30,7 +30,11 @@
         <activity
             android:name=".activities.DataConnectionActivity"/>
         <activity
+            android:name=".activities.MatchConfirmationActivity_backup"/>
+        <activity
             android:name=".activities.MatchConfirmationActivity"/>
+        <fragment
+            android:name=".activities.MatchConfirmationFragment"/>
         <activity
             android:name=".activities.SanityCheckActivity"/>
         <activity

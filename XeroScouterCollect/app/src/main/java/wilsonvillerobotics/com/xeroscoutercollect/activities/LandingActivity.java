@@ -112,6 +112,7 @@ public class LandingActivity extends Activity implements View.OnClickListener{
             Intent matchConfirmationActivity = new Intent(this, MatchConfirmationActivity.class);
             matchConfirmationActivity.putExtra("event_name", eventName);
             matchConfirmationActivity.putExtra("tablet_id", tabletID);
+            matchConfirmationActivity.putExtra("nextScreen", "stand");
             startActivity(matchConfirmationActivity);
         } else if(view.getId() == R.id.btn_start_pit_scouting) {
             Intent beforePitScoutingIntent = new Intent(this, BeforePitScoutingActivity.class);
@@ -119,8 +120,11 @@ public class LandingActivity extends Activity implements View.OnClickListener{
             beforePitScoutingIntent.putExtra("tablet_id", tabletID);
             startActivity(beforePitScoutingIntent);
         } else if(view.getId() == R.id.btn_start_drive_team_feedback) {
-            Intent driveTeamFeedbackActivity = new Intent(this,DriveTeamFeedbackActivity.class);
-            startActivity(driveTeamFeedbackActivity);
+            Intent matchConfirmationActivity = new Intent(this, MatchConfirmationActivity.class);
+            matchConfirmationActivity.putExtra("event_name", eventName);
+            matchConfirmationActivity.putExtra("tablet_id", tabletID);
+            matchConfirmationActivity.putExtra("nextScreen", "drive");
+            startActivity(matchConfirmationActivity);
         }
     }
 }

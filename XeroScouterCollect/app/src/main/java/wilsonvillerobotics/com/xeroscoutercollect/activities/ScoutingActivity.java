@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -34,10 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
@@ -436,7 +431,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         int index = -1;
         int action_id = 0;
         boolean decrement = false;
-        Intent mainScreen = new Intent(this, MatchConfirmationActivity.class);
+        Intent mainScreen = new Intent(this, MatchConfirmationActivity_backup.class);
         String queryString = "";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
