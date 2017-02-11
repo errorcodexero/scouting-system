@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.support.v4.app.FragmentActivity;
+
 import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,13 +30,14 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.fragments.StandMatchConfirmationFragment;
 import wilsonvillerobotics.com.xeroscoutercollect.models.MatchModel;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
 
 /**
  * Created by Luke on 11/5/2016.
  */
-public class MatchConfirmationActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class MatchConfirmationActivity extends FragmentActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private final int NUM_TEAMS = 6;
     private Spinner spinner_match_list;
     private Spinner spinner_team_list;
@@ -89,9 +92,26 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
         landingActivity = new Intent(this, LandingActivity.class);
 
-        spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
-        spinner_team_list = (Spinner) findViewById(R.id.spinner_team_list);
-        btn_next = (Button) findViewById(R.id.btn_next);
+        // update based on button selected on previous screen
+        boolean standScouting = true;
+
+        if(findViewById(R.id.ll_main_layout) != null) {
+
+            if(savedInstanceState != null) {
+                return;
+            }
+
+            if(standScouting) {
+                StandMatchConfirmationFragment standFragmemt = new StandMatchConfirmationFragment();
+                standFragmemt.setArguments(getIntent().getExtras());
+                getSupportFragmentManager().beginTransaction().
+                        add(R.id.ll_main_layout, standFragmemt).commit();
+
+
+            }
+        }
+
+
 
 
 
@@ -108,26 +128,41 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         resetLblColors(lbl_list);
         populateMatchTable();
         highlightTabletIdTeam();
-        addItemsToMatchSpinner();
-        addItemsToTeamSpinner();
+        //addItemsToMatchSpinner();
+        //addItemsToTeamSpinner();
         //addListenerOnButton();
     }
 
     private void doManualSettingCheck() {
-        if(manualSelection){
-            teamSpinnerActive = false;
-            spinner_team_list.setEnabled(teamSpinnerActive);
-            nextButtonActive = false;
-            btn_next.setEnabled(nextButtonActive);
+        if(spinner_team_list != null) {
+            if (manualSelection) {
+                teamSpinnerActive = false;
+                spinner_team_list.setEnabled(teamSpinnerActive);
+                nextButtonActive = false;
+                btn_next.setEnabled(nextButtonActive);
+            }
+            spinner_team_list.setVisibility(View.INVISIBLE);
         }
-        spinner_team_list.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onStart(){
         super.onStart();
-        spinner_match_list.setOnItemSelectedListener(this);
-        spinner_team_list.setOnItemSelectedListener(this);
+
+        StandMatchConfirmationFragment frag = (StandMatchConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.ll_main_layout);
+
+        spinner_match_list = frag.getMatchListSpinner(); // (Spinner) findViewById(R.id.spinner_match_list);
+        spinner_team_list = frag.getTeanListSpinner(); // (Spinner) findViewById(R.id.spinner_team_list);
+        btn_next = frag.getNextButton(); // (Button) findViewById(R.id.btn_next);
+
+        if(spinner_match_list != null) {
+            spinner_match_list.setOnItemSelectedListener(this);
+            addItemsToMatchSpinner();
+        }
+        if(spinner_team_list != null) {
+            spinner_team_list.setOnItemSelectedListener(this);
+            addItemsToTeamSpinner();
+        }
     }
 
 
@@ -188,19 +223,25 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
     private void formatTabletTeamCell(int txtTeamID) {
         TextView tempView;
         tempView = (TextView) findViewById(txtTeamID);
-        tempView.setBackgroundColor(Color.YELLOW);
-        tempView.setTextColor(Color.BLACK);
+        if(tempView != null) {
+            tempView.setBackgroundColor(Color.YELLOW);
+            tempView.setTextColor(Color.BLACK);
+        }
     }
 
     public void resetLblColors(ArrayList<Integer> list){
         TextView tempView;
         for(int i = 0; i < list.size()/2; i++){
             tempView = (TextView) findViewById(list.get(i));
-            tempView.setBackgroundColor(Color.RED);
+            if(tempView != null) {
+                tempView.setBackgroundColor(Color.RED);
+            }
         }
         for(int i = (list.size()/2); i < list.size(); i++){
             tempView = (TextView) findViewById(list.get(i));
-            tempView.setBackgroundColor(Color.BLUE);
+            if(tempView != null) {
+                tempView.setBackgroundColor(Color.BLUE);
+            }
         }
     }
 
@@ -287,35 +328,43 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
 
     //Add matches to spinner
     public void addItemsToMatchSpinner() {
-        match_list = new ArrayList<String>();
-        match_list.add("Select A Match");
-        for (MatchModel tempMatch : matchObjList) {
-            //match_list.add(String.valueOf(Integer.parseInt(tempMatch.getMatchNumber().replaceAll("[\\D]", ""))));
-            match_list.add(tempMatch.getMatchNumber());
-        }
+        if(spinner_match_list != null) {
+            match_list = new ArrayList<String>();
+            match_list.add("Select A Match");
+            for (MatchModel tempMatch : matchObjList) {
+                //match_list.add(String.valueOf(Integer.parseInt(tempMatch.getMatchNumber().replaceAll("[\\D]", ""))));
+                match_list.add(tempMatch.getMatchNumber());
+            }
 
-        matchDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, match_list);
-        matchDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_match_list.setAdapter(matchDataAdapter);
+            matchDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, match_list);
+            matchDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner_match_list.setAdapter(matchDataAdapter);
+        }
     }
 
     //Do only if manual selection is selected
     public void addItemsToTeamSpinner() {
-        if(manualSelection) {
-            Collection<String> teamNumbers = team_list.values();
-            ArrayList<String> teamArrayList = new ArrayList<String>(teamNumbers);
-            teamArrayList.add(0, "Select A Team");
-            teamDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamArrayList);
-            teamDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner_team_list.setAdapter(teamDataAdapter);
+        if(spinner_team_list != null) {
+            if (manualSelection) {
+                Collection<String> teamNumbers = team_list.values();
+                ArrayList<String> teamArrayList = new ArrayList<String>(teamNumbers);
+                teamArrayList.add(0, "Select A Team");
+                teamDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamArrayList);
+                teamDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner_team_list.setAdapter(teamDataAdapter);
+            }
         }
     }
 
 
     // get the selected dropdown list value
     public void addListenerOnButton() {
-        spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
-        btn_next = (Button) findViewById(R.id.btn_next);
+        if(spinner_match_list != null) {
+            spinner_match_list = (Spinner) findViewById(R.id.spinner_match_list);
+        }
+        if(btn_next != null) {
+            btn_next = (Button) findViewById(R.id.btn_next);
+        }
         //updateTeams();
     }
 
@@ -328,12 +377,16 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
             for (int i = 0; i < NUM_TEAMS; i++) {
                 String temp = matchObjList.get(currentSelectedMatch).getTeamNumber(i);
                 TextView tempView = (TextView) findViewById(lbl_list.get(i));
-                tempView.setText(temp);
+                if(tempView != null) {
+                    tempView.setText(temp);
+                }
             }
         }
         else{
             TextView tempView = (TextView) findViewById(lbl_list.get(currentSelectedTeamIndex));
-            tempView.setText(currentSelectedTeam);
+            if(tempView != null) {
+                tempView.setText(currentSelectedTeam);
+            }
         }
         highlightTabletIdTeam();
     }
@@ -390,25 +443,28 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
         int parentId = parent.getId();
         switch(parentId){
             case R.id.spinner_match_list:
-                Toast.makeText(this,spinner_match_list.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-                currentSelectedMatch = spinner_match_list.getSelectedItemPosition() - 1;
-                if(matchSpinnerHasBeenCreated) { //Prevents running on startup
-                    teamSpinnerActive = true;
-                    spinner_team_list.setEnabled(teamSpinnerActive);
-                    if(manualSelection){
-                        spinner_team_list.setVisibility(View.VISIBLE);
-                    }
+                if(spinner_match_list != null) {
+                    Toast.makeText(this, spinner_match_list.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                    currentSelectedMatch = spinner_match_list.getSelectedItemPosition() - 1;
+                    if (matchSpinnerHasBeenCreated) { //Prevents running on startup
+                        teamSpinnerActive = true;
+                        spinner_team_list.setEnabled(teamSpinnerActive);
+                        if (manualSelection) {
+                            spinner_team_list.setVisibility(View.VISIBLE);
+                        }
 
+                    }
+                    matchSpinnerHasBeenCreated = true;
                 }
-                matchSpinnerHasBeenCreated = true;
                 break;
             case R.id.spinner_team_list:
                 if(teamSpinnerHasBeenCreated) { //Prevents running on startup
                     currentSelectedTeam = ((TextView) view).getText().toString();
                     updateTeams();
                     nextButtonActive = true;
-                    btn_next.setEnabled(nextButtonActive);
-
+                    if(btn_next != null) {
+                        btn_next.setEnabled(nextButtonActive);
+                    }
                 }
                 teamSpinnerHasBeenCreated = true;
                 break;
