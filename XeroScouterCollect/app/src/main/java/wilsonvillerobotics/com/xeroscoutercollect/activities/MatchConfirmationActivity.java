@@ -363,7 +363,7 @@ public class MatchConfirmationActivity extends Activity implements View.OnClickL
             queryString = "SELECT * FROM team_match WHERE team_id = " + teamIdMap.get(tn) + " AND " + TeamMatchContract.TeamMatchEntry.COLUMN_NAME_MATCH_ID + " = " + matchId + ";";
             cursor = db.rawQuery(queryString, null);
             cursor.moveToFirst();
-            teamMatchId = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_ID));
+            teamMatchId = cursor.getInt(cursor.getColumnIndex(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID));
             //Toast.makeText(this, "TMA = " + teamMatchId, Toast.LENGTH_LONG).show();
 
 

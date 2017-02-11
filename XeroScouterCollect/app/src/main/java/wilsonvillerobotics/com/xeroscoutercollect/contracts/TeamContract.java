@@ -7,6 +7,7 @@ import android.provider.BaseColumns;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
@@ -105,6 +106,13 @@ public class TeamContract implements SQLDataTypeDefines {
             pitData.add(str);
         return pitData;
     }
+    public ArrayList<String> getPitDataDBNames(Context c){
+        ArrayList<String> pitDataDBNames = new ArrayList<String>();
+        for(String str : c.getResources().getStringArray(R.array.pit_action_array_db_names))
+            pitDataDBNames.add(str);
+        return pitDataDBNames;
+    }
+
 
 
 
@@ -137,5 +145,20 @@ public class TeamContract implements SQLDataTypeDefines {
         {
             e.printStackTrace();
         }
+    }
+    public void queryUpdateTeamPitData(Context c, long teamID, HashMap<String, Boolean> boolValues, HashMap<String,String> stringValues){
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        for(String key : boolValues.keySet()){
+            cv.put(key, boolValues.get(key));
+        }
+
+        for(String key : stringValues.keySet()){
+            cv.put(key, stringValues.get(key));
+        }
+
+        db.update(TeamEntry.TABLE_NAME, cv, "_id=" + teamID, null);
     }
 }

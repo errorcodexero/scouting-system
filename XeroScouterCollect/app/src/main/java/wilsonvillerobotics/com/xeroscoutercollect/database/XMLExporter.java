@@ -133,12 +133,12 @@ public class XMLExporter {
         if (startDataTag) {
             xmlResult = GenerateTagByName(DATA, 0, false, true);
             //Adds table name tag for DataManager
-            xmlResult += GenerateTagByName(TABLE,1,false,false);
-            xmlResult += GenerateTagByName(NAME, 2, false, false) + TABLE_NAME + GenerateTagByName(NAME, 0, true, true);
+            xmlResult += GenerateTagByName(TABLE,1,false,false) + "\n";
+            xmlResult += GenerateTagByName(NAME, 2, false, false) + TABLE_NAME + GenerateTagByName(NAME, 0, true, true) + "\n";
             xmlResult += GenerateTagByName(TABLE,1,true,true);
         }
 
-        xmlResult += GenerateTagByName(ROW, 1, false, true) + "\n";
+        xmlResult += GenerateTagByName(ROW, 1, false, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 2, false, false) +
                 cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 0, true, true);

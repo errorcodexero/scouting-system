@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class BeforePitScoutingActivity extends Activity implements View.OnClickL
     private DatabaseHelper dbHelper;
     private Spinner spinner_pit_team_list;
     private HashMap<Integer, String> teamList;
+    private ArrayList<Team> teamObjList;
     private ArrayAdapter<String> teamDataAdapter;
     private Intent pitScoutingActivity;
 
@@ -40,7 +42,8 @@ public class BeforePitScoutingActivity extends Activity implements View.OnClickL
 
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
         spinner_pit_team_list = (Spinner) findViewById(R.id.spinner_pit_team_list);
-        teamList = new HashMap<Integer, String>();
+        teamList = new HashMap<>();
+        teamObjList = new ArrayList<>();
 
 
         populateTeamList();
@@ -61,28 +64,56 @@ public class BeforePitScoutingActivity extends Activity implements View.OnClickL
                 int numIndex = cursor.getColumnIndex(TeamContract.TeamEntry.COLUMN_NAME_TEAM_NUMBER);
                 int id = cursor.getInt(idIndex);
                 String teamNum = cursor.getString(numIndex);
-                teamList.put(id, teamNum);
+                teamObjList.add(new Team(id, teamNum));
+                //teamList.put(id, teamNum);
             }
         } finally {
             cursor.close();
         }
     }
 
+
     public void addTeamListItemsToTeamSpinner() {
-        Collection<String> teamNumbers = teamList.values();
+        /*Collection<String> teamNumbers = teamList.values();
         ArrayList<String> teamArrayList = new ArrayList<String>(teamNumbers);
         teamArrayList.add(0, "Select A Team");
         teamDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamArrayList);
         teamDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_pit_team_list.setAdapter(teamDataAdapter);
+        spinner_pit_team_list.setAdapter(teamDataAdapter);*/
+        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, teamObjList);
+        spinner_pit_team_list.setAdapter(spinnerArrayAdapter);
     }
 
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btn_before_pit_next){
+            Team team = teamObjList.get(spinner_pit_team_list.getSelectedItemPosition());
             pitScoutingActivity = new Intent(this, PitScoutingActivity.class);
-            pitScoutingActivity.putExtra("team_number",spinner_pit_team_list.getSelectedItem().toString());
+            pitScoutingActivity.putExtra("teamId",team.getTeamId());
+            pitScoutingActivity.putExtra("teamNum",team.getTeamNum());
+
             startActivity(pitScoutingActivity);
+        }
+    }
+
+    public class Team implements Serializable{
+        private int teamId;
+        private String teamNum;
+
+        public Team(int teamId, String teamNum) {
+            this.teamId = teamId;
+            this.teamNum = teamNum;
+        }
+        public String toString(){
+            return teamNum;
+        }
+        public String getTeamNum(){
+            return teamNum;
+        }
+
+        public int getTeamId(){
+            return teamId;
         }
     }
 }

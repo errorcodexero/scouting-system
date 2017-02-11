@@ -94,21 +94,25 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/chbox_pit_field_1"
-                    android:layout_weight="30" />
+                    android:layout_weight="30"
+                    android:onClick="onCheckboxClicked"
+                    android:checked="false" />/>
 
                 <CheckBox
                     android:text="Java"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/chbox_pit_field_2"
-                    android:layout_weight="30" />
+                    android:layout_weight="30"
+                    android:onClick="onCheckboxClicked"/>/>
 
                 <CheckBox
                     android:text="LabView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/chbox_pit_field_3"
-                    android:layout_weight="30" />
+                    android:layout_weight="30"
+                    android:onClick="onCheckboxClicked"/>/>
 
                 <Space
                     android:layout_width="0dp"
@@ -133,7 +137,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/chbox_pit_field_4"
-                    android:layout_weight="30" />
+                    android:layout_weight="30"
+                    android:onClick="onCheckboxClicked"/>/>
 
                 <EditText
                     android:layout_width="0dp"
