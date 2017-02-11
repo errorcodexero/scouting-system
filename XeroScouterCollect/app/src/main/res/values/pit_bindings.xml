@@ -26,4 +26,18 @@
         <item name="action_11">Can Activate Touchpad</item>
         <item name="action_12">Uses Own Rope</item>
     </string-array>
+    <string-array name="pit_action_array_db_names">
+        <item name="action_1" >can_collect_ground_fuel</item>
+        <item name="action_2" >can_collect_feeder_fuel</item>
+        <item name="action_3" >can_collect_hopper_fuel</item>
+        <item name="action_4" >can_activate_hoppers</item>
+        <item name="action_5" >can_score_fuel_low</item>
+        <item name="action_6" >can_score_high_low</item>
+        <item name="action_7" >can_collect_feeder_gears</item>
+        <item name="action_8" >can_collect_ground_gears</item>
+        <item name="action_9" >can_score_gears</item>
+        <item name="action_10">can_climb</item>
+        <item name="action_11">can_activate_touchpad</item>
+        <item name="action_12">uses_own_rope</item>
+    </string-array>
 </resources>
