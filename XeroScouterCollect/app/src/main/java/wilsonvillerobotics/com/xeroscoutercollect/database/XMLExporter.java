@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
 
 import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry.TABLE_NAME;
@@ -179,7 +180,6 @@ public class XMLExporter {
     }
 
     public ArrayList<String> GenerateNewMatches() {
-
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         String queryStatement = "SELECT * FROM team_match_action WHERE _id > " + lastTeamMatchAction + ";";
@@ -207,6 +207,21 @@ public class XMLExporter {
             xmlResult.add(GenerateTagByName(DATA, 0, true, false));
             }
         return xmlResult;
-        }
     }
+
+    public ArrayList<String> generatePitExport(){
+        ArrayList<String> pitExport = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String queryStatement = "SELECT * FROM " + TeamContract.TeamEntry.TABLE_NAME + " WHERE _id > 0;";
+        Cursor cursor = db.rawQuery(queryStatement, null);
+        cursor.moveToFirst();
+        
+
+
+        return pitExport;
+    }
+
+}
+
 
