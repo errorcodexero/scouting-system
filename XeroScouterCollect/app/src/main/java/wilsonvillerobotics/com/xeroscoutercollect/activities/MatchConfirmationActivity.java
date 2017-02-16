@@ -38,7 +38,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
  * Created by Luke on 11/5/2016.
  */
 public class MatchConfirmationActivity extends FragmentActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-    private final int NUM_TEAMS = 6;
+    private final int NUM_TEAMS =6;
     private Spinner spinner_match_list;
     private Spinner spinner_team_list;
     private Button btn_next;
@@ -92,6 +92,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
         landingActivity = new Intent(this, LandingActivity.class);
 
+        currentSelectedMatch = 0;
+
         // update based on button selected on previous screen
         boolean standScouting = true;
 
@@ -110,26 +112,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
             }
         }
-
-
-
-
-
         matchSpinnerHasBeenCreated = false;
         manualSelection = false;
         isRed = false;
-
-        getSharedPrefs();
-        doManualSettingCheck();
-        updateTabletIdLabel();
-        populateTeamList();
-        getSelectedTeamIndex();
-        populateLblList();
-        resetLblColors(lbl_list);
-        populateMatchTable();
-        highlightTabletIdTeam();
-        //addItemsToMatchSpinner();
-        //addItemsToTeamSpinner();
         //addListenerOnButton();
     }
 
@@ -145,9 +130,10 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         }
     }
 
+
     @Override
-    public void onStart(){
-        super.onStart();
+    public void onResume(){
+        super.onResume();
 
         StandMatchConfirmationFragment frag = (StandMatchConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.ll_main_layout);
 
@@ -163,6 +149,17 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             spinner_team_list.setOnItemSelectedListener(this);
             addItemsToTeamSpinner();
         }
+        getSharedPrefs();
+        doManualSettingCheck();
+        updateTabletIdLabel();
+        populateTeamList();
+        getSelectedTeamIndex();
+        populateLblList();
+        resetLblColors(lbl_list);
+        populateMatchTable();
+        highlightTabletIdTeam();
+        addItemsToMatchSpinner();
+        addItemsToTeamSpinner();
     }
 
 
@@ -186,6 +183,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             case "6":
                 currentSelectedTeamIndex = 5;
                 break;
+            default:
+                currentSelectedTeamIndex = -1;
+                break;
         }
     }
 
@@ -199,7 +199,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             case 1:
                 formatTabletTeamCell(R.id.lbl_team_2);
                 isRed = true;
-                 break;
+                break;
             case 2:
                 formatTabletTeamCell(R.id.lbl_team_3);
                 isRed = true;
@@ -215,6 +215,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             case 5:
                 formatTabletTeamCell(R.id.lbl_team_6);
                 isRed = false;
+                break;
+            default:
+                Toast.makeText(this, "Invalid TabletID", Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -306,12 +309,6 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
         try {
             while(cursor.moveToNext()) {
-                int red1ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_1));
-                int red2ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_2));
-                int red3ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_3));
-                int blue1ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_1));
-                int blue2ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_2));
-                int blue3ID = cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_BLUE_3));
                 matchObjList.add(new MatchModel(
                         String.valueOf(cursor.getString(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_1))),
@@ -372,8 +369,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     //Updates the team field according to the selected match
     private void updateTeams() {
         //Toast.makeText(this,"Position: " + currentSelectedMatch,Toast.LENGTH_SHORT).show();
-        //currentSelectedMatch = Integer.valueOf(tempText);
-        if(!manualSelection) {
+        if(!manualSelection && currentSelectedMatch >= 0) {
             for (int i = 0; i < NUM_TEAMS; i++) {
                 String temp = matchObjList.get(currentSelectedMatch).getTeamNumber(i);
                 TextView tempView = (TextView) findViewById(lbl_list.get(i));
@@ -453,6 +449,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
                             spinner_team_list.setVisibility(View.VISIBLE);
                         }
 
+                    }
+                    if(!manualSelection){
+                        updateTeams();
                     }
                     matchSpinnerHasBeenCreated = true;
                 }

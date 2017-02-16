@@ -35,13 +35,13 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80">
+        android:layout_weight="90">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="50">
+            android:layout_weight="35">
 
             <ListView
                 android:layout_width="match_parent"
@@ -75,14 +75,14 @@
                 android:layout_height="10dp"
                 android:id="@+id/textView4"
                 android:layout_weight="15"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:gravity="center" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="20">
+                android:layout_weight="15">
 
                 <Space
                     android:layout_width="0dp"
@@ -143,41 +143,116 @@
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Language"
                     android:ems="0"
                     android:id="@+id/entry_field_language"
                     android:layout_weight="80"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:hint="Language" />
 
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:text="Robot Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView6"
+                    android:layout_weight="5"
+                    android:textSize="24sp"
+                    android:gravity="center" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="0"
+                    android:id="@+id/entry_field_drive_base"
+                    android:layout_weight="5"
+                    android:inputType="text"
+                    android:hint="Drive Base"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20"
+                android:paddingTop="10dp">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/entry_field_num_balls"
+                    android:layout_weight="1"
+                    android:hint="Number of Balls" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/entry_field_volume"
+                    android:layout_weight="1"
+                    android:hint="Volume of Ball Holder" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10" />
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="20" />
+                android:layout_weight="30" />
 
-            <TextView
-                android:text="Drive Base"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView6"
-                android:layout_weight="5"
-                android:textSize="18sp"
-                android:gravity="center" />
+                android:layout_height="0dp"
+                android:layout_weight="15">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Drive Base"
-                android:ems="0"
-                android:id="@+id/entry_field_drive_base"
-                android:layout_weight="10"
-                android:inputType="text" />
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="75" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="20" />
+                <Button
+                    android:text="Done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_pit_done"
+                    android:layout_weight="25"
+                    android:textSize="16sp"
+                    android:onClick="onClick"/>
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -213,7 +213,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             AlertDialog.Builder aDeleteBuilder = new AlertDialog.Builder(ScoutingActivity.this);
-                            aDeleteBuilder.setMessage("Would yfteamou like to delete the backup?")
+                            aDeleteBuilder.setMessage("Would you like to like to delete the backup?")
                                     .setCancelable(Boolean.FALSE)
                                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                         @Override

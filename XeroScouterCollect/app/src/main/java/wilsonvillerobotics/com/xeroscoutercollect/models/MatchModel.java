@@ -249,22 +249,22 @@ public class MatchModel {
     public String getTeamNumber(int teamNumber) {
         String tempTeamString = "";
         switch (teamNumber) {
-            case 1:
+            case 0:
                 tempTeamString =  red1Id;
                 break;
-            case 2:
+            case 1:
                 tempTeamString =  red2Id;
                 break;
-            case 3:
+            case 2:
                 tempTeamString =  red3Id;
                 break;
-            case 4:
+            case 3:
                 tempTeamString =  blue1Id;
                 break;
-            case 5:
+            case 4:
                 tempTeamString =  blue2Id;
                 break;
-            case 6:
+            case 5:
                 tempTeamString =  blue3Id;
                 break;
             default:

@@ -1,10 +1,13 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,10 +15,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,7 +38,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
  * Created by Luke on 11/15/2016.
  */
 
-public class PitScoutingActivity extends Activity implements View.OnClickListener  {
+public class PitScoutingActivity extends Activity implements View.OnClickListener {
 
     private Intent landingActivity;
 
@@ -44,6 +52,11 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
     private SQLiteDatabase db;
     private int teamId;
     private String teamNum;
+    private String baseFolder;
+    private String filename;
+
+    private HashMap<String, String> stringVals;
+    private HashMap<String, Boolean> boolVals;
 
     private ArrayList<Integer> ckBoxList;
 
@@ -57,6 +70,9 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
         Bundle b = i.getExtras();
         teamId = b.getInt("teamId");
         teamNum = b.getString("teamNum");
+
+        stringVals = new HashMap<>();
+        boolVals = new HashMap<>();
 
         //added code to do list view with checkboxes
         btn_check_all = (Button)findViewById(R.id.btn_check_all);
@@ -72,8 +88,21 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
         addTeamContractStringToListView();
         createCheckBoxListView(); //Needs addTeamContractStringToListView
         updateTeamNumberLabel();
+        createFileAssociations();
 
 
+    }
+    public void createFileAssociations(){
+        //Sets up file location data
+        filename = "pitBackup" + ".ser";
+        //Gets the /mnt/sdcard/Download folder path
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+        }
+        // revert to using internal storage (not sure if there's an equivalent to the above)
+        else {
+            baseFolder = this.getFilesDir().getAbsolutePath();
+        }
     }
 
     public void updateTeamNumberLabel(){
@@ -146,39 +175,72 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
         return temp.getText().toString();
     }
 
+    public void updateHashMaps(){
+        for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
+            boolVals.put(dbStringArray.get(i), lvCheckBox.isItemChecked(i));
+        }
+        stringVals.put(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE, getLanguageString());
+        stringVals.put(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE,
+                ((EditText) findViewById(R.id.entry_field_num_balls)).getText().toString());
+        stringVals.put(TeamContract.TeamEntry.COLUMN_NAME_MAX_FUEL_CAPACITY,
+                ((EditText) findViewById(R.id.entry_field_drive_base)).getText().toString());
+        stringVals.put(TeamContract.TeamEntry.COLUMN_NAME_FUEL_CONTAINER_VOLUME,
+                ((EditText) findViewById(R.id.entry_field_drive_base)).getText().toString());
+    }
+    public void serializeMap(HashMap<String, Boolean> boolMap, HashMap<String,String> stringMap){
+        //Outputs the file
+        File file = new File(baseFolder + File.separator + filename);
+        file.getParentFile().mkdirs();
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+        try {
+            fos = new FileOutputStream(file);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(boolMap);
+            oos.close();
+            fos.close();
+            Log.d("ScoutingActivity","Serialized entryValueMap at filename: " + filename);
+        }
+        catch (IOException ioe) {
+            System.out.println(ioe.getStackTrace());
+        }
+    }
+
     @Override
     public void onClick(View view)
     {
-        /*if (view.getId() == R.id.btn_check_all) {
-            for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
-                lvCheckBox.setItemChecked(i, true);
-            }
-        }
         if(view.getId() == R.id.btn_clear_all){
             for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
                 lvCheckBox.setItemChecked(i, false);
             }
-        }*/
+        }
 
-        if(view.getId() == R.id.btn_clear_all) {
-            HashMap<String, Boolean> boolVals = new HashMap<>();
-            if (view.getId() == R.id.btn_clear_all) {
-                for (int i = 0; i < lvCheckBox.getAdapter().getCount(); i++) {
-                    boolVals.put(dbStringArray.get(i), lvCheckBox.isItemChecked(i));
-                }
-            }
-            HashMap<String, String> stringVals = new HashMap<>();
-            stringVals.put(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_SOFTWARE_LANGUAGE, getLanguageString());
-            stringVals.put(TeamContract.TeamEntry.COLUMN_NAME_ROBOT_DRIVE_TYPE,
-                    ((EditText) findViewById(R.id.entry_field_drive_base)).getText().toString());
-
-
-            try {
-                teamContract.queryUpdateTeamPitData(PitScoutingActivity.this, teamId, boolVals, stringVals);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
+        if(view.getId() == R.id.btn_pit_done) {
+            AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
+            aBuilder.setMessage("re you sure?")
+                    .setCancelable(Boolean.FALSE)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            updateHashMaps();
+                            try {
+                                teamContract.queryUpdateTeamPitData(PitScoutingActivity.this, teamId, boolVals, stringVals);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            Intent beforePitScoutingIntent = new Intent(getApplicationContext(), BeforePitScoutingActivity.class);
+                            startActivity(beforePitScoutingIntent);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = aBuilder.create();
+            alert.setTitle("Alert");
+            alert.show();
         }
     }
 }
