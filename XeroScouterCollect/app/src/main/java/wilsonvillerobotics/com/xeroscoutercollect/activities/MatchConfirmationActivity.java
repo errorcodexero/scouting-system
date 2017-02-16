@@ -86,13 +86,13 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
         matchObjList = new ArrayList<MatchModel>();
         lbl_list = new ArrayList<Integer>();
-        team_list = new HashMap<Integer, String>();
+        team_list = new HashMap<>();
+        teamIdMap = new HashMap<>();
+
 
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
         sanityCheckActivity = new Intent(this, SanityCheckActivity.class);
         landingActivity = new Intent(this, LandingActivity.class);
-
-        currentSelectedMatch = 0;
 
         // update based on button selected on previous screen
         boolean standScouting = true;
@@ -140,6 +140,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         spinner_match_list = frag.getMatchListSpinner(); // (Spinner) findViewById(R.id.spinner_match_list);
         spinner_team_list = frag.getTeanListSpinner(); // (Spinner) findViewById(R.id.spinner_team_list);
         btn_next = frag.getNextButton(); // (Button) findViewById(R.id.btn_next);
+        btn_next.setEnabled(false);
 
         if(spinner_match_list != null) {
             spinner_match_list.setOnItemSelectedListener(this);
@@ -274,8 +275,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         }
     }
 
-    private void populateTeamList()
-    {
+    private void populateTeamList() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         teamIdMap = new HashMap<>();
@@ -371,7 +371,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         //Toast.makeText(this,"Position: " + currentSelectedMatch,Toast.LENGTH_SHORT).show();
         if(!manualSelection && currentSelectedMatch >= 0) {
             for (int i = 0; i < NUM_TEAMS; i++) {
-                String temp = matchObjList.get(currentSelectedMatch).getTeamNumber(i);
+                String temp = team_list.get(Integer.parseInt(matchObjList.get(currentSelectedMatch).getTeamNumber(i)));
                 TextView tempView = (TextView) findViewById(lbl_list.get(i));
                 if(tempView != null) {
                     tempView.setText(temp);
@@ -409,7 +409,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             else{
                 tn = currentSelectedTeam;
             }
-            queryString = "SELECT * FROM team_match WHERE team_id = " + teamIdMap.get(tn) + " AND " + TeamMatchContract.TeamMatchEntry.COLUMN_NAME_MATCH_ID + " = " + matchId + ";";
+
+            //int team_id = teamIdMap.get(tn);
+            queryString = "SELECT * FROM team_match WHERE team_id = " + tn + " AND " + TeamMatchContract.TeamMatchEntry.COLUMN_NAME_MATCH_ID + " = " + matchId + ";";
             cursor = db.rawQuery(queryString, null);
             cursor.moveToFirst();
             teamMatchId = cursor.getInt(cursor.getColumnIndex(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID));
@@ -421,7 +423,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             //Cursor cursor = db.execSQL("SELECT * FROM team_match WHERE id = " + tn);
 
             sanityCheckActivity.putExtra("background",isRed);
-            sanityCheckActivity.putExtra("team_number", tn);
+            sanityCheckActivity.putExtra("team_number", team_list.get(Integer.parseInt(tn)));
             sanityCheckActivity.putExtra("team_match_id", teamMatchId);
             startActivity(sanityCheckActivity);
         }
@@ -445,15 +447,19 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
                     if (matchSpinnerHasBeenCreated) { //Prevents running on startup
                         teamSpinnerActive = true;
                         spinner_team_list.setEnabled(teamSpinnerActive);
+                        if(btn_next != null) {
+                            btn_next.setEnabled(matchSpinnerHasBeenCreated);
+                        }
                         if (manualSelection) {
                             spinner_team_list.setVisibility(View.VISIBLE);
                         }
-
                     }
+
                     if(!manualSelection){
                         updateTeams();
                     }
                     matchSpinnerHasBeenCreated = true;
+
                 }
                 break;
             case R.id.spinner_team_list:
