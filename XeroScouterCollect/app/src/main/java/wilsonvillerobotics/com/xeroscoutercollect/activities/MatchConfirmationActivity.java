@@ -379,9 +379,11 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             }
         }
         else{
-            TextView tempView = (TextView) findViewById(lbl_list.get(currentSelectedTeamIndex));
-            if(tempView != null) {
-                tempView.setText(currentSelectedTeam);
+            if(currentSelectedTeamIndex >= 0) {
+                TextView tempView = (TextView) findViewById(lbl_list.get(currentSelectedTeamIndex));
+                if (tempView != null) {
+                    tempView.setText(currentSelectedTeam);
+                }
             }
         }
         highlightTabletIdTeam();
