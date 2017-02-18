@@ -18,6 +18,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
  * Created by Luke on 11/29/2016.
  */
 
+
 public class TeamContract implements SQLDataTypeDefines {
 
     public TeamContract(){}
@@ -106,7 +107,7 @@ public class TeamContract implements SQLDataTypeDefines {
             pitData.add(str);
         return pitData;
     }
-    public ArrayList<String> getPitDataDBNames(Context c){
+    public static ArrayList<String> getPitDataDBNames(Context c){
         ArrayList<String> pitDataDBNames = new ArrayList<String>();
         for(String str : c.getResources().getStringArray(R.array.pit_action_array_db_names))
             pitDataDBNames.add(str);

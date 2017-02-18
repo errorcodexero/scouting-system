@@ -33,6 +33,8 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
+import org.apache.commons.net.ftp.FTP;
+
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
     private XMLParser parser;
@@ -191,6 +193,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 baseFolder = this.getFilesDir().getAbsolutePath();
             }
             ArrayList<String> string = xmlExporter.GenerateNewMatches();
+            String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
             File file = new File(baseFolder + File.separator + filename);
             file.getParentFile().mkdirs();
             FileOutputStream fos;

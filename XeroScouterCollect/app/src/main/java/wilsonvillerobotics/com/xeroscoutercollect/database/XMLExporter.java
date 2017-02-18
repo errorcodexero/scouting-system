@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
+import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
+import wilsonvillerobotics.com.xeroscoutercollect.models.TeamModel;
 
 import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry.TABLE_NAME;
 
@@ -79,6 +81,95 @@ public class XMLExporter {
                 + "datetime(), datetime(), 0);");
     */
 
+    public String generateTeamData(Integer teamId, Boolean startDataTag, Boolean endDataTag, Context context) {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String queryStatement = "SELECT * FROM team WHERE _id = " + teamId + ";";
+
+        Cursor cursor = db.rawQuery(queryStatement, null);
+        cursor.moveToFirst();
+
+        String xmlResult = "";
+        if (startDataTag) {
+            xmlResult = GenerateTagByName(DATA, 0, false, true);
+        }
+
+        xmlResult += GenerateTagByName(ROW, 1, false, true);
+
+        for ( String i : TeamContract.getPitDataDBNames(context)) {
+
+            if (cursor.getType(cursor.getColumnIndex(i)) == Cursor.FIELD_TYPE_INTEGER) {
+
+                xmlResult += GenerateTagByName(i, 2, false, false) +
+                        cursor.getInt(cursor.getColumnIndex(i)) + GenerateTagByName(i, 0, true, true);
+
+            } else if (cursor.getType(cursor.getColumnIndex(i)) == Cursor.FIELD_TYPE_STRING) {
+                xmlResult += GenerateTagByName(i, 2, false, false) +
+                        cursor.getString(cursor.getColumnIndex(i)) + GenerateTagByName(i, 0, true, true);
+            }
+
+        }
+        if (endDataTag) {
+            xmlResult = GenerateTagByName(DATA, 0, false, true);
+        }
+        return xmlResult;
+
+    }
+
+    public String generateAllTeamData(Integer teamId, Boolean startDataTag, Boolean endDataTag, Context context) {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String queryStatement = "SELECT * FROM team";
+
+        Cursor cursor = db.rawQuery(queryStatement, null);
+        cursor.moveToFirst();
+
+        String xmlResult = "";
+        if (startDataTag) {
+            xmlResult = GenerateTagByName(DATA, 0, false, true);
+        }
+
+        xmlResult += GenerateTagByName(ROW, 1, false, true);
+
+        String tempString = "";
+
+        int tempTypeHolder = 0;
+
+        while(cursor.moveToNext()) {
+
+            for ( String i : TeamContract.getPitDataDBNames(context)) {
+
+
+                tempTypeHolder = cursor.getType(cursor.getColumnIndex(i));
+
+                if (tempTypeHolder == Cursor.FIELD_TYPE_INTEGER) {
+
+                    tempString = GenerateTagByName(i, 2, false, false) +
+                            cursor.getInt(cursor.getColumnIndex(i)) + GenerateTagByName(i, 0, true, true);
+
+                    xmlResult += tempString;
+
+                } else if (tempTypeHolder == Cursor.FIELD_TYPE_STRING) {
+
+                    tempString = GenerateTagByName(i, 2, false, false) +
+                            cursor.getString(cursor.getColumnIndex(i)) + GenerateTagByName(i, 0, true, true);
+
+                    xmlResult += tempString;
+
+                }
+                tempString = "";
+
+            }
+        }
+        if (endDataTag) {
+            xmlResult += GenerateTagByName(DATA, 0, false, true);
+        }
+        return xmlResult;
+
+    }
+
     private String GenerateTeamMatchAction(Integer matchId, Boolean startDataTag, Boolean endDataTag) {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -89,7 +180,7 @@ public class XMLExporter {
         cursor.moveToFirst();
 
         String xmlResult = "";
-        if (startDataTag) {
+        if (startDataTag) { 
             xmlResult = GenerateTagByName(DATA, 0, false, true);
         }
 
@@ -173,6 +264,32 @@ public class XMLExporter {
         return xmlResult;
     }
 
+    public String GenerateTeam(Integer matchId, Boolean startDataTag, Boolean endDataTag, Cursor cursor) {
+
+
+        String xmlResult = "";
+        if (startDataTag) {
+            xmlResult = GenerateTagByName(DATA, 0, false, true);
+            xmlResult += GenerateTagByName(TABLE,1,false,false) + "\n";
+            xmlResult += GenerateTagByName(NAME, 2, false, false) + TABLE_NAME + GenerateTagByName(NAME, 0, true, true) + "\n";
+            xmlResult += GenerateTagByName(TABLE,1,true,true);
+        }
+
+        xmlResult += GenerateTagByName(ROW, 1, false, true);
+
+        xmlResult += GenerateTagByName(TeamContract.TeamEntry.COLUMN_NAME_ID, 2, false, false) +
+                cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamContract.TeamEntry.COLUMN_NAME_ID, 0, true, true);
+        xmlResult += GenerateTagByName(TeamContract.TeamEntry.COLUMN_NAME_ID, 2, false, false) +
+                cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamContract.TeamEntry.COLUMN_NAME_ID, 0, true, true);
+        xmlResult += GenerateTagByName(TeamContract.TeamEntry.COLUMN_NAME_ID, 2, false, false) +
+                cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamContract.TeamEntry.COLUMN_NAME_ID, 0, true, true);
+        xmlResult += GenerateTagByName(ROW, 1, true, true) + "\n";
+
+        if (endDataTag) {
+            xmlResult = GenerateTagByName(DATA, 0, false, true);
+        }
+        return xmlResult;
+    }
 
     public String GenerateNextTeamMatchAction(Boolean startDataTag, Boolean endDataTag, Cursor cursor) {
         // Generate XML for next match sequentially
