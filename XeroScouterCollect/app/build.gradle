@@ -31,6 +31,7 @@ android {
 
 
 dependencies {
+    compile group: 'commons-net', name: 'commons-net', version: '3.3'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':mysql-connector-java-5.1.40-bin')
 

@@ -13,7 +13,6 @@ public class TeamMatch {
 
     public ArrayList<Integer> actionCount = new ArrayList<>(9);
 
-
     public TeamMatch() {
         for ( int i : actionCount) {
             actionCount.set(i, 0);
