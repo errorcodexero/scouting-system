@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -230,9 +231,15 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             }
             */
             FTPConnection ftp = new FTPConnection(this);
-            ftp.sendFile(path);
+            //ftp.sendFile(path);
+
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+            StrictMode.setThreadPolicy(policy);
+            ftp.startFTP(baseFolder);
         }
     }
+
 
     //Cleans up tables in the database
     private void clearDatabase() {

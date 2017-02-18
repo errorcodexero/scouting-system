@@ -132,8 +132,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
 
     @Override
-    public void onResume(){
-        super.onResume();
+    public void onStart(){
+        super.onStart();
 
         StandMatchConfirmationFragment frag = (StandMatchConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.ll_main_layout);
 
@@ -437,7 +437,6 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         }
     }
 
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         int parentId = parent.getId();
@@ -461,6 +460,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
                         updateTeams();
                     }
                     matchSpinnerHasBeenCreated = true;
+
 
                 }
                 break;
