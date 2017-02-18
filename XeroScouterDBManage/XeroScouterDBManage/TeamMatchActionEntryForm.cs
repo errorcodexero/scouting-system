@@ -130,25 +130,21 @@ namespace XeroScouterDBManage_Server
 
 		private void mapActionTypeControls()
 		{
-			this.dictActionTypeControls.Add(this.txtAutoLinesCrossed, "Auto Line Crossed");
-			this.dictActionTypeControls.Add(this.txtAutoBunniesPicked, "Auto Bunnies Picked-up");
-			this.dictActionTypeControls.Add(this.txtAutoBunniesScored, "Auto Bunnies Scored");
-			this.dictActionTypeControls.Add(this.txtTeleLinesCrossed, "Lines Crossed");
-			this.dictActionTypeControls.Add(this.txtTeleBunniesScored, "Bunnies Deposited");
-			this.dictActionTypeControls.Add(this.txtTeleBunniesGround, "Bunnies Picked-up");
-			this.dictActionTypeControls.Add(this.txtTeleBunniesStolen, "Bunnies Stolen");
-			this.dictActionTypeControls.Add(this.txtNerfShotsHit, "Shots Hit");
-			this.dictActionTypeControls.Add(this.txtNerfShotsMissed, "Shots Missed");
+			this.dictActionTypeControls.Add(this.txtAutoLowDump, "Auto Line Crossed");
+			this.dictActionTypeControls.Add(this.txtAutoHighScored, "Auto Bunnies Picked-up");
+			this.dictActionTypeControls.Add(this.txtAutoGearsDelivered, "Auto Bunnies Scored");
+			this.dictActionTypeControls.Add(this.txtTeleLowDumps, "Lines Crossed");
+			this.dictActionTypeControls.Add(this.txtTeleGearsDelivered, "Bunnies Deposited");
+			this.dictActionTypeControls.Add(this.txtTeleHighScored, "Bunnies Picked-up");
+			this.dictActionTypeControls.Add(this.txtTeleHighMissed, "Bunnies Stolen");
 
-			this.dictActionTypeNames.Add("Auto Line Crossed", this.txtAutoLinesCrossed);
-			this.dictActionTypeNames.Add("Auto Bunnies Picked-up", this.txtAutoBunniesPicked);
-			this.dictActionTypeNames.Add("Auto Bunnies Scored", this.txtAutoBunniesScored);
-			this.dictActionTypeNames.Add("Lines Crossed", this.txtTeleLinesCrossed);
-			this.dictActionTypeNames.Add("Bunnies Deposited", this.txtTeleBunniesScored);
-			this.dictActionTypeNames.Add("Bunnies Picked-up", this.txtTeleBunniesGround);
-			this.dictActionTypeNames.Add("Bunnies Stolen", this.txtTeleBunniesStolen);
-			this.dictActionTypeNames.Add("Shots Hit", this.txtNerfShotsHit);
-			this.dictActionTypeNames.Add("Shots Missed", this.txtNerfShotsMissed);
+			this.dictActionTypeNames.Add("Auto Line Crossed", this.txtAutoLowDump);
+			this.dictActionTypeNames.Add("Auto Bunnies Picked-up", this.txtAutoHighScored);
+			this.dictActionTypeNames.Add("Auto Bunnies Scored", this.txtAutoGearsDelivered);
+			this.dictActionTypeNames.Add("Lines Crossed", this.txtTeleLowDumps);
+			this.dictActionTypeNames.Add("Bunnies Deposited", this.txtTeleGearsDelivered);
+			this.dictActionTypeNames.Add("Bunnies Picked-up", this.txtTeleHighScored);
+			this.dictActionTypeNames.Add("Bunnies Stolen", this.txtTeleHighMissed);
 		}
 
 		private void loadActionTypeData()
@@ -404,7 +400,27 @@ namespace XeroScouterDBManage_Server
 			this.existingDataFound = false;
 		}
 
-		private void SaveData(bool exit)
+        private void txtAutoLowDump_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkDefenceFlag_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkBreakdownFlag_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkDisconnectFlag_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveData(bool exit)
 		{
 			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
 			MySqlCommand cmd;
