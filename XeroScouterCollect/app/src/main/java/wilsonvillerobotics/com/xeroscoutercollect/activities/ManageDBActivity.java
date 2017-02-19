@@ -55,6 +55,9 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private String pref_default = "*";
     private SharedPreferences sharedPreferences;
     private String tabletId;
+    private int backupTeamMatchAction = 0;
+    private String baseFolder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,59 +69,27 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         sqlDB = db.getWritableDatabase();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         tabletId = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
-
-
-
+        //TODO Add this networking on another thread
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        setBaseFolder();
     }
 
-
-    /*public String queryMySQLDb(String queryString) {
-    public String queryMySQLDb(String queryString) {
-
-        String results = "";
-
-        try {
-
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-            String defaultString = "*";
-
-            String user = sharedPreferences.getString("dbUsername", "root");
-            String pass = sharedPreferences.getString("dbPassword", "D3@ThC0D3");
-            String ip   = sharedPreferences.getString("dbIp", "127.0.0.1");
-
-            String url = "jdbc://" + ip + ":3306/match";
-
-            //Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, user, pass);
-
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(queryString);
-            ResultSetMetaData rsmd = rs.getMetaData();
-
-            String ColumnNames = "";
-
-            int i = 1;
-
-            while(rs.next()) {
-                ColumnNames += rsmd.getColumnName(i);
-                i++;
-            }
-
-            //Toast.makeText(this, results, Toast.LENGTH_SHORT).show();
-
-        } catch (SQLException e) {
-            Log.d("Debug", "Failed to execute sql");
+    public void setBaseFolder(){
+        // check if external storage is available
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         }
-            finally {
-            return "yay";
+        // revert to using internal storage (not sure if there's an equivalent to the above)
+        else {
+            baseFolder = this.getFilesDir().getAbsolutePath();
         }
-    }*/
+    }
 
     private final String XML_EXT = ".xml";
     private String TN = "table_file_name";
 
-        public void importDataFromXML(){
+    public void importDataFromXML(){
         String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
 
         XMLParser myParser = new XMLParser("",this);
@@ -165,34 +136,22 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view == findViewById(R.id.btn_import)) {
-            importDataFromXML();
-            //parser.parseXML(getFilesDir() + "/" + fileName);
-            //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.btn_import_to_tablet) {
+            FTPConnection ftp = new FTPConnection(this);
+            ftp.getFTPFiles(baseFolder);
         }
-        if (view == findViewById(R.id.btn_clear_db_data)) {
+        if (view.getId() == R.id.btn_clear_db_data) {
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
             clearDatabase();
-        } else if (view == findViewById(R.id.btn_clear_db_data)) {
-            GenerateTestData g = new GenerateTestData(this);
-            g.generateAllData();
-            //Toast.makeText(this,"Generated Test Data",Toast.LENGTH_SHORT).show();
-        } else if (view.getId() == R.id.btn_export) {
+        }
+        else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
             filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
             File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
 
-
-            String baseFolder;
-            // check if external storage is available
-            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-            }
-            // revert to using internal storage (not sure if there's an equivalent to the above)
-            else {
-                baseFolder = this.getFilesDir().getAbsolutePath();
-            }
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
             ArrayList<String> string = xmlExporter.GenerateNewMatches();
             String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
             File file = new File(baseFolder + File.separator + filename);
@@ -211,32 +170,17 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 e.printStackTrace();
             }
 
-
-            /*
-            if(!xmlFile.exists()){
-                try {
-                    xmlFile.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            FileOutputStream outputStream;
-
-            try {
-                outputStream = openFileOutput(filename, MODE_PRIVATE);
-                outputStream.write(xmlExporter.GenerateNewMatches().getBytes());
-                outputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            */
             FTPConnection ftp = new FTPConnection(this);
-            //ftp.sendFile(path);
+            if(!ftp.sendFTPFile(baseFolder, filename)){
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(getString(R.string.tma_index_pref),Integer.toString(backupTeamMatchAction));
+                editor.commit();
+            }
 
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-            StrictMode.setThreadPolicy(policy);
-            ftp.startFTP(baseFolder);
+        }
+        else if(view.getId() == R.id.btn_build_db){
+            importDataFromXML();
         }
     }
 

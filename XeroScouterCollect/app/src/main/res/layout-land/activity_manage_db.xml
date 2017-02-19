@@ -34,13 +34,22 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:gravity="center">
+
+        <Button
+            android:text="Import to Tablet"
+            android:layout_width="wrap_content"
+            android:id="@+id/btn_import_to_tablet"
+            android:layout_height="162dp"
+            android:textSize="20sp"
+            android:onClick="onClick" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="162dp"
-            android:text="@string/import_to_tablet"
-            android:id="@+id/btn_import"
+            android:text="Build Database"
+            android:id="@+id/btn_build_db"
             android:layout_marginLeft="25dp"
             android:textSize="20sp"
             android:onClick="onClick" />
