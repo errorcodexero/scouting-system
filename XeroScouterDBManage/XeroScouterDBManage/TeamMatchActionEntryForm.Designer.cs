@@ -41,10 +41,10 @@
             this.txtMatchNumber = new System.Windows.Forms.TextBox();
             this.lblMatchNumber = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.chkBaselineCross = new System.Windows.Forms.CheckBox();
+            this.chkAutoBaselineCross = new System.Windows.Forms.CheckBox();
             this.txtAutoFuelBinsTriggered = new System.Windows.Forms.TextBox();
             this.lblAutoFuelBinsTriggered = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAutoHighMissed = new System.Windows.Forms.TextBox();
             this.lblAutoHighMissed = new System.Windows.Forms.Label();
             this.lblBlueAlliance = new System.Windows.Forms.Label();
             this.txtAutoGearsDelivered = new System.Windows.Forms.TextBox();
@@ -54,6 +54,8 @@
             this.txtAutoLowDump = new System.Windows.Forms.TextBox();
             this.lblAutoLowDump = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtTeleFuelBinsTriggered = new System.Windows.Forms.TextBox();
+            this.lblTeleFuelBinsTriggered = new System.Windows.Forms.Label();
             this.txtTeleGearsDelivered = new System.Windows.Forms.TextBox();
             this.lblTeleGearsDelivered = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -64,17 +66,15 @@
             this.txtTeleLowDumps = new System.Windows.Forms.TextBox();
             this.lblTeleLowDumps = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.chkClimbSuccess = new System.Windows.Forms.CheckBox();
+            this.chkClimbAttempted = new System.Windows.Forms.CheckBox();
+            this.chkDisconnectFlag = new System.Windows.Forms.CheckBox();
             this.chkBreakdownFlag = new System.Windows.Forms.CheckBox();
             this.chkDefenceFlag = new System.Windows.Forms.CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.txtTeleFuelBinsTriggered = new System.Windows.Forms.TextBox();
-            this.lblTeleFuelBinsTriggered = new System.Windows.Forms.Label();
-            this.chkDisconnectFlag = new System.Windows.Forms.CheckBox();
-            this.chkClimbAttempted = new System.Windows.Forms.CheckBox();
-            this.chkClimbSuccess = new System.Windows.Forms.CheckBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -202,10 +202,10 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.chkBaselineCross);
+            this.panel2.Controls.Add(this.chkAutoBaselineCross);
             this.panel2.Controls.Add(this.txtAutoFuelBinsTriggered);
             this.panel2.Controls.Add(this.lblAutoFuelBinsTriggered);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtAutoHighMissed);
             this.panel2.Controls.Add(this.lblAutoHighMissed);
             this.panel2.Controls.Add(this.lblBlueAlliance);
             this.panel2.Controls.Add(this.txtAutoGearsDelivered);
@@ -220,15 +220,16 @@
             this.panel2.Size = new System.Drawing.Size(521, 96);
             this.panel2.TabIndex = 49;
             // 
-            // chkBaselineCross
+            // chkAutoBaselineCross
             // 
-            this.chkBaselineCross.AutoSize = true;
-            this.chkBaselineCross.Location = new System.Drawing.Point(27, 35);
-            this.chkBaselineCross.Name = "chkBaselineCross";
-            this.chkBaselineCross.Size = new System.Drawing.Size(95, 17);
-            this.chkBaselineCross.TabIndex = 50;
-            this.chkBaselineCross.Text = "Baseline Cross";
-            this.chkBaselineCross.UseVisualStyleBackColor = true;
+            this.chkAutoBaselineCross.AutoSize = true;
+            this.chkAutoBaselineCross.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkAutoBaselineCross.Location = new System.Drawing.Point(27, 35);
+            this.chkAutoBaselineCross.Name = "chkAutoBaselineCross";
+            this.chkAutoBaselineCross.Size = new System.Drawing.Size(95, 17);
+            this.chkAutoBaselineCross.TabIndex = 50;
+            this.chkAutoBaselineCross.Text = "Baseline Cross";
+            this.chkAutoBaselineCross.UseVisualStyleBackColor = true;
             // 
             // txtAutoFuelBinsTriggered
             // 
@@ -248,13 +249,13 @@
             this.lblAutoFuelBinsTriggered.TabIndex = 49;
             this.lblAutoFuelBinsTriggered.Text = "Fuel Bins Triggered:";
             // 
-            // textBox1
+            // txtAutoHighMissed
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 65);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(59, 20);
-            this.textBox1.TabIndex = 46;
+            this.txtAutoHighMissed.Location = new System.Drawing.Point(87, 65);
+            this.txtAutoHighMissed.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoHighMissed.Name = "txtAutoHighMissed";
+            this.txtAutoHighMissed.Size = new System.Drawing.Size(59, 20);
+            this.txtAutoHighMissed.TabIndex = 46;
             // 
             // lblAutoHighMissed
             // 
@@ -323,7 +324,6 @@
             this.txtAutoLowDump.Name = "txtAutoLowDump";
             this.txtAutoLowDump.Size = new System.Drawing.Size(65, 20);
             this.txtAutoLowDump.TabIndex = 39;
-            this.txtAutoLowDump.TextChanged += new System.EventHandler(this.txtAutoLowDump_TextChanged);
             this.txtAutoLowDump.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtAutoLowDump.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -355,6 +355,24 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(521, 118);
             this.panel3.TabIndex = 50;
+            // 
+            // txtTeleFuelBinsTriggered
+            // 
+            this.txtTeleFuelBinsTriggered.Location = new System.Drawing.Point(441, 87);
+            this.txtTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleFuelBinsTriggered.Name = "txtTeleFuelBinsTriggered";
+            this.txtTeleFuelBinsTriggered.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleFuelBinsTriggered.TabIndex = 50;
+            // 
+            // lblTeleFuelBinsTriggered
+            // 
+            this.lblTeleFuelBinsTriggered.AutoSize = true;
+            this.lblTeleFuelBinsTriggered.Location = new System.Drawing.Point(342, 88);
+            this.lblTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleFuelBinsTriggered.Name = "lblTeleFuelBinsTriggered";
+            this.lblTeleFuelBinsTriggered.Size = new System.Drawing.Size(101, 13);
+            this.lblTeleFuelBinsTriggered.TabIndex = 51;
+            this.lblTeleFuelBinsTriggered.Text = "Fuel Bins Triggered:";
             // 
             // txtTeleGearsDelivered
             // 
@@ -459,9 +477,47 @@
             this.panel5.Size = new System.Drawing.Size(521, 45);
             this.panel5.TabIndex = 52;
             // 
+            // chkClimbSuccess
+            // 
+            this.chkClimbSuccess.AutoSize = true;
+            this.chkClimbSuccess.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkClimbSuccess.Location = new System.Drawing.Point(125, 14);
+            this.chkClimbSuccess.Margin = new System.Windows.Forms.Padding(1);
+            this.chkClimbSuccess.Name = "chkClimbSuccess";
+            this.chkClimbSuccess.Size = new System.Drawing.Size(106, 17);
+            this.chkClimbSuccess.TabIndex = 20;
+            this.chkClimbSuccess.Text = "Climb Successful";
+            this.chkClimbSuccess.UseVisualStyleBackColor = true;
+            // 
+            // chkClimbAttempted
+            // 
+            this.chkClimbAttempted.AutoSize = true;
+            this.chkClimbAttempted.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkClimbAttempted.Location = new System.Drawing.Point(11, 14);
+            this.chkClimbAttempted.Margin = new System.Windows.Forms.Padding(1);
+            this.chkClimbAttempted.Name = "chkClimbAttempted";
+            this.chkClimbAttempted.Size = new System.Drawing.Size(102, 17);
+            this.chkClimbAttempted.TabIndex = 19;
+            this.chkClimbAttempted.Text = "Climb Attempted";
+            this.chkClimbAttempted.UseVisualStyleBackColor = true;
+            // 
+            // chkDisconnectFlag
+            // 
+            this.chkDisconnectFlag.AutoSize = true;
+            this.chkDisconnectFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkDisconnectFlag.Location = new System.Drawing.Point(436, 14);
+            this.chkDisconnectFlag.Margin = new System.Windows.Forms.Padding(1);
+            this.chkDisconnectFlag.Name = "chkDisconnectFlag";
+            this.chkDisconnectFlag.Size = new System.Drawing.Size(80, 17);
+            this.chkDisconnectFlag.TabIndex = 18;
+            this.chkDisconnectFlag.Text = "Disconnect";
+            this.chkDisconnectFlag.UseVisualStyleBackColor = true;
+            this.chkDisconnectFlag.CheckedChanged += new System.EventHandler(this.chkDisconnectFlag_CheckedChanged);
+            // 
             // chkBreakdownFlag
             // 
             this.chkBreakdownFlag.AutoSize = true;
+            this.chkBreakdownFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkBreakdownFlag.Location = new System.Drawing.Point(339, 14);
             this.chkBreakdownFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkBreakdownFlag.Name = "chkBreakdownFlag";
@@ -474,6 +530,7 @@
             // chkDefenceFlag
             // 
             this.chkDefenceFlag.AutoSize = true;
+            this.chkDefenceFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkDefenceFlag.Location = new System.Drawing.Point(243, 14);
             this.chkDefenceFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkDefenceFlag.Name = "chkDefenceFlag";
@@ -525,58 +582,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(521, 22);
             this.panel7.TabIndex = 54;
-            // 
-            // txtTeleFuelBinsTriggered
-            // 
-            this.txtTeleFuelBinsTriggered.Location = new System.Drawing.Point(441, 87);
-            this.txtTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1);
-            this.txtTeleFuelBinsTriggered.Name = "txtTeleFuelBinsTriggered";
-            this.txtTeleFuelBinsTriggered.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleFuelBinsTriggered.TabIndex = 50;
-            // 
-            // lblTeleFuelBinsTriggered
-            // 
-            this.lblTeleFuelBinsTriggered.AutoSize = true;
-            this.lblTeleFuelBinsTriggered.Location = new System.Drawing.Point(342, 88);
-            this.lblTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTeleFuelBinsTriggered.Name = "lblTeleFuelBinsTriggered";
-            this.lblTeleFuelBinsTriggered.Size = new System.Drawing.Size(101, 13);
-            this.lblTeleFuelBinsTriggered.TabIndex = 51;
-            this.lblTeleFuelBinsTriggered.Text = "Fuel Bins Triggered:";
-            // 
-            // chkDisconnectFlag
-            // 
-            this.chkDisconnectFlag.AutoSize = true;
-            this.chkDisconnectFlag.Location = new System.Drawing.Point(436, 14);
-            this.chkDisconnectFlag.Margin = new System.Windows.Forms.Padding(1);
-            this.chkDisconnectFlag.Name = "chkDisconnectFlag";
-            this.chkDisconnectFlag.Size = new System.Drawing.Size(80, 17);
-            this.chkDisconnectFlag.TabIndex = 18;
-            this.chkDisconnectFlag.Text = "Disconnect";
-            this.chkDisconnectFlag.UseVisualStyleBackColor = true;
-            this.chkDisconnectFlag.CheckedChanged += new System.EventHandler(this.chkDisconnectFlag_CheckedChanged);
-            // 
-            // chkClimbAttempted
-            // 
-            this.chkClimbAttempted.AutoSize = true;
-            this.chkClimbAttempted.Location = new System.Drawing.Point(11, 14);
-            this.chkClimbAttempted.Margin = new System.Windows.Forms.Padding(1);
-            this.chkClimbAttempted.Name = "chkClimbAttempted";
-            this.chkClimbAttempted.Size = new System.Drawing.Size(102, 17);
-            this.chkClimbAttempted.TabIndex = 19;
-            this.chkClimbAttempted.Text = "Climb Attempted";
-            this.chkClimbAttempted.UseVisualStyleBackColor = true;
-            // 
-            // chkClimbSuccess
-            // 
-            this.chkClimbSuccess.AutoSize = true;
-            this.chkClimbSuccess.Location = new System.Drawing.Point(125, 14);
-            this.chkClimbSuccess.Margin = new System.Windows.Forms.Padding(1);
-            this.chkClimbSuccess.Name = "chkClimbSuccess";
-            this.chkClimbSuccess.Size = new System.Drawing.Size(106, 17);
-            this.chkClimbSuccess.TabIndex = 20;
-            this.chkClimbSuccess.Text = "Climb Successful";
-            this.chkClimbSuccess.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -675,9 +680,9 @@
 		private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtAutoFuelBinsTriggered;
         private System.Windows.Forms.Label lblAutoFuelBinsTriggered;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAutoHighMissed;
         private System.Windows.Forms.Label lblAutoHighMissed;
-        private System.Windows.Forms.CheckBox chkBaselineCross;
+        private System.Windows.Forms.CheckBox chkAutoBaselineCross;
         private System.Windows.Forms.TextBox txtTeleFuelBinsTriggered;
         private System.Windows.Forms.Label lblTeleFuelBinsTriggered;
         private System.Windows.Forms.CheckBox chkDisconnectFlag;

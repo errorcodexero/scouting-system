@@ -88,16 +88,17 @@ namespace XeroScouterDBManage_Server
 					valid = Utils.ValidAlphaNumericString(curTB.Text, out errorMsg);
 					break;
 				case "txtMatchNumber":
-				case "txtAutoLinesCrossed":
-				case "txtAutoBunniesPicked":
-				case "txtAutoBunniesScored":
-				case "txtTeleLinesCrossed":
-				case "txtTeleBunniesGround":
-				case "txtTeleBunniesStolen":
-				case "txtTeleBunniesScored":
-				case "txtNerfShotsHit":
-				case "txtNerfShotsMissed":
-					valid = Utils.ValidInteger(curTB.Text, out errorMsg);
+				case "txtAutoLowDump":
+				case "txtAutoHighScored":
+				case "txtAutoHighMissed":
+                case "txtAutoGearsDelivered":
+                case "txtAutoFuelBinsTriggered":
+                case "txtTeleLowDump":
+                case "txtTeleHighScored":
+                case "txtTeleHighMissed":
+                case "txtTeleGearsDelivered":
+                case "txtTeleFuelBinsTriggered":
+                    valid = Utils.ValidInteger(curTB.Text, out errorMsg);
 					break;
 				default:
 					valid = false;
@@ -205,6 +206,10 @@ namespace XeroScouterDBManage_Server
 						this.txtMatchNumber.Enabled = false;
 						this.txtTeamNumber.Enabled = false;
 						this.cmbAllianceColor.Enabled = false;
+                        this.chkAutoBaselineCross.Enabled = false;
+                        this.chkClimbAttempted.Enabled = false;
+                        this.chkClimbSuccess.Enabled = false;
+                        this.chkDisconnectFlag.Enabled = false;
 						this.chkBreakdownFlag.Enabled = false;
 						this.chkDefenceFlag.Enabled = false;
 						foreach(Control c in dictActionTypeNames.Values)
@@ -399,11 +404,6 @@ namespace XeroScouterDBManage_Server
 		{
 			this.existingDataFound = false;
 		}
-
-        private void txtAutoLowDump_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void chkDefenceFlag_CheckedChanged(object sender, EventArgs e)
         {
