@@ -1,7 +1,10 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,6 +26,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.connection.BluetoothConnection;
 import wilsonvillerobotics.com.xeroscoutercollect.connection.FTPConnection;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
@@ -31,6 +35,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
+import wilsonvillerobotics.com.xeroscoutercollect.database.ManageDB;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
@@ -170,18 +175,71 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 e.printStackTrace();
             }
 
-            FTPConnection ftp = new FTPConnection(this);
-            if(!ftp.sendFTPFile(baseFolder, filename)){
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(getString(R.string.tma_index_pref),Integer.toString(backupTeamMatchAction));
-                editor.commit();
-            }
+            //Prompts user for xport type
+            //If bluetooth fails, prompts, and allows to restore backup TMA
+            //Must do this or else next time, will not have anything to xport.
+            //Same with FTP 
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+            builder1.setMessage("Select Method of Export");
+            builder1.setCancelable(false);
+
+            builder1.setPositiveButton(
+                    "BlueTooth",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            BluetoothConnection btc = new BluetoothConnection(ManageDBActivity.this);
+                            btc.initAdapter();
+                            btc.sendBluetoothFile(file);
 
 
+                            builder2.setMessage("Was BlueTooth Successful?");
+                            builder2.setCancelable(false);
+
+                            builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                            builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    restoreBackupTMAIndex();
+                                    dialog.cancel();
+                                }
+                            });
+                            AlertDialog alert2 = builder2.create();
+                            alert2.show();
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "FTP",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
+                            if(!ftp.sendFTPFile(baseFolder, filename)){
+                                restoreBackupTMAIndex();
+                            }
+                        }
+                    });
+
+            AlertDialog alert1 = builder1.create();
+            alert1.show();
         }
+
+
+
         else if(view.getId() == R.id.btn_build_db){
             importDataFromXML();
         }
+    }
+
+    private void restoreBackupTMAIndex(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.tma_index_pref),Integer.toString(backupTeamMatchAction));
+        editor.commit();
     }
 
 

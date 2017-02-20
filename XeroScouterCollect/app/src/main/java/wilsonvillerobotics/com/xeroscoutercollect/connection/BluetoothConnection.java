@@ -70,20 +70,10 @@ public class BluetoothConnection extends ConnectionType{
         return true;
     }
 
-    public boolean sendDataFile() {
+    public boolean sendBluetoothFile(File xmlFile) {
         super.sendDataFile();
-        //String path = Environment.getExternalStorageDirectory() + "/test.xml";
-        String path = Environment.getExternalStorageDirectory() + "files/tma_exports-0.xml";
 
-        File file = new File(path);
-        try {
-            boolean result = file.createNewFile();
-            boolean r = result;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-
+        File file = xmlFile;
 
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
