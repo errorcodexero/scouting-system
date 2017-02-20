@@ -57,7 +57,7 @@
             // lblMatchNumber
             // 
             this.lblMatchNumber.AutoSize = true;
-            this.lblMatchNumber.Location = new System.Drawing.Point(12, 127);
+            this.lblMatchNumber.Location = new System.Drawing.Point(12, 120);
             this.lblMatchNumber.Name = "lblMatchNumber";
             this.lblMatchNumber.Size = new System.Drawing.Size(77, 13);
             this.lblMatchNumber.TabIndex = 0;
@@ -65,22 +65,22 @@
             // 
             // txtMatchNumber
             // 
-            this.txtMatchNumber.Location = new System.Drawing.Point(105, 119);
+            this.txtMatchNumber.Location = new System.Drawing.Point(105, 116);
             this.txtMatchNumber.Name = "txtMatchNumber";
-            this.txtMatchNumber.Size = new System.Drawing.Size(100, 20);
+            this.txtMatchNumber.Size = new System.Drawing.Size(80, 20);
             this.txtMatchNumber.TabIndex = 0;
             // 
             // txtMatchTime
             // 
-            this.txtMatchTime.Location = new System.Drawing.Point(105, 167);
+            this.txtMatchTime.Location = new System.Drawing.Point(105, 154);
             this.txtMatchTime.Name = "txtMatchTime";
-            this.txtMatchTime.Size = new System.Drawing.Size(100, 20);
+            this.txtMatchTime.Size = new System.Drawing.Size(80, 20);
             this.txtMatchTime.TabIndex = 2;
             // 
             // lblMatchTime
             // 
             this.lblMatchTime.AutoSize = true;
-            this.lblMatchTime.Location = new System.Drawing.Point(12, 175);
+            this.lblMatchTime.Location = new System.Drawing.Point(12, 158);
             this.lblMatchTime.Name = "lblMatchTime";
             this.lblMatchTime.Size = new System.Drawing.Size(63, 13);
             this.lblMatchTime.TabIndex = 2;
@@ -88,16 +88,16 @@
             // 
             // txtMatchType
             // 
-            this.txtMatchType.Location = new System.Drawing.Point(344, 113);
+            this.txtMatchType.Location = new System.Drawing.Point(292, 116);
             this.txtMatchType.Name = "txtMatchType";
-            this.txtMatchType.Size = new System.Drawing.Size(100, 20);
+            this.txtMatchType.Size = new System.Drawing.Size(152, 20);
             this.txtMatchType.TabIndex = 1;
             this.txtMatchType.Text = "Qualification";
             // 
             // lblMatchType
             // 
             this.lblMatchType.AutoSize = true;
-            this.lblMatchType.Location = new System.Drawing.Point(251, 121);
+            this.lblMatchType.Location = new System.Drawing.Point(206, 120);
             this.lblMatchType.Name = "lblMatchType";
             this.lblMatchType.Size = new System.Drawing.Size(64, 13);
             this.lblMatchType.TabIndex = 4;
@@ -105,15 +105,15 @@
             // 
             // txtMatchLocation
             // 
-            this.txtMatchLocation.Location = new System.Drawing.Point(344, 167);
+            this.txtMatchLocation.Location = new System.Drawing.Point(292, 154);
             this.txtMatchLocation.Name = "txtMatchLocation";
-            this.txtMatchLocation.Size = new System.Drawing.Size(100, 20);
+            this.txtMatchLocation.Size = new System.Drawing.Size(152, 20);
             this.txtMatchLocation.TabIndex = 3;
             // 
             // lblMatchLocation
             // 
             this.lblMatchLocation.AutoSize = true;
-            this.lblMatchLocation.Location = new System.Drawing.Point(251, 175);
+            this.lblMatchLocation.Location = new System.Drawing.Point(206, 158);
             this.lblMatchLocation.Name = "lblMatchLocation";
             this.lblMatchLocation.Size = new System.Drawing.Size(81, 13);
             this.lblMatchLocation.TabIndex = 6;
@@ -122,7 +122,7 @@
             // lblBlueAlliance
             // 
             this.lblBlueAlliance.AutoSize = true;
-            this.lblBlueAlliance.Location = new System.Drawing.Point(102, 220);
+            this.lblBlueAlliance.Location = new System.Drawing.Point(107, 206);
             this.lblBlueAlliance.Name = "lblBlueAlliance";
             this.lblBlueAlliance.Size = new System.Drawing.Size(68, 13);
             this.lblBlueAlliance.TabIndex = 8;
@@ -131,7 +131,7 @@
             // lblRedAlliance
             // 
             this.lblRedAlliance.AutoSize = true;
-            this.lblRedAlliance.Location = new System.Drawing.Point(280, 220);
+            this.lblRedAlliance.Location = new System.Drawing.Point(285, 206);
             this.lblRedAlliance.Name = "lblRedAlliance";
             this.lblRedAlliance.Size = new System.Drawing.Size(67, 13);
             this.lblRedAlliance.TabIndex = 9;
@@ -142,7 +142,7 @@
             this.cmbBlue1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbBlue1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbBlue1.FormattingEnabled = true;
-            this.cmbBlue1.Location = new System.Drawing.Point(73, 244);
+            this.cmbBlue1.Location = new System.Drawing.Point(78, 230);
             this.cmbBlue1.Name = "cmbBlue1";
             this.cmbBlue1.Size = new System.Drawing.Size(121, 21);
             this.cmbBlue1.TabIndex = 4;
@@ -152,7 +152,7 @@
             this.cmbBlue2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbBlue2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbBlue2.FormattingEnabled = true;
-            this.cmbBlue2.Location = new System.Drawing.Point(73, 278);
+            this.cmbBlue2.Location = new System.Drawing.Point(78, 264);
             this.cmbBlue2.Name = "cmbBlue2";
             this.cmbBlue2.Size = new System.Drawing.Size(121, 21);
             this.cmbBlue2.TabIndex = 5;
@@ -162,7 +162,7 @@
             this.cmbBlue3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbBlue3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbBlue3.FormattingEnabled = true;
-            this.cmbBlue3.Location = new System.Drawing.Point(73, 311);
+            this.cmbBlue3.Location = new System.Drawing.Point(78, 297);
             this.cmbBlue3.Name = "cmbBlue3";
             this.cmbBlue3.Size = new System.Drawing.Size(121, 21);
             this.cmbBlue3.TabIndex = 6;
@@ -172,7 +172,7 @@
             this.cmbRed1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbRed1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRed1.FormattingEnabled = true;
-            this.cmbRed1.Location = new System.Drawing.Point(254, 244);
+            this.cmbRed1.Location = new System.Drawing.Point(259, 230);
             this.cmbRed1.Name = "cmbRed1";
             this.cmbRed1.Size = new System.Drawing.Size(121, 21);
             this.cmbRed1.TabIndex = 7;
@@ -182,7 +182,7 @@
             this.cmbRed2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbRed2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRed2.FormattingEnabled = true;
-            this.cmbRed2.Location = new System.Drawing.Point(254, 278);
+            this.cmbRed2.Location = new System.Drawing.Point(259, 264);
             this.cmbRed2.Name = "cmbRed2";
             this.cmbRed2.Size = new System.Drawing.Size(121, 21);
             this.cmbRed2.TabIndex = 8;
@@ -192,14 +192,14 @@
             this.cmbRed3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbRed3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRed3.FormattingEnabled = true;
-            this.cmbRed3.Location = new System.Drawing.Point(254, 311);
+            this.cmbRed3.Location = new System.Drawing.Point(259, 297);
             this.cmbRed3.Name = "cmbRed3";
             this.cmbRed3.Size = new System.Drawing.Size(121, 21);
             this.cmbRed3.TabIndex = 9;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(33, 372);
+            this.btnSave.Location = new System.Drawing.Point(33, 354);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(102, 41);
             this.btnSave.TabIndex = 10;
@@ -209,7 +209,7 @@
             // 
             // btnSaveAndAddNew
             // 
-            this.btnSaveAndAddNew.Location = new System.Drawing.Point(170, 372);
+            this.btnSaveAndAddNew.Location = new System.Drawing.Point(170, 354);
             this.btnSaveAndAddNew.Name = "btnSaveAndAddNew";
             this.btnSaveAndAddNew.Size = new System.Drawing.Size(102, 41);
             this.btnSaveAndAddNew.TabIndex = 11;
@@ -219,7 +219,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(308, 372);
+            this.btnCancel.Location = new System.Drawing.Point(308, 354);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 41);
             this.btnCancel.TabIndex = 12;
@@ -232,7 +232,7 @@
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(4, 431);
+            this.lblStatus.Location = new System.Drawing.Point(4, 412);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(35, 13);
             this.lblStatus.TabIndex = 13;
@@ -274,7 +274,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 450);
+            this.ClientSize = new System.Drawing.Size(465, 431);
             this.Controls.Add(this.lblAddAMatch);
             this.Controls.Add(this.cmbCompetitionName);
             this.Controls.Add(this.lblCompetitionName);

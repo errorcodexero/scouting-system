@@ -167,7 +167,7 @@ namespace XeroScouterDBManage_Server.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool TEST_MODE {
             get {
                 return ((bool)(this["TEST_MODE"]));

@@ -66,8 +66,11 @@
             this.txtTeleLowDumps = new System.Windows.Forms.TextBox();
             this.lblTeleLowDumps = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.chkClimbSuccess = new System.Windows.Forms.CheckBox();
-            this.chkClimbAttempted = new System.Windows.Forms.CheckBox();
+            this.groupClimb = new System.Windows.Forms.GroupBox();
+            this.radClimbNoClimb = new System.Windows.Forms.RadioButton();
+            this.radClimbTriggered = new System.Windows.Forms.RadioButton();
+            this.radClimbSuccess = new System.Windows.Forms.RadioButton();
+            this.radClimbAttempt = new System.Windows.Forms.RadioButton();
             this.chkDisconnectFlag = new System.Windows.Forms.CheckBox();
             this.chkBreakdownFlag = new System.Windows.Forms.CheckBox();
             this.chkDefenceFlag = new System.Windows.Forms.CheckBox();
@@ -82,6 +85,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.groupClimb.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -148,7 +152,8 @@
             this.cmbAllianceColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmbAllianceColor.Name = "cmbAllianceColor";
             this.cmbAllianceColor.Size = new System.Drawing.Size(81, 21);
-            this.cmbAllianceColor.TabIndex = 10;
+            this.cmbAllianceColor.TabIndex = 24;
+            this.cmbAllianceColor.TabStop = false;
             // 
             // lblAllianceColor
             // 
@@ -166,7 +171,8 @@
             this.txtTeamNumber.Margin = new System.Windows.Forms.Padding(1);
             this.txtTeamNumber.Name = "txtTeamNumber";
             this.txtTeamNumber.Size = new System.Drawing.Size(92, 20);
-            this.txtTeamNumber.TabIndex = 9;
+            this.txtTeamNumber.TabIndex = 23;
+            this.txtTeamNumber.TabStop = false;
             this.txtTeamNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtTeamNumber.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -186,7 +192,8 @@
             this.txtMatchNumber.Margin = new System.Windows.Forms.Padding(1);
             this.txtMatchNumber.Name = "txtMatchNumber";
             this.txtMatchNumber.Size = new System.Drawing.Size(92, 20);
-            this.txtMatchNumber.TabIndex = 7;
+            this.txtMatchNumber.TabIndex = 22;
+            this.txtMatchNumber.TabStop = false;
             this.txtMatchNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtMatchNumber.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -227,7 +234,7 @@
             this.chkAutoBaselineCross.Location = new System.Drawing.Point(27, 35);
             this.chkAutoBaselineCross.Name = "chkAutoBaselineCross";
             this.chkAutoBaselineCross.Size = new System.Drawing.Size(95, 17);
-            this.chkAutoBaselineCross.TabIndex = 50;
+            this.chkAutoBaselineCross.TabIndex = 2;
             this.chkAutoBaselineCross.Text = "Baseline Cross";
             this.chkAutoBaselineCross.UseVisualStyleBackColor = true;
             // 
@@ -237,7 +244,9 @@
             this.txtAutoFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1);
             this.txtAutoFuelBinsTriggered.Name = "txtAutoFuelBinsTriggered";
             this.txtAutoFuelBinsTriggered.Size = new System.Drawing.Size(63, 20);
-            this.txtAutoFuelBinsTriggered.TabIndex = 48;
+            this.txtAutoFuelBinsTriggered.TabIndex = 7;
+            this.txtAutoFuelBinsTriggered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoFuelBinsTriggered.Validated += new System.EventHandler(this.textbox_Validated);
             // 
             // lblAutoFuelBinsTriggered
             // 
@@ -255,7 +264,9 @@
             this.txtAutoHighMissed.Margin = new System.Windows.Forms.Padding(1);
             this.txtAutoHighMissed.Name = "txtAutoHighMissed";
             this.txtAutoHighMissed.Size = new System.Drawing.Size(59, 20);
-            this.txtAutoHighMissed.TabIndex = 46;
+            this.txtAutoHighMissed.TabIndex = 5;
+            this.txtAutoHighMissed.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoHighMissed.Validated += new System.EventHandler(this.textbox_Validated);
             // 
             // lblAutoHighMissed
             // 
@@ -283,7 +294,7 @@
             this.txtAutoGearsDelivered.Margin = new System.Windows.Forms.Padding(1);
             this.txtAutoGearsDelivered.Name = "txtAutoGearsDelivered";
             this.txtAutoGearsDelivered.Size = new System.Drawing.Size(63, 20);
-            this.txtAutoGearsDelivered.TabIndex = 41;
+            this.txtAutoGearsDelivered.TabIndex = 6;
             this.txtAutoGearsDelivered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtAutoGearsDelivered.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -303,7 +314,7 @@
             this.txtAutoHighScored.Margin = new System.Windows.Forms.Padding(1);
             this.txtAutoHighScored.Name = "txtAutoHighScored";
             this.txtAutoHighScored.Size = new System.Drawing.Size(59, 20);
-            this.txtAutoHighScored.TabIndex = 40;
+            this.txtAutoHighScored.TabIndex = 4;
             this.txtAutoHighScored.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtAutoHighScored.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -323,7 +334,7 @@
             this.txtAutoLowDump.Margin = new System.Windows.Forms.Padding(1);
             this.txtAutoLowDump.Name = "txtAutoLowDump";
             this.txtAutoLowDump.Size = new System.Drawing.Size(65, 20);
-            this.txtAutoLowDump.TabIndex = 39;
+            this.txtAutoLowDump.TabIndex = 3;
             this.txtAutoLowDump.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtAutoLowDump.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -362,7 +373,9 @@
             this.txtTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1);
             this.txtTeleFuelBinsTriggered.Name = "txtTeleFuelBinsTriggered";
             this.txtTeleFuelBinsTriggered.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleFuelBinsTriggered.TabIndex = 50;
+            this.txtTeleFuelBinsTriggered.TabIndex = 12;
+            this.txtTeleFuelBinsTriggered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtTeleFuelBinsTriggered.Validated += new System.EventHandler(this.textbox_Validated);
             // 
             // lblTeleFuelBinsTriggered
             // 
@@ -380,7 +393,7 @@
             this.txtTeleGearsDelivered.Margin = new System.Windows.Forms.Padding(1);
             this.txtTeleGearsDelivered.Name = "txtTeleGearsDelivered";
             this.txtTeleGearsDelivered.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleGearsDelivered.TabIndex = 44;
+            this.txtTeleGearsDelivered.TabIndex = 11;
             this.txtTeleGearsDelivered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtTeleGearsDelivered.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -410,7 +423,7 @@
             this.txtTeleHighMissed.Margin = new System.Windows.Forms.Padding(1);
             this.txtTeleHighMissed.Name = "txtTeleHighMissed";
             this.txtTeleHighMissed.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleHighMissed.TabIndex = 43;
+            this.txtTeleHighMissed.TabIndex = 10;
             this.txtTeleHighMissed.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtTeleHighMissed.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -430,7 +443,7 @@
             this.txtTeleHighScored.Margin = new System.Windows.Forms.Padding(1);
             this.txtTeleHighScored.Name = "txtTeleHighScored";
             this.txtTeleHighScored.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleHighScored.TabIndex = 42;
+            this.txtTeleHighScored.TabIndex = 9;
             this.txtTeleHighScored.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtTeleHighScored.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -450,7 +463,7 @@
             this.txtTeleLowDumps.Margin = new System.Windows.Forms.Padding(1);
             this.txtTeleLowDumps.Name = "txtTeleLowDumps";
             this.txtTeleLowDumps.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleLowDumps.TabIndex = 41;
+            this.txtTeleLowDumps.TabIndex = 8;
             this.txtTeleLowDumps.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             this.txtTeleLowDumps.Validated += new System.EventHandler(this.textbox_Validated);
             // 
@@ -466,50 +479,84 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.chkClimbSuccess);
-            this.panel5.Controls.Add(this.chkClimbAttempted);
+            this.panel5.Controls.Add(this.groupClimb);
             this.panel5.Controls.Add(this.chkDisconnectFlag);
             this.panel5.Controls.Add(this.chkBreakdownFlag);
             this.panel5.Controls.Add(this.chkDefenceFlag);
             this.panel5.Location = new System.Drawing.Point(6, 364);
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(521, 45);
+            this.panel5.Size = new System.Drawing.Size(521, 82);
             this.panel5.TabIndex = 52;
             // 
-            // chkClimbSuccess
+            // groupClimb
             // 
-            this.chkClimbSuccess.AutoSize = true;
-            this.chkClimbSuccess.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkClimbSuccess.Location = new System.Drawing.Point(125, 14);
-            this.chkClimbSuccess.Margin = new System.Windows.Forms.Padding(1);
-            this.chkClimbSuccess.Name = "chkClimbSuccess";
-            this.chkClimbSuccess.Size = new System.Drawing.Size(106, 17);
-            this.chkClimbSuccess.TabIndex = 20;
-            this.chkClimbSuccess.Text = "Climb Successful";
-            this.chkClimbSuccess.UseVisualStyleBackColor = true;
+            this.groupClimb.Controls.Add(this.radClimbNoClimb);
+            this.groupClimb.Controls.Add(this.radClimbTriggered);
+            this.groupClimb.Controls.Add(this.radClimbSuccess);
+            this.groupClimb.Controls.Add(this.radClimbAttempt);
+            this.groupClimb.Location = new System.Drawing.Point(12, 2);
+            this.groupClimb.Name = "groupClimb";
+            this.groupClimb.Size = new System.Drawing.Size(197, 77);
+            this.groupClimb.TabIndex = 13;
+            this.groupClimb.TabStop = false;
+            this.groupClimb.Text = "Climb";
             // 
-            // chkClimbAttempted
+            // radClimbNoClimb
             // 
-            this.chkClimbAttempted.AutoSize = true;
-            this.chkClimbAttempted.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkClimbAttempted.Location = new System.Drawing.Point(11, 14);
-            this.chkClimbAttempted.Margin = new System.Windows.Forms.Padding(1);
-            this.chkClimbAttempted.Name = "chkClimbAttempted";
-            this.chkClimbAttempted.Size = new System.Drawing.Size(102, 17);
-            this.chkClimbAttempted.TabIndex = 19;
-            this.chkClimbAttempted.Text = "Climb Attempted";
-            this.chkClimbAttempted.UseVisualStyleBackColor = true;
+            this.radClimbNoClimb.AutoSize = true;
+            this.radClimbNoClimb.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimbNoClimb.Checked = true;
+            this.radClimbNoClimb.Location = new System.Drawing.Point(14, 20);
+            this.radClimbNoClimb.Name = "radClimbNoClimb";
+            this.radClimbNoClimb.Size = new System.Drawing.Size(78, 17);
+            this.radClimbNoClimb.TabIndex = 16;
+            this.radClimbNoClimb.TabStop = true;
+            this.radClimbNoClimb.Text = "No Attempt";
+            this.radClimbNoClimb.UseVisualStyleBackColor = true;
+            // 
+            // radClimbTriggered
+            // 
+            this.radClimbTriggered.AutoSize = true;
+            this.radClimbTriggered.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimbTriggered.Location = new System.Drawing.Point(110, 46);
+            this.radClimbTriggered.Name = "radClimbTriggered";
+            this.radClimbTriggered.Size = new System.Drawing.Size(70, 17);
+            this.radClimbTriggered.TabIndex = 24;
+            this.radClimbTriggered.Text = "Triggered";
+            this.radClimbTriggered.UseVisualStyleBackColor = true;
+            // 
+            // radClimbSuccess
+            // 
+            this.radClimbSuccess.AutoSize = true;
+            this.radClimbSuccess.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimbSuccess.Location = new System.Drawing.Point(15, 46);
+            this.radClimbSuccess.Name = "radClimbSuccess";
+            this.radClimbSuccess.Size = new System.Drawing.Size(77, 17);
+            this.radClimbSuccess.TabIndex = 23;
+            this.radClimbSuccess.Text = "Successful";
+            this.radClimbSuccess.UseVisualStyleBackColor = true;
+            // 
+            // radClimbAttempt
+            // 
+            this.radClimbAttempt.AutoSize = true;
+            this.radClimbAttempt.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimbAttempt.Location = new System.Drawing.Point(107, 20);
+            this.radClimbAttempt.Name = "radClimbAttempt";
+            this.radClimbAttempt.Size = new System.Drawing.Size(73, 17);
+            this.radClimbAttempt.TabIndex = 22;
+            this.radClimbAttempt.Text = "Attempted";
+            this.radClimbAttempt.UseVisualStyleBackColor = true;
             // 
             // chkDisconnectFlag
             // 
             this.chkDisconnectFlag.AutoSize = true;
             this.chkDisconnectFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkDisconnectFlag.Location = new System.Drawing.Point(436, 14);
+            this.chkDisconnectFlag.Location = new System.Drawing.Point(426, 35);
             this.chkDisconnectFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkDisconnectFlag.Name = "chkDisconnectFlag";
             this.chkDisconnectFlag.Size = new System.Drawing.Size(80, 17);
-            this.chkDisconnectFlag.TabIndex = 18;
+            this.chkDisconnectFlag.TabIndex = 16;
             this.chkDisconnectFlag.Text = "Disconnect";
             this.chkDisconnectFlag.UseVisualStyleBackColor = true;
             this.chkDisconnectFlag.CheckedChanged += new System.EventHandler(this.chkDisconnectFlag_CheckedChanged);
@@ -518,11 +565,11 @@
             // 
             this.chkBreakdownFlag.AutoSize = true;
             this.chkBreakdownFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkBreakdownFlag.Location = new System.Drawing.Point(339, 14);
+            this.chkBreakdownFlag.Location = new System.Drawing.Point(323, 35);
             this.chkBreakdownFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkBreakdownFlag.Name = "chkBreakdownFlag";
             this.chkBreakdownFlag.Size = new System.Drawing.Size(80, 17);
-            this.chkBreakdownFlag.TabIndex = 17;
+            this.chkBreakdownFlag.TabIndex = 15;
             this.chkBreakdownFlag.Text = "Breakdown";
             this.chkBreakdownFlag.UseVisualStyleBackColor = true;
             this.chkBreakdownFlag.CheckedChanged += new System.EventHandler(this.chkBreakdownFlag_CheckedChanged);
@@ -531,11 +578,11 @@
             // 
             this.chkDefenceFlag.AutoSize = true;
             this.chkDefenceFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkDefenceFlag.Location = new System.Drawing.Point(243, 14);
+            this.chkDefenceFlag.Location = new System.Drawing.Point(234, 35);
             this.chkDefenceFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkDefenceFlag.Name = "chkDefenceFlag";
             this.chkDefenceFlag.Size = new System.Drawing.Size(67, 17);
-            this.chkDefenceFlag.TabIndex = 16;
+            this.chkDefenceFlag.TabIndex = 14;
             this.chkDefenceFlag.Text = "Defence";
             this.chkDefenceFlag.UseVisualStyleBackColor = true;
             this.chkDefenceFlag.CheckedChanged += new System.EventHandler(this.chkDefenceFlag_CheckedChanged);
@@ -544,7 +591,7 @@
             // 
             this.panel6.Controls.Add(this.btnCancel);
             this.panel6.Controls.Add(this.btnSave);
-            this.panel6.Location = new System.Drawing.Point(6, 411);
+            this.panel6.Location = new System.Drawing.Point(6, 448);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(521, 45);
@@ -558,7 +605,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(77, 39);
-            this.btnCancel.TabIndex = 19;
+            this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -569,7 +616,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(1);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(77, 39);
-            this.btnSave.TabIndex = 18;
+            this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -577,7 +624,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.statusStrip1);
-            this.panel7.Location = new System.Drawing.Point(6, 458);
+            this.panel7.Location = new System.Drawing.Point(6, 495);
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(521, 22);
@@ -593,7 +640,7 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this.statusStrip1.Size = new System.Drawing.Size(521, 22);
-            this.statusStrip1.TabIndex = 50;
+            this.statusStrip1.TabIndex = 51;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
@@ -603,11 +650,13 @@
             // 
             // TeamMatchActionEntryForm
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.CancelButton = this.btnCancel;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(532, 489);
+            this.ClientSize = new System.Drawing.Size(532, 522);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -630,6 +679,8 @@
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.groupClimb.ResumeLayout(false);
+            this.groupClimb.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -686,9 +737,12 @@
         private System.Windows.Forms.TextBox txtTeleFuelBinsTriggered;
         private System.Windows.Forms.Label lblTeleFuelBinsTriggered;
         private System.Windows.Forms.CheckBox chkDisconnectFlag;
-        private System.Windows.Forms.CheckBox chkClimbSuccess;
-        private System.Windows.Forms.CheckBox chkClimbAttempted;
+        private System.Windows.Forms.GroupBox groupClimb;
+        private System.Windows.Forms.RadioButton radClimbTriggered;
+        private System.Windows.Forms.RadioButton radClimbSuccess;
+        private System.Windows.Forms.RadioButton radClimbAttempt;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.RadioButton radClimbNoClimb;
     }
 }

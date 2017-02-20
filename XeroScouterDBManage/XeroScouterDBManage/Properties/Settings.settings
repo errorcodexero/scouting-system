@@ -48,7 +48,7 @@
       <Value Profile="(Default)">server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4};Convert Zero Datetime=True</Value>
     </Setting>
     <Setting Name="TEST_MODE" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

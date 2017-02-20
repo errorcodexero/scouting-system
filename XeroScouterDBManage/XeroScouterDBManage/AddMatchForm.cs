@@ -43,7 +43,7 @@ namespace XeroScouterDBManage_Server
                     cmbCompetitionName.ValueMember = EventTable.COL_ID;
                     cmbCompetitionName.SelectedValue = this.compID;
                     cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
-                    txtMatchLocation.Text = ds.Tables[0].Rows[0][EventTable.COL_LOCATION].ToString();
+                    txtMatchLocation.Text = ds.Tables[0].Rows[cmbCompetitionName.SelectedIndex][EventTable.COL_LOCATION].ToString();
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {

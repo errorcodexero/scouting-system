@@ -93,7 +93,7 @@ namespace XeroScouterDBManage_Server
 				case "txtAutoHighMissed":
                 case "txtAutoGearsDelivered":
                 case "txtAutoFuelBinsTriggered":
-                case "txtTeleLowDump":
+                case "txtTeleLowDumps":
                 case "txtTeleHighScored":
                 case "txtTeleHighMissed":
                 case "txtTeleGearsDelivered":
@@ -131,24 +131,47 @@ namespace XeroScouterDBManage_Server
 
 		private void mapActionTypeControls()
 		{
-			this.dictActionTypeControls.Add(this.txtAutoLowDump, "Auto Line Crossed");
-			this.dictActionTypeControls.Add(this.txtAutoHighScored, "Auto Bunnies Picked-up");
-			this.dictActionTypeControls.Add(this.txtAutoGearsDelivered, "Auto Bunnies Scored");
-			this.dictActionTypeControls.Add(this.txtTeleLowDumps, "Lines Crossed");
-			this.dictActionTypeControls.Add(this.txtTeleGearsDelivered, "Bunnies Deposited");
-			this.dictActionTypeControls.Add(this.txtTeleHighScored, "Bunnies Picked-up");
-			this.dictActionTypeControls.Add(this.txtTeleHighMissed, "Bunnies Stolen");
+            this.dictActionTypeControls.Add(this.chkAutoBaselineCross, "auto_baseline_crossed");
+            this.dictActionTypeControls.Add(this.txtAutoLowDump, "auto_low_dump");
+			this.dictActionTypeControls.Add(this.txtAutoHighScored, "auto_high_scores");
+			this.dictActionTypeControls.Add(this.txtAutoHighMissed, "auto_high_missed");
+            this.dictActionTypeControls.Add(this.txtAutoGearsDelivered, "auto_gear_delivered");
+            this.dictActionTypeControls.Add(this.txtAutoFuelBinsTriggered, "auto_fuel_bin_triggered");
 
-			this.dictActionTypeNames.Add("Auto Line Crossed", this.txtAutoLowDump);
-			this.dictActionTypeNames.Add("Auto Bunnies Picked-up", this.txtAutoHighScored);
-			this.dictActionTypeNames.Add("Auto Bunnies Scored", this.txtAutoGearsDelivered);
-			this.dictActionTypeNames.Add("Lines Crossed", this.txtTeleLowDumps);
-			this.dictActionTypeNames.Add("Bunnies Deposited", this.txtTeleGearsDelivered);
-			this.dictActionTypeNames.Add("Bunnies Picked-up", this.txtTeleHighScored);
-			this.dictActionTypeNames.Add("Bunnies Stolen", this.txtTeleHighMissed);
-		}
+            this.dictActionTypeControls.Add(this.txtTeleLowDumps, "tele_low_dumps");
+			this.dictActionTypeControls.Add(this.txtTeleHighScored, "tele_high_scores");
+			this.dictActionTypeControls.Add(this.txtTeleHighMissed, "tele_high_missed");
+            this.dictActionTypeControls.Add(this.txtTeleGearsDelivered, "tele_gear_delivered");
+            this.dictActionTypeControls.Add(this.txtTeleFuelBinsTriggered, "tele_fuel_bin_triggered");
+            this.dictActionTypeControls.Add(this.radClimbAttempt, "tele_try_climb");
+            this.dictActionTypeControls.Add(this.radClimbSuccess, "tele_did_climb");
+            this.dictActionTypeControls.Add(this.radClimbTriggered, "tele_tiggered_pressure_pad");
+            this.dictActionTypeControls.Add(this.chkDefenceFlag, "tele_played_defensively");
+            this.dictActionTypeControls.Add(this.chkBreakdownFlag, "breakdown");
+            this.dictActionTypeControls.Add(this.chkDisconnectFlag, "disconnect");
 
-		private void loadActionTypeData()
+            this.dictActionTypeNames.Add("auto_baseline_crossed", this.chkAutoBaselineCross);
+            this.dictActionTypeNames.Add("auto_low_dump", this.txtAutoLowDump);
+            this.dictActionTypeNames.Add("auto_high_scores", this.txtAutoHighScored);
+            this.dictActionTypeNames.Add("auto_high_missed", this.txtAutoHighMissed);
+            this.dictActionTypeNames.Add("auto_gear_delivered", this.txtAutoGearsDelivered);
+            this.dictActionTypeNames.Add("auto_fuel_bin_triggered", this.txtAutoFuelBinsTriggered);
+
+            this.dictActionTypeNames.Add("tele_low_dumps", this.txtTeleLowDumps);
+            this.dictActionTypeNames.Add("tele_high_scores", this.txtTeleHighScored);
+            this.dictActionTypeNames.Add("tele_high_missed", this.txtTeleHighMissed);
+            this.dictActionTypeNames.Add("tele_gear_delivered", this.txtTeleGearsDelivered);
+            this.dictActionTypeNames.Add("tele_fuel_bin_triggered", this.txtTeleFuelBinsTriggered);
+            this.dictActionTypeNames.Add("tele_try_climb", this.radClimbAttempt);
+            this.dictActionTypeNames.Add("tele_did_climb", this.radClimbSuccess);
+            this.dictActionTypeNames.Add("tele_tiggered_pressure_pad", this.radClimbTriggered);
+            this.dictActionTypeNames.Add("tele_played_defensively", this.chkDefenceFlag);
+            this.dictActionTypeNames.Add("breakdown", this.chkBreakdownFlag);
+            this.dictActionTypeNames.Add("disconnect", this.chkDisconnectFlag);
+
+        }
+
+        private void loadActionTypeData()
 		{
 			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
 			MySqlCommand cmd;
@@ -206,12 +229,14 @@ namespace XeroScouterDBManage_Server
 						this.txtMatchNumber.Enabled = false;
 						this.txtTeamNumber.Enabled = false;
 						this.cmbAllianceColor.Enabled = false;
-                        this.chkAutoBaselineCross.Enabled = false;
-                        this.chkClimbAttempted.Enabled = false;
-                        this.chkClimbSuccess.Enabled = false;
-                        this.chkDisconnectFlag.Enabled = false;
-						this.chkBreakdownFlag.Enabled = false;
-						this.chkDefenceFlag.Enabled = false;
+      //                  this.chkAutoBaselineCross.Enabled = false;
+      //                  this.radClimbNoClimb.Enabled = false;
+      //                  this.radClimbAttempt.Enabled = false;
+      //                  this.radClimbSuccess.Enabled = false;
+      //                  this.radClimbTriggered.Enabled = false;
+      //                  this.chkDisconnectFlag.Enabled = false;
+						//this.chkBreakdownFlag.Enabled = false;
+						//this.chkDefenceFlag.Enabled = false;
 						foreach(Control c in dictActionTypeNames.Values)
 						{
 							c.Enabled = false;
@@ -369,14 +394,27 @@ namespace XeroScouterDBManage_Server
 			String strAction;
 			foreach (Int32 id in dictTemp.Keys)
 			{
-				Control textBox = null;
+				Control myControl = null;
 				dictTemp.TryGetValue(id, out quantity);
 				dictActionTypeIDs.TryGetValue(id, out strAction);
-				dictActionTypeNames.TryGetValue(strAction, out textBox);
+				dictActionTypeNames.TryGetValue(strAction, out myControl);
 
-				if (textBox != null)
-				{
-					textBox.Text = String.Format("{0}", quantity);
+                if (myControl != null)
+                {
+                    Type t = myControl.GetType();
+                    string s = t.Name;
+                    switch (s)
+                    {
+                        case "TextBox":
+                            myControl.Text = String.Format("{0}", quantity);
+                            break;
+                        case "CheckBox":
+                            ((CheckBox)myControl).Checked = (quantity > 0);
+                            break;
+                        case "RadioButton":
+                            ((RadioButton)myControl).Checked = (quantity > 0);
+                            break;
+                    }
 				}
 			}
 
@@ -453,9 +491,25 @@ namespace XeroScouterDBManage_Server
 					dictActionTypes.TryGetValue(name, out id);
 					bool hasData = false;
 					dictUpdatedFieldIDs.TryGetValue(id, out hasData);
-					if (!String.IsNullOrEmpty(k.Text) && !hasData)
-					{
-						dictIdToCount.Add(id, Int32.Parse(k.Text));
+                    if (!String.IsNullOrEmpty(k.Text) && !hasData)
+                    {
+                        Type t = k.GetType();
+                        string s = t.Name;
+                        switch (s)
+                        {
+                            case "TextBox":
+                                dictIdToCount.Add(id, Int32.Parse(k.Text));
+                                break;
+                            case "CheckBox":
+                                dictIdToCount.Add(id, ((((CheckBox)k).Checked) ? 1 : 0));
+                                break;
+                            case "RadioButton":
+                                dictIdToCount.Add(id, ( (((RadioButton)k).Checked) ? 1 : 0) );
+                                break;
+                            default:
+                                toolStripStatusLabel1.Text = "Bad control type: " + s;
+                                break;
+                        }
 					}
 				}
 
