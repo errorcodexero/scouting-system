@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -34,15 +33,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
 
-import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchActionModel;
 
 public class ScoutingActivity extends TabActivity implements View.OnClickListener {
@@ -73,7 +68,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
         // Initializing the tabbing system
 
-        TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+        TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
         tabHost.setup();
 
         TabHost.TabSpec autonomousTab = tabHost.newTabSpec("tab1");
@@ -102,7 +97,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
                 finalizeDataList.clear();
 
-                for ( ActionObject i : actionObjectArrayList) {
+                for (ActionObject i : actionObjectArrayList) {
                     finalizeDataList.add(new Pair<>(getString(i.getTextFieldValueId()), String.valueOf(i.getActionCount())));
                 }
                 finalizeDataView.setAdapter(finalizeTabAdapter);
@@ -158,11 +153,11 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         createFileAssociations();
     }
 
-    public void createFileAssociations(){
+    public void createFileAssociations() {
         //Sets up file location data
         filename = "match_backup_entryValueMap_" + teamMatchId + ".ser";
         //Gets the /mnt/sdcard/Download folder path
-        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         }
         // revert to using internal storage (not sure if there's an equivalent to the above)
@@ -191,12 +186,12 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         Log.e("Scouting Activity", "onStart");
 
         File f = new File(baseFolder + File.separator + filename);
-        if(f.exists() && !f.isDirectory() && doAskRestore) {
+        if (f.exists() && !f.isDirectory() && doAskRestore) {
             AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
             aBuilder.setMessage("Previous data for this match has been found." +
                     " Would you like to load it?")
@@ -236,12 +231,12 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             alert.setTitle("Alert");
             alert.show();
         } else {
-            Log.d("FileLoader","No backup file found");
+            Log.d("FileLoader", "No backup file found");
         }
     }
 
 
-    private String getTimeStamp(){
+    private String getTimeStamp() {
         Date curDate = new Date();
         SimpleDateFormat format = new SimpleDateFormat("MMdd_hhmmss");
         return format.format(curDate);
@@ -250,7 +245,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     @Override
     public void onStop() {
         super.onStop();
-        if(doSaveToFile) {
+        if (doSaveToFile) {
             if (!didCleanExit) {
                 updateEntryValueMap();
                 serializeEntryValueMap();
@@ -260,27 +255,27 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     //Gets all the values of each Entry method(EditText, Radio buttons, and Checkboxes,
     //and puts them into the HashMap EntryValueMap
-    public void updateEntryValueMap(){
-        for(ActionObject object : actionObjectArrayList){
+    public void updateEntryValueMap() {
+        for (ActionObject object : actionObjectArrayList) {
             entryValueMap.put(getResources().getResourceEntryName(object.getTextFieldId()), object.getActionCount());
         }
         CheckBox action_1 = (CheckBox) findViewById(R.id.chkbx_action_1);
-        entryValueMap.put(getResources().getResourceEntryName(R.id.chkbx_action_1), action_1.isChecked()? 1 : 0);
+        entryValueMap.put(getResources().getResourceEntryName(R.id.chkbx_action_1), action_1.isChecked() ? 1 : 0);
         RadioButton checkedRadio = (RadioButton) findViewById(currentClickedId);
         entryValueMap.put(getResources().getResourceEntryName(currentClickedId), 1);
         ToggleButton currentToggle = (ToggleButton) findViewById(R.id.btn_action_16);
-        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked()? 1 : 0);
+        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked() ? 1 : 0);
         currentToggle = (ToggleButton) findViewById(R.id.btn_action_17);
-        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked()? 1 : 0);
+        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked() ? 1 : 0);
         currentToggle = (ToggleButton) findViewById(R.id.btn_action_18);
-        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked()? 1 : 0);
-        entryValueMap.put("doRestore", doSaveToFile? 1 : 0);
+        entryValueMap.put(getResources().getResourceEntryName(currentToggle.getId()), currentToggle.isChecked() ? 1 : 0);
+        entryValueMap.put("doRestore", doSaveToFile ? 1 : 0);
 
 
     }
 
     //Serializes the EntryValueMap, saves to downloads folder
-    public void serializeEntryValueMap(){
+    public void serializeEntryValueMap() {
         //Outputs the file
         File file = new File(baseFolder + File.separator + filename);
         file.getParentFile().mkdirs();
@@ -292,16 +287,14 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             oos.writeObject(entryValueMap);
             oos.close();
             fos.close();
-            Log.d("ScoutingActivity","Serialized entryValueMap at filename: " + filename);
-        }
-        catch (IOException ioe) {
+            Log.d("ScoutingActivity", "Serialized entryValueMap at filename: " + filename);
+        } catch (IOException ioe) {
             System.out.println(ioe.getStackTrace());
         }
     }
 
-    public void deSerializeEntryValueMap(){
-        try
-        {
+    public void deSerializeEntryValueMap() {
+        try {
             FileInputStream fis = new FileInputStream(baseFolder + File.separator + filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
             entryValueMap = (HashMap) ois.readObject();
@@ -309,22 +302,20 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             fis.close();
             //Updates the Entry Fields with the backup values;
             updateEntryValues();
-        }catch(IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
             return;
-        }catch(ClassNotFoundException c)
-        {
+        } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
             c.printStackTrace();
             return;
         }
     }
 
-    public void updateEntryValues(){
+    public void updateEntryValues() {
         EditText tempTextView;
 
-        for(ActionObject a : actionObjectArrayList){
+        for (ActionObject a : actionObjectArrayList) {
             tempTextView = (EditText) findViewById(a.getTextFieldId());
             a.setActionCount(entryValueMap.get(getResources().getResourceEntryName(a.getTextFieldId())));
             if (tempTextView != null) {
@@ -359,7 +350,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         RadioButton action_15 = (RadioButton) findViewById(R.id.radio_action_15);
         RadioButton action_no_climb = (RadioButton) findViewById(R.id.radio_no_climb);
 
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.radio_no_climb:
                 if (checked) {
                     currentClickedId = R.id.radio_no_climb;
@@ -370,7 +361,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 }
                 break;
             case R.id.radio_action_13:
-                if (checked){
+                if (checked) {
                     currentClickedId = R.id.radio_action_13;
 
                     //Toast.makeText(this, "14", Toast.LENGTH_SHORT).show();
@@ -380,7 +371,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 }
                 break;
             case R.id.radio_action_14:
-                if (checked){
+                if (checked) {
                     currentClickedId = R.id.radio_action_13;
 
                     //Toast.makeText(this, "15", Toast.LENGTH_SHORT).show();
@@ -390,7 +381,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 }
                 break;
             case R.id.radio_action_15:
-                if (checked){
+                if (checked) {
                     currentClickedId = R.id.radio_action_15;
 
                     //Toast.makeText(this, "16", Toast.LENGTH_SHORT).show();
@@ -428,7 +419,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         }
     }
 
-    private int getActionArrayIndex(int inputIndex) {return (inputIndex - 2);}
+    private int getActionArrayIndex(int inputIndex) {
+        return (inputIndex - 2);
+    }
 
 
     @Override
@@ -525,7 +518,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                                 decrementButton.setEnabled(false);
                             }
                             break;
-                        } else if (!decrementButton.isEnabled()){
+                        } else if (!decrementButton.isEnabled()) {
                             decrementButton.setEnabled(true);
                         }
                     }

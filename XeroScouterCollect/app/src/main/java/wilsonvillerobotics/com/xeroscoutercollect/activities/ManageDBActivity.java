@@ -2,7 +2,6 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -11,10 +10,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,12 +31,8 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
-import wilsonvillerobotics.com.xeroscoutercollect.database.ManageDB;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
-
-import org.apache.commons.net.ftp.FTP;
 
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
@@ -51,9 +44,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         ACTIONTYPE,
         TEAMMATCH,
         UNKNOWN
-    };
+    }
+
     public DatabaseHelper db;
-    private String filename;
+    private String tmaFileName;
+    private String pitFileName;
     private Context tempCtx;
     private Button btn_export;
     private SQLiteDatabase sqlDB;
@@ -151,19 +146,32 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
         else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
-            filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
-            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
-            File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
+
+            String pitOut = xmlExporter.generateAllTeamData(4, true, true, this);
+            pitFileName = "pit" + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+            File pitFile = new File(baseFolder + File.separator + pitFileName);
+            FileOutputStream fos;
+            try {
+                fos = new FileOutputStream(pitFile);
+                fos.write(pitOut.getBytes());
+
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            tmaFileName = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
 
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
             ArrayList<String> string = xmlExporter.GenerateNewMatches();
             String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
-            File file = new File(baseFolder + File.separator + filename);
-            file.getParentFile().mkdirs();
-            FileOutputStream fos;
+            File tmaFile = new File(baseFolder + File.separator + tmaFileName);
+            tmaFile.getParentFile().mkdirs();
+
             try {
-                fos = new FileOutputStream(xmlFile);
+                fos = new FileOutputStream(tmaFile);
 
                 for(String teamMatchAction : string) {
                     fos.write(teamMatchAction.getBytes());
@@ -175,10 +183,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 e.printStackTrace();
             }
 
+
             //Prompts user for xport type
             //If bluetooth fails, prompts, and allows to restore backup TMA
             //Must do this or else next time, will not have anything to xport.
-            //Same with FTP 
+            //Same with FTP
             AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
             AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
             builder1.setMessage("Select Method of Export");
@@ -190,7 +199,8 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                         public void onClick(DialogInterface dialog, int id) {
                             BluetoothConnection btc = new BluetoothConnection(ManageDBActivity.this);
                             btc.initAdapter();
-                            btc.sendBluetoothFile(file);
+                            btc.sendBluetoothFile(tmaFile);
+                            btc.sendBluetoothFile(pitFile);
 
 
                             builder2.setMessage("Was BlueTooth Successful?");
@@ -219,7 +229,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
-                            if(!ftp.sendFTPFile(baseFolder, filename)){
+                            if(!ftp.sendFTPFile(baseFolder, tmaFileName, pitFileName)){
                                 restoreBackupTMAIndex();
                             }
                         }

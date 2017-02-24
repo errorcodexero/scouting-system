@@ -141,7 +141,7 @@ public class FTPConnection {
         return true;
     }
 
-    public boolean sendFTPFile(String baseFolder, String filename){
+    public boolean sendFTPFile(String baseFolder, String filename1, String filename2){
         if(isConnected()) {
             try {
                 //new ftp client
@@ -168,9 +168,11 @@ public class FTPConnection {
 
                 //get input stream
                 InputStream input;
-                input = new FileInputStream(baseFolder + "/" + filename);
+                input = new FileInputStream(baseFolder + "/" + filename1);
                 //store the file in the remote server
-                ftp.storeFile(filename, input);
+                ftp.storeFile(filename1, input);
+                input = new FileInputStream(baseFolder + "/" + filename2);
+                ftp.storeFile(filename2, input);
                 //close the stream
                 input.close();
                 setStatusText("Success!");
@@ -197,15 +199,9 @@ public class FTPConnection {
     }
 
     private boolean isConnected(){
-        if(getLocalIpAddress() != null){
-            Toast.makeText(activity, "Is Connected check success", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        else{
-            Toast.makeText(activity, "Is Connected check failed", Toast.LENGTH_SHORT).show();
-
-            return false;
-        }
+        //Toast.makeText(activity, "Is Connected check success", Toast.LENGTH_SHORT).show();
+//Toast.makeText(activity, "Is Connected check failed", Toast.LENGTH_SHORT).show();
+        return getLocalIpAddress() != null;
     }
 
     //Used to check to see if connected to Ethernet
@@ -219,7 +215,7 @@ public class FTPConnection {
                     if (!inetAddress.isLoopbackAddress()) {
                         String ip = Formatter.formatIpAddress(inetAddress.hashCode());
                         Log.i(TAG, "***** IP="+ ip);
-                        Toast.makeText(activity, "Got an IP", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(activity, "Got an IP", Toast.LENGTH_SHORT).show();
                         return ip;
                     }
                 }
@@ -227,7 +223,7 @@ public class FTPConnection {
         } catch (SocketException ex) {
             Log.e(TAG, ex.toString());
         }
-        Toast.makeText(activity, "Failed to find an IP. Plug in ethernet cable and try again.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(activity, "Failed to find an IP. Plug in ethernet cable and try again.", Toast.LENGTH_SHORT).show();
         return null;
     }
 

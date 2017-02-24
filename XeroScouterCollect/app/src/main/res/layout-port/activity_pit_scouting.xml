@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lbl_tablet_id"
-    android:weightSum="1">
+    android:weightSum="100">
 
     <TextView
         android:layout_width="match_parent"
@@ -24,19 +24,12 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:text="Check All"
-            android:layout_marginRight="7dip"
-            android:id="@+id/btn_check_all"
-            android:layout_height="wrap_content"
-            android:onClick="onClick">
-        </Button>
-        <Button
-            android:layout_width="wrap_content"
             android:text="Clear All"
             android:id="@+id/btn_clear_all"
             android:layout_height="wrap_content"
             android:elevation="1dp"
-            android:onClick="onClick">
+            android:onClick="onClick"
+            android:textSize="20sp">
         </Button>
     </LinearLayout>
 
@@ -46,15 +39,206 @@
         android:fadingEdge="none"
         android:cacheColorHint="@null"
         android:layout_height="164dp"
-        android:layout_weight="0.69">
+        android:layout_weight="20">
     </ListView>
 
-    <Button
-        android:text="Find Checked Buttons"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_checked_boxes"
-        android:onClick="onClick" />
+        android:layout_weight="5"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75">
+
+        <TextView
+            android:text="Programming Language"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:id="@+id/textView4"
+            android:layout_weight="15"
+            android:textSize="24sp"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.2" />
+
+            <CheckBox
+                android:text="@string/ckbox_entry_field_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/chbox_pit_field_1"
+                android:layout_weight="30"
+                android:onClick="onCheckboxClicked"
+                android:checked="false" />/>
+
+            <CheckBox
+                android:text="@string/ckbox_entry_field_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/chbox_pit_field_2"
+                android:layout_weight="30"
+                android:onClick="onCheckboxClicked"/>/>
+
+            <CheckBox
+                android:text="@string/ckbox_entry_field_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/chbox_pit_field_3"
+                android:layout_weight="30"
+                android:onClick="onCheckboxClicked"/>/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_weight="20"
+            android:layout_height="wrap_content">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5" />
+
+            <CheckBox
+                android:text="@string/ckbox_entry_field_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/chbox_pit_field_4"
+                android:layout_weight="30"
+                android:onClick="onCheckboxClicked"/>/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="0"
+                android:id="@+id/entry_field_language"
+                android:layout_weight="80"
+                android:inputType="text"
+                android:hint="Language" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:text="Robot Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_weight="5"
+                android:textSize="24sp"
+                android:gravity="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="0"
+                android:id="@+id/entry_field_drive_base"
+                android:layout_weight="5"
+                android:inputType="text"
+                android:hint="Drive Base"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:paddingTop="10dp">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/entry_field_num_balls"
+                android:layout_weight="1"
+                android:hint="Number of Balls" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/entry_field_volume"
+                android:layout_weight="1"
+                android:hint="Volume of Ball Holder" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="75" />
+
+            <Button
+                android:text="Done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_pit_done"
+                android:layout_weight="25"
+                android:textSize="16sp"
+                android:onClick="onClick"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>

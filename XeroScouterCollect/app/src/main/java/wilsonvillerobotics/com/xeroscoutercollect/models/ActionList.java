@@ -27,7 +27,7 @@ public class ActionList {
             put(7, new Action(7, Resources.getSystem().getString(R.string.action_7)));
             put(8, new Action(8, Resources.getSystem().getString(R.string.action_8)));
             put(9, new Action(9, Resources.getSystem().getString(R.string.action_9)));
-        };
+        }
 
     };
 

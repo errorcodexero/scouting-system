@@ -121,7 +121,7 @@ public class XMLExporter {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String queryStatement = "SELECT * FROM team";
+        String queryStatement = "SELECT * FROM team;";
 
         Cursor cursor = db.rawQuery(queryStatement, null);
         cursor.moveToFirst();
@@ -135,7 +135,7 @@ public class XMLExporter {
 
         String tempString = "";
 
-        int tempTypeHolder = 0;
+        int tempTypeHolder = 20;
 
         while(cursor.moveToNext()) {
 
