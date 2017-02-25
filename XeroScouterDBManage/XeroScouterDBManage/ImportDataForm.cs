@@ -441,7 +441,7 @@ namespace XeroScouterDBManage_Server
             for (int n = 0; n < columnCount; n++)
             {
                 string colName = dt.Columns[n].ToString();
-                if (colName.Contains("name"))
+                if (colName.ToLower().Contains("name"))
                 {
                     nameIndex = n;
                     break;
