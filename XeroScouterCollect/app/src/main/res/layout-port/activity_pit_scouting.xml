@@ -14,8 +14,6 @@
         android:id="@+id/lbl_pit_team_number"
         android:layout_gravity="left|center_horizontal" />
 
- "fill_parent">
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:orientation="horizontal"

@@ -56,6 +56,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_7"
                                 android:id="@+id/lbl_action_7"
+                                android:textSize="20dp"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
 
@@ -70,6 +71,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_10"
                                 android:id="@+id/lbl_action_10"
+                                android:textSize="20dp"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
                         </LinearLayout>
@@ -180,6 +182,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_8"
+                                android:textSize="20dp"
                                 android:id="@+id/lbl_action_8"
                                 android:layout_weight="0.35"
                                 android:gravity="center" />
@@ -194,6 +197,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_11"
+                                android:textSize="20dp"
                                 android:id="@+id/lbl_action_11"
                                 android:layout_weight="0.30"
                                 android:gravity="center" />
@@ -305,6 +309,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_9"
                                 android:id="@+id/lbl_action_9"
+                                android:textSize="20dp"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
 
@@ -318,6 +323,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/action_12"
+                                android:textSize="20dp"
                                 android:id="@+id/lbl_action_12"
                                 android:layout_weight=".4"
                                 android:gravity="center" />
@@ -422,15 +428,15 @@
                             android:layout_weight=".26">
                             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                 android:orientation="horizontal"
-                                android:layout_weight="50"
-                                android:layout_width="match_parent"
+                                android:layout_weight=".6"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content">
 
                                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_width="0dp"
-                                android:layout_weight="0.02">
+                                android:layout_weight=".5">
 
                                 <RadioButton
                                     android:text="@string/action_13"
@@ -455,7 +461,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_width="0dp"
-                                android:layout_weight=".02">
+                                android:layout_weight=".5">
                                 <RadioButton
                                     android:text="@string/action_15"
                                     android:layout_width="match_parent"
@@ -478,32 +484,35 @@
 
 
                             <Space
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="3" />
+                                android:layout_weight="0.2" />
 
                             <ToggleButton
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btn_action_16"
                                 android:textOff="Defensive"
-                                android:textOn="Defensive" />
+                                android:textOn="Defensive"
+                                android:layout_weight="0.2" />
 
                             <ToggleButton
                                 android:text="ToggleButton"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btn_action_17"
                                 android:textOff="Breakdown"
-                                android:textOn="Breakdown" />
+                                android:textOn="Breakdown"
+                                android:layout_weight="0.2" />
 
                             <ToggleButton
                                 android:text="ToggleButton"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btn_action_18"
                                 android:textOff="Disconnect"
-                                android:textOn="Disconnect" />
+                                android:textOn="Disconnect"
+                                android:layout_weight="0.2" />
 
                         </LinearLayout>
 
@@ -533,6 +542,7 @@
                                     android:text="@string/action_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textSize="20dp"
                                     android:id="@+id/lbl_action_2"
                                     android:layout_weight="5"
                                     android:gravity="center" />
@@ -575,6 +585,7 @@
                                     android:text="@string/action_3"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textSize="20dp"
                                     android:id="@+id/lbl_action_3"
                                     android:layout_weight="5"
                                     android:gravity="center" />
@@ -617,6 +628,7 @@
                                     android:text="@string/action_4"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textSize="20dp"
                                     android:id="@+id/lbl_action_4"
                                     android:layout_weight="5"
                                     android:gravity="center" />
@@ -675,6 +687,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="10dp"
                                     android:id="@+id/lbl_action_5"
+                                    android:textSize="20dp"
                                     android:layout_weight="5"
                                     android:gravity="center" />
 
@@ -758,6 +771,7 @@
                                     android:text="@string/action_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textSize="20dp"
                                     android:id="@+id/lbl_abc"
                                     android:layout_weight="5"
                                     android:gravity="center" />

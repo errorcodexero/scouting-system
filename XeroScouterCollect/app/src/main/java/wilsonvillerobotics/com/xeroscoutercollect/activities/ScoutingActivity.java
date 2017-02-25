@@ -489,25 +489,23 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 boolean belowZero = false;
                 if (action_id != 0) {
 
-                    if (belowZero == false) {
-                        //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
-                        ActionObject tempObject = actionObjectArrayList.get(getActionArrayIndex(action_id));
-                        tempObject.changeValue(actionData.getDecrement());
+                    //Toast.makeText(ScoutingActivity.this, queryString, Toast.LENGTH_SHORT).show();
+                    ActionObject tempObject = actionObjectArrayList.get(getActionArrayIndex(action_id));
+                    tempObject.changeValue(actionData.getDecrement());
 
-                        EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
-                        if (tempTextView != null) {
-                            tempTextView.setText(String.valueOf(tempObject.getActionCount()));
-                            try {
-                                //db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
-                                queryStringList.add(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
-                            } finally {
+                    EditText tempTextView = (EditText) findViewById(tempObject.getTextFieldId());
+                    if (tempTextView != null) {
+                        tempTextView.setText(String.valueOf(tempObject.getActionCount()));
+                        try {
+                            //db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                            queryStringList.add(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                        } finally {
 
-                            }
-                            //Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
                         }
+                        //Toast.makeText(ScoutingActivity.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(ScoutingActivity.this, "View is NULL", Toast.LENGTH_SHORT).show();
                     }
                     for (ActionObject spinBox : actionObjectArrayList) {
                         Button decrementButton = (Button) findViewById(spinBox.getDecrementButtonId());
@@ -522,12 +520,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                             decrementButton.setEnabled(true);
                         }
                     }
-                    break;
-
-                }
+                break;
+            }
         }
-
-
     }
-
 }

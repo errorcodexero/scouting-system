@@ -121,7 +121,8 @@ public class XMLExporter {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String queryStatement = "SELECT * FROM team;";
+
+         String queryStatement = "SELECT * FROM team;";
 
         Cursor cursor = db.rawQuery(queryStatement, null);
         cursor.moveToFirst();
@@ -133,16 +134,18 @@ public class XMLExporter {
 
         xmlResult += GenerateTagByName(ROW, 1, false, true);
 
-        String tempString = "";
+        String tempString;
 
-        int tempTypeHolder = 20;
+        int tempTypeHolder = 0;
 
-        while(cursor.moveToNext()) {
+        do {
 
             for ( String i : TeamContract.getPitDataDBNames(context)) {
 
+                int tempColumnIndex = cursor.getColumnIndex(i);
+                tempTypeHolder = cursor.getType(tempColumnIndex);
 
-                tempTypeHolder = cursor.getType(cursor.getColumnIndex(i));
+
 
                 if (tempTypeHolder == Cursor.FIELD_TYPE_INTEGER) {
 
@@ -162,7 +165,7 @@ public class XMLExporter {
                 tempString = "";
 
             }
-        }
+        } while(cursor.moveToNext());
         if (endDataTag) {
             xmlResult += GenerateTagByName(DATA, 0, false, true);
         }
