@@ -61,6 +61,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     private TextView lbl_team_4;
     private TextView lbl_team_5;
     private TextView lbl_team_6;
+    private Integer lastMatchId;
     private String currentSelectedTeam;
 
 
@@ -161,6 +162,13 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         highlightTabletIdTeam();
         addItemsToMatchSpinner();
         addItemsToTeamSpinner();
+        SharedPreferences sharedPreferences = this.getPreferences(this.MODE_PRIVATE);
+        lastMatchId = sharedPreferences.getInt("last_match_id", 1) + 1;
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
+        String matchIdString = String.valueOf(lastMatchId);
+        int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
+        spinner.setSelection(matchDataAdapter.getPosition(String.valueOf(lastMatchId)));
+
     }
 
 
@@ -265,6 +273,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
         manualSelection = sharedPreferences.getBoolean(getString(R.string.manual_selection_pref), false);
+        lastMatchId = sharedPreferences.getInt("last_match_id", 1);
 
     }
     //Sets tablet id label
@@ -423,6 +432,12 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             //Cursor
 
             //Cursor cursor = db.execSQL("SELECT * FROM team_match WHERE id = " + tn);
+
+            SharedPreferences sharedPreferences = this.getPreferences(this.MODE_PRIVATE);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("last_match_id", matchId);
+            editor.commit();
 
             sanityCheckActivity.putExtra("background",isRed);
             sanityCheckActivity.putExtra("team_number", team_list.get(Integer.parseInt(tn)));

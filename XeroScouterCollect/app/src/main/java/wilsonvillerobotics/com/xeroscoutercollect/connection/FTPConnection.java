@@ -33,9 +33,6 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 public class FTPConnection {
     private Activity activity;
-    private String target  = "ftp://ftsscout:ftsscouter@192.168.1.4:21/";
-    private String mimeType = "text/xml";
-    private Intent ftpAppIntent;
     private String serverAddress = "192.168.1.4";
     private String userId = "ftsscout";
     private String password = "ftsscouter";

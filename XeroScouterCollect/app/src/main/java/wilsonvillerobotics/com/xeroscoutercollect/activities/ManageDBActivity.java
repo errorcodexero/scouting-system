@@ -150,20 +150,16 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
         else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
-<<<<<<< Updated upstream
-=======
             String temp = xmlExporter.generateAllTeamData(0, true, true, this);
-            filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+            String filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
             File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
 
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
             ArrayList<String> string = xmlExporter.GenerateNewMatches();
-            String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
             File file = new File(baseFolder + File.separator + filename);
             file.getParentFile().mkdirs();
->>>>>>> Stashed changes
             FileOutputStream fos;
             if(isPitScoutingTablet) {
                 String pitOut = xmlExporter.generateAllTeamData(4, true, true, this);
@@ -184,8 +180,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
                 sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
                 backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
-                ArrayList<String> string = xmlExporter.GenerateNewMatches();
-                String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
                 tmaFile = new File(baseFolder + File.separator + tmaFileName);
                 tmaFile.getParentFile().mkdirs();
 
