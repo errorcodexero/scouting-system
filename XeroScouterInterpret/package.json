@@ -2,9 +2,7 @@
   "name": "xeroscouterinterpret",
   "version": "0.0.1",
   "description": "Our scouting data interpreter",
-  "main": "index.js",
   "scripts": {
-    "start": "python3 manage.py runserver",
     "prepare": "sudo npm install -g webpack gyp node-sass grunt",
     "prepare-windows": "npm install -g webpack gyp node-sass grunt",
     "build-dev": "grunt",
@@ -39,13 +37,11 @@
     "grunt-mkdir": "^1.0.0",
     "grunt-prettify": "^0.4.0",
     "grunt-sass": "^1.2.1",
-    "grunt-webpack": "^1.0.18",
     "highcharts": "^5.0.3",
     "highcharts-commonjs": "^4.1.7-1",
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "matchdep": "^1.0.1",
-    "persistent-redux": "^1.0.2",
     "pouchdb": "^6.0.7",
     "pug-react-compiler": "^1.0.0",
     "react": "^15.3.2",
@@ -54,8 +50,7 @@
     "react-highcharts": "^11.0.0",
     "react-native-fs": "^2.0.1-rc.2",
     "redux": "^3.6.0",
-    "uglify": "^0.1.5",
-    "webpack-bundle-tracker": "0.0.93"
+    "uglify": "^0.1.5"
   },
   "devDependencies": {
     "source-map-loader": "^0.1.5",

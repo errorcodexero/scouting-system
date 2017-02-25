@@ -33,7 +33,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 public class FTPConnection {
     private Activity activity;
-    private String serverAddress = "192.168.1.4";
+    private String serverAddress;
     private String userId = "ftsscout";
     private String password = "ftsscouter";
     private String remoteDirectory = "/";
@@ -44,6 +44,7 @@ public class FTPConnection {
     public FTPConnection(Activity act){
         activity = act;
         status = (TextView) act.findViewById(R.id.lbl_user_status_text);
+        serverAddress = act.getPreferences(act.MODE_PRIVATE).getString("server_ip", "192.168.1.4");
     }
 
 /*

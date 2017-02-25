@@ -49,6 +49,12 @@
             android:summary=""
             android:defaultValue="@string/default_pref_value"
             android:dialogTitle="@string/set_tablet_uuid" />
+        <EditTextPreference
+            android:key="server_ip"
+            android:title="Server IP"
+            android:summary=""
+            android:defaultValue="@string/default_pref_value"
+            android:dialogTitle="Server IP" />
 
     </PreferenceCategory>
 
