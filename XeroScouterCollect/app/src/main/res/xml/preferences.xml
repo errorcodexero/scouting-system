@@ -20,6 +20,14 @@
             android:summary=""
             android:defaultValue="@string/default_pref_value"
             android:dialogTitle="@string/string_set_tablet_id" />
+
+        <CheckBoxPreference
+            android:key="pit_scouting_tablet"
+            android:title="Pit Scouting Tablet"
+            android:summary=""
+            android:defaultValue="@string/default_pref_value"
+            android:dialogTitle="Pit Scouting Tablet" />
+
         <EditTextPreference
             android:key="@string/tma_index_pref"
             android:inputType="number"

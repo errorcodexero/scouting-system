@@ -57,6 +57,9 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private String tabletId;
     private int backupTeamMatchAction = 0;
     private String baseFolder;
+    private boolean isPitScoutingTablet;
+    private File pitFile = null;
+    private File tmaFile = null;
 
 
     @Override
@@ -73,6 +76,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setBaseFolder();
+        isPitScoutingTablet = sharedPreferences.getBoolean("pit_scouting_tablet",false);
     }
 
     public void setBaseFolder(){
@@ -146,42 +150,45 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
         else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
-
-            String pitOut = xmlExporter.generateAllTeamData(4, true, true, this);
-            pitFileName = "pit" + "-" + tabletId + "-" + getTimeStamp() + ".xml";
-            File pitFile = new File(baseFolder + File.separator + pitFileName);
             FileOutputStream fos;
-            try {
-                fos = new FileOutputStream(pitFile);
-                fos.write(pitOut.getBytes());
+            if(isPitScoutingTablet) {
+                String pitOut = xmlExporter.generateAllTeamData(4, true, true, this);
+                pitFileName = "pit" + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+                pitFile = new File(baseFolder + File.separator + pitFileName);
 
-                fos.flush();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            tmaFileName = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
-
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
-            ArrayList<String> string = xmlExporter.GenerateNewMatches();
-            String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
-            File tmaFile = new File(baseFolder + File.separator + tmaFileName);
-            tmaFile.getParentFile().mkdirs();
-
-            try {
-                fos = new FileOutputStream(tmaFile);
-
-                for(String teamMatchAction : string) {
-                    fos.write(teamMatchAction.getBytes());
+                try {
+                    fos = new FileOutputStream(pitFile);
+                    fos.write(pitOut.getBytes());
+                    fos.flush();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-
-                fos.flush();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            else {
+                tmaFileName = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+
+                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+                backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
+                ArrayList<String> string = xmlExporter.GenerateNewMatches();
+                String xmlTeamData = xmlExporter.generateAllTeamData(0, true, true, this);
+                tmaFile = new File(baseFolder + File.separator + tmaFileName);
+                tmaFile.getParentFile().mkdirs();
+
+                try {
+                    fos = new FileOutputStream(tmaFile);
+
+                    for(String teamMatchAction : string) {
+                        fos.write(teamMatchAction.getBytes());
+                    }
+
+                    fos.flush();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
 
 
             //Prompts user for xport type
@@ -199,9 +206,12 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                         public void onClick(DialogInterface dialog, int id) {
                             BluetoothConnection btc = new BluetoothConnection(ManageDBActivity.this);
                             btc.initAdapter();
-                            btc.sendBluetoothFile(tmaFile);
-                            btc.sendBluetoothFile(pitFile);
-
+                            if(isPitScoutingTablet && pitFile.exists()){
+                                btc.sendBluetoothFile(pitFile);
+                            }
+                            else {
+                                btc.sendBluetoothFile(tmaFile);
+                            }
 
                             builder2.setMessage("Was BlueTooth Successful?");
                             builder2.setCancelable(false);
@@ -229,8 +239,13 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
-                            if(!ftp.sendFTPFile(baseFolder, tmaFileName, pitFileName)){
-                                restoreBackupTMAIndex();
+                            if(isPitScoutingTablet){
+                                ftp.sendFTPFile(pitFile);
+                            }
+                            else{
+                                if(!ftp.sendFTPFile(tmaFile)) {
+                                    restoreBackupTMAIndex();
+                                }
                             }
                         }
                     });

@@ -33,7 +33,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 
 public class FTPConnection {
     private Activity activity;
-    private String target  = "ftp://ftsscout:ftsscouter@192.168.1.3:21/";
+    private String target  = "ftp://ftsscout:ftsscouter@192.168.1.4:21/";
     private String mimeType = "text/xml";
     private Intent ftpAppIntent;
     private String serverAddress = "192.168.1.4";
@@ -141,7 +141,7 @@ public class FTPConnection {
         return true;
     }
 
-    public boolean sendFTPFile(String baseFolder, String filename1, String filename2){
+    public boolean sendFTPFiles(String baseFolder, String filename1, String filename2){
         if(isConnected()) {
             try {
                 //new ftp client
@@ -173,6 +173,54 @@ public class FTPConnection {
                 ftp.storeFile(filename1, input);
                 input = new FileInputStream(baseFolder + "/" + filename2);
                 ftp.storeFile(filename2, input);
+                //close the stream
+                input.close();
+                setStatusText("Success!");
+
+
+                ftp.logout();
+                ftp.disconnect();
+                setStatusText("FTP Transfer Complete");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return false;
+            }
+            return true;
+        }
+        setStatusText("FTP Transfer Failed. Connect ethernet cable.");
+        return false;
+    }
+    public boolean sendFTPFile(File fileToSend){
+        if(isConnected()) {
+            try {
+                //new ftp client
+                FTPClient ftp = new FTPClient();
+                //try to connect
+                ftp.connect(serverAddress);
+                //login to server
+                if (!ftp.login(userId, password)) {
+                    ftp.logout();
+                    return false;
+                }
+                int reply = ftp.getReplyCode();
+                //FTPReply stores a set of constants for FTP reply codes.
+                if (!FTPReply.isPositiveCompletion(reply)) {
+                    ftp.disconnect();
+                    return false;
+                }
+
+                //enter passive mode
+                ftp.enterLocalPassiveMode();
+                ftp.changeWorkingDirectory(remoteDirectory + "/exports");
+
+                setStatusText("Storing File");
+
+                //get input stream
+                InputStream input;
+                input = new FileInputStream(fileToSend);
+
+                //store the file in the remote server
+                ftp.storeFile(fileToSend.getName(), input);
                 //close the stream
                 input.close();
                 setStatusText("Success!");
