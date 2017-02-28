@@ -103,6 +103,12 @@
     <Compile Include="AddMatchForm.Designer.cs">
       <DependentUpon>AddMatchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPitDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPitDataForm.Designer.cs">
+      <DependentUpon>AddPitDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompetitionSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddMatchForm.resx">
       <DependentUpon>AddMatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPitDataForm.resx">
+      <DependentUpon>AddPitDataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompetitionSelectForm.resx">
       <DependentUpon>CompetitionSelectForm.cs</DependentUpon>
