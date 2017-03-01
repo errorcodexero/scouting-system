@@ -11,7 +11,7 @@ def get_events(cursor, j):
             event_code = ""
             year = 0
 
-            for i in range(0, 194):
+            for i in range(0, len(j) ):
                 event_code = j[i]["event_code"]
                 year = j[i]["year"]
                 tba_event_key = j[i]["key"]
@@ -36,14 +36,14 @@ def get_events(cursor, j):
 
                 if event_district == None:
                     if week != None:
-                        sql_insert = "INSERT INTO `scouting_steamworks`.`event` (tba_event_key, name, short_name, event_type, year ,week, location, tba_event_code) VALUES (%s, %s, %s, %s, %d, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + short_name + '\"', '\"' + event_type + '\"', int(year), int(week), '\"' + location + '\"', '\"' + event_code + '\"')
+                        sql_insert = "INSERT INTO `scouting`.`event` (tba_event_key, name, short_name, event_type, year ,week, location, tba_event_code) VALUES (%s, %s, %s, %s, %d, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + short_name + '\"', '\"' + event_type + '\"', int(year), int(week), '\"' + location + '\"', '\"' + event_code + '\"')
                     else:
                         if short_name != None:
-                            sql_insert = "INSERT INTO `scouting_steamworks`.`event` (tba_event_key, name, short_name, event_type, year, location, tba_event_code) VALUES (%s, %s, %s, %s, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + short_name + '\"', '\"' + event_type + '\"', int(year), '\"' + location + '\"', '\"' + event_code + '\"')
+                            sql_insert = "INSERT INTO `scouting`.`event` (tba_event_key, name, short_name, event_type, year, location, tba_event_code) VALUES (%s, %s, %s, %s, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + short_name + '\"', '\"' + event_type + '\"', int(year), '\"' + location + '\"', '\"' + event_code + '\"')
                         else:
-                            sql_insert = "INSERT INTO `scouting_steamworks`.`event` (tba_event_key, name, event_type, year, location, tba_event_code) VALUES (%s, %s, %s, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + event_type + '\"', int(year), '\"' + location + '\"', '\"' + event_code + '\"')
+                            sql_insert = "INSERT INTO `scouting`.`event` (tba_event_key, name, event_type, year, location, tba_event_code) VALUES (%s, %s, %s, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + event_type + '\"', int(year), '\"' + location + '\"', '\"' + event_code + '\"')
                 else:
-                    sql_insert = "INSERT INTO `scouting_steamworks`.`event` (tba_event_key, name, short_name, event_type, event_district, year, week, location, tba_event_code) VALUES (%s, %s, %s, %s, %s, %d, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + short_name + '\"', '\"' + event_type + '\"', '\"' + event_district + '\"', int(year), int(week), '\"' + location + '\"', '\"' + event_code + '\"')
+                    sql_insert = "INSERT INTO `scouting`.`event` (tba_event_key, name, short_name, event_type, event_district, year, week, location, tba_event_code) VALUES (%s, %s, %s, %s, %s, %d, %d, %s, %s)"%('\"' + tba_event_key + '\"', '\"' + name + '\"', '\"' + short_name + '\"', '\"' + event_type + '\"', '\"' + event_district + '\"', int(year), int(week), '\"' + location + '\"', '\"' + event_code + '\"')
                 #sql_insert = "INSERT INTO `scouting_steamworks`.`event` (tba_event_code, year) VALUES (%s, %d)"%(event_code, int(year))
                 print(sql_insert)
                 cursor.execute(sql_insert)
@@ -69,13 +69,13 @@ def get_teams(cursor):
                 
                 if team_name == None:
                     f.write("Team name is empty.")
-                    sql_insert = "INSERT INTO `scouting_steamworks`.`team` (team_number, long_name, tba_team_key) VALUES (%d, \"unknown\", %s)"%(team_number, '\"' + team_key + '\"')
+                    sql_insert = "INSERT INTO `scouting`.`team` (team_number, long_name, tba_team_key) VALUES (%d, \"unknown\", %s)"%(team_number, '\"' + team_key + '\"')
                     #print(sql_insert)
                     
                 else: 
                     f.write("Team name is not empty. Before  insert for team "+str(team_number)+"\n")
                     team_name = team_name[:255] #truncate team name to fit in database field
-                    sql_insert = "INSERT INTO `scouting_steamworks`.`team` (team_number, long_name, tba_team_key) VALUES (%d, %s, %s)"%(team_number, ( json.dumps(team_name) if is_ascii(team_name) else '\"Foreign Names Not Supported\"'), '\"' + team_key + '\"')
+                    sql_insert = "INSERT INTO `scouting`.`team` (team_number, long_name, tba_team_key) VALUES (%d, %s, %s)"%(team_number, ( json.dumps(team_name) if is_ascii(team_name) else '\"Foreign Names Not Supported\"'), '\"' + team_key + '\"')
                     #print(sql_insert)
 
                 f.write("Before  insert for team "+str(team_number)+"\n")
@@ -98,15 +98,15 @@ def main():
     try:
         response = requests.get('https://thebluealliance.com/api/v2/events/2017')
 
-        db = mysql.connect(host='localhost', port=3306, user='errorcodexero', passwd='errorcodexero', db='scouting_steamworks')
+        db = mysql.connect(host='localhost', port=3306, user='root', passwd='root', db='scouting')
 
         cursor = db.cursor()
         j = json.loads(response.text)
-        #f.write("Call Get Events\n")
-        #get_events(cursor, j)
-        #db.commit()
+        f.write("Call Get Events\n")
+        get_events(cursor, j)
+        db.commit()
         f.write("Call Get Teams\n")
-        get_teams(cursor)
+        #get_teams(cursor)
         db.commit()
         cursor.close()
         db.close()
