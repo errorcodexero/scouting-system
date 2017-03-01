@@ -67,7 +67,7 @@ CREATE TABLE `event` (
   `tba_event_code` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`_id`),
   KEY `idx_tba_event_key` (`tba_event_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'TBA_1','BunnyBots2016','BunnyBots2016','Exhibition','PNW',2016,50,'Catlin Gabel','A');
+INSERT INTO `event` VALUES (1,'TBA_1','BunnyBots2016','BunnyBots2016','Exhibition','PNW',2016,50,'Catlin Gabel','A'),(2,NULL,'Wilsonville Event',NULL,'District','PNW',2017,2,'Wilsonville',NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `match` (
   PRIMARY KEY (`_id`),
   KEY `fk_match_event_idx` (`event_id`),
   CONSTRAINT `fk_match_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `match` (
 
 LOCK TABLES `match` WRITE;
 /*!40000 ALTER TABLE `match` DISABLE KEYS */;
-INSERT INTO `match` VALUES (1,1,'TBA1_1','Q',1,1,'Scheduled',1,2,3,20,67,94,111,5,4,5,6,4,20,34,34,10,'Red','Dandy'),(2,1,'TBA1_2','Q',1,2,'Scheduled',1,3,5,19,50,69,94,0,2,4,6,4,36,50,49,10,'Red','Swell'),(3,1,'TBA1_3','Q',1,3,'Scheduled',2,3,4,12,58,70,70,0,1,5,6,23,57,80,115,0,'Blue','Fantastic'),(4,1,'TBA1_4','Q',1,4,'Scheduled',3,4,5,27,65,97,117,5,3,4,6,4,36,40,40,0,'Red','Great'),(5,1,'TBA1_5','Q',1,5,'Scheduled',1,6,4,8,60,68,68,0,2,5,3,12,51,68,68,5,'Draw','Incredible'),(6,1,'TBA1_6','Q',1,6,'Scheduled',3,6,2,8,48,66,66,10,1,4,5,23,59,72,105,0,'Blue','Extraordinary');
+INSERT INTO `match` VALUES (1,2,NULL,'Qualification',NULL,1,NULL,17,20,22,0,0,0,0,0,31,2,38,0,0,0,0,0,'',''),(2,2,NULL,'Qualification',NULL,2,NULL,34,29,30,0,0,0,0,0,45,42,37,0,0,0,0,0,'',''),(3,2,NULL,'Qualification',NULL,3,NULL,14,26,28,0,0,0,0,0,4,43,35,0,0,0,0,0,'',''),(4,2,NULL,'Qualification',NULL,4,NULL,36,23,29,0,0,0,0,0,32,9,35,0,0,0,0,0,'',''),(5,2,NULL,'Qualification',NULL,5,NULL,3,27,44,0,0,0,0,0,5,18,6,0,0,0,0,0,'','');
 /*!40000 ALTER TABLE `match` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `team` (
   PRIMARY KEY (`_id`),
   UNIQUE KEY `team_number_UNIQUE` (`team_number`),
   KEY `idx_tba_team_key` (`tba_team_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='This table contains FRC team data for a competition year. It includes information about their robot.';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COMMENT='This table contains FRC team data for a competition year. It includes information about their robot.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (1,'1425A','TBA1425A',NULL,'Error Code Xero',NULL,'Wilsonvillle','OR','USA','\'Building Robots, Building People\'',2004,'Dash',NULL,'Holononic',3,6,'C++',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'1425B','TBA1425B',NULL,'Error Code Xero',NULL,'Wilsonville','OR','USA','\'Building Robots, Building People\'',2004,'Hammy',NULL,'H-Drive',5,5,'C++',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'2471A','TBA2471A',NULL,'Team Mean Machine',NULL,'Camas','WA','USA','\"24 hours a day, 7 days a week, 1 build season\"',2008,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'2471B','TBA2471B',NULL,'Team Mean Machine',NULL,'Camas','WA','USA','\"24 hours a day, 7 days a week, 1 build season\"',2008,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'3711A','TBA3711A',NULL,'Iron Mustangs',NULL,'Trout Lake','WA','USA','\"Do great things\"',2011,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'3711B','TBA3711B',NULL,'Iron Mustangs',NULL,'Trout Lake','WA','USA','\"Do great things\"',2011,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'955','TBA955',NULL,'CV Robotics',NULL,'Corvallis','OR','USA',NULL,2002,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'997','TBA997',NULL,'Spartan Robotics',NULL,'Corvallis','OR','USA',NULL,2002,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,'1432','TBA1432',NULL,'Metal Beavers',NULL,'Portland','OR','USA',NULL,2004,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,'1540A','TBA1540A',NULL,'Flaming Chickens',NULL,'Portland','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(11,'1540B','TBA1540B',NULL,'Flaming Chickens',NULL,'Portland','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(12,'1540C','TBA1540C',NULL,'Flaming Chickens',NULL,'Portland','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,'1571','TBA1571',NULL,'CALibrate',NULL,'Gresham','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(14,'2374','TBA2374',NULL,'CrusaderBots',NULL,'Portland','OR','USA',NULL,2008,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(15,'2411','TBA2411',NULL,'Rebel @lliance',NULL,'Portland','OR','USA',NULL,2008,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(16,'2635','TBA2635',NULL,'Lake Monsters',NULL,'Lake Oswego','OR','USA',NULL,2008,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(17,'2733','TBA2733',NULL,'Pigmice',NULL,'Portland','OR','USA',NULL,2009,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(18,'2898','TBA2898',NULL,'Flying Hedgehogs',NULL,'Beaverton','OR','USA',NULL,2009,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(19,'3131','TBA3131',NULL,'Gladstone Gladiators',NULL,'Gladstone','OR','USA',NULL,2010,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(20,'3636','TBA3636',NULL,'General Robotics',NULL,'Portland','OR','USA',NULL,2011,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(21,'3674','TBA3674',NULL,'4-H CloverBots',NULL,'Battle Ground','WA','USA',NULL,2011,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(22,'4043','TBA4043',NULL,'NerdHerd',NULL,'McMinnville','OR','USA',NULL,2012,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(23,'4051','TBA4051',NULL,'Sabin-Sharks',NULL,'Portland','OR','USA',NULL,2012,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(24,'4692','TBA4692',NULL,'Metal Mallards',NULL,'Toutle','WA','USA',NULL,2013,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(25,'5977','TBA5977',NULL,'Rosemary Rebels',NULL,'Portland','OR','USA',NULL,2016,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(26,'6456','TBA6456',NULL,'Wolfpack',NULL,'Boring','OR','USA',NULL,2017,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `team` VALUES (1,'2471',NULL,NULL,'Team Mean Machine',NULL,'Brush Prarie','WA','USA',NULL,NULL,NULL,NULL,'Holononic',3,6,'C++',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'2521',NULL,NULL,'SERT',NULL,'Eugene','OR','USA',NULL,NULL,NULL,NULL,'H-Drive',5,5,'C++',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'2550',NULL,NULL,'Skynet',NULL,'Oregon City','OR','USA',NULL,2008,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'2811',NULL,NULL,'StormBots',NULL,'Vancouver','WA','USA',NULL,2008,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'2915',NULL,NULL,'Pandamonium',NULL,'Portland','OR','USA',NULL,2011,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'2990',NULL,NULL,'Hotwire',NULL,'Aumsville','OR','USA',NULL,2011,NULL,NULL,'NA',NULL,NULL,'NA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'955','TBA955',NULL,'CV Robotics',NULL,'Corvallis','OR','USA',NULL,2002,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'997','TBA997',NULL,'Spartan Robotics',NULL,'Corvallis','OR','USA',NULL,2002,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,'1432','TBA1432',NULL,'Metal Beavers',NULL,'Portland','OR','USA',NULL,2004,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,'1540A','TBA1540A',NULL,'Flaming Chickens',NULL,'Portland','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(11,'1540B','TBA1540B',NULL,'Flaming Chickens',NULL,'Portland','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(12,'1540C','TBA1540C',NULL,'Flaming Chickens',NULL,'Portland','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,'1571','TBA1571',NULL,'CALibrate',NULL,'Gresham','OR','USA',NULL,2005,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(14,'2374','TBA2374',NULL,'CrusaderBots',NULL,'Portland','OR','USA',NULL,2008,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(15,'2411','TBA2411',NULL,'Rebel @lliance',NULL,'Portland','OR','USA',NULL,2008,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(16,'2635','TBA2635',NULL,'Lake Monsters',NULL,'Lake Oswego','OR','USA',NULL,2008,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(17,'2733','TBA2733',NULL,'Pigmice',NULL,'Portland','OR','USA',NULL,2009,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(18,'2898','TBA2898',NULL,'Flying Hedgehogs',NULL,'Beaverton','OR','USA',NULL,2009,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(19,'3131','TBA3131',NULL,'Gladstone Gladiators',NULL,'Gladstone','OR','USA',NULL,2010,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(20,'3636','TBA3636',NULL,'General Robotics',NULL,'Portland','OR','USA',NULL,2011,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(21,'3674','TBA3674',NULL,'4-H CloverBots',NULL,'Battle Ground','WA','USA',NULL,2011,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(22,'4043','TBA4043',NULL,'NerdHerd',NULL,'McMinnville','OR','USA',NULL,2012,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(23,'4051','TBA4051',NULL,'Sabin-Sharks',NULL,'Portland','OR','USA',NULL,2012,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(24,'4692','TBA4692',NULL,'Metal Mallards',NULL,'Toutle','WA','USA',NULL,2013,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(25,'5977','TBA5977',NULL,'Rosemary Rebels',NULL,'Portland','OR','USA',NULL,2016,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(26,'6456','TBA6456',NULL,'Wolfpack',NULL,'Boring','OR','USA',NULL,2017,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(27,'568',NULL,NULL,'Nerds of the North',NULL,'Anchorage','AK','USA',NULL,2001,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(28,'753',NULL,NULL,'High Desert Droids',NULL,'Bend','OR','USA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(29,'847',NULL,NULL,'PHRED',NULL,'Philomath','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(30,'957',NULL,NULL,'SWARM',NULL,'Albany','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(31,'1359',NULL,NULL,'Scalawags',NULL,'Lebanon','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(32,'1425',NULL,NULL,'Error Code Xero',NULL,'Wilsonville','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(33,'1540',NULL,NULL,'Flaming Chickens',NULL,'Portland','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(34,'3024',NULL,NULL,'My Favorite Team',NULL,'Ashland','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(35,'3574',NULL,NULL,'HIGH TEKERZ',NULL,'Burien','WA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(36,'3673',NULL,NULL,'C.Y.B.O.R.G. Seagulls',NULL,'Seaside','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(37,'3711',NULL,NULL,'Iron Mustang',NULL,'Trout Lake','WA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(38,'4057',NULL,NULL,'Steampunk',NULL,'Klamath Falls','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(39,'6445',NULL,NULL,'CTEC Robotics',NULL,'Salem','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(40,'5975',NULL,NULL,'Beta Blues',NULL,'Portland','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(41,'5970',NULL,NULL,'Beavertronics',NULL,'Beaverton','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(42,'4125',NULL,NULL,'Confidential',NULL,'Umatilla','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(43,'6696',NULL,NULL,'Cardinal Dynamics',NULL,'Corbett','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(44,'5085',NULL,NULL,'LakerBots',NULL,'Blachly','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(45,'1510',NULL,NULL,'Wildcats',NULL,'Beaverton','OR',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,7 +273,7 @@ CREATE TABLE `team_match` (
   PRIMARY KEY (`_id`),
   KEY `fk_team_match_team_idx` (`team_id`),
   CONSTRAINT `fk_team_match_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +282,7 @@ CREATE TABLE `team_match` (
 
 LOCK TABLES `team_match` WRITE;
 /*!40000 ALTER TABLE `team_match` DISABLE KEYS */;
-INSERT INTO `team_match` VALUES (1,1,1,'Red',1,'Billy',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,2,1,'Red',2,'Fred',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,3,1,'Red',3,'Timmy',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,4,1,'Blue',1,'Igor',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,5,1,'Blue',2,'Chad',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,6,1,'Blue',3,'Gustaph',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,1,2,'Red',1,'Gimme Tendies',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,3,2,'Red',2,'Reeeeeee',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,5,2,'Red',3,'Luke\'s stale memes',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,2,2,'Blue',1,'Hugh Mungous',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(11,4,2,'Blue',2,'eleven squids in a trenchcoat',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(12,6,2,'Blue',3,'Trebuchet',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,2,3,'Red',1,'Trumpty Dumpty',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(14,3,3,'Red',2,'Data entry isn\'t fun',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(15,4,3,'Red',3,'Help',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(16,1,3,'Blue',1,'I\'ve',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(17,5,3,'Blue',2,'Been',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(18,6,3,'Blue',3,'Trapped',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(19,3,4,'Red',1,'In',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(20,4,4,'Red',2,'The',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(21,5,4,'Red',3,'Laptop!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(22,1,4,'Blue',1,'Gimme',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(23,2,4,'Blue',2,'Gimme',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(24,6,4,'Blue',3,'Chicken',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(25,1,5,'Red',1,'Tendies',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(26,6,5,'Red',2,'Be',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(27,4,5,'Red',3,'They',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(28,2,5,'Blue',1,'Crispy',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(29,5,5,'Blue',2,'Or',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(30,3,5,'Blue',3,'From',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(31,3,6,'Red',1,'Wendy\'s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(32,6,6,'Red',2,'Spend',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(33,2,6,'Red',3,'My',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(34,1,6,'Blue',1,'Hard-earned',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(35,4,6,'Blue',2,'Good-boy',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(36,5,6,'Blue',3,'Points',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `team_match` VALUES (37,31,1,'Blue',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(38,2,1,'Blue',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(39,38,1,'Blue',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(40,17,1,'Red',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(41,20,1,'Red',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(42,22,1,'Red',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(43,45,2,'Blue',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(44,42,2,'Blue',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(45,37,2,'Blue',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(46,34,2,'Red',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(47,29,2,'Red',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(48,30,2,'Red',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(49,4,3,'Blue',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(50,43,3,'Blue',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(51,35,3,'Blue',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(52,14,3,'Red',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(53,26,3,'Red',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(54,28,3,'Red',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(55,32,4,'Blue',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(56,9,4,'Blue',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(57,35,4,'Blue',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(58,36,4,'Red',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(59,23,4,'Red',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(60,29,4,'Red',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(61,5,5,'Blue',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(62,18,5,'Blue',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(63,6,5,'Blue',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(64,3,5,'Red',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(65,27,5,'Red',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(66,44,5,'Red',3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `team_match` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +301,7 @@ CREATE TABLE `team_match_action` (
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `object_count` int(11) DEFAULT NULL,
-  `tablet_uuid` int(11) DEFAULT NULL,
+  `tablet_uuid` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`_id`),
   KEY `fk_tma_team_match_idx` (`team_match_id`),
   KEY `fk_tma_action_type_idx` (`action_type_id`),
@@ -318,6 +318,113 @@ LOCK TABLES `team_match_action` WRITE;
 /*!40000 ALTER TABLE `team_match_action` DISABLE KEYS */;
 /*!40000 ALTER TABLE `team_match_action` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `team_match_action_result`
+--
+
+DROP TABLE IF EXISTS `team_match_action_result`;
+/*!50001 DROP VIEW IF EXISTS `team_match_action_result`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `team_match_action_result` AS SELECT 
+ 1 AS `team_id`,
+ 1 AS `match_id`,
+ 1 AS `alliance`,
+ 1 AS `position`,
+ 1 AS `test_id`,
+ 1 AS `score`,
+ 1 AS `opp_score`,
+ 1 AS `qp`,
+ 1 AS `result`,
+ 1 AS `_id`,
+ 1 AS `wins`,
+ 1 AS `draws`,
+ 1 AS `losses`,
+ 1 AS `tele_high_score`,
+ 1 AS `tele_high_score_points`,
+ 1 AS `tele_high_missed`,
+ 1 AS `tele_gear_delivered`,
+ 1 AS `tele_low_score`,
+ 1 AS `tele_low_score_points`,
+ 1 AS `tele_fuel_bin_triggered`,
+ 1 AS `tele_loading_station_trip`,
+ 1 AS `tele_try_climb`,
+ 1 AS `tele_did_climb_flag`,
+ 1 AS `tele_triggered_pressure_pad`,
+ 1 AS `auto_baseline_crossed_flag`,
+ 1 AS `auto_low_dump`,
+ 1 AS `auto_high_scores`,
+ 1 AS `auto_high_score_points`,
+ 1 AS `auto_high_missed`,
+ 1 AS `auto_gear_delivered`,
+ 1 AS `auto_fuel_bin_triggered`,
+ 1 AS `tele_played_defensively`,
+ 1 AS `breakdown`,
+ 1 AS `disconnect`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `team_match_action_transverse`
+--
+
+DROP TABLE IF EXISTS `team_match_action_transverse`;
+/*!50001 DROP VIEW IF EXISTS `team_match_action_transverse`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `team_match_action_transverse` AS SELECT 
+ 1 AS `_id`,
+ 1 AS `team_id`,
+ 1 AS `match_id`,
+ 1 AS `alliance`,
+ 1 AS `position`,
+ 1 AS `scout_name`,
+ 1 AS `tele_high_score`,
+ 1 AS `tele_high_score_points`,
+ 1 AS `tele_gear_delivered`,
+ 1 AS `tele_low_score`,
+ 1 AS `tele_low_score_points`,
+ 1 AS `tele_did_climb_flag`,
+ 1 AS `auto_baseline_crossed_flag`,
+ 1 AS `auto_low_dump`,
+ 1 AS `auto_high_scores`,
+ 1 AS `auto_high_score_points`,
+ 1 AS `auto_high_missed`,
+ 1 AS `auto_gear_delivered`,
+ 1 AS `auto_fuel_bin_triggered`,
+ 1 AS `tele_high_missed`,
+ 1 AS `tele_fuel_bin_triggered`,
+ 1 AS `tele_loading_station_trip`,
+ 1 AS `tele_try_climb`,
+ 1 AS `tele_triggered_pressure_pad`,
+ 1 AS `tele_played_defensively`,
+ 1 AS `breakdown`,
+ 1 AS `disconnect`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `team_match_result`
+--
+
+DROP TABLE IF EXISTS `team_match_result`;
+/*!50001 DROP VIEW IF EXISTS `team_match_result`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `team_match_result` AS SELECT 
+ 1 AS `team_id`,
+ 1 AS `match_id`,
+ 1 AS `alliance`,
+ 1 AS `position`,
+ 1 AS `test_id`,
+ 1 AS `score`,
+ 1 AS `opp_score`,
+ 1 AS `qp`,
+ 1 AS `result`,
+ 1 AS `_id`,
+ 1 AS `wins`,
+ 1 AS `draws`,
+ 1 AS `losses`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `team_old`
@@ -382,6 +489,60 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `team_match_action_result`
+--
+
+/*!50001 DROP VIEW IF EXISTS `team_match_action_result`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `team_match_action_result` AS select `tmr`.`team_id` AS `team_id`,`tmr`.`match_id` AS `match_id`,`tmr`.`alliance` AS `alliance`,`tmr`.`position` AS `position`,`tmr`.`test_id` AS `test_id`,`tmr`.`score` AS `score`,`tmr`.`opp_score` AS `opp_score`,`tmr`.`qp` AS `qp`,`tmr`.`result` AS `result`,`tmr`.`_id` AS `_id`,`tmr`.`wins` AS `wins`,`tmr`.`draws` AS `draws`,`tmr`.`losses` AS `losses`,`tmat`.`tele_high_score` AS `tele_high_score`,`tmat`.`tele_high_score_points` AS `tele_high_score_points`,`tmat`.`tele_high_missed` AS `tele_high_missed`,`tmat`.`tele_gear_delivered` AS `tele_gear_delivered`,`tmat`.`tele_low_score` AS `tele_low_score`,`tmat`.`tele_low_score_points` AS `tele_low_score_points`,`tmat`.`tele_fuel_bin_triggered` AS `tele_fuel_bin_triggered`,`tmat`.`tele_loading_station_trip` AS `tele_loading_station_trip`,`tmat`.`tele_try_climb` AS `tele_try_climb`,`tmat`.`tele_did_climb_flag` AS `tele_did_climb_flag`,`tmat`.`tele_triggered_pressure_pad` AS `tele_triggered_pressure_pad`,`tmat`.`auto_baseline_crossed_flag` AS `auto_baseline_crossed_flag`,`tmat`.`auto_low_dump` AS `auto_low_dump`,`tmat`.`auto_high_scores` AS `auto_high_scores`,`tmat`.`auto_high_score_points` AS `auto_high_score_points`,`tmat`.`auto_high_missed` AS `auto_high_missed`,`tmat`.`auto_gear_delivered` AS `auto_gear_delivered`,`tmat`.`auto_fuel_bin_triggered` AS `auto_fuel_bin_triggered`,`tmat`.`tele_played_defensively` AS `tele_played_defensively`,`tmat`.`breakdown` AS `breakdown`,`tmat`.`disconnect` AS `disconnect` from (`scouting`.`team_match_result` `tmr` join `scouting`.`team_match_action_transverse` `tmat` on(((`tmr`.`team_id` = `tmat`.`team_id`) and (`tmr`.`match_id` = `tmat`.`match_id`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `team_match_action_transverse`
+--
+
+/*!50001 DROP VIEW IF EXISTS `team_match_action_transverse`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `team_match_action_transverse` AS select `tm`.`_id` AS `_id`,`tm`.`team_id` AS `team_id`,`tm`.`match_id` AS `match_id`,`tm`.`alliance` AS `alliance`,`tm`.`position` AS `position`,`tm`.`scout_name` AS `scout_name`,`thc`.`quantity` AS `tele_high_score`,floor((`thc`.`quantity` * `thc`.`points`)) AS `tele_high_score_points`,`tgd`.`quantity` AS `tele_gear_delivered`,`tls`.`quantity` AS `tele_low_score`,floor((`tls`.`quantity` * `tls`.`points`)) AS `tele_low_score_points`,`tdc`.`quantity` AS `tele_did_climb_flag`,`abc`.`quantity` AS `auto_baseline_crossed_flag`,`ald`.`quantity` AS `auto_low_dump`,`ahs`.`quantity` AS `auto_high_scores`,floor((`ahs`.`quantity` * `ahs`.`points`)) AS `auto_high_score_points`,`ahm`.`quantity` AS `auto_high_missed`,`agd`.`quantity` AS `auto_gear_delivered`,`afbt`.`quantity` AS `auto_fuel_bin_triggered`,`thm`.`quantity` AS `tele_high_missed`,`tfbt`.`quantity` AS `tele_fuel_bin_triggered`,`tlst`.`quantity` AS `tele_loading_station_trip`,`ttc`.`quantity` AS `tele_try_climb`,`ttpp`.`quantity` AS `tele_triggered_pressure_pad`,`tpd`.`quantity` AS `tele_played_defensively`,`b`.`quantity` AS `breakdown`,`d`.`quantity` AS `disconnect` from ((((((((((((((((((`scouting`.`team_match` `tm` left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity`,`at`.`points` AS `points` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_high_scores')) `thc` on((`thc`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_gear_delivered')) `tgd` on((`tgd`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity`,`at`.`points` AS `points` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_low_dumps')) `tls` on((`tls`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_did_climb')) `tdc` on((`tdc`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'auto_baseline_crossed')) `abc` on((`abc`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'auto_low_dump')) `ald` on((`ald`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity`,`at`.`points` AS `points` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'auto_high_scores')) `ahs` on((`ahs`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity`,`at`.`points` AS `points` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'auto_high_missed')) `ahm` on((`ahm`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'auto_gear_delivered')) `agd` on((`agd`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'auto_fuel_bin_triggered')) `afbt` on((`afbt`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_high_missed')) `thm` on((`thm`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_fuel_bin_triggered')) `tfbt` on((`tfbt`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_loading_station_trip')) `tlst` on((`tlst`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_try_climb')) `ttc` on((`ttc`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_triggered_pressure_pad')) `ttpp` on((`ttpp`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'tele_played_defensively')) `tpd` on((`tpd`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'breakdown')) `b` on((`b`.`team_match_id` = `tm`.`_id`))) left join (select `tma`.`team_match_id` AS `team_match_id`,`tma`.`quantity` AS `quantity` from (`scouting`.`team_match_action` `tma` join `scouting`.`action_type` `at` on((`tma`.`action_type_id` = `at`.`_id`))) where (`at`.`name` = 'disconnect')) `d` on((`d`.`team_match_id` = `tm`.`_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `team_match_result`
+--
+
+/*!50001 DROP VIEW IF EXISTS `team_match_result`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `team_match_result` AS select `t`.`_id` AS `team_id`,`tm`.`match_id` AS `match_id`,`tm`.`alliance` AS `alliance`,`tm`.`position` AS `position`,if((`tm`.`alliance` = 'red'),if((`tm`.`position` = 1),`m`.`red_1_team_id`,if((`tm`.`position` = 2),`m`.`red_2_team_id`,if((`tm`.`position` = 3),`m`.`red_3_team_id`,0))),if((`tm`.`alliance` = 'blue'),if((`tm`.`position` = 1),`m`.`blue_1_team_id`,if((`tm`.`position` = 2),`m`.`blue_2_team_id`,if((`tm`.`position` = 3),`m`.`blue_3_team_id`,0))),0)) AS `test_id`,if((`tm`.`alliance` = 'red'),`m`.`red_total_score`,`m`.`blue_total_score`) AS `score`,if((`tm`.`alliance` = 'blue'),`m`.`red_total_score`,`m`.`blue_total_score`) AS `opp_score`,if((`tm`.`alliance` = 'red'),`m`.`red_qp`,`m`.`blue_qp`) AS `qp`,if((`m`.`winner` = 'draw'),'draw',if((`tm`.`alliance` = `m`.`winner`),'win','loss')) AS `result`,((`tm`.`team_id` * 100) + `tm`.`match_id`) AS `_id`,if((`m`.`winner` = `tm`.`alliance`),1,0) AS `wins`,if((`m`.`winner` = 'draw'),1,0) AS `draws`,if(((`tm`.`alliance` = 'red') and (`m`.`winner` = 'blue')),1,if(((`tm`.`alliance` = 'blue') and (`m`.`winner` = 'red')),1,0)) AS `losses` from ((`team` `t` join `team_match` `tm`) join `match` `m` on(((`t`.`_id` = `tm`.`team_id`) and (`tm`.`match_id` = `m`.`_id`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -392,4 +553,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-14 19:51:46
+-- Dump completed on 2017-02-28 19:21:55
