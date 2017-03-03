@@ -521,6 +521,9 @@ namespace XeroScouterDBManage_Server
 				Console.Out.WriteLine(e.Message);
 			}
 
+            /// TODO 
+            // DBManager needs to create an _id for each entry - base it off of system clock so it auto increments
+
 			if (validated)
 			{
 				try
