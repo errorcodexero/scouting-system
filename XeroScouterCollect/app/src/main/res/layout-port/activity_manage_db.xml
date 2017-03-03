@@ -73,6 +73,7 @@
             android:layout_height="162dp"
             android:id="@+id/btn_build_db"
             android:layout_weight="0"
+            android:onClick="onClick"
             android:textSize="20sp" />
 
         <Button
