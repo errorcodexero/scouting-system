@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_event_setup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,28 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="wilsonvillerobotics.com.xeroscoutercollect.activities.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
-
-        <TextView
-            android:text="@string/lbl_tablet_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lbl_main_tablet_id" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txt_main_tablet_id"/>
-    </LinearLayout>
+    tools:context="wilsonvillerobotics.com.xeroscoutercollect.activities.EventSetupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,10 +25,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/lbl_main_event_name" />
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_main_event_name"/>
+            android:id="@+id/event_setup_spinner"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <Button
