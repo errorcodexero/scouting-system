@@ -34,7 +34,7 @@ CREATE TABLE `action_type` (
   `coop_flag` char(1) DEFAULT 'N',
   `category` varchar(255) DEFAULT 'Uncategorized',
   PRIMARY KEY (`_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +57,7 @@ CREATE TABLE `event` (
   `tba_event_code` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`_id`),
   KEY `idx_tba_event_key` (`tba_event_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `match` (
   PRIMARY KEY (`_id`),
   KEY `fk_match_event_idx` (`event_id`),
   CONSTRAINT `fk_match_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `team` (
   PRIMARY KEY (`_id`),
   UNIQUE KEY `team_number_UNIQUE` (`team_number`),
   KEY `idx_tba_team_key` (`tba_team_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='This table contains FRC team data for a competition year. It includes information about their robot.';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COMMENT='This table contains FRC team data for a competition year. It includes information about their robot.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `team_match` (
   PRIMARY KEY (`_id`),
   KEY `fk_team_match_team_idx` (`team_id`),
   CONSTRAINT `fk_team_match_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,21 +235,65 @@ DROP TABLE IF EXISTS `team_match_action`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team_match_action` (
-  `_id` int(11) NOT NULL AUTO_INCREMENT,
+  `_id` int(11) NOT NULL,
   `team_match_id` int(11) NOT NULL,
   `action_type_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '1',
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `object_count` int(11) DEFAULT NULL,
-  `tablet_uuid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`_id`),
+  `tablet_uuid` varchar(500) NOT NULL,
+  PRIMARY KEY (`_id`,`team_match_id`,`tablet_uuid`),
   KEY `fk_tma_team_match_idx` (`team_match_id`),
   KEY `fk_tma_action_type_idx` (`action_type_id`),
   CONSTRAINT `fk_tma_action_type` FOREIGN KEY (`action_type_id`) REFERENCES `action_type` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tma_team_match` FOREIGN KEY (`team_match_id`) REFERENCES `team_match` (`_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Temporary view structure for view `team_match_action_result`
+--
+
+DROP TABLE IF EXISTS `team_match_action_result`;
+/*!50001 DROP VIEW IF EXISTS `team_match_action_result`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `team_match_action_result` AS SELECT 
+ 1 AS `team_id`,
+ 1 AS `match_id`,
+ 1 AS `alliance`,
+ 1 AS `position`,
+ 1 AS `score`,
+ 1 AS `opp_score`,
+ 1 AS `qp`,
+ 1 AS `result`,
+ 1 AS `wins`,
+ 1 AS `draws`,
+ 1 AS `losses`,
+ 1 AS `match_total_score`,
+ 1 AS `match_auto_score`,
+ 1 AS `match_teleop_score`,
+ 1 AS `tele_high_score`,
+ 1 AS `tele_low_score`,
+ 1 AS `tele_high_score_points`,
+ 1 AS `tele_low_score_points`,
+ 1 AS `tele_fuel_bin_triggered`,
+ 1 AS `tele_loading_station_trip`,
+ 1 AS `tele_try_climb`,
+ 1 AS `tele_did_climb`,
+ 1 AS `tele_triggered_pressure_pad`,
+ 1 AS `auto_baseline_crossed`,
+ 1 AS `auto_low_dump`,
+ 1 AS `auto_high_scores`,
+ 1 AS `auto_high_score_points`,
+ 1 AS `auto_high_missed`,
+ 1 AS `auto_gear_delivered`,
+ 1 AS `auto_fuel_bin_triggered`,
+ 1 AS `tele_played_defensively`,
+ 1 AS `breakdown`,
+ 1 AS `disconnect`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `team_old`
@@ -304,6 +348,24 @@ CREATE TABLE `team_old` (
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `team_match_action_result`
+--
+
+/*!50001 DROP VIEW IF EXISTS `team_match_action_result`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `team_match_action_result` AS select `tm`.`team_id` AS `team_id`,`tm`.`match_id` AS `match_id`,`tm`.`alliance` AS `alliance`,`tm`.`position` AS `position`,(case `tm`.`alliance` when 'red' then `m`.`red_total_score` when 'blue' then `m`.`blue_total_score` end) AS `score`,(case `tm`.`alliance` when 'red' then `m`.`blue_total_score` when 'blue' then `m`.`red_total_score` end) AS `opp_score`,(case `tm`.`alliance` when 'red' then `m`.`red_qp` when 'blue' then `m`.`blue_qp` end) AS `qp`,(case when (`m`.`winner` = 'draw') then 'draw' when (`m`.`winner` = `tm`.`alliance`) then 'win' else 'loss' end) AS `result`,if((`m`.`winner` = `tm`.`alliance`),1,0) AS `wins`,if((`m`.`winner` = 'draw'),1,0) AS `draws`,if(((`m`.`winner` <> `tm`.`alliance`) and (`m`.`winner` <> 'draw')),1,0) AS `losses`,(case `tm`.`alliance` when 'blue' then `m`.`blue_total_score` when 'red' then `m`.`red_total_score` end) AS `match_total_score`,(case `tm`.`alliance` when 'blue' then `m`.`blue_auto_score` when 'red' then `m`.`red_auto_score` end) AS `match_auto_score`,(case `tm`.`alliance` when 'blue' then `m`.`blue_teleop_score` when 'red' then `m`.`red_teleop_score` end) AS `match_teleop_score`,sum(if((`tma`.`action_name` = 'tele_high_scores'),`tma`.`quantity`,0)) AS `tele_high_score`,sum(if((`tma`.`action_name` = 'tele_low_dumps'),`tma`.`quantity`,0)) AS `tele_low_score`,sum(if((`tma`.`action_name` = 'tele_high_scores'),`tma`.`points`,0)) AS `tele_high_score_points`,sum(if((`tma`.`action_name` = 'tele_low_dumps'),`tma`.`points`,0)) AS `tele_low_score_points`,sum(if((`tma`.`action_name` = 'tele_fuel_bin_triggered'),`tma`.`quantity`,0)) AS `tele_fuel_bin_triggered`,sum(if((`tma`.`action_name` = 'tele_loading_station_trip'),`tma`.`quantity`,0)) AS `tele_loading_station_trip`,sum(if((`tma`.`action_name` = 'tele_try_climb'),`tma`.`quantity`,0)) AS `tele_try_climb`,sum(if((`tma`.`action_name` = 'tele_did_climb'),`tma`.`quantity`,0)) AS `tele_did_climb`,sum(if((`tma`.`action_name` = 'tele_triggered_pressure_pad'),`tma`.`quantity`,0)) AS `tele_triggered_pressure_pad`,sum(if((`tma`.`action_name` = 'auto_baseline_crossed'),`tma`.`quantity`,0)) AS `auto_baseline_crossed`,sum(if((`tma`.`action_name` = 'auto_low_dump'),`tma`.`quantity`,0)) AS `auto_low_dump`,sum(if((`tma`.`action_name` = 'auto_high_scores'),`tma`.`quantity`,0)) AS `auto_high_scores`,sum(if((`tma`.`action_name` = 'auto_high_scores'),`tma`.`points`,0)) AS `auto_high_score_points`,sum(if((`tma`.`action_name` = 'auto_high_missed'),`tma`.`quantity`,0)) AS `auto_high_missed`,sum(if((`tma`.`action_name` = 'auto_gear_delivered'),`tma`.`quantity`,0)) AS `auto_gear_delivered`,sum(if((`tma`.`action_name` = 'auto_fuel_bin_triggered'),`tma`.`quantity`,0)) AS `auto_fuel_bin_triggered`,sum(if((`tma`.`action_name` = 'tele_played_defensively'),`tma`.`quantity`,0)) AS `tele_played_defensively`,sum(if((`tma`.`action_name` = 'breakdown'),`tma`.`quantity`,0)) AS `breakdown`,sum(if((`tma`.`action_name` = 'disconnect'),`tma`.`quantity`,0)) AS `disconnect` from ((`scouting`.`team_match` `tm` join (select `tm2`.`team_id` AS `team_id`,`tm2`.`match_id` AS `match_id`,`tma2`.`action_type_id` AS `action_type_id`,`at2`.`name` AS `action_name`,sum(`tma2`.`quantity`) AS `quantity`,floor(sum((`tma2`.`quantity` * `at2`.`points`))) AS `points` from ((`scouting`.`team_match` `tm2` join `scouting`.`team_match_action` `tma2` on((`tma2`.`team_match_id` = `tm2`.`_id`))) join `scouting`.`action_type` `at2` on((`tma2`.`action_type_id` = `at2`.`_id`))) group by `tm2`.`team_id`,`tm2`.`match_id`,`tma2`.`action_type_id`,`at2`.`name`) `tma` on(((`tm`.`team_id` = `tma`.`team_id`) and (`tm`.`match_id` = `tma`.`match_id`)))) join `scouting`.`match` `m` on((`m`.`_id` = `tm`.`match_id`))) group by `tm`.`team_id`,`tm`.`match_id` order by `tm`.`match_id`,`tm`.`team_id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -314,4 +376,4 @@ CREATE TABLE `team_old` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-14 19:49:24
+-- Dump completed on 2017-03-02 20:12:28

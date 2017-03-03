@@ -358,5 +358,11 @@ namespace XeroScouterDBManage_Server
 			Properties.Settings.Default.Save();
 			this.ResetData();
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddPitDataForm frmAddPitData = new AddPitDataForm();
+            frmAddPitData.Show();
+        }
+    }
 }
