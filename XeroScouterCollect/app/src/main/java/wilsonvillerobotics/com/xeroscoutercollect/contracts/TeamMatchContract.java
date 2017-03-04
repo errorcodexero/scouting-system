@@ -42,9 +42,7 @@ public class TeamMatchContract implements SQLDataTypeDefines {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues content = new ContentValues();
-        if(teamMatchMap.containsKey(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID)){
-            teamMatchMap.remove(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID);
-        }
+
         for(String key : teamMatchMap.keySet()){
             if(teamMatchMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
                 content.put(key, ((XMLParser.TableStringColumn) teamMatchMap.get(key)).getValue());

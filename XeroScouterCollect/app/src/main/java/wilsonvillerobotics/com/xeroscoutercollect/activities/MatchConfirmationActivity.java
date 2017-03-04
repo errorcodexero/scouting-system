@@ -152,7 +152,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         spinner_match_list = frag.getMatchListSpinner(); // (Spinner) findViewById(R.id.spinner_match_list);
         spinner_team_list = frag.getTeanListSpinner(); // (Spinner) findViewById(R.id.spinner_team_list);
         btn_next = frag.getNextButton(); // (Button) findViewById(R.id.btn_next);
-        btn_next.setEnabled(false);
+        btn_next.setEnabled(true);
 
         if(spinner_match_list != null) {
             spinner_match_list.setOnItemSelectedListener(this);
@@ -174,7 +174,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         addItemsToMatchSpinner();
         addItemsToTeamSpinner();
         SharedPreferences sharedPreferences = this.getPreferences(this.MODE_PRIVATE);
-        lastMatchId = sharedPreferences.getInt("last_match_id", 1) + 1;
+        lastMatchId = sharedPreferences.getInt("last_match_id", 0) + 1;
         Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
         String matchIdString = String.valueOf(lastMatchId);
         int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
@@ -324,6 +324,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
 
         int event_id = getIntent().getIntExtra(sharedPreferences.getString(getString(R.string.event_name_pref), "2"), 2);
         String query = MatchModel.getAllMatches(event_id);
