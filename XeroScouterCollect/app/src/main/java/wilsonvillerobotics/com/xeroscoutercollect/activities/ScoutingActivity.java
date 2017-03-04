@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -75,6 +76,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         TabHost.TabSpec teleopTab = tabHost.newTabSpec("tab2");
         TabHost.TabSpec finalizeTab = tabHost.newTabSpec("tab3");
 
+
         teamMatchId = getIntent().getExtras().getInt("team_match_id");
 
         RadioButton noClimb = (RadioButton) findViewById(R.id.radio_no_climb);
@@ -88,6 +90,13 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(autonomousTab);
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
+
+        TextView tabTitle = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
+        tabTitle.setTextSize(18);
+        tabTitle = (TextView) tabHost.getTabWidget().getChildAt(1).findViewById(android.R.id.title);
+        tabTitle.setTextSize(18);
+        tabTitle = (TextView) tabHost.getTabWidget().getChildAt(2).findViewById(android.R.id.title);
+        tabTitle.setTextSize(18);
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -477,6 +486,11 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
                 for (String queryStringInstance : queryStringList) {
                     db.execSQL(queryStringInstance);
+                }
+
+                File f = new File(baseFolder + File.separator + filename);
+                if(!f.delete()) {
+                    Toast.makeText(this, "Failed to delete file " + f.getName(), Toast.LENGTH_SHORT).show();
                 }
 
                 startActivity(mainScreen);

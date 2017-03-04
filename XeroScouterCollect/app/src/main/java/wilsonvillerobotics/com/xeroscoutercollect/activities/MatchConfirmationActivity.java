@@ -323,7 +323,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        int event_id = getIntent().getIntExtra("eventId", 1);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        int event_id = getIntent().getIntExtra(sharedPreferences.getString(getString(R.string.event_name_pref), "2"), 2);
         String query = MatchModel.getAllMatches(event_id);
         Cursor cursor = db.rawQuery(query, null);
 
