@@ -26,6 +26,9 @@ namespace XeroScouterDBManage_Server
         //"pwd=ftsscouter;" +
         //"database=scouting_test;";
 
+        static public Int32 TEAM_MATCH_ACTION_ID = 0;
+        static public String SYSTEM_UUID = "";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

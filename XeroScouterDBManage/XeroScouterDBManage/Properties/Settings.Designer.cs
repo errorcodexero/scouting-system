@@ -176,5 +176,26 @@ namespace XeroScouterDBManage_Server.Properties {
                 this["TEST_MODE"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SYSTEM_UUID {
+            get {
+                return ((string)(this["SYSTEM_UUID"]));
+            }
+            set {
+                this["SYSTEM_UUID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography")]
+        public string MachineGuidRegistryKey {
+            get {
+                return ((string)(this["MachineGuidRegistryKey"]));
+            }
+        }
     }
 }

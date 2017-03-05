@@ -16,6 +16,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 		public static String COL_START_TIME = "start_time";
 		public static String COL_END_TIME = "end_time";
 		public static String COL_OBJECT_COUNT = "object_count";
+        public static String COL_TABLET_UUID = "tablet_uuid";
 
 		public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
 		public static String SELECT_ALL_FOR_TEAM_MATCH_ID = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_TEAM_MATCH_ID + "=";
@@ -60,24 +61,37 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 		public static String getInsertRecordQuery()
 		{
 			String query = "INSERT INTO " + Utils.getDBName() + "." + TABLE_NAME + " (";
-			query += COL_TEAM_MATCH_ID + ", ";
+            query += COL_ID + ", ";
+            query += COL_TEAM_MATCH_ID + ", ";
 			query += COL_ACTION_TYPE_ID + ", ";
 			query += COL_QUANTITY + ", ";
 			query += COL_START_TIME + ", ";
 			query += COL_END_TIME + ", ";
-			query += COL_OBJECT_COUNT;
+            query += COL_OBJECT_COUNT + ", ";
+            query += COL_TABLET_UUID;
 
 			query += ") VALUES(";
 
-			query += "@" + COL_TEAM_MATCH_ID + ", ";
+            query += "@" + COL_ID + ", ";
+            query += "@" + COL_TEAM_MATCH_ID + ", ";
 			query += "@" + COL_ACTION_TYPE_ID + ", ";
 			query += "@" + COL_QUANTITY + ", ";
 			query += "@" + COL_START_TIME + ", ";
 			query += "@" + COL_END_TIME + ", ";
-			query += "@" + COL_OBJECT_COUNT;
+            query += "@" + COL_OBJECT_COUNT + ", ";
+            query += "@" + COL_TABLET_UUID;
 			query += ")";
 
 			return query;
 		}
+
+        public static String getLoadTeamMatchActionIdsQuery()
+        {
+            String query = "SELECT max(" + COL_ID + ")";
+            query += " FROM " + Utils.getDBName() + "." + TABLE_NAME;
+            query += " WHERE " + COL_TABLET_UUID + "='" + Properties.Settings.Default.SYSTEM_UUID + "'";
+            return query;
+        }
+
 	}
 }

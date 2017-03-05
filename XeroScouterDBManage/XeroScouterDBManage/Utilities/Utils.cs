@@ -3,6 +3,8 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
+using Microsoft.Win32;
 
 namespace XeroScouterDBManage_Server
 {
@@ -30,7 +32,39 @@ namespace XeroScouterDBManage_Server
             return connectionString;
         }
 
-		public static bool openConnection(MySqlConnection connection)
+        /// <summary>
+        /// Finds the MAC address of the NIC with maximum speed.
+        /// </summary>
+        /// <returns>The MAC address.</returns>
+        public static String GetMacAddress()
+        {
+            const int MIN_MAC_ADDR_LENGTH = 12;
+            String macAddress = string.Empty;
+            long maxSpeed = -1;
+
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                string tempMac = nic.GetPhysicalAddress().ToString();
+                if(nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet &&
+                    !string.IsNullOrEmpty(tempMac) &&
+                    tempMac.Length >= MIN_MAC_ADDR_LENGTH)
+                {
+                    maxSpeed = nic.Speed;
+                    macAddress = tempMac;
+                }
+            }
+
+            return macAddress;
+        }
+
+        public static String GetMachineGuid()
+        {
+            String regKey = Properties.Settings.Default.MachineGuidRegistryKey;
+            String retVal = (String)Registry.GetValue(regKey, "MachineGuid", "");
+            return retVal;
+        }
+
+        public static bool openConnection(MySqlConnection connection)
 		{
 			bool connectionAvailable = true;
 
