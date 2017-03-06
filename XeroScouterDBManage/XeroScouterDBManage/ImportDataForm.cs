@@ -286,13 +286,13 @@ namespace XeroScouterDBManage_Server
 
                         if(tabletSpecificTables.Contains<string>(tableName))
                         {
-                            postfix += " AND tablet_id=@tablet_id";
+                            postfix += " AND tablet_uuid=@tablet_uuid";
                         }
 
                         string insertPrefix = "INSERT INTO " + tableName + "(";
                         string insertPostfix = ") VALUES(";
                         
-                        int cnt = dataTable.Rows[0].Table.Columns.Count - 1;
+                        int cnt = dataTable.Rows[0].Table.Columns.Count;
                         string[] colParams = new string[cnt];
                         for (int col = 0; col < cnt; col++)
                         {
@@ -326,7 +326,7 @@ namespace XeroScouterDBManage_Server
 
                         int numRows = 0;
                         int numRowsUpdated = 0;
-                        for (int col = 0; col < dataTable.Rows[0].Table.Columns.Count - 1; col++)
+                        for (int col = 0; col < dataTable.Rows[0].Table.Columns.Count; col++)
                         {
                             var param = colParams[col];
                             var val = dataTable.Rows[0][col];
@@ -336,7 +336,7 @@ namespace XeroScouterDBManage_Server
                         foreach (DataRow dataRow in dataTable.Rows)
                         {
                             numRows++;
-                            for (int col = 0; col < dataRow.Table.Columns.Count - 1; col++)
+                            for (int col = 0; col < dataRow.Table.Columns.Count; col++)
                             {
                                 cmd.Parameters[colParams[col]].Value = dataRow[col];
                             }

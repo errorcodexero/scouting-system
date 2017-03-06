@@ -54,9 +54,7 @@ public class EventContract implements SQLDataTypeDefines {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues content = new ContentValues();
-        if(eventMap.containsKey(EventEntry.COLUMN_NAME_ID)){
-            eventMap.remove(EventEntry.COLUMN_NAME_ID);
-        }
+
         for(String key : eventMap.keySet()){
             if(eventMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
                 content.put(key, ((XMLParser.TableStringColumn) eventMap.get(key)).getValue());

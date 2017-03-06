@@ -23,7 +23,8 @@
             android:text="@string/lbl_tablet_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lbl_main_tablet_id" />
+            android:id="@+id/lbl_main_tablet_id"
+            android:inputType="number"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -48,7 +49,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_main_event_name"/>
+            android:id="@+id/txt_main_event_name"
+            android:inputType="number"/>
     </LinearLayout>
 
     <Button

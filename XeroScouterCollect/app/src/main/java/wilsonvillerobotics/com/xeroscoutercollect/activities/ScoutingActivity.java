@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -37,8 +38,10 @@ import java.util.HashMap;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchActionModel;
+import wilsonvillerobotics.com.xeroscoutercollect.utils.UUIDGenerator;
 
 public class ScoutingActivity extends TabActivity implements View.OnClickListener {
     protected ArrayList<ActionObject> actionObjectArrayList = new ArrayList<>();
@@ -53,11 +56,13 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected int currentClickedId;
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
-    int tabletId, teamMatchId;
+    String tablet_uuid;
+    int teamMatchId;
     private String baseFolder;
     private String filename;
     private Boolean doSaveToFile = true;
     private boolean doAskRestore = true;
+    private boolean didCompleteMatch = false;
 
 
     @Override
@@ -65,6 +70,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scouting);
         Log.i("Scouting Activity", "onCreate");
+
 
         // Initializing the tabbing system
 
@@ -74,6 +80,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         TabHost.TabSpec autonomousTab = tabHost.newTabSpec("tab1");
         TabHost.TabSpec teleopTab = tabHost.newTabSpec("tab2");
         TabHost.TabSpec finalizeTab = tabHost.newTabSpec("tab3");
+
 
         teamMatchId = getIntent().getExtras().getInt("team_match_id");
 
@@ -88,6 +95,13 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tabHost.addTab(autonomousTab);
         tabHost.addTab(teleopTab);
         tabHost.addTab(finalizeTab);
+
+        TextView tabTitle = (TextView) tabHost.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
+        tabTitle.setTextSize(18);
+        tabTitle = (TextView) tabHost.getTabWidget().getChildAt(1).findViewById(android.R.id.title);
+        tabTitle.setTextSize(18);
+        tabTitle = (TextView) tabHost.getTabWidget().getChildAt(2).findViewById(android.R.id.title);
+        tabTitle.setTextSize(18);
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -148,7 +162,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String pref_default = "*";
-        tabletId = Integer.valueOf(sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default));
+        tablet_uuid = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
 
         createFileAssociations();
     }
@@ -231,7 +245,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
             alert.setTitle("Alert");
             alert.show();
         } else {
-            Log.d("FileLoader", "No backup file found");
+            Log.d("FileLoader", "No backup file found:" + filename);
         }
     }
 
@@ -455,29 +469,30 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
 
                 if (autoBaseline.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 1, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 1, false));
                 }
                 if (action_13.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 13, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 13, false));
                 } else if (action_14.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 14, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 14, false));
                 } else if (action_15.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 15, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 15, false));
                 }
 
                 if (defensiveToggle.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 16, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 16, false));
                 }
                 if (disconnectToggle.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 17, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 17, false));
                 }
                 if (breakdownToggle.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, 18, false));
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 18, false));
                 }
 
                 for (String queryStringInstance : queryStringList) {
                     db.execSQL(queryStringInstance);
                 }
+
 
                 startActivity(mainScreen);
 
@@ -498,7 +513,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                         tempTextView.setText(String.valueOf(tempObject.getActionCount()));
                         try {
                             //db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
-                            queryStringList.add(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                            queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, action_id, actionData.getDecrement()));
                         } finally {
 
                         }

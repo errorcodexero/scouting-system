@@ -12,5 +12,6 @@ public interface SQLDataTypeDefines {
     String VC45 = " VARCHAR(45)";
     String VC255 = " VARCHAR(255)";
     String VC2000 = " VARCHAR(2000)";
+    String DOUBLE = " REAL";
     String DT = " DATETIME";
 }

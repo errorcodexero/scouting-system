@@ -193,26 +193,27 @@ public class XMLExporter {
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 2, false, false) +
                 cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 0, true, true);
 
-        xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_ID, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("tablet_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_ID, 0, true, true);
-
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TEAM_MATCH_ID, 2, false, false) +
                 cursor.getInt(cursor.getColumnIndex("team_match_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TEAM_MATCH_ID, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_TYPE_ID, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("action_type_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_TYPE_ID, 0, true, true);
+                cursor.getInt(cursor.getColumnIndex("type_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_TYPE_ID, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_QUANTITY, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("action_quantity")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_QUANTITY, 0, true, true);
+                cursor.getInt(cursor.getColumnIndex("quantity")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_QUANTITY, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_START_TIME, 2, false, false) +
-                cursor.getString(cursor.getColumnIndex("action_start_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_START_TIME, 0, true, true);
+                cursor.getString(cursor.getColumnIndex("start_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_START_TIME, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME, 2, false, false) +
-                cursor.getString(cursor.getColumnIndex("action_end_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME, 0, true, true);
+                cursor.getString(cursor.getColumnIndex("end_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("action_object_count")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 0, true, true);
+                cursor.getInt(cursor.getColumnIndex("object_count")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 0, true, true);
+
+        xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_UUID, 2, false, false) +
+                cursor.getString(cursor.getColumnIndex("tablet_uuid")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_UUID, 0, true, true);
+
 
         xmlResult += GenerateTagByName(ROW, 1, false, true) + "\n";
 
@@ -229,7 +230,7 @@ public class XMLExporter {
             xmlResult = GenerateTagByName(DATA, 0, false, true);
             //Adds table name tag for DataManager
             xmlResult += GenerateTagByName(TABLE,1,false,false) + "\n";
-            xmlResult += GenerateTagByName(NAME, 2, false, false) + TABLE_NAME + GenerateTagByName(NAME, 0, true, true) + "\n";
+            xmlResult += GenerateTagByName(NAME, 2, false, false) + TeamMatchActionContract.TeamMatchActionEntry.TABLE_NAME + GenerateTagByName(NAME, 0, true, true) + "\n";
             xmlResult += GenerateTagByName(TABLE,1,true,true);
         }
 
@@ -237,9 +238,6 @@ public class XMLExporter {
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 2, false, false) +
                 cursor.getInt(cursor.getColumnIndex("_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ID, 0, true, true);
-
-        xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_ID, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("tablet_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_ID, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TEAM_MATCH_ID, 2, false, false) +
                 cursor.getInt(cursor.getColumnIndex("team_match_id")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TEAM_MATCH_ID, 0, true, true);
@@ -251,13 +249,16 @@ public class XMLExporter {
                 cursor.getInt(cursor.getColumnIndex("quantity")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_ACTION_QUANTITY, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_START_TIME, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("action_start_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_START_TIME, 0, true, true);
+                cursor.getString(cursor.getColumnIndex("start_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_START_TIME, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("action_end_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME, 0, true, true);
+                cursor.getString(cursor.getColumnIndex("end_time")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME, 0, true, true);
 
         xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 2, false, false) +
-                cursor.getInt(cursor.getColumnIndex("action_object_count")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 0, true, true);
+                cursor.getInt(cursor.getColumnIndex("object_count")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT, 0, true, true);
+
+        xmlResult += GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_UUID, 2, false, false) +
+                cursor.getString(cursor.getColumnIndex("tablet_uuid")) + GenerateTagByName(TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_TABLET_UUID, 0, true, true);
 
         xmlResult += GenerateTagByName(ROW, 1, true, true) + "\n";
 

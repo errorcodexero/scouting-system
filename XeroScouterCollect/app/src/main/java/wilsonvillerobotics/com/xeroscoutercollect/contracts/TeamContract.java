@@ -127,9 +127,7 @@ public class TeamContract implements SQLDataTypeDefines {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues content = new ContentValues();
-        if(teamMap.containsKey(TeamContract.TeamEntry.COLUMN_NAME_ID)) {
-            teamMap.remove(TeamContract.TeamEntry.COLUMN_NAME_ID);
-        }
+
         for(String key : teamMap.keySet()) {
             if(teamMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
                 content.put(key, ((XMLParser.TableStringColumn) teamMap.get(key)).getValue());

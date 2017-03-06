@@ -27,11 +27,13 @@ namespace XeroScouterDBManage_Server
 			this.matchID = mID;
 			this.teamID = tID;
 			this.cancelling = false;
-			
 
-			// The dictionaries help map from control to description string, and description string to action_type_id
-			// once the maps are hard-coded, we can iterate through the controls and insert a record for each action_type_id
-			this.dictActionTypeControls = new Dictionary<Control, String>(); // maps UI control to action_type_id
+            setNextID();
+
+
+            // The dictionaries help map from control to description string, and description string to action_type_id
+            // once the maps are hard-coded, we can iterate through the controls and insert a record for each action_type_id
+            this.dictActionTypeControls = new Dictionary<Control, String>(); // maps UI control to action_type_id
 			this.dictActionTypes = new Dictionary<String, Int32>(); // maps action type name to action_type_id
 			this.dictActionTypeIDs = new Dictionary<int, string>(); // maps action type id to name
 			this.dictActionTypeNames = new Dictionary<string, Control>(); // maps names to controls
@@ -49,6 +51,45 @@ namespace XeroScouterDBManage_Server
 			scouterDataFound = false;
 			loadExistingData();
 		}
+
+        private void setNextID()
+        {
+            MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
+            MySqlCommand cmd;
+            bool connectionAvailable = Utils.openConnection(connection);
+            Int32 id = -1;
+
+            if (connectionAvailable)
+            {
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = TeamMatchActionTable.getLoadTeamMatchActionIdsQuery();
+                    object i = cmd.ExecuteScalar();
+                    Int32 i2 = Program.TEAM_MATCH_ACTION_ID;
+                    string strI = i.ToString();
+                    if (!strI.Equals(""))
+                    {
+                        i2 = (Int32)i;
+                    }
+
+                    id = i2;
+                }
+                catch (Exception e)
+                {
+                    Console.Out.WriteLine(e.StackTrace);
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+
+                Program.TEAM_MATCH_ACTION_ID = Math.Max(1, id + 1);
+            }
+        }
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
@@ -521,6 +562,9 @@ namespace XeroScouterDBManage_Server
 				Console.Out.WriteLine(e.Message);
 			}
 
+            /// TODO 
+            // DBManager needs to create an _id for each entry - base it off of system clock so it auto increments
+
 			if (validated)
 			{
 				try
@@ -529,26 +573,33 @@ namespace XeroScouterDBManage_Server
 
 					cmd.CommandText = TeamMatchActionTable.getInsertRecordQuery();
 
-					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_TEAM_MATCH_ID, 0);
+                    cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_ID, 0);
+                    cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_TEAM_MATCH_ID, 0);
 					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_ACTION_TYPE_ID, 0);
 					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_QUANTITY, 0);
-					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_START_TIME, 0);
-					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_END_TIME, 0);
+					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_START_TIME, DateTime.Now);
+					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_END_TIME, DateTime.Now);
 					cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_OBJECT_COUNT, 0);
+                    cmd.Parameters.AddWithValue("@" + TeamMatchActionTable.COL_TABLET_UUID, "");
 
-					foreach (Int32 id in dictIdToCount.Keys)
+                    String systemuuid = "\"" + Properties.Settings.Default.SYSTEM_UUID + "\"";
+
+                    foreach (Int32 id in dictIdToCount.Keys)
 					{
 						int count = 0;
 						dictIdToCount.TryGetValue(id, out count);
-						cmd.Parameters["@" + TeamMatchActionTable.COL_TEAM_MATCH_ID].Value = this.teamMatchID;
+                        cmd.Parameters["@" + TeamMatchActionTable.COL_ID].Value = Program.TEAM_MATCH_ACTION_ID;
+                        cmd.Parameters["@" + TeamMatchActionTable.COL_TEAM_MATCH_ID].Value = this.teamMatchID;
 						cmd.Parameters["@" + TeamMatchActionTable.COL_ACTION_TYPE_ID].Value = id;
 						cmd.Parameters["@" + TeamMatchActionTable.COL_QUANTITY].Value = count;
-						cmd.Parameters["@" + TeamMatchActionTable.COL_START_TIME].Value = 0;
-						cmd.Parameters["@" + TeamMatchActionTable.COL_END_TIME].Value = 0;
+						cmd.Parameters["@" + TeamMatchActionTable.COL_START_TIME].Value = DateTime.Now;
+						cmd.Parameters["@" + TeamMatchActionTable.COL_END_TIME].Value = DateTime.Now;
 						cmd.Parameters["@" + TeamMatchActionTable.COL_OBJECT_COUNT].Value = 0;
+                        cmd.Parameters["@" + TeamMatchActionTable.COL_TABLET_UUID].Value = systemuuid;
 
-						cmd.ExecuteNonQuery();
-					}
+                        cmd.ExecuteNonQuery();
+                        Program.TEAM_MATCH_ACTION_ID++;
+                    }
 
 					if (!scouterDataFound)
 					{
@@ -557,12 +608,17 @@ namespace XeroScouterDBManage_Server
 					}
 
 				}
-				catch (Exception)
-				{
-					saved = false;
-				}
-				finally
-				{
+				catch (FormatException fe)
+                {
+                    System.Console.WriteLine(fe.StackTrace);
+                    saved = false;
+                }
+                catch (Exception)
+                {
+                    saved = false;
+                }
+                finally
+                {
 					if (connection.State == ConnectionState.Open)
 					{
 						connection.Close();

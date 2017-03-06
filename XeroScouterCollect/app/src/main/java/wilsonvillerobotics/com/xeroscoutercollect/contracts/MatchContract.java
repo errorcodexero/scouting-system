@@ -83,9 +83,7 @@ public class MatchContract implements SQLDataTypeDefines {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues content = new ContentValues();
-        if(matchMap.containsKey(MatchContract.MatchEntry.COLUMN_NAME_ID)){
-            matchMap.remove(MatchContract.MatchEntry.COLUMN_NAME_ID);
-        }
+
         for(String key : matchMap.keySet()){
             if(matchMap.get(key).getClass() == XMLParser.TableStringColumn.class) {
                 content.put(key, ((XMLParser.TableStringColumn) matchMap.get(key)).getValue());

@@ -17,7 +17,9 @@ namespace XeroScouterDBManage_Server
         public MatchListForm()
         {
 			InitializeComponent();
-			this.modeToolStripMenuItem.Checked = Properties.Settings.Default.TEST_MODE;
+            loadSystemUuid();
+
+            this.modeToolStripMenuItem.Checked = Properties.Settings.Default.TEST_MODE;
 
 			this.competitionID = Properties.Settings.Default.CompetitionID;
             this.seasonID = Properties.Settings.Default.SeasonID;
@@ -40,6 +42,7 @@ namespace XeroScouterDBManage_Server
 
 		private void LoadData()
 		{
+            this.loadTeamMatchActionId();
 			this.loadSelectedSeason();
 			this.loadSelectedCompetition();
 			this.LoadMatchData();
@@ -52,6 +55,11 @@ namespace XeroScouterDBManage_Server
 			this.LoadData();
 			setTestModeLabel();
 		}
+
+        public void loadTeamMatchActionId()
+        {
+
+        }
 
         public void loadSelectedCompetition()
         {
@@ -351,6 +359,14 @@ namespace XeroScouterDBManage_Server
 			UpdateMatchDataForm frmUpdateMatchData = new UpdateMatchDataForm(this.competitionID, INVALID_ID, INVALID_ROW);
 			frmUpdateMatchData.Show();
 		}
+
+        private void loadSystemUuid()
+        {
+            if(Properties.Settings.Default.SYSTEM_UUID.Equals(""))
+            {
+                Properties.Settings.Default.SYSTEM_UUID = Utils.GetMachineGuid();
+            }
+        }
 
 		private void testModeToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
 		{

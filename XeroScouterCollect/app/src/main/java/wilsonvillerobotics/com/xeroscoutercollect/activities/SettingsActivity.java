@@ -3,6 +3,14 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.Preference;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+import java.util.prefs.PreferenceChangeEvent;
+import java.util.prefs.PreferenceChangeListener;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 
@@ -11,7 +19,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
  * More info: https://developer.android.com/guide/topics/ui/settings.html
  */
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends Activity implements PreferenceChangeListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,5 +30,10 @@ public class SettingsActivity extends Activity {
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, frag)
                 .commit();
+    }
+
+    @Override
+    public void preferenceChange(PreferenceChangeEvent evt) {
+
     }
 }

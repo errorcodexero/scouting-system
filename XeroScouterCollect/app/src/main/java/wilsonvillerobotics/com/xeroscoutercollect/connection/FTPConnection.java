@@ -2,8 +2,10 @@ package wilsonvillerobotics.com.xeroscoutercollect.connection;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.widget.TextView;
@@ -44,7 +46,8 @@ public class FTPConnection {
     public FTPConnection(Activity act){
         activity = act;
         status = (TextView) act.findViewById(R.id.lbl_user_status_text);
-        serverAddress = act.getPreferences(act.MODE_PRIVATE).getString("server_ip", "192.168.1.4");
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act);
+        serverAddress = sharedPreferences.getString("server_ip", "192.168.1.4");
     }
 
 /*

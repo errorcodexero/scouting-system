@@ -37,7 +37,7 @@ public class ActionsContract implements SQLDataTypeDefines {
                         + COLUMN_NAME_ACTION_NAME + VC255 + COMMA_SEP
                         + COLUMN_NAME_ACTION_DESCRIPTION + VC2000 + COMMA_SEP
                         + COLUMN_NAME_ACTION_MATCH_PHASE + VC45 + COMMA_SEP
-                        + COLUMN_NAME_ACTION_POINTS + INT11 + COMMA_SEP
+                        + COLUMN_NAME_ACTION_POINTS + DOUBLE + COMMA_SEP
                         + COLUMN_NAME_ACTION_OPPONENT_POINTS + INT11 + COMMA_SEP
                         + COLUMN_NAME_ACTION_QUAL_POINTS + INT11 + COMMA_SEP
                         + COLUMN_NAME_ACTION_FOUL_POINTS + INT11 + COMMA_SEP
