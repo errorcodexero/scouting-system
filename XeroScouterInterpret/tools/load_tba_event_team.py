@@ -92,7 +92,7 @@ def get_teams(cursor):
                 continue
 
 
-f = open("C:\My Documents\Python\log.txt",'a')
+f = open("C:\logs\pylog.txt",'a')
 def main():
     f.write("\nBegin Script\n" )
     try:
