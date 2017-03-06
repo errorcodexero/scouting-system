@@ -14,69 +14,37 @@
             <connection class='mysql' dbname='scouting_test' odbc-native-protocol='' port='3306' server='localhost' source-charset='' username='errorcodexero' />
           </named-connection>
         </named-connections>
-        <relation join='inner' type='join'>
-          <clause type='join'>
-            <expression op='AND'>
-              <expression op='='>
-                <expression op='[team_match_result].[team_id]' />
-                <expression op='[team_match_action_result].[team_id]' />
-              </expression>
-              <expression op='='>
-                <expression op='[team_match_result].[match_id]' />
-                <expression op='[team_match_action_result].[match_id]' />
-              </expression>
-            </expression>
-          </clause>
-          <relation connection='mysql.08mjomt0c263bh158rcwl1atta8q' name='team_match_result' table='[team_match_result]' type='table' />
-          <relation connection='mysql.08mjomt0c263bh158rcwl1atta8q' name='team_match_action_result' table='[team_match_action_result]' type='table' />
-        </relation>
-        <cols>
-          <map key='[_id (team_match_action_result)]' value='[team_match_action_result].[_id]' />
-          <map key='[_id]' value='[team_match_result].[_id]' />
-          <map key='[alliance (team_match_action_result)]' value='[team_match_action_result].[alliance]' />
-          <map key='[alliance]' value='[team_match_result].[alliance]' />
-          <map key='[auto_baseline_crossed_flag]' value='[team_match_action_result].[auto_baseline_crossed_flag]' />
-          <map key='[draws (team_match_action_result)]' value='[team_match_action_result].[draws]' />
-          <map key='[draws]' value='[team_match_result].[draws]' />
-          <map key='[losses (team_match_action_result)]' value='[team_match_action_result].[losses]' />
-          <map key='[losses]' value='[team_match_result].[losses]' />
-          <map key='[match_id (team_match_action_result)]' value='[team_match_action_result].[match_id]' />
-          <map key='[match_id]' value='[team_match_result].[match_id]' />
-          <map key='[opp_score (team_match_action_result)]' value='[team_match_action_result].[opp_score]' />
-          <map key='[opp_score]' value='[team_match_result].[opp_score]' />
-          <map key='[position (team_match_action_result)]' value='[team_match_action_result].[position]' />
-          <map key='[position]' value='[team_match_result].[position]' />
-          <map key='[qp (team_match_action_result)]' value='[team_match_action_result].[qp]' />
-          <map key='[qp]' value='[team_match_result].[qp]' />
-          <map key='[result (team_match_action_result)]' value='[team_match_action_result].[result]' />
-          <map key='[result]' value='[team_match_result].[result]' />
-          <map key='[score (team_match_action_result)]' value='[team_match_action_result].[score]' />
-          <map key='[score]' value='[team_match_result].[score]' />
-          <map key='[team_id (team_match_action_result)]' value='[team_match_action_result].[team_id]' />
-          <map key='[team_id]' value='[team_match_result].[team_id]' />
-          <map key='[tele_did_climb_flag]' value='[team_match_action_result].[tele_did_climb_flag]' />
-          <map key='[tele_gear_delivered]' value='[team_match_action_result].[tele_gear_delivered]' />
-          <map key='[tele_high_score]' value='[team_match_action_result].[tele_high_score]' />
-          <map key='[tele_high_score_points]' value='[team_match_action_result].[tele_high_score_points]' />
-          <map key='[tele_low_score]' value='[team_match_action_result].[tele_low_score]' />
-          <map key='[tele_low_score_points]' value='[team_match_action_result].[tele_low_score_points]' />
-          <map key='[test_id (team_match_action_result)]' value='[team_match_action_result].[test_id]' />
-          <map key='[test_id]' value='[team_match_result].[test_id]' />
-          <map key='[wins (team_match_action_result)]' value='[team_match_action_result].[wins]' />
-          <map key='[wins]' value='[team_match_result].[wins]' />
-        </cols>
+        <relation connection='mysql.08mjomt0c263bh158rcwl1atta8q' name='team_match_action_result' table='[team_match_action_result]' type='table' />
         <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>event_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[event_name]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>event_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
           <metadata-record class='column'>
             <remote-name>team_id</remote-name>
             <remote-type>3</remote-type>
             <local-name>[team_id]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>team_id</remote-alias>
-            <ordinal>1</ordinal>
+            <ordinal>2</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>10</precision>
-            <contains-null>true</contains-null>
+            <contains-null>false</contains-null>
             <attributes>
               <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
               <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
@@ -86,9 +54,9 @@
             <remote-name>match_id</remote-name>
             <remote-type>3</remote-type>
             <local-name>[match_id]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>match_id</remote-alias>
-            <ordinal>2</ordinal>
+            <ordinal>3</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>10</precision>
@@ -102,9 +70,9 @@
             <remote-name>alliance</remote-name>
             <remote-type>130</remote-type>
             <local-name>[alliance]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>alliance</remote-alias>
-            <ordinal>3</ordinal>
+            <ordinal>4</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>45</width>
@@ -120,9 +88,9 @@
             <remote-name>position</remote-name>
             <remote-type>3</remote-type>
             <local-name>[position]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>position</remote-alias>
-            <ordinal>4</ordinal>
+            <ordinal>5</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>10</precision>
@@ -133,12 +101,12 @@
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>test_id</remote-name>
+            <remote-name>team_match_seq</remote-name>
             <remote-type>20</remote-type>
-            <local-name>[test_id]</local-name>
-            <parent-name>[team_match_result]</parent-name>
-            <remote-alias>test_id</remote-alias>
-            <ordinal>5</ordinal>
+            <local-name>[team_match_seq]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>team_match_seq</remote-alias>
+            <ordinal>6</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>19</precision>
@@ -150,59 +118,59 @@
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>score</remote-name>
-            <remote-type>3</remote-type>
+            <remote-type>20</remote-type>
             <local-name>[score]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>score</remote-alias>
-            <ordinal>6</ordinal>
+            <ordinal>7</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
+            <precision>19</precision>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>opp_score</remote-name>
-            <remote-type>3</remote-type>
+            <remote-type>20</remote-type>
             <local-name>[opp_score]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>opp_score</remote-alias>
-            <ordinal>7</ordinal>
+            <ordinal>8</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
+            <precision>19</precision>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>qp</remote-name>
-            <remote-type>4</remote-type>
+            <remote-type>5</remote-type>
             <local-name>[qp]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>qp</remote-alias>
-            <ordinal>8</ordinal>
+            <ordinal>9</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
-            <precision>6</precision>
+            <precision>15</precision>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_REAL&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>result</remote-name>
             <remote-type>130</remote-type>
             <local-name>[result]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>result</remote-alias>
-            <ordinal>9</ordinal>
+            <ordinal>10</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>4</width>
@@ -215,276 +183,96 @@
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>_id</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[_id]</local-name>
-            <parent-name>[team_match_result]</parent-name>
-            <remote-alias>_id</remote-alias>
-            <ordinal>10</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>19</precision>
-            <contains-null>false</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
             <remote-name>wins</remote-name>
-            <remote-type>20</remote-type>
+            <remote-type>3</remote-type>
             <local-name>[wins]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>wins</remote-alias>
             <ordinal>11</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>19</precision>
+            <precision>10</precision>
             <contains-null>false</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>draws</remote-name>
-            <remote-type>20</remote-type>
+            <remote-type>3</remote-type>
             <local-name>[draws]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>draws</remote-alias>
             <ordinal>12</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>19</precision>
+            <precision>10</precision>
             <contains-null>false</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>losses</remote-name>
-            <remote-type>20</remote-type>
+            <remote-type>3</remote-type>
             <local-name>[losses]</local-name>
-            <parent-name>[team_match_result]</parent-name>
+            <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>losses</remote-alias>
             <ordinal>13</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>19</precision>
+            <precision>10</precision>
             <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>match_total_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[match_total_score]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>match_total_score</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
             <attributes>
               <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
               <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>team_id</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[team_id (team_match_action_result)]</local-name>
+            <remote-name>match_auto_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[match_auto_score]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>team_id</remote-alias>
+            <remote-alias>match_auto_score</remote-alias>
             <ordinal>15</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
+            <precision>19</precision>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>match_id</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[match_id (team_match_action_result)]</local-name>
+            <remote-name>match_teleop_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[match_teleop_score]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>match_id</remote-alias>
+            <remote-alias>match_teleop_score</remote-alias>
             <ordinal>16</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
-            <contains-null>false</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>alliance</remote-name>
-            <remote-type>130</remote-type>
-            <local-name>[alliance (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>alliance</remote-alias>
-            <ordinal>17</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <width>45</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LROOT' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
-              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>position</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[position (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>position</remote-alias>
-            <ordinal>18</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>10</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>test_id</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[test_id (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>test_id</remote-alias>
-            <ordinal>19</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
             <precision>19</precision>
             <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>score</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[score (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>score</remote-alias>
-            <ordinal>20</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>10</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>opp_score</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[opp_score (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>opp_score</remote-alias>
-            <ordinal>21</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>10</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>qp</remote-name>
-            <remote-type>4</remote-type>
-            <local-name>[qp (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>qp</remote-alias>
-            <ordinal>22</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>6</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_REAL&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_FLOAT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>result</remote-name>
-            <remote-type>130</remote-type>
-            <local-name>[result (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>result</remote-alias>
-            <ordinal>23</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <width>4</width>
-            <contains-null>false</contains-null>
-            <collation flag='0' name='LROOT' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
-              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>_id</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[_id (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>_id</remote-alias>
-            <ordinal>24</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>19</precision>
-            <contains-null>false</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>wins</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[wins (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>wins</remote-alias>
-            <ordinal>25</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>19</precision>
-            <contains-null>false</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>draws</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[draws (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>draws</remote-alias>
-            <ordinal>26</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>19</precision>
-            <contains-null>false</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>losses</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[losses (team_match_action_result)]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>losses</remote-alias>
-            <ordinal>27</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>19</precision>
-            <contains-null>false</contains-null>
             <attributes>
               <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
               <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
@@ -492,18 +280,36 @@
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>tele_high_score</remote-name>
-            <remote-type>3</remote-type>
+            <remote-type>131</remote-type>
             <local-name>[tele_high_score]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>tele_high_score</remote-alias>
-            <ordinal>28</ordinal>
-            <local-type>integer</local-type>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
+            <precision>54</precision>
+            <scale>0</scale>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tele_low_score</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_low_score]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>tele_low_score</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
@@ -512,7 +318,7 @@
             <local-name>[tele_high_score_points]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>tele_high_score_points</remote-alias>
-            <ordinal>29</ordinal>
+            <ordinal>19</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <precision>15</precision>
@@ -520,38 +326,6 @@
             <attributes>
               <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
               <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>tele_gear_delivered</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[tele_gear_delivered]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>tele_gear_delivered</remote-alias>
-            <ordinal>30</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>10</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>tele_low_score</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[tele_low_score]</local-name>
-            <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>tele_low_score</remote-alias>
-            <ordinal>31</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>10</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
@@ -560,7 +334,7 @@
             <local-name>[tele_low_score_points]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
             <remote-alias>tele_low_score_points</remote-alias>
-            <ordinal>32</ordinal>
+            <ordinal>20</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <precision>15</precision>
@@ -571,35 +345,274 @@
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>tele_did_climb_flag</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[tele_did_climb_flag]</local-name>
+            <remote-name>tele_fuel_bin_triggered</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_fuel_bin_triggered]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>tele_did_climb_flag</remote-alias>
-            <ordinal>33</ordinal>
-            <local-type>integer</local-type>
+            <remote-alias>tele_fuel_bin_triggered</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
+            <precision>54</precision>
+            <scale>0</scale>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>auto_baseline_crossed_flag</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[auto_baseline_crossed_flag]</local-name>
+            <remote-name>tele_gear_delivered</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_gear_delivered]</local-name>
             <parent-name>[team_match_action_result]</parent-name>
-            <remote-alias>auto_baseline_crossed_flag</remote-alias>
-            <ordinal>34</ordinal>
-            <local-type>integer</local-type>
+            <remote-alias>tele_gear_delivered</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
             <aggregation>Sum</aggregation>
-            <precision>10</precision>
+            <precision>54</precision>
+            <scale>0</scale>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tele_loading_station_trip</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_loading_station_trip]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>tele_loading_station_trip</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tele_try_climb_flag</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_try_climb_flag]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>tele_try_climb_flag</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tele_did_climb_flag</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_did_climb_flag]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>tele_did_climb_flag</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tele_triggered_pressure_pad</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_triggered_pressure_pad]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>tele_triggered_pressure_pad</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_baseline_crossed</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[auto_baseline_crossed]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_baseline_crossed</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_low_dump</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[auto_low_dump]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_low_dump</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_high_scores</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[auto_high_scores]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_high_scores</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_high_score_points</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[auto_high_score_points]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_high_score_points</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_high_missed</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[auto_high_missed]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_high_missed</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_gear_delivered</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[auto_gear_delivered]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_gear_delivered</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auto_fuel_bin_triggered</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[auto_fuel_bin_triggered]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>auto_fuel_bin_triggered</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tele_played_defensively</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[tele_played_defensively]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>tele_played_defensively</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>breakdown</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[breakdown]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>breakdown</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>disconnect</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[disconnect]</local-name>
+            <parent-name>[team_match_action_result]</parent-name>
+            <remote-alias>disconnect</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>54</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
             </attributes>
           </metadata-record>
         </metadata-records>
@@ -644,42 +657,53 @@
       <column aggregation='None' datatype='integer' name='[Score (bin)]' role='dimension' type='quantitative'>
         <calculation class='bin' decimals='1' formula='[score]' peg='0' size='28.6' />
       </column>
-      <column caption='_Id (Team Match Action Result)' datatype='integer' name='[_id (team_match_action_result)]' role='dimension' type='ordinal' />
-      <column caption='_Id' datatype='integer' name='[_id]' role='dimension' type='ordinal' />
       <column caption='Alliance (Team Match Action Result)' datatype='string' name='[alliance (team_match_action_result)]' role='dimension' type='nominal' />
       <column caption='Alliance' datatype='string' name='[alliance]' role='dimension' type='nominal' />
+      <column caption='Auto Baseline Crossed' datatype='real' name='[auto_baseline_crossed]' role='measure' type='quantitative' />
       <column caption='Auto Baseline Crossed Flag' datatype='integer' name='[auto_baseline_crossed_flag]' role='measure' type='quantitative' />
+      <column caption='Auto Fuel Bin Triggered' datatype='real' name='[auto_fuel_bin_triggered]' role='measure' type='quantitative' />
+      <column caption='Auto Gear Delivered' datatype='real' name='[auto_gear_delivered]' role='measure' type='quantitative' />
+      <column caption='Auto High Missed' datatype='real' name='[auto_high_missed]' role='measure' type='quantitative' />
+      <column caption='Auto High Score Points' datatype='real' name='[auto_high_score_points]' role='measure' type='quantitative' />
+      <column caption='Auto High Scores' datatype='real' name='[auto_high_scores]' role='measure' type='quantitative' />
+      <column caption='Auto Low Dump' datatype='real' name='[auto_low_dump]' role='measure' type='quantitative' />
+      <column caption='Breakdown' datatype='real' name='[breakdown]' role='measure' type='quantitative' />
+      <column caption='Disconnect' datatype='real' name='[disconnect]' role='measure' type='quantitative' />
       <column caption='Draws (Team Match Action Result)' datatype='integer' name='[draws (team_match_action_result)]' role='measure' type='quantitative' />
+      <column caption='Draws' datatype='integer' name='[draws]' role='measure' type='quantitative' />
+      <column caption='Event Name' datatype='string' name='[event_name]' role='dimension' type='nominal' />
       <column caption='Losses (Team Match Action Result)' datatype='integer' name='[losses (team_match_action_result)]' role='measure' type='quantitative' />
-      <column datatype='integer' name='[losses]' role='measure' type='quantitative' />
-      <column caption='Match Id (Team Match Action Result)' datatype='integer' name='[match_id (team_match_action_result)]' role='dimension' type='ordinal' />
+      <column caption='Losses' datatype='integer' name='[losses]' role='measure' type='quantitative' />
+      <column caption='Match Auto Score' datatype='integer' name='[match_auto_score]' role='measure' type='quantitative' />
       <column caption='Match Id' datatype='integer' name='[match_id]' role='dimension' type='ordinal' />
+      <column caption='Match Teleop Score' datatype='integer' name='[match_teleop_score]' role='measure' type='quantitative' />
+      <column caption='Match Total Score' datatype='integer' name='[match_total_score]' role='measure' type='quantitative' />
       <column caption='Opp Score (Team Match Action Result)' datatype='integer' name='[opp_score (team_match_action_result)]' role='measure' type='quantitative' />
       <column caption='Opp Score' datatype='integer' name='[opp_score]' role='measure' type='quantitative' />
       <column caption='Position (Team Match Action Result)' datatype='integer' name='[position (team_match_action_result)]' role='measure' type='quantitative' />
-      <column aggregation='Sum' caption='Position' datatype='integer' name='[position]' role='dimension' type='ordinal' />
+      <column caption='Position' datatype='integer' name='[position]' role='measure' type='quantitative' />
       <column caption='Qp (Team Match Action Result)' datatype='real' name='[qp (team_match_action_result)]' role='measure' type='quantitative' />
       <column caption='Qp' datatype='real' name='[qp]' role='measure' type='quantitative' />
-      <column caption='Result (Team Match Action Result)' datatype='string' name='[result (team_match_action_result)]' role='dimension' type='nominal' />
-      <column aggregation='CountD' caption='Result' datatype='string' name='[result]' role='dimension' type='nominal' />
+      <column caption='Result' datatype='string' name='[result]' role='dimension' type='nominal' />
       <column caption='Score (Team Match Action Result)' datatype='integer' name='[score (team_match_action_result)]' role='measure' type='quantitative' />
       <column caption='Score' datatype='integer' name='[score]' role='measure' type='quantitative' />
       <column caption='Team Id (Team Match Action Result)' datatype='integer' name='[team_id (team_match_action_result)]' role='dimension' type='ordinal' />
       <column caption='Team Id' datatype='integer' name='[team_id]' role='dimension' type='ordinal' />
-      <column caption='Tele Did Climb Flag' datatype='integer' name='[tele_did_climb_flag]' role='measure' type='quantitative' />
-      <column caption='Tele Gear Delivered' datatype='integer' name='[tele_gear_delivered]' role='measure' type='quantitative' />
-      <column caption='Tele High Score' datatype='integer' name='[tele_high_score]' role='measure' type='quantitative' />
+      <column caption='Team Match Seq' datatype='integer' name='[team_match_seq]' role='measure' type='quantitative' />
+      <column caption='Tele Did Climb Flag' datatype='real' name='[tele_did_climb_flag]' role='measure' type='quantitative' />
+      <column caption='Tele Fuel Bin Triggered' datatype='real' name='[tele_fuel_bin_triggered]' role='measure' type='quantitative' />
+      <column caption='Tele Gear Delivered' datatype='real' name='[tele_gear_delivered]' role='measure' type='quantitative' />
+      <column caption='Tele High Score' datatype='real' name='[tele_high_score]' role='measure' type='quantitative' />
       <column caption='Tele High Score Points' datatype='real' name='[tele_high_score_points]' role='measure' type='quantitative' />
-      <column caption='Tele Low Score' datatype='integer' name='[tele_low_score]' role='measure' type='quantitative' />
+      <column caption='Tele Loading Station Trip' datatype='real' name='[tele_loading_station_trip]' role='measure' type='quantitative' />
+      <column caption='Tele Low Score' datatype='real' name='[tele_low_score]' role='measure' type='quantitative' />
       <column caption='Tele Low Score Points' datatype='real' name='[tele_low_score_points]' role='measure' type='quantitative' />
-      <column caption='Test Id (Team Match Action Result)' datatype='integer' name='[test_id (team_match_action_result)]' role='dimension' type='ordinal' />
-      <column caption='Test Id' datatype='integer' name='[test_id]' role='dimension' type='ordinal' />
-      <column caption='Wins (Team Match Action Result)' datatype='integer' name='[wins (team_match_action_result)]' role='measure' type='quantitative' />
-      <column datatype='integer' name='[wins]' role='measure' type='quantitative' />
-      <column-instance column='[alliance (team_match_action_result)]' derivation='None' name='[none:alliance (team_match_action_result):nk]' pivot='key' type='nominal' />
+      <column caption='Tele Played Defensively' datatype='real' name='[tele_played_defensively]' role='measure' type='quantitative' />
+      <column caption='Tele Triggered Pressure Pad' datatype='real' name='[tele_triggered_pressure_pad]' role='measure' type='quantitative' />
+      <column caption='Tele Try Climb Flag' datatype='real' name='[tele_try_climb_flag]' role='measure' type='quantitative' />
+      <column caption='Wins' datatype='integer' name='[wins]' role='measure' type='quantitative' />
       <column-instance column='[alliance]' derivation='None' name='[none:alliance:nk]' pivot='key' type='nominal' />
       <column-instance column='[match_id]' derivation='None' name='[none:match_id:ok]' pivot='key' type='ordinal' />
-      <column-instance column='[result]' derivation='None' name='[none:result:nk]' pivot='key' type='nominal' />
       <column-instance column='[team_id]' derivation='None' name='[none:team_id:ok]' pivot='key' type='ordinal' />
       <column-instance column='[losses]' derivation='Sum' name='[sum:losses:qk]' pivot='key' type='quantitative' />
       <column-instance column='[qp]' derivation='Sum' name='[sum:qp:qk]' pivot='key' type='quantitative' />
@@ -740,7 +764,7 @@
           <calculations>
             <calculation column='[Calculation_837106623438880770]' formula='0' />
             <calculation column='[Number of Records]' formula='1' />
-            <calculation column='[Score (bin)]' formula='SYS_NUMBIN([score],28.6)' />
+            <calculation column='[Score (bin)]' formula='' />
           </calculations>
           <refresh>
             <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='432' timestamp-start='2017-02-11 22:22:44.293' />
@@ -1869,7 +1893,7 @@
           </metadata-records>
         </connection>
       </extract>
-      <layout dim-ordering='alphabetic' dim-percentage='0.660911' group-percentage='0.0518053' measure-ordering='alphabetic' measure-percentage='0.287284' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.486656' group-percentage='0.0518053' measure-ordering='alphabetic' measure-percentage='0.461538' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[none:match_id:ok]' type='palette'>
@@ -2107,14 +2131,6 @@
               <bucket>&quot;[federated.17faf90105ibls1a4ktlt1viwx25].[usr:Calculation_363384231712194561:qk]&quot;</bucket>
             </map>
           </encoding>
-          <encoding attr='color' field='[none:result:nk]' type='palette'>
-            <map to='#00aa00'>
-              <bucket>&quot;win&quot;</bucket>
-            </map>
-            <map to='#aa0000'>
-              <bucket>&quot;loss&quot;</bucket>
-            </map>
-          </encoding>
           <encoding attr='color' field='[none:team_id:ok]' type='palette'>
             <map to='#499894'>
               <bucket>8</bucket>
@@ -2233,14 +2249,6 @@
               <bucket>&quot;red&quot;</bucket>
             </map>
           </encoding>
-          <encoding attr='color' field='[none:alliance (team_match_action_result):nk]' type='palette'>
-            <map to='#4e79a7'>
-              <bucket>&quot;blue&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;red&quot;</bucket>
-            </map>
-          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -2270,9 +2278,9 @@
             </column>
             <column caption='Auto Baseline Crossed Flag' datatype='integer' name='[auto_baseline_crossed_flag]' role='measure' type='quantitative' />
             <column caption='Draws (Team Match Action Result)' datatype='integer' name='[draws (team_match_action_result)]' role='measure' type='quantitative' />
-            <column datatype='integer' name='[draws]' role='measure' type='quantitative' />
+            <column caption='Draws' datatype='integer' name='[draws]' role='measure' type='quantitative' />
             <column caption='Losses (Team Match Action Result)' datatype='integer' name='[losses (team_match_action_result)]' role='measure' type='quantitative' />
-            <column datatype='integer' name='[losses]' role='measure' type='quantitative' />
+            <column caption='Losses' datatype='integer' name='[losses]' role='measure' type='quantitative' />
             <column caption='Match Id' datatype='integer' name='[match_id]' role='dimension' type='ordinal' />
             <column-instance column='[team_id (team_match_action_result)]' derivation='None' name='[none:team_id (team_match_action_result):ok]' pivot='key' type='ordinal' />
             <column caption='Opp Score (Team Match Action Result)' datatype='integer' name='[opp_score (team_match_action_result)]' role='measure' type='quantitative' />
@@ -2302,15 +2310,15 @@
             <column-instance column='[tele_low_score_points]' derivation='Sum' name='[sum:tele_low_score_points:qk]' pivot='key' type='quantitative' />
             <column caption='Team Id (Team Match Action Result)' datatype='integer' name='[team_id (team_match_action_result)]' role='dimension' type='ordinal' />
             <column caption='Team Id' datatype='integer' name='[team_id]' role='dimension' type='ordinal' />
-            <column caption='Tele Did Climb Flag' datatype='integer' name='[tele_did_climb_flag]' role='measure' type='quantitative' />
-            <column caption='Tele Gear Delivered' datatype='integer' name='[tele_gear_delivered]' role='measure' type='quantitative' />
-            <column caption='Tele High Score' datatype='integer' name='[tele_high_score]' role='measure' type='quantitative' />
+            <column caption='Tele Did Climb Flag' datatype='real' name='[tele_did_climb_flag]' role='measure' type='quantitative' />
+            <column caption='Tele Gear Delivered' datatype='real' name='[tele_gear_delivered]' role='measure' type='quantitative' />
+            <column caption='Tele High Score' datatype='real' name='[tele_high_score]' role='measure' type='quantitative' />
             <column caption='Tele High Score Points' datatype='real' name='[tele_high_score_points]' role='measure' type='quantitative' />
-            <column caption='Tele Low Score' datatype='integer' name='[tele_low_score]' role='measure' type='quantitative' />
+            <column caption='Tele Low Score' datatype='real' name='[tele_low_score]' role='measure' type='quantitative' />
             <column caption='Tele Low Score Points' datatype='real' name='[tele_low_score_points]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_363384231712952322]' derivation='User' name='[usr:Calculation_363384231712952322:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_837106623399804928]' derivation='User' name='[usr:Calculation_837106623399804928:qk]' pivot='key' type='quantitative' />
-            <column datatype='integer' name='[wins]' role='measure' type='quantitative' />
+            <column caption='Wins' datatype='integer' name='[wins]' role='measure' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.17faf90105ibls1a4ktlt1viwx25].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
@@ -2460,8 +2468,8 @@
             <column-instance column='[Calculation_837106623407988737 6]' derivation='Sum' name='[sum:Calculation_837106623407988737 6:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_837106623407988737]' derivation='Sum' name='[sum:Calculation_837106623407988737:qk]' pivot='key' type='quantitative' />
             <column caption='Team Id' datatype='integer' name='[team_id]' role='dimension' type='ordinal' />
-            <column caption='Tele Did Climb Flag' datatype='integer' name='[tele_did_climb_flag]' role='measure' type='quantitative' />
-            <column caption='Tele Gear Delivered' datatype='integer' name='[tele_gear_delivered]' role='measure' type='quantitative' />
+            <column caption='Tele Did Climb Flag' datatype='real' name='[tele_did_climb_flag]' role='measure' type='quantitative' />
+            <column caption='Tele Gear Delivered' datatype='real' name='[tele_gear_delivered]' role='measure' type='quantitative' />
             <column caption='Tele High Score Points' datatype='real' name='[tele_high_score_points]' role='measure' type='quantitative' />
             <column caption='Tele Low Score Points' datatype='real' name='[tele_low_score_points]' role='measure' type='quantitative' />
           </datasource-dependencies>
