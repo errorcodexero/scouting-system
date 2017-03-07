@@ -141,6 +141,7 @@
             // 
             this.cmbBlue1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbBlue1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBlue1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBlue1.FormattingEnabled = true;
             this.cmbBlue1.Location = new System.Drawing.Point(78, 230);
             this.cmbBlue1.Name = "cmbBlue1";
@@ -151,6 +152,7 @@
             // 
             this.cmbBlue2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbBlue2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBlue2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBlue2.FormattingEnabled = true;
             this.cmbBlue2.Location = new System.Drawing.Point(78, 264);
             this.cmbBlue2.Name = "cmbBlue2";
@@ -161,6 +163,7 @@
             // 
             this.cmbBlue3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbBlue3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBlue3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBlue3.FormattingEnabled = true;
             this.cmbBlue3.Location = new System.Drawing.Point(78, 297);
             this.cmbBlue3.Name = "cmbBlue3";
@@ -171,6 +174,7 @@
             // 
             this.cmbRed1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbRed1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbRed1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRed1.FormattingEnabled = true;
             this.cmbRed1.Location = new System.Drawing.Point(259, 230);
             this.cmbRed1.Name = "cmbRed1";
@@ -181,6 +185,7 @@
             // 
             this.cmbRed2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbRed2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbRed2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRed2.FormattingEnabled = true;
             this.cmbRed2.Location = new System.Drawing.Point(259, 264);
             this.cmbRed2.Name = "cmbRed2";
@@ -191,6 +196,7 @@
             // 
             this.cmbRed3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbRed3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbRed3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRed3.FormattingEnabled = true;
             this.cmbRed3.Location = new System.Drawing.Point(259, 297);
             this.cmbRed3.Name = "cmbRed3";

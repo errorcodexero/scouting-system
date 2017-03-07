@@ -237,7 +237,11 @@ namespace XeroScouterDBManage_Server
 
         private void btnAddMatch_Click(object sender, EventArgs e)
         {
-            if (!CompetitionIDIsValid(this.competitionID)) return;
+            if (!CompetitionIDIsValid(this.competitionID))
+            {
+                MessageBox.Show("You need to select a Competition before adding a match!");
+                return;
+            }
             AddMatchForm amForm = new AddMatchForm(this.competitionID);
             amForm.Show();
             //this.LoadMatchData();
