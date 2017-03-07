@@ -130,6 +130,7 @@
             this.btnExportAll.TabIndex = 13;
             this.btnExportAll.Text = "Export &All";
             this.btnExportAll.UseVisualStyleBackColor = true;
+            this.btnExportAll.Click += new System.EventHandler(this.btnExportAll_Click);
             // 
             // folderBrowserDialog1
             // 
