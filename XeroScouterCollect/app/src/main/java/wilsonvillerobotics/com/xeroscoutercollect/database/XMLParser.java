@@ -159,10 +159,10 @@ public class XMLParser{
                                 TableColumn tableCol = hMap.get(tagName);
                                 if (tableCol.getClass() == TableIntegerColumn.class) {
                                     tableCol.setValue(readInteger(myParser));
-                                    Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tableCol.getValue()));
+                                    //Log.d(TAG, "parseXML: " + tagName + ": " + String.valueOf(tableCol.getValue()));
                                 } else if (tableCol.getClass() == TableStringColumn.class) {
                                     tableCol.setValue(readString(myParser));
-                                    Log.d(TAG, "parseXML: " + tagName + ": " + tableCol.getValue());
+                                    //Log.d(TAG, "parseXML: " + tagName + ": " + tableCol.getValue());
                                 }
                             } else {
                                 // We didn't find this tag, log it

@@ -78,6 +78,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     private boolean matchSpinnerHasBeenCreated;
     private boolean teamSpinnerHasBeenCreated;
     private boolean manualSelection;
+    private SharedPreferences sharedPreferences;
+    private SQLiteDatabase db;
 
 
 
@@ -91,7 +93,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         team_list = new HashMap<>();
         teamIdMap = new HashMap<>();
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean testBool = sharedPreferences.getBoolean("resetEventId", true);
        /*if(sharedPreferences.getBoolean("resetEventId", true)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -173,8 +175,6 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         highlightTabletIdTeam();
         addItemsToMatchSpinner();
         addItemsToTeamSpinner();
-        SharedPreferences sharedPreferences = this.getPreferences(this.MODE_PRIVATE);
-        lastMatchId = sharedPreferences.getInt("last_match_id", 0) + 1;
         Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
         String matchIdString = String.valueOf(lastMatchId);
         int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
@@ -281,11 +281,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     //Finds the tablet id and if manual selection is checked
     private void getSharedPrefs(){
         String pref_default = getString(R.string.default_pref_value);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
         manualSelection = sharedPreferences.getBoolean(getString(R.string.manual_selection_pref), false);
-        lastMatchId = sharedPreferences.getInt("last_match_id", 1);
-
+        lastMatchId = sharedPreferences.getInt("last_match_id", 0) + 1;
     }
     //Sets tablet id label
     private void updateTabletIdLabel() {
@@ -320,13 +318,11 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     }
 
     private void populateMatchTable() {
+        db = dbHelper.getReadableDatabase();
 
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        int event_id = Integer.parseInt(sharedPreferences.getString(getString(R.string.event_name_pref), "-1"));
+        //int event_id = 139;
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
-        int event_id = getIntent().getIntExtra(sharedPreferences.getString(getString(R.string.event_name_pref), "2"), 2);
         String query = MatchModel.getAllMatches(event_id);
         Cursor cursor = db.rawQuery(query, null);
 
@@ -446,8 +442,6 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             //Cursor
 
             //Cursor cursor = db.execSQL("SELECT * FROM team_match WHERE id = " + tn);
-
-            SharedPreferences sharedPreferences = this.getPreferences(this.MODE_PRIVATE);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("last_match_id", matchId);
