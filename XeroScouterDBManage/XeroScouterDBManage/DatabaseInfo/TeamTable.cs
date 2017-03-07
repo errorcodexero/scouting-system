@@ -29,6 +29,6 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         public static String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
         public static String SELECT_NAME_FROM_MATCHING_ID = "SELECT " + COL_TEAM_LONG_NAME + " FROM " + TABLE_NAME + " WHERE " + COL_ID + "=";
         public static String SELECT_NUMBER_FROM_MATCHING_ID = "SELECT " + COL_TEAM_NUMBER + " FROM " + TABLE_NAME + " WHERE " + COL_ID + "=";
-        public static String SELECT_ID_AND_NUMBER = "SELECT " + COL_ID + ", " + COL_TEAM_NUMBER + " FROM " + TABLE_NAME;
+        public static String SELECT_ID_AND_NUMBER = "SELECT " + COL_ID + ", " + COL_TEAM_NUMBER + " FROM " + TABLE_NAME + " ORDER BY " + COL_TEAM_NUMBER + " * 1";
     }
 }

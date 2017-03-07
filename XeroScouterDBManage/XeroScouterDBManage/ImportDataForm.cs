@@ -478,16 +478,6 @@ namespace XeroScouterDBManage_Server
 
                 string filePath = this.importPath + "\\" + fileName;
                 backupFile(filePath);
-                //string backupPath = importPath + "\\backup";
-                //string backupFilePath = backupPath + "\\" + fileName;
-                //if (File.Exists(filePath))
-                //{
-                //    if (!Directory.Exists(backupPath))
-                //    {
-                //        Directory.CreateDirectory(backupPath);
-                //    }
-                //    File.Move(filePath, backupFilePath); // what if file exists in backup directory???
-                //}
             }
             loadFileList();
         }
@@ -503,161 +493,16 @@ namespace XeroScouterDBManage_Server
 
                 string filePath = this.importPath + "\\" + fileName;
                 backupFile(filePath);
-                //string backupPath = importPath + "\\backup";
-                //string backupFilePath = backupPath + "\\" + fileName;
-                //if (File.Exists(filePath))
-                //{
-                //    if (!Directory.Exists(backupPath))
-                //    {
-                //        Directory.CreateDirectory(backupPath);
-                //    }
-                //    File.Move(filePath, backupFilePath); // what if file exists in backup directory???
-                //}
             }
             loadFileList();
         }
 
         private void btnImportAll_Click(object sender, EventArgs e)
         {
-            //CheckedListBox.ObjectCollection stuffToImport = chkFileList.Items;
-            //lblStatus.Text = "Total Items: " + stuffToImport.Count;
-
             List<string> items = chkFileList.Items.Cast<string>().ToList();
             lblStatus.Text = "Total items: " + items.Count;
 
             importItems(items);
-
-
-            /*for (int i = 0; i < stuffToImport.Count; i++)
-            {
-                string fileName = stuffToImport[i].ToString();
-                Console.Out.WriteLine("Importing " + fileName);
-
-                long compID = Utils.getLongIDFromComboSelectedValue(cmbCompetitionName, lblStatus);
-
-                string filePath = this.importPath + "\\" + fileName;
-                DataSet ds = new DataSet();
-                if (File.Exists(filePath))
-                {
-                    ds.ReadXml(filePath);
-                }
-
-                MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
-                MySqlCommand cmd;
-                bool connectionAvailable = Utils.openConnection(connection, lblStatus);
-
-                if (connectionAvailable)
-                {
-                    try
-                    {
-                        cmd = connection.CreateCommand();
-
-                        DataTable dt = ds.Tables["table"];
-                        string tableName = (dt.Columns.Count > 1) ? dt.Rows[0][1].ToString() : "";
-                        Console.Out.WriteLine("Table Name: " + tableName);
-                        DataTable dataTable = ds.Tables["row"];
-                        if (!String.IsNullOrEmpty(tableName))
-                        {
-                            string prefix = "INSERT INTO " + tableName + "(";
-                            string postfix = ") VALUES(";
-
-                            int cnt = dataTable.Rows[0].Table.Columns.Count - 1;
-                            string[] colParams = new string[cnt];
-                            for (int col = 0; col < cnt; col++)
-                            {
-                                var column = dataTable.Rows[0].Table.Columns[col];
-                                Console.Out.WriteLine("Column: " + column);
-                                prefix += column;
-
-                                string colParam = "@" + column;
-                                postfix += colParam;
-                                colParams[col] = colParam;
-                                
-                                if (col != cnt - 1)
-                                {
-                                    prefix += ", ";
-                                    postfix += ", ";
-                                }
-                                else
-                                {
-                                    postfix += ")";
-                                }
-                            }
-
-                            cmd.CommandText = prefix + postfix;
-                            cmd.Prepare();
-
-                            int numRows = 0;
-                            for (int col = 0; col < dataTable.Rows[0].Table.Columns.Count - 1; col++)
-                            {
-                                var param = colParams[col];
-                                var val = dataTable.Rows[0][col];
-                                cmd.Parameters.AddWithValue(param, val);
-                            }
-                            foreach (DataRow dataRow in dataTable.Rows)
-                            {
-                                for (int col = 0; col < dataRow.Table.Columns.Count - 1; col++)
-                                {
-                                    //var param = colParams[col];
-                                    //var val = dataRow[col];
-                                    //cmd.Parameters.AddWithValue(param, val);
-                                    cmd.Parameters[colParams[col]].Value = dataRow[col];
-                                }
-                                numRows += cmd.ExecuteNonQuery();
-                            }
-
-                            //int numRows = cmd.ExecuteNonQuery();
-                            if (numRows > 0)
-                            {
-                                string backupPath = importPath + "\\backup";
-                                string backupFilePath = backupPath + "\\" + fileName;
-                                if (File.Exists(filePath))
-                                {
-                                    if (!Directory.Exists(backupPath))
-                                    {
-                                        Directory.CreateDirectory(backupPath);
-                                    }
-                                    if (File.Exists(backupFilePath))
-                                    {
-                                        File.Delete(backupFilePath);
-                                    }
-                                    File.Move(filePath, backupFilePath); // what if file exists in backup directory???
-                                    Console.Out.WriteLine("File moved");
-                                    loadFileList();
-                                }
-                            }
-                        }
-
-                        ///TODO - FINISH IMPLIMENTING THIS ??? WHAT'S LEFT TO DO ???
-                    }
-                    catch (MySql.Data.MySqlClient.MySqlException ex)
-                    {
-                        string message = "Unable to open MySQL connection - check if the database is installed and running!";
-                        Console.Out.WriteLine(message);
-                        Console.Out.WriteLine(ex.Message);
-                        lblStatus.Text = message;
-                    }
-                    catch (IOException iox)
-                    {
-                        string message = "Unable to move file: " + filePath;
-                        Console.Out.WriteLine(message);
-                        Console.Out.WriteLine(iox.Message);
-                        lblStatus.Text = message;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Out.WriteLine(ex.Message);
-                        throw;
-                    }
-                    finally
-                    {
-                        if (connection.State == System.Data.ConnectionState.Open)
-                        {
-                            connection.Close();
-                        }
-                    }
-                }
-            }*/
         }
 
         private void btnClose_Click(object sender, EventArgs e)

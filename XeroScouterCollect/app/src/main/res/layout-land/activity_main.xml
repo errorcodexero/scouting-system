@@ -26,10 +26,11 @@
             android:id="@+id/lbl_main_tablet_id" />
 
         <EditText
+            android:id="@+id/txt_main_tablet_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_main_tablet_id"
-            android:inputType="number"/>
+            android:hint="ASK LUKE"
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,10 +48,11 @@
             android:id="@+id/lbl_main_event_name" />
 
         <EditText
+            android:id="@+id/txt_main_event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_main_event_name"
-            android:inputType="number"/>
+            android:hint="HARDCODE TO 139"
+            android:inputType="number" />
     </LinearLayout>
 
     <Button
