@@ -62,12 +62,6 @@
             android:summary=""
             android:title="Server IP" />
 
-        <EditTextPreference
-            android:key="last_match_id"
-            android:title="lastMatchId"
-            android:summary=""
-            android:defaultValue="@string/default_pref_value"
-            android:dialogTitle="Last Match Id" />
 
     </PreferenceCategory>
 

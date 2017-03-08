@@ -284,6 +284,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
         manualSelection = sharedPreferences.getBoolean(getString(R.string.manual_selection_pref), false);
         lastMatchId = sharedPreferences.getInt("last_match_id", 0) + 1;
+
     }
     //Sets tablet id label
     private void updateTabletIdLabel() {
