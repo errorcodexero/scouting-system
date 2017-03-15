@@ -23,6 +23,7 @@ import android.support.v4.app.FragmentActivity;
 import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,7 +35,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.fragments.StandMatchConfirmationFragment;
 import wilsonvillerobotics.com.xeroscoutercollect.models.MatchModel;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
-
+import wilsonvillerobotics.com.xeroscoutercollect.utils.ComparatorOfNumericString;
 /**
  * Created by Luke on 11/5/2016.
  */
@@ -352,6 +353,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
                 //match_list.add(String.valueOf(Integer.parseInt(tempMatch.getMatchNumber().replaceAll("[\\D]", ""))));
                 match_list.add(tempMatch.getMatchNumber());
             }
+
+            Collections.sort(match_list, new ComparatorOfNumericString());
 
             matchDataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, match_list);
             matchDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
