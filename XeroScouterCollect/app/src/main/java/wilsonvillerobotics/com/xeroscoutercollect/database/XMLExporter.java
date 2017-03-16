@@ -117,12 +117,10 @@ public class XMLExporter {
 
     }
 
-    public String generateAllTeamData(Integer teamId, Boolean startDataTag, Boolean endDataTag, Context context) {
-
+    public String generateAllTeamData(Boolean startDataTag, Boolean endDataTag, Context context) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-
-         String queryStatement = "SELECT * FROM team;";
+        String queryStatement = "SELECT * FROM team;";
 
         Cursor cursor = db.rawQuery(queryStatement, null);
         cursor.moveToFirst();
@@ -167,7 +165,7 @@ public class XMLExporter {
             }
         } while(cursor.moveToNext());
         if (endDataTag) {
-            xmlResult += GenerateTagByName(DATA, 0, false, true);
+            xmlResult += GenerateTagByName(DATA, 0, true, true);
         }
         return xmlResult;
 
@@ -337,6 +335,10 @@ public class XMLExporter {
         String queryStatement = "SELECT * FROM " + TeamContract.TeamEntry.TABLE_NAME + " WHERE _id > 0;";
         Cursor cursor = db.rawQuery(queryStatement, null);
         cursor.moveToFirst();
+
+
+
+
         
 
 

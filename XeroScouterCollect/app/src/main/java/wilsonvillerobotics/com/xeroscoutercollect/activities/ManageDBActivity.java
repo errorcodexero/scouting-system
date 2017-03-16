@@ -150,7 +150,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
         else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
-            String temp = xmlExporter.generateAllTeamData(0, true, true, this);
+            String temp = xmlExporter.generateAllTeamData(true, true, this);
             String filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
             File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
@@ -162,7 +162,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             file.getParentFile().mkdirs();
             FileOutputStream fos;
             if(isPitScoutingTablet) {
-                String pitOut = xmlExporter.generateAllTeamData(4, true, true, this);
+                String pitOut = xmlExporter.generateAllTeamData(true, true, this);
                 pitFileName = "pit" + "-" + tabletId + "-" + getTimeStamp() + ".xml";
                 pitFile = new File(baseFolder + File.separator + pitFileName);
 

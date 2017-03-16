@@ -5,7 +5,7 @@
     <string name="pit_action_3" >Can Collect Hopper Fuel</string>
     <string name="pit_action_4" >Can Activate Hoppers</string>
     <string name="pit_action_5" >Can Score Fuel Low</string>
-    <string name="pit_action_6" >Can Score High Low</string>
+    <string name="pit_action_6" >Can Score Fuel High</string>
     <string name="pit_action_7" >Can Collect Feeder Gears</string>
     <string name="pit_action_8" >Can Collect Ground Gears</string>
     <string name="pit_action_9" >Can Score Gears</string>
@@ -18,7 +18,7 @@
         <item name="action_3" >Can Collect Hopper Fuel</item>
         <item name="action_4" >Can Activate Hoppers</item>
         <item name="action_5" >Can Score Fuel Low</item>
-        <item name="action_6" >Can Score High Low</item>
+        <item name="action_6" >Can Score Fuel High</item>
         <item name="action_7" >Can Collect Feeder Gears</item>
         <item name="action_8" >Can Collect Ground Gears</item>
         <item name="action_9" >Can Score Gears</item>
@@ -32,7 +32,7 @@
         <item name="action_3" >can_collect_hopper_fuel</item>
         <item name="action_4" >can_activate_hoppers</item>
         <item name="action_5" >can_score_fuel_low</item>
-        <item name="action_6" >can_score_high_low</item>
+        <item name="action_6" >can_score_fuel_high</item>
         <item name="action_7" >can_collect_feeder_gears</item>
         <item name="action_8" >can_collect_ground_gears</item>
         <item name="action_9" >can_score_gears</item>

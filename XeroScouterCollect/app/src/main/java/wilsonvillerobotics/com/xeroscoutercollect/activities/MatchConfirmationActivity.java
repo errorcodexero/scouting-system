@@ -412,11 +412,11 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_next)) {
-            String queryString = "";
+            String queryString;
             MatchModel matchModel = matchObjList.get(currentSelectedMatch);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Integer matchId = 0;
-            Integer teamMatchId = 0;
+            int matchId = 0;
+            int teamMatchId;
             String tn;
             queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " = " + matchModel.getMatchNumber() + ";";
             Cursor cursor = db.rawQuery(queryString, null);
@@ -437,6 +437,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             cursor = db.rawQuery(queryString, null);
             cursor.moveToFirst();
             teamMatchId = cursor.getInt(cursor.getColumnIndex(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID));
+            cursor.close();
             //Toast.makeText(this, "TMA = " + teamMatchId, Toast.LENGTH_LONG).show();
 
 
@@ -446,7 +447,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("last_match_id", matchId);
-            editor.commit();
+            editor.apply();
 
             sanityCheckActivity.putExtra("background",isRed);
             sanityCheckActivity.putExtra("team_number", team_list.get(Integer.parseInt(tn)));
