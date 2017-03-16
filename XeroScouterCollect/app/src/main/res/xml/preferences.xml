@@ -15,7 +15,7 @@
             android:inputType="number"
             android:title="@string/string_event_name"
             android:summary=""
-            android:defaultValue="@string/default_pref_value"
+            android:defaultValue="-1"
             android:dialogTitle="Select Event" />
 
         <EditTextPreference
@@ -61,6 +61,7 @@
             android:key="server_ip"
             android:summary=""
             android:title="Server IP" />
+
 
     </PreferenceCategory>
 
