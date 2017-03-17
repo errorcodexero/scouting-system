@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatchListForm));
             this.gridMatchList = new System.Windows.Forms.DataGridView();
             this.lblMatchList = new System.Windows.Forms.Label();
@@ -48,12 +49,14 @@
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.button1 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addPitDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridMatchList)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -61,6 +64,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridMatchList
@@ -71,6 +75,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridMatchList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gridMatchList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMatchList.ContextMenuStrip = this.contextMenuStrip1;
             this.gridMatchList.Location = new System.Drawing.Point(17, 37);
             this.gridMatchList.Name = "gridMatchList";
             this.gridMatchList.Size = new System.Drawing.Size(792, 276);
@@ -200,7 +205,7 @@
             this.btnSetCompetition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetCompetition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnSetCompetition.Location = new System.Drawing.Point(18, 37);
-            this.btnSetCompetition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetCompetition.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetCompetition.Name = "btnSetCompetition";
             this.btnSetCompetition.Size = new System.Drawing.Size(142, 33);
             this.btnSetCompetition.TabIndex = 21;
@@ -216,7 +221,7 @@
             this.btnSetSeason.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnSetSeason.Location = new System.Drawing.Point(18, 81);
-            this.btnSetSeason.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetSeason.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetSeason.Name = "btnSetSeason";
             this.btnSetSeason.Size = new System.Drawing.Size(142, 33);
             this.btnSetSeason.TabIndex = 22;
@@ -280,17 +285,27 @@
             this.panel1.Controls.Add(this.btnAddMatchData);
             this.panel1.Controls.Add(this.btnRefreshData);
             this.panel1.Location = new System.Drawing.Point(12, 437);
-            this.panel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(503, 53);
             this.panel1.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(380, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 37);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Add Pit Data";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnImportData);
             this.panel2.Controls.Add(this.btnExportData);
             this.panel2.Location = new System.Drawing.Point(535, 437);
-            this.panel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(192, 53);
             this.panel2.TabIndex = 26;
@@ -299,7 +314,7 @@
             // 
             this.panel3.Controls.Add(this.btnClose);
             this.panel3.Location = new System.Drawing.Point(741, 437);
-            this.panel3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel3.Margin = new System.Windows.Forms.Padding(1);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(84, 53);
             this.panel3.TabIndex = 27;
@@ -310,7 +325,7 @@
             this.panel4.Controls.Add(this.lblMatchList);
             this.panel4.Controls.Add(this.lblTestMode);
             this.panel4.Location = new System.Drawing.Point(5, 117);
-            this.panel4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel4.Margin = new System.Windows.Forms.Padding(1);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(829, 317);
             this.panel4.TabIndex = 28;
@@ -319,7 +334,7 @@
             // 
             this.panel5.Controls.Add(this.statusStrip1);
             this.panel5.Location = new System.Drawing.Point(6, 492);
-            this.panel5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(829, 29);
             this.panel5.TabIndex = 29;
@@ -333,15 +348,19 @@
             this.statusStrip1.Size = new System.Drawing.Size(829, 22);
             this.statusStrip1.TabIndex = 0;
             // 
-            // button1
+            // contextMenuStrip1
             // 
-            this.button1.Location = new System.Drawing.Point(380, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 37);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Add Pit Data";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPitDataToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
+            // 
+            // addPitDataToolStripMenuItem
+            // 
+            this.addPitDataToolStripMenuItem.Name = "addPitDataToolStripMenuItem";
+            this.addPitDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addPitDataToolStripMenuItem.Text = "Add Pit Data";
             // 
             // MatchListForm
             // 
@@ -374,6 +393,7 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,6 +426,8 @@
 		private System.Windows.Forms.Panel panel5;
 		private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addPitDataToolStripMenuItem;
     }
 }
 

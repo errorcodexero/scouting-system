@@ -199,6 +199,8 @@ namespace XeroScouterDBManage_Server
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
                     gridMatchList.DataSource = ds.Tables[0].DefaultView;
+
+                    // LKook Up This - http://stackoverflow.com/questions/1718389/right-click-context-menu-for-datagridview
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
@@ -383,6 +385,12 @@ namespace XeroScouterDBManage_Server
         {
             AddPitDataForm frmAddPitData = new AddPitDataForm();
             frmAddPitData.Show();
+        }
+
+        private void contextMenuStrip1_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedCellCollection coll = gridMatchList.SelectedCells;
+            //coll[0]
         }
     }
 }
