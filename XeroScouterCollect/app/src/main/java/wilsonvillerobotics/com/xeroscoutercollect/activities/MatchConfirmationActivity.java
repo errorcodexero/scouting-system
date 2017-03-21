@@ -418,7 +418,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             int matchId = 0;
             int teamMatchId;
             String tn;
-            queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " = " + matchModel.getMatchNumber() + ";";
+            queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " = " + matchModel.getMatchNumber() +
+                    " ORDER BY " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " DEC;";
             Cursor cursor = db.rawQuery(queryString, null);
             if(cursor.moveToNext())
                matchId = cursor.getInt(cursor.getColumnIndex("_id"));
