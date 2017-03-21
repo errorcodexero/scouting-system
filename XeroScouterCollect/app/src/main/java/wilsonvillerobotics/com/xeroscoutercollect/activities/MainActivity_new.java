@@ -23,7 +23,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
-public class MainActivity_new extends Activity implements View.OnClickListener {
+public class MainActivity_new extends Activity {
 /*
     String strTabletID, strEventName;
     boolean idEmpty, nameEmpty, idValid, nameValid;
@@ -124,23 +124,20 @@ public class MainActivity_new extends Activity implements View.OnClickListener {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("event_id", 1);
-        editor.commit();private
+        editor.commit();
         editor.putString(getString(R.string.event_name_pref), "0");
 
         if(idValid) {
             editor.putString(getString(R.string.tablet_id_pref), strTabletID);
         }
         editor.commit();
-    }
+    }*/
     private void startLandingActivity() {
         Intent intent = new Intent(this, LandingActivity.class);
-        intent.putExtra(getString(R.string.event_name_intent_key), strEventName);
-        intent.putExtra(getString(R.string.tablet_id_intent_key), strTabletID);
+        //intent.putExtra(getString(R.string.event_name_intent_key), strEventName);
+        //intent.putExtra(getString(R.string.tablet_id_intent_key), strTabletID);
         startActivity(intent);
         finish();
-    }*/
-
-    public void onClick(View v) {
-
     }
+
 }

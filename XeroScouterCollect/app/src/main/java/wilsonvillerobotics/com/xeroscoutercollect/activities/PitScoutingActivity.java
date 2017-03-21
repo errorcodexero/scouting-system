@@ -2,6 +2,7 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -349,6 +350,8 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
             }
         }
 
+        Context ctx = this;
+
         if (view.getId() == R.id.btn_pit_done) {
             AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
             aBuilder.setMessage("Are you sure?")
@@ -358,7 +361,26 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
                         public void onClick(DialogInterface dialog, int which) {
                             updateHashMaps();
                             try {
-                                teamContract.queryUpdateTeamPitData(PitScoutingActivity.this, teamId, boolVals, stringVals);
+                                //teamContract.queryUpdateTeamPitData(PitScoutingActivity.this, teamId, boolVals, stringVals);
+
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                                String queryString = ("INSERT INTO `scouting`.`team` (");
+
+                                for (String i : TeamContract.getPitDataDBNames(ctx)) {
+                                    queryString += i + ", ";
+                                }
+
+                                queryString = queryString.substring(0, queryString.length() - 2);
+                                queryString += " VALUES (";
+
+                                for (String i : TeamContract.getPitDataDBNames(ctx)) {
+                                    queryString += stringVals.get(i) + ", ";
+                                }
+                                queryString = queryString.substring(0, queryString.length() - 2);
+                                queryString += ");";
+
+                                db.execSQL(queryString);
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
