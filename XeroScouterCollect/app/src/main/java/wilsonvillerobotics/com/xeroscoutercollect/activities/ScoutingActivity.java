@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
@@ -53,6 +54,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected ArrayList<String> queryStringList = new ArrayList<>();
     protected TwoColumnAdapter finalizeTabAdapter;
     private boolean didCleanExit = false;
+    private boolean doKillInfidelData = false;
     protected int currentClickedId;
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
@@ -216,6 +218,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                             RadioButton noClimbTempDisable = (RadioButton) findViewById(R.id.radio_no_climb);
                             noClimbTempDisable.setChecked(false);
                             deSerializeEntryValueMap();
+                            doKillInfidelData = true;
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -228,6 +231,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             f.delete();
+                                            Toast.makeText(ScoutingActivity.this, "Deleted All of the Things!", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -454,6 +458,11 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 break;
 
             case R.id.btn_finalize_finish:
+
+                if(doKillInfidelData) {
+                    db.rawQuery("DELETE FROM 'team_match_action' WHERE `team_match_id` = " + teamMatchId + ";", null );
+                    Log.d("ScoutingFinal","ALLAHU AKBAR!!!");
+                }
 
                 didCleanExit = true;
 

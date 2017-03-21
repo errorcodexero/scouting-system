@@ -1,6 +1,7 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -177,9 +178,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         addItemsToTeamSpinner();
         Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
         String matchIdString = String.valueOf(lastMatchId);
-        int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
-        spinner.setSelection(matchDataAdapter.getPosition(String.valueOf(lastMatchId)));
-
+        //int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
+        spinner.setSelection(lastMatchId);
     }
 
 
@@ -419,7 +419,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             int teamMatchId;
             String tn;
             queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " = " + matchModel.getMatchNumber() +
-                    " ORDER BY " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " DEC;";
+                    " ORDER BY " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " ASC;";
             Cursor cursor = db.rawQuery(queryString, null);
             if(cursor.moveToNext())
                matchId = cursor.getInt(cursor.getColumnIndex("_id"));
@@ -447,7 +447,13 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             //Cursor cursor = db.execSQL("SELECT * FROM team_match WHERE id = " + tn);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("last_match_id", matchId);
+
+            // Nick is bad at keeping track of DB requests - Nick
+            Cursor cursor2 = db.rawQuery("SELECT * FROM 'match' WHERE _id = " + matchId, null);
+
+            cursor2.moveToNext();
+
+            editor.putInt("last_match_id", Integer.valueOf(cursor2.getString(cursor2.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))));
             editor.apply();
 
             sanityCheckActivity.putExtra("background",isRed);
