@@ -1,0 +1,2098 @@
+<NewDataSet>
+  <Table>
+    <_id>1</_id>
+    <tba_event_key>TBA_1</tba_event_key>
+    <name>BunnyBots2016</name>
+    <short_name>BunnyBots2016</short_name>
+    <event_type>Exhibition</event_type>
+    <event_district>PNW</event_district>
+    <year>2016</year>
+    <week>50</week>
+    <location>Catlin Gabel</location>
+    <tba_event_code>A</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>4</_id>
+    <tba_event_key>2017abca</tba_event_key>
+    <name>Western Canada Regional</name>
+    <short_name>Western Canada</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>Calgary, AB T2N 1N4, Canada</location>
+    <tba_event_code>abca</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>5</_id>
+    <tba_event_key>2017alhu</tba_event_key>
+    <name>Rocket City Regional</name>
+    <short_name>Rocket City</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Huntsville, AL 35801, USA</location>
+    <tba_event_code>alhu</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>6</_id>
+    <tba_event_key>2017arc</tba_event_key>
+    <name>Archimedes Division</name>
+    <short_name>Archimedes</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>arc</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>7</_id>
+    <tba_event_key>2017arli</tba_event_key>
+    <name>Arkansas Rock City Regional</name>
+    <short_name>Arkansas Rock City</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Little Rock, AR 72206, USA</location>
+    <tba_event_code>arli</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>8</_id>
+    <tba_event_key>2017aurb</tba_event_key>
+    <name>Redbacks Scrimmage</name>
+    <short_name>Redbacks Scrimmage</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>Sydney, Austrialia</location>
+    <tba_event_code>aurb</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>9</_id>
+    <tba_event_key>2017ausc</tba_event_key>
+    <name>Southern Cross Regional</name>
+    <short_name>Southern Cross</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Sydney Olympic Park, NSW 2127, Australia</location>
+    <tba_event_code>ausc</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>10</_id>
+    <tba_event_key>2017ausp</tba_event_key>
+    <name>South Pacific Regional</name>
+    <short_name>South Pacific</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Sydney Olympic Park, NSW 2127, Australia</location>
+    <tba_event_code>ausp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>11</_id>
+    <tba_event_key>2017azfl</tba_event_key>
+    <name>Arizona North Regional</name>
+    <short_name>Arizona North</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Flagstaff, AZ 86011, USA</location>
+    <tba_event_code>azfl</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>12</_id>
+    <tba_event_key>2017azpx</tba_event_key>
+    <name>Arizona West Regional</name>
+    <short_name>Arizona West</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>Phoenix, AZ 85017, USA</location>
+    <tba_event_code>azpx</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>13</_id>
+    <tba_event_key>2017cada</tba_event_key>
+    <name>Sacramento Regional</name>
+    <short_name>Sacramento</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Davis, CA 95616, USA</location>
+    <tba_event_code>cada</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>14</_id>
+    <tba_event_key>2017cair</tba_event_key>
+    <name>Orange County Regional</name>
+    <short_name>Orange County</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Irvine, CA 92697, USA</location>
+    <tba_event_code>cair</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>15</_id>
+    <tba_event_key>2017calb</tba_event_key>
+    <name>Los Angeles Regional</name>
+    <short_name>Los Angeles</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Long Beach, CA 90840, USA</location>
+    <tba_event_code>calb</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>16</_id>
+    <tba_event_key>2017cama</tba_event_key>
+    <name>Central Valley Regional</name>
+    <short_name>Central Valley</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Madera, CA 93637, USA</location>
+    <tba_event_code>cama</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>17</_id>
+    <tba_event_key>2017capb</tba_event_key>
+    <name>Pre-Bag Scrimmage</name>
+    <short_name>Pre-Bag Scrimmage</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>Placentia, CA, USA</location>
+    <tba_event_code>capb</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>18</_id>
+    <tba_event_key>2017cars</tba_event_key>
+    <name>Carson Division</name>
+    <short_name>Carson</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>cars</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>19</_id>
+    <tba_event_key>2017carv</tba_event_key>
+    <name>Carver Division</name>
+    <short_name>Carver</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>carv</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>20</_id>
+    <tba_event_key>2017casd</tba_event_key>
+    <name>San Diego Regional presented by Qualcomm</name>
+    <short_name>San Diego</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Del Mar, CA 92014, USA</location>
+    <tba_event_code>casd</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>21</_id>
+    <tba_event_key>2017casf</tba_event_key>
+    <name>San Francisco Regional</name>
+    <short_name>San Francisco</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>San Francisco, CA 94116, USA</location>
+    <tba_event_code>casf</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>22</_id>
+    <tba_event_key>2017casj</tba_event_key>
+    <name>Silicon Valley Regional</name>
+    <short_name>Silicon Valley</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>San Jose, CA 95112, USA</location>
+    <tba_event_code>casj</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>23</_id>
+    <tba_event_key>2017cave</tba_event_key>
+    <name>Ventura Regional</name>
+    <short_name>Ventura</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Ventura, CA 93003, USA</location>
+    <tba_event_code>cave</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>24</_id>
+    <tba_event_key>2017chcmp</tba_event_key>
+    <name>FIRST Chesapeake District Championship sponsored by Booz Allen Hamilton</name>
+    <short_name>Chesapeake</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Richmond, VA 23284, USA</location>
+    <tba_event_code>chcmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>25</_id>
+    <tba_event_key>2017ckw0</tba_event_key>
+    <name>Centurion-Krawler Week Zero</name>
+    <short_name>Centurion-Krawler</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>Circle Pines, MN, USA</location>
+    <tba_event_code>ckw0</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>26</_id>
+    <tba_event_key>2017cmpmo</tba_event_key>
+    <name>Einstein (St. Louis) Field</name>
+    <short_name>Einstein (St. Louis)</short_name>
+    <event_type>Championship Finals</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>cmpmo</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>27</_id>
+    <tba_event_key>2017cmptx</tba_event_key>
+    <name>Einstein (Houston) Field</name>
+    <short_name>Einstein (Houston)</short_name>
+    <event_type>Championship Finals</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>cmptx</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>28</_id>
+    <tba_event_key>2017code</tba_event_key>
+    <name>Colorado Regional</name>
+    <short_name>Colorado</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Denver, CO 80210, USA</location>
+    <tba_event_code>code</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>29</_id>
+    <tba_event_key>2017cthar</tba_event_key>
+    <name>NE District - Hartford Event</name>
+    <short_name>Hartford</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Hartford, CT 06105, USA</location>
+    <tba_event_code>cthar</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>30</_id>
+    <tba_event_key>2017ctss</tba_event_key>
+    <name>Suffield Shakedown Scrimmage</name>
+    <short_name>Suffield Shakedown</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>West Suffield, CT 06093, USA</location>
+    <tba_event_code>ctss</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>31</_id>
+    <tba_event_key>2017ctwat</tba_event_key>
+    <name>NE District - Waterbury Event</name>
+    <short_name>Waterbury</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Waterbury, CT 06704, USA</location>
+    <tba_event_code>ctwat</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>32</_id>
+    <tba_event_key>2017cur</tba_event_key>
+    <name>Curie Division</name>
+    <short_name>Curie</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>cur</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>33</_id>
+    <tba_event_key>2017dal</tba_event_key>
+    <name>Daly Division</name>
+    <short_name>Daly</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>dal</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>34</_id>
+    <tba_event_key>2017dar</tba_event_key>
+    <name>Darwin Division</name>
+    <short_name>Darwin</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>dar</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>35</_id>
+    <tba_event_key>2017flor</tba_event_key>
+    <name>Orlando Regional</name>
+    <short_name>Orlando</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Orlando, FL 32816, USA</location>
+    <tba_event_code>flor</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>36</_id>
+    <tba_event_key>2017flwp</tba_event_key>
+    <name>South Florida Regional </name>
+    <short_name>South Florida</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>0</week>
+    <location>West Palm Beach, FL 33401, USA</location>
+    <tba_event_code>flwp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>37</_id>
+    <tba_event_key>2017gaalb</tba_event_key>
+    <name>PCH District - Albany Event</name>
+    <short_name>Albany</short_name>
+    <event_type>District</event_type>
+    <event_district>Peachtree</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Albany, GA 31701, USA</location>
+    <tba_event_code>gaalb</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>38</_id>
+    <tba_event_key>2017gacmp</tba_event_key>
+    <name>Peachtree State Championship</name>
+    <short_name>Peachtree</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Peachtree</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Athens, GA 30602, USA</location>
+    <tba_event_code>gacmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>39</_id>
+    <tba_event_key>2017gacol</tba_event_key>
+    <name>PCH District - Columbus Event</name>
+    <short_name>Columbus</short_name>
+    <event_type>District</event_type>
+    <event_district>Peachtree</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Columbus, GA 31907, USA</location>
+    <tba_event_code>gacol</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>40</_id>
+    <tba_event_key>2017gadal</tba_event_key>
+    <name>PCH District - Dalton Event</name>
+    <short_name>Dalton</short_name>
+    <event_type>District</event_type>
+    <event_district>Peachtree</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Dalton, GA 30720, USA</location>
+    <tba_event_code>gadal</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>41</_id>
+    <tba_event_key>2017gagai</tba_event_key>
+    <name>PCH District - Gainesville Event</name>
+    <short_name>Gainesville</short_name>
+    <event_type>District</event_type>
+    <event_district>Peachtree</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Gainesville, GA 30501, USA</location>
+    <tba_event_code>gagai</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>42</_id>
+    <tba_event_key>2017gal</tba_event_key>
+    <name>Galileo Division</name>
+    <short_name>Galileo</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>gal</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>43</_id>
+    <tba_event_key>2017gush</tba_event_key>
+    <name>Shenzhen Regional</name>
+    <short_name>Shenzhen</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Shenzhen City, 44 518000, China</location>
+    <tba_event_code>gush</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>44</_id>
+    <tba_event_key>2017hiho</tba_event_key>
+    <name>Hawaii Regional</name>
+    <short_name>Hawaii</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Honolulu, HI 96822, USA</location>
+    <tba_event_code>hiho</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>45</_id>
+    <tba_event_key>2017hop</tba_event_key>
+    <name>Hopper Division</name>
+    <short_name>Hopper</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>hop</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>46</_id>
+    <tba_event_key>2017iacf</tba_event_key>
+    <name>Iowa Regional</name>
+    <short_name>Iowa</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Cedar Falls, IA 50614, USA</location>
+    <tba_event_code>iacf</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>47</_id>
+    <tba_event_key>2017idbo</tba_event_key>
+    <name>Idaho Regional</name>
+    <short_name>Idaho</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Boise, ID 83725, USA</location>
+    <tba_event_code>idbo</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>48</_id>
+    <tba_event_key>2017ilch</tba_event_key>
+    <name>Midwest Regional</name>
+    <short_name>Midwest</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Chicago, IL 60607, USA</location>
+    <tba_event_code>ilch</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>49</_id>
+    <tba_event_key>2017ilpe</tba_event_key>
+    <name>Central Illinois Regional</name>
+    <short_name>Central Illinois</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Peoria, IL 61625, USA</location>
+    <tba_event_code>ilpe</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>50</_id>
+    <tba_event_key>2017incmp</tba_event_key>
+    <name>Indiana State Championship</name>
+    <short_name>Indiana</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Indiana</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Huntington, IN 46750, USA</location>
+    <tba_event_code>incmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>51</_id>
+    <tba_event_key>2017inmis</tba_event_key>
+    <name>IN District - St. Joseph Event</name>
+    <short_name>St. Joseph</short_name>
+    <event_type>District</event_type>
+    <event_district>Indiana</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Mishawaka, IN 46545, USA</location>
+    <tba_event_code>inmis</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>52</_id>
+    <tba_event_key>2017inpmh</tba_event_key>
+    <name>IN District - Perry Meridian Event</name>
+    <short_name>Perry Meridian</short_name>
+    <event_type>District</event_type>
+    <event_district>Indiana</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Indianapolis, IN 46217, USA</location>
+    <tba_event_code>inpmh</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>53</_id>
+    <tba_event_key>2017inwla</tba_event_key>
+    <name>IN District - Tippecanoe Event</name>
+    <short_name>Tippecanoe</short_name>
+    <event_type>District</event_type>
+    <event_district>Indiana</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>West Lafayette, IN 47906, USA</location>
+    <tba_event_code>inwla</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>54</_id>
+    <tba_event_key>2017iri</tba_event_key>
+    <name>Indiana Robotics Invitational</name>
+    <short_name>IRI</short_name>
+    <event_type>Offseason</event_type>
+    <year>2017</year>
+    <location>Indianapolis, IN, USA</location>
+    <tba_event_code>iri</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>55</_id>
+    <tba_event_key>2017iscmp</tba_event_key>
+    <name>FIRST Israel District Championship</name>
+    <short_name>Israel</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Israel</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Tel Aviv-Yafo, TA 00000, Israel</location>
+    <tba_event_code>iscmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>56</_id>
+    <tba_event_key>2017isde1</tba_event_key>
+    <name>ISR District Event #1</name>
+    <short_name>ISR</short_name>
+    <event_type>District</event_type>
+    <event_district>Israel</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Haifa, HA 00000, Israel</location>
+    <tba_event_code>isde1</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>57</_id>
+    <tba_event_key>2017isde2</tba_event_key>
+    <name>ISR District Event #2</name>
+    <short_name>ISR</short_name>
+    <event_type>District</event_type>
+    <event_district>Israel</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Haifa, HA 00000, Israel</location>
+    <tba_event_code>isde2</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>58</_id>
+    <tba_event_key>2017isde3</tba_event_key>
+    <name>ISR District Event #3</name>
+    <short_name>ISR</short_name>
+    <event_type>District</event_type>
+    <event_district>Israel</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Tel-Aviv, Yafo, TA 00000, Israel</location>
+    <tba_event_code>isde3</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>59</_id>
+    <tba_event_key>2017isde4</tba_event_key>
+    <name>ISR District Event #4</name>
+    <short_name>ISR</short_name>
+    <event_type>District</event_type>
+    <event_district>Israel</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Tel-Aviv, Yafo, TA 00000, Israel</location>
+    <tba_event_code>isde4</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>60</_id>
+    <tba_event_key>2017lake</tba_event_key>
+    <name>Bayou Regional</name>
+    <short_name>Bayou</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Kenner, LA 70065, USA</location>
+    <tba_event_code>lake</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>61</_id>
+    <tba_event_key>2017mabos</tba_event_key>
+    <name>NE District - Greater Boston Event</name>
+    <short_name>Greater Boston</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Revere, MA 02151, USA</location>
+    <tba_event_code>mabos</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>62</_id>
+    <tba_event_key>2017mabri</tba_event_key>
+    <name>NE District - SE Mass Event</name>
+    <short_name>SE Mass</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Bridgewater, MA 02324, USA</location>
+    <tba_event_code>mabri</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>63</_id>
+    <tba_event_key>2017marea</tba_event_key>
+    <name>NE District - North Shore Event</name>
+    <short_name>North Shore</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Reading, MA 01867, USA</location>
+    <tba_event_code>marea</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>64</_id>
+    <tba_event_key>2017mawor</tba_event_key>
+    <name>NE District - Worcester Polytechnic Institute Event</name>
+    <short_name>Worcester Polytechnic Institute</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Worcester, MA 01609, USA</location>
+    <tba_event_code>mawor</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>65</_id>
+    <tba_event_key>2017mdbet</tba_event_key>
+    <name>CHS District - Greater DC Event sponsored by Accenture</name>
+    <short_name>Greater DC</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Bethesda, MD 20817, USA</location>
+    <tba_event_code>mdbet</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>66</_id>
+    <tba_event_key>2017mdedg</tba_event_key>
+    <name>CHS District - Central Maryland Event sponsored by Leidos</name>
+    <short_name>Central Maryland</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Edgewater, MD 21037, USA</location>
+    <tba_event_code>mdedg</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>67</_id>
+    <tba_event_key>2017mdowi</tba_event_key>
+    <name>CHS District - Northern Maryland Event</name>
+    <short_name>Northern Maryland</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Owings Mills, MD 21117, USA</location>
+    <tba_event_code>mdowi</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>68</_id>
+    <tba_event_key>2017melew</tba_event_key>
+    <name>NE District - Pine Tree Event</name>
+    <short_name>Pine Tree</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Lewiston, ME 04240, USA</location>
+    <tba_event_code>melew</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>69</_id>
+    <tba_event_key>2017miann</tba_event_key>
+    <name>FIM District - Ann Arbor Pioneer Event</name>
+    <short_name>Ann Arbor Pioneer</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Ann Arbor, MI 48103, USA</location>
+    <tba_event_code>miann</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>70</_id>
+    <tba_event_key>2017mibro</tba_event_key>
+    <name>FIM District - Woodhaven Event</name>
+    <short_name>Woodhaven</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Brownstown, MI 48134, USA</location>
+    <tba_event_code>mibro</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>71</_id>
+    <tba_event_key>2017micen</tba_event_key>
+    <name>FIM District - Center Line Event</name>
+    <short_name>Center Line</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Center Line, MI 48015, USA</location>
+    <tba_event_code>micen</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>72</_id>
+    <tba_event_key>2017micmp</tba_event_key>
+    <name>Michigan State Championship</name>
+    <short_name>Michigan</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>6</week>
+    <location>University Center, MI 48604, USA</location>
+    <tba_event_code>micmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>73</_id>
+    <tba_event_key>2017miesc</tba_event_key>
+    <name>FIM District - Escanaba Event</name>
+    <short_name>Escanaba</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Escanaba, MI 49829, USA</location>
+    <tba_event_code>miesc</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>74</_id>
+    <tba_event_key>2017migay</tba_event_key>
+    <name>FIM District - Gaylord Event</name>
+    <short_name>Gaylord</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Gaylord, MI 49735, USA</location>
+    <tba_event_code>migay</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>75</_id>
+    <tba_event_key>2017migul</tba_event_key>
+    <name>FIM District - Gull Lake Event</name>
+    <short_name>Gull Lake</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Richland, MI 49083, USA</location>
+    <tba_event_code>migul</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>76</_id>
+    <tba_event_key>2017mihow</tba_event_key>
+    <name>FIM District - Howell Event</name>
+    <short_name>Howell</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Howell, MI 48843, USA</location>
+    <tba_event_code>mihow</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>77</_id>
+    <tba_event_key>2017mike0</tba_event_key>
+    <name>Kettering Week  0.5</name>
+    <short_name>Kettering Week 0.5</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>Flint, Mi, USA</location>
+    <tba_event_code>mike0</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>78</_id>
+    <tba_event_key>2017mike2</tba_event_key>
+    <name>FIM District - Kettering University Event #2</name>
+    <short_name>Kettering University</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Flint, MI 48504, USA</location>
+    <tba_event_code>mike2</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>79</_id>
+    <tba_event_key>2017miken</tba_event_key>
+    <name>FIM District - East Kentwood Event</name>
+    <short_name>East Kentwood</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Kentwood, MI 49508, USA</location>
+    <tba_event_code>miken</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>80</_id>
+    <tba_event_key>2017miket</tba_event_key>
+    <name>FIM District - Kettering University Event #1</name>
+    <short_name>Kettering University</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Flint, MI 48504, USA</location>
+    <tba_event_code>miket</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>81</_id>
+    <tba_event_key>2017milak</tba_event_key>
+    <name>FIM District - Lakeview Event</name>
+    <short_name>Lakeview</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Battle Creek, MI 49015, USA</location>
+    <tba_event_code>milak</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>82</_id>
+    <tba_event_key>2017milan</tba_event_key>
+    <name>FIM District - Lansing Event</name>
+    <short_name>Lansing</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Mason, MI 48854, USA</location>
+    <tba_event_code>milan</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>83</_id>
+    <tba_event_key>2017miliv</tba_event_key>
+    <name>FIM District - Livonia Event</name>
+    <short_name>Livonia</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Livonia, MI 48150, USA</location>
+    <tba_event_code>miliv</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>84</_id>
+    <tba_event_key>2017milsu</tba_event_key>
+    <name>FIM District - Lake Superior State University Event</name>
+    <short_name>Lake Superior State University</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Sault Ste. Marie, MI 49783, USA</location>
+    <tba_event_code>milsu</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>85</_id>
+    <tba_event_key>2017mimar</tba_event_key>
+    <name>FIM District - Marysville Event</name>
+    <short_name>Marysville</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Marysville, MI 48040, USA</location>
+    <tba_event_code>mimar</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>86</_id>
+    <tba_event_key>2017mimid</tba_event_key>
+    <name>FIM District - Midland Event</name>
+    <short_name>Midland</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Midland, MI 48640, USA</location>
+    <tba_event_code>mimid</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>87</_id>
+    <tba_event_key>2017mishe</tba_event_key>
+    <name>FIM District - Shepherd Event</name>
+    <short_name>Shepherd</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Shepherd, MI 48883, USA</location>
+    <tba_event_code>mishe</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>88</_id>
+    <tba_event_key>2017misjo</tba_event_key>
+    <name>FIM District - St. Joseph Event</name>
+    <short_name>St. Joseph</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>St. Joseph, MI 49085, USA</location>
+    <tba_event_code>misjo</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>89</_id>
+    <tba_event_key>2017misou</tba_event_key>
+    <name>FIM District - Southfield Event</name>
+    <short_name>Southfield</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Southfield, MI 48033, USA</location>
+    <tba_event_code>misou</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>90</_id>
+    <tba_event_key>2017mitry</tba_event_key>
+    <name>FIM District - Troy Event</name>
+    <short_name>Troy</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Troy, MI 48085, USA</location>
+    <tba_event_code>mitry</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>91</_id>
+    <tba_event_key>2017mitvc</tba_event_key>
+    <name>FIM District - Traverse City Event</name>
+    <short_name>Traverse City</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Traverse City, MI 49686, USA</location>
+    <tba_event_code>mitvc</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>92</_id>
+    <tba_event_key>2017miwat</tba_event_key>
+    <name>FIM District - Waterford Event</name>
+    <short_name>Waterford</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Waterford, MI 48328, USA</location>
+    <tba_event_code>miwat</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>93</_id>
+    <tba_event_key>2017miwmi</tba_event_key>
+    <name>FIM District - West Michigan Event</name>
+    <short_name>West Michigan</short_name>
+    <event_type>District</event_type>
+    <event_district>Michigan</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Allendale, MI 49401, USA</location>
+    <tba_event_code>miwmi</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>94</_id>
+    <tba_event_key>2017mndu</tba_event_key>
+    <name>Lake Superior Regional</name>
+    <short_name>Lake Superior</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>0</week>
+    <location>Duluth, MN 55802, USA</location>
+    <tba_event_code>mndu</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>95</_id>
+    <tba_event_key>2017mndu2</tba_event_key>
+    <name>Northern Lights Regional</name>
+    <short_name>Northern Lights</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>0</week>
+    <location>Duluth, MN 55802, USA</location>
+    <tba_event_code>mndu2</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>96</_id>
+    <tba_event_key>2017mnmi</tba_event_key>
+    <name>Minnesota 10000 Lakes Regional</name>
+    <short_name>Minnesota 10000 Lakes</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>Minneapolis, MN 55455, USA</location>
+    <tba_event_code>mnmi</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>97</_id>
+    <tba_event_key>2017mnmi2</tba_event_key>
+    <name>Minnesota North Star Regional</name>
+    <short_name>Minnesota North Star</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>Minneapolis, MN 55455, USA</location>
+    <tba_event_code>mnmi2</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>98</_id>
+    <tba_event_key>2017mnmn</tba_event_key>
+    <name>Minne Mini</name>
+    <short_name>Minne Mini</short_name>
+    <event_type>Offseason</event_type>
+    <year>2017</year>
+    <location>Savage, MN, USA</location>
+    <tba_event_code>mnmn</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>99</_id>
+    <tba_event_key>2017mnw0</tba_event_key>
+    <name>Northern MN Week Zero</name>
+    <short_name>Northern MN Week Zero</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>Nevis, MN, USA</location>
+    <tba_event_code>mnw0</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>100</_id>
+    <tba_event_key>2017mokc</tba_event_key>
+    <name>Greater Kansas City Regional</name>
+    <short_name>Greater Kansas City</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Kansas City, MO 64120, USA</location>
+    <tba_event_code>mokc</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>101</_id>
+    <tba_event_key>2017mosl</tba_event_key>
+    <name>St. Louis Regional</name>
+    <short_name>St. Louis</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>St. Louis, MO 63103, USA</location>
+    <tba_event_code>mosl</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>102</_id>
+    <tba_event_key>2017mrcmp</tba_event_key>
+    <name>FIRST Mid-Atlantic District Championship sponsored by Johnson &amp; Johnson</name>
+    <short_name>Mid-Atlantic</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Bethlehem, PA 18015, USA</location>
+    <tba_event_code>mrcmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>103</_id>
+    <tba_event_key>2017mxtl</tba_event_key>
+    <name>Toluca Regional</name>
+    <short_name>Toluca</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>0</week>
+    <location>Toluca de Lerdo, MEX 50110, Mexico</location>
+    <tba_event_code>mxtl</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>104</_id>
+    <tba_event_key>2017mxto</tba_event_key>
+    <name>Laguna Regional</name>
+    <short_name>Laguna</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Torreon, COA 27250, Mexico</location>
+    <tba_event_code>mxto</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>105</_id>
+    <tba_event_key>2017ncash</tba_event_key>
+    <name>NC District - UNC Asheville Event</name>
+    <short_name>UNC Asheville</short_name>
+    <event_type>District</event_type>
+    <event_district>North Carolina</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Asheville, NC 28804, USA</location>
+    <tba_event_code>ncash</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>106</_id>
+    <tba_event_key>2017nccmp</tba_event_key>
+    <name>FIRST North Carolina State Championship</name>
+    <short_name>North Carolina</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>North Carolina</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Lillington, NC 27546, USA</location>
+    <tba_event_code>nccmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>107</_id>
+    <tba_event_key>2017ncgre</tba_event_key>
+    <name>NC District - Greensboro Event</name>
+    <short_name>Greensboro</short_name>
+    <event_type>District</event_type>
+    <event_district>North Carolina</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Greensboro, NC 27412, USA</location>
+    <tba_event_code>ncgre</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>108</_id>
+    <tba_event_key>2017ncral</tba_event_key>
+    <name>NC District - Raleigh Event</name>
+    <short_name>Raleigh</short_name>
+    <event_type>District</event_type>
+    <event_district>North Carolina</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Raleigh, NC 27610, USA</location>
+    <tba_event_code>ncral</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>109</_id>
+    <tba_event_key>2017ncwin</tba_event_key>
+    <name>NC District - Pitt County Event</name>
+    <short_name>Pitt County</short_name>
+    <event_type>District</event_type>
+    <event_district>North Carolina</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Winterville, NC 28590, USA</location>
+    <tba_event_code>ncwin</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>110</_id>
+    <tba_event_key>2017necmp</tba_event_key>
+    <name>New England District Championship</name>
+    <short_name>New England</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Durham, NH 03824, USA</location>
+    <tba_event_code>necmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>111</_id>
+    <tba_event_key>2017new</tba_event_key>
+    <name>Newton Division</name>
+    <short_name>Newton</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>new</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>112</_id>
+    <tba_event_key>2017nhbed</tba_event_key>
+    <name>NE District - Southern NH Event</name>
+    <short_name>Southern NH</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Bedford, NH 03110, USA</location>
+    <tba_event_code>nhbed</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>113</_id>
+    <tba_event_key>2017nhgrs</tba_event_key>
+    <name>NE District - Granite State Event</name>
+    <short_name>Granite State</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Windham, NH 03087, USA</location>
+    <tba_event_code>nhgrs</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>114</_id>
+    <tba_event_key>2017njbri</tba_event_key>
+    <name>MAR District - Bridgewater-Raritan Event</name>
+    <short_name>Bridgewater-Raritan</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Bridgewater, NJ 08807, USA</location>
+    <tba_event_code>njbri</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>115</_id>
+    <tba_event_key>2017njfla</tba_event_key>
+    <name>MAR District - Mount Olive Event</name>
+    <short_name>Mount Olive</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Flanders, NJ 07836, USA</location>
+    <tba_event_code>njfla</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>116</_id>
+    <tba_event_key>2017njski</tba_event_key>
+    <name>MAR District - Montgomery Event</name>
+    <short_name>Montgomery</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Skillman, NJ 08558, USA</location>
+    <tba_event_code>njski</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>117</_id>
+    <tba_event_key>2017njtab</tba_event_key>
+    <name>MAR District - Seneca Event</name>
+    <short_name>Seneca</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Tabernacle, NJ 08088, USA</location>
+    <tba_event_code>njtab</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>118</_id>
+    <tba_event_key>2017nvlv</tba_event_key>
+    <name>Las Vegas Regional</name>
+    <short_name>Las Vegas</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>Las Vegas, NV 89101, USA</location>
+    <tba_event_code>nvlv</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>119</_id>
+    <tba_event_key>2017nyli</tba_event_key>
+    <name>SBPLI Long Island Regional</name>
+    <short_name>SBPLI Long Island</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Hempstead, NY 11550, USA</location>
+    <tba_event_code>nyli</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>120</_id>
+    <tba_event_key>2017nyny</tba_event_key>
+    <name>New York City Regional</name>
+    <short_name>New York City</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>New York, NY 10032, USA</location>
+    <tba_event_code>nyny</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>121</_id>
+    <tba_event_key>2017nyro</tba_event_key>
+    <name>Finger Lakes Regional </name>
+    <short_name>Finger Lakes</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Rochester, NY 14623, USA</location>
+    <tba_event_code>nyro</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>122</_id>
+    <tba_event_key>2017nysu</tba_event_key>
+    <name>Hudson Valley Regional</name>
+    <short_name>Hudson Valley</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Suffern, NY 10901, USA</location>
+    <tba_event_code>nysu</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>123</_id>
+    <tba_event_key>2017nytr</tba_event_key>
+    <name>New York Tech Valley Regional</name>
+    <short_name>New York Tech Valley</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Troy, NY 12180, USA</location>
+    <tba_event_code>nytr</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>124</_id>
+    <tba_event_key>2017ohcl</tba_event_key>
+    <name>Buckeye Regional</name>
+    <short_name>Buckeye</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Cleveland, OH 44115, USA</location>
+    <tba_event_code>ohcl</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>125</_id>
+    <tba_event_key>2017ohsp</tba_event_key>
+    <name>Miami Valley Regional</name>
+    <short_name>Miami Valley</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Springfield, OH 45504, USA</location>
+    <tba_event_code>ohsp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>126</_id>
+    <tba_event_key>2017okok</tba_event_key>
+    <name>Oklahoma Regional </name>
+    <short_name>Oklahoma</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Oklahoma City, OK 73102, USA</location>
+    <tba_event_code>okok</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>127</_id>
+    <tba_event_key>2017onbar</tba_event_key>
+    <name>ONT District - Georgian College Event</name>
+    <short_name>Georgian College</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Barrie, ON L4M 3X9, Canada</location>
+    <tba_event_code>onbar</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>128</_id>
+    <tba_event_key>2017oncmp</tba_event_key>
+    <name>FIRST Ontario Provincial Championship</name>
+    <short_name>Ontario</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>6</week>
+    <location>Mississauga, ON L4Z 4B6, Canada</location>
+    <tba_event_code>oncmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>129</_id>
+    <tba_event_key>2017onham</tba_event_key>
+    <name>ONT District - McMaster University Event</name>
+    <short_name>McMaster University</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Hamilton, ON L8S 4L8, Canada</location>
+    <tba_event_code>onham</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>130</_id>
+    <tba_event_key>2017onlon</tba_event_key>
+    <name>ONT District - Western University, Engineering Event</name>
+    <short_name>Western University, Engineering</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>London, ON N6A 3K7, Canada</location>
+    <tba_event_code>onlon</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>131</_id>
+    <tba_event_key>2017onnob</tba_event_key>
+    <name>ONT District - North Bay Event</name>
+    <short_name>North Bay</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>North Bay, ON P1B 8K9, Canada</location>
+    <tba_event_code>onnob</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>132</_id>
+    <tba_event_key>2017onosh</tba_event_key>
+    <name>ONT District - Durham College Event</name>
+    <short_name>Durham College</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Oshawa, ON L1H 7K4, Canada</location>
+    <tba_event_code>onosh</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>133</_id>
+    <tba_event_key>2017onto1</tba_event_key>
+    <name>ONT District - Ryerson University Event</name>
+    <short_name>Ryerson University</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Toronto, ON M5B 1J2, Canada</location>
+    <tba_event_code>onto1</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>134</_id>
+    <tba_event_key>2017onto2</tba_event_key>
+    <name>ONT District - Victoria Park Collegiate Event</name>
+    <short_name>Victoria Park Collegiate</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Toronto, ON M3A 2V1, Canada</location>
+    <tba_event_code>onto2</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>135</_id>
+    <tba_event_key>2017onwat</tba_event_key>
+    <name>ONT District - University of Waterloo Event</name>
+    <short_name>University of Waterloo</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Waterloo, ON N2L 3G1, Canada</location>
+    <tba_event_code>onwat</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>136</_id>
+    <tba_event_key>2017onwin</tba_event_key>
+    <name>ONT District - Windsor Essex Great Lakes Event</name>
+    <short_name>Windsor Essex Great Lakes</short_name>
+    <event_type>District</event_type>
+    <event_district>Ontario</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Windsor, ON N9B 3P4, Canada</location>
+    <tba_event_code>onwin</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>137</_id>
+    <tba_event_key>2017orlak</tba_event_key>
+    <name>PNW District - Lake Oswego Event</name>
+    <short_name>Lake Oswego</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Lake Oswego, OR 97034, USA</location>
+    <tba_event_code>orlak</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>138</_id>
+    <tba_event_key>2017orore</tba_event_key>
+    <name>PNW District - Clackamas Academy of Industrial Science Event</name>
+    <short_name>Clackamas Academy of Industrial Science</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Oregon City, OR 97045, USA</location>
+    <tba_event_code>orore</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>139</_id>
+    <tba_event_key>2017orwil</tba_event_key>
+    <name>PNW District - Wilsonville Event</name>
+    <short_name>Wilsonville</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>Wilsonville, OR 97070, USA</location>
+    <tba_event_code>orwil</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>140</_id>
+    <tba_event_key>2017paca</tba_event_key>
+    <name>Greater Pittsburgh Regional</name>
+    <short_name>Greater Pittsburgh</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>California, PA 15419, USA</location>
+    <tba_event_code>paca</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>141</_id>
+    <tba_event_key>2017pahat</tba_event_key>
+    <name>MAR District - Hatboro-Horsham Event</name>
+    <short_name>Hatboro-Horsham</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Horsham, PA 19044, USA</location>
+    <tba_event_code>pahat</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>142</_id>
+    <tba_event_key>2017paphi</tba_event_key>
+    <name>MAR District - Springside Chestnut Hill Academy Event</name>
+    <short_name>Springside Chestnut Hill Academy</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Philadelphia, PA 19118, USA</location>
+    <tba_event_code>paphi</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>143</_id>
+    <tba_event_key>2017pawch</tba_event_key>
+    <name>MAR District - Westtown Event</name>
+    <short_name>Westtown</short_name>
+    <event_type>District</event_type>
+    <event_district>Mid-Atlantic</event_district>
+    <year>2017</year>
+    <week>1</week>
+    <location>West Chester, PA 19382, USA</location>
+    <tba_event_code>pawch</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>144</_id>
+    <tba_event_key>2017pncmp</tba_event_key>
+    <name>Pacific Northwest District Championship</name>
+    <short_name>Pacific Northwest</short_name>
+    <event_type>District Championship</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>5</week>
+    <location>Cheney, WA 99004, USA</location>
+    <tba_event_code>pncmp</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>145</_id>
+    <tba_event_key>2017qcmo</tba_event_key>
+    <name>Festival de Robotique - Montreal Regional</name>
+    <short_name>Festival de Robotique - Montreal</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Montreal, QC H2M 2E7, Canada</location>
+    <tba_event_code>qcmo</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>146</_id>
+    <tba_event_key>2017ripro</tba_event_key>
+    <name>NE District - Rhode Island Event</name>
+    <short_name>Rhode Island</short_name>
+    <event_type>District</event_type>
+    <event_district>New England</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Smithfield, RI 02917, USA</location>
+    <tba_event_code>ripro</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>147</_id>
+    <tba_event_key>2017roe</tba_event_key>
+    <name>Roebling Division</name>
+    <short_name>Roebling</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>roe</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>148</_id>
+    <tba_event_key>2017scmb</tba_event_key>
+    <name>Palmetto Regional</name>
+    <short_name>Palmetto</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>0</week>
+    <location>Myrtle Beach, SC 29578, USA</location>
+    <tba_event_code>scmb</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>149</_id>
+    <tba_event_key>2017tes</tba_event_key>
+    <name>Tesla Division</name>
+    <short_name>Tesla</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>St. Louis, MO, USA</location>
+    <tba_event_code>tes</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>150</_id>
+    <tba_event_key>2017tnkn</tba_event_key>
+    <name>Smoky Mountains Regional</name>
+    <short_name>Smoky Mountains</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Knoxville, TN 37996, USA</location>
+    <tba_event_code>tnkn</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>151</_id>
+    <tba_event_key>2017tur</tba_event_key>
+    <name>Turing Division</name>
+    <short_name>Turing</short_name>
+    <event_type>Championship Division</event_type>
+    <year>2017</year>
+    <location>Houston, TX, USA</location>
+    <tba_event_code>tur</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>152</_id>
+    <tba_event_key>2017txda</tba_event_key>
+    <name>Dallas Regional</name>
+    <short_name>Dallas</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>Irving, TX 75039, USA</location>
+    <tba_event_code>txda</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>153</_id>
+    <tba_event_key>2017txho</tba_event_key>
+    <name>Lone Star Central Regional</name>
+    <short_name>Lone Star Central</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>2</week>
+    <location>Houston, TX 77036, USA</location>
+    <tba_event_code>txho</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>154</_id>
+    <tba_event_key>2017txlu</tba_event_key>
+    <name>Hub City Regional</name>
+    <short_name>Hub City</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>0</week>
+    <location>Lubbock, TX 79403, USA</location>
+    <tba_event_code>txlu</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>155</_id>
+    <tba_event_key>2017txsa</tba_event_key>
+    <name>Alamo Regional</name>
+    <short_name>Alamo</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>5</week>
+    <location>San Antonio, TX 78205, USA</location>
+    <tba_event_code>txsa</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>156</_id>
+    <tba_event_key>2017txwa</tba_event_key>
+    <name>Brazos Valley Regional</name>
+    <short_name>Brazos Valley</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>Waco, TX 76706, USA</location>
+    <tba_event_code>txwa</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>157</_id>
+    <tba_event_key>2017txwo</tba_event_key>
+    <name>Lone Star North Regional</name>
+    <short_name>Lone Star North</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>4</week>
+    <location>The Woodlands, TX 77384, USA</location>
+    <tba_event_code>txwo</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>158</_id>
+    <tba_event_key>2017utwv</tba_event_key>
+    <name>Utah Regional</name>
+    <short_name>Utah</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>1</week>
+    <location>West Valley City, UT 84119, USA</location>
+    <tba_event_code>utwv</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>159</_id>
+    <tba_event_key>2017vabla</tba_event_key>
+    <name>CHS District - Southwest Virginia Event</name>
+    <short_name>Southwest Virginia</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Blacksburg, VA 24060, USA</location>
+    <tba_event_code>vabla</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>160</_id>
+    <tba_event_key>2017vagle</tba_event_key>
+    <name>CHS District - Central Virginia Event</name>
+    <short_name>Central Virginia</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Glen Allen, VA 23059, USA</location>
+    <tba_event_code>vagle</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>161</_id>
+    <tba_event_key>2017vahay</tba_event_key>
+    <name>CHS District - Northern Virginia Event sponsored by Bechtel</name>
+    <short_name>Northern Virginia</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Haymarket, VA 20169, USA</location>
+    <tba_event_code>vahay</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>162</_id>
+    <tba_event_key>2017vapor</tba_event_key>
+    <name>CHS District - Hampton Roads Event sponsored by Newport News Shipbuilding</name>
+    <short_name>Hampton Roads</short_name>
+    <event_type>District</event_type>
+    <event_district>Chesapeake</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Portsmouth, VA 23703, USA</location>
+    <tba_event_code>vapor</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>163</_id>
+    <tba_event_key>2017waahs</tba_event_key>
+    <name>PNW District - Auburn Event</name>
+    <short_name>Auburn</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>4</week>
+    <location>Auburn, WA 98002, USA</location>
+    <tba_event_code>waahs</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>164</_id>
+    <tba_event_key>2017waamv</tba_event_key>
+    <name>PNW District - Auburn Mountainview Event</name>
+    <short_name>Auburn Mountainview</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Auburn, WA 98092, USA</location>
+    <tba_event_code>waamv</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>165</_id>
+    <tba_event_key>2017waell</tba_event_key>
+    <name>PNW District - Central Washington University Event</name>
+    <short_name>Central Washington University</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Ellensburg, WA 98926, USA</location>
+    <tba_event_code>waell</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>166</_id>
+    <tba_event_key>2017wamou</tba_event_key>
+    <name>PNW District - Mount Vernon Event</name>
+    <short_name>Mount Vernon</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>2</week>
+    <location>Mount Vernon, WA 98273, USA</location>
+    <tba_event_code>wamou</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>167</_id>
+    <tba_event_key>2017wasno</tba_event_key>
+    <name>PNW District - Glacier Peak Event</name>
+    <short_name>Glacier Peak</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>3</week>
+    <location>Snohomish, WA 98296, USA</location>
+    <tba_event_code>wasno</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>168</_id>
+    <tba_event_key>2017waspo</tba_event_key>
+    <name>PNW District - West Valley Event</name>
+    <short_name>West Valley</short_name>
+    <event_type>District</event_type>
+    <event_district>Pacific Northwest</event_district>
+    <year>2017</year>
+    <week>0</week>
+    <location>Spokane, WA 99212, USA</location>
+    <tba_event_code>waspo</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>169</_id>
+    <tba_event_key>2017week0</tba_event_key>
+    <name>Week 0</name>
+    <short_name>Week 0</short_name>
+    <event_type>Preseason</event_type>
+    <year>2017</year>
+    <location>Nashua, NH, USA</location>
+    <tba_event_code>week0</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>170</_id>
+    <tba_event_key>2017wila</tba_event_key>
+    <name>Seven Rivers Regional</name>
+    <short_name>Seven Rivers</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>6</week>
+    <location>La Crosse, WI 54601, USA</location>
+    <tba_event_code>wila</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+  <Table>
+    <_id>171</_id>
+    <tba_event_key>2017wimi</tba_event_key>
+    <name>Wisconsin Regional</name>
+    <short_name>Wisconsin</short_name>
+    <event_type>Regional</event_type>
+    <year>2017</year>
+    <week>3</week>
+    <location>Milwaukee, WI 53201, USA</location>
+    <tba_event_code>wimi</tba_event_code>
+    <table_name>event</table_name>
+  </Table>
+</NewDataSet>
