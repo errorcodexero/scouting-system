@@ -51,7 +51,7 @@
             android:id="@+id/txt_main_event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="HARDCODE TO 139"
+            android:hint="HARDCODE TO 138"
             android:inputType="number" />
     </LinearLayout>
 

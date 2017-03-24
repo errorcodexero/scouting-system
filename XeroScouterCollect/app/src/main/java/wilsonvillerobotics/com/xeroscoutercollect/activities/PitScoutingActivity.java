@@ -292,7 +292,7 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onStart() {
-        super.onResume();
+        super.onStart();
         Log.d("Scouting Activity", "onResume");
 
         File fBool = new File(baseFolder + File.separator + boolMapFileName);

@@ -179,7 +179,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
         String matchIdString = String.valueOf(lastMatchId);
         //int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
-        spinner.setSelection(lastMatchId);
+            if(lastMatchId < matchObjList.size()){
+                spinner.setSelection(lastMatchId);
+            }
     }
 
 
