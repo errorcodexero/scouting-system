@@ -110,6 +110,7 @@
             // 
             this.chkFileList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkFileList.CheckOnClick = true;
             this.chkFileList.FormattingEnabled = true;
             this.chkFileList.HorizontalExtent = 10;
             this.chkFileList.HorizontalScrollbar = true;

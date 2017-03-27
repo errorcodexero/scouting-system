@@ -140,6 +140,31 @@ namespace XeroScouterDBManage_Server
             return connectionAvailable;
         }
 
+        public static long getLongIDFromComboSelectedValue(ComboBox combo)
+        {
+            long ID = -1;
+
+            try
+            {
+                object val = combo.SelectedValue;
+                if ((val != null) && (val.GetType() != typeof(DataRowView)))
+                {
+                    ID = Convert.ToInt64(val);
+                }
+
+            }
+            catch (Exception)
+            {
+                if (ID == -1)
+                {
+                    string message = "Selected Value failed conversion to long for: " + combo.Name;
+                    Console.Out.WriteLine(message);
+                }
+                //throw;
+            }
+            return ID;
+        }
+
         public static long getLongIDFromComboSelectedValue(ComboBox combo, Label lblStatus)
         {
             long ID = -1;
