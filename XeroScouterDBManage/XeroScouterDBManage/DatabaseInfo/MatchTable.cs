@@ -4,6 +4,14 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
 {
     class MatchTable
     {
+        public enum ALLIANCE_POSITION {
+            BLUE1 = 0,
+            BLUE2,
+            BLUE3,
+            RED1,
+            RED2,
+            RED3
+        }
         private static Type VARCHAR = typeof(String);
         private static Type INT = typeof(Int32);
         private static Type FLOAT = typeof(float);

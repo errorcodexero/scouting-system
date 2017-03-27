@@ -101,6 +101,7 @@
             this.chkTableList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkTableList.CheckOnClick = true;
             this.chkTableList.FormattingEnabled = true;
             this.chkTableList.Location = new System.Drawing.Point(116, 99);
             this.chkTableList.Name = "chkTableList";
