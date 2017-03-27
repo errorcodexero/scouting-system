@@ -275,7 +275,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         editor.commit();
     }
 
-
+//
     //Cleans up tables in the database
     private void clearDatabase() {
         ArrayList<String> tableList = new ArrayList<String>();
@@ -284,6 +284,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         tableList.add("team_match");
         tableList.add("action_type");
         tableList.add("team");
+        //tableList.add("team_match_action");
         try{
             for(String name : tableList){
                 String query = "delete from " + name;

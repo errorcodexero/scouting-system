@@ -196,8 +196,13 @@ public class MatchModel {
         this.matchWinner = matchWinner;
     }
 
-    public MatchModel(String matchNumber, String red1Id, String red2Id, String red3Id, String blue1Id, String blue2Id, String blue3Id) {
+    public String get_id() {
+        return _id;
+    }
+
+    public MatchModel(String _id, String matchNumber, String red1Id, String red2Id, String red3Id, String blue1Id, String blue2Id, String blue3Id) {
         this.matchNumber = matchNumber;
+        this._id = _id;
         this.red1Id = red1Id;
         this.red2Id = red2Id;
         this.red3Id = red3Id;
@@ -220,6 +225,7 @@ public class MatchModel {
     private String matchCompLevel;
     private String matchSetNumber;
     private String matchNumber;
+    private String _id;
     private String matchStatus;
 
     private String red1Id;

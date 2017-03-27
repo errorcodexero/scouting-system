@@ -330,6 +330,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         try {
             while(cursor.moveToNext()) {
                 matchObjList.add(new MatchModel(
+                        String.valueOf(cursor.getString(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_ID))),
                         String.valueOf(cursor.getString(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_1))),
                         String.valueOf(cursor.getInt(cursor.getColumnIndex(MatchContract.MatchEntry.COLUMN_NAME_RED_2))),
@@ -418,7 +419,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             int matchId = 0;
             int teamMatchId;
             String tn;
-            queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_MATCH_NUMBER + " = " + matchModel.getMatchNumber() + ";";
+            queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_ID + " = " + matchModel.get_id() + ";";
             Cursor cursor = db.rawQuery(queryString, null);
             if(cursor.moveToNext())
                matchId = cursor.getInt(cursor.getColumnIndex("_id"));
