@@ -1,15 +1,12 @@
 package wilsonvillerobotics.com.xeroscoutercollect.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +17,6 @@ import android.widget.Toast;
 
 import android.support.v4.app.FragmentActivity;
 
-import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -33,7 +29,6 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.fragments.StandMatchConfirmationFragment;
 import wilsonvillerobotics.com.xeroscoutercollect.models.MatchModel;
-import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchModel;
 
 /**
  * Created by Luke on 11/5/2016.
@@ -56,13 +51,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     private MatchModel match2;
     private MatchModel match3;
     private ArrayList<Integer> lbl_list;
-    private TextView lbl_team_1;
-    private TextView lbl_team_2;
-    private TextView lbl_team_3;
-    private TextView lbl_team_4;
-    private TextView lbl_team_5;
-    private TextView lbl_team_6;
-    private Integer lastMatchId;
+    private Integer lastMatchNum;
     private String currentSelectedTeam;
 
 
@@ -175,11 +164,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         highlightTabletIdTeam();
         addItemsToMatchSpinner();
         addItemsToTeamSpinner();
-        Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
-        String matchIdString = String.valueOf(lastMatchId);
-        int tempAdapterPos = matchDataAdapter.getPosition(matchIdString);
-        spinner.setSelection(matchDataAdapter.getPosition(String.valueOf(lastMatchId)));
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_match_list);
+        spinner.setSelection(matchDataAdapter.getPosition(String.valueOf(lastMatchNum)));
     }
 
 
@@ -283,7 +270,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         String pref_default = getString(R.string.default_pref_value);
         tabletID = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
         manualSelection = sharedPreferences.getBoolean(getString(R.string.manual_selection_pref), false);
-        lastMatchId = sharedPreferences.getInt("last_match_id", 0) + 1;
+        lastMatchNum = sharedPreferences.getInt("last_match_num", 0) + 1;
 
     }
     //Sets tablet id label
@@ -342,6 +329,17 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         } finally {
             cursor.close();
         }
+    }
+
+    public int getMatchNumIndex(String matchNumToGet){
+        int result = -1;
+        for(int i = 0; i < matchObjList.size(); i++){
+            if((matchObjList.get(i).getMatchNumber()).equals(matchNumToGet)){
+                result = i;
+                break;
+            }
+        }
+        return result;
     }
 
     //Add matches to spinner
@@ -410,6 +408,7 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
         highlightTabletIdTeam();
     }
 
+
     @Override
     public void onClick(View view) {
         if (view == findViewById(R.id.btn_next)) {
@@ -420,9 +419,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             int teamMatchId;
             String tn;
             queryString = "SELECT * FROM 'match' WHERE " + MatchContract.MatchEntry.COLUMN_NAME_ID + " = " + matchModel.get_id() + ";";
-            Cursor cursor = db.rawQuery(queryString, null);
-            if(cursor.moveToNext())
-               matchId = cursor.getInt(cursor.getColumnIndex("_id"));
+            Cursor matchCursor = db.rawQuery(queryString, null);
+            if(matchCursor.moveToNext())
+               matchId = matchCursor.getInt(matchCursor.getColumnIndex("_id"));
             else {
                 Toast.makeText(this, "NO MATCH DATA", Toast.LENGTH_LONG).show();
             }
@@ -435,10 +434,9 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
 
             //int team_id = teamIdMap.get(tn);
             queryString = "SELECT * FROM team_match WHERE team_id = " + tn + " AND " + TeamMatchContract.TeamMatchEntry.COLUMN_NAME_MATCH_ID + " = " + matchId + ";";
-            cursor = db.rawQuery(queryString, null);
-            cursor.moveToFirst();
-            teamMatchId = cursor.getInt(cursor.getColumnIndex(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID));
-            cursor.close();
+            Cursor teamMatchCursor = db.rawQuery(queryString, null);
+            teamMatchCursor.moveToFirst();
+            teamMatchId = teamMatchCursor.getInt(teamMatchCursor.getColumnIndex(TeamMatchContract.TeamMatchEntry.COLUMN_NAME_ID));
             //Toast.makeText(this, "TMA = " + teamMatchId, Toast.LENGTH_LONG).show();
 
 
@@ -447,8 +445,11 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             //Cursor cursor = db.execSQL("SELECT * FROM team_match WHERE id = " + tn);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("last_match_id", matchId);
+            editor.putInt("last_match_num", Integer.valueOf(matchCursor.getString(matchCursor.getColumnIndex("match_number"))));
             editor.apply();
+
+            matchCursor.close();
+            teamMatchCursor.close();
 
             sanityCheckActivity.putExtra("background",isRed);
             sanityCheckActivity.putExtra("team_number", team_list.get(Integer.parseInt(tn)));
