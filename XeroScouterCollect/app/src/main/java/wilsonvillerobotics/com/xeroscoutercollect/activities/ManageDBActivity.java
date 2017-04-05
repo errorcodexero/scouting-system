@@ -144,9 +144,31 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             FTPConnection ftp = new FTPConnection(this);
             ftp.getFTPFiles(baseFolder);
         }
-        if (view.getId() == R.id.btn_clear_db_data) {
+        else if (view.getId() == R.id.btn_clear_db_data) {
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
-            clearDatabase();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Are you sure you wish to delete the ENTIRE database?");
+            builder1.setCancelable(false);
+
+            builder1.setPositiveButton(
+                    "Yes + TMA",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            clearDatabase();
+                        }
+                    });
+            builder1.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert1 = builder1.create();
+            alert1.show();
+
         }
         else if (view.getId() == R.id.btn_export) {
             XMLExporter xmlExporter = new XMLExporter(tempCtx);
@@ -284,7 +306,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         tableList.add("team_match");
         tableList.add("action_type");
         tableList.add("team");
-        //tableList.add("team_match_action");
+        tableList.add("team_match_action");
         try{
             for(String name : tableList){
                 String query = "delete from " + name;
