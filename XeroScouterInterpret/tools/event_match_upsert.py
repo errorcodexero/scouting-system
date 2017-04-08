@@ -4,6 +4,8 @@ import json
 import numpy
 
 log = open("C:\logs\pylog.txt",'a')
+
+
 def main():
     
     log.write("\nBegin Script\n" )
@@ -11,8 +13,8 @@ def main():
     db = mysql.connect(host='localhost', port=3306, user='root', passwd='root', db='scouting')
     cursor = db.cursor()
     
-    # get the event id for the desired event we will be '2017orwil'
-    tba_event_key = '2017orwil'
+    # get the event id for the desired event we will be '2017orore'
+    tba_event_key = '2017orore'
     sql = 'select _id from `event` where tba_event_key = %s'
     cursor.execute(sql % ('"' + tba_event_key + '"'))
     event_id = cursor.fetchone()

@@ -33,45 +33,47 @@
             this.lblAddPitData = new System.Windows.Forms.Label();
             this.txtScouter = new System.Windows.Forms.TextBox();
             this.lblScouter = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtRookieYear = new System.Windows.Forms.TextBox();
             this.lblRookieYear = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtMotto = new System.Windows.Forms.TextBox();
             this.lblMotto = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
             this.lblCountry = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtState = new System.Windows.Forms.TextBox();
             this.lblState = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
             this.lblCity = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLongTeamName = new System.Windows.Forms.TextBox();
             this.lblLongTeamName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTeamName = new System.Windows.Forms.TextBox();
             this.lblTeamName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.rdioPython = new System.Windows.Forms.RadioButton();
+            this.rdioOther = new System.Windows.Forms.RadioButton();
+            this.rdioLabView = new System.Windows.Forms.RadioButton();
+            this.rdioJava = new System.Windows.Forms.RadioButton();
+            this.rdioCpp = new System.Windows.Forms.RadioButton();
+            this.txtLanguageOther = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.lblDescription = new System.Windows.Forms.Label();
             this.lblLanguage = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtMotorCount = new System.Windows.Forms.TextBox();
+            this.lblMotorCount = new System.Windows.Forms.Label();
+            this.txtWheelCount = new System.Windows.Forms.TextBox();
             this.lblWheelCount = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtRobotDriveBase = new System.Windows.Forms.TextBox();
             this.lblRobotDriveBase = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txtRobotName = new System.Windows.Forms.TextBox();
             this.lblRobotName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.txtScoutComments = new System.Windows.Forms.TextBox();
             this.lblScoutComments = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -84,10 +86,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.comboTeamNumber = new System.Windows.Forms.ComboBox();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -95,14 +95,12 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTeamNumnber
             // 
             this.lblTeamNumnber.AutoSize = true;
-            this.lblTeamNumnber.Location = new System.Drawing.Point(316, 65);
+            this.lblTeamNumnber.Location = new System.Drawing.Point(285, 65);
             this.lblTeamNumnber.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblTeamNumnber.Name = "lblTeamNumnber";
             this.lblTeamNumnber.Size = new System.Drawing.Size(44, 13);
@@ -128,7 +126,7 @@
             this.txtScouter.Margin = new System.Windows.Forms.Padding(1);
             this.txtScouter.Name = "txtScouter";
             this.txtScouter.Size = new System.Drawing.Size(215, 20);
-            this.txtScouter.TabIndex = 0;
+            this.txtScouter.TabIndex = 50;
             // 
             // lblScouter
             // 
@@ -139,6 +137,24 @@
             this.lblScouter.Size = new System.Drawing.Size(47, 13);
             this.lblScouter.TabIndex = 49;
             this.lblScouter.Text = "Scouter:";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 690);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(534, 22);
+            this.statusStrip1.TabIndex = 53;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 0);
             // 
             // errorProvider1
             // 
@@ -152,7 +168,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(77, 39);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -163,7 +179,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(1);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(77, 39);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -176,37 +192,38 @@
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(521, 45);
-            this.panel6.TabIndex = 7;
+            this.panel6.TabIndex = 54;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.txtRookieYear);
             this.panel1.Controls.Add(this.lblRookieYear);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.txtMotto);
             this.panel1.Controls.Add(this.lblMotto);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.txtCountry);
             this.panel1.Controls.Add(this.lblCountry);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtState);
             this.panel1.Controls.Add(this.lblState);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.txtCity);
             this.panel1.Controls.Add(this.lblCity);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtLongTeamName);
             this.panel1.Controls.Add(this.lblLongTeamName);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtTeamName);
             this.panel1.Controls.Add(this.lblTeamName);
             this.panel1.Location = new System.Drawing.Point(6, 92);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(521, 106);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 55;
             // 
-            // textBox6
+            // txtRookieYear
             // 
-            this.textBox6.Location = new System.Drawing.Point(414, 75);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(104, 20);
-            this.textBox6.TabIndex = 6;
+            this.txtRookieYear.Location = new System.Drawing.Point(414, 75);
+            this.txtRookieYear.Margin = new System.Windows.Forms.Padding(1);
+            this.txtRookieYear.Name = "txtRookieYear";
+            this.txtRookieYear.Size = new System.Drawing.Size(101, 20);
+            this.txtRookieYear.TabIndex = 37;
+            this.txtRookieYear.TabStop = false;
             // 
             // lblRookieYear
             // 
@@ -218,13 +235,14 @@
             this.lblRookieYear.TabIndex = 36;
             this.lblRookieYear.Text = "Rookie Year:";
             // 
-            // textBox7
+            // txtMotto
             // 
-            this.textBox7.Location = new System.Drawing.Point(45, 75);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(292, 20);
-            this.textBox7.TabIndex = 5;
+            this.txtMotto.Location = new System.Drawing.Point(45, 75);
+            this.txtMotto.Margin = new System.Windows.Forms.Padding(1);
+            this.txtMotto.Name = "txtMotto";
+            this.txtMotto.Size = new System.Drawing.Size(292, 20);
+            this.txtMotto.TabIndex = 35;
+            this.txtMotto.TabStop = false;
             // 
             // lblMotto
             // 
@@ -236,13 +254,14 @@
             this.lblMotto.TabIndex = 34;
             this.lblMotto.Text = "Motto:";
             // 
-            // textBox5
+            // txtCountry
             // 
-            this.textBox5.Location = new System.Drawing.Point(411, 41);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(104, 20);
-            this.textBox5.TabIndex = 4;
+            this.txtCountry.Location = new System.Drawing.Point(411, 41);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(1);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(104, 20);
+            this.txtCountry.TabIndex = 33;
+            this.txtCountry.TabStop = false;
             // 
             // lblCountry
             // 
@@ -254,13 +273,14 @@
             this.lblCountry.TabIndex = 32;
             this.lblCountry.Text = "Country:";
             // 
-            // textBox4
+            // txtState
             // 
-            this.textBox4.Location = new System.Drawing.Point(233, 41);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(104, 20);
-            this.textBox4.TabIndex = 3;
+            this.txtState.Location = new System.Drawing.Point(233, 41);
+            this.txtState.Margin = new System.Windows.Forms.Padding(1);
+            this.txtState.Name = "txtState";
+            this.txtState.Size = new System.Drawing.Size(104, 20);
+            this.txtState.TabIndex = 31;
+            this.txtState.TabStop = false;
             // 
             // lblState
             // 
@@ -272,13 +292,14 @@
             this.lblState.TabIndex = 30;
             this.lblState.Text = "State:";
             // 
-            // textBox3
+            // txtCity
             // 
-            this.textBox3.Location = new System.Drawing.Point(33, 41);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(139, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtCity.Location = new System.Drawing.Point(33, 41);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(1);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(139, 20);
+            this.txtCity.TabIndex = 29;
+            this.txtCity.TabStop = false;
             // 
             // lblCity
             // 
@@ -290,13 +311,14 @@
             this.lblCity.TabIndex = 28;
             this.lblCity.Text = "City:";
             // 
-            // textBox2
+            // txtLongTeamName
             // 
-            this.textBox2.Location = new System.Drawing.Point(327, 9);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(188, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtLongTeamName.Location = new System.Drawing.Point(327, 9);
+            this.txtLongTeamName.Margin = new System.Windows.Forms.Padding(1);
+            this.txtLongTeamName.Name = "txtLongTeamName";
+            this.txtLongTeamName.Size = new System.Drawing.Size(188, 20);
+            this.txtLongTeamName.TabIndex = 27;
+            this.txtLongTeamName.TabStop = false;
             // 
             // lblLongTeamName
             // 
@@ -305,16 +327,17 @@
             this.lblLongTeamName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblLongTeamName.Name = "lblLongTeamName";
             this.lblLongTeamName.Size = new System.Drawing.Size(95, 13);
-            this.lblLongTeamName.TabIndex = 5;
+            this.lblLongTeamName.TabIndex = 26;
             this.lblLongTeamName.Text = "Long Team Name:";
             // 
-            // textBox1
+            // txtTeamName
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 9);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(139, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtTeamName.Location = new System.Drawing.Point(81, 9);
+            this.txtTeamName.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeamName.Name = "txtTeamName";
+            this.txtTeamName.Size = new System.Drawing.Size(139, 20);
+            this.txtTeamName.TabIndex = 25;
+            this.txtTeamName.TabStop = false;
             // 
             // lblTeamName
             // 
@@ -328,111 +351,112 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.radioButton5);
-            this.panel2.Controls.Add(this.radioButton4);
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Controls.Add(this.radioButton1);
-            this.panel2.Controls.Add(this.textBox8);
-            this.panel2.Controls.Add(this.textBox9);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.rdioPython);
+            this.panel2.Controls.Add(this.rdioOther);
+            this.panel2.Controls.Add(this.rdioLabView);
+            this.panel2.Controls.Add(this.rdioJava);
+            this.panel2.Controls.Add(this.rdioCpp);
+            this.panel2.Controls.Add(this.txtLanguageOther);
+            this.panel2.Controls.Add(this.txtDescription);
+            this.panel2.Controls.Add(this.lblDescription);
             this.panel2.Controls.Add(this.lblLanguage);
-            this.panel2.Controls.Add(this.textBox11);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.textBox12);
+            this.panel2.Controls.Add(this.txtMotorCount);
+            this.panel2.Controls.Add(this.lblMotorCount);
+            this.panel2.Controls.Add(this.txtWheelCount);
             this.panel2.Controls.Add(this.lblWheelCount);
-            this.panel2.Controls.Add(this.textBox13);
+            this.panel2.Controls.Add(this.txtRobotDriveBase);
             this.panel2.Controls.Add(this.lblRobotDriveBase);
-            this.panel2.Controls.Add(this.textBox14);
+            this.panel2.Controls.Add(this.txtRobotName);
             this.panel2.Controls.Add(this.lblRobotName);
             this.panel2.Location = new System.Drawing.Point(6, 200);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(521, 139);
-            this.panel2.TabIndex = 3;
+            this.panel2.TabIndex = 56;
             // 
-            // radioButton5
+            // rdioPython
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(454, 74);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(58, 17);
-            this.radioButton5.TabIndex = 42;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Python";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rdioPython.AutoSize = true;
+            this.rdioPython.Location = new System.Drawing.Point(454, 74);
+            this.rdioPython.Name = "rdioPython";
+            this.rdioPython.Size = new System.Drawing.Size(58, 17);
+            this.rdioPython.TabIndex = 42;
+            this.rdioPython.TabStop = true;
+            this.rdioPython.Text = "Python";
+            this.rdioPython.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rdioOther
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(371, 112);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(51, 17);
-            this.radioButton4.TabIndex = 41;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Other";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rdioOther.AutoSize = true;
+            this.rdioOther.Location = new System.Drawing.Point(371, 112);
+            this.rdioOther.Name = "rdioOther";
+            this.rdioOther.Size = new System.Drawing.Size(51, 17);
+            this.rdioOther.TabIndex = 41;
+            this.rdioOther.TabStop = true;
+            this.rdioOther.Text = "Other";
+            this.rdioOther.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rdioLabView
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(371, 75);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(66, 17);
-            this.radioButton3.TabIndex = 40;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "LabView";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdioLabView.AutoSize = true;
+            this.rdioLabView.Location = new System.Drawing.Point(371, 75);
+            this.rdioLabView.Name = "rdioLabView";
+            this.rdioLabView.Size = new System.Drawing.Size(66, 17);
+            this.rdioLabView.TabIndex = 40;
+            this.rdioLabView.TabStop = true;
+            this.rdioLabView.Text = "LabView";
+            this.rdioLabView.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdioJava
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(464, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(48, 17);
-            this.radioButton2.TabIndex = 39;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Java";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdioJava.AutoSize = true;
+            this.rdioJava.Location = new System.Drawing.Point(464, 42);
+            this.rdioJava.Name = "rdioJava";
+            this.rdioJava.Size = new System.Drawing.Size(48, 17);
+            this.rdioJava.TabIndex = 39;
+            this.rdioJava.TabStop = true;
+            this.rdioJava.Text = "Java";
+            this.rdioJava.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdioCpp
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(408, 42);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 17);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "C++";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdioCpp.AutoSize = true;
+            this.rdioCpp.Location = new System.Drawing.Point(408, 42);
+            this.rdioCpp.Name = "rdioCpp";
+            this.rdioCpp.Size = new System.Drawing.Size(44, 17);
+            this.rdioCpp.TabIndex = 38;
+            this.rdioCpp.TabStop = true;
+            this.rdioCpp.Text = "C++";
+            this.rdioCpp.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // txtLanguageOther
             // 
-            this.textBox8.Location = new System.Drawing.Point(429, 111);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(83, 20);
-            this.textBox8.TabIndex = 37;
-            this.textBox8.TabStop = false;
+            this.txtLanguageOther.Location = new System.Drawing.Point(429, 111);
+            this.txtLanguageOther.Margin = new System.Windows.Forms.Padding(1);
+            this.txtLanguageOther.Name = "txtLanguageOther";
+            this.txtLanguageOther.Size = new System.Drawing.Size(86, 20);
+            this.txtLanguageOther.TabIndex = 37;
+            this.txtLanguageOther.TabStop = false;
             // 
-            // textBox9
+            // txtDescription
             // 
-            this.textBox9.Location = new System.Drawing.Point(69, 75);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(268, 56);
-            this.textBox9.TabIndex = 5;
+            this.txtDescription.Location = new System.Drawing.Point(69, 75);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(1);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(268, 56);
+            this.txtDescription.TabIndex = 35;
+            this.txtDescription.TabStop = false;
             // 
-            // label2
+            // lblDescription
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 78);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "Description:";
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(4, 78);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(63, 13);
+            this.lblDescription.TabIndex = 34;
+            this.lblDescription.Text = "Description:";
             // 
             // lblLanguage
             // 
@@ -444,31 +468,33 @@
             this.lblLanguage.TabIndex = 32;
             this.lblLanguage.Text = "Language:";
             // 
-            // textBox11
+            // txtMotorCount
             // 
-            this.textBox11.Location = new System.Drawing.Point(244, 41);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(80, 20);
-            this.textBox11.TabIndex = 3;
+            this.txtMotorCount.Location = new System.Drawing.Point(244, 41);
+            this.txtMotorCount.Margin = new System.Windows.Forms.Padding(1);
+            this.txtMotorCount.Name = "txtMotorCount";
+            this.txtMotorCount.Size = new System.Drawing.Size(80, 20);
+            this.txtMotorCount.TabIndex = 31;
+            this.txtMotorCount.TabStop = false;
             // 
-            // label4
+            // lblMotorCount
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(174, 44);
-            this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Motor Count:";
+            this.lblMotorCount.AutoSize = true;
+            this.lblMotorCount.Location = new System.Drawing.Point(174, 44);
+            this.lblMotorCount.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblMotorCount.Name = "lblMotorCount";
+            this.lblMotorCount.Size = new System.Drawing.Size(68, 13);
+            this.lblMotorCount.TabIndex = 30;
+            this.lblMotorCount.Text = "Motor Count:";
             // 
-            // textBox12
+            // txtWheelCount
             // 
-            this.textBox12.Location = new System.Drawing.Point(81, 41);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(77, 20);
-            this.textBox12.TabIndex = 2;
+            this.txtWheelCount.Location = new System.Drawing.Point(81, 41);
+            this.txtWheelCount.Margin = new System.Windows.Forms.Padding(1);
+            this.txtWheelCount.Name = "txtWheelCount";
+            this.txtWheelCount.Size = new System.Drawing.Size(77, 20);
+            this.txtWheelCount.TabIndex = 29;
+            this.txtWheelCount.TabStop = false;
             // 
             // lblWheelCount
             // 
@@ -480,13 +506,14 @@
             this.lblWheelCount.TabIndex = 28;
             this.lblWheelCount.Text = "Wheel Count:";
             // 
-            // textBox13
+            // txtRobotDriveBase
             // 
-            this.textBox13.Location = new System.Drawing.Point(327, 9);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(188, 20);
-            this.textBox13.TabIndex = 1;
+            this.txtRobotDriveBase.Location = new System.Drawing.Point(327, 9);
+            this.txtRobotDriveBase.Margin = new System.Windows.Forms.Padding(1);
+            this.txtRobotDriveBase.Name = "txtRobotDriveBase";
+            this.txtRobotDriveBase.Size = new System.Drawing.Size(188, 20);
+            this.txtRobotDriveBase.TabIndex = 27;
+            this.txtRobotDriveBase.TabStop = false;
             // 
             // lblRobotDriveBase
             // 
@@ -498,13 +525,14 @@
             this.lblRobotDriveBase.TabIndex = 26;
             this.lblRobotDriveBase.Text = "Drive Base:";
             // 
-            // textBox14
+            // txtRobotName
             // 
-            this.textBox14.Location = new System.Drawing.Point(81, 9);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(139, 20);
-            this.textBox14.TabIndex = 0;
+            this.txtRobotName.Location = new System.Drawing.Point(81, 9);
+            this.txtRobotName.Margin = new System.Windows.Forms.Padding(1);
+            this.txtRobotName.Name = "txtRobotName";
+            this.txtRobotName.Size = new System.Drawing.Size(139, 20);
+            this.txtRobotName.TabIndex = 25;
+            this.txtRobotName.TabStop = false;
             // 
             // lblRobotName
             // 
@@ -518,22 +546,23 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBox15);
+            this.panel3.Controls.Add(this.txtScoutComments);
             this.panel3.Controls.Add(this.lblScoutComments);
             this.panel3.Location = new System.Drawing.Point(6, 341);
             this.panel3.Margin = new System.Windows.Forms.Padding(1);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(521, 93);
-            this.panel3.TabIndex = 4;
+            this.panel3.TabIndex = 57;
             // 
-            // textBox15
+            // txtScoutComments
             // 
-            this.textBox15.Location = new System.Drawing.Point(69, 6);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox15.Multiline = true;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(446, 77);
-            this.textBox15.TabIndex = 0;
+            this.txtScoutComments.Location = new System.Drawing.Point(69, 6);
+            this.txtScoutComments.Margin = new System.Windows.Forms.Padding(1);
+            this.txtScoutComments.Multiline = true;
+            this.txtScoutComments.Name = "txtScoutComments";
+            this.txtScoutComments.Size = new System.Drawing.Size(446, 77);
+            this.txtScoutComments.TabIndex = 35;
+            this.txtScoutComments.TabStop = false;
             // 
             // lblScoutComments
             // 
@@ -558,12 +587,12 @@
             this.panel4.Margin = new System.Windows.Forms.Padding(1);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(521, 144);
-            this.panel4.TabIndex = 5;
+            this.panel4.TabIndex = 58;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(230, 118);
+            this.label3.Location = new System.Drawing.Point(260, 118);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
@@ -572,10 +601,10 @@
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(349, 114);
+            this.textBox16.Location = new System.Drawing.Point(382, 114);
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 20);
-            this.textBox16.TabIndex = 4;
+            this.textBox16.Size = new System.Drawing.Size(133, 20);
+            this.textBox16.TabIndex = 36;
             // 
             // label1
             // 
@@ -592,7 +621,7 @@
             this.textBox10.Location = new System.Drawing.Point(109, 114);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 3;
+            this.textBox10.TabIndex = 4;
             // 
             // checkedListBoxClimb
             // 
@@ -604,7 +633,7 @@
             "Defensive"});
             this.checkedListBoxClimb.Location = new System.Drawing.Point(346, 12);
             this.checkedListBoxClimb.Name = "checkedListBoxClimb";
-            this.checkedListBoxClimb.Size = new System.Drawing.Size(166, 79);
+            this.checkedListBoxClimb.Size = new System.Drawing.Size(169, 94);
             this.checkedListBoxClimb.TabIndex = 2;
             // 
             // checkedListBoxGears
@@ -617,7 +646,7 @@
             "Drop Gears"});
             this.checkedListBoxGears.Location = new System.Drawing.Point(166, 12);
             this.checkedListBoxGears.Name = "checkedListBoxGears";
-            this.checkedListBoxGears.Size = new System.Drawing.Size(156, 79);
+            this.checkedListBoxGears.Size = new System.Drawing.Size(156, 94);
             this.checkedListBoxGears.TabIndex = 1;
             // 
             // checkedListBoxFuel
@@ -631,7 +660,7 @@
             "Score Fuel High"});
             this.checkedListBoxFuel.Location = new System.Drawing.Point(7, 12);
             this.checkedListBoxFuel.Name = "checkedListBoxFuel";
-            this.checkedListBoxFuel.Size = new System.Drawing.Size(132, 79);
+            this.checkedListBoxFuel.Size = new System.Drawing.Size(132, 94);
             this.checkedListBoxFuel.TabIndex = 0;
             // 
             // panel5
@@ -642,7 +671,7 @@
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(521, 60);
-            this.panel5.TabIndex = 6;
+            this.panel5.TabIndex = 58;
             // 
             // textBox17
             // 
@@ -651,7 +680,8 @@
             this.textBox17.Multiline = true;
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(446, 53);
-            this.textBox17.TabIndex = 0;
+            this.textBox17.TabIndex = 35;
+            this.textBox17.TabStop = false;
             // 
             // label5
             // 
@@ -663,63 +693,35 @@
             this.label5.TabIndex = 34;
             this.label5.Text = "Cycle:";
             // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.statusStrip1);
-            this.panel7.Location = new System.Drawing.Point(5, 691);
-            this.panel7.Margin = new System.Windows.Forms.Padding(1);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(521, 33);
-            this.panel7.TabIndex = 60;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 11);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(521, 22);
-            this.statusStrip1.TabIndex = 60;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 0);
-            // 
             // comboTeamNumber
             // 
             this.comboTeamNumber.FormattingEnabled = true;
-            this.comboTeamNumber.Location = new System.Drawing.Point(364, 59);
+            this.comboTeamNumber.Location = new System.Drawing.Point(333, 60);
             this.comboTeamNumber.Name = "comboTeamNumber";
-            this.comboTeamNumber.Size = new System.Drawing.Size(157, 21);
-            this.comboTeamNumber.TabIndex = 61;
+            this.comboTeamNumber.Size = new System.Drawing.Size(188, 21);
+            this.comboTeamNumber.TabIndex = 59;
             // 
             // AddPitDataForm
             // 
-            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(531, 728);
+            this.ClientSize = new System.Drawing.Size(534, 712);
             this.Controls.Add(this.comboTeamNumber);
-            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel6);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblTeamNumnber);
             this.Controls.Add(this.lblAddPitData);
             this.Controls.Add(this.txtScouter);
             this.Controls.Add(this.lblScouter);
             this.Name = "AddPitDataForm";
-            this.Text = "Add Pit Data";
+            this.Text = "AddPitDataForm";
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -732,10 +734,6 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -746,44 +744,46 @@
         private System.Windows.Forms.Label lblAddPitData;
         private System.Windows.Forms.TextBox txtScouter;
         private System.Windows.Forms.Label lblScouter;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.Label lblCountry;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtState;
         private System.Windows.Forms.Label lblState;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label lblCity;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLongTeamName;
         private System.Windows.Forms.Label lblLongTeamName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTeamName;
         private System.Windows.Forms.Label lblTeamName;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtRookieYear;
         private System.Windows.Forms.Label lblRookieYear;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtMotto;
         private System.Windows.Forms.Label lblMotto;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtLanguageOther;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblLanguage;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtMotorCount;
+        private System.Windows.Forms.Label lblMotorCount;
+        private System.Windows.Forms.TextBox txtWheelCount;
         private System.Windows.Forms.Label lblWheelCount;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox txtRobotDriveBase;
         private System.Windows.Forms.Label lblRobotDriveBase;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox txtRobotName;
         private System.Windows.Forms.Label lblRobotName;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox txtScoutComments;
         private System.Windows.Forms.Label lblScoutComments;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdioLabView;
+        private System.Windows.Forms.RadioButton rdioJava;
+        private System.Windows.Forms.RadioButton rdioCpp;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox16;
@@ -795,11 +795,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.RadioButton rdioPython;
+        private System.Windows.Forms.RadioButton rdioOther;
         private System.Windows.Forms.ComboBox comboTeamNumber;
     }
 }

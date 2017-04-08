@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -145,20 +144,18 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             FTPConnection ftp = new FTPConnection(this);
             ftp.getFTPFiles(baseFolder);
         }
-        if (view.getId() == R.id.btn_clear_db_data) {
+        else if (view.getId() == R.id.btn_clear_db_data) {
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
             AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
             builder1.setMessage("Are you sure you wish to delete the ENTIRE database?");
             builder1.setCancelable(false);
 
             builder1.setPositiveButton(
-                    "Yes",
+                    "Yes + TMA",
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             clearDatabase();
-
-
                         }
                     });
             builder1.setNegativeButton(
@@ -300,7 +297,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         editor.commit();
     }
 
-
+//
     //Cleans up tables in the database
     private void clearDatabase() {
         ArrayList<String> tableList = new ArrayList<String>();
@@ -318,14 +315,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }catch (Exception e) {
             e.printStackTrace();
         }
-        Log.d("ManageDB","ALLUHA AKBAR!!");
 
         //Updates TeamMatchAction shared preference
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(getString(R.string.tma_index_pref),"0");
         editor.commit();
-
-
 
 
     }

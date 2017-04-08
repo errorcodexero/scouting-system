@@ -65,6 +65,9 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     private Boolean doSaveToFile = true;
     private boolean doAskRestore = true;
     private boolean didCompleteMatch = false;
+    private boolean isRed;
+    private String teamNum;
+
 
 
     @Override
@@ -85,6 +88,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
 
         teamMatchId = getIntent().getExtras().getInt("team_match_id");
+        isRed = getIntent().getExtras().getBoolean("background");
+        teamNum = getIntent().getExtras().getString("team_number");
+
+
 
         RadioButton noClimb = (RadioButton) findViewById(R.id.radio_no_climb);
         noClimb.setChecked(true);
@@ -167,6 +174,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tablet_uuid = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
 
         createFileAssociations();
+
+
     }
 
     public void createFileAssociations() {

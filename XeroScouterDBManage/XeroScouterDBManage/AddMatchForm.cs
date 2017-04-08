@@ -12,11 +12,13 @@ namespace XeroScouterDBManage_Server
         private long compID;
         private List<ComboBox> teamComboList;
         private bool initSentinal;
+        private bool dataChanged;
+        List<long> currentTeamComboSelectedIds;
         public AddMatchForm(long competition_id)
         {
             this.initSentinal = false;
             this.compID = competition_id;
-            this.teamComboList = new List<ComboBox>(6);
+            this.dataChanged = false;
             InitializeComponent();
             LoadCompetitions();
             initTeamComboBoxes();
@@ -70,6 +72,9 @@ namespace XeroScouterDBManage_Server
 
         public void initTeamComboBoxes()
         {
+            this.teamComboList = new List<ComboBox>(6);
+            this.currentTeamComboSelectedIds = new List<long>(6) { -1, -1, -1, -1, -1, -1 };
+
             teamComboList.Add(cmbBlue1);
             teamComboList.Add(cmbBlue2);
             teamComboList.Add(cmbBlue3);
@@ -77,7 +82,7 @@ namespace XeroScouterDBManage_Server
             teamComboList.Add(cmbRed2);
             teamComboList.Add(cmbRed3);
 
-            cmbBlue1.Text = "";
+            //cmbBlue1.Text = "";
         }
 
         public void LoadTeams()
@@ -91,18 +96,25 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = TeamTable.SELECT_ID_AND_NUMBER;
+                    cmd.CommandText = TeamTable.SELECT_ID_AND_NUMBER + TeamTable.ORDER_TEAM_NUMBERS_NUMERICALLY;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
+
                     adap.Fill(ds);
+
+                    DataRow newRow = ds.Tables[0].NewRow();
+
+                    newRow[0] = -1;
+                    newRow[1] = "";
+
+                    ds.Tables[0].Rows.InsertAt(newRow, 0);
 
                     foreach (ComboBox combo in teamComboList)
                     {
                         combo.BindingContext = new BindingContext();
-                        combo.DataSource = ds.Tables[0].DefaultView;
+                        combo.DataSource = ds.Tables[0].DefaultView.ToTable();
                         combo.ValueMember = TeamTable.COL_ID;
                         combo.DisplayMember = TeamTable.COL_TEAM_NUMBER;
-                        //cmbCompetitionName.SelectedValue = this.compID;
                     }
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
@@ -127,6 +139,56 @@ namespace XeroScouterDBManage_Server
             }
         }
 
+        private String GetTeamIdFilter(int currentComboIndex)
+        {
+            String retVal = "";
+            List<long> idsToFilter = new List<long>();
+
+            for(int i = 0; i < teamComboList.Count; i++)
+            {
+                if(i == (int)currentComboIndex)
+                {
+                    continue;
+                }
+
+                long id = Utils.getLongIDFromComboSelectedValue(teamComboList[i]);
+                if (id != -1)
+                {
+                    idsToFilter.Add(id);
+                }
+            }
+
+            if(idsToFilter.Count > 0)
+            {
+                retVal += "_id<>" + idsToFilter[0];
+            }
+
+            for(int index = 1; index < idsToFilter.Count; index++)
+            {
+                retVal += " AND _id<>" + idsToFilter[index];
+            }
+
+            return retVal;
+        }
+
+        private void UpdateTeamComboBoxes(MatchTable.ALLIANCE_POSITION currentComboIndex)
+        {
+            for (int c = 0; c < teamComboList.Count; c++)
+            {
+                if ((int)currentComboIndex == c)
+                {
+                    continue;
+                }
+
+                object val = teamComboList[c].SelectedValue;
+
+                ComboBox combo = teamComboList[c];
+                DataTable dt = (DataTable)combo.DataSource;
+                DataView dv = dt.DefaultView;
+                dv.RowFilter = GetTeamIdFilter(c);
+            }
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -140,102 +202,121 @@ namespace XeroScouterDBManage_Server
         private void btnSaveAndAddNew_Click(object sender, EventArgs e)
         {
             SaveData(false);
+            PrepareFormForNewEntry();
+        }
+
+        private void PrepareFormForNewEntry()
+        {
+            this.dataChanged = false;
         }
 
         private void SaveData(bool exit)
         {
-            MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
-            MySqlCommand cmd;
             bool saved = true, validated = true;
-            long[] teamIDs = new long[]{-1, -1, -1, -1, -1, -1};
-            string[] alliancePositions = new string[] { "Blue1", "Blue2", "Blue3", "Red1", "Red2", "Red3" };
-            
-            connection.Open();
 
-            try
+            if (dataChanged)
             {
-                teamIDs[0] = Utils.getLongIDFromComboSelectedValue(cmbBlue1, lblStatus);
-                teamIDs[1] = Utils.getLongIDFromComboSelectedValue(cmbBlue2, lblStatus);
-                teamIDs[2] = Utils.getLongIDFromComboSelectedValue(cmbBlue3, lblStatus);
-                teamIDs[3] = Utils.getLongIDFromComboSelectedValue(cmbRed1, lblStatus);
-                teamIDs[4] = Utils.getLongIDFromComboSelectedValue(cmbRed2, lblStatus);
-                teamIDs[5] = Utils.getLongIDFromComboSelectedValue(cmbRed3, lblStatus);
-            }
-            catch (Exception e)
-            {
-                validated = false;
-                Console.Out.WriteLine(e.Message);
-            }
+                MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
+                MySqlCommand cmd;
 
-            if (validated)
-            {
+                long[] teamIDs = new long[] { -1, -1, -1, -1, -1, -1 };
+                string[] alliancePositions = new string[] { "Blue1", "Blue2", "Blue3", "Red1", "Red2", "Red3" };
+                int matchNumber = 0;
+
+                connection.Open();
+
                 try
                 {
-                    cmd = connection.CreateCommand();
-					cmd.CommandText = MatchTable.getInsertRecordString();
-
-					cmd.Parameters.AddWithValue("@" + MatchTable.COL_EVENT_ID, this.compID);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_COMP_LEVEL, txtMatchType.Text);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_NUMBER, int.Parse(txtMatchNumber.Text));
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_STATUS, "");
-
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_1, teamIDs[3]);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_2, teamIDs[4]);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_3, teamIDs[5]);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_AUTO_SCORE, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_TELEOP_SCORE, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_TOTAL_SCORE, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_QP, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_FOUL_POINTS, 0);
-
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_1, teamIDs[0]);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_2, teamIDs[1]);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_3, teamIDs[2]);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_AUTO_SCORE, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_TELEOP_SCORE, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_TOTAL_SCORE, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_QP, 0);
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_FOUL_POINTS, 0);
-
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COLUMN_NAME_MATCH_WINNER, "");
-                    cmd.Parameters.AddWithValue("@" + MatchTable.COLUMN_NAME_DRIVE_TEAM_COMMENTS, "");
-
-                    cmd.ExecuteNonQuery();
-                    long match_id = cmd.LastInsertedId;
-                    //long tablet_id = 0;
-                    cmd.Parameters.Clear();
-
-                    cmd.CommandText = TeamMatchTable.INSERT_RECORD;
-
-                    cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_TEAM_ID, 0);
-                    cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_MATCH_ID, 0);
-                    //cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_EVENT_ID, 0);
-                    cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_POSITION, "");
-                    cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_ALLIANCE, "");
-
-                    for (int tm = 0; tm < teamIDs.Length; tm++)
+                    for (int index = 0; index < teamComboList.Count; index++)
                     {
-                        cmd.Parameters["@" + TeamMatchTable.COL_TEAM_ID].Value = teamIDs[tm];
-                        cmd.Parameters["@" + TeamMatchTable.COL_MATCH_ID].Value = match_id;
-                        //cmd.Parameters["@" + TeamMatchTable.COL_EVENT_ID].Value = this.compID;
-                        cmd.Parameters["@" + TeamMatchTable.COL_POSITION].Value = (tm % 3) + 1 ;
-                        cmd.Parameters["@" + TeamMatchTable.COL_ALLIANCE].Value = (tm < 3) ? "Blue" : "Red";
+                        teamIDs[index] = Utils.getLongIDFromComboSelectedValue(teamComboList[index], lblStatus);
+                    }
+                    //teamIDs[0] = Utils.getLongIDFromComboSelectedValue(cmbBlue1, lblStatus);
+                    //teamIDs[1] = Utils.getLongIDFromComboSelectedValue(cmbBlue2, lblStatus);
+                    //teamIDs[2] = Utils.getLongIDFromComboSelectedValue(cmbBlue3, lblStatus);
+                    //teamIDs[3] = Utils.getLongIDFromComboSelectedValue(cmbRed1, lblStatus);
+                    //teamIDs[4] = Utils.getLongIDFromComboSelectedValue(cmbRed2, lblStatus);
+                    //teamIDs[5] = Utils.getLongIDFromComboSelectedValue(cmbRed3, lblStatus);
+                    matchNumber = int.Parse(txtMatchNumber.Text);
+
+                    ///TODO - add more robust validation
+                }
+                catch (Exception e)
+                {
+                    validated = false;
+                    Console.Out.WriteLine(e.Message);
+                }
+
+                if (validated)
+                {
+                    try
+                    {
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = MatchTable.getInsertRecordString();
+
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_EVENT_ID, this.compID);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_COMP_LEVEL, txtMatchType.Text);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_NUMBER, matchNumber);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_MATCH_STATUS, "");
+
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_1, teamIDs[3]);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_2, teamIDs[4]);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_3, teamIDs[5]);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_AUTO_SCORE, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_TELEOP_SCORE, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_TOTAL_SCORE, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_QP, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_RED_FOUL_POINTS, 0);
+
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_1, teamIDs[0]);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_2, teamIDs[1]);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_3, teamIDs[2]);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_AUTO_SCORE, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_TELEOP_SCORE, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_TOTAL_SCORE, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_QP, 0);
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COL_BLUE_FOUL_POINTS, 0);
+
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COLUMN_NAME_MATCH_WINNER, "");
+                        cmd.Parameters.AddWithValue("@" + MatchTable.COLUMN_NAME_DRIVE_TEAM_COMMENTS, "");
 
                         cmd.ExecuteNonQuery();
-                    }
+                        long match_id = cmd.LastInsertedId;
+                        //long tablet_id = 0;
+                        cmd.Parameters.Clear();
 
-                }
-                catch (Exception)
-                {
-                    saved = false;
-                    lblStatus.Text = "Failed to save data, check that database is active, and verify data is entered correctly";
-                    //throw;
-                }
-                finally
-                {
-                    if (connection.State == System.Data.ConnectionState.Open)
+                        cmd.CommandText = TeamMatchTable.INSERT_RECORD;
+
+                        cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_TEAM_ID, 0);
+                        cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_MATCH_ID, 0);
+                        //cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_EVENT_ID, 0);
+                        cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_POSITION, "");
+                        cmd.Parameters.AddWithValue("@" + TeamMatchTable.COL_ALLIANCE, "");
+
+                        for (int tm = 0; tm < teamIDs.Length; tm++)
+                        {
+                            cmd.Parameters["@" + TeamMatchTable.COL_TEAM_ID].Value = teamIDs[tm];
+                            cmd.Parameters["@" + TeamMatchTable.COL_MATCH_ID].Value = match_id;
+                            //cmd.Parameters["@" + TeamMatchTable.COL_EVENT_ID].Value = this.compID;
+                            cmd.Parameters["@" + TeamMatchTable.COL_POSITION].Value = (tm % 3) + 1;
+                            cmd.Parameters["@" + TeamMatchTable.COL_ALLIANCE].Value = (tm < 3) ? "Blue" : "Red";
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                    }
+                    catch (Exception)
                     {
-                        connection.Close();
+                        saved = false;
+                        lblStatus.Text = "Failed to save data, check that database is active, and verify data is entered correctly";
+                        //throw;
+                    }
+                    finally
+                    {
+                        if (connection.State == System.Data.ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
                     }
                 }
             }
@@ -254,12 +335,8 @@ namespace XeroScouterDBManage_Server
                     txtMatchTime.Text = "";
                     txtMatchType.Text = "Qualification";
                     txtMatchLocation.Text = "";
-                    cmbBlue1.Text = "";
-                    cmbBlue2.Text = "";
-                    cmbBlue3.Text = "";
-                    cmbRed1.Text = "";
-                    cmbRed2.Text = "";
-                    cmbRed3.Text = "";
+
+                    LoadTeams();
                 }
             }
         }
@@ -272,7 +349,70 @@ namespace XeroScouterDBManage_Server
                 this.compID = Utils.getLongIDFromComboSelectedValue(cmbCompetitionName, lblStatus);
                 DataRowView drv = (DataRowView)cmbCompetitionName.SelectedItem;
                 txtMatchLocation.Text = drv.Row[EventTable.COL_LOCATION].ToString();
+                dataChanged = true;
             }
+        }
+
+        private void HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION comboIndex)
+        {
+            long id = Utils.getLongIDFromComboSelectedValue(teamComboList[(int)comboIndex]);
+
+            if (this.initSentinal && id != currentTeamComboSelectedIds[(int)comboIndex])
+            {
+                currentTeamComboSelectedIds[(int)comboIndex] = id;
+                UpdateTeamComboBoxes(comboIndex);
+                dataChanged = true;
+            }
+        }
+
+        private void cmbBlue1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION.BLUE1);
+        }
+
+        private void cmbBlue2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION.BLUE2);
+        }
+
+        private void cmbBlue3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION.BLUE3);
+        }
+
+        private void cmbRed1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION.RED1);
+        }
+
+        private void cmbRed2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION.RED2);
+        }
+
+        private void cmbRed3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandleTeamComboSelectedIndexChange(MatchTable.ALLIANCE_POSITION.RED3);
+        }
+
+        private void txtMatchNumber_TextChanged(object sender, EventArgs e)
+        {
+            dataChanged = true;
+        }
+
+        private void txtMatchType_TextChanged(object sender, EventArgs e)
+        {
+            dataChanged = true;
+        }
+
+        private void txtMatchTime_TextChanged(object sender, EventArgs e)
+        {
+            dataChanged = true;
+        }
+
+        private void txtMatchLocation_TextChanged(object sender, EventArgs e)
+        {
+            dataChanged = true;
         }
     }
 }

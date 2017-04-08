@@ -35,6 +35,442 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/Autonomous"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="14.285"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="66.66"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/lbl_action_1"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="27.20"
+                                        android:text="Baseline Cross" />
+
+                                    <CheckBox
+                                        android:id="@+id/chkbx_action_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <Space
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="7.52" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="14.285"
+                            android:elevation="0dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="66.66"
+                                android:orientation="vertical"
+                                android:visibility="invisible">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/lbl_action_6"
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="50"
+                                        android:password="false"
+                                        android:text="Fuel Bin Triggered"
+                                        android:visibility="invisible" />
+
+                                    <LinearLayout
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="50"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            android:id="@+id/btn_decrement_action_6"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/decrement" />
+
+                                        <EditText
+                                            android:id="@+id/entry_action_6"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="45"
+                                            android:clickable="false"
+                                            android:ems="10"
+                                            android:inputType="number"
+                                            android:text="@string/default_text_0"
+                                            android:textAlignment="center" />
+
+                                        <Button
+                                            android:id="@+id/btn_increment_action_6"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/increment" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="14.285"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="66.66"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/lbl_action_5"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="50"
+                                        android:text="Gears Delivered" />
+
+                                    <LinearLayout
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="50"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            android:id="@+id/btn_decrement_action_5"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/decrement" />
+
+                                        <EditText
+                                            android:id="@+id/entry_action_5"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="45"
+                                            android:clickable="false"
+                                            android:ems="10"
+                                            android:inputType="number"
+                                            android:text="@string/default_text_0"
+                                            android:textAlignment="center" />
+
+                                        <Button
+                                            android:id="@+id/btn_increment_action_5"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/increment" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="14.285"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="66.66"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:id="@+id/lbl_action_2"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="50"
+                                        android:text="Low Boiler Dumps" />
+
+                                    <LinearLayout
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="50">
+
+                                        <Button
+                                            android:id="@+id/btn_decrement_action_2"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/decrement" />
+
+                                        <EditText
+                                            android:id="@+id/entry_action_2"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="45"
+                                            android:clickable="false"
+                                            android:ems="10"
+                                            android:inputType="number"
+                                            android:text="@string/default_text_0"
+                                            android:textAlignment="center" />
+
+                                        <Button
+                                            android:id="@+id/btn_increment_action_2"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/increment" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="14.285"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="66.66"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/lbl_action_3"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="50"
+                                        android:text="High Goal Score" />
+
+                                    <LinearLayout
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="50"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            android:id="@+id/btn_decrement_action_3"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/decrement" />
+
+                                        <EditText
+                                            android:id="@+id/entry_action_3"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="45"
+                                            android:clickable="false"
+                                            android:ems="10"
+                                            android:inputType="number"
+                                            android:text="@string/default_text_0"
+                                            android:textAlignment="center" />
+
+                                        <Button
+                                            android:id="@+id/btn_increment_action_3"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/increment" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="14.285"
+                            android:orientation="vertical"
+                            android:visibility="invisible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="66.66"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/lbl_action_4"
+                                        android:layout_width="10dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="50"
+                                        android:text="High Score Miss" />
+
+                                    <LinearLayout
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="50"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            android:id="@+id/btn_decrement_action_4"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:text="@string/decrement" />
+
+                                        <EditText
+                                            android:id="@+id/entry_action_4"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="45"
+                                            android:ems="10"
+                                            android:inputType="number"
+                                            android:text="@string/default_text_0"
+                                            android:textAlignment="center" />
+
+                                        <Button
+                                            android:id="@+id/btn_increment_action_4"
+                                            android:layout_width="10dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="23.33"
+                                            android:onClick="onClick"
+                                            android:text="@string/increment" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_weight="16.66"
+                                android:orientation="vertical"></LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="14.285"
+                            android:orientation="vertical"></LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/Teleop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -47,123 +483,126 @@
                         android:layout_height="match_parent">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
-                            android:layout_weight="11.11">
+                            android:layout_weight="11.11"
+                            android:orientation="vertical"
+                            android:visibility="invisible">
 
                             <LinearLayout
-                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
 
                                 <TextView
-                                    android:text="Fuel Bin Triggered"
+                                    android:id="@+id/lbl_action_11"
                                     android:layout_width="10dp"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_action_11"
-                                    android:layout_weight="50" />
+                                    android:layout_weight="50"
+                                    android:text="Fuel Bin Triggered" />
 
                                 <LinearLayout
-                                    android:orientation="horizontal"
                                     android:layout_width="10dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="50">
+                                    android:layout_weight="50"
+                                    android:orientation="horizontal">
 
                                     <Button
-                                        android:text="@string/decrement"
+                                        android:id="@+id/btn_decrement_action_11"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_11"
                                         android:layout_weight="23.33"
-                                        android:translationX="0dp"
-                                        android:translationY="9dp"
                                         android:onClick="onClick"
-                                        android:textAlignment="center" />
+                                        android:text="@string/decrement"
+                                        android:textAlignment="center"
+                                        android:translationX="0dp"
+                                        android:translationY="9dp" />
 
                                     <EditText
+                                        android:id="@+id/entry_action_11"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:inputType="number"
-                                        android:ems="10"
-                                        android:id="@+id/entry_action_11"
                                         android:layout_weight="45"
+                                        android:clickable="false"
+                                        android:ems="10"
+                                        android:inputType="number"
                                         android:rotation="0"
                                         android:rotationX="0"
-                                        android:translationX="0dp"
-                                        android:translationY="10dp"
                                         android:text="@string/default_text_0"
                                         android:textAlignment="center"
-                                        android:clickable="false" />
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
 
                                     <Button
-                                        android:text="@string/increment"
+                                        android:id="@+id/btn_increment_action_11"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp"
-                                        android:id="@+id/btn_increment_action_11"
-                                        android:onClick="onClick" />
+                                        android:onClick="onClick"
+                                        android:text="@string/increment"
+                                        android:translationY="10dp" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
-                            android:layout_weight="11.11">
+                            android:layout_weight="11.11"
+                            android:orientation="vertical"
+                            android:visibility="invisible">
+
                             <LinearLayout
-                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
 
                                 <TextView
-                                    android:text="Loading Station Triggered"
+                                    android:id="@+id/lbl_action_12"
                                     android:layout_width="10dp"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_action_12"
-                                    android:layout_weight="50" />
+                                    android:layout_weight="50"
+                                    android:text="Loading Station Triggered" />
 
                                 <LinearLayout
-                                    android:orientation="horizontal"
                                     android:layout_width="10dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="50">
+                                    android:layout_weight="50"
+                                    android:orientation="horizontal">
 
                                     <Button
-                                        android:text="@string/decrement"
+                                        android:id="@+id/btn_decrement_action_12"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_12"
                                         android:layout_weight="23.33"
+                                        android:onClick="onClick"
+                                        android:text="@string/decrement"
                                         android:translationX="0dp"
-                                        android:translationY="9dp"
-                                        android:onClick="onClick" />
+                                        android:translationY="9dp" />
 
                                     <EditText
+                                        android:id="@+id/entry_action_12"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:inputType="number"
-                                        android:ems="10"
-                                        android:id="@+id/entry_action_12"
                                         android:layout_weight="45"
+                                        android:clickable="false"
+                                        android:ems="10"
+                                        android:inputType="number"
                                         android:rotation="0"
                                         android:rotationX="0"
-                                        android:translationX="0dp"
-                                        android:translationY="10dp"
-                                        android:textAlignment="center"
                                         android:text="@string/default_text_0"
-                                        android:clickable="false" />
+                                        android:textAlignment="center"
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
 
                                     <Button
-                                        android:text="@string/increment"
+                                        android:id="@+id/btn_increment_action_12"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_12"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp"
-                                        android:onClick="onClick" />
+                                        android:onClick="onClick"
+                                        android:text="@string/increment"
+                                        android:translationY="10dp" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -350,60 +789,62 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
-                            android:layout_weight="11.11">
+                            android:layout_weight="11.11"
+                            android:orientation="vertical"
+                            android:visibility="invisible">
+
                             <LinearLayout
-                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
 
                                 <TextView
-                                    android:text="High Boiler Miss"
+                                    android:id="@+id/lbl_action_9"
                                     android:layout_width="10dp"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/lbl_action_9"
-                                    android:layout_weight="50" />
+                                    android:layout_weight="50"
+                                    android:text="High Boiler Miss" />
 
                                 <LinearLayout
-                                    android:orientation="horizontal"
                                     android:layout_width="10dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="50">
+                                    android:layout_weight="50"
+                                    android:orientation="horizontal">
 
                                     <Button
-                                        android:text="@string/decrement"
+                                        android:id="@+id/btn_decrement_action_9"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_decrement_action_9"
                                         android:layout_weight="23.33"
+                                        android:onClick="onClick"
+                                        android:text="@string/decrement"
                                         android:translationX="0dp"
-                                        android:translationY="9dp"
-                                        android:onClick="onClick" />
+                                        android:translationY="9dp" />
 
                                     <EditText
+                                        android:id="@+id/entry_action_9"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:inputType="number"
-                                        android:ems="10"
-                                        android:id="@+id/entry_action_9"
                                         android:layout_weight="45"
+                                        android:ems="10"
+                                        android:inputType="number"
                                         android:rotation="0"
                                         android:rotationX="0"
-                                        android:translationX="0dp"
-                                        android:translationY="10dp"
+                                        android:text="@string/default_text_0"
                                         android:textAlignment="center"
-                                        android:text="@string/default_text_0" />
+                                        android:translationX="0dp"
+                                        android:translationY="10dp" />
 
                                     <Button
-                                        android:text="@string/increment"
+                                        android:id="@+id/btn_increment_action_9"
                                         android:layout_width="10dp"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/btn_increment_action_9"
                                         android:layout_weight="23.33"
-                                        android:translationY="10dp"
-                                        android:onClick="onClick" />
+                                        android:onClick="onClick"
+                                        android:text="@string/increment"
+                                        android:translationY="10dp" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -432,11 +873,12 @@
                                         android:onClick="onRadioButtonClicked" />
 
                                     <RadioButton
-                                        android:text="Successful Climb"
+                                        android:id="@+id/radio_action_14"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/radio_action_14"
-                                        android:onClick="onRadioButtonClicked" />
+                                        android:onClick="onRadioButtonClicked"
+                                        android:text="Successful Climb"
+                                        android:visibility="invisible" />
 
                                     <RadioButton
                                         android:text="Climb Score"
@@ -486,439 +928,6 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Autonomous"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_weight="14.285">
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="66.66">
-
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:text="Baseline Cross"
-                                        android:layout_width="10dp"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/lbl_action_1"
-                                        android:layout_weight="27.20" />
-
-                                    <CheckBox
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/chkbx_action_1" />
-
-                                    <Space
-                                        android:layout_width="10dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="7.52" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_weight="14.285"
-                            android:elevation="0dp">
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="66.66">
-
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:text="Fuel Bin Triggered"
-                                        android:layout_width="10dp"
-                                        android:layout_height="match_parent"
-                                        android:id="@+id/lbl_action_6"
-                                        android:layout_weight="50"
-                                        android:password="false" />
-
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:layout_width="10dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="50">
-
-                                        <Button
-                                            android:text="@string/decrement"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_decrement_action_6"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-
-                                        <EditText
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="number"
-                                            android:ems="10"
-                                            android:id="@+id/entry_action_6"
-                                            android:layout_weight="45"
-                                            android:text="@string/default_text_0"
-                                            android:textAlignment="center"
-                                            android:clickable="false" />
-
-                                        <Button
-                                            android:text="@string/increment"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_increment_action_6"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_weight="14.285">
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="66.66">
-
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:text="Gears Delivered"
-                                        android:layout_width="10dp"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/lbl_action_5"
-                                        android:layout_weight="50" />
-
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:layout_width="10dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="50">
-
-                                        <Button
-                                            android:text="@string/decrement"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_decrement_action_5"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-
-                                        <EditText
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="number"
-                                            android:ems="10"
-                                            android:id="@+id/entry_action_5"
-                                            android:layout_weight="45"
-                                            android:textAlignment="center"
-                                            android:text="@string/default_text_0"
-                                            android:clickable="false" />
-
-                                        <Button
-                                            android:text="@string/increment"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_increment_action_5"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_weight="14.285">
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="66.66">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:text="Low Boiler Trips"
-                                        android:layout_width="10dp"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/lbl_action_2"
-                                        android:layout_weight="50" />
-
-                                    <LinearLayout
-                                        android:layout_width="10dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="50">
-
-                                        <Button
-                                            android:text="@string/decrement"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_decrement_action_2"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-
-                                        <EditText
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="number"
-                                            android:ems="10"
-                                            android:id="@+id/entry_action_2"
-                                            android:layout_weight="45"
-                                            android:text="@string/default_text_0"
-                                            android:textAlignment="center"
-                                            android:clickable="false" />
-
-                                        <Button
-                                            android:text="@string/increment"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_increment_action_2"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-                                    </LinearLayout>
-
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_weight="14.285">
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="66.66">
-
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:text="High Goal Socre"
-                                        android:layout_width="10dp"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/lbl_action_3"
-                                        android:layout_weight="50" />
-
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:layout_width="10dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="50">
-
-                                        <Button
-                                            android:text="@string/decrement"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_decrement_action_3"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-
-                                        <EditText
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="number"
-                                            android:ems="10"
-                                            android:id="@+id/entry_action_3"
-                                            android:layout_weight="45"
-                                            android:text="@string/default_text_0"
-                                            android:textAlignment="center"
-                                            android:clickable="false" />
-
-                                        <Button
-                                            android:text="@string/increment"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_increment_action_3"
-                                            android:layout_weight="23.33"
-                                            android:onClick="onClick" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_weight="14.285">
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="16.66"></LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                android:layout_weight="66.66">
-
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:text="High Score Miss"
-                                        android:layout_width="10dp"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/lbl_action_4"
-                                        android:layout_weight="50" />
-
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:layout_width="10dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="50">
-
-                                        <Button
-                                            android:text="@string/decrement"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_decrement_action_4"
-                                            android:layout_weight="23.33" />
-
-                                        <EditText
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="number"
-                                            android:ems="10"
-                                            android:id="@+id/entry_action_4"
-                                            android:layout_weight="45"
-                                            android:text="@string/default_text_0"
-                                            android:textAlignment="center" />
-
-                                        <Button
-                                            android:text="@string/increment"
-                                            android:layout_width="10dp"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/btn_increment_action_4"
-                                            android:onClick="onClick"
-                                            android:layout_weight="23.33" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_weight="16.66"
-                                android:layout_height="10dp"></LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_weight="14.285"
-                            android:layout_height="wrap_content"></LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 

@@ -69,6 +69,7 @@
             this.txtMatchNumber.Name = "txtMatchNumber";
             this.txtMatchNumber.Size = new System.Drawing.Size(80, 20);
             this.txtMatchNumber.TabIndex = 0;
+            this.txtMatchNumber.TextChanged += new System.EventHandler(this.txtMatchNumber_TextChanged);
             // 
             // txtMatchTime
             // 
@@ -76,6 +77,7 @@
             this.txtMatchTime.Name = "txtMatchTime";
             this.txtMatchTime.Size = new System.Drawing.Size(80, 20);
             this.txtMatchTime.TabIndex = 2;
+            this.txtMatchTime.TextChanged += new System.EventHandler(this.txtMatchTime_TextChanged);
             // 
             // lblMatchTime
             // 
@@ -93,6 +95,7 @@
             this.txtMatchType.Size = new System.Drawing.Size(152, 20);
             this.txtMatchType.TabIndex = 1;
             this.txtMatchType.Text = "Qualification";
+            this.txtMatchType.TextChanged += new System.EventHandler(this.txtMatchType_TextChanged);
             // 
             // lblMatchType
             // 
@@ -109,6 +112,7 @@
             this.txtMatchLocation.Name = "txtMatchLocation";
             this.txtMatchLocation.Size = new System.Drawing.Size(152, 20);
             this.txtMatchLocation.TabIndex = 3;
+            this.txtMatchLocation.TextChanged += new System.EventHandler(this.txtMatchLocation_TextChanged);
             // 
             // lblMatchLocation
             // 
@@ -147,6 +151,7 @@
             this.cmbBlue1.Name = "cmbBlue1";
             this.cmbBlue1.Size = new System.Drawing.Size(121, 21);
             this.cmbBlue1.TabIndex = 4;
+            this.cmbBlue1.SelectedIndexChanged += new System.EventHandler(this.cmbBlue1_SelectedIndexChanged);
             // 
             // cmbBlue2
             // 
@@ -158,6 +163,7 @@
             this.cmbBlue2.Name = "cmbBlue2";
             this.cmbBlue2.Size = new System.Drawing.Size(121, 21);
             this.cmbBlue2.TabIndex = 5;
+            this.cmbBlue2.SelectedIndexChanged += new System.EventHandler(this.cmbBlue2_SelectedIndexChanged);
             // 
             // cmbBlue3
             // 
@@ -169,6 +175,7 @@
             this.cmbBlue3.Name = "cmbBlue3";
             this.cmbBlue3.Size = new System.Drawing.Size(121, 21);
             this.cmbBlue3.TabIndex = 6;
+            this.cmbBlue3.SelectedIndexChanged += new System.EventHandler(this.cmbBlue3_SelectedIndexChanged);
             // 
             // cmbRed1
             // 
@@ -180,6 +187,7 @@
             this.cmbRed1.Name = "cmbRed1";
             this.cmbRed1.Size = new System.Drawing.Size(121, 21);
             this.cmbRed1.TabIndex = 7;
+            this.cmbRed1.SelectedIndexChanged += new System.EventHandler(this.cmbRed1_SelectedIndexChanged);
             // 
             // cmbRed2
             // 
@@ -191,6 +199,7 @@
             this.cmbRed2.Name = "cmbRed2";
             this.cmbRed2.Size = new System.Drawing.Size(121, 21);
             this.cmbRed2.TabIndex = 8;
+            this.cmbRed2.SelectedIndexChanged += new System.EventHandler(this.cmbRed2_SelectedIndexChanged);
             // 
             // cmbRed3
             // 
@@ -202,6 +211,7 @@
             this.cmbRed3.Name = "cmbRed3";
             this.cmbRed3.Size = new System.Drawing.Size(121, 21);
             this.cmbRed3.TabIndex = 9;
+            this.cmbRed3.SelectedIndexChanged += new System.EventHandler(this.cmbRed3_SelectedIndexChanged);
             // 
             // btnSave
             // 
