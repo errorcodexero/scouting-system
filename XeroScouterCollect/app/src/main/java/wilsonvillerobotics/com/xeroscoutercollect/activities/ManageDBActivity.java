@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,6 +34,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
+import wilsonvillerobotics.com.xeroscoutercollect.database.ManageDB;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
@@ -57,9 +61,9 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private String tabletId;
     private int backupTeamMatchAction = 0;
     private String baseFolder;
-    private boolean isPitScoutingTablet;
-    private File pitFile = null;
-    private File tmaFile = null;
+    protected boolean isPitScoutingTablet;
+    protected File pitFile = null;
+    protected File tmaFile = null;
 
 
     @Override
@@ -141,8 +145,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_import_to_tablet) {
-            FTPConnection ftp = new FTPConnection(this);
-            ftp.getFTPFiles(baseFolder);
+
         }
         else if (view.getId() == R.id.btn_clear_db_data) {
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
@@ -171,55 +174,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
         }
         else if (view.getId() == R.id.btn_export) {
-            XMLExporter xmlExporter = new XMLExporter(tempCtx);
-            String temp = xmlExporter.generateAllTeamData(true, true, this);
-            String filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
-            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
-            File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
-
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
-            ArrayList<String> string = xmlExporter.GenerateNewMatches();
-            File file = new File(baseFolder + File.separator + filename);
-            file.getParentFile().mkdirs();
-            FileOutputStream fos;
-            if(isPitScoutingTablet) {
-                String pitOut = xmlExporter.generateAllTeamData(true, true, this);
-                pitFileName = "pit" + "-" + tabletId + "-" + getTimeStamp() + ".xml";
-                pitFile = new File(baseFolder + File.separator + pitFileName);
-
-                try {
-                    fos = new FileOutputStream(pitFile);
-                    fos.write(pitOut.getBytes());
-                    fos.flush();
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            else {
-                tmaFileName = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
-
-                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
-                tmaFile = new File(baseFolder + File.separator + tmaFileName);
-                tmaFile.getParentFile().mkdirs();
-
-                try {
-                    fos = new FileOutputStream(tmaFile);
-
-                    for(String teamMatchAction : string) {
-                        fos.write(teamMatchAction.getBytes());
-                    }
-
-                    fos.flush();
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
+            new DataBuilderTask().execute(null,null,null);
 
             //Prompts user for xport type
             //If bluetooth fails, prompts, and allows to restore backup TMA
@@ -312,6 +267,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                 String query = "delete from " + name;
                 sqlDB.execSQL(query);
             }
+            Log.d("ManageDB", "Allah Akbar!!");
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -329,6 +285,110 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         SimpleDateFormat format = new SimpleDateFormat("MMdd_hhmmss");
         return format.format(curDate);
     }
+
+    private class DataBuilderTask extends AsyncTask<Void,String,Boolean>{
+        private TextView txt = (TextView) findViewById(R.id.lbl_user_status_text);
+        protected void onPreExecute() {
+            txt.setText("Preparing to build XML File.");
+        }
+        protected Boolean doInBackground(Void... params) {
+            Boolean bool = buildExportData();
+            return bool;
+        }
+
+        protected void onProgressUpdate(String... values) {
+            txt.setText(values[0]);
+        }
+
+        protected void onPostExecute(Boolean aBoolean) {
+            txt.setText("Built XML File. Ready to export.");
+        }
+
+        protected boolean buildExportData(){
+            XMLExporter xmlExporter = new XMLExporter(tempCtx);
+            //String temp = xmlExporter.generateAllTeamData(true, true, this);
+            String filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
+            publishProgress("Creating file associations.");
+            //File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
+
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ManageDBActivity.this);
+            backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
+            ArrayList<String> string = xmlExporter.GenerateNewMatches();
+            File file = new File(baseFolder + File.separator + filename);
+            file.getParentFile().mkdirs();
+            FileOutputStream fos;
+            if(isPitScoutingTablet) {
+                publishProgress("Begun building Pit XML.");
+                String pitOut = xmlExporter.generateAllTeamData(true, true, ManageDBActivity.this);
+                pitFileName = "pit" + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+                pitFile = new File(baseFolder + File.separator + pitFileName);
+
+                try {
+                    fos = new FileOutputStream(pitFile);
+                    fos.write(pitOut.getBytes());
+                    fos.flush();
+                    fos.close();
+                    if(pitFile.getTotalSpace() < 0){
+                        publishProgress("Successfully built pit export.");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else {
+                tmaFileName = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
+
+                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ManageDBActivity.this);
+                backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
+                tmaFile = new File(baseFolder + File.separator + tmaFileName);
+                tmaFile.getParentFile().mkdirs();
+
+                publishProgress("Building XML File. Please wait to export.");
+
+                try {
+                    fos = new FileOutputStream(tmaFile);
+                    for(String teamMatchAction : string) {
+                        fos.write(teamMatchAction.getBytes());
+                    }
+
+                    fos.flush();
+                    fos.close();
+                    if(tmaFile.getTotalSpace() < 0){
+                        publishProgress("Successfully built TMA export.");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return true;
+        }
+    }
+
+    private class DataReceiverTask extends AsyncTask<Void,String,Boolean>{
+        private TextView txt = (TextView) findViewById(R.id.lbl_user_status_text);
+
+        protected Boolean doInBackground(Void... params) {
+            FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
+            ftp.getFTPFiles(baseFolder);
+            return true;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+
+            //txt.setText(values)
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+        }
+    }
+
+
 
 }
 
