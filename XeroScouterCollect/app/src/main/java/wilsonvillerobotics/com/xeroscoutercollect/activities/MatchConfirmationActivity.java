@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,9 +48,6 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     private int currentSelectedTeamIndex;
     private boolean isRed;
     public ArrayList<MatchModel> matchObjList;
-    private MatchModel match1;
-    private MatchModel match2;
-    private MatchModel match3;
     private ArrayList<Integer> lbl_list;
     private Integer lastMatchNum;
     private String currentSelectedTeam;
@@ -308,11 +306,25 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
     private void populateMatchTable() {
         db = dbHelper.getReadableDatabase();
 
-        int event_id = Integer.parseInt(sharedPreferences.getString(getString(R.string.event_name_pref), "-1"));
-        //int event_id = 139;
+        Cursor cursor = null;
+        boolean exit = false;
+        try {
+            int event_id = Integer.parseInt(sharedPreferences.getString(getString(R.string.event_name_pref), "-1"));
+            //int event_id = 139;
 
-        String query = MatchModel.getAllMatches(event_id);
-        Cursor cursor = db.rawQuery(query, null);
+            String query = MatchModel.getAllMatches(event_id);
+            cursor = db.rawQuery(query, null);
+            exit = (cursor == null);
+        } catch (NumberFormatException nfe) {
+            Toast.makeText(this, "Invalid event, should be the event ID (number)", Toast.LENGTH_LONG).show();
+            Log.e("MATCH_CONFIRMATION_ACT", nfe.getMessage());
+            exit = true;
+        } catch (Exception e) {
+            Log.e("MATCH_CONFIRMATION_ACT", e.getMessage());
+            exit = true;
+        } finally {
+            if(exit) return;
+        }
 
         try {
             while(cursor.moveToNext()) {

@@ -1,7 +1,6 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
 import android.content.Context;
-import android.util.EventLog;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -19,7 +18,6 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;

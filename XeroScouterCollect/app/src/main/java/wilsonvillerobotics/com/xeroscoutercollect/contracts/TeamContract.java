@@ -7,7 +7,6 @@ import android.provider.BaseColumns;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.StringJoiner;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;

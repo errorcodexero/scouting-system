@@ -1,7 +1,5 @@
 package wilsonvillerobotics.com.xeroscoutercollect.models;
 
-import java.util.ArrayList;
-
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 
 /**

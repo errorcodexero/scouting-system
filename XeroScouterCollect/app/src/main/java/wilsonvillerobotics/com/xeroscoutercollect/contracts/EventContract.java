@@ -4,16 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
-import android.util.Log;
 
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-import wilsonvillerobotics.com.xeroscoutercollect.database.TeamMatch;
 import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 import wilsonvillerobotics.com.xeroscoutercollect.interfaces.SQLDataTypeDefines;
-
-import static wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract.EventEntry;
 
 /**
  * Created by tomso on 11/30/2016.

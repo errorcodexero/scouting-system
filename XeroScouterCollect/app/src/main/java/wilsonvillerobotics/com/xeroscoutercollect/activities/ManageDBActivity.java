@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,7 +35,6 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
-    private XMLParser parser;
     public enum TABLE_NAME{
         EVENT,
         MATCH,
@@ -50,7 +48,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private String tmaFileName;
     private String pitFileName;
     private Context tempCtx;
-    private Button btn_export;
     private SQLiteDatabase sqlDB;
     private String pref_default = "*";
     private SharedPreferences sharedPreferences;
@@ -67,7 +64,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         tempCtx = this;
         setContentView(R.layout.activity_manage_db);
-        parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
         sqlDB = db.getWritableDatabase();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);

@@ -1,20 +1,15 @@
 package wilsonvillerobotics.com.xeroscoutercollect.connection;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +20,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
-import java.util.Properties;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 
