@@ -32,6 +32,10 @@ public class TeamMatchActionModel implements SQLDataTypeDefines {
 
 
     public static String addAction(String tablet_uuid, int TeamMatchId, int ActionId, Boolean isDec) {
+        return(addActionWithCount(tablet_uuid, TeamMatchId, ActionId, isDec, 0));
+    }
+
+    public static String addActionWithCount(String tablet_uuid, int TeamMatchId, int ActionId, Boolean isDec, int objCount) {
 
         int quant = isDec ? -1 : 1;
 
@@ -44,7 +48,7 @@ public class TeamMatchActionModel implements SQLDataTypeDefines {
                 + TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME + COMMA_SEP
                 + TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT + ") VALUES ("
                 + "'" + tablet_uuid + "'"+ COMMA_SEP + TeamMatchId + COMMA_SEP + ActionId + COMMA_SEP + quant + COMMA_SEP
-                + "datetime(), datetime(), 0);");
+                + "datetime(), datetime()," + COMMA_SEP + objCount + ");");
 
     }
 
