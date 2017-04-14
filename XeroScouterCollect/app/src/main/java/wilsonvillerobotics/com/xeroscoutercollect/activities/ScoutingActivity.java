@@ -66,6 +66,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
     Stopwatch sw;
     long climbTime;
+    boolean climbing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         Log.i("Scouting Activity", "onCreate");
 
         sw = new Stopwatch();
+        climbing = false;
 
         // Initializing the tabbing system
 
@@ -450,6 +452,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         String queryString = "";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         double time;
+        boolean climbSuccess = false;
 
         switch (view.getId()) {
             case R.id.btn_finalize_back:
@@ -459,6 +462,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
             case R.id.btn_climb_timer_start:
                 climbTime = 0;
+                climbing = true;
                 findViewById(R.id.btn_climb_success).setEnabled(true);
                 findViewById(R.id.btn_climb_failed).setEnabled(true);
                 findViewById(R.id.btn_climb_timer_start).setEnabled(false);
@@ -470,6 +474,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                  if(resetClickedOnce)
                 {
                     climbTime = 0;
+                    climbing = false;
                     sw.stop();
                     findViewById(R.id.btn_climb_success).setEnabled(false);
                     findViewById(R.id.btn_climb_failed).setEnabled(false);
@@ -485,6 +490,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
             case R.id.btn_climb_success:
                 sw.stop();
+                climbSuccess = true;
                 climbTime = sw.getElapsedTime();
                 time = climbTime / 1000.0;
                 ((TextView)findViewById(R.id.txt_climb_time)).setText(String.valueOf(time) + "seconds");
@@ -505,18 +511,15 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
                 CheckBox autoBaseline = (CheckBox) findViewById(R.id.chkbx_action_1);
 
+                if (autoBaseline.isChecked()) {
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 1, false));
+                }
+
+                /*
                 RadioButton action_13 = (RadioButton) findViewById(R.id.radio_action_13);
                 RadioButton action_14 = (RadioButton) findViewById(R.id.radio_action_14);
                 RadioButton action_15 = (RadioButton) findViewById(R.id.radio_action_15);
 
-                ToggleButton defensiveToggle = (ToggleButton) findViewById(R.id.btn_action_16);
-                ToggleButton disconnectToggle = (ToggleButton) findViewById(R.id.btn_action_17);
-                ToggleButton breakdownToggle = (ToggleButton) findViewById(R.id.btn_action_18);
-
-
-                if (autoBaseline.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 1, false));
-                }
                 if (action_13.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 13, false));
                 } else if (action_14.isChecked()) {
@@ -524,6 +527,25 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                 } else if (action_15.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 15, false));
                 }
+                */
+
+                if(climbing)
+                {
+                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 13, false));
+                    if(climbSuccess)
+                    {
+                        db.execSQL(TeamMatchActionModel.addActionWithCount(tablet_uuid, teamMatchId, 15, false, (int)climbTime));
+                    }
+                    else
+                    {
+                        db.execSQL(TeamMatchActionModel.addActionWithCount(tablet_uuid, teamMatchId, 14, false, (int)climbTime));
+                    }
+                }
+
+
+                ToggleButton defensiveToggle = (ToggleButton) findViewById(R.id.btn_action_16);
+                ToggleButton disconnectToggle = (ToggleButton) findViewById(R.id.btn_action_17);
+                ToggleButton breakdownToggle = (ToggleButton) findViewById(R.id.btn_action_18);
 
                 if (defensiveToggle.isChecked()) {
                     db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 16, false));
