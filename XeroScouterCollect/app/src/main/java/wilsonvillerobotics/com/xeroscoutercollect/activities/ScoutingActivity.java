@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
@@ -53,7 +52,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected ArrayList<String> queryStringList = new ArrayList<>();
     protected TwoColumnAdapter finalizeTabAdapter;
     private boolean didCleanExit = false;
-    private boolean doKillInfidelData = false;
+    private boolean doRemoveOldData = false;
     protected int currentClickedId;
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
@@ -232,7 +231,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                             RadioButton noClimbTempDisable = (RadioButton) findViewById(R.id.radio_no_climb);
                             noClimbTempDisable.setChecked(false);
                             deSerializeEntryValueMap();
-                            doKillInfidelData = true;
+                            doRemoveOldData = true;
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -520,9 +519,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
             case R.id.btn_finalize_finish:
 
-                if(doKillInfidelData) {
+                if(doRemoveOldData) {
                     db.rawQuery("DELETE FROM 'team_match_action' WHERE `team_match_id` = " + teamMatchId + ";", null );
-                    Log.d("ScoutingFinal","ALLAHU AKBAR!!!");
                 }
 
                 didCleanExit = true;
@@ -552,10 +550,12 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                     db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 13, false));
                     if(climbSuccess)
                     {
+                        Log.d("ScoutingActivity",Long.toString(climbTime));
                         db.execSQL(TeamMatchActionModel.addActionWithCount(tablet_uuid, teamMatchId, 15, false, (int)climbTime));
                     }
                     else
                     {
+                        Log.d("ScoutingActivity",Long.toString(climbTime));
                         db.execSQL(TeamMatchActionModel.addActionWithCount(tablet_uuid, teamMatchId, 14, false, (int)climbTime));
                     }
                 }

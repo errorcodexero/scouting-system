@@ -48,7 +48,7 @@ public class TeamMatchActionModel implements SQLDataTypeDefines {
                 + TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_END_TIME + COMMA_SEP
                 + TeamMatchActionContract.TeamMatchActionEntry.COLUMN_NAME_OBJECT_COUNT + ") VALUES ("
                 + "'" + tablet_uuid + "'"+ COMMA_SEP + TeamMatchId + COMMA_SEP + ActionId + COMMA_SEP + quant + COMMA_SEP
-                + "datetime(), datetime()," + COMMA_SEP + objCount + ");");
+                + "datetime(), datetime()" + COMMA_SEP + objCount + ");");
 
     }
 
