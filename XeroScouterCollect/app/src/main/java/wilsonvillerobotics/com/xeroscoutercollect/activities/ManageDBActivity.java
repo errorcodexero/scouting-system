@@ -13,13 +13,13 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractSequentialList;
 import java.util.ArrayList;
 
 import java.util.Date;
@@ -40,7 +40,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.XMLParser;
 
 
 public class ManageDBActivity extends Activity implements View.OnClickListener {
-    private XMLParser parser;
+
     public enum TABLE_NAME{
         EVENT,
         MATCH,
@@ -54,7 +54,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private String tmaFileName;
     private String pitFileName;
     private Context tempCtx;
-    private Button btn_export;
     private SQLiteDatabase sqlDB;
     private String pref_default = "*";
     private SharedPreferences sharedPreferences;
@@ -71,11 +70,12 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         tempCtx = this;
         setContentView(R.layout.activity_manage_db);
-        parser = new XMLParser(getApplicationContext());
         db = DatabaseHelper.getInstance(getApplicationContext());
         sqlDB = db.getWritableDatabase();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         tabletId = sharedPreferences.getString(getString(R.string.tablet_id_pref), pref_default);
+        backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
+        Log.d("OnClickBackupTMA",Integer.toString(backupTeamMatchAction));
         //TODO Add this networking on another thread
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -97,55 +97,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     private final String XML_EXT = ".xml";
     private String TN = "table_file_name";
 
-    public void importDataFromXML(){
-        String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-
-        XMLParser myParser = new XMLParser("",this);
-        ArrayList<String> xmlFilePaths = new ArrayList<String>();
-        xmlFilePaths.add(downloadDirectory + "/" + EventContract.EventEntry.TABLE_NAME + XML_EXT); //getFilesDir()
-        xmlFilePaths.add(downloadDirectory + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(downloadDirectory + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(downloadDirectory + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
-        xmlFilePaths.add(downloadDirectory + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
-
-        for(String path:xmlFilePaths){
-            ArrayList<HashMap<String, XMLParser.TableColumn>> hashMapArrayList = myParser.parseXML(path);
-            for(HashMap<String, XMLParser.TableColumn> map : hashMapArrayList){
-                boolean hasTN = map.containsKey(TN);
-                if (hasTN) {
-                    TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get(TN))).getValue();
-                    switch (tName) {
-                    case EVENT:
-                        EventContract ec = new EventContract();
-                        ec.queryInsertEventData(map, this);
-                        break;
-                    case TEAM:
-                        TeamContract tc = new TeamContract();
-                        tc.queryInsertTeamData(map, this);
-                        break;
-                    case TEAMMATCH:
-                        TeamMatchContract tmc = new TeamMatchContract();
-                        tmc.queryInsertTeamMatchData(map, this);
-                        break;
-                    case ACTIONTYPE:
-                        ActionsContract ac = new ActionsContract();
-                        ac.queryInsertActionsData(map, this);
-                        break;
-                    case MATCH:
-                        MatchContract mc = new MatchContract();
-                        mc.queryInsertMatchData(map, this);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_import_to_tablet) {
-
+            new DataTransferTask().execute(null,null,null);
         }
         else if (view.getId() == R.id.btn_clear_db_data) {
             //Toast.makeText(this,"Completed parsing the xml file",Toast.LENGTH_SHORT).show();
@@ -158,7 +114,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            clearDatabase();
+                            clearDatabase(true);
                         }
                     });
             builder1.setNegativeButton(
@@ -223,15 +179,16 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     "FTP",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
+                            DataTransferTask transferTask = new DataTransferTask();
                             if(isPitScoutingTablet){
-                                ftp.sendFTPFile(pitFile);
+                                transferTask.setIsSend(true);
+                                transferTask.setSendFile(pitFile);
                             }
                             else{
-                                if(!ftp.sendFTPFile(tmaFile)) {
-                                    restoreBackupTMAIndex();
-                                }
+                                transferTask.setIsSend(true);
+                                transferTask.setSendFile(tmaFile);
                             }
+                            transferTask.execute(null,null,null);
                         }
                     });
 
@@ -242,7 +199,11 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
 
         else if(view.getId() == R.id.btn_build_db){
-            importDataFromXML();
+            clearDatabase(false);
+            //async here
+            new DatabaseBuilderTask().execute(null,null,null);
+
+
         }
     }
 
@@ -254,14 +215,17 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
 //
     //Cleans up tables in the database
-    private void clearDatabase() {
+    private void clearDatabase(boolean clearTMA) {
         ArrayList<String> tableList = new ArrayList<String>();
         tableList.add("event");
         tableList.add("match");
         tableList.add("team_match");
         tableList.add("action_type");
         tableList.add("team");
-        tableList.add("team_match_action");
+        if(clearTMA){
+            tableList.add("team_match_action");
+        }
+
         try{
             for(String name : tableList){
                 String query = "delete from " + name;
@@ -309,11 +273,9 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             //String temp = xmlExporter.generateAllTeamData(true, true, this);
             String filename = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename;
+            Log.d("BeginDataExprtBackupTMA",Integer.toString(backupTeamMatchAction));
             publishProgress("Creating file associations.");
             //File xmlFile = new File(path); // Environment.getExternalStorageDirectory() //tempCtx.getFilesDir()
-
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ManageDBActivity.this);
-            backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
             ArrayList<String> string = xmlExporter.GenerateNewMatches();
             File file = new File(baseFolder + File.separator + filename);
             file.getParentFile().mkdirs();
@@ -340,8 +302,6 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
             else {
                 tmaFileName = "tma-" + xmlExporter.getLastTeamMatchAction() + "-" + tabletId + "-" + getTimeStamp() + ".xml";
 
-                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ManageDBActivity.this);
-                backupTeamMatchAction = Integer.parseInt(sharedPreferences.getString("tma_index_id", "0"));
                 tmaFile = new File(baseFolder + File.separator + tmaFileName);
                 tmaFile.getParentFile().mkdirs();
 
@@ -362,30 +322,122 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     e.printStackTrace();
                 }
             }
+            Log.d("DoneDataXPTBackupTMA",Integer.toString(backupTeamMatchAction));
             return true;
+
         }
+
     }
 
-    private class DataReceiverTask extends AsyncTask<Void,String,Boolean>{
+    public class DataTransferTask extends AsyncTask<Void,String,Boolean>{
         private TextView txt = (TextView) findViewById(R.id.lbl_user_status_text);
+        private boolean _isSend = false;
+        private File sendFile;
+        private boolean didSucceed;
+
+
+        public void setIsSend(boolean isSend){
+            Log.d("DataTransferTask","Set to Send");
+            _isSend = isSend;
+        }
+
+        public void setSendFile(File file){
+            sendFile = file;
+        }
 
         protected Boolean doInBackground(Void... params) {
             FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
-            ftp.getFTPFiles(baseFolder);
+            if(_isSend){
+                if (!ftp.sendFTPFile(sendFile, this)) {
+                    restoreBackupTMAIndex();
+                }
+                else {didSucceed = true;}
+            }
+            else{
+                ftp.getFTPFiles(baseFolder,this);
+                didSucceed = true;}
             return true;
         }
 
         @Override
         protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-
-            //txt.setText(values)
+            txt.setText(values[0]); //Tests text to status text
         }
 
-        @Override
+        public void myPublish(String... values){
+            publishProgress(values);
+        }
+
+
         protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
+            if(!didSucceed){
+                restoreBackupTMAIndex();
+                txt.setText("Export Failed. Please try again.");
+            }
         }
+    }
+
+    public class DatabaseBuilderTask extends AsyncTask<Void,String,Boolean>{
+        private TextView txt = (TextView) findViewById(R.id.lbl_user_status_text);
+        protected Boolean doInBackground(Void... params) {
+            importDataFromXML();
+            return true;
+        }
+
+        protected void onProgressUpdate(String... values) {
+            txt.setText(values[0]);
+        }
+
+        public void builderPublish(String s){
+            publishProgress(s);
+        }
+
+        public void importDataFromXML(){
+            String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+
+            XMLParser myParser = new XMLParser("",ManageDBActivity.this,DatabaseBuilderTask.this);
+            ArrayList<String> xmlFilePaths = new ArrayList<String>();
+            xmlFilePaths.add(downloadDirectory + "/" + EventContract.EventEntry.TABLE_NAME + XML_EXT); //getFilesDir()
+            xmlFilePaths.add(downloadDirectory + "/" + MatchContract.MatchEntry.TABLE_NAME + XML_EXT);
+            xmlFilePaths.add(downloadDirectory + "/" + ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT);
+            xmlFilePaths.add(downloadDirectory + "/" + TeamMatchContract.TeamMatchEntry.TABLE_NAME + XML_EXT);
+            xmlFilePaths.add(downloadDirectory + "/" + TeamContract.TeamEntry.TABLE_NAME + XML_EXT);
+
+            for(String path:xmlFilePaths){
+                ArrayList<HashMap<String, XMLParser.TableColumn>> hashMapArrayList = myParser.parseXML(path);
+                publishProgress("Received Hashmap. Begun to build SQL DB.");
+                for(HashMap<String, XMLParser.TableColumn> map : hashMapArrayList){
+                    boolean hasTN = map.containsKey(TN);
+                    if (hasTN) {
+                        TABLE_NAME tName = ((XMLParser.TableTableNameColumn) (map.get(TN))).getValue();
+                        switch (tName) {
+                            case EVENT:
+                                EventContract ec = new EventContract();
+                                ec.queryInsertEventData(map, ManageDBActivity.this);
+                                break;
+                            case TEAM:
+                                TeamContract tc = new TeamContract();
+                                tc.queryInsertTeamData(map, ManageDBActivity.this);
+                                break;
+                            case TEAMMATCH:
+                                TeamMatchContract tmc = new TeamMatchContract();
+                                tmc.queryInsertTeamMatchData(map, ManageDBActivity.this);
+                                break;
+                            case ACTIONTYPE:
+                                ActionsContract ac = new ActionsContract();
+                                ac.queryInsertActionsData(map, ManageDBActivity.this);
+                                break;
+                            case MATCH:
+                                MatchContract mc = new MatchContract();
+                                mc.queryInsertMatchData(map, ManageDBActivity.this);
+                                break;
+                        }
+                    }
+                }
+            }
+            publishProgress("Done building the database.");
+        }
+
     }
 
 

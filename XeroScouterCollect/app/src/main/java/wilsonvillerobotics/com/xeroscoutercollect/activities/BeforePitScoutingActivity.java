@@ -11,14 +11,11 @@ import android.widget.Spinner;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-
-import static wilsonvillerobotics.com.xeroscoutercollect.R.id.spinner_pit_team_list;
 
 
 /**

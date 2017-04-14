@@ -39,10 +39,9 @@ import java.util.HashMap;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
-import wilsonvillerobotics.com.xeroscoutercollect.database.GenerateTestData;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchActionModel;
-import wilsonvillerobotics.com.xeroscoutercollect.utils.UUIDGenerator;
+import wilsonvillerobotics.com.xeroscoutercollect.utils.Stopwatch;
 
 public class ScoutingActivity extends TabActivity implements View.OnClickListener {
     protected ArrayList<ActionObject> actionObjectArrayList = new ArrayList<>();
@@ -67,7 +66,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     private boolean didCompleteMatch = false;
     private boolean isRed;
     private String teamNum;
+    private boolean resetClickedOnce = false;
 
+    Stopwatch sw;
+    long climbTime;
 
 
     @Override
@@ -76,6 +78,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         setContentView(R.layout.activity_scouting);
         Log.i("Scouting Activity", "onCreate");
 
+        sw = new Stopwatch();
 
         // Initializing the tabbing system
 
@@ -459,11 +462,54 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         Intent mainScreen = new Intent(this, MatchConfirmationActivity.class);
         String queryString = "";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        double time;
 
         switch (view.getId()) {
             case R.id.btn_finalize_back:
                 // Moves to Teleop
                 getTabHost().setCurrentTabByTag("tab2");
+                break;
+
+            case R.id.btn_climb_timer_start:
+                climbTime = 0;
+                findViewById(R.id.btn_climb_success).setEnabled(true);
+                findViewById(R.id.btn_climb_failed).setEnabled(true);
+                findViewById(R.id.btn_climb_timer_start).setEnabled(false);
+                sw.start();
+                resetClickedOnce = false;
+                break;
+
+            case R.id.btn_climb_timer_reset:
+                 if(resetClickedOnce)
+                {
+                    climbTime = 0;
+                    sw.stop();
+                    findViewById(R.id.btn_climb_success).setEnabled(false);
+                    findViewById(R.id.btn_climb_failed).setEnabled(false);
+                    findViewById(R.id.btn_climb_timer_start).setEnabled(true);
+                    ((TextView)findViewById(R.id.txt_climb_time)).setText("Timer reset");
+                    resetClickedOnce = false;
+                }
+                else {
+                    Toast.makeText(this, "Press reset again to reset the timer", Toast.LENGTH_LONG).show();
+                    resetClickedOnce = true;
+                }
+                break;
+
+            case R.id.btn_climb_success:
+                sw.stop();
+                climbTime = sw.getElapsedTime();
+                time = climbTime / 1000.0;
+                ((TextView)findViewById(R.id.txt_climb_time)).setText(String.valueOf(time) + "seconds");
+                resetClickedOnce = false;
+                break;
+
+            case R.id.btn_climb_failed:
+                sw.stop();
+                climbTime = sw.getElapsedTime();
+                time = climbTime / 1000.0;
+                ((TextView)findViewById(R.id.txt_climb_time)).setText(String.valueOf(time) + "seconds");
+                resetClickedOnce = false;
                 break;
 
             case R.id.btn_finalize_finish:

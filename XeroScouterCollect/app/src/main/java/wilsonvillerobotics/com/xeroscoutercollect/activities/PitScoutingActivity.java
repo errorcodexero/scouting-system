@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,16 +35,12 @@ import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 
 public class PitScoutingActivity extends Activity implements View.OnClickListener {
 
-    private Intent landingActivity;
-
     private ListView lvCheckBox;
-    private Button btn_check_all;
     private ArrayList<String> arr = new ArrayList<String>();
     private ArrayList<String> dbStringArray = new ArrayList<String>();
-    private DatabaseHelper dbHelper;
     private TeamContract teamContract = new TeamContract();
-    private String teamName;
     private SQLiteDatabase db;
+    private DatabaseHelper dbHelper;
     private int teamId;
     private String teamNum;
     private String baseFolder;
@@ -79,7 +74,7 @@ public class PitScoutingActivity extends Activity implements View.OnClickListene
         ckBoxList.add(R.id.chbox_pit_field_3);
         ckBoxList.add(R.id.chbox_pit_field_4);
 
-        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(getApplicationContext());
         db = dbHelper.getWritableDatabase();
 
         addTeamContractStringToListView();

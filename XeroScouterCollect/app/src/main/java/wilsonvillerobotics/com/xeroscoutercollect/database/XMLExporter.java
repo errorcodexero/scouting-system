@@ -5,19 +5,13 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.DateFormat;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchActionContract;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
-import wilsonvillerobotics.com.xeroscoutercollect.models.TeamModel;
 
 import static wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract.ActionsEntry.TABLE_NAME;
 

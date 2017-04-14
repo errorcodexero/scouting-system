@@ -21,6 +21,10 @@
     <string name="btn_start_stand_scouting">Stand Scouting</string>
     <string name="btn_start_pit_scouting">Pit Scouting</string>
     <string name="lbl_tablet_id_match_confirmation">Tablet ID:</string>
+    <string name="btn_climb_timer_start">Start Climb Timer</string>
+    <string name="btn_climb_timer_reset">Reset Climb Timer</string>
+    <string name="btn_climb_success">Climb Successful</string>
+    <string name="btn_climb_failed">Climb Failed!</string>
 
     <string name="match_prompt">Choose a match</string>
     <string name="team_prompt">Choose a team</string>

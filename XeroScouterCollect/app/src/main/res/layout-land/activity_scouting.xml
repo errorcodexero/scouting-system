@@ -403,8 +403,6 @@
                                     android:id="@+id/btn_decrement_action_12"
                                     android:layout_width="65dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="23.33"
-                                    android:nestedScrollingEnabled="false"
                                     android:onClick="onClick"
                                     android:text="@string/decrement" />
 
@@ -424,8 +422,6 @@
                                     android:id="@+id/btn_increment_action_12"
                                     android:layout_width="65dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="23.33"
-                                    android:nestedScrollingEnabled="false"
                                     android:onClick="onClick"
                                     android:text="@string/increment" />
 
@@ -433,68 +429,115 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/ll_lower_row"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight=".26"
+                            android:layout_weight=".33"
                             android:orientation="horizontal"
                             android:paddingTop="20dp">
 
-                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".6"
                                 android:orientation="horizontal">
 
                                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:id="@+id/ll_timer"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight=".5"
+                                    android:layout_weight=".35"
                                     android:orientation="vertical">
 
                                     <RadioButton
                                         android:id="@+id/radio_action_13"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="3.2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
                                         android:onClick="onRadioButtonClicked"
                                         android:text="@string/action_13"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        android:visibility="gone" />
+
+                                    <Button
+                                        android:id="@+id/btn_climb_timer_start"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:onClick="onClick"
+                                        android:text="@string/btn_climb_timer_start" />
+
+                                    <Button
+                                        android:id="@+id/btn_climb_timer_reset"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:onClick="onClick"
+                                        android:text="@string/btn_climb_timer_reset" />
 
                                     <RadioButton
                                         android:id="@+id/radio_action_14"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="3.2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
                                         android:onClick="onRadioButtonClicked"
                                         android:text="@string/action_14"
                                         android:textSize="20sp"
-                                        android:visibility="invisible" />
+                                        android:visibility="gone" />
                                 </LinearLayout>
 
                                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+                                    android:id="@+id/ll_climb_result"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight=".5"
+                                    android:layout_weight=".35"
                                     android:orientation="vertical">
 
                                     <RadioButton
                                         android:id="@+id/radio_action_15"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
                                         android:layout_weight="3.2"
                                         android:onClick="onRadioButtonClicked"
                                         android:text="@string/action_15"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        android:visibility="gone" />
+
+                                    <Button
+                                        android:id="@+id/btn_climb_success"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:enabled="false"
+                                        android:onClick="onClick"
+                                        android:text="@string/btn_climb_success" />
 
                                     <RadioButton
                                         android:id="@+id/radio_no_climb"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_width="0dp"
+                                        android:layout_height="0dp"
                                         android:layout_weight="3.2"
                                         android:onClick="onRadioButtonClicked"
                                         android:text="No Climb"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        android:visibility="gone" />
+
+                                    <Button
+                                        android:id="@+id/btn_climb_failed"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:enabled="false"
+                                        android:onClick="onClick"
+                                        android:text="@string/btn_climb_failed" />
+                                </LinearLayout>
+
+                                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:id="@+id/ll_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".3"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/txt_climb_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
                                 </LinearLayout>
 
                             </LinearLayout>

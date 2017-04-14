@@ -7,7 +7,6 @@ import android.provider.BaseColumns;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.StringJoiner;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
@@ -143,7 +142,10 @@ public class TeamContract implements SQLDataTypeDefines {
         catch (Exception e)
         {
             e.printStackTrace();
+        }finally {
+            
         }
+        //return timer obj
     }
     public void queryUpdateTeamPitData(Context c, long teamID, HashMap<String, Boolean> boolValues, HashMap<String,String> stringValues){
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);

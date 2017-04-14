@@ -1,7 +1,6 @@
 package wilsonvillerobotics.com.xeroscoutercollect.database;
 
 import android.content.Context;
-import android.util.EventLog;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -19,7 +18,6 @@ import wilsonvillerobotics.com.xeroscoutercollect.contracts.ActionsContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.EventContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.MatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamContract;
-import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract;
 import wilsonvillerobotics.com.xeroscoutercollect.contracts.TeamMatchContract.TeamMatchEntry;
 
 import static android.content.ContentValues.TAG;
@@ -37,18 +35,22 @@ public class XMLParser{
     private String dataString = "No data was found";
     private XmlPullParserFactory xmlFactoryObject;
     private XmlPullParser myParser;
+    private ManageDBActivity.DatabaseBuilderTask builderTask;
 
     private static final String TNTAG = "Table Name";
     private static final String XML_EXT = ".xml";
 
 
-    public XMLParser(String filePath, Context c){
+    public XMLParser(String filePath, Context c,ManageDBActivity.DatabaseBuilderTask BuilderTask){
         xmlFilePath = filePath;
         context = c;
+        builderTask = BuilderTask;
+
+
     }
-    public XMLParser(Context c){
-        this("", c);
-    }
+    /*public XMLParser(Context c){
+        this("", c,);
+    }*/
 
     public ArrayList<HashMap<String, TableColumn>> parseXML(String filePath) {
         xmlFilePath = filePath;
@@ -97,29 +99,37 @@ public class XMLParser{
                     tc.setValue(ManageDBActivity.TABLE_NAME.MATCH);
                     map.put(TABLE_NAME_KEY,tc);
                     Log.d(TNTAG, MatchContract.MatchEntry.TABLE_NAME);
+                    builderTask.builderPublish("Begun parsing " + MatchContract.MatchEntry.TABLE_NAME);
                 }else if(fileName.equalsIgnoreCase(EventContract.EventEntry.TABLE_NAME + XML_EXT)){
                     map = mapMaker(makeEventList());
                     tc.setValue(ManageDBActivity.TABLE_NAME.EVENT);
                     map.put(TABLE_NAME_KEY,tc);
                     Log.d(TNTAG, EventContract.EventEntry.TABLE_NAME);
+                    builderTask.builderPublish("Begun parsing " + EventContract.EventEntry.TABLE_NAME);
                 }else if(fileName.equalsIgnoreCase(ActionsContract.ActionsEntry.TABLE_NAME + XML_EXT)){
                     map = mapMaker(makeActionTypeList());
                     tc.setValue(ManageDBActivity.TABLE_NAME.ACTIONTYPE);
                     map.put(TABLE_NAME_KEY,tc);
                     Log.d(TNTAG, ActionsContract.ActionsEntry.TABLE_NAME);
+                    builderTask.builderPublish("Begun parsing " + ActionsContract.ActionsEntry.TABLE_NAME);
                 }else if(fileName.equalsIgnoreCase(TeamMatchEntry.TABLE_NAME + XML_EXT)){
                     map = makeTeamMatchMap();
                     tc.setValue(ManageDBActivity.TABLE_NAME.TEAMMATCH);
                     map.put(TABLE_NAME_KEY,tc);
                     Log.d(TNTAG, TeamMatchEntry.TABLE_NAME);
+                    builderTask.builderPublish("Begun parsing " + TeamMatchEntry.TABLE_NAME);
                 }else if(fileName.equalsIgnoreCase(TeamContract.TeamEntry.TABLE_NAME + XML_EXT)){
                     map = mapMaker(makeTeamList());
                     tc.setValue(ManageDBActivity.TABLE_NAME.TEAM);
                     map.put(TABLE_NAME_KEY,tc);
                     Log.d(TNTAG, TeamContract.TeamEntry.TABLE_NAME);
+                    builderTask.builderPublish("Begun parsing " + TeamContract.TeamEntry.TABLE_NAME);
+
                 }
             } else {
                 Log.e(TNTAG, "No tokens");
+                builderTask.builderPublish("No tokens. Try importing data first.");
+
             }
 
 
@@ -166,7 +176,7 @@ public class XMLParser{
                                 }
                             } else {
                                 // We didn't find this tag, log it
-                                Log.e(TAG, "Invalid tag: " + tagName);
+                                //Log.e(TAG, "Invalid tag: " + tagName);
                             }
                         }
                         //myDbHelper.insertData(id,date,pob);
@@ -175,7 +185,12 @@ public class XMLParser{
             }
         }
         catch(Exception e) {e.printStackTrace();}
-        return hashMapArrayList;
+        finally {
+            builderTask.builderPublish("Finished parsing.");
+        }
+
+        return hashMapArrayList;//TODO HUGE DATA BACKLOG HERE
+
     }
 
 

@@ -1,36 +1,28 @@
 package wilsonvillerobotics.com.xeroscoutercollect.connection;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.Properties;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.activities.ManageDBActivity;
 
 /**
  * Created by Luke Puppo on 12/21/2016.
@@ -91,9 +83,12 @@ public class FTPConnection {
     }
     */
 
-    public boolean getFTPFiles(String baseFolder) {
+
+
+    public boolean getFTPFiles(String baseFolder, ManageDBActivity.DataTransferTask task) {
         if(isConnected()){
             try {
+                task.myPublish("Begun pulling data from FTP Server");
                 //new ftp client
                 FTPClient ftp = new FTPClient();
                 //try to connect
@@ -123,6 +118,7 @@ public class FTPConnection {
                         if (!file.isFile()) {
                             continue;
                         }
+                        task.myPublish("Pulling file: " + file.getName() + ". Size: " + file.getSize() );
                         //get output stream
                         OutputStream output;
                         output = new FileOutputStream(baseFolder + "/" + file.getName());
@@ -137,15 +133,15 @@ public class FTPConnection {
                 ftp.disconnect();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                setStatusText("Failed to pull DB XML Files");
+                task.myPublish("Failed to pull DB XML Files");
                 return false;
             }
         }
-        setStatusText("Successfully pulled DB XML Files");
+        task.myPublish("Successfully pulled DB XML Files");
         return true;
     }
 
-    public boolean sendFTPFiles(String baseFolder, String filename1, String filename2){
+   /* public boolean sendFTPFiles(String baseFolder, String filename1, String filename2){
         if(isConnected()) {
             try {
                 //new ftp client
@@ -193,8 +189,8 @@ public class FTPConnection {
         }
         setStatusText("FTP Transfer Failed. Connect ethernet cable.");
         return false;
-    }
-    public boolean sendFTPFile(File fileToSend){
+    }*/
+    public boolean sendFTPFile(File fileToSend, ManageDBActivity.DataTransferTask task){
         if(isConnected()) {
             try {
                 //new ftp client
@@ -217,7 +213,7 @@ public class FTPConnection {
                 ftp.enterLocalPassiveMode();
                 ftp.changeWorkingDirectory(remoteDirectory + "/exports");
 
-                setStatusText("Storing File");
+                task.myPublish("Transferring File... Please wait.");
 
                 //get input stream
                 InputStream input;
@@ -227,28 +223,22 @@ public class FTPConnection {
                 ftp.storeFile(fileToSend.getName(), input);
                 //close the stream
                 input.close();
-                setStatusText("Success!");
+                task.myPublish("Success!");
 
 
                 ftp.logout();
                 ftp.disconnect();
-                setStatusText("FTP Transfer Complete");
+                task.myPublish("FTP Transfer Complete");
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return false;
             }
             return true;
         }
-        setStatusText("FTP Transfer Failed. Connect ethernet cable.");
+        task.myPublish("FTP Transfer Failed. Connect ethernet cable.");
         return false;
     }
 
-    private void setStatusText(String text){
-        String tempText;
-        tempText = statusPrefix + text;
-        Log.d("Status", "setStatusText: " + tempText);
-        status.setText(tempText);
-    }
 
     private boolean isConnected(){
         //Toast.makeText(activity, "Is Connected check success", Toast.LENGTH_SHORT).show();

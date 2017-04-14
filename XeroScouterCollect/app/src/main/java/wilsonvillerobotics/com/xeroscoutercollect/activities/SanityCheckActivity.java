@@ -9,11 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
-
 import wilsonvillerobotics.com.xeroscoutercollect.R;
-import wilsonvillerobotics.com.xeroscoutercollect.database.XMLExporter;
 
 /**
  * Created by Luke on 11/8/2016.
