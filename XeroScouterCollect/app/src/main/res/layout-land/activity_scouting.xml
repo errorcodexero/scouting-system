@@ -251,10 +251,18 @@
                                     android:text="@string/increment" />
                             </LinearLayout>
 
-                            <Space
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight=".2" />
+                            <EditText
+                                android:id="@+id/lbl_team_number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:editable="false"
+                                android:ems="4"
+                                android:enabled="false"
+                                android:inputType="textPersonName"
+                                android:text="Name"
+                                android:textAlignment="center"
+                                android:visibility="invisible" />
 
                             <LinearLayout
                                 android:id="@+id/action_group_6"

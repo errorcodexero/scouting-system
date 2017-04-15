@@ -48,7 +48,7 @@ public class TeamContract implements SQLDataTypeDefines {
         public static final String COLUMN_NAME_CAN_COLLECT_HOPPER_FUEL = "can_collect_hopper_fuel";
         public static final String COLUMN_NAME_CAN_ACTIVATE_HOPPERS = "can_activate_hoppers";
         public static final String COLUMN_NAME_CAN_SCORE_FUEL_LOW = "can_score_fuel_low";
-        public static final String COLUMN_NAME_CAN_SCORE_HIGH_LOW = "can_score_high_low";
+        public static final String COLUMN_NAME_CAN_SCORE_HIGH_LOW = "can_score_fuel_high";
         public static final String COLUMN_NAME_CAN_COLLECT_FEEDER_GEARS = "can_collect_feeder_gears";
         public static final String COLUMN_NAME_CAN_COLLECT_GROUND_GEARS = "can_collect_ground_gears";
         public static final String COLUMN_NAME_CAN_SCORE_GEARS = "can_score_gears";
@@ -142,7 +142,10 @@ public class TeamContract implements SQLDataTypeDefines {
         catch (Exception e)
         {
             e.printStackTrace();
+        }finally {
+            
         }
+        //return timer obj
     }
     public void queryUpdateTeamPitData(Context c, long teamID, HashMap<String, Boolean> boolValues, HashMap<String,String> stringValues){
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(c);

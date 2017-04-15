@@ -52,6 +52,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     protected ArrayList<String> queryStringList = new ArrayList<>();
     protected TwoColumnAdapter finalizeTabAdapter;
     private boolean didCleanExit = false;
+    private boolean doRemoveOldData = false;
     protected int currentClickedId;
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
@@ -62,11 +63,14 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     private Boolean doSaveToFile = true;
     private boolean doAskRestore = true;
     private boolean didCompleteMatch = false;
+    private boolean isRed;
+    private String teamNum;
     private boolean resetClickedOnce = false;
 
     Stopwatch sw;
     long climbTime;
     boolean climbing;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
 
         teamMatchId = getIntent().getExtras().getInt("team_match_id");
+        isRed = getIntent().getExtras().getBoolean("background");
+        teamNum = getIntent().getExtras().getString("team_number");
+
+
 
         RadioButton noClimb = (RadioButton) findViewById(R.id.radio_no_climb);
         noClimb.setChecked(true);
@@ -170,6 +178,8 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         tablet_uuid = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
 
         createFileAssociations();
+
+
     }
 
     public void createFileAssociations() {
@@ -221,6 +231,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                             RadioButton noClimbTempDisable = (RadioButton) findViewById(R.id.radio_no_climb);
                             noClimbTempDisable.setChecked(false);
                             deSerializeEntryValueMap();
+                            doRemoveOldData = true;
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -233,6 +244,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             f.delete();
+                                            Toast.makeText(ScoutingActivity.this, "Deleted All of the Things!", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -507,6 +519,10 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
             case R.id.btn_finalize_finish:
 
+                if(doRemoveOldData) {
+                    db.rawQuery("DELETE FROM 'team_match_action' WHERE `team_match_id` = " + teamMatchId + ";", null );
+                }
+
                 didCleanExit = true;
 
                 CheckBox autoBaseline = (CheckBox) findViewById(R.id.chkbx_action_1);
@@ -534,10 +550,12 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                     db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 13, false));
                     if(climbSuccess)
                     {
+                        Log.d("ScoutingActivity",Long.toString(climbTime));
                         db.execSQL(TeamMatchActionModel.addActionWithCount(tablet_uuid, teamMatchId, 15, false, (int)climbTime));
                     }
                     else
                     {
+                        Log.d("ScoutingActivity",Long.toString(climbTime));
                         db.execSQL(TeamMatchActionModel.addActionWithCount(tablet_uuid, teamMatchId, 14, false, (int)climbTime));
                     }
                 }
