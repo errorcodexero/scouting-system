@@ -42,6 +42,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnIgnoreSelected = new System.Windows.Forms.Button();
             this.btnIgnoreAll = new System.Windows.Forms.Button();
+            this.btnRefreshList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblStatus
@@ -61,7 +62,7 @@
             this.cmbCompetitionName.FormattingEnabled = true;
             this.cmbCompetitionName.Location = new System.Drawing.Point(117, 54);
             this.cmbCompetitionName.Name = "cmbCompetitionName";
-            this.cmbCompetitionName.Size = new System.Drawing.Size(121, 21);
+            this.cmbCompetitionName.Size = new System.Drawing.Size(229, 21);
             this.cmbCompetitionName.TabIndex = 23;
             // 
             // lblCompetitionName
@@ -89,7 +90,7 @@
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(72, 212);
+            this.lblPath.Location = new System.Drawing.Point(72, 258);
             this.lblPath.Name = "lblPath";
             this.lblPath.Size = new System.Drawing.Size(28, 13);
             this.lblPath.TabIndex = 26;
@@ -97,7 +98,7 @@
             // 
             // btnSetPath
             // 
-            this.btnSetPath.Location = new System.Drawing.Point(12, 200);
+            this.btnSetPath.Location = new System.Drawing.Point(12, 246);
             this.btnSetPath.Name = "btnSetPath";
             this.btnSetPath.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnSetPath.Size = new System.Drawing.Size(47, 37);
@@ -116,17 +117,17 @@
             this.chkFileList.HorizontalScrollbar = true;
             this.chkFileList.Location = new System.Drawing.Point(23, 87);
             this.chkFileList.Name = "chkFileList";
-            this.chkFileList.Size = new System.Drawing.Size(249, 94);
+            this.chkFileList.Size = new System.Drawing.Size(322, 139);
             this.chkFileList.TabIndex = 27;
             this.chkFileList.ThreeDCheckBoxes = true;
             // 
             // btnImportAll
             // 
             this.btnImportAll.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnImportAll.Location = new System.Drawing.Point(279, 45);
+            this.btnImportAll.Location = new System.Drawing.Point(352, 54);
             this.btnImportAll.Name = "btnImportAll";
             this.btnImportAll.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImportAll.Size = new System.Drawing.Size(104, 37);
+            this.btnImportAll.Size = new System.Drawing.Size(100, 30);
             this.btnImportAll.TabIndex = 30;
             this.btnImportAll.Text = "Import &All";
             this.btnImportAll.UseVisualStyleBackColor = true;
@@ -135,10 +136,10 @@
             // btnImportSelected
             // 
             this.btnImportSelected.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnImportSelected.Location = new System.Drawing.Point(279, 88);
+            this.btnImportSelected.Location = new System.Drawing.Point(352, 89);
             this.btnImportSelected.Name = "btnImportSelected";
             this.btnImportSelected.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImportSelected.Size = new System.Drawing.Size(104, 37);
+            this.btnImportSelected.Size = new System.Drawing.Size(100, 30);
             this.btnImportSelected.TabIndex = 29;
             this.btnImportSelected.Text = "Import &Selected";
             this.btnImportSelected.UseVisualStyleBackColor = true;
@@ -147,10 +148,10 @@
             // btnClose
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnClose.Location = new System.Drawing.Point(279, 212);
+            this.btnClose.Location = new System.Drawing.Point(352, 246);
             this.btnClose.Name = "btnClose";
             this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnClose.Size = new System.Drawing.Size(104, 37);
+            this.btnClose.Size = new System.Drawing.Size(100, 40);
             this.btnClose.TabIndex = 28;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -159,10 +160,10 @@
             // btnIgnoreSelected
             // 
             this.btnIgnoreSelected.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnIgnoreSelected.Location = new System.Drawing.Point(279, 174);
+            this.btnIgnoreSelected.Location = new System.Drawing.Point(352, 166);
             this.btnIgnoreSelected.Name = "btnIgnoreSelected";
             this.btnIgnoreSelected.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnIgnoreSelected.Size = new System.Drawing.Size(104, 32);
+            this.btnIgnoreSelected.Size = new System.Drawing.Size(100, 30);
             this.btnIgnoreSelected.TabIndex = 29;
             this.btnIgnoreSelected.Text = "Ignore S&elected";
             this.btnIgnoreSelected.UseVisualStyleBackColor = true;
@@ -171,20 +172,33 @@
             // btnIgnoreAll
             // 
             this.btnIgnoreAll.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnIgnoreAll.Location = new System.Drawing.Point(279, 136);
+            this.btnIgnoreAll.Location = new System.Drawing.Point(352, 131);
             this.btnIgnoreAll.Name = "btnIgnoreAll";
             this.btnIgnoreAll.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnIgnoreAll.Size = new System.Drawing.Size(104, 32);
+            this.btnIgnoreAll.Size = new System.Drawing.Size(100, 30);
             this.btnIgnoreAll.TabIndex = 29;
             this.btnIgnoreAll.Text = "Ignore A&ll";
             this.btnIgnoreAll.UseVisualStyleBackColor = true;
             this.btnIgnoreAll.Click += new System.EventHandler(this.btnIgnoreAll_Click);
             // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRefreshList.Location = new System.Drawing.Point(352, 210);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnRefreshList.Size = new System.Drawing.Size(100, 30);
+            this.btnRefreshList.TabIndex = 31;
+            this.btnRefreshList.Text = "Refresh List";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
+            // 
             // ImportDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 271);
+            this.ClientSize = new System.Drawing.Size(468, 297);
+            this.Controls.Add(this.btnRefreshList);
             this.Controls.Add(this.btnImportAll);
             this.Controls.Add(this.btnIgnoreAll);
             this.Controls.Add(this.btnIgnoreSelected);
@@ -220,5 +234,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnIgnoreSelected;
         private System.Windows.Forms.Button btnIgnoreAll;
+        private System.Windows.Forms.Button btnRefreshList;
     }
 }

@@ -509,5 +509,10 @@ namespace XeroScouterDBManage_Server
         {
             this.Close();
         }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            loadFileList();
+        }
     }
 }
