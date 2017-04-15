@@ -216,22 +216,26 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 //
     //Cleans up tables in the database
     private void clearDatabase(boolean clearTMA) {
+        TextView txt = (TextView) findViewById(R.id.lbl_user_status_text);
         ArrayList<String> tableList = new ArrayList<String>();
+
         tableList.add("event");
         tableList.add("match");
         tableList.add("team_match");
         tableList.add("action_type");
         tableList.add("team");
-        if(clearTMA){
+       // if(clearTMA){
             tableList.add("team_match_action");
-        }
+            txt.setText("Deleted entire database.");
+
+        //}
 
         try{
             for(String name : tableList){
                 String query = "delete from " + name;
                 sqlDB.execSQL(query);
+                //txt.setText("Deleted database. Saved TeamMatchAction.");
             }
-            Log.d("ManageDB", "Allah Akbar!!");
         }catch (Exception e) {
             e.printStackTrace();
         }
