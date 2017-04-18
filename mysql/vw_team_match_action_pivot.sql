@@ -38,6 +38,9 @@ VIEW `vw_team_match_action_pivot` AS
         SUM(IF((`tma`.`action_name` = 'tele_triggered_pressure_pad'),
             `tma`.`quantity`,
             0)) AS `tele_triggered_pressure_pad`,
+        SUM(IF((`tma`.`action_name` = 'tele_triggered_pressure_pad'),
+            `tma`.`object_count`,
+            0)) AS `tele_climb_time_seconds`,
         SUM(IF((`tma`.`action_name` = 'auto_baseline_crossed'),
             `tma`.`quantity`,
             0)) AS `auto_baseline_crossed`,
@@ -67,7 +70,10 @@ VIEW `vw_team_match_action_pivot` AS
             0)) AS `breakdown`,
         SUM(IF((`tma`.`action_name` = 'disconnect'),
             `tma`.`quantity`,
-            0)) AS `disconnect`
+            0)) AS `disconnect`,
+        SUM(IF((`tma`.`action_name` = 'tele_high_missed'),
+            `tma`.`quantity`,
+            0)) AS `tele_high_missed`
     FROM
         `vw_team_match_action` `tma`
     GROUP BY `tma`.`team_match_id`

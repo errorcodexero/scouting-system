@@ -58,6 +58,7 @@ VIEW `team_match_action_result` AS
         `tmap`.`team_id` AS `team_id`,
         `tmap`.`match_id` AS `match_id`,
         `tmap`.`tele_high_score` AS `tele_high_score`,
+        `tmap`.`tele_high_missed` AS `tele_high_missed`,
         `tmap`.`tele_low_score` AS `tele_low_score`,
         `tmap`.`tele_high_score_points` AS `tele_high_score_points`,
         `tmap`.`tele_low_score_points` AS `tele_low_score_points`,
@@ -76,7 +77,8 @@ VIEW `team_match_action_result` AS
         `tmap`.`auto_fuel_bin_triggered` AS `auto_fuel_bin_triggered`,
         `tmap`.`tele_played_defensively` AS `tele_played_defensively`,
         `tmap`.`breakdown` AS `breakdown`,
-        `tmap`.`disconnect` AS `disconnect`
+        `tmap`.`disconnect` AS `disconnect`,
+        `tmap`.`tele_climb_time_seconds` AS `tele_climb_time_seconds`
     FROM
         (`vw_team_match` `tm`
         JOIN `vw_team_match_action_pivot` `tmap` ON ((`tmap`.`team_match_id` = `tm`.`team_match_id`)))
