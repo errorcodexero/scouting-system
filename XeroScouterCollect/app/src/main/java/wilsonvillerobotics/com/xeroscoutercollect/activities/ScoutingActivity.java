@@ -70,6 +70,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
     Stopwatch sw;
     long climbTime;
     boolean climbing;
+    boolean climbSuccess;
 
 
     @Override
@@ -80,6 +81,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
 
         sw = new Stopwatch();
         climbing = false;
+        climbSuccess = false;
 
         // Initializing the tabbing system
 
@@ -244,7 +246,7 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             f.delete();
-                                            Toast.makeText(ScoutingActivity.this, "Deleted All of the Things!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ScoutingActivity.this, "Deleted Successfully!", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -464,7 +466,6 @@ public class ScoutingActivity extends TabActivity implements View.OnClickListene
         String queryString = "";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         double time;
-        boolean climbSuccess = false;
 
         switch (view.getId()) {
             case R.id.btn_finalize_back:
