@@ -47,14 +47,14 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server={0}; user id={1}; password={2};persistsecurityinfo={3};database={4};Convert Zero Datetime=True</Value>
     </Setting>
-    <Setting Name="TEST_MODE" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="SYSTEM_UUID" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MachineGuidRegistryKey" Type="System.String" Scope="Application">
       <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography</Value>
+    </Setting>
+    <Setting Name="TEST_MODE" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -186,6 +186,15 @@ namespace XeroScouterDBManage_Server
                 DataTable dt = (DataTable)combo.DataSource;
                 DataView dv = dt.DefaultView;
                 dv.RowFilter = GetTeamIdFilter(c);
+
+                for(int i = 0; i < dv.Count; i++)
+                {
+                    if(Convert.ToInt64(dv[i][EventTable.COL_ID]) == currentTeamComboSelectedIds[c])
+                    {
+                        combo.SelectedIndex = i;
+                        break;
+                    }
+                }
             }
         }
 
