@@ -472,7 +472,8 @@ public class MatchConfirmationActivity extends FragmentActivity implements View.
             updateTeams();
         }
         if(view.getId() == R.id.btn_home){
-            startActivity(landingActivity);
+            //startActivity(landingActivity);
+            finish();
         }
     }
 
