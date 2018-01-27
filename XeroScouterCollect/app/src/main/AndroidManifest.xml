@@ -30,8 +30,6 @@
         <activity android:name=".activities.SanityCheckActivity" />
         <activity android:name=".activities.SyncActivity" />
         <activity android:name=".activities.ExportActivity" />
-        <activity android:name=".activities.AutonomousTabActivity" />
-        <activity android:name=".activities.TeleopTabActivity" />
         <activity android:name=".activities.FinalizeTabActivity" />
         <activity android:name=".activities.ManageDBActivity" />
         <activity android:name=".activities.PitScoutingActivity" />

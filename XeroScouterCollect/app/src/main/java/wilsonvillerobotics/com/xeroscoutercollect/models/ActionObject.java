@@ -19,11 +19,11 @@ public class ActionObject implements Serializable {
     }
     private void writeObject(java.io.ObjectOutputStream out)
             throws IOException {
-
+            out.defaultWriteObject();
     }
     private void readObject(java.io.ObjectInputStream in)
             throws IOException, ClassNotFoundException {
-
+            in.defaultReadObject();
     }
     private void readObjectNoData()
             throws ObjectStreamException {

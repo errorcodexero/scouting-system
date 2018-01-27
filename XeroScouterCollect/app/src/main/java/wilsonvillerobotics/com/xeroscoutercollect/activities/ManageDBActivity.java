@@ -219,14 +219,15 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         TextView txt = (TextView) findViewById(R.id.lbl_user_status_text);
         ArrayList<String> tableList = new ArrayList<String>();
 
+        //TODO: Compile time optimization?
         tableList.add("event");
         tableList.add("match");
         tableList.add("team_match");
         tableList.add("action_type");
         tableList.add("team");
        // if(clearTMA){
-            tableList.add("team_match_action");
-            txt.setText("Deleted entire database.");
+        tableList.add("team_match_action");
+        txt.setText("Deleted entire database.");
 
         //}
 
@@ -397,7 +398,8 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
 
         public void importDataFromXML(){
-            String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+            //String downloadDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+            String downloadDirectory = "/data/data/wilsonvillerobotics.com.xeroscoutercollect/xml";
 
             XMLParser myParser = new XMLParser("",ManageDBActivity.this,DatabaseBuilderTask.this);
             ArrayList<String> xmlFilePaths = new ArrayList<String>();

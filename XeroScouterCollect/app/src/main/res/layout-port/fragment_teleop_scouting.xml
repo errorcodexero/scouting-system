@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scouting_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/left_action_column"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.18"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/portal_column"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/action_1_group"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/action_1_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Top Portal"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_action_1_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_action_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_action_1_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+            </LinearLayout>
+
+            <Space
+                android:id="@+id/space_group_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".4" />
+
+            <LinearLayout
+                android:id="@+id/action_2_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".32"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_action_2_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_action_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_action_2_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/action_2_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bottom Portal"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/center_action_column"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.64"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/switch_scale_divider"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/alliance_switch_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <Space
+                    android:id="@+id/action_group_3_top_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".25" />
+
+                <LinearLayout
+                    android:id="@+id/action_3_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/action_3_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alliance Switch"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btn_action_3_incr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+" />
+
+                    <EditText
+                        android:id="@+id/edittext_action_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="monospace"
+                        android:inputType="textPersonName"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btn_action_3_decr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+                </LinearLayout>
+
+                <Space
+                    android:id="@+id/action_group_3_bottom_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/scale_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <Space
+                    android:id="@+id/action_group_4_top_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".25" />
+
+                <LinearLayout
+                    android:id="@+id/action_4_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/action_4_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Scale"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btn_action_4_incr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+" />
+
+                    <EditText
+                        android:id="@+id/edittext_action_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="monospace"
+                        android:inputType="textPersonName"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btn_action_4_decr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+
+                </LinearLayout>
+
+                <Space
+                    android:id="@+id/action_group_4_bottom_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/opponent_switch_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <Space
+                    android:id="@+id/action_group_5_top_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".25" />
+
+                <LinearLayout
+                    android:id="@+id/action_5_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/action_5_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Opponent Switch"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btn_action_5_incr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+" />
+
+                    <EditText
+                        android:id="@+id/edittext_action_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="monospace"
+                        android:inputType="textPersonName"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btn_action_5_decr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="-" />
+                </LinearLayout>
+
+                <Space
+                    android:id="@+id/action_group_5_bottom_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".14" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_finalize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_action_column"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".18"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/exchange_column"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/action_6_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exchange In"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_action_6_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_action_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_action_6_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".09" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_action_7_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_action_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_action_7_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/action_7_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exchange Out"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".095" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
