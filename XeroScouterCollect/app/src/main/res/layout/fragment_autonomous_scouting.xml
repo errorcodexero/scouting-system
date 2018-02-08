@@ -23,13 +23,13 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/action_3_chkbx"
+                android:id="@+id/auto_action_3_chkbx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/action_32" />
 
             <CheckBox
-                android:id="@+id/action_2_chkbx"
+                android:id="@+id/auto_action_2_chkbx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/action_31" />
@@ -42,16 +42,16 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/action_3_chkbx"
+                android:id="@+id/auto_action_4_chkbx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/action_33" />
 
             <CheckBox
-                android:id="@+id/action_4_chkbx"
+                android:id="@+id/auto_action_1_chkbx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/action_35" />
+                android:text="Auto Scale Cube" />
         </LinearLayout>
     </LinearLayout>
 
@@ -66,6 +66,19 @@
         android:layout_weight=".2"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btn_auto_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/btn_auto_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next" />
     </LinearLayout>
 
     <Space

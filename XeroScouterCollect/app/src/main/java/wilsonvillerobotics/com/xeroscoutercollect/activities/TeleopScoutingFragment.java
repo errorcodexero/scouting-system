@@ -13,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -24,9 +26,12 @@ import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionCreationData;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
+import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchActionModel;
 import wilsonvillerobotics.com.xeroscoutercollect.utils.Stopwatch;
 
+import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.AUTO;
 import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.FINALIZE;
+import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.TELEOP;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,7 +70,11 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
     private boolean doAskRestore = true;
     private boolean didCompleteMatch = false;
 
-    public TeleopScoutingFragment() {}
+    private ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
+
+
+    public TeleopScoutingFragment() {
+    }
 
     public static TeleopScoutingFragment newInstance(HashMap<String, Integer> entryValues) {
         TeleopScoutingFragment fragment = new TeleopScoutingFragment();
@@ -88,40 +97,6 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
 
         String[] actionArray = getResources().getStringArray(R.array.action_array);
 
-        Resources res = getResources();
-
-        String packageName = parentActivity.getPackageName();
-
-        int j = 1;
-
-        for (int i = 34; i < 46; i++) {
-            int offset = (i - 1);
-            if (i == 37 || i == 38 || i == 39 || i == 40 || i == 42)
-
-                continue;
-
-            int test1 = res.getIdentifier("btn_action_" + j + "_incr", "id", packageName);
-            int test2 = res.getIdentifier("btn_action_" + j + "_decr", "id", packageName);
-            int test3 = res.getIdentifier("edittext_action_" + j, "id", packageName);
-            String strIncId = "btn_action_" + j + "_incr";
-            String strDecId = "btn_action_" + j + "_decr";
-            String strEditTextId = "edittext_action_" + j;
-            actionObjectArrayList.add(new ActionObject(res.getIdentifier(strDecId, "id", packageName),
-                    res.getIdentifier(strIncId, "id", packageName),
-                    res.getIdentifier(strEditTextId, "id", packageName),
-                    res.getIdentifier(strEditTextId, "id", packageName), 0));
-            j++;
-        }
-
-        for (int i = 34; i < 46; i++) {
-            String strIncId = "btn_action_" + (i - 33) + "_incr";
-            String strDecId = "btn_action_" + (i - 33) + "_decr";
-            String editTextId = "edittext_action_" + (i - 33);
-
-            actionDataMap.put(res.getIdentifier(strIncId, "id", packageName), new ActionCreationData(false, i));
-            actionDataMap.put(res.getIdentifier(strDecId, "id", packageName), new ActionCreationData(true, i));
-            actionDataMap.put(res.getIdentifier(editTextId, "id", packageName), new ActionCreationData(null, i));
-        }
         dbHelper = DatabaseHelper.getInstance(parentActivity.getApplicationContext());
         // Mildly proud I fit this in one line
 
@@ -131,12 +106,13 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
         String pref_default = "*";
         tablet_uuid = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
 
+        //actionObjectArrayList.get(0);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_teleop_scouting, container, false);
     }
 
@@ -144,8 +120,45 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
     public void onActivityCreated(Bundle onSavedInstanceState) {
         super.onActivityCreated(onSavedInstanceState);
         ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
-        Button finalizeButton = (Button) parentActivity.findViewById(R.id.btn_finalize);
-        finalizeButton.setOnClickListener(this);
+        Button teleopBackButton = (Button) parentActivity.findViewById(R.id.btn_tele_back);
+        teleopBackButton.setOnClickListener(this);
+        Button teleopNextButton = (Button) parentActivity.findViewById(R.id.btn_tele_next);
+        teleopNextButton.setOnClickListener(this);
+
+        Resources res = getResources();
+        String packageName = parentActivity.getPackageName();
+
+        for (int i = 1; i < 7; i++) {
+
+            int test1 = res.getIdentifier("btn_action_" + i + "_incr", "id", packageName);
+            int test2 = res.getIdentifier("btn_action_" + i + "_decr", "id", packageName);
+            int test3 = res.getIdentifier("edittext_action_" + i, "id", packageName);
+            String strIncId = "btn_action_" + i + "_incr";
+            String strDecId = "btn_action_" + i + "_decr";
+            String strEditTextId = "edittext_action_" + i;
+            actionObjectArrayList.add(new ActionObject(res.getIdentifier(strDecId, "id", packageName),
+                    res.getIdentifier(strIncId, "id", packageName),
+                    res.getIdentifier(strEditTextId, "id", packageName),
+                    res.getIdentifier(strEditTextId, "id", packageName), 0));
+        }
+
+        for (int i = 1; i < 7; i++) {
+            String strIncId = "btn_action_" + i + "_incr";
+            String strDecId = "btn_action_" + i + "_decr";
+            String editTextId = "edittext_action_" + i;
+
+            actionDataMap.put(res.getIdentifier(strIncId, "id", packageName), new ActionCreationData(false, i));
+            actionDataMap.put(res.getIdentifier(strDecId, "id", packageName), new ActionCreationData(true, i));
+            actionDataMap.put(res.getIdentifier(editTextId, "id", packageName), new ActionCreationData(null, i));
+        }
+
+
+        for (ActionObject elem : actionObjectArrayList) {
+            Button incrementButton = (Button) getActivity().findViewById(elem.getIncrementButtonId());
+            Button decrementButton = (Button) getActivity().findViewById(elem.getDecrementButtonId());
+            incrementButton.setOnClickListener(this);
+            decrementButton.setOnClickListener(this);
+        }
     }
 
     public void onButtonPressed(Uri uri) {
@@ -172,12 +185,59 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
     }
 
     @Override
-    public void onClick(View v) {
-        int buttonId = v.getId();
+    public void onClick(View view) {
+        int buttonId = view.getId();
+        ScoutingActivity parent = (ScoutingActivity) getActivity();
         switch (buttonId) {
-            case R.id.btn_finalize_finish:
-                ((ScoutingActivity) getActivity()).changeState(FINALIZE, entryValues);
+            case R.id.btn_tele_next:
+                for (ActionObject i : actionObjectArrayList) {
+                    finalizeDataList.add(new Pair<>(getString(i.getTextFieldValueId()), String.valueOf(i.getActionCount())));
+                }
+                parent.changeState(FINALIZE, entryValues);
                 break;
+            case R.id.btn_tele_back:
+                parent.changeState(AUTO, entryValues);
+                break;
+            default:
+                ActionCreationData actionData = actionDataMap.get(view.getId());
+                int actionId = actionData.getAction_id();
+                int id = view.getId();
+                boolean belowZero = false;
+                if (buttonId != 0) {
+
+                    //Toast.makeText(ScoutingActivity_Back.this, queryString, Toast.LENGTH_SHORT).show();
+                    ActionObject tempObject = actionObjectArrayList.get(actionId);
+                    tempObject.changeValue(actionData.getDecrement());
+
+                    EditText tempTextView = (EditText) getActivity().findViewById(tempObject.getTextFieldId());
+                    if (tempTextView != null) {
+                        tempTextView.setText(String.valueOf(tempObject.getActionCount()));
+                        try {
+                            //db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
+                            queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, parent.teamMatchId, buttonId, actionData.getDecrement()));
+                        } finally {
+
+                        }
+                        //Toast.makeText(ScoutingActivity_Back.this, getResources().getResourceEntryName(tempObject.getTextFieldId()), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(getActivity(), "View is NULL", Toast.LENGTH_SHORT).show();
+                    }
+                    for (ActionObject spinBox : actionObjectArrayList) {
+                        Button decrementButton = (Button) getActivity().findViewById(spinBox.getDecrementButtonId());
+                        if (id == spinBox.getDecrementButtonId()) {
+
+                            if (spinBox.getActionCount() < 1) {
+                                belowZero = true;
+                                decrementButton.setEnabled(false);
+                            }
+                            break;
+                        } else if (!decrementButton.isEnabled()) {
+                            decrementButton.setEnabled(true);
+                        }
+                    }
+                    break;
+                }
         }
     }
 

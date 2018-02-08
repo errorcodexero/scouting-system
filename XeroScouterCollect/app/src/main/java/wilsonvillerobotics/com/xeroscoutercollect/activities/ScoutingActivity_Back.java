@@ -84,35 +84,6 @@ public class ScoutingActivity_Back extends FragmentActivity implements View.OnCl
         isRed = getIntent().getExtras().getBoolean("background");
         teamNum = getIntent().getExtras().getString("team_number");
 
-        //RadioButton noClimb = (RadioButton) findViewById(R.id.radio_no_climb);
-
-        if (isRed) {
-            LinearLayout baseLayout = (LinearLayout) findViewById(R.id.scouting_root);
-
-            LinearLayout portalColumn = (LinearLayout) findViewById(R.id.portal_column);
-            LinearLayout exchangeColumn = (LinearLayout) findViewById(R.id.exchange_column);
-            LinearLayout centerColumn = (LinearLayout) findViewById(R.id.center_action_column);
-
-            baseLayout.removeAllViews();
-
-            baseLayout.addView(exchangeColumn);
-            baseLayout.addView(centerColumn);
-            baseLayout.addView(portalColumn);
-
-        } else {
-            LinearLayout scaleSwitchBlock = (LinearLayout) findViewById(R.id.switch_scale_divider);
-
-            LinearLayout allianceSwitchBlock = (LinearLayout) findViewById(R.id.alliance_switch_block);
-            LinearLayout scaleBlock = (LinearLayout) findViewById(R.id.scale_block);
-            LinearLayout opponentSwitchBlock = (LinearLayout) findViewById(R.id.opponent_switch_block);
-
-            scaleSwitchBlock.removeAllViews();
-
-            scaleSwitchBlock.addView(opponentSwitchBlock);
-            scaleSwitchBlock.addView(scaleBlock);
-            scaleSwitchBlock.addView(allianceSwitchBlock);
-        }
-
         // b -> a; [] key -> b; b key -> textview
         finalizeTabAdapter = new TwoColumnAdapter(this, finalizeDataList);
 

@@ -3,6 +3,7 @@ package wilsonvillerobotics.com.xeroscoutercollect.activities;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,11 +20,12 @@ import java.util.HashMap;
 
 import wilsonvillerobotics.com.xeroscoutercollect.BuildConfig;
 import wilsonvillerobotics.com.xeroscoutercollect.R;
+import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 
 public class ScoutingActivity extends FragmentActivity {
 
-    public enum ScoutingState{
+    public enum ScoutingState {
         NULL,
         AUTO,
         TELEOP,
@@ -34,7 +36,7 @@ public class ScoutingActivity extends FragmentActivity {
 
         public static ScoutingState newScoutingState(String str) {
             String checkedStr = str.toUpperCase();
-            switch(checkedStr) {
+            switch (checkedStr) {
                 case "NULL":
                     return NULL;
                 case "AUTO":
@@ -71,7 +73,6 @@ public class ScoutingActivity extends FragmentActivity {
     }
 
 
-
     private String stringState = "";
 
     ScoutingState state = ScoutingState.NULL;
@@ -105,11 +106,43 @@ public class ScoutingActivity extends FragmentActivity {
         this.baseFolder = baseFolder;
     }
 
+    DatabaseHelper dbHelper;
+
+    SQLiteDatabase db;
+
+
+    static HashMap<String, Integer> actionMap = new HashMap<>();
+
+    static {
+        actionMap.put("btn_action_1_incr", 44);
+        actionMap.put("btn_action_1_decr", 44);
+        actionMap.put("btn_action_2_incr", 46);
+        actionMap.put("btn_action_2_decr", 46);
+        actionMap.put("btn_action_3_incr", 34);
+        actionMap.put("btn_action_3_decr", 34);
+        actionMap.put("btn_action_4_incr", 35);
+        actionMap.put("btn_action_4_decr", 35);
+        actionMap.put("btn_action_5_incr", 43);
+        actionMap.put("btn_action_5_decr", 43);
+        actionMap.put("btn_action_6_incr", 36);
+        actionMap.put("btn_action_6_decr", 36);
+        actionMap.put("btn_action_7_incr", 47);
+        actionMap.put("btn_action_7_decr", 47);
+        actionMap.put("auto_action_1_chkbx", 30);
+        actionMap.put("auto_action_2_chkbx", 31);
+        actionMap.put("auto_action_3_chkbx", 32);
+        actionMap.put("auto_action_4_chkbx", 33);
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         stringState = "TELEOP";
+        dbHelper = DatabaseHelper.getInstance(getApplicationContext());
+
+        db = dbHelper.getWritableDatabase();
+
 
         //state = ScoutingState.newScoutingState(stringState);
         setContentView(R.layout.fragment_scouting);
@@ -142,7 +175,7 @@ public class ScoutingActivity extends FragmentActivity {
                     Log.e("ScoutingFragment", "[!] ERROR: state is \'null\'.\n");
                     break;
                 case AUTO:
-                    scoutingFragment = new AutonomousScoutingFragment();
+                    scoutingFragment = AutonomousScoutingFragment.newInstance(entryValues);
                     break;
                 case TELEOP:
                     scoutingFragment = TeleopScoutingFragment.newInstance(entryValues);
@@ -153,12 +186,12 @@ public class ScoutingActivity extends FragmentActivity {
                     scoutingFragment = new TeleopScoutingFragment();
                     break;
                 case FINALIZE:
-                    scoutingFragment = new FinalizeScoutingFragment();
+                    scoutingFragment = FinalizeScoutingFragment.newInstance(entryValues);
                     break;
             }
             assert scoutingFragment != null;
             scoutingFragment.setArguments(fragmentArgs);
-            getSupportFragmentManager().beginTransaction().add(rootView.getId(), scoutingFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(rootView.getId(), scoutingFragment).commit();
         } catch (NullPointerException e ) {
             Log.e("ScoutingFragment", e.getStackTrace().toString());
         }
