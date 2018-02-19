@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.adapters.TwoColumnAdapter;
@@ -55,19 +57,15 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
     protected HashMap<Integer, ActionCreationData> actionDataMap = new HashMap<>();
 
     //Map containing entries and their values for a given TeamMatch scouted
-    protected HashMap<String, Integer> entryValueMap = new HashMap<>();
     protected ArrayList<Pair<String, String>> finalizeDataList = new ArrayList<>();
     protected ArrayList<String> queryStringList = new ArrayList<>();
     protected TwoColumnAdapter finalizeTabAdapter;
+    protected ListView finalizeView;
     private boolean didCleanExit = false;
     private boolean doRemoveOldData = false;
-    protected int currentClickedId;
     //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
     String tablet_uuid;
-    private Boolean doSaveToFile = true;
-    private boolean doAskRestore = true;
-    private boolean didCompleteMatch = false;
 
     private ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
 
@@ -85,11 +83,6 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
-            actionObjects = (ArrayList<ActionObject>) getArguments().getSerializable(ARG_ACTION_OBJECTS);
-        }
-        super.onCreate(savedInstanceState);
 
         ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
 
@@ -100,6 +93,8 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
         String packageName = parentActivity.getPackageName();
 
         dbHelper = DatabaseHelper.getInstance(parentActivity.getApplicationContext());
+        TwoColumnAdapter finalizeDataAdapter;
+        ListView finalizeListView;
         // Mildly proud I fit this in one line
 
         //void test[] = {findViewById(elem.getDecrementButtonId()).setOnClickListener(this), findViewById(elem.getDecrementButtonId()).setOnClickListener(this)};
@@ -107,6 +102,16 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(parentActivity);
         String pref_default = "*";
         tablet_uuid = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
+
+        try {
+            entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+        } catch (Exception e ) {
+            //Don't care at all
+        }
+
+        if (getArguments() != null) {
+            entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
+        }
 
         //actionObjectArrayList.get(0);
 
@@ -123,12 +128,46 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
     public void onActivityCreated(Bundle onSavedInstanceState) {
         super.onActivityCreated(onSavedInstanceState);
         parentActivity = (ScoutingActivity) getActivity();
+        parentActivity.setIsStateChanging(false);
         //parentActivity.findViewById(R.id.btn_finalize_back).setOnClickListener(this);
         Button finalizeBack = (Button) parentActivity.findViewById(R.id.btn_finalize_back);
         finalizeBack.setOnClickListener(this);
         parentActivity.findViewById(R.id.btn_finalize_finish).setOnClickListener(this);
         Button finalizeFinish = (Button) parentActivity.findViewById(R.id.btn_finalize_finish);
         finalizeFinish.setOnClickListener(this);
+
+        for (int i = 0; i < 17; i++) {
+            String actionName = "";
+            String actionTempName = "action_";
+            //THIS IS FOR TESTING
+            //TODO: FIX THIS ABOMINATION
+            entryValues.put("auto_action_1_chkbx", 1);
+            entryValues.put("auto_action_2_chkbx", 0);
+            entryValues.put("auto_action_3_chkbx", 1);
+            entryValues.put("auto_action_4_chkbx", 1);
+
+
+            if (i < 4) {
+                actionName = "auto_action_" + (i + 1) + "_chkbx";
+                actionTempName += (i + 30);
+                finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources()
+                        .getIdentifier(actionTempName, "string", parentActivity.getPackageName())), entryValues.get(actionName) == 1 ? "True" : "False"));
+            } else {
+                actionName = "edittext_action_" + (i - 3);
+
+                int j = 0;
+
+                if (i >= 7) {
+                    j += 6;
+                }
+                actionTempName = actionTempName + (i + 30 + j);
+                finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources().getIdentifier(actionTempName, "string", parentActivity.getPackageName())), String.valueOf(entryValues.get(actionName))));
+            }
+        }
+        finalizeView = (ListView) parentActivity.findViewById(R.id.finalize_list);
+        finalizeTabAdapter = new TwoColumnAdapter(parentActivity, finalizeDataList);
+        finalizeView.setAdapter(finalizeTabAdapter);
+
     }
 
     public void onButtonPressed(Uri uri) {

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
@@ -51,24 +52,13 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
 
     private OnFragmentInteractionListener mListener;
 
-
     protected ArrayList<ActionObject> actionObjectArrayList = new ArrayList<>();
     protected HashMap<Integer, ActionCreationData> actionDataMap = new HashMap<>();
 
     //Map containing entries and their values for a given TeamMatch scouted
-    protected HashMap<String, Integer> entryValueMap = new HashMap<>();
-    protected ArrayList<Pair<String, String>> finalizeDataList = new ArrayList<>();
     protected ArrayList<String> queryStringList = new ArrayList<>();
-    protected TwoColumnAdapter finalizeTabAdapter;
-    private boolean didCleanExit = false;
-    private boolean doRemoveOldData = false;
-    protected int currentClickedId;
-    //protected SQLiteDatabase matchDB = openOrCreateDatabase("matchDB", MODE_PRIVATE, null);
     protected DatabaseHelper dbHelper;
     String tablet_uuid;
-    private Boolean doSaveToFile = true;
-    private boolean doAskRestore = true;
-    private boolean didCompleteMatch = false;
 
     private ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
 
@@ -106,6 +96,15 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
         String pref_default = "*";
         tablet_uuid = sharedPreferences.getString(getString(R.string.uuid_value_pref), pref_default);
 
+        try {
+            entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+        } catch (Exception e ) {
+            //Don't care at all
+        }
+        if (getArguments() != null) {
+            entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
+        }
+
         //actionObjectArrayList.get(0);
 
     }
@@ -119,6 +118,8 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
     @Override
     public void onActivityCreated(Bundle onSavedInstanceState) {
         super.onActivityCreated(onSavedInstanceState);
+        parentActivity = (ScoutingActivity) getActivity();
+        parentActivity.setIsStateChanging(false);
         ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
         Button teleopBackButton = (Button) parentActivity.findViewById(R.id.btn_tele_back);
         teleopBackButton.setOnClickListener(this);
@@ -128,7 +129,7 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
         Resources res = getResources();
         String packageName = parentActivity.getPackageName();
 
-        for (int i = 1; i < 7; i++) {
+        for (int i = 1; i < 8; i++) {
 
             int test1 = res.getIdentifier("btn_action_" + i + "_incr", "id", packageName);
             int test2 = res.getIdentifier("btn_action_" + i + "_decr", "id", packageName);
@@ -142,7 +143,7 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
                     res.getIdentifier(strEditTextId, "id", packageName), 0));
         }
 
-        for (int i = 1; i < 7; i++) {
+        for (int i = 1; i < 8; i++) {
             String strIncId = "btn_action_" + i + "_incr";
             String strDecId = "btn_action_" + i + "_decr";
             String editTextId = "edittext_action_" + i;
@@ -158,6 +159,12 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
             Button decrementButton = (Button) getActivity().findViewById(elem.getDecrementButtonId());
             incrementButton.setOnClickListener(this);
             decrementButton.setOnClickListener(this);
+            try {
+                elem.setActionCount(entryValues.get(getResources().getResourceEntryName(elem.getTextFieldId())));
+                ((TextView) parentActivity.findViewById(elem.getTextFieldId())).invalidate();
+            } catch (Exception e ) {
+                Log.d("ERROR", e.getStackTrace().toString());
+            }
         }
     }
 
@@ -188,10 +195,11 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
     public void onClick(View view) {
         int buttonId = view.getId();
         ScoutingActivity parent = (ScoutingActivity) getActivity();
+        parent.setIsStateChanging(false);
         switch (buttonId) {
             case R.id.btn_tele_next:
                 for (ActionObject i : actionObjectArrayList) {
-                    finalizeDataList.add(new Pair<>(getString(i.getTextFieldValueId()), String.valueOf(i.getActionCount())));
+                    entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
                 }
                 parent.changeState(FINALIZE, entryValues);
                 break;
@@ -206,7 +214,7 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
                 if (buttonId != 0) {
 
                     //Toast.makeText(ScoutingActivity_Back.this, queryString, Toast.LENGTH_SHORT).show();
-                    ActionObject tempObject = actionObjectArrayList.get(actionId);
+                    ActionObject tempObject = actionObjectArrayList.get(actionId - 1);
                     tempObject.changeValue(actionData.getDecrement());
 
                     EditText tempTextView = (EditText) getActivity().findViewById(tempObject.getTextFieldId());
@@ -239,6 +247,21 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
                     break;
                 }
         }
+    }
+
+    @Override
+    public void onDestroy() {
+
+        if (parentActivity.getIsStateChanging()) {
+            super.onDestroy();
+            return;
+        } else {
+            for (ActionObject i : actionObjectArrayList) {
+                entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
+            }
+            parentActivity.updateEntryValues(entryValues);
+        }
+        super.onDestroy();
     }
 
     public interface OnFragmentInteractionListener {

@@ -25,6 +25,10 @@ import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 
 public class ScoutingActivity extends FragmentActivity {
 
+    public ScoutingActivity() {
+        entryValues = new HashMap<>();
+    }
+
     public enum ScoutingState {
         NULL,
         AUTO,
@@ -89,6 +93,15 @@ public class ScoutingActivity extends FragmentActivity {
     private boolean isRed;
     private String teamNum;
 
+    public HashMap<String, Integer> entryValues;
+
+    public HashMap<String, Integer> getEntryValues() {
+        return entryValues;
+    }
+
+    public void updateEntryValues(HashMap<String, Integer> entryValues) {
+        this.entryValues = entryValues;
+    }
 
     public String getFilename() {
         return filename;
@@ -109,6 +122,17 @@ public class ScoutingActivity extends FragmentActivity {
     DatabaseHelper dbHelper;
 
     SQLiteDatabase db;
+
+
+    public boolean getIsStateChanging() {
+        return isStateChanging;
+    }
+
+    public void setIsStateChanging(boolean isStateChanging) {
+        this.isStateChanging = isStateChanging;
+    }
+
+    private boolean isStateChanging;
 
 
     static HashMap<String, Integer> actionMap = new HashMap<>();
@@ -143,7 +167,6 @@ public class ScoutingActivity extends FragmentActivity {
 
         db = dbHelper.getWritableDatabase();
 
-
         //state = ScoutingState.newScoutingState(stringState);
         setContentView(R.layout.fragment_scouting);
 
@@ -156,14 +179,30 @@ public class ScoutingActivity extends FragmentActivity {
 
         createFileAssociations();
 
-        changeState(state, new HashMap<String, Integer>());
+        try {
+            entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+        } catch (Exception e ) {
+             //TL;DR Don't care
+        }
+
+        changeState(state, entryValues);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("ENTRYVALUES", entryValues);
     }
 
     // Think of this as an observer pattern + logic. The "notify" is the change state function
-    public void changeState(ScoutingState newState, HashMap<String, Integer> entryValues) {
+    public void changeState(ScoutingState newState, HashMap<String, Integer> newEntryValues) {
         try {
             scoutingValues = entryValues;
+            setIsStateChanging(true);
             state = newState;
+
+            entryValues = newEntryValues;
 
             Bundle fragmentArgs = new Bundle();
             fragmentArgs.putSerializable("entryValues", scoutingValues);
@@ -193,7 +232,7 @@ public class ScoutingActivity extends FragmentActivity {
             scoutingFragment.setArguments(fragmentArgs);
             getSupportFragmentManager().beginTransaction().replace(rootView.getId(), scoutingFragment).commit();
         } catch (NullPointerException e ) {
-            Log.e("ScoutingFragment", e.getStackTrace().toString());
+            Log.e("ScoutingFragment", String.valueOf(e.getStackTrace()));
         }
     }
     // Think of this as an observer pattern + logic. The "notify" is the change state function
@@ -212,7 +251,7 @@ public class ScoutingActivity extends FragmentActivity {
                 case AUTO:
                     // NYI
                     Log.d("ScoutingFragment", "[*] Warning: case \'AUTO\' is not yet implemented.\n");
-                    scoutingFragment = new TeleopScoutingFragment();
+                    scoutingFragment = new AutonomousScoutingFragment();
                     break;
                 case TELEOP:
                     scoutingFragment = new TeleopScoutingFragment();

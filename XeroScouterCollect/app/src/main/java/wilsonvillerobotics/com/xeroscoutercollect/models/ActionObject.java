@@ -13,7 +13,7 @@ public class ActionObject implements Serializable {
     private int incrementButtonId;
     private int textFieldId;
     private int textFieldValueId;
-    private Integer actionCount;
+    private int actionCount;
 
     public ActionObject() {
     }
@@ -30,7 +30,7 @@ public class ActionObject implements Serializable {
 
     }
 
-    public ActionObject(int decrementButtonId, int incrementButtonId, int textFieldId, int textFieldValueId, Integer actionCount) {
+    public ActionObject(int decrementButtonId, int incrementButtonId, int textFieldId, int textFieldValueId, int actionCount) {
         this.decrementButtonId = decrementButtonId;
         this.incrementButtonId = incrementButtonId;
         this.textFieldValueId = textFieldValueId;
@@ -39,11 +39,11 @@ public class ActionObject implements Serializable {
     }
 
 
-    public Integer getActionCount() {
+    public int getActionCount() {
         return actionCount;
     }
 
-    public void setActionCount(Integer actionCount) {
+    public void setActionCount(int actionCount) {
         this.actionCount = actionCount;
     }
 
