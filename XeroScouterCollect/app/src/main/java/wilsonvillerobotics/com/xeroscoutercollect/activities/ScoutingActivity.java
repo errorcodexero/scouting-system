@@ -23,6 +23,8 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 
+import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.newScoutingState;
+
 public class ScoutingActivity extends FragmentActivity {
 
     public ScoutingActivity() {
@@ -78,6 +80,14 @@ public class ScoutingActivity extends FragmentActivity {
 
 
     private String stringState = "";
+
+    public ScoutingState getState() {
+        return state;
+    }
+
+    public void setState(ScoutingState state) {
+        this.state = state;
+    }
 
     ScoutingState state = ScoutingState.NULL;
 
@@ -181,6 +191,7 @@ public class ScoutingActivity extends FragmentActivity {
 
         try {
             entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+            state = newScoutingState(savedInstanceState.getString("STATE"));
         } catch (Exception e ) {
              //TL;DR Don't care
         }
@@ -193,6 +204,7 @@ public class ScoutingActivity extends FragmentActivity {
         super.onSaveInstanceState(outState);
 
         outState.putSerializable("ENTRYVALUES", entryValues);
+        outState.putString("STATE", state.toString());
     }
 
     // Think of this as an observer pattern + logic. The "notify" is the change state function
@@ -221,8 +233,7 @@ public class ScoutingActivity extends FragmentActivity {
                     break;
                 case CLIMB:
                     // NYI
-                    Log.d("ScoutingFragment", "[*] Warning: case \'CLIMB\' is not yet implemented.\n");
-                    scoutingFragment = new TeleopScoutingFragment();
+                    scoutingFragment = ClimbScoutingFragment.newInstance(entryValues);
                     break;
                 case FINALIZE:
                     scoutingFragment = FinalizeScoutingFragment.newInstance(entryValues);
@@ -241,7 +252,7 @@ public class ScoutingActivity extends FragmentActivity {
             scoutingValues = entryValues;
             Bundle fragmentArgs = new Bundle();
             fragmentArgs.putSerializable("entryValues", scoutingValues);
-            state = ScoutingState.newScoutingState(newStateStr);
+            state = newScoutingState(newStateStr);
             Fragment scoutingFragment = null;
             assert state == ScoutingState.NULL;
             switch(state) {

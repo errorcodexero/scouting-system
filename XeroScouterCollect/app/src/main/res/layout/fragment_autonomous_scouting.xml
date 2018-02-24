@@ -13,45 +13,142 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".3"
-        android:orientation="horizontal">
+        android:layout_weight=".5"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2"
             android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/auto_action_3_chkbx"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_32" />
-
-            <CheckBox
-                android:id="@+id/auto_action_2_chkbx"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_31" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".5"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/auto_action_4_chkbx"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_33" />
 
             <CheckBox
                 android:id="@+id/auto_action_1_chkbx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Auto Scale Cube" />
+                android:text="@string/action_32" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/auto_action_2_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/auto_action_2_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auto Exchange"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_auto_action_2_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_auto_action_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_auto_action_2_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/auto_action_3_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/auto_action_3_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auto Switch"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_auto_action_3_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_auto_action_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_auto_action_3_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/auto_action_4_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/auto_action_4_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auto Scale"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_auto_action_4_incr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edittext_auto_action_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btn_auto_action_4_decr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

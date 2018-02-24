@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Checkable;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -58,10 +60,9 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
     protected ArrayList<String> queryStringList = new ArrayList<>();
     protected TwoColumnAdapter finalizeTabAdapter;
     private ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
-    String packageName = parentActivity.getPackageName();
     String tablet_uuid;
 
-    Resources res = parentActivity.getResources();
+    Resources res;
 
     public AutonomousScoutingFragment() {}
 
@@ -78,6 +79,7 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
         super.onCreate(savedInstanceState);
 
         ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
+        res = parentActivity.getResources();
 
         String[] actionArray = getResources().getStringArray(R.array.action_array);
 
@@ -118,6 +120,46 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
         autoNextButton.setOnClickListener(this);
         Button autoBackButton = (Button) parentActivity.findViewById(R.id.btn_auto_back);
         autoBackButton.setOnClickListener(this);
+        String packageName = parentActivity.getPackageName();
+
+        for (int i = 2; i < 5; i++) {
+
+            int test1 = res.getIdentifier("btn_auto_action_" + i + "_incr", "id", packageName);
+            int test2 = res.getIdentifier("btn_auto_action_" + i + "_decr", "id", packageName);
+            int test3 = res.getIdentifier("edittext_auto_action_" + i, "id", packageName);
+            String strIncId = "btn_auto_action_" + i + "_incr";
+            String strDecId = "btn_auto_action_" + i + "_decr";
+            String strEditTextId = "edittext_auto_action_" + i;
+            actionObjectArrayList.add(new ActionObject(res.getIdentifier(strDecId, "id", packageName),
+                    res.getIdentifier(strIncId, "id", packageName),
+                    res.getIdentifier(strEditTextId, "id", packageName),
+                    res.getIdentifier(strEditTextId, "id", packageName), 0));
+        }
+
+        for (int i = 2; i < 5; i++) {
+            String strIncId = "btn_auto_action_" + i + "_incr";
+            String strDecId = "btn_auto_action_" + i + "_decr";
+            String editTextId = "edittext_auto_action_" + i;
+
+            actionDataMap.put(res.getIdentifier(strIncId, "id", packageName), new ActionCreationData(false, i));
+            actionDataMap.put(res.getIdentifier(strDecId, "id", packageName), new ActionCreationData(true, i));
+            actionDataMap.put(res.getIdentifier(editTextId, "id", packageName), new ActionCreationData(null, i));
+        }
+
+
+        for (ActionObject elem : actionObjectArrayList) {
+            Button incrementButton = (Button) getActivity().findViewById(elem.getIncrementButtonId());
+            Button decrementButton = (Button) getActivity().findViewById(elem.getDecrementButtonId());
+            incrementButton.setOnClickListener(this);
+            decrementButton.setOnClickListener(this);
+            try {
+                elem.setActionCount(entryValues.get(getResources().getResourceEntryName(elem.getTextFieldId())));
+                ((TextView) parentActivity.findViewById(elem.getTextFieldId())).invalidate();
+            } catch (Exception e ) {
+                Log.d("ERROR", e.getStackTrace().toString());
+            }
+        }
+
     }
 
     public void onButtonPressed(Uri uri) {
@@ -153,21 +195,19 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
                 startActivity(sanityCheck);
                 break;
             case R.id.btn_auto_next:
-                parent.changeState(TELEOP, entryValues);
+                for (ActionObject i : actionObjectArrayList) {
+                    entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
+                }
                 entryValues.put("auto_action_1_chkbx", ((CheckBox) parent.findViewById(R.id.auto_action_1_chkbx)).isChecked()? 1: 0);
-                entryValues.put("auto_action_2_chkbx", ((CheckBox) parent.findViewById(R.id.auto_action_2_chkbx)).isChecked()? 1: 0);
-                entryValues.put("auto_action_3_chkbx", ((CheckBox) parent.findViewById(R.id.auto_action_3_chkbx)).isChecked()? 1: 0);
-                entryValues.put("auto_action_4_chkbx", ((CheckBox) parent.findViewById(R.id.auto_action_4_chkbx)).isChecked()? 1: 0);
+                parent.changeState(TELEOP, entryValues);
                 break;
             default:
-                int id = view.getId();
                 ActionCreationData actionData = actionDataMap.get(view.getId());
                 int actionId = actionData.getAction_id();
                 boolean belowZero = false;
                 if (buttonId != 0) {
-
                     //Toast.makeText(ScoutingActivity_Back.this, queryString, Toast.LENGTH_SHORT).show();
-                    ActionObject tempObject = actionObjectArrayList.get((buttonId - 1) - 33);
+                    ActionObject tempObject = actionObjectArrayList.get(actionId - 2);
                     tempObject.changeValue(actionData.getDecrement());
 
                     EditText tempTextView = (EditText) getActivity().findViewById(tempObject.getTextFieldId());
@@ -181,7 +221,7 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
                     }
                     for (ActionObject spinBox : actionObjectArrayList) {
                         Button decrementButton = (Button) getActivity().findViewById(spinBox.getDecrementButtonId());
-                        if (id == spinBox.getDecrementButtonId()) {
+                        if (buttonId == spinBox.getDecrementButtonId()) {
 
                             if (spinBox.getActionCount() < 1) {
                                 belowZero = true;
@@ -204,10 +244,10 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
             super.onDestroy();
             return;
         } else {
+            for (ActionObject i : actionObjectArrayList) {
+                entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
+            }
             entryValues.put("auto_action_1_chkbx", ((CheckBox) parentActivity.findViewById(R.id.auto_action_1_chkbx)).isChecked()? 1: 0);
-            entryValues.put("auto_action_2_chkbx", ((CheckBox) parentActivity.findViewById(R.id.auto_action_2_chkbx)).isChecked()? 1: 0);
-            entryValues.put("auto_action_3_chkbx", ((CheckBox) parentActivity.findViewById(R.id.auto_action_3_chkbx)).isChecked()? 1: 0);
-            entryValues.put("auto_action_4_chkbx", ((CheckBox) parentActivity.findViewById(R.id.auto_action_4_chkbx)).isChecked()? 1: 0);
             parentActivity.updateEntryValues(entryValues);
         }
         super.onDestroy();
