@@ -83,7 +83,10 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
         if (getArguments() != null) {
             entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
             actionObjects = (ArrayList<ActionObject>) getArguments().getSerializable(ARG_ACTION_OBJECTS);
+            queryStringList = getArguments().getStringArrayList(ARG_QUERY_LIST);
         }
+
+        queryStringList = new ArrayList<>();
         super.onCreate(savedInstanceState);
 
         ScoutingActivity parentActivity = (ScoutingActivity) getActivity();
@@ -101,11 +104,13 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
 
         try {
             entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+            queryStringList = savedInstanceState.getStringArrayList("QUERYSTRING");
         } catch (Exception e ) {
             //Don't care at all
         }
         if (getArguments() != null) {
             entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
+            queryStringList = getArguments().getStringArrayList(ARG_QUERY_LIST);
         }
 
         //actionObjectArrayList.get(0);
@@ -203,20 +208,46 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
                 for (ActionObject i : actionObjectArrayList) {
                     entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
                 }
-                parent.changeState(CLIMB, entryValues);
+                parent.changeState(CLIMB, entryValues, queryStringList);
                 break;
             case R.id.btn_tele_back:
                 for (ActionObject i : actionObjectArrayList) {
                     entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
                 }
-                parent.changeState(AUTO, entryValues);
+                parent.changeState(AUTO, entryValues, queryStringList);
                 break;
             default:
                 ActionCreationData actionData = actionDataMap.get(view.getId());
                 int actionId = actionData.getAction_id();
                 int id = view.getId();
                 boolean belowZero = false;
+                int outputActionId = 0;
                 if (buttonId != 0) {
+
+                    switch (actionId) {
+                        case 1:
+                            outputActionId = 44;
+                            break;
+                        case 2:
+                            outputActionId = 46;
+                            break;
+                        case 3:
+                            outputActionId = 34;
+                            break;
+                        case 4:
+                            outputActionId = 35;
+                            break;
+                        case 5:
+                            outputActionId = 43;
+                            break;
+                        case 6:
+                            outputActionId = 36;
+                            break;
+                        case 7:
+                            outputActionId = 47;
+                            break;
+
+                    }
 
                     //Toast.makeText(ScoutingActivity_Back.this, queryString, Toast.LENGTH_SHORT).show();
                     ActionObject tempObject = actionObjectArrayList.get(actionId - 1);
@@ -227,7 +258,7 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
                         tempTextView.setText(String.valueOf(tempObject.getActionCount()));
                         try {
                             //db.execSQL(TeamMatchActionModel.addAction(tabletId, teamMatchId, action_id, actionData.getDecrement()));
-                            queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, parent.teamMatchId, buttonId, actionData.getDecrement()));
+                            queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, parent.teamMatchId, outputActionId, actionData.getDecrement()));
                         } finally {
 
                         }
@@ -264,6 +295,7 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
             for (ActionObject i : actionObjectArrayList) {
                 entryValues.put(getResources().getResourceEntryName(i.getTextFieldId()), i.getActionCount());
             }
+            parentActivity.updateQueryList(queryStringList);
             parentActivity.updateEntryValues(entryValues);
         }
         super.onDestroy();

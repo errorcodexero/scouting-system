@@ -46,7 +46,7 @@ import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActi
 public class FinalizeScoutingFragment extends Fragment implements View.OnClickListener{
 
     private static final String ARG_ENTRY_VALUE = "entryValues";
-    private static final String ARG_ACTION_OBJECTS = "actionObjects";
+    private static final String ARG_QUERY_LIST = "queryList";
 
     private HashMap<String, Integer> entryValues;
     private ArrayList<ActionObject> actionObjects;
@@ -73,10 +73,11 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
     public FinalizeScoutingFragment() {}
 
-    public static FinalizeScoutingFragment newInstance(HashMap<String, Integer> entryValues) {
+    public static FinalizeScoutingFragment newInstance(HashMap<String, Integer> entryValues, ArrayList<String> queryList) {
         FinalizeScoutingFragment fragment = new FinalizeScoutingFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_ENTRY_VALUE, new HashMap<String, Integer>());
+        args.putSerializable(ARG_QUERY_LIST, new ArrayList<String>());
         fragment.setArguments(args);
         return fragment;
     }
@@ -106,12 +107,14 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
         try {
             entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+            queryStringList = savedInstanceState.getStringArrayList("QUERYSTRING");
         } catch (Exception e ) {
             //Don't care at all
         }
 
         if (getArguments() != null) {
             entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
+            queryStringList = getArguments().getStringArrayList(ARG_QUERY_LIST);
         }
 
         //actionObjectArrayList.get(0);
@@ -247,7 +250,7 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
                 startActivity(mainScreen);
             case R.id.btn_finalize_back:
-                parent.changeState(CLIMB, entryValues);
+                parent.changeState(CLIMB, entryValues, queryStringList);
                 break;
             default:
                 ActionCreationData actionData = actionDataMap.get(view.getId());

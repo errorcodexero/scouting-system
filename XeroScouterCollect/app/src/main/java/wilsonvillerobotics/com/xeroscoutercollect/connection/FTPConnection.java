@@ -13,6 +13,7 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -37,11 +38,17 @@ public class FTPConnection {
     private TextView status;
     private final String statusPrefix = "Status: ";
 
+    private File xmlFolder = new File("/data/data/wilsonvillerobotics.com.xeroscoutercollect/ml");
 
-    public FTPConnection(Activity act){
+
+    // Will want to make a custom Exception
+    public FTPConnection(Activity act) throws FileNotFoundException{
         activity = act;
         status = (TextView) act.findViewById(R.id.lbl_user_status_text);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act);
+        if (!xmlFolder.mkdir()) {
+            throw new FileNotFoundException();
+        }
         serverAddress = sharedPreferences.getString("server_ip", "192.168.1.4");
     }
 
