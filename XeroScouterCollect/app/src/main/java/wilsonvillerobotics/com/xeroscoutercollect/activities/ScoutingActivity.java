@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,10 +24,13 @@ import wilsonvillerobotics.com.xeroscoutercollect.R;
 import wilsonvillerobotics.com.xeroscoutercollect.database.DatabaseHelper;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 
+import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.newScoutingState;
+
 public class ScoutingActivity extends FragmentActivity {
 
     public ScoutingActivity() {
         entryValues = new HashMap<>();
+        queryList = new ArrayList<String>();
     }
 
     public enum ScoutingState {
@@ -79,6 +83,14 @@ public class ScoutingActivity extends FragmentActivity {
 
     private String stringState = "";
 
+    public ScoutingState getState() {
+        return state;
+    }
+
+    public void setState(ScoutingState state) {
+        this.state = state;
+    }
+
     ScoutingState state = ScoutingState.NULL;
 
     private View rootView;
@@ -90,10 +102,20 @@ public class ScoutingActivity extends FragmentActivity {
     private String filename;
 
     int teamMatchId;
-    private boolean isRed;
-    private String teamNum;
+    public boolean isRed;
+    public String teamNumber;
 
     public HashMap<String, Integer> entryValues;
+
+    public ArrayList<String> getQueryList() {
+        return queryList;
+    }
+
+    public void updateQueryList(ArrayList<String> queryList) {
+        this.queryList = queryList;
+    }
+
+    public ArrayList<String> queryList;
 
     public HashMap<String, Integer> getEntryValues() {
         return entryValues;
@@ -163,6 +185,9 @@ public class ScoutingActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         stringState = "TELEOP";
+
+        queryList = new ArrayList<>();
+
         dbHelper = DatabaseHelper.getInstance(getApplicationContext());
 
         db = dbHelper.getWritableDatabase();
@@ -170,22 +195,24 @@ public class ScoutingActivity extends FragmentActivity {
         //state = ScoutingState.newScoutingState(stringState);
         setContentView(R.layout.fragment_scouting);
 
-        state = ScoutingState.TELEOP;
+        state = ScoutingState.AUTO;
         rootView = findViewById(R.id.scouting_fragment_root);
 
         teamMatchId = getIntent().getExtras().getInt("team_match_id");
         isRed = getIntent().getExtras().getBoolean("background");
-        teamNum = getIntent().getExtras().getString("team_number");
+        teamNumber = getIntent().getExtras().getString("team_number");
 
         createFileAssociations();
 
         try {
             entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+            queryList = savedInstanceState.getStringArrayList("QUERYLIST");
+            state = newScoutingState(savedInstanceState.getString("STATE"));
         } catch (Exception e ) {
              //TL;DR Don't care
         }
 
-        changeState(state, entryValues);
+        changeState(state, entryValues, queryList);
     }
 
     @Override
@@ -193,20 +220,23 @@ public class ScoutingActivity extends FragmentActivity {
         super.onSaveInstanceState(outState);
 
         outState.putSerializable("ENTRYVALUES", entryValues);
+        outState.putSerializable("QUERYLIST", queryList);
+        outState.putString("STATE", state.toString());
     }
 
     // Think of this as an observer pattern + logic. The "notify" is the change state function
-    public void changeState(ScoutingState newState, HashMap<String, Integer> newEntryValues) {
+    public void changeState(ScoutingState newState, HashMap<String, Integer> newEntryValues, ArrayList<String> newQueryList) {
         try {
             scoutingValues = entryValues;
             setIsStateChanging(true);
             state = newState;
 
             entryValues = newEntryValues;
+            queryList = newQueryList;
 
             Bundle fragmentArgs = new Bundle();
             fragmentArgs.putSerializable("entryValues", scoutingValues);
-            fragmentArgs.putSerializable("actionObjects", actionObjects);
+            fragmentArgs.putStringArrayList("queryList", queryList);
             Fragment scoutingFragment = null;
             assert state == ScoutingState.NULL;
             switch (state) {
@@ -214,18 +244,17 @@ public class ScoutingActivity extends FragmentActivity {
                     Log.e("ScoutingFragment", "[!] ERROR: state is \'null\'.\n");
                     break;
                 case AUTO:
-                    scoutingFragment = AutonomousScoutingFragment.newInstance(entryValues);
+                    scoutingFragment = AutonomousScoutingFragment.newInstance(entryValues, queryList);
                     break;
                 case TELEOP:
-                    scoutingFragment = TeleopScoutingFragment.newInstance(entryValues);
+                    scoutingFragment = TeleopScoutingFragment.newInstance(entryValues, queryList);
                     break;
                 case CLIMB:
                     // NYI
-                    Log.d("ScoutingFragment", "[*] Warning: case \'CLIMB\' is not yet implemented.\n");
-                    scoutingFragment = new TeleopScoutingFragment();
+                    scoutingFragment = ClimbScoutingFragment.newInstance(entryValues, queryList);
                     break;
                 case FINALIZE:
-                    scoutingFragment = FinalizeScoutingFragment.newInstance(entryValues);
+                    scoutingFragment = FinalizeScoutingFragment.newInstance(entryValues, queryList);
                     break;
             }
             assert scoutingFragment != null;
@@ -241,7 +270,8 @@ public class ScoutingActivity extends FragmentActivity {
             scoutingValues = entryValues;
             Bundle fragmentArgs = new Bundle();
             fragmentArgs.putSerializable("entryValues", scoutingValues);
-            state = ScoutingState.newScoutingState(newStateStr);
+            fragmentArgs.putStringArrayList("queryList", queryList);
+            state = newScoutingState(newStateStr);
             Fragment scoutingFragment = null;
             assert state == ScoutingState.NULL;
             switch(state) {

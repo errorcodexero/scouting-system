@@ -38,6 +38,5 @@
         <item name="action_45">Collect from Stack</item>
         <item name="action_46">Collect from Near Portal</item>
         <item name="action_47">Collect from Exchange</item>
-
     </string-array>
 </resources>

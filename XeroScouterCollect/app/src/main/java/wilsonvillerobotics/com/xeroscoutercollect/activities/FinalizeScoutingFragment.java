@@ -31,6 +31,7 @@ import wilsonvillerobotics.com.xeroscoutercollect.models.ActionCreationData;
 import wilsonvillerobotics.com.xeroscoutercollect.models.ActionObject;
 import wilsonvillerobotics.com.xeroscoutercollect.models.TeamMatchActionModel;
 
+import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.CLIMB;
 import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.FINALIZE;
 import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActivity.ScoutingState.TELEOP;
 
@@ -45,7 +46,7 @@ import static wilsonvillerobotics.com.xeroscoutercollect.activities.ScoutingActi
 public class FinalizeScoutingFragment extends Fragment implements View.OnClickListener{
 
     private static final String ARG_ENTRY_VALUE = "entryValues";
-    private static final String ARG_ACTION_OBJECTS = "actionObjects";
+    private static final String ARG_QUERY_LIST = "queryList";
 
     private HashMap<String, Integer> entryValues;
     private ArrayList<ActionObject> actionObjects;
@@ -72,10 +73,11 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
     public FinalizeScoutingFragment() {}
 
-    public static FinalizeScoutingFragment newInstance(HashMap<String, Integer> entryValues) {
+    public static FinalizeScoutingFragment newInstance(HashMap<String, Integer> entryValues, ArrayList<String> queryList) {
         FinalizeScoutingFragment fragment = new FinalizeScoutingFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_ENTRY_VALUE, new HashMap<String, Integer>());
+        args.putSerializable(ARG_QUERY_LIST, new ArrayList<String>());
         fragment.setArguments(args);
         return fragment;
     }
@@ -105,12 +107,14 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
         try {
             entryValues = (HashMap<String, Integer>) savedInstanceState.getSerializable("ENTRYVALUES");
+            queryStringList = savedInstanceState.getStringArrayList("QUERYSTRING");
         } catch (Exception e ) {
             //Don't care at all
         }
 
         if (getArguments() != null) {
             entryValues = (HashMap<String, Integer>) getArguments().getSerializable(ARG_ENTRY_VALUE);
+            queryStringList = getArguments().getStringArrayList(ARG_QUERY_LIST);
         }
 
         //actionObjectArrayList.get(0);
@@ -136,23 +140,24 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
         Button finalizeFinish = (Button) parentActivity.findViewById(R.id.btn_finalize_finish);
         finalizeFinish.setOnClickListener(this);
 
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 12; i++) {
             String actionName = "";
             String actionTempName = "action_";
             //THIS IS FOR TESTING
             //TODO: FIX THIS ABOMINATION
             entryValues.put("auto_action_1_chkbx", 1);
-            entryValues.put("auto_action_2_chkbx", 0);
-            entryValues.put("auto_action_3_chkbx", 1);
-            entryValues.put("auto_action_4_chkbx", 1);
 
 
-            if (i < 4) {
+            if (i == 0 ) {
                 actionName = "auto_action_" + (i + 1) + "_chkbx";
                 actionTempName += (i + 30);
                 finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources()
                         .getIdentifier(actionTempName, "string", parentActivity.getPackageName())), entryValues.get(actionName) == 1 ? "True" : "False"));
-            } else {
+            } else if ( i < 4) {
+                actionTempName = actionTempName + (i + 30);
+                actionName = "edittext_auto_action_" + (i + 1);
+                finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources().getIdentifier(actionTempName, "string", parentActivity.getPackageName())), String.valueOf(entryValues.get(actionName))));
+            } else if (i < 11){
                 actionName = "edittext_action_" + (i - 3);
 
                 int j = 0;
@@ -162,6 +167,36 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
                 }
                 actionTempName = actionTempName + (i + 30 + j);
                 finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources().getIdentifier(actionTempName, "string", parentActivity.getPackageName())), String.valueOf(entryValues.get(actionName))));
+            } else {
+                String climbType = "";
+                int climbTypeInt = entryValues.get("climb_option");
+                switch (climbTypeInt) {
+                    case 1:
+                        climbType = "Climb";
+                        break;
+                    case 2:
+                        climbType = "Piggyback Climb";
+                        break;
+                    case 3:
+                        climbType = "No Climb";
+                        break;
+                }
+                int climbTypeAssistInt = entryValues.get("climb_option_assist");
+                switch (climbTypeAssistInt) {
+                    case 1:
+                        climbType += " and Assist None";
+                        break;
+                    case 2:
+                        climbType += " and Assist One";
+                        break;
+                    case 3:
+                        climbType += " and Assist Two";
+                        break;
+                    default:
+                        climbType = " and Assist None";
+                        break;
+                }
+                finalizeDataList.add(Pair.create("Climb Type", climbType));
             }
         }
         finalizeView = (ListView) parentActivity.findViewById(R.id.finalize_list);
@@ -207,26 +242,6 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
                 didCleanExit = true;
 
-                CheckBox autoBaseline = (CheckBox) parent.findViewById(R.id.auto_action_1_chkbx);
-
-                if (autoBaseline.isChecked()) {
-                    parent.db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, parent.teamMatchId, 1, false));
-                }
-
-                //ToggleButton defensiveToggle = (ToggleButton) parent.findViewById(R.id.btn_action_16);
-                //ToggleButton disconnectToggle = (ToggleButton) parent.findViewById(R.id.btn_action_17);
-                //ToggleButton breakdownToggle = (ToggleButton) parent.findViewById(R.id);
-
-                /*if (defensiveToggle.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 16, false));
-                }
-                if (disconnectToggle.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 17, false));
-                }
-                if (breakdownToggle.isChecked()) {
-                    db.execSQL(TeamMatchActionModel.addAction(tablet_uuid, teamMatchId, 18, false));
-                }*/
-
                 for (String queryStringInstance : queryStringList) {
                     parent.db.execSQL(queryStringInstance);
                 }
@@ -235,7 +250,7 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
 
                 startActivity(mainScreen);
             case R.id.btn_finalize_back:
-                parent.changeState(TELEOP, entryValues);
+                parent.changeState(CLIMB, entryValues, queryStringList);
                 break;
             default:
                 ActionCreationData actionData = actionDataMap.get(view.getId());

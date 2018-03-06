@@ -86,7 +86,7 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
     public void setBaseFolder(){
         // check if external storage is available
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            baseFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+            baseFolder = "/data/data/wilsonvillerobotics.com.xeroscoutercollect/xml";
         }
         // revert to using internal storage (not sure if there's an equivalent to the above)
         else {
