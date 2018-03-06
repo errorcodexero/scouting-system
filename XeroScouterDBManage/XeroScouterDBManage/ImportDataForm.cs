@@ -159,7 +159,7 @@ namespace XeroScouterDBManage_Server
                     if (!String.IsNullOrEmpty(tableName))
                     {
                         Console.Out.WriteLine("Table Name: " + tableName);
-                        DataTable dataTable = ds.Tables["row"];
+                        DataTable dataTable = ds.Tables["Table"];
 
                         string prefix = "INSERT INTO " + tableName + "(";
                         string postfix = ") VALUES(";
@@ -437,18 +437,24 @@ namespace XeroScouterDBManage_Server
         {
             DataTable dt = ds.Tables["table"];
             int nameIndex = -1;
-            int columnCount = dt.Columns.Count;
-            for (int n = 0; n < columnCount; n++)
-            {
-                string colName = dt.Columns[n].ToString();
-                if (colName.ToLower().Contains("name"))
-                {
-                    nameIndex = n;
-                    break;
-                }
-            }
+            string tableName = String.Empty;
 
-            string tableName = (nameIndex >= 0 && dt.Rows.Count > 0) ? dt.Rows[0][nameIndex].ToString() : null;
+            if (dt != null)
+            {
+                int columnCount = dt.Columns.Count;
+                for (int n = 0; n < columnCount; n++)
+                {
+                    string colName = dt.Columns[n].ToString();
+                    //if (colName.ToLower().Equals("table_name"))
+                    if (colName.ToLower().Equals("name"))
+                    {
+                        nameIndex = n;
+                        break;
+                    }
+                }
+                tableName = (nameIndex >= 0 && dt.Rows.Count > 0) ? dt.Rows[0][nameIndex].ToString() : null;
+            }
+            
             return tableName;
         }
 
@@ -456,14 +462,18 @@ namespace XeroScouterDBManage_Server
         {
             DataTable dt = ds.Tables["row"];
             int idIndex = -1;
-            int columnCount = dt.Columns.Count;
-            for (int i = 0; i < columnCount; i++)
+
+            if (dt != null)
             {
-                string colName = dt.Columns[i].ToString();
-                if (colName.Equals("_id"))
+                int columnCount = dt.Columns.Count;
+                for (int i = 0; i < columnCount; i++)
                 {
-                    idIndex = i;
-                    break;
+                    string colName = dt.Columns[i].ToString();
+                    if (colName.Equals("_id"))
+                    {
+                        idIndex = i;
+                        break;
+                    }
                 }
             }
 

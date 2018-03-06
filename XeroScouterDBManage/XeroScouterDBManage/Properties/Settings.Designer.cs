@@ -197,5 +197,17 @@ namespace XeroScouterDBManage_Server.Properties {
                 return ((string)(this["MachineGuidRegistryKey"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\temp\\test.csv")]
+        public string DefinitionFileName {
+            get {
+                return ((string)(this["DefinitionFileName"]));
+            }
+            set {
+                this["DefinitionFileName"] = value;
+            }
+        }
     }
 }

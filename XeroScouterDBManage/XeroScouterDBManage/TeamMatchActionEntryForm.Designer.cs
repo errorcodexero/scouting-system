@@ -41,38 +41,61 @@
             this.txtMatchNumber = new System.Windows.Forms.TextBox();
             this.lblMatchNumber = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtAutoText8 = new System.Windows.Forms.TextBox();
+            this.lblAutoText8 = new System.Windows.Forms.Label();
+            this.txtAutoText6 = new System.Windows.Forms.TextBox();
+            this.lblAutoText6 = new System.Windows.Forms.Label();
+            this.txtAutoText7 = new System.Windows.Forms.TextBox();
+            this.lblAutoText7 = new System.Windows.Forms.Label();
             this.chkAutoBaselineCross = new System.Windows.Forms.CheckBox();
-            this.txtAutoFuelBinsTriggered = new System.Windows.Forms.TextBox();
-            this.lblAutoFuelBinsTriggered = new System.Windows.Forms.Label();
-            this.txtAutoHighMissed = new System.Windows.Forms.TextBox();
-            this.lblAutoHighMissed = new System.Windows.Forms.Label();
+            this.txtAutoText5 = new System.Windows.Forms.TextBox();
+            this.lblAutoText5 = new System.Windows.Forms.Label();
+            this.txtAutoText3 = new System.Windows.Forms.TextBox();
+            this.lblAutoText3 = new System.Windows.Forms.Label();
             this.lblBlueAlliance = new System.Windows.Forms.Label();
-            this.txtAutoGearsDelivered = new System.Windows.Forms.TextBox();
-            this.lblAutoGearsDelivered = new System.Windows.Forms.Label();
-            this.txtAutoHighScored = new System.Windows.Forms.TextBox();
-            this.lblAutoHighScored = new System.Windows.Forms.Label();
-            this.txtAutoLowDump = new System.Windows.Forms.TextBox();
-            this.lblAutoLowDump = new System.Windows.Forms.Label();
+            this.txtAutoText4 = new System.Windows.Forms.TextBox();
+            this.lblAutoText4 = new System.Windows.Forms.Label();
+            this.txtAutoText2 = new System.Windows.Forms.TextBox();
+            this.lblAutoText2 = new System.Windows.Forms.Label();
+            this.txtAutoText1 = new System.Windows.Forms.TextBox();
+            this.lblAutoText1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtTeleFuelBinsTriggered = new System.Windows.Forms.TextBox();
-            this.lblTeleFuelBinsTriggered = new System.Windows.Forms.Label();
-            this.txtTeleGearsDelivered = new System.Windows.Forms.TextBox();
-            this.lblTeleGearsDelivered = new System.Windows.Forms.Label();
+            this.txtTeleText12 = new System.Windows.Forms.TextBox();
+            this.lblTeleText12 = new System.Windows.Forms.Label();
+            this.txtTeleText11 = new System.Windows.Forms.TextBox();
+            this.lblTeleText11 = new System.Windows.Forms.Label();
+            this.txtTeleText10 = new System.Windows.Forms.TextBox();
+            this.lblTeleText10 = new System.Windows.Forms.Label();
+            this.txtTeleText9 = new System.Windows.Forms.TextBox();
+            this.lblTeleText9 = new System.Windows.Forms.Label();
+            this.txtTeleText8 = new System.Windows.Forms.TextBox();
+            this.lblTeleText8 = new System.Windows.Forms.Label();
+            this.txtTeleText7 = new System.Windows.Forms.TextBox();
+            this.lblTeleText7 = new System.Windows.Forms.Label();
+            this.txtTeleText6 = new System.Windows.Forms.TextBox();
+            this.lblTeleText6 = new System.Windows.Forms.Label();
+            this.txtTeleText5 = new System.Windows.Forms.TextBox();
+            this.lblTeleText5 = new System.Windows.Forms.Label();
+            this.txtTeleText4 = new System.Windows.Forms.TextBox();
+            this.lblTeleText4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtTeleHighMissed = new System.Windows.Forms.TextBox();
-            this.lblTeleHighMissed = new System.Windows.Forms.Label();
-            this.txtTeleHighScored = new System.Windows.Forms.TextBox();
-            this.lblTeleHighScored = new System.Windows.Forms.Label();
-            this.txtTeleLowDumps = new System.Windows.Forms.TextBox();
-            this.lblTeleLowDumps = new System.Windows.Forms.Label();
+            this.txtTeleText3 = new System.Windows.Forms.TextBox();
+            this.lblTeleText3 = new System.Windows.Forms.Label();
+            this.txtTeleText2 = new System.Windows.Forms.TextBox();
+            this.lblTeleText2 = new System.Windows.Forms.Label();
+            this.txtTeleText1 = new System.Windows.Forms.TextBox();
+            this.lblTeleText1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupClimb = new System.Windows.Forms.GroupBox();
-            this.radClimbNoClimb = new System.Windows.Forms.RadioButton();
-            this.radClimbTriggered = new System.Windows.Forms.RadioButton();
-            this.radClimbSuccess = new System.Windows.Forms.RadioButton();
-            this.radClimbAttempt = new System.Windows.Forms.RadioButton();
+            this.radClimb6 = new System.Windows.Forms.RadioButton();
+            this.radClimb1 = new System.Windows.Forms.RadioButton();
+            this.radClimb4 = new System.Windows.Forms.RadioButton();
+            this.radClimb5 = new System.Windows.Forms.RadioButton();
+            this.radClimb3 = new System.Windows.Forms.RadioButton();
+            this.radClimb2 = new System.Windows.Forms.RadioButton();
             this.chkDisconnectFlag = new System.Windows.Forms.CheckBox();
             this.chkBreakdownFlag = new System.Windows.Forms.CheckBox();
+            this.chkGroundCollect = new System.Windows.Forms.CheckBox();
             this.chkDefenceFlag = new System.Windows.Forms.CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -87,7 +110,6 @@
             this.panel5.SuspendLayout();
             this.groupClimb.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -209,23 +231,86 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtAutoText8);
+            this.panel2.Controls.Add(this.lblAutoText8);
+            this.panel2.Controls.Add(this.txtAutoText6);
+            this.panel2.Controls.Add(this.lblAutoText6);
+            this.panel2.Controls.Add(this.txtAutoText7);
+            this.panel2.Controls.Add(this.lblAutoText7);
             this.panel2.Controls.Add(this.chkAutoBaselineCross);
-            this.panel2.Controls.Add(this.txtAutoFuelBinsTriggered);
-            this.panel2.Controls.Add(this.lblAutoFuelBinsTriggered);
-            this.panel2.Controls.Add(this.txtAutoHighMissed);
-            this.panel2.Controls.Add(this.lblAutoHighMissed);
+            this.panel2.Controls.Add(this.txtAutoText5);
+            this.panel2.Controls.Add(this.lblAutoText5);
+            this.panel2.Controls.Add(this.txtAutoText3);
+            this.panel2.Controls.Add(this.lblAutoText3);
             this.panel2.Controls.Add(this.lblBlueAlliance);
-            this.panel2.Controls.Add(this.txtAutoGearsDelivered);
-            this.panel2.Controls.Add(this.lblAutoGearsDelivered);
-            this.panel2.Controls.Add(this.txtAutoHighScored);
-            this.panel2.Controls.Add(this.lblAutoHighScored);
-            this.panel2.Controls.Add(this.txtAutoLowDump);
-            this.panel2.Controls.Add(this.lblAutoLowDump);
+            this.panel2.Controls.Add(this.txtAutoText4);
+            this.panel2.Controls.Add(this.lblAutoText4);
+            this.panel2.Controls.Add(this.txtAutoText2);
+            this.panel2.Controls.Add(this.lblAutoText2);
+            this.panel2.Controls.Add(this.txtAutoText1);
+            this.panel2.Controls.Add(this.lblAutoText1);
             this.panel2.Location = new System.Drawing.Point(6, 146);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(521, 96);
+            this.panel2.Size = new System.Drawing.Size(521, 132);
             this.panel2.TabIndex = 49;
+            // 
+            // txtAutoText8
+            // 
+            this.txtAutoText8.Location = new System.Drawing.Point(436, 99);
+            this.txtAutoText8.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText8.Name = "txtAutoText8";
+            this.txtAutoText8.Size = new System.Drawing.Size(63, 20);
+            this.txtAutoText8.TabIndex = 52;
+            // 
+            // lblAutoText8
+            // 
+            this.lblAutoText8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText8.Location = new System.Drawing.Point(333, 102);
+            this.lblAutoText8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText8.Name = "lblAutoText8";
+            this.lblAutoText8.Size = new System.Drawing.Size(101, 13);
+            this.lblAutoText8.TabIndex = 55;
+            this.lblAutoText8.Text = "lblAutoText8";
+            this.lblAutoText8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAutoText6
+            // 
+            this.txtAutoText6.Location = new System.Drawing.Point(87, 99);
+            this.txtAutoText6.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText6.Name = "txtAutoText6";
+            this.txtAutoText6.Size = new System.Drawing.Size(59, 20);
+            this.txtAutoText6.TabIndex = 50;
+            // 
+            // lblAutoText6
+            // 
+            this.lblAutoText6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText6.Location = new System.Drawing.Point(1, 102);
+            this.lblAutoText6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText6.Name = "lblAutoText6";
+            this.lblAutoText6.Size = new System.Drawing.Size(86, 13);
+            this.lblAutoText6.TabIndex = 54;
+            this.lblAutoText6.Text = "lblAutoText6";
+            this.lblAutoText6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAutoText7
+            // 
+            this.txtAutoText7.Location = new System.Drawing.Point(257, 99);
+            this.txtAutoText7.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText7.Name = "txtAutoText7";
+            this.txtAutoText7.Size = new System.Drawing.Size(65, 20);
+            this.txtAutoText7.TabIndex = 51;
+            // 
+            // lblAutoText7
+            // 
+            this.lblAutoText7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText7.Location = new System.Drawing.Point(159, 102);
+            this.lblAutoText7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText7.Name = "lblAutoText7";
+            this.lblAutoText7.Size = new System.Drawing.Size(96, 13);
+            this.lblAutoText7.TabIndex = 53;
+            this.lblAutoText7.Text = "lblAutoText7";
+            this.lblAutoText7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chkAutoBaselineCross
             // 
@@ -238,45 +323,47 @@
             this.chkAutoBaselineCross.Text = "Baseline Cross";
             this.chkAutoBaselineCross.UseVisualStyleBackColor = true;
             // 
-            // txtAutoFuelBinsTriggered
+            // txtAutoText5
             // 
-            this.txtAutoFuelBinsTriggered.Location = new System.Drawing.Point(436, 65);
-            this.txtAutoFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1);
-            this.txtAutoFuelBinsTriggered.Name = "txtAutoFuelBinsTriggered";
-            this.txtAutoFuelBinsTriggered.Size = new System.Drawing.Size(63, 20);
-            this.txtAutoFuelBinsTriggered.TabIndex = 7;
-            this.txtAutoFuelBinsTriggered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtAutoFuelBinsTriggered.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtAutoText5.Location = new System.Drawing.Point(436, 65);
+            this.txtAutoText5.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText5.Name = "txtAutoText5";
+            this.txtAutoText5.Size = new System.Drawing.Size(63, 20);
+            this.txtAutoText5.TabIndex = 7;
+            this.txtAutoText5.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoText5.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblAutoFuelBinsTriggered
+            // lblAutoText5
             // 
-            this.lblAutoFuelBinsTriggered.AutoSize = true;
-            this.lblAutoFuelBinsTriggered.Location = new System.Drawing.Point(337, 68);
-            this.lblAutoFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblAutoFuelBinsTriggered.Name = "lblAutoFuelBinsTriggered";
-            this.lblAutoFuelBinsTriggered.Size = new System.Drawing.Size(101, 13);
-            this.lblAutoFuelBinsTriggered.TabIndex = 49;
-            this.lblAutoFuelBinsTriggered.Text = "Fuel Bins Triggered:";
+            this.lblAutoText5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText5.Location = new System.Drawing.Point(333, 68);
+            this.lblAutoText5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText5.Name = "lblAutoText5";
+            this.lblAutoText5.Size = new System.Drawing.Size(101, 13);
+            this.lblAutoText5.TabIndex = 49;
+            this.lblAutoText5.Text = "lblAutoText5";
+            this.lblAutoText5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtAutoHighMissed
+            // txtAutoText3
             // 
-            this.txtAutoHighMissed.Location = new System.Drawing.Point(87, 65);
-            this.txtAutoHighMissed.Margin = new System.Windows.Forms.Padding(1);
-            this.txtAutoHighMissed.Name = "txtAutoHighMissed";
-            this.txtAutoHighMissed.Size = new System.Drawing.Size(59, 20);
-            this.txtAutoHighMissed.TabIndex = 5;
-            this.txtAutoHighMissed.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtAutoHighMissed.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtAutoText3.Location = new System.Drawing.Point(87, 65);
+            this.txtAutoText3.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText3.Name = "txtAutoText3";
+            this.txtAutoText3.Size = new System.Drawing.Size(59, 20);
+            this.txtAutoText3.TabIndex = 5;
+            this.txtAutoText3.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoText3.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblAutoHighMissed
+            // lblAutoText3
             // 
-            this.lblAutoHighMissed.AutoSize = true;
-            this.lblAutoHighMissed.Location = new System.Drawing.Point(17, 69);
-            this.lblAutoHighMissed.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblAutoHighMissed.Name = "lblAutoHighMissed";
-            this.lblAutoHighMissed.Size = new System.Drawing.Size(68, 13);
-            this.lblAutoHighMissed.TabIndex = 47;
-            this.lblAutoHighMissed.Text = "High Missed:";
+            this.lblAutoText3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText3.Location = new System.Drawing.Point(1, 68);
+            this.lblAutoText3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText3.Name = "lblAutoText3";
+            this.lblAutoText3.Size = new System.Drawing.Size(86, 13);
+            this.lblAutoText3.TabIndex = 47;
+            this.lblAutoText3.Text = "lblAutoText3";
+            this.lblAutoText3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblBlueAlliance
             // 
@@ -288,124 +375,279 @@
             this.lblBlueAlliance.TabIndex = 45;
             this.lblBlueAlliance.Text = "Auto";
             // 
-            // txtAutoGearsDelivered
+            // txtAutoText4
             // 
-            this.txtAutoGearsDelivered.Location = new System.Drawing.Point(261, 65);
-            this.txtAutoGearsDelivered.Margin = new System.Windows.Forms.Padding(1);
-            this.txtAutoGearsDelivered.Name = "txtAutoGearsDelivered";
-            this.txtAutoGearsDelivered.Size = new System.Drawing.Size(63, 20);
-            this.txtAutoGearsDelivered.TabIndex = 6;
-            this.txtAutoGearsDelivered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtAutoGearsDelivered.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtAutoText4.Location = new System.Drawing.Point(257, 65);
+            this.txtAutoText4.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText4.Name = "txtAutoText4";
+            this.txtAutoText4.Size = new System.Drawing.Size(65, 20);
+            this.txtAutoText4.TabIndex = 6;
+            this.txtAutoText4.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoText4.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblAutoGearsDelivered
+            // lblAutoText4
             // 
-            this.lblAutoGearsDelivered.AutoSize = true;
-            this.lblAutoGearsDelivered.Location = new System.Drawing.Point(177, 68);
-            this.lblAutoGearsDelivered.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblAutoGearsDelivered.Name = "lblAutoGearsDelivered";
-            this.lblAutoGearsDelivered.Size = new System.Drawing.Size(86, 13);
-            this.lblAutoGearsDelivered.TabIndex = 44;
-            this.lblAutoGearsDelivered.Text = "Gears Delivered:";
+            this.lblAutoText4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText4.Location = new System.Drawing.Point(159, 68);
+            this.lblAutoText4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText4.Name = "lblAutoText4";
+            this.lblAutoText4.Size = new System.Drawing.Size(96, 13);
+            this.lblAutoText4.TabIndex = 44;
+            this.lblAutoText4.Text = "lblAutoText4";
+            this.lblAutoText4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtAutoHighScored
+            // txtAutoText2
             // 
-            this.txtAutoHighScored.Location = new System.Drawing.Point(440, 33);
-            this.txtAutoHighScored.Margin = new System.Windows.Forms.Padding(1);
-            this.txtAutoHighScored.Name = "txtAutoHighScored";
-            this.txtAutoHighScored.Size = new System.Drawing.Size(59, 20);
-            this.txtAutoHighScored.TabIndex = 4;
-            this.txtAutoHighScored.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtAutoHighScored.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtAutoText2.Location = new System.Drawing.Point(436, 33);
+            this.txtAutoText2.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText2.Name = "txtAutoText2";
+            this.txtAutoText2.Size = new System.Drawing.Size(63, 20);
+            this.txtAutoText2.TabIndex = 4;
+            this.txtAutoText2.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoText2.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblAutoHighScored
+            // lblAutoText2
             // 
-            this.lblAutoHighScored.AutoSize = true;
-            this.lblAutoHighScored.Location = new System.Drawing.Point(370, 37);
-            this.lblAutoHighScored.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblAutoHighScored.Name = "lblAutoHighScored";
-            this.lblAutoHighScored.Size = new System.Drawing.Size(69, 13);
-            this.lblAutoHighScored.TabIndex = 43;
-            this.lblAutoHighScored.Text = "High Scored:";
+            this.lblAutoText2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText2.Location = new System.Drawing.Point(336, 36);
+            this.lblAutoText2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText2.Name = "lblAutoText2";
+            this.lblAutoText2.Size = new System.Drawing.Size(101, 12);
+            this.lblAutoText2.TabIndex = 43;
+            this.lblAutoText2.Text = "lblAutoText2";
+            this.lblAutoText2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtAutoLowDump
+            // txtAutoText1
             // 
-            this.txtAutoLowDump.Location = new System.Drawing.Point(257, 32);
-            this.txtAutoLowDump.Margin = new System.Windows.Forms.Padding(1);
-            this.txtAutoLowDump.Name = "txtAutoLowDump";
-            this.txtAutoLowDump.Size = new System.Drawing.Size(65, 20);
-            this.txtAutoLowDump.TabIndex = 3;
-            this.txtAutoLowDump.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtAutoLowDump.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtAutoText1.Location = new System.Drawing.Point(257, 32);
+            this.txtAutoText1.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutoText1.Name = "txtAutoText1";
+            this.txtAutoText1.Size = new System.Drawing.Size(65, 20);
+            this.txtAutoText1.TabIndex = 3;
+            this.txtAutoText1.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtAutoText1.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblAutoLowDump
+            // lblAutoText1
             // 
-            this.lblAutoLowDump.AutoSize = true;
-            this.lblAutoLowDump.Location = new System.Drawing.Point(194, 35);
-            this.lblAutoLowDump.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblAutoLowDump.Name = "lblAutoLowDump";
-            this.lblAutoLowDump.Size = new System.Drawing.Size(61, 13);
-            this.lblAutoLowDump.TabIndex = 42;
-            this.lblAutoLowDump.Text = "Low Dump:";
+            this.lblAutoText1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoText1.Location = new System.Drawing.Point(156, 35);
+            this.lblAutoText1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblAutoText1.Name = "lblAutoText1";
+            this.lblAutoText1.Size = new System.Drawing.Size(99, 13);
+            this.lblAutoText1.TabIndex = 42;
+            this.lblAutoText1.Text = "lblAutoText1";
+            this.lblAutoText1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtTeleFuelBinsTriggered);
-            this.panel3.Controls.Add(this.lblTeleFuelBinsTriggered);
-            this.panel3.Controls.Add(this.txtTeleGearsDelivered);
-            this.panel3.Controls.Add(this.lblTeleGearsDelivered);
+            this.panel3.Controls.Add(this.txtTeleText12);
+            this.panel3.Controls.Add(this.lblTeleText12);
+            this.panel3.Controls.Add(this.txtTeleText11);
+            this.panel3.Controls.Add(this.lblTeleText11);
+            this.panel3.Controls.Add(this.txtTeleText10);
+            this.panel3.Controls.Add(this.lblTeleText10);
+            this.panel3.Controls.Add(this.txtTeleText9);
+            this.panel3.Controls.Add(this.lblTeleText9);
+            this.panel3.Controls.Add(this.txtTeleText8);
+            this.panel3.Controls.Add(this.lblTeleText8);
+            this.panel3.Controls.Add(this.txtTeleText7);
+            this.panel3.Controls.Add(this.lblTeleText7);
+            this.panel3.Controls.Add(this.txtTeleText6);
+            this.panel3.Controls.Add(this.lblTeleText6);
+            this.panel3.Controls.Add(this.txtTeleText5);
+            this.panel3.Controls.Add(this.lblTeleText5);
+            this.panel3.Controls.Add(this.txtTeleText4);
+            this.panel3.Controls.Add(this.lblTeleText4);
             this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.txtTeleHighMissed);
-            this.panel3.Controls.Add(this.lblTeleHighMissed);
-            this.panel3.Controls.Add(this.txtTeleHighScored);
-            this.panel3.Controls.Add(this.lblTeleHighScored);
-            this.panel3.Controls.Add(this.txtTeleLowDumps);
-            this.panel3.Controls.Add(this.lblTeleLowDumps);
-            this.panel3.Location = new System.Drawing.Point(6, 244);
+            this.panel3.Controls.Add(this.txtTeleText3);
+            this.panel3.Controls.Add(this.lblTeleText3);
+            this.panel3.Controls.Add(this.txtTeleText2);
+            this.panel3.Controls.Add(this.lblTeleText2);
+            this.panel3.Controls.Add(this.txtTeleText1);
+            this.panel3.Controls.Add(this.lblTeleText1);
+            this.panel3.Location = new System.Drawing.Point(5, 280);
             this.panel3.Margin = new System.Windows.Forms.Padding(1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(521, 118);
+            this.panel3.Size = new System.Drawing.Size(521, 182);
             this.panel3.TabIndex = 50;
             // 
-            // txtTeleFuelBinsTriggered
+            // txtTeleText12
             // 
-            this.txtTeleFuelBinsTriggered.Location = new System.Drawing.Point(441, 87);
-            this.txtTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1);
-            this.txtTeleFuelBinsTriggered.Name = "txtTeleFuelBinsTriggered";
-            this.txtTeleFuelBinsTriggered.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleFuelBinsTriggered.TabIndex = 12;
-            this.txtTeleFuelBinsTriggered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtTeleFuelBinsTriggered.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtTeleText12.Location = new System.Drawing.Point(444, 151);
+            this.txtTeleText12.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText12.Name = "txtTeleText12";
+            this.txtTeleText12.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText12.TabIndex = 64;
             // 
-            // lblTeleFuelBinsTriggered
+            // lblTeleText12
             // 
-            this.lblTeleFuelBinsTriggered.AutoSize = true;
-            this.lblTeleFuelBinsTriggered.Location = new System.Drawing.Point(342, 88);
-            this.lblTeleFuelBinsTriggered.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTeleFuelBinsTriggered.Name = "lblTeleFuelBinsTriggered";
-            this.lblTeleFuelBinsTriggered.Size = new System.Drawing.Size(101, 13);
-            this.lblTeleFuelBinsTriggered.TabIndex = 51;
-            this.lblTeleFuelBinsTriggered.Text = "Fuel Bins Triggered:";
+            this.lblTeleText12.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblTeleText12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText12.Location = new System.Drawing.Point(309, 154);
+            this.lblTeleText12.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText12.Name = "lblTeleText12";
+            this.lblTeleText12.Size = new System.Drawing.Size(133, 13);
+            this.lblTeleText12.TabIndex = 65;
+            this.lblTeleText12.Text = "lblTeleText12";
+            this.lblTeleText12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtTeleGearsDelivered
+            // txtTeleText11
             // 
-            this.txtTeleGearsDelivered.Location = new System.Drawing.Point(260, 85);
-            this.txtTeleGearsDelivered.Margin = new System.Windows.Forms.Padding(1);
-            this.txtTeleGearsDelivered.Name = "txtTeleGearsDelivered";
-            this.txtTeleGearsDelivered.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleGearsDelivered.TabIndex = 11;
-            this.txtTeleGearsDelivered.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtTeleGearsDelivered.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtTeleText11.Location = new System.Drawing.Point(260, 151);
+            this.txtTeleText11.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText11.Name = "txtTeleText11";
+            this.txtTeleText11.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText11.TabIndex = 61;
             // 
-            // lblTeleGearsDelivered
+            // lblTeleText11
             // 
-            this.lblTeleGearsDelivered.AutoSize = true;
-            this.lblTeleGearsDelivered.Location = new System.Drawing.Point(177, 86);
-            this.lblTeleGearsDelivered.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTeleGearsDelivered.Name = "lblTeleGearsDelivered";
-            this.lblTeleGearsDelivered.Size = new System.Drawing.Size(86, 13);
-            this.lblTeleGearsDelivered.TabIndex = 49;
-            this.lblTeleGearsDelivered.Text = "Gears Delivered:";
+            this.lblTeleText11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText11.Location = new System.Drawing.Point(138, 154);
+            this.lblTeleText11.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText11.Name = "lblTeleText11";
+            this.lblTeleText11.Size = new System.Drawing.Size(120, 13);
+            this.lblTeleText11.TabIndex = 63;
+            this.lblTeleText11.Text = "lblTeleText11";
+            this.lblTeleText11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText10
+            // 
+            this.txtTeleText10.Location = new System.Drawing.Point(102, 151);
+            this.txtTeleText10.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText10.Name = "txtTeleText10";
+            this.txtTeleText10.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText10.TabIndex = 60;
+            // 
+            // lblTeleText10
+            // 
+            this.lblTeleText10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText10.Location = new System.Drawing.Point(1, 154);
+            this.lblTeleText10.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText10.Name = "lblTeleText10";
+            this.lblTeleText10.Size = new System.Drawing.Size(102, 13);
+            this.lblTeleText10.TabIndex = 62;
+            this.lblTeleText10.Text = "lblTeleText10";
+            this.lblTeleText10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText9
+            // 
+            this.txtTeleText9.Location = new System.Drawing.Point(444, 116);
+            this.txtTeleText9.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText9.Name = "txtTeleText9";
+            this.txtTeleText9.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText9.TabIndex = 58;
+            // 
+            // lblTeleText9
+            // 
+            this.lblTeleText9.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblTeleText9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText9.Location = new System.Drawing.Point(309, 119);
+            this.lblTeleText9.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText9.Name = "lblTeleText9";
+            this.lblTeleText9.Size = new System.Drawing.Size(133, 13);
+            this.lblTeleText9.TabIndex = 59;
+            this.lblTeleText9.Text = "lblTeleText9";
+            this.lblTeleText9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText8
+            // 
+            this.txtTeleText8.Location = new System.Drawing.Point(260, 116);
+            this.txtTeleText8.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText8.Name = "txtTeleText8";
+            this.txtTeleText8.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText8.TabIndex = 55;
+            // 
+            // lblTeleText8
+            // 
+            this.lblTeleText8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText8.Location = new System.Drawing.Point(138, 119);
+            this.lblTeleText8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText8.Name = "lblTeleText8";
+            this.lblTeleText8.Size = new System.Drawing.Size(120, 13);
+            this.lblTeleText8.TabIndex = 57;
+            this.lblTeleText8.Text = "lblTeleText8";
+            this.lblTeleText8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText7
+            // 
+            this.txtTeleText7.Location = new System.Drawing.Point(102, 116);
+            this.txtTeleText7.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText7.Name = "txtTeleText7";
+            this.txtTeleText7.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText7.TabIndex = 54;
+            // 
+            // lblTeleText7
+            // 
+            this.lblTeleText7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText7.Location = new System.Drawing.Point(1, 119);
+            this.lblTeleText7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText7.Name = "lblTeleText7";
+            this.lblTeleText7.Size = new System.Drawing.Size(102, 13);
+            this.lblTeleText7.TabIndex = 56;
+            this.lblTeleText7.Text = "lblTeleText7";
+            this.lblTeleText7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText6
+            // 
+            this.txtTeleText6.Location = new System.Drawing.Point(444, 80);
+            this.txtTeleText6.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText6.Name = "txtTeleText6";
+            this.txtTeleText6.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText6.TabIndex = 52;
+            // 
+            // lblTeleText6
+            // 
+            this.lblTeleText6.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblTeleText6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText6.Location = new System.Drawing.Point(309, 83);
+            this.lblTeleText6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText6.Name = "lblTeleText6";
+            this.lblTeleText6.Size = new System.Drawing.Size(133, 13);
+            this.lblTeleText6.TabIndex = 53;
+            this.lblTeleText6.Text = "lblTeleText6";
+            this.lblTeleText6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText5
+            // 
+            this.txtTeleText5.Location = new System.Drawing.Point(260, 80);
+            this.txtTeleText5.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText5.Name = "txtTeleText5";
+            this.txtTeleText5.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText5.TabIndex = 12;
+            this.txtTeleText5.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtTeleText5.Validated += new System.EventHandler(this.textbox_Validated);
+            // 
+            // lblTeleText5
+            // 
+            this.lblTeleText5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText5.Location = new System.Drawing.Point(138, 83);
+            this.lblTeleText5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText5.Name = "lblTeleText5";
+            this.lblTeleText5.Size = new System.Drawing.Size(120, 13);
+            this.lblTeleText5.TabIndex = 51;
+            this.lblTeleText5.Text = "lblTeleText5";
+            this.lblTeleText5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTeleText4
+            // 
+            this.txtTeleText4.Location = new System.Drawing.Point(102, 80);
+            this.txtTeleText4.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText4.Name = "txtTeleText4";
+            this.txtTeleText4.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText4.TabIndex = 11;
+            this.txtTeleText4.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtTeleText4.Validated += new System.EventHandler(this.textbox_Validated);
+            // 
+            // lblTeleText4
+            // 
+            this.lblTeleText4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText4.Location = new System.Drawing.Point(1, 83);
+            this.lblTeleText4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText4.Name = "lblTeleText4";
+            this.lblTeleText4.Size = new System.Drawing.Size(102, 13);
+            this.lblTeleText4.TabIndex = 49;
+            this.lblTeleText4.Text = "lblTeleText4";
+            this.lblTeleText4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
@@ -417,142 +659,171 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "TeleOp";
             // 
-            // txtTeleHighMissed
+            // txtTeleText3
             // 
-            this.txtTeleHighMissed.Location = new System.Drawing.Point(88, 85);
-            this.txtTeleHighMissed.Margin = new System.Windows.Forms.Padding(1);
-            this.txtTeleHighMissed.Name = "txtTeleHighMissed";
-            this.txtTeleHighMissed.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleHighMissed.TabIndex = 10;
-            this.txtTeleHighMissed.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtTeleHighMissed.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtTeleText3.Location = new System.Drawing.Point(444, 46);
+            this.txtTeleText3.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText3.Name = "txtTeleText3";
+            this.txtTeleText3.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText3.TabIndex = 10;
+            this.txtTeleText3.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtTeleText3.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblTeleHighMissed
+            // lblTeleText3
             // 
-            this.lblTeleHighMissed.AutoSize = true;
-            this.lblTeleHighMissed.Location = new System.Drawing.Point(10, 89);
-            this.lblTeleHighMissed.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTeleHighMissed.Name = "lblTeleHighMissed";
-            this.lblTeleHighMissed.Size = new System.Drawing.Size(68, 13);
-            this.lblTeleHighMissed.TabIndex = 47;
-            this.lblTeleHighMissed.Text = "High Missed:";
+            this.lblTeleText3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText3.Location = new System.Drawing.Point(301, 49);
+            this.lblTeleText3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText3.Name = "lblTeleText3";
+            this.lblTeleText3.Size = new System.Drawing.Size(144, 17);
+            this.lblTeleText3.TabIndex = 47;
+            this.lblTeleText3.Text = "lblTeleText3";
+            this.lblTeleText3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtTeleHighScored
+            // txtTeleText2
             // 
-            this.txtTeleHighScored.Location = new System.Drawing.Point(436, 46);
-            this.txtTeleHighScored.Margin = new System.Windows.Forms.Padding(1);
-            this.txtTeleHighScored.Name = "txtTeleHighScored";
-            this.txtTeleHighScored.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleHighScored.TabIndex = 9;
-            this.txtTeleHighScored.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtTeleHighScored.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtTeleText2.Location = new System.Drawing.Point(260, 46);
+            this.txtTeleText2.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText2.Name = "txtTeleText2";
+            this.txtTeleText2.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText2.TabIndex = 9;
+            this.txtTeleText2.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtTeleText2.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblTeleHighScored
+            // lblTeleText2
             // 
-            this.lblTeleHighScored.AutoSize = true;
-            this.lblTeleHighScored.Location = new System.Drawing.Point(353, 50);
-            this.lblTeleHighScored.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTeleHighScored.Name = "lblTeleHighScored";
-            this.lblTeleHighScored.Size = new System.Drawing.Size(69, 13);
-            this.lblTeleHighScored.TabIndex = 46;
-            this.lblTeleHighScored.Text = "High Scored:";
+            this.lblTeleText2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText2.Location = new System.Drawing.Point(138, 49);
+            this.lblTeleText2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText2.Name = "lblTeleText2";
+            this.lblTeleText2.Size = new System.Drawing.Size(120, 13);
+            this.lblTeleText2.TabIndex = 46;
+            this.lblTeleText2.Text = "lblTeleText2";
+            this.lblTeleText2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtTeleLowDumps
+            // txtTeleText1
             // 
-            this.txtTeleLowDumps.Location = new System.Drawing.Point(267, 46);
-            this.txtTeleLowDumps.Margin = new System.Windows.Forms.Padding(1);
-            this.txtTeleLowDumps.Name = "txtTeleLowDumps";
-            this.txtTeleLowDumps.Size = new System.Drawing.Size(34, 20);
-            this.txtTeleLowDumps.TabIndex = 8;
-            this.txtTeleLowDumps.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
-            this.txtTeleLowDumps.Validated += new System.EventHandler(this.textbox_Validated);
+            this.txtTeleText1.Location = new System.Drawing.Point(102, 46);
+            this.txtTeleText1.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTeleText1.Name = "txtTeleText1";
+            this.txtTeleText1.Size = new System.Drawing.Size(34, 20);
+            this.txtTeleText1.TabIndex = 8;
+            this.txtTeleText1.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            this.txtTeleText1.Validated += new System.EventHandler(this.textbox_Validated);
             // 
-            // lblTeleLowDumps
+            // lblTeleText1
             // 
-            this.lblTeleLowDumps.AutoSize = true;
-            this.lblTeleLowDumps.Location = new System.Drawing.Point(192, 50);
-            this.lblTeleLowDumps.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTeleLowDumps.Name = "lblTeleLowDumps";
-            this.lblTeleLowDumps.Size = new System.Drawing.Size(66, 13);
-            this.lblTeleLowDumps.TabIndex = 45;
-            this.lblTeleLowDumps.Text = "Low Dumps:";
+            this.lblTeleText1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTeleText1.Location = new System.Drawing.Point(1, 49);
+            this.lblTeleText1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTeleText1.Name = "lblTeleText1";
+            this.lblTeleText1.Size = new System.Drawing.Size(102, 13);
+            this.lblTeleText1.TabIndex = 45;
+            this.lblTeleText1.Text = "lblTeleText1";
+            this.lblTeleText1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.groupClimb);
             this.panel5.Controls.Add(this.chkDisconnectFlag);
             this.panel5.Controls.Add(this.chkBreakdownFlag);
+            this.panel5.Controls.Add(this.chkGroundCollect);
             this.panel5.Controls.Add(this.chkDefenceFlag);
-            this.panel5.Location = new System.Drawing.Point(6, 364);
+            this.panel5.Location = new System.Drawing.Point(5, 464);
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(521, 82);
+            this.panel5.Size = new System.Drawing.Size(521, 106);
             this.panel5.TabIndex = 52;
             // 
             // groupClimb
             // 
-            this.groupClimb.Controls.Add(this.radClimbNoClimb);
-            this.groupClimb.Controls.Add(this.radClimbTriggered);
-            this.groupClimb.Controls.Add(this.radClimbSuccess);
-            this.groupClimb.Controls.Add(this.radClimbAttempt);
+            this.groupClimb.Controls.Add(this.radClimb6);
+            this.groupClimb.Controls.Add(this.radClimb1);
+            this.groupClimb.Controls.Add(this.radClimb4);
+            this.groupClimb.Controls.Add(this.radClimb5);
+            this.groupClimb.Controls.Add(this.radClimb3);
+            this.groupClimb.Controls.Add(this.radClimb2);
             this.groupClimb.Location = new System.Drawing.Point(12, 2);
             this.groupClimb.Name = "groupClimb";
-            this.groupClimb.Size = new System.Drawing.Size(197, 77);
+            this.groupClimb.Size = new System.Drawing.Size(282, 90);
             this.groupClimb.TabIndex = 13;
             this.groupClimb.TabStop = false;
             this.groupClimb.Text = "Climb";
             // 
-            // radClimbNoClimb
+            // radClimb6
             // 
-            this.radClimbNoClimb.AutoSize = true;
-            this.radClimbNoClimb.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimbNoClimb.Checked = true;
-            this.radClimbNoClimb.Location = new System.Drawing.Point(14, 20);
-            this.radClimbNoClimb.Name = "radClimbNoClimb";
-            this.radClimbNoClimb.Size = new System.Drawing.Size(78, 17);
-            this.radClimbNoClimb.TabIndex = 16;
-            this.radClimbNoClimb.TabStop = true;
-            this.radClimbNoClimb.Text = "No Attempt";
-            this.radClimbNoClimb.UseVisualStyleBackColor = true;
+            this.radClimb6.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb6.Location = new System.Drawing.Point(129, 64);
+            this.radClimb6.Name = "radClimb6";
+            this.radClimb6.Size = new System.Drawing.Size(127, 17);
+            this.radClimb6.TabIndex = 25;
+            this.radClimb6.Text = "radClimb6";
+            this.radClimb6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb6.UseVisualStyleBackColor = true;
             // 
-            // radClimbTriggered
+            // radClimb1
             // 
-            this.radClimbTriggered.AutoSize = true;
-            this.radClimbTriggered.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimbTriggered.Location = new System.Drawing.Point(110, 46);
-            this.radClimbTriggered.Name = "radClimbTriggered";
-            this.radClimbTriggered.Size = new System.Drawing.Size(70, 17);
-            this.radClimbTriggered.TabIndex = 24;
-            this.radClimbTriggered.Text = "Triggered";
-            this.radClimbTriggered.UseVisualStyleBackColor = true;
+            this.radClimb1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radClimb1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb1.Checked = true;
+            this.radClimb1.Location = new System.Drawing.Point(6, 19);
+            this.radClimb1.Name = "radClimb1";
+            this.radClimb1.Size = new System.Drawing.Size(105, 19);
+            this.radClimb1.TabIndex = 16;
+            this.radClimb1.TabStop = true;
+            this.radClimb1.Text = "radClimb1";
+            this.radClimb1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb1.UseVisualStyleBackColor = true;
             // 
-            // radClimbSuccess
+            // radClimb4
             // 
-            this.radClimbSuccess.AutoSize = true;
-            this.radClimbSuccess.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimbSuccess.Location = new System.Drawing.Point(15, 46);
-            this.radClimbSuccess.Name = "radClimbSuccess";
-            this.radClimbSuccess.Size = new System.Drawing.Size(77, 17);
-            this.radClimbSuccess.TabIndex = 23;
-            this.radClimbSuccess.Text = "Successful";
-            this.radClimbSuccess.UseVisualStyleBackColor = true;
+            this.radClimb4.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb4.Location = new System.Drawing.Point(129, 41);
+            this.radClimb4.Name = "radClimb4";
+            this.radClimb4.Size = new System.Drawing.Size(127, 17);
+            this.radClimb4.TabIndex = 24;
+            this.radClimb4.Text = "radClimb4";
+            this.radClimb4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb4.UseVisualStyleBackColor = true;
             // 
-            // radClimbAttempt
+            // radClimb5
             // 
-            this.radClimbAttempt.AutoSize = true;
-            this.radClimbAttempt.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimbAttempt.Location = new System.Drawing.Point(107, 20);
-            this.radClimbAttempt.Name = "radClimbAttempt";
-            this.radClimbAttempt.Size = new System.Drawing.Size(73, 17);
-            this.radClimbAttempt.TabIndex = 22;
-            this.radClimbAttempt.Text = "Attempted";
-            this.radClimbAttempt.UseVisualStyleBackColor = true;
+            this.radClimb5.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb5.Location = new System.Drawing.Point(6, 65);
+            this.radClimb5.Name = "radClimb5";
+            this.radClimb5.Size = new System.Drawing.Size(106, 16);
+            this.radClimb5.TabIndex = 23;
+            this.radClimb5.Text = "radClimb5";
+            this.radClimb5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb5.UseVisualStyleBackColor = true;
+            // 
+            // radClimb3
+            // 
+            this.radClimb3.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb3.Location = new System.Drawing.Point(6, 42);
+            this.radClimb3.Name = "radClimb3";
+            this.radClimb3.Size = new System.Drawing.Size(106, 17);
+            this.radClimb3.TabIndex = 23;
+            this.radClimb3.Text = "radClimb3";
+            this.radClimb3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb3.UseVisualStyleBackColor = true;
+            // 
+            // radClimb2
+            // 
+            this.radClimb2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb2.Location = new System.Drawing.Point(129, 19);
+            this.radClimb2.Name = "radClimb2";
+            this.radClimb2.Size = new System.Drawing.Size(127, 19);
+            this.radClimb2.TabIndex = 22;
+            this.radClimb2.Text = "radClimb2";
+            this.radClimb2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radClimb2.UseVisualStyleBackColor = true;
             // 
             // chkDisconnectFlag
             // 
             this.chkDisconnectFlag.AutoSize = true;
             this.chkDisconnectFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkDisconnectFlag.Location = new System.Drawing.Point(426, 35);
+            this.chkDisconnectFlag.Location = new System.Drawing.Point(420, 75);
             this.chkDisconnectFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkDisconnectFlag.Name = "chkDisconnectFlag";
             this.chkDisconnectFlag.Size = new System.Drawing.Size(80, 17);
@@ -565,7 +836,7 @@
             // 
             this.chkBreakdownFlag.AutoSize = true;
             this.chkBreakdownFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkBreakdownFlag.Location = new System.Drawing.Point(323, 35);
+            this.chkBreakdownFlag.Location = new System.Drawing.Point(420, 47);
             this.chkBreakdownFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkBreakdownFlag.Name = "chkBreakdownFlag";
             this.chkBreakdownFlag.Size = new System.Drawing.Size(80, 17);
@@ -574,11 +845,24 @@
             this.chkBreakdownFlag.UseVisualStyleBackColor = true;
             this.chkBreakdownFlag.CheckedChanged += new System.EventHandler(this.chkBreakdownFlag_CheckedChanged);
             // 
+            // chkGroundCollect
+            // 
+            this.chkGroundCollect.AutoSize = true;
+            this.chkGroundCollect.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkGroundCollect.Location = new System.Drawing.Point(301, 23);
+            this.chkGroundCollect.Margin = new System.Windows.Forms.Padding(1);
+            this.chkGroundCollect.Name = "chkGroundCollect";
+            this.chkGroundCollect.Size = new System.Drawing.Size(96, 17);
+            this.chkGroundCollect.TabIndex = 14;
+            this.chkGroundCollect.Text = "Ground Collect";
+            this.chkGroundCollect.UseVisualStyleBackColor = true;
+            this.chkGroundCollect.CheckedChanged += new System.EventHandler(this.chkDefenceFlag_CheckedChanged);
+            // 
             // chkDefenceFlag
             // 
             this.chkDefenceFlag.AutoSize = true;
             this.chkDefenceFlag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkDefenceFlag.Location = new System.Drawing.Point(234, 35);
+            this.chkDefenceFlag.Location = new System.Drawing.Point(433, 22);
             this.chkDefenceFlag.Margin = new System.Windows.Forms.Padding(1);
             this.chkDefenceFlag.Name = "chkDefenceFlag";
             this.chkDefenceFlag.Size = new System.Drawing.Size(67, 17);
@@ -591,7 +875,7 @@
             // 
             this.panel6.Controls.Add(this.btnCancel);
             this.panel6.Controls.Add(this.btnSave);
-            this.panel6.Location = new System.Drawing.Point(6, 448);
+            this.panel6.Location = new System.Drawing.Point(5, 572);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(521, 45);
@@ -623,8 +907,7 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.statusStrip1);
-            this.panel7.Location = new System.Drawing.Point(6, 495);
+            this.panel7.Location = new System.Drawing.Point(5, 626);
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(521, 22);
@@ -632,14 +915,15 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Location = new System.Drawing.Point(10, 626);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(521, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(17, 22);
             this.statusStrip1.TabIndex = 51;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -656,10 +940,11 @@
             this.AutoSize = true;
             this.CancelButton = this.btnCancel;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(532, 522);
+            this.ClientSize = new System.Drawing.Size(532, 653);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -680,10 +965,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.groupClimb.ResumeLayout(false);
-            this.groupClimb.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -711,38 +993,61 @@
 		private System.Windows.Forms.CheckBox chkBreakdownFlag;
 		private System.Windows.Forms.CheckBox chkDefenceFlag;
 		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.TextBox txtTeleGearsDelivered;
-		private System.Windows.Forms.Label lblTeleGearsDelivered;
+		private System.Windows.Forms.TextBox txtTeleText4;
+		private System.Windows.Forms.Label lblTeleText4;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.TextBox txtTeleHighMissed;
-		private System.Windows.Forms.Label lblTeleHighMissed;
-		private System.Windows.Forms.TextBox txtTeleHighScored;
-		private System.Windows.Forms.Label lblTeleHighScored;
-		private System.Windows.Forms.TextBox txtTeleLowDumps;
-		private System.Windows.Forms.Label lblTeleLowDumps;
+		private System.Windows.Forms.TextBox txtTeleText3;
+		private System.Windows.Forms.Label lblTeleText3;
+		private System.Windows.Forms.TextBox txtTeleText2;
+		private System.Windows.Forms.Label lblTeleText2;
+		private System.Windows.Forms.TextBox txtTeleText1;
+		private System.Windows.Forms.Label lblTeleText1;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Label lblBlueAlliance;
-		private System.Windows.Forms.TextBox txtAutoGearsDelivered;
-		private System.Windows.Forms.Label lblAutoGearsDelivered;
-		private System.Windows.Forms.TextBox txtAutoHighScored;
-		private System.Windows.Forms.Label lblAutoHighScored;
-		private System.Windows.Forms.TextBox txtAutoLowDump;
-		private System.Windows.Forms.Label lblAutoLowDump;
+		private System.Windows.Forms.TextBox txtAutoText4;
+		private System.Windows.Forms.Label lblAutoText4;
+		private System.Windows.Forms.TextBox txtAutoText2;
+		private System.Windows.Forms.Label lblAutoText2;
+		private System.Windows.Forms.TextBox txtAutoText1;
+		private System.Windows.Forms.Label lblAutoText1;
 		private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox txtAutoFuelBinsTriggered;
-        private System.Windows.Forms.Label lblAutoFuelBinsTriggered;
-        private System.Windows.Forms.TextBox txtAutoHighMissed;
-        private System.Windows.Forms.Label lblAutoHighMissed;
+        private System.Windows.Forms.TextBox txtAutoText5;
+        private System.Windows.Forms.Label lblAutoText5;
+        private System.Windows.Forms.TextBox txtAutoText3;
+        private System.Windows.Forms.Label lblAutoText3;
         private System.Windows.Forms.CheckBox chkAutoBaselineCross;
-        private System.Windows.Forms.TextBox txtTeleFuelBinsTriggered;
-        private System.Windows.Forms.Label lblTeleFuelBinsTriggered;
+        private System.Windows.Forms.TextBox txtTeleText5;
+        private System.Windows.Forms.Label lblTeleText5;
         private System.Windows.Forms.CheckBox chkDisconnectFlag;
         private System.Windows.Forms.GroupBox groupClimb;
-        private System.Windows.Forms.RadioButton radClimbTriggered;
-        private System.Windows.Forms.RadioButton radClimbSuccess;
-        private System.Windows.Forms.RadioButton radClimbAttempt;
+        private System.Windows.Forms.RadioButton radClimb4;
+        private System.Windows.Forms.RadioButton radClimb3;
+        private System.Windows.Forms.RadioButton radClimb2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.RadioButton radClimbNoClimb;
+        private System.Windows.Forms.RadioButton radClimb1;
+        private System.Windows.Forms.TextBox txtTeleText6;
+        private System.Windows.Forms.Label lblTeleText6;
+        private System.Windows.Forms.TextBox txtTeleText9;
+        private System.Windows.Forms.Label lblTeleText9;
+        private System.Windows.Forms.TextBox txtTeleText8;
+        private System.Windows.Forms.Label lblTeleText8;
+        private System.Windows.Forms.TextBox txtTeleText7;
+        private System.Windows.Forms.Label lblTeleText7;
+        private System.Windows.Forms.TextBox txtTeleText12;
+        private System.Windows.Forms.Label lblTeleText12;
+        private System.Windows.Forms.TextBox txtTeleText11;
+        private System.Windows.Forms.Label lblTeleText11;
+        private System.Windows.Forms.TextBox txtTeleText10;
+        private System.Windows.Forms.Label lblTeleText10;
+        private System.Windows.Forms.TextBox txtAutoText8;
+        private System.Windows.Forms.Label lblAutoText8;
+        private System.Windows.Forms.TextBox txtAutoText6;
+        private System.Windows.Forms.Label lblAutoText6;
+        private System.Windows.Forms.TextBox txtAutoText7;
+        private System.Windows.Forms.Label lblAutoText7;
+        private System.Windows.Forms.RadioButton radClimb5;
+        private System.Windows.Forms.CheckBox chkGroundCollect;
+        private System.Windows.Forms.RadioButton radClimb6;
     }
 }

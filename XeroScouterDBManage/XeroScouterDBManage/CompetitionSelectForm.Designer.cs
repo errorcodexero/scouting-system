@@ -36,19 +36,28 @@
             this.sslblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.cmbCompetitionName = new System.Windows.Forms.ComboBox();
             this.lblCompetitionName = new System.Windows.Forms.Label();
+            this.lblDefinitionFile = new System.Windows.Forms.Label();
+            this.txtDefinitionFile = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnSelectConfigFile = new System.Windows.Forms.Button();
+            this.cmbYear = new System.Windows.Forms.ComboBox();
+            this.lblYear = new System.Windows.Forms.Label();
+            this.lblEventType = new System.Windows.Forms.Label();
+            this.cmbEventType = new System.Windows.Forms.ComboBox();
+            this.lblDistrict = new System.Windows.Forms.Label();
+            this.cmbDistrict = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSeason
             // 
-            this.lblSeason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSeason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSeason.AutoSize = true;
             this.lblSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeason.Location = new System.Drawing.Point(200, 9);
-            this.lblSeason.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeason.Location = new System.Drawing.Point(150, 7);
             this.lblSeason.Name = "lblSeason";
-            this.lblSeason.Size = new System.Drawing.Size(173, 36);
+            this.lblSeason.Size = new System.Drawing.Size(143, 29);
             this.lblSeason.TabIndex = 28;
             this.lblSeason.Text = "Competition";
             this.lblSeason.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,9 +65,10 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(434, 191);
+            this.btnCancel.Location = new System.Drawing.Point(304, 278);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 44);
+            this.btnCancel.Size = new System.Drawing.Size(82, 30);
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -67,9 +77,10 @@
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(317, 191);
+            this.btnSave.Location = new System.Drawing.Point(211, 278);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 44);
+            this.btnSave.Size = new System.Drawing.Size(82, 30);
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -80,56 +91,174 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.sslblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 262);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 319);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(577, 25);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(433, 22);
             this.statusStrip1.TabIndex = 25;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(49, 20);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel1.Text = "Status";
             // 
             // sslblStatus
             // 
             this.sslblStatus.Name = "sslblStatus";
-            this.sslblStatus.Size = new System.Drawing.Size(0, 20);
+            this.sslblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // cmbCompetitionName
             // 
             this.cmbCompetitionName.FormattingEnabled = true;
-            this.cmbCompetitionName.Location = new System.Drawing.Point(144, 92);
-            this.cmbCompetitionName.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCompetitionName.Location = new System.Drawing.Point(112, 175);
             this.cmbCompetitionName.Name = "cmbCompetitionName";
-            this.cmbCompetitionName.Size = new System.Drawing.Size(365, 24);
+            this.cmbCompetitionName.Size = new System.Drawing.Size(275, 21);
             this.cmbCompetitionName.TabIndex = 24;
             this.cmbCompetitionName.SelectedValueChanged += new System.EventHandler(this.cmbCompetitionName_SelectedValueChanged);
             // 
             // lblCompetitionName
             // 
             this.lblCompetitionName.AutoSize = true;
-            this.lblCompetitionName.Location = new System.Drawing.Point(37, 95);
-            this.lblCompetitionName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCompetitionName.Location = new System.Drawing.Point(32, 177);
             this.lblCompetitionName.Name = "lblCompetitionName";
-            this.lblCompetitionName.Size = new System.Drawing.Size(82, 17);
+            this.lblCompetitionName.Size = new System.Drawing.Size(62, 13);
             this.lblCompetitionName.TabIndex = 23;
             this.lblCompetitionName.Text = "Competition";
             // 
+            // lblDefinitionFile
+            // 
+            this.lblDefinitionFile.AutoSize = true;
+            this.lblDefinitionFile.Location = new System.Drawing.Point(32, 215);
+            this.lblDefinitionFile.Name = "lblDefinitionFile";
+            this.lblDefinitionFile.Size = new System.Drawing.Size(70, 13);
+            this.lblDefinitionFile.TabIndex = 29;
+            this.lblDefinitionFile.Text = "Definition File";
+            // 
+            // txtDefinitionFile
+            // 
+            this.txtDefinitionFile.Location = new System.Drawing.Point(112, 212);
+            this.txtDefinitionFile.Name = "txtDefinitionFile";
+            this.txtDefinitionFile.ReadOnly = true;
+            this.txtDefinitionFile.Size = new System.Drawing.Size(186, 20);
+            this.txtDefinitionFile.TabIndex = 30;
+            this.txtDefinitionFile.TextChanged += new System.EventHandler(this.txtDefinitionFile_TextChanged);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnSelectConfigFile
+            // 
+            this.btnSelectConfigFile.Location = new System.Drawing.Point(321, 209);
+            this.btnSelectConfigFile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSelectConfigFile.Name = "btnSelectConfigFile";
+            this.btnSelectConfigFile.Size = new System.Drawing.Size(65, 25);
+            this.btnSelectConfigFile.TabIndex = 27;
+            this.btnSelectConfigFile.Text = "&Select";
+            this.btnSelectConfigFile.UseVisualStyleBackColor = true;
+            this.btnSelectConfigFile.Click += new System.EventHandler(this.btnSelectConfigFile_Click);
+            // 
+            // cmbYear
+            // 
+            this.cmbYear.FormattingEnabled = true;
+            this.cmbYear.Items.AddRange(new object[] {
+            "2018",
+            "2017",
+            "2016",
+            "2015"});
+            this.cmbYear.Location = new System.Drawing.Point(112, 57);
+            this.cmbYear.Name = "cmbYear";
+            this.cmbYear.Size = new System.Drawing.Size(275, 21);
+            this.cmbYear.TabIndex = 32;
+            this.cmbYear.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
+            this.cmbYear.SelectedValueChanged += new System.EventHandler(this.cmbYear_SelectedValueChanged);
+            // 
+            // lblYear
+            // 
+            this.lblYear.AutoSize = true;
+            this.lblYear.Location = new System.Drawing.Point(32, 59);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(29, 13);
+            this.lblYear.TabIndex = 31;
+            this.lblYear.Text = "Year";
+            // 
+            // lblEventType
+            // 
+            this.lblEventType.AutoSize = true;
+            this.lblEventType.Location = new System.Drawing.Point(32, 95);
+            this.lblEventType.Name = "lblEventType";
+            this.lblEventType.Size = new System.Drawing.Size(62, 13);
+            this.lblEventType.TabIndex = 31;
+            this.lblEventType.Text = "Event Type";
+            // 
+            // cmbEventType
+            // 
+            this.cmbEventType.FormattingEnabled = true;
+            this.cmbEventType.Items.AddRange(new object[] {
+            "Preseason",
+            "District",
+            "District Championship",
+            "Regional",
+            "Championship Division"});
+            this.cmbEventType.Location = new System.Drawing.Point(112, 93);
+            this.cmbEventType.Name = "cmbEventType";
+            this.cmbEventType.Size = new System.Drawing.Size(275, 21);
+            this.cmbEventType.TabIndex = 32;
+            this.cmbEventType.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
+            this.cmbEventType.SelectedValueChanged += new System.EventHandler(this.cmbYear_SelectedValueChanged);
+            // 
+            // lblDistrict
+            // 
+            this.lblDistrict.AutoSize = true;
+            this.lblDistrict.Location = new System.Drawing.Point(32, 133);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Size = new System.Drawing.Size(39, 13);
+            this.lblDistrict.TabIndex = 31;
+            this.lblDistrict.Text = "District";
+            // 
+            // cmbDistrict
+            // 
+            this.cmbDistrict.FormattingEnabled = true;
+            this.cmbDistrict.Items.AddRange(new object[] {
+            "Preseason",
+            "District",
+            "District Championship",
+            "Regional",
+            "Championship Division"});
+            this.cmbDistrict.Location = new System.Drawing.Point(112, 131);
+            this.cmbDistrict.Name = "cmbDistrict";
+            this.cmbDistrict.Size = new System.Drawing.Size(275, 21);
+            this.cmbDistrict.TabIndex = 32;
+            this.cmbDistrict.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
+            this.cmbDistrict.SelectedValueChanged += new System.EventHandler(this.cmbYear_SelectedValueChanged);
+            // 
             // CompetitionSelectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btnSave;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 287);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(433, 341);
+            this.Controls.Add(this.cmbDistrict);
+            this.Controls.Add(this.cmbEventType);
+            this.Controls.Add(this.lblDistrict);
+            this.Controls.Add(this.lblEventType);
+            this.Controls.Add(this.cmbYear);
+            this.Controls.Add(this.lblYear);
+            this.Controls.Add(this.txtDefinitionFile);
+            this.Controls.Add(this.lblDefinitionFile);
             this.Controls.Add(this.lblSeason);
+            this.Controls.Add(this.btnSelectConfigFile);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.cmbCompetitionName);
             this.Controls.Add(this.lblCompetitionName);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CompetitionSelectForm";
-            this.Text = "CompetitionSelectForm";
+            this.Text = "Y";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -147,5 +276,15 @@
         private System.Windows.Forms.ToolStripStatusLabel sslblStatus;
         private System.Windows.Forms.ComboBox cmbCompetitionName;
         private System.Windows.Forms.Label lblCompetitionName;
+        private System.Windows.Forms.Label lblDefinitionFile;
+        private System.Windows.Forms.TextBox txtDefinitionFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnSelectConfigFile;
+        private System.Windows.Forms.ComboBox cmbYear;
+        private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.Label lblEventType;
+        private System.Windows.Forms.ComboBox cmbEventType;
+        private System.Windows.Forms.Label lblDistrict;
+        private System.Windows.Forms.ComboBox cmbDistrict;
     }
 }

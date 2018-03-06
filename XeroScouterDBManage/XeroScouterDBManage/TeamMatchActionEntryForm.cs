@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using XeroScouterDBManage_Server.DatabaseInfo;
 
@@ -129,16 +130,26 @@ namespace XeroScouterDBManage_Server
 					valid = Utils.ValidAlphaNumericString(curTB.Text, out errorMsg);
 					break;
 				case "txtMatchNumber":
-				case "txtAutoLowDump":
-				case "txtAutoHighScored":
-				case "txtAutoHighMissed":
-                case "txtAutoGearsDelivered":
-                case "txtAutoFuelBinsTriggered":
-                case "txtTeleLowDumps":
-                case "txtTeleHighScored":
-                case "txtTeleHighMissed":
-                case "txtTeleGearsDelivered":
-                case "txtTeleFuelBinsTriggered":
+				case "txtAutoText1":
+				case "txtAutoText2":
+				case "txtAutoText3":
+                case "txtAutoText4":
+                case "txtAutoText5":
+                case "txtAutoText6":
+                case "txtAutoText7":
+                case "txtAutoText8":
+                case "txtAutoText9":
+                case "txtAutoText10":
+                case "txtTeleText1":
+                case "txtTeleText2":
+                case "txtTeleText3":
+                case "txtTeleText4":
+                case "txtTeleText5":
+                case "txtTeleText6":
+                case "txtTeleText7":
+                case "txtTeleText8":
+                case "txtTeleText9":
+                case "txtTeleText10":
                     valid = Utils.ValidInteger(curTB.Text, out errorMsg);
 					break;
 				default:
@@ -172,44 +183,57 @@ namespace XeroScouterDBManage_Server
 
 		private void mapActionTypeControls()
 		{
-            this.dictActionTypeControls.Add(this.chkAutoBaselineCross, "auto_baseline_crossed");
-            this.dictActionTypeControls.Add(this.txtAutoLowDump, "auto_low_dump");
-			this.dictActionTypeControls.Add(this.txtAutoHighScored, "auto_high_scores");
-			this.dictActionTypeControls.Add(this.txtAutoHighMissed, "auto_high_missed");
-            this.dictActionTypeControls.Add(this.txtAutoGearsDelivered, "auto_gear_delivered");
-            this.dictActionTypeControls.Add(this.txtAutoFuelBinsTriggered, "auto_fuel_bin_triggered");
+            try {
+                String defFilePath = Properties.Settings.Default.DefinitionFileName;
+                
+                using (var reader = new StreamReader(defFilePath))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        String[] values = line.Split(',');
+                        if(values.Length < 5)
+                        {
+                            MessageBox.Show("Definition File format is incorrect.");
+                            return;
+                        }
+                        for(int i = 0; i < values.Length; i++)
+                        {
+                            values[i] = values[i].Trim(' ');
+                        }
 
-            this.dictActionTypeControls.Add(this.txtTeleLowDumps, "tele_low_dumps");
-			this.dictActionTypeControls.Add(this.txtTeleHighScored, "tele_high_scores");
-			this.dictActionTypeControls.Add(this.txtTeleHighMissed, "tele_high_missed");
-            this.dictActionTypeControls.Add(this.txtTeleGearsDelivered, "tele_gear_delivered");
-            this.dictActionTypeControls.Add(this.txtTeleFuelBinsTriggered, "tele_fuel_bin_triggered");
-            this.dictActionTypeControls.Add(this.radClimbAttempt, "tele_try_climb");
-            this.dictActionTypeControls.Add(this.radClimbSuccess, "tele_did_climb");
-            this.dictActionTypeControls.Add(this.radClimbTriggered, "tele_tiggered_pressure_pad");
-            this.dictActionTypeControls.Add(this.chkDefenceFlag, "tele_played_defensively");
-            this.dictActionTypeControls.Add(this.chkBreakdownFlag, "breakdown");
-            this.dictActionTypeControls.Add(this.chkDisconnectFlag, "disconnect");
+                        String strValueControl = values[0];
+                        String strActionTypeName = values[1];
+                        String strLabelControl = values[2];
+                        String strLabelText = values[3];
+                        bool bShowField = true;
+                        bool foundShowField = Boolean.TryParse(values[4], out bShowField);
 
-            this.dictActionTypeNames.Add("auto_baseline_crossed", this.chkAutoBaselineCross);
-            this.dictActionTypeNames.Add("auto_low_dump", this.txtAutoLowDump);
-            this.dictActionTypeNames.Add("auto_high_scores", this.txtAutoHighScored);
-            this.dictActionTypeNames.Add("auto_high_missed", this.txtAutoHighMissed);
-            this.dictActionTypeNames.Add("auto_gear_delivered", this.txtAutoGearsDelivered);
-            this.dictActionTypeNames.Add("auto_fuel_bin_triggered", this.txtAutoFuelBinsTriggered);
+                        Control valueControl = this.Controls.Find(strValueControl, true)[0];
+                        Control labelControl = valueControl;
+                        if (strLabelControl != strValueControl)
+                        {
+                            labelControl = this.Controls.Find(strLabelControl, true)[0];
+                        }
 
-            this.dictActionTypeNames.Add("tele_low_dumps", this.txtTeleLowDumps);
-            this.dictActionTypeNames.Add("tele_high_scores", this.txtTeleHighScored);
-            this.dictActionTypeNames.Add("tele_high_missed", this.txtTeleHighMissed);
-            this.dictActionTypeNames.Add("tele_gear_delivered", this.txtTeleGearsDelivered);
-            this.dictActionTypeNames.Add("tele_fuel_bin_triggered", this.txtTeleFuelBinsTriggered);
-            this.dictActionTypeNames.Add("tele_try_climb", this.radClimbAttempt);
-            this.dictActionTypeNames.Add("tele_did_climb", this.radClimbSuccess);
-            this.dictActionTypeNames.Add("tele_tiggered_pressure_pad", this.radClimbTriggered);
-            this.dictActionTypeNames.Add("tele_played_defensively", this.chkDefenceFlag);
-            this.dictActionTypeNames.Add("breakdown", this.chkBreakdownFlag);
-            this.dictActionTypeNames.Add("disconnect", this.chkDisconnectFlag);
-
+                        if (foundShowField && bShowField)
+                        {
+                            this.dictActionTypeControls.Add(valueControl, strActionTypeName);
+                            this.dictActionTypeNames.Add(strActionTypeName, valueControl);
+                            
+                            labelControl.Text = strLabelText;
+                        }
+                        else
+                        {
+                            valueControl.Visible = false;
+                            labelControl.Visible = false;
+                        }
+                    }
+                }
+            } catch (Exception e)
+            {
+                Console.Out.WriteLine(e.StackTrace);
+            }
         }
 
         private void loadActionTypeData()
