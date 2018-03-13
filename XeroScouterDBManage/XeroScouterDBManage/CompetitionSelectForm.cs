@@ -60,7 +60,7 @@ namespace XeroScouterDBManage_Server
                     cmbDistrict.DataSource = ds.Tables[0].DefaultView;
                     cmbDistrict.ValueMember = EventTable.COL_EVENT_DISTRICT;
                     cmbDistrict.DisplayMember = EventTable.COL_EVENT_DISTRICT;
-                    cmbDistrict.SelectedIndex = 0;
+                    //cmbDistrict.SelectedIndex = 0;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
@@ -91,7 +91,7 @@ namespace XeroScouterDBManage_Server
                 year = 2018;
             }
 
-            String competitionDistrict = (String)cmbDistrict.SelectedValue;
+            String competitionDistrict = "PNW"; // (String)cmbDistrict.SelectedValue;
 
             MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
             MySqlCommand cmd;
@@ -113,21 +113,24 @@ namespace XeroScouterDBManage_Server
                     }
 
                     int index = 0;
-                    foreach(DataRow dr in ds.Tables[0].Rows)
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        long id = (long)(dr.Field<int>(EventTable.COL_ID));
-                        if(id == this.competitionID)
+                        foreach (DataRow dr in ds.Tables[0].Rows)
                         {
-                            this.competitionIndex = index;
+                            long id = (long)(dr.Field<int>(EventTable.COL_ID));
+                            if (id == this.competitionID)
+                            {
+                                this.competitionIndex = index;
+                            }
+                            String file = dr.Field<String>(EventTable.COL_EVENT_ACTION_DEFINITION_FILE);
+                            eventDefinitionFileList.Add(id, file);
+                            index++;
                         }
-                        String file = dr.Field<String>(EventTable.COL_EVENT_ACTION_DEFINITION_FILE);
-                        eventDefinitionFileList.Add(id, file);
-                        index++;
+                        cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
+                        cmbCompetitionName.ValueMember = EventTable.COL_ID;
+                        cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
+                        cmbCompetitionName.SelectedIndex = this.competitionIndex;
                     }
-                    cmbCompetitionName.DataSource = ds.Tables[0].DefaultView;
-                    cmbCompetitionName.ValueMember = EventTable.COL_ID;
-                    cmbCompetitionName.DisplayMember = EventTable.COL_NAME;
-                    cmbCompetitionName.SelectedIndex = this.competitionIndex;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {

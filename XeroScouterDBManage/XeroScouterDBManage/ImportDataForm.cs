@@ -322,6 +322,8 @@ namespace XeroScouterDBManage_Server
                         }
 
                         cmd.CommandText = prefix + postfix;
+
+
                         cmd.Prepare();
 
                         int numRows = 0;

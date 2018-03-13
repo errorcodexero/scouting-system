@@ -64,7 +64,7 @@ namespace XeroScouterDBManage_Server.DatabaseInfo
         {
             String q = "SELECT " + COL_ID + ", " + COL_NAME + ", " + COL_LOCATION + ", " + COL_EVENT_ACTION_DEFINITION_FILE + " FROM " + TABLE_NAME;
             q += " WHERE " + COL_YEAR + "=" + String.Format("{0}", year);
-            q += " AND " + COL_EVENT_DISTRICT + "='" + district + "'";
+            q += " AND " + COL_SHORT_NAME + "='Wilsonville'"; // + district + "'";
             q += " ORDER BY " + COL_NAME;
             
 
