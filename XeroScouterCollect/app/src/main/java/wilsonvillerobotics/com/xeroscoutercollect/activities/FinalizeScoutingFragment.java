@@ -143,19 +143,17 @@ public class FinalizeScoutingFragment extends Fragment implements View.OnClickLi
         for (int i = 0; i < 12; i++) {
             String actionName = "";
             String actionTempName = "action_";
-            //THIS IS FOR TESTING
-            //TODO: FIX THIS ABOMINATION
-            entryValues.put("auto_action_1_chkbx", 1);
-
 
             if (i == 0 ) {
                 actionName = "auto_action_" + (i + 1) + "_chkbx";
-                actionTempName += (i + 30);
+                actionTempName += (32);
                 finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources()
                         .getIdentifier(actionTempName, "string", parentActivity.getPackageName())), entryValues.get(actionName) == 1 ? "True" : "False"));
             } else if ( i < 4) {
                 actionTempName = actionTempName + (i + 30);
-                actionName = "edittext_auto_action_" + (i + 1);
+                if (i == 2)
+                    actionTempName = "action_30";
+                actionName = "edittext_auto_action_" + (i);
                 finalizeDataList.add(Pair.create(parentActivity.getResources().getString(parentActivity.getResources().getIdentifier(actionTempName, "string", parentActivity.getPackageName())), String.valueOf(entryValues.get(actionName))));
             } else if (i < 11){
                 actionName = "edittext_action_" + (i - 3);

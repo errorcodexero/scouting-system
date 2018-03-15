@@ -17,7 +17,8 @@
             android:id="@+id/portal_column"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="invisible">
 
             <LinearLayout
                 android:id="@+id/action_1_group"
@@ -128,7 +129,7 @@
                     android:id="@+id/action_group_3_top_space"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".25" />
+                    android:layout_weight=".1" />
 
                 <LinearLayout
                     android:id="@+id/action_3_group"
@@ -172,7 +173,7 @@
                     android:id="@+id/action_group_3_bottom_space"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".14" />
+                    android:layout_weight=".06" />
 
             </LinearLayout>
 
@@ -187,7 +188,7 @@
                     android:id="@+id/action_group_4_top_space"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".25" />
+                    android:layout_weight=".1" />
 
                 <LinearLayout
                     android:id="@+id/action_4_group"
@@ -232,7 +233,7 @@
                     android:id="@+id/action_group_4_bottom_space"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".14" />
+                    android:layout_weight=".06" />
             </LinearLayout>
 
             <LinearLayout
@@ -246,7 +247,7 @@
                     android:id="@+id/action_group_5_top_space"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".25" />
+                    android:layout_weight=".1" />
 
                 <LinearLayout
                     android:id="@+id/action_5_group"
@@ -259,7 +260,7 @@
                         android:id="@+id/action_5_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Opponent Switch"
+                        android:text="Opp Switch"
                         android:textAlignment="center"
                         android:textSize="18sp" />
 
@@ -290,7 +291,7 @@
                     android:id="@+id/action_group_5_bottom_space"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".14" />
+                    android:layout_weight=".06" />
             </LinearLayout>
         </LinearLayout>
 
@@ -333,7 +334,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".1" />
+                android:layout_weight=".1185" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -381,7 +382,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <Button
                     android:id="@+id/btn_action_7_incr"

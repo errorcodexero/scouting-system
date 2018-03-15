@@ -180,14 +180,14 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             DataTransferTask transferTask = new DataTransferTask();
-                            if(isPitScoutingTablet){
+                            /*if(isPitScoutingTablet){
                                 transferTask.setIsSend(true);
                                 transferTask.setSendFile(pitFile);
                             }
-                            else{
+                            else{*/
                                 transferTask.setIsSend(true);
                                 transferTask.setSendFile(tmaFile);
-                            }
+                            //}
                             transferTask.execute(null,null,null);
                         }
                     });
@@ -351,7 +351,13 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
         }
 
         protected Boolean doInBackground(Void... params) {
-            FTPConnection ftp = new FTPConnection(ManageDBActivity.this);
+            FTPConnection ftp = null;
+            try {
+                ftp = new FTPConnection(ManageDBActivity.this);
+            } catch (Exception e) {
+                Log.d("ERROR:", e.getStackTrace().toString());
+                return false;
+            }
             if(_isSend){
                 if (!ftp.sendFTPFile(sendFile, this)) {
                     restoreBackupTMAIndex();

@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -246,7 +247,6 @@ public class TeleopScoutingFragment extends Fragment implements View.OnClickList
                         case 7:
                             outputActionId = 47;
                             break;
-
                     }
 
                     //Toast.makeText(ScoutingActivity_Back.this, queryString, Toast.LENGTH_SHORT).show();

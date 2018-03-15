@@ -38,17 +38,15 @@ public class FTPConnection {
     private TextView status;
     private final String statusPrefix = "Status: ";
 
-    private File xmlFolder = new File("/data/data/wilsonvillerobotics.com.xeroscoutercollect/ml");
+    private File xmlFolder = new File("/data/data/wilsonvillerobotics.com.xeroscoutercollect/xml");
 
 
     // Will want to make a custom Exception
-    public FTPConnection(Activity act) throws FileNotFoundException{
+    public FTPConnection(Activity act) {
         activity = act;
         status = (TextView) act.findViewById(R.id.lbl_user_status_text);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act);
-        if (!xmlFolder.mkdir()) {
-            throw new FileNotFoundException();
-        }
+        xmlFolder.mkdir();
         serverAddress = sharedPreferences.getString("server_ip", "192.168.1.4");
     }
 

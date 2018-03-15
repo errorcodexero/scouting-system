@@ -125,7 +125,7 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
         autoBackButton.setOnClickListener(this);
         String packageName = parentActivity.getPackageName();
 
-        for (int i = 2; i < 5; i++) {
+        for (int i = 1; i < 4; i++) {
 
             int test1 = res.getIdentifier("btn_auto_action_" + i + "_incr", "id", packageName);
             int test2 = res.getIdentifier("btn_auto_action_" + i + "_decr", "id", packageName);
@@ -139,7 +139,7 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
                     res.getIdentifier(strEditTextId, "id", packageName), 0));
         }
 
-        for (int i = 2; i < 5; i++) {
+        for (int i = 1; i < 4; i++) {
             String strIncId = "btn_auto_action_" + i + "_incr";
             String strDecId = "btn_auto_action_" + i + "_decr";
             String editTextId = "edittext_auto_action_" + i;
@@ -217,10 +217,10 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
 
                     switch (actionId) {
                         case 1:
-                            outputActionId = 41;
+                            outputActionId = 31;
                             break;
                         case 2:
-                            outputActionId = 43;
+                            outputActionId = 33;
                             break;
                         case 3:
                             outputActionId = 30;
@@ -229,7 +229,7 @@ public class AutonomousScoutingFragment extends Fragment implements View.OnClick
                     }
 
                     //Toast.makeText(ScoutingActivity_Back.this, queryString, Toast.LENGTH_SHORT).show();
-                    ActionObject tempObject = actionObjectArrayList.get(actionId - 2);
+                    ActionObject tempObject = actionObjectArrayList.get(actionId - 1);
                     tempObject.changeValue(actionData.getDecrement());
 
                     EditText tempTextView = (EditText) getActivity().findViewById(tempObject.getTextFieldId());

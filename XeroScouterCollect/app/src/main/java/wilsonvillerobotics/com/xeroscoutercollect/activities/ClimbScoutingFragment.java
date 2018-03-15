@@ -248,6 +248,11 @@ public void onCreate(Bundle savedInstanceState) {
             case R.id.btn_climb_back:
                 entryValues.put("climb_option", currentlyChecked);
                 entryValues.put("climb_option_assist", currentlyCheckedAssist);
+                parentActivity.changeState(TELEOP, entryValues, queryStringList);
+                break;
+            case R.id.btn_climb_next:
+                entryValues.put("climb_option", currentlyChecked);
+                entryValues.put("climb_option_assist", currentlyCheckedAssist);
                 switch (currentlyChecked) {
                     case 1:
                         queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, parentActivity.teamMatchId, 39, false));
@@ -266,14 +271,10 @@ public void onCreate(Bundle savedInstanceState) {
                         break;
                     case 3:
                         queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, parentActivity.teamMatchId, 40, false));
+                        queryStringList.add(TeamMatchActionModel.addAction(tablet_uuid, parentActivity.teamMatchId, 40, false));
                         break;
 
                 }
-                parentActivity.changeState(TELEOP, entryValues, queryStringList);
-                break;
-            case R.id.btn_climb_next:
-                entryValues.put("climb_option", currentlyChecked);
-                entryValues.put("climb_option_assist", currentlyCheckedAssist);
                 parentActivity.changeState(FINALIZE, entryValues, queryStringList);
                 break;
         }
