@@ -38,6 +38,9 @@ namespace XeroScouterDBManage_Server
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+
             try
             {
                 if (Properties.Settings.Default.CompetitionID < 0)
@@ -58,6 +61,11 @@ namespace XeroScouterDBManage_Server
             
         }
 
-        
+        static void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            Console.WriteLine("MyHandler caught : " + e.Message);
+            Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
+        }
     }
 }

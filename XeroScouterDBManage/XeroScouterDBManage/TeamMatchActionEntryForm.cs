@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Windows.Forms;
 using XeroScouterDBManage_Server.DatabaseInfo;
+using XeroScouterDBManage_Server.Utilities;
 
 namespace XeroScouterDBManage_Server
 {
@@ -17,7 +18,11 @@ namespace XeroScouterDBManage_Server
 		private Dictionary<Control, String> dictActionTypeControls;
 		private Dictionary<String, Control> dictActionTypeNames;
 		private Dictionary<Int32, bool> dictUpdatedFieldIDs;
-		private String statusMessage;
+
+
+        private Dictionary<Int32, ActionTypeData> dictActionTypeData;
+
+        private String statusMessage;
 		private bool scouterDataFound;
 		private bool existingDataFound;
 		private bool cancelling;
@@ -40,7 +45,9 @@ namespace XeroScouterDBManage_Server
 			this.dictActionTypeNames = new Dictionary<string, Control>(); // maps names to controls
 			this.dictUpdatedFieldIDs = new Dictionary<int, bool>(); // maps ids to bool representing if the field was updated on load, use this to only save fields that didn't have data
 
-			this.statusMessage = "";
+            this.dictActionTypeData = new Dictionary<int, ActionTypeData>(); // maps action_type_id to object containing all related data
+
+            this.statusMessage = "";
 
 			loadActionTypeData();
 			mapActionTypeControls();
@@ -433,7 +440,9 @@ namespace XeroScouterDBManage_Server
 			int quantity = 0;
 			bool recordsFound = false;
 
-			if (ds.Tables.Count > 0)
+            toolStripStatusLabel1.Text = String.Empty;
+
+            if (ds.Tables.Count > 0)
 			{
 				recordsFound = true;
 				foreach (DataRow r in ds.Tables[0].Rows)
@@ -478,6 +487,10 @@ namespace XeroScouterDBManage_Server
                             break;
                         case "RadioButton":
                             ((RadioButton)myControl).Checked = (quantity > 0);
+                            if(s.StartsWith("radClimb"))
+                            {
+                                this.txtClimbCount.Text = String.Format("{0}", quantity);
+                            }
                             break;
                     }
 				}
@@ -555,6 +568,8 @@ namespace XeroScouterDBManage_Server
 					dictActionTypeControls.TryGetValue(k, out name);
 					dictActionTypes.TryGetValue(name, out id);
 					bool hasData = false;
+
+                    ///TODO - radClimb buttons are showing that they have data - why???
 					dictUpdatedFieldIDs.TryGetValue(id, out hasData);
                     if (!String.IsNullOrEmpty(k.Text) && !hasData)
                     {
@@ -569,7 +584,21 @@ namespace XeroScouterDBManage_Server
                                 dictIdToCount.Add(id, ((((CheckBox)k).Checked) ? 1 : 0));
                                 break;
                             case "RadioButton":
-                                dictIdToCount.Add(id, ( (((RadioButton)k).Checked) ? 1 : 0) );
+                                int quantity = 0;
+                                if (((RadioButton)k).Checked)
+                                {
+                                    // for climb radio buttons, we need to use
+                                    // the txtClimbCount value as our quantity
+                                    if (s.StartsWith("radClimb"))
+                                    {
+                                        if (!Int32.TryParse(this.txtClimbCount.Text, out quantity))
+                                        {
+                                            // default to quantity of 1
+                                            quantity = 1;
+                                        }
+                                    }
+                                }
+                                dictIdToCount.Add(id, quantity);
                                 break;
                             default:
                                 toolStripStatusLabel1.Text = "Bad control type: " + s;

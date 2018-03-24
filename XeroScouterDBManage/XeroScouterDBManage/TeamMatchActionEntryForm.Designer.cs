@@ -103,6 +103,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblClimbCount = new System.Windows.Forms.Label();
+            this.txtClimbCount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -732,11 +734,13 @@
             this.panel5.Location = new System.Drawing.Point(5, 464);
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(521, 106);
+            this.panel5.Size = new System.Drawing.Size(521, 136);
             this.panel5.TabIndex = 52;
             // 
             // groupClimb
             // 
+            this.groupClimb.Controls.Add(this.txtClimbCount);
+            this.groupClimb.Controls.Add(this.lblClimbCount);
             this.groupClimb.Controls.Add(this.radClimb6);
             this.groupClimb.Controls.Add(this.radClimb1);
             this.groupClimb.Controls.Add(this.radClimb4);
@@ -745,7 +749,7 @@
             this.groupClimb.Controls.Add(this.radClimb2);
             this.groupClimb.Location = new System.Drawing.Point(12, 2);
             this.groupClimb.Name = "groupClimb";
-            this.groupClimb.Size = new System.Drawing.Size(282, 90);
+            this.groupClimb.Size = new System.Drawing.Size(282, 122);
             this.groupClimb.TabIndex = 13;
             this.groupClimb.TabStop = false;
             this.groupClimb.Text = "Climb";
@@ -753,7 +757,7 @@
             // radClimb6
             // 
             this.radClimb6.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimb6.Location = new System.Drawing.Point(129, 64);
+            this.radClimb6.Location = new System.Drawing.Point(129, 99);
             this.radClimb6.Name = "radClimb6";
             this.radClimb6.Size = new System.Drawing.Size(127, 17);
             this.radClimb6.TabIndex = 25;
@@ -766,7 +770,7 @@
             this.radClimb1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radClimb1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.radClimb1.Checked = true;
-            this.radClimb1.Location = new System.Drawing.Point(6, 19);
+            this.radClimb1.Location = new System.Drawing.Point(6, 54);
             this.radClimb1.Name = "radClimb1";
             this.radClimb1.Size = new System.Drawing.Size(105, 19);
             this.radClimb1.TabIndex = 16;
@@ -778,7 +782,7 @@
             // radClimb4
             // 
             this.radClimb4.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimb4.Location = new System.Drawing.Point(129, 41);
+            this.radClimb4.Location = new System.Drawing.Point(129, 76);
             this.radClimb4.Name = "radClimb4";
             this.radClimb4.Size = new System.Drawing.Size(127, 17);
             this.radClimb4.TabIndex = 24;
@@ -789,7 +793,7 @@
             // radClimb5
             // 
             this.radClimb5.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimb5.Location = new System.Drawing.Point(6, 65);
+            this.radClimb5.Location = new System.Drawing.Point(6, 100);
             this.radClimb5.Name = "radClimb5";
             this.radClimb5.Size = new System.Drawing.Size(106, 16);
             this.radClimb5.TabIndex = 23;
@@ -800,7 +804,7 @@
             // radClimb3
             // 
             this.radClimb3.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimb3.Location = new System.Drawing.Point(6, 42);
+            this.radClimb3.Location = new System.Drawing.Point(6, 77);
             this.radClimb3.Name = "radClimb3";
             this.radClimb3.Size = new System.Drawing.Size(106, 17);
             this.radClimb3.TabIndex = 23;
@@ -811,7 +815,7 @@
             // radClimb2
             // 
             this.radClimb2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radClimb2.Location = new System.Drawing.Point(129, 19);
+            this.radClimb2.Location = new System.Drawing.Point(129, 54);
             this.radClimb2.Name = "radClimb2";
             this.radClimb2.Size = new System.Drawing.Size(127, 19);
             this.radClimb2.TabIndex = 22;
@@ -875,7 +879,7 @@
             // 
             this.panel6.Controls.Add(this.btnCancel);
             this.panel6.Controls.Add(this.btnSave);
-            this.panel6.Location = new System.Drawing.Point(5, 572);
+            this.panel6.Location = new System.Drawing.Point(6, 602);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(521, 45);
@@ -907,7 +911,7 @@
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(5, 626);
+            this.panel7.Location = new System.Drawing.Point(5, 649);
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(521, 22);
@@ -920,7 +924,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(10, 626);
+            this.statusStrip1.Location = new System.Drawing.Point(9, 649);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this.statusStrip1.Size = new System.Drawing.Size(17, 22);
@@ -932,6 +936,27 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 0);
             // 
+            // lblClimbCount
+            // 
+            this.lblClimbCount.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblClimbCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblClimbCount.Location = new System.Drawing.Point(87, 20);
+            this.lblClimbCount.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblClimbCount.Name = "lblClimbCount";
+            this.lblClimbCount.Size = new System.Drawing.Size(133, 13);
+            this.lblClimbCount.TabIndex = 65;
+            this.lblClimbCount.Text = "Climb Count";
+            this.lblClimbCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtClimbCount
+            // 
+            this.txtClimbCount.Location = new System.Drawing.Point(222, 17);
+            this.txtClimbCount.Margin = new System.Windows.Forms.Padding(1);
+            this.txtClimbCount.Name = "txtClimbCount";
+            this.txtClimbCount.Size = new System.Drawing.Size(34, 20);
+            this.txtClimbCount.TabIndex = 64;
+            this.txtClimbCount.Text = "1";
+            // 
             // TeamMatchActionEntryForm
             // 
             this.AcceptButton = this.btnSave;
@@ -940,7 +965,7 @@
             this.AutoSize = true;
             this.CancelButton = this.btnCancel;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(532, 653);
+            this.ClientSize = new System.Drawing.Size(532, 677);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
@@ -965,6 +990,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.groupClimb.ResumeLayout(false);
+            this.groupClimb.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1049,5 +1075,7 @@
         private System.Windows.Forms.RadioButton radClimb5;
         private System.Windows.Forms.CheckBox chkGroundCollect;
         private System.Windows.Forms.RadioButton radClimb6;
+        private System.Windows.Forms.TextBox txtClimbCount;
+        private System.Windows.Forms.Label lblClimbCount;
     }
 }

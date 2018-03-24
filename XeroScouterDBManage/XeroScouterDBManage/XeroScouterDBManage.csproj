@@ -165,6 +165,7 @@
     <Compile Include="UpdateMatchDataForm.Designer.cs">
       <DependentUpon>UpdateMatchDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ActionTypeData.cs" />
     <Compile Include="Utilities\MySQL_ErrorCodes.cs" />
     <Compile Include="Utilities\Utils.cs" />
     <EmbeddedResource Include="AddMatchDataForm.resx">
