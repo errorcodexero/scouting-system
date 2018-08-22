@@ -417,7 +417,8 @@ public class ManageDBActivity extends Activity implements View.OnClickListener {
 
             for(String path:xmlFilePaths){
                 ArrayList<HashMap<String, XMLParser.TableColumn>> hashMapArrayList = myParser.parseXML(path);
-                publishProgress("Received Hashmap. Begun to build SQL DB.");
+                String[] pathParts = path.split("/");
+                publishProgress("Received " + pathParts[pathParts.length-1] + "Hashmap. Begun to build SQL DB.");
                 for(HashMap<String, XMLParser.TableColumn> map : hashMapArrayList){
                     boolean hasTN = map.containsKey(TN);
                     if (hasTN) {
