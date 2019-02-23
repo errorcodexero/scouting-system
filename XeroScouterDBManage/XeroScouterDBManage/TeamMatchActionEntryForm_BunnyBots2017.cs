@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Windows.Forms;
 using XeroScouterDBManage_Server.DatabaseInfo;
-using XeroScouterDBManage_Server.Utilities;
 
 namespace XeroScouterDBManage_Server
 {
-	public partial class TeamMatchActionEntryForm : Form
+	public partial class TeamMatchActionEntryForm_BunnyBots2017 : Form
 	{
 		private Int32 teamMatchID;
 		private Int32 matchID, teamID;
@@ -18,16 +16,12 @@ namespace XeroScouterDBManage_Server
 		private Dictionary<Control, String> dictActionTypeControls;
 		private Dictionary<String, Control> dictActionTypeNames;
 		private Dictionary<Int32, bool> dictUpdatedFieldIDs;
-
-
-        private Dictionary<Int32, ActionTypeData> dictActionTypeData;
-
-        private String statusMessage;
+		private String statusMessage;
 		private bool scouterDataFound;
 		private bool existingDataFound;
 		private bool cancelling;
 
-		public TeamMatchActionEntryForm(Int32 mID, Int32 tID)
+		public TeamMatchActionEntryForm_BunnyBots2017(Int32 mID, Int32 tID)
 		{
 			InitializeComponent();
 			this.matchID = mID;
@@ -45,12 +39,9 @@ namespace XeroScouterDBManage_Server
 			this.dictActionTypeNames = new Dictionary<string, Control>(); // maps names to controls
 			this.dictUpdatedFieldIDs = new Dictionary<int, bool>(); // maps ids to bool representing if the field was updated on load, use this to only save fields that didn't have data
 
-            this.dictActionTypeData = new Dictionary<int, ActionTypeData>(); // maps action_type_id to object containing all related data
+			this.statusMessage = "";
 
-            this.statusMessage = "";
-
-            initNumericUpDownControls();
-            loadActionTypeData();
+			loadActionTypeData();
 			mapActionTypeControls();
 			loadTeamMatchData();
 			//this.Width = 1450;
@@ -60,36 +51,6 @@ namespace XeroScouterDBManage_Server
 			scouterDataFound = false;
 			loadExistingData();
 		}
-
-        private void initNumericUpDownControls()
-        {
-            // These settings are specific to 2019, 
-            // the format of the config file needs to be
-            // changes to account for other info - 
-            // change from CSV to XML to allow
-            // different controls to have different
-            // data attached
-            this.updnEndGameAction2_1.Minimum = 0;
-            this.updnEndGameAction2_1.Maximum = 3;
-
-            this.updnEndGameAction2_2.Minimum = 0;
-            this.updnEndGameAction2_2.Maximum = 3;
-
-            this.updnEndGameAction2_3.Minimum = 0;
-            this.updnEndGameAction2_3.Maximum = 3;
-
-            this.updnEndGameAction2_4.Minimum = 0;
-            this.updnEndGameAction2_4.Maximum = 3;
-
-            this.updnEndGameAction2_5.Minimum = 0;
-            this.updnEndGameAction2_5.Maximum = 3;
-
-            this.updnEndGameAction2_6.Minimum = 0;
-            this.updnEndGameAction2_6.Maximum = 3;
-
-            this.groupEndGameAction1.Visible = false;
-            this.groupEndGameAction2.Text = "Climb";
-        }
 
         private void setNextID()
         {
@@ -168,28 +129,13 @@ namespace XeroScouterDBManage_Server
 					valid = Utils.ValidAlphaNumericString(curTB.Text, out errorMsg);
 					break;
 				case "txtMatchNumber":
-				case "txtAutoText1":
-				case "txtAutoText2":
-				case "txtAutoText3":
-                case "txtAutoText4":
-                case "txtAutoText5":
-                case "txtAutoText6":
-                case "txtAutoText7":
-                case "txtAutoText8":
-                case "txtAutoText9":
-                case "txtAutoText10":
-                case "txtTeleText1":
-                case "txtTeleText2":
-                case "txtTeleText3":
-                case "txtTeleText4":
-                case "txtTeleText5":
-                case "txtTeleText6":
-                case "txtTeleText7":
-                case "txtTeleText8":
-                case "txtTeleText9":
-                case "txtTeleText10":
-                case "txtTeleText11":
-                case "txtTeleText12":
+				case "txtAutoNearBucketLift":
+				case "txtAutoFarBucketLift":
+				case "txtAutoMidlineCross":
+                case "txtTeleBunniesFound":
+                case "txtTeleBucketsSearched":
+                case "txtTeleBunniesPickedUp":
+                case "txtTeleBunniesPlaced":
                     valid = Utils.ValidInteger(curTB.Text, out errorMsg);
 					break;
 				default:
@@ -223,57 +169,30 @@ namespace XeroScouterDBManage_Server
 
 		private void mapActionTypeControls()
 		{
-            try {
-                String defFilePath = Properties.Settings.Default.DefinitionFileName;
-                
-                using (var reader = new StreamReader(defFilePath))
-                {
-                    while (!reader.EndOfStream)
-                    {
-                        var line = reader.ReadLine();
-                        String[] values = line.Split(',');
-                        if(values.Length < 5)
-                        {
-                            MessageBox.Show("Definition File format is incorrect.");
-                            return;
-                        }
-                        for(int i = 0; i < values.Length; i++)
-                        {
-                            values[i] = values[i].Trim(' ');
-                        }
+            this.dictActionTypeControls.Add(this.txtAutoNearBucketLift, "auto_team_bucket_picked_up");
+            this.dictActionTypeControls.Add(this.txtAutoFarBucketLift, "auto_field_bucket_picked_up");
+            this.dictActionTypeControls.Add(this.txtAutoMidlineCross, "auto_midfield_cross");
 
-                        String strValueControl = values[0];
-                        String strActionTypeName = values[1];
-                        String strLabelControl = values[2];
-                        String strLabelText = values[3];
-                        bool bShowField = true;
-                        bool foundShowField = Boolean.TryParse(values[4], out bShowField);
+            this.dictActionTypeControls.Add(this.txtTeleBunniesFound, "tele_bunnies_found");
+			this.dictActionTypeControls.Add(this.txtTeleBucketsSearched, "tele_buckets_searched");
+			this.dictActionTypeControls.Add(this.txtTeleBunniesPickedUp, "tele_bunnies_picked_up");
+            this.dictActionTypeControls.Add(this.txtTeleBunniesPlaced, "tele_bunnies_placed");
+            this.dictActionTypeControls.Add(this.chkDefenceFlag, "tele_played_defense");
+            this.dictActionTypeControls.Add(this.chkBreakdownFlag, "breakdown");
+            this.dictActionTypeControls.Add(this.chkDisconnectFlag, "disconnect");
 
-                        Control valueControl = this.Controls.Find(strValueControl, true)[0];
-                        Control labelControl = valueControl;
-                        if (strLabelControl != strValueControl)
-                        {
-                            labelControl = this.Controls.Find(strLabelControl, true)[0];
-                        }
+            this.dictActionTypeNames.Add("auto_team_bucket_picked_up", this.txtAutoNearBucketLift);
+            this.dictActionTypeNames.Add("auto_field_bucket_picked_up", this.txtAutoFarBucketLift);
+            this.dictActionTypeNames.Add("auto_fuel_bin_triggered", this.txtAutoMidlineCross);
 
-                        if (foundShowField && bShowField)
-                        {
-                            this.dictActionTypeControls.Add(valueControl, strActionTypeName);
-                            this.dictActionTypeNames.Add(strActionTypeName, valueControl);
-                            
-                            labelControl.Text = strLabelText;
-                        }
-                        else
-                        {
-                            valueControl.Visible = false;
-                            labelControl.Visible = false;
-                        }
-                    }
-                }
-            } catch (Exception e)
-            {
-                Console.Out.WriteLine(e.StackTrace);
-            }
+            this.dictActionTypeNames.Add("tele_bunnies_found", this.txtTeleBunniesFound);
+            this.dictActionTypeNames.Add("tele_buckets_searched", this.txtTeleBucketsSearched);
+            this.dictActionTypeNames.Add("tele_bunnies_picked_up", this.txtTeleBunniesPickedUp);
+            this.dictActionTypeNames.Add("tele_bunnies_placed", this.txtTeleBunniesPlaced);
+            this.dictActionTypeNames.Add("tele_played_defense", this.chkDefenceFlag);
+            this.dictActionTypeNames.Add("breakdown", this.chkBreakdownFlag);
+            this.dictActionTypeNames.Add("disconnect", this.chkDisconnectFlag);
+
         }
 
         private void loadActionTypeData()
@@ -298,8 +217,12 @@ namespace XeroScouterDBManage_Server
 					{
 						foreach (DataRow r in ds.Tables[0].Rows)
 						{
-							dictActionTypes.Add(r.Field<String>(ActionTypeTable.COL_NAME), r.Field<Int32>(ActionTypeTable.COL_ID));
-							dictActionTypeIDs.Add(r.Field<Int32>(ActionTypeTable.COL_ID), r.Field<String>(ActionTypeTable.COL_NAME));
+                            if (!dictActionTypes.ContainsKey(r.Field<String>(ActionTypeTable.COL_NAME)) &&
+                                !dictActionTypeIDs.ContainsKey(r.Field<Int32>(ActionTypeTable.COL_ID)))
+                            {
+                                dictActionTypes.Add(r.Field<String>(ActionTypeTable.COL_NAME), r.Field<Int32>(ActionTypeTable.COL_ID));
+                                dictActionTypeIDs.Add(r.Field<Int32>(ActionTypeTable.COL_ID), r.Field<String>(ActionTypeTable.COL_NAME));
+                            }
 						}
 					}
 				}
@@ -473,9 +396,7 @@ namespace XeroScouterDBManage_Server
 			int quantity = 0;
 			bool recordsFound = false;
 
-            toolStripStatusLabel1.Text = String.Empty;
-
-            if (ds.Tables.Count > 0)
+			if (ds.Tables.Count > 0)
 			{
 				recordsFound = true;
 				foreach (DataRow r in ds.Tables[0].Rows)
@@ -513,7 +434,6 @@ namespace XeroScouterDBManage_Server
                     switch (s)
                     {
                         case "TextBox":
-                        case "NumericUpDown":
                             myControl.Text = String.Format("{0}", quantity);
                             break;
                         case "CheckBox":
@@ -566,12 +486,6 @@ namespace XeroScouterDBManage_Server
 
         }
 
-        private void updnEndGameAction2_1_ValueChanged(object sender, EventArgs e)
-        {
-            //NumericUpDown nud = (NumericUpDown)sender;
-
-        }
-
         private void SaveData(bool exit)
 		{
 			MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
@@ -604,8 +518,6 @@ namespace XeroScouterDBManage_Server
 					dictActionTypeControls.TryGetValue(k, out name);
 					dictActionTypes.TryGetValue(name, out id);
 					bool hasData = false;
-
-                    ///TODO - radClimb buttons are showing that they have data - why???
 					dictUpdatedFieldIDs.TryGetValue(id, out hasData);
                     if (!String.IsNullOrEmpty(k.Text) && !hasData)
                     {
@@ -614,20 +526,13 @@ namespace XeroScouterDBManage_Server
                         switch (s)
                         {
                             case "TextBox":
-                            case "NumericUpDown":
                                 dictIdToCount.Add(id, Int32.Parse(k.Text));
                                 break;
                             case "CheckBox":
                                 dictIdToCount.Add(id, ((((CheckBox)k).Checked) ? 1 : 0));
                                 break;
                             case "RadioButton":
-                                int quantity = 0;
-                                if (((RadioButton)k).Checked)
-                                {
-                                    // do we need to track quantity of radio button selected?
-                                    quantity = 1;
-                                }
-                                dictIdToCount.Add(id, quantity);
+                                dictIdToCount.Add(id, ( (((RadioButton)k).Checked) ? 1 : 0) );
                                 break;
                             default:
                                 toolStripStatusLabel1.Text = "Bad control type: " + s;

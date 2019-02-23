@@ -42,6 +42,10 @@
             this.btnSelectConfigFile = new System.Windows.Forms.Button();
             this.cmbYear = new System.Windows.Forms.ComboBox();
             this.lblYear = new System.Windows.Forms.Label();
+            this.lblEventType = new System.Windows.Forms.Label();
+            this.cmbEventType = new System.Windows.Forms.ComboBox();
+            this.lblDistrict = new System.Windows.Forms.Label();
+            this.cmbDistrict = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +65,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(305, 183);
+            this.btnCancel.Location = new System.Drawing.Point(304, 278);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 30);
@@ -73,7 +77,7 @@
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(212, 183);
+            this.btnSave.Location = new System.Drawing.Point(211, 278);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 30);
@@ -87,7 +91,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.sslblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 232);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 319);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
             this.statusStrip1.Size = new System.Drawing.Size(433, 22);
@@ -108,7 +112,7 @@
             // cmbCompetitionName
             // 
             this.cmbCompetitionName.FormattingEnabled = true;
-            this.cmbCompetitionName.Location = new System.Drawing.Point(112, 93);
+            this.cmbCompetitionName.Location = new System.Drawing.Point(112, 175);
             this.cmbCompetitionName.Name = "cmbCompetitionName";
             this.cmbCompetitionName.Size = new System.Drawing.Size(275, 21);
             this.cmbCompetitionName.TabIndex = 24;
@@ -117,7 +121,7 @@
             // lblCompetitionName
             // 
             this.lblCompetitionName.AutoSize = true;
-            this.lblCompetitionName.Location = new System.Drawing.Point(32, 95);
+            this.lblCompetitionName.Location = new System.Drawing.Point(32, 177);
             this.lblCompetitionName.Name = "lblCompetitionName";
             this.lblCompetitionName.Size = new System.Drawing.Size(62, 13);
             this.lblCompetitionName.TabIndex = 23;
@@ -126,7 +130,7 @@
             // lblDefinitionFile
             // 
             this.lblDefinitionFile.AutoSize = true;
-            this.lblDefinitionFile.Location = new System.Drawing.Point(32, 133);
+            this.lblDefinitionFile.Location = new System.Drawing.Point(32, 215);
             this.lblDefinitionFile.Name = "lblDefinitionFile";
             this.lblDefinitionFile.Size = new System.Drawing.Size(70, 13);
             this.lblDefinitionFile.TabIndex = 29;
@@ -134,7 +138,7 @@
             // 
             // txtDefinitionFile
             // 
-            this.txtDefinitionFile.Location = new System.Drawing.Point(112, 130);
+            this.txtDefinitionFile.Location = new System.Drawing.Point(112, 212);
             this.txtDefinitionFile.Name = "txtDefinitionFile";
             this.txtDefinitionFile.ReadOnly = true;
             this.txtDefinitionFile.Size = new System.Drawing.Size(186, 20);
@@ -147,7 +151,7 @@
             // 
             // btnSelectConfigFile
             // 
-            this.btnSelectConfigFile.Location = new System.Drawing.Point(322, 127);
+            this.btnSelectConfigFile.Location = new System.Drawing.Point(321, 209);
             this.btnSelectConfigFile.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectConfigFile.Name = "btnSelectConfigFile";
             this.btnSelectConfigFile.Size = new System.Drawing.Size(65, 25);
@@ -180,13 +184,67 @@
             this.lblYear.TabIndex = 31;
             this.lblYear.Text = "Year";
             // 
+            // lblEventType
+            // 
+            this.lblEventType.AutoSize = true;
+            this.lblEventType.Location = new System.Drawing.Point(32, 95);
+            this.lblEventType.Name = "lblEventType";
+            this.lblEventType.Size = new System.Drawing.Size(62, 13);
+            this.lblEventType.TabIndex = 31;
+            this.lblEventType.Text = "Event Type";
+            // 
+            // cmbEventType
+            // 
+            this.cmbEventType.FormattingEnabled = true;
+            this.cmbEventType.Items.AddRange(new object[] {
+            "Preseason",
+            "District",
+            "District Championship",
+            "Regional",
+            "Championship Division"});
+            this.cmbEventType.Location = new System.Drawing.Point(112, 93);
+            this.cmbEventType.Name = "cmbEventType";
+            this.cmbEventType.Size = new System.Drawing.Size(275, 21);
+            this.cmbEventType.TabIndex = 32;
+            this.cmbEventType.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
+            this.cmbEventType.SelectedValueChanged += new System.EventHandler(this.cmbYear_SelectedValueChanged);
+            // 
+            // lblDistrict
+            // 
+            this.lblDistrict.AutoSize = true;
+            this.lblDistrict.Location = new System.Drawing.Point(32, 133);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Size = new System.Drawing.Size(39, 13);
+            this.lblDistrict.TabIndex = 31;
+            this.lblDistrict.Text = "District";
+            // 
+            // cmbDistrict
+            // 
+            this.cmbDistrict.FormattingEnabled = true;
+            this.cmbDistrict.Items.AddRange(new object[] {
+            "Preseason",
+            "District",
+            "District Championship",
+            "Regional",
+            "Championship Division"});
+            this.cmbDistrict.Location = new System.Drawing.Point(112, 131);
+            this.cmbDistrict.Name = "cmbDistrict";
+            this.cmbDistrict.Size = new System.Drawing.Size(275, 21);
+            this.cmbDistrict.TabIndex = 32;
+            this.cmbDistrict.SelectedIndexChanged += new System.EventHandler(this.cmbYear_SelectedIndexChanged);
+            this.cmbDistrict.SelectedValueChanged += new System.EventHandler(this.cmbYear_SelectedValueChanged);
+            // 
             // CompetitionSelectForm
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(433, 254);
+            this.ClientSize = new System.Drawing.Size(433, 341);
+            this.Controls.Add(this.cmbDistrict);
+            this.Controls.Add(this.cmbEventType);
+            this.Controls.Add(this.lblDistrict);
+            this.Controls.Add(this.lblEventType);
             this.Controls.Add(this.cmbYear);
             this.Controls.Add(this.lblYear);
             this.Controls.Add(this.txtDefinitionFile);
@@ -224,5 +282,9 @@
         private System.Windows.Forms.Button btnSelectConfigFile;
         private System.Windows.Forms.ComboBox cmbYear;
         private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.Label lblEventType;
+        private System.Windows.Forms.ComboBox cmbEventType;
+        private System.Windows.Forms.Label lblDistrict;
+        private System.Windows.Forms.ComboBox cmbDistrict;
     }
 }

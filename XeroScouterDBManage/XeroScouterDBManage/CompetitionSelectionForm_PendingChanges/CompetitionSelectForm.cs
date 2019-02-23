@@ -13,7 +13,7 @@ namespace XeroScouterDBManage_Server
         private long seasonID;
         private long competitionID;
         private int competitionIndex;
-        //private String competitionType;
+        private String competitionType;
         private String competitionDefinitionFile;
         private Dictionary<long, String> eventDefinitionFileList;
         private bool definitionFileChanged = false;
@@ -26,17 +26,16 @@ namespace XeroScouterDBManage_Server
             competitionIndex = 0;
             competitionDefinitionFile = Properties.Settings.Default.DefinitionFileName;
             eventDefinitionFileList = new Dictionary<long, string>();
-            //competitionType = "District";
+            competitionType = "District";
             cmbYear.SelectedIndex = 0;
-            //cmbEventType.SelectedIndex = 1;
-            //LoadDistricts();
+            cmbEventType.SelectedIndex = 1;
+            LoadDistricts();
             LoadCompetitions();
             formInitialized = true;
         }
 
         public void LoadDistricts()
         {
-            /*
             Int32 year = 2018;
             Int32.TryParse(cmbYear.Text, out year);
             if (year == 0)
@@ -81,7 +80,6 @@ namespace XeroScouterDBManage_Server
                     }
                 }
             }
-            */
         }
 
         public void LoadCompetitions()
@@ -93,7 +91,7 @@ namespace XeroScouterDBManage_Server
                 year = 2018;
             }
 
-            //String competitionDistrict = "PNW"; // (String)cmbDistrict.SelectedValue;
+            String competitionDistrict = "PNW"; // (String)cmbDistrict.SelectedValue;
 
             MySqlConnection connection = new MySqlConnection(Utils.getConnectionString());
             MySqlCommand cmd;
@@ -104,7 +102,7 @@ namespace XeroScouterDBManage_Server
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = EventTable.getCompetitionByYear(year); //, competitionDistrict);
+                    cmd.CommandText = EventTable.getCompetitionByYear(year, competitionDistrict);
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adap.Fill(ds);
